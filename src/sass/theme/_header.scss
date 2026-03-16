@@ -1,0 +1,183 @@
+:root {
+    --inlife-primary: #293458;
+    --inlife-accent: #d5db3e;
+    --inlife-text: #1f2430;
+    --inlife-bg: #ffffff;
+    --inlife-border: rgba(41, 52, 88, 0.12);
+    --inlife-focus: #d5db3e;
+}
+
+.site-header {
+    background: var(--inlife-bg);
+    border-bottom: 1px solid var(--inlife-border);
+}
+
+.header-topbar {
+    background: #fff;
+    border-bottom: 1px solid var(--inlife-border);
+
+    &__inner {
+        min-height: 3rem;
+    }
+}
+
+.topbar-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    .menu-item {
+        margin: 0;
+    }
+
+    a {
+        color: var(--inlife-primary);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+            text-underline-offset: 0.18em;
+        }
+    }
+}
+
+.navbar-inlife {
+    background: #fff;
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+
+    .navbar-brand {
+        color: var(--inlife-primary);
+    }
+
+    .navbar-toggler {
+        border: 1px solid var(--inlife-border);
+        padding: 0.625rem 0.8rem;
+    }
+
+    .navbar-toggler-icon {
+        background-image: none;
+        width: 1.5rem;
+        height: 1.5rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after,
+    .navbar-toggler-icon {
+        box-shadow: inset 0 0 0 999px var(--inlife-primary);
+    }
+
+    .main-menu-desktop {
+        gap: 0.5rem;
+
+        >li>a {
+            color: var(--inlife-primary);
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+        }
+
+        >li>a:hover,
+        >li>a:focus,
+        >li.current-menu-item>a,
+        >li.current-menu-ancestor>a {
+            color: var(--inlife-primary);
+            text-decoration: underline;
+            text-decoration-color: var(--inlife-accent);
+            text-decoration-thickness: 2px;
+            text-underline-offset: 0.35em;
+        }
+    }
+
+    .dropdown-menu {
+        border: 1px solid var(--inlife-border);
+        border-radius: 0.75rem;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08);
+    }
+
+    .dropdown-item {
+        color: var(--inlife-primary);
+
+        &:hover,
+        &:focus {
+            background: rgba(213, 219, 62, 0.18);
+            color: var(--inlife-primary);
+        }
+    }
+}
+
+.offcanvas-inlife {
+    background: var(--inlife-primary);
+    color: #fff;
+    width: min(92vw, 420px);
+
+    .offcanvas-title {
+        color: #fff;
+    }
+
+    .offcanvas-divider {
+        border-color: rgba(255, 255, 255, 0.2);
+        margin: 1.5rem 0;
+    }
+
+    .offcanvas-utility-menu,
+    .offcanvas-primary-menu {
+        gap: 0.25rem;
+    }
+
+    a,
+    .nav-link,
+    .dropdown-item {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus,
+    a:hover,
+    a:focus {
+        color: var(--inlife-accent);
+    }
+
+    .dropdown-menu {
+        background: rgba(255, 255, 255, 0.06);
+        border: 0;
+    }
+}
+
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 9999;
+    background: #000;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    border-radius: 0.5rem;
+}
+
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+.nav-link:focus-visible,
+.dropdown-item:focus-visible {
+    outline: 3px solid var(--inlife-focus);
+    outline-offset: 2px;
+}

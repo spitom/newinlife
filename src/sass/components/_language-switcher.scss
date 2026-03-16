@@ -1,0 +1,48 @@
+.language-switcher {
+    &__list {
+        margin: 0;
+        padding: 0;
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.5rem;
+        min-height: 2.5rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 999px;
+        color: var(--inlife-primary);
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            background: rgba(213, 219, 62, 0.22);
+        }
+
+        &.is-active {
+            background: var(--inlife-primary);
+            color: #fff;
+        }
+    }
+}
+
+.offcanvas-inlife {
+    .language-switcher__link {
+        color: #fff;
+
+        &.is-active {
+            background: var(--inlife-accent);
+            color: var(--inlife-primary);
+        }
+
+        &:hover,
+        &:focus {
+            background: rgba(213, 219, 62, 0.18);
+            color: #fff;
+        }
+    }
+}

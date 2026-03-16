@@ -1,0 +1,28 @@
+.btn {
+    border-radius: 999px;
+    font-weight: 600;
+    padding: 0.8rem 1.25rem;
+}
+
+.btn-primary {
+    background-color: var(--inlife-primary);
+    border-color: var(--inlife-primary);
+
+    &:hover,
+    &:focus {
+        background-color: #1f2843;
+        border-color: #1f2843;
+    }
+}
+
+.btn-outline-primary {
+    color: var(--inlife-primary);
+    border-color: var(--inlife-primary);
+
+    &:hover,
+    &:focus {
+        color: var(--inlife-primary);
+        background-color: rgba(213, 219, 62, 0.22);
+        border-color: var(--inlife-primary);
+    }
+}
