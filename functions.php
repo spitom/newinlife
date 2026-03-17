@@ -94,6 +94,18 @@ function understrap_child_customize_controls_js() {
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
 
 
+add_action('wp_enqueue_scripts', 'inlife_enqueue_google_fonts', 20);
+function inlife_enqueue_google_fonts() {
+	wp_enqueue_style(
+		'inlife-google-fonts',
+		'https://fonts.googleapis.com/css2?family=SUSE:wght@400;500;600;700&display=swap',
+		[],
+		null
+	);
+}
+
+
 require_once get_stylesheet_directory() . '/inc/inlife-theme-setup.php';
 require_once get_stylesheet_directory() . '/inc/inlife-template-tags.php';
 require_once get_stylesheet_directory() . '/inc/inlife-polylang-helpers.php';
+require_once get_stylesheet_directory() . '/inc/class-inlife-accessible-navwalker.php';
