@@ -36,6 +36,7 @@ $container = inlife_container_class();
 						'theme_location' => 'primary',
 						'container'      => false,
 						'menu_class'     => 'navbar-nav ms-auto inlife-primary-nav',
+						'menu_id'        => 'desktop-primary-menu',
 						'fallback_cb'    => false,
 						'depth'          => 3,
 						'walker'         => new Inlife_Accessible_Navwalker(),

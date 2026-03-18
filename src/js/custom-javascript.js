@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // Primary menu - custom Navwalker
 
 document.addEventListener('DOMContentLoaded', () => {
-	const navs = document.querySelectorAll('.inlife-primary-nav');
+	const navs = document.querySelectorAll('.inlife-primary-nav, .offcanvas-primary-menu');
 
 	if (!navs.length) return;
 
@@ -102,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (!srText) return '';
 
 			const current = srText.textContent.trim();
-
 			if (!current) return '';
 
 			if (expanded) {
@@ -131,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			if (!submenu || !parentItem) return;
 
-			submenu.hidden = true;
 			parentItem.classList.remove('is-open');
 			toggle.setAttribute('aria-expanded', 'false');
 			setToggleText(toggle, getLabel(toggle, false));
@@ -140,6 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			nestedToggles.forEach((nestedToggle) => {
 				closeSubmenu(nestedToggle, false);
 			});
+
+			window.setTimeout(() => {
+				if (toggle.getAttribute('aria-expanded') === 'false') {
+					submenu.hidden = true;
+				}
+			}, 180);
 
 			if (restoreFocus) {
 				toggle.focus();
@@ -171,14 +175,18 @@ document.addEventListener('DOMContentLoaded', () => {
 			closeSiblings(toggle);
 
 			submenu.hidden = false;
-			parentItem.classList.add('is-open');
 			toggle.setAttribute('aria-expanded', 'true');
 			setToggleText(toggle, getLabel(toggle, true));
+
+			window.requestAnimationFrame(() => {
+				parentItem.classList.add('is-open');
+			});
 		};
 
 		toggles.forEach((toggle) => {
 			toggle.addEventListener('click', (e) => {
 				e.preventDefault();
+				e.stopPropagation();
 
 				const expanded = toggle.getAttribute('aria-expanded') === 'true';
 

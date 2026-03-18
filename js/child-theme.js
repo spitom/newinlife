@@ -6809,7 +6809,7 @@
 	// Primary menu - custom Navwalker
 
 	document.addEventListener('DOMContentLoaded', () => {
-	  const navs = document.querySelectorAll('.inlife-primary-nav');
+	  const navs = document.querySelectorAll('.inlife-primary-nav, .offcanvas-primary-menu');
 	  if (!navs.length) return;
 	  navs.forEach(nav => {
 	    const toggles = nav.querySelectorAll('[data-submenu-toggle]');
@@ -6841,7 +6841,6 @@
 	      const submenu = getSubmenu(toggle);
 	      const parentItem = getParentItem(toggle);
 	      if (!submenu || !parentItem) return;
-	      submenu.hidden = true;
 	      parentItem.classList.remove('is-open');
 	      toggle.setAttribute('aria-expanded', 'false');
 	      setToggleText(toggle, getLabel(toggle, false));
@@ -6849,6 +6848,11 @@
 	      nestedToggles.forEach(nestedToggle => {
 	        closeSubmenu(nestedToggle, false);
 	      });
+	      window.setTimeout(() => {
+	        if (toggle.getAttribute('aria-expanded') === 'false') {
+	          submenu.hidden = true;
+	        }
+	      }, 180);
 	      if (restoreFocus) {
 	        toggle.focus();
 	      }
@@ -6871,13 +6875,16 @@
 	      if (!submenu || !parentItem) return;
 	      closeSiblings(toggle);
 	      submenu.hidden = false;
-	      parentItem.classList.add('is-open');
 	      toggle.setAttribute('aria-expanded', 'true');
 	      setToggleText(toggle, getLabel(toggle, true));
+	      window.requestAnimationFrame(() => {
+	        parentItem.classList.add('is-open');
+	      });
 	    };
 	    toggles.forEach(toggle => {
 	      toggle.addEventListener('click', e => {
 	        e.preventDefault();
+	        e.stopPropagation();
 	        const expanded = toggle.getAttribute('aria-expanded') === 'true';
 	        if (expanded) {
 	          closeSubmenu(toggle, false);

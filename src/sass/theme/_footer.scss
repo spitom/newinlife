@@ -1,0 +1,215 @@
+.inlife-footer {
+    background-color: #111a33;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 0;
+
+    a {
+        color: rgba(255, 255, 255, 0.92);
+        text-decoration: none;
+        text-underline-offset: 0.2em;
+        transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            color: #ffffff;
+        }
+
+        &:focus-visible {
+            outline: 2px solid #d7df23;
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+    }
+
+    &__main {
+        padding: clamp(3rem, 5vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+    }
+
+    &__brand {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        min-height: 100%;
+        max-width: 25rem;
+    }
+
+    &__brand-link {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    &__logo {
+        display: block;
+        max-width: 160px;
+        width: 100%;
+        height: auto;
+    }
+
+    &__intro {
+        margin-bottom: 0;
+    }
+
+    &__description {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.75;
+        color: rgba(255, 255, 255, 0.78);
+    }
+
+    &__copyright {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.62);
+    }
+
+    &__copyright--bottom {
+        text-align: left;
+    }
+
+    &__section {
+        height: 100%;
+    }
+
+    &__title {
+        margin: 0 0 1rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        line-height: 1.3;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #ffffff;
+    }
+
+    &__address {
+        margin-bottom: 1rem;
+        font-style: normal;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.78);
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+
+        li+li {
+            margin-top: 0.65rem;
+        }
+
+        a {
+            display: inline-block;
+            font-size: 0.98rem;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.92);
+        }
+    }
+
+    &__list--contact {
+        a {
+            word-break: break-word;
+        }
+    }
+
+    &__list--employee {
+        @media (min-width: 992px) {
+            column-count: 2;
+            column-gap: 0.6rem;
+            max-width: 16.5rem;
+        }
+
+        li {
+            break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            margin-bottom: 0.65rem;
+        }
+
+        li+li {
+            margin-top: 0;
+        }
+    }
+
+    &__utility {
+        margin-top: 2.5rem;
+    }
+
+    &__utility-top {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+    }
+
+    &__utility-line {
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.12);
+    }
+
+    &__utility-bottom {
+        padding-top: 1rem;
+    }
+
+    &__social-wrap {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    &__social {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin: 0;
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.25rem;
+            height: 2.25rem;
+            color: #ffffff;
+            font-size: 1.35rem;
+            line-height: 1;
+            border-radius: 50%;
+            transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+
+            &:hover {
+                transform: translateY(-2px);
+                opacity: 0.9;
+            }
+        }
+    }
+}
+
+@media (max-width: 991.98px) {
+    .inlife-footer {
+        &__brand {
+            max-width: none;
+        }
+
+        &__utility {
+            margin-top: 2rem;
+        }
+
+        &__utility-top {
+            justify-content: flex-start;
+            margin-bottom: 0.9rem;
+        }
+
+        &__utility-bottom {
+            padding-top: 0.9rem;
+        }
+
+        &__social {
+            justify-content: flex-start;
+        }
+    }
+}

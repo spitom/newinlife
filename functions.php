@@ -93,6 +93,9 @@ function understrap_child_customize_controls_js() {
 }
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
 
+/**
+ * Font SUSE
+ */
 
 add_action('wp_enqueue_scripts', 'inlife_enqueue_google_fonts', 20);
 function inlife_enqueue_google_fonts() {
@@ -101,6 +104,20 @@ function inlife_enqueue_google_fonts() {
 		'https://fonts.googleapis.com/css2?family=SUSE:wght@400;500;600;700&display=swap',
 		[],
 		null
+	);
+}
+
+/**
+ * Boostrap icons
+ */
+
+add_action( 'wp_enqueue_scripts', 'newinlife_enqueue_bootstrap_icons' );
+function newinlife_enqueue_bootstrap_icons() {
+	wp_enqueue_style(
+		'bootstrap-icons',
+		'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',
+		[],
+		'1.11.3'
 	);
 }
 

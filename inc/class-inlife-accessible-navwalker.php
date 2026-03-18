@@ -30,6 +30,21 @@ class Inlife_Accessible_Navwalker extends Walker_Nav_Menu {
 	}
 
 	/**
+	 * Build unique submenu id prefix for a given menu render.
+	 */
+	protected function get_menu_prefix($args): string {
+		if (!empty($args->menu_id)) {
+			return sanitize_html_class($args->menu_id);
+		}
+
+		if (!empty($args->theme_location)) {
+			return sanitize_html_class($args->theme_location);
+		}
+
+		return 'menu';
+	}
+
+	/**
 	 * Start submenu level.
 	 */
 	public function start_lvl(&$output, $depth = 0, $args = null) {
@@ -43,7 +58,6 @@ class Inlife_Accessible_Navwalker extends Walker_Nav_Menu {
 		];
 
 		$class_names = implode(' ', array_map('sanitize_html_class', $classes));
-
 		$id_attr = $submenu_id ? ' id="' . esc_attr($submenu_id) . '"' : '';
 
 		$output .= "\n{$indent}<ul{$id_attr} class=\"" . esc_attr($class_names) . "\" hidden>\n";
@@ -92,25 +106,25 @@ class Inlife_Accessible_Navwalker extends Walker_Nav_Menu {
 
 		$atts = [
 			'class' => $link_classes,
-			'href'  => ! empty($item->url) ? $item->url : '',
+			'href'  => !empty($item->url) ? $item->url : '',
 		];
 
-		if (! empty($item->attr_title)) {
+		if (!empty($item->attr_title)) {
 			$atts['title'] = $item->attr_title;
 		}
 
-		if (! empty($item->target)) {
+		if (!empty($item->target)) {
 			$atts['target'] = $item->target;
 		}
 
-		if (! empty($item->xfn)) {
+		if (!empty($item->xfn)) {
 			$atts['rel'] = $item->xfn;
 		}
 
 		if (
-			! empty($item->current) ||
-			! empty($item->current_item_ancestor) ||
-			! empty($item->current_item_parent)
+			!empty($item->current) ||
+			!empty($item->current_item_ancestor) ||
+			!empty($item->current_item_parent)
 		) {
 			$atts['aria-current'] = 'page';
 		}
@@ -123,7 +137,8 @@ class Inlife_Accessible_Navwalker extends Walker_Nav_Menu {
 		}
 
 		if ($has_children) {
-			$submenu_id = 'submenu-' . (int) $item->ID;
+			$menu_prefix = $this->get_menu_prefix($args);
+			$submenu_id  = $menu_prefix . '-submenu-' . (int) $item->ID;
 			$this->submenu_ids[$depth] = $submenu_id;
 
 			$toggle_label = $this->get_toggle_label($title_plain, false);

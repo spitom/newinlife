@@ -15,10 +15,15 @@ defined( 'ABSPATH' ) || exit;
 			name="s"
 			value="<?php echo esc_attr( get_search_query() ); ?>"
 			placeholder="<?php esc_attr_e( 'Szukaj…', 'newinlife-child' ); ?>"
+			autocomplete="off"
 		>
 
-		<button type="submit" class="offcanvas-search__submit">
-			<?php esc_html_e( 'Szukaj', 'newinlife-child' ); ?>
+		<button
+			type="submit"
+			class="offcanvas-search__submit"
+			aria-label="<?php esc_attr_e( 'Wyszukaj', 'newinlife-child' ); ?>"
+		>
+			<span class="offcanvas-search__icon" aria-hidden="true"></span>
 		</button>
 	</form>
 </div>
