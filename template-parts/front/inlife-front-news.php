@@ -21,7 +21,7 @@ $container = inlife_container_class();
 							<span class="badge text-bg-light">Nauka</span>
 						</div>
 						<h3 class="h5">Przykładowy news</h3>
-						<p class="mb-0">Miejsce na lead aktualności.</p>
+						<p class="mb-0">Lead aktualności.</p>
 					</div>
 				</div>
 			</div>
@@ -33,7 +33,7 @@ $container = inlife_container_class();
 							<span class="badge text-bg-light">Badania</span>
 						</div>
 						<h3 class="h5">Przykładowy news</h3>
-						<p class="mb-0">Miejsce na lead aktualności.</p>
+						<p class="mb-0">Lead aktualności.</p>
 					</div>
 				</div>
 			</div>
@@ -45,7 +45,7 @@ $container = inlife_container_class();
 							<span class="badge text-bg-light">Instytut</span>
 						</div>
 						<h3 class="h5">Przykładowy news</h3>
-						<p class="mb-0">Miejsce na lead aktualności.</p>
+						<p class="mb-0">Lead aktualności.</p>
 					</div>
 				</div>
 			</div>

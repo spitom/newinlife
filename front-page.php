@@ -15,6 +15,7 @@ get_header();
 	<?php get_template_part( 'template-parts/front/inlife-front', 'areas' ); ?>
 	<?php get_template_part( 'template-parts/front/inlife-front', 'news' ); ?>
 	<?php get_template_part( 'template-parts/front/inlife-front', 'business' ); ?>
+	<?php get_template_part( 'template-parts/front/inlife-front', 'doctoral-school' ); ?>
 	<?php get_template_part( 'template-parts/front/inlife-front', 'popielno' ); ?>
 </main>
 

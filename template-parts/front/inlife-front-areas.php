@@ -14,7 +14,7 @@ $container = inlife_container_class();
 			<div class="col-md-6 col-xl-3">
 				<div class="card card-area h-100">
 					<div class="card-body">
-						<h3 class="h5">Obszar 1</h3>
+						<h3 class="h5">Zwierzę</h3>
 						<p class="mb-0">Opis obszaru działania.</p>
 					</div>
 				</div>
@@ -23,7 +23,7 @@ $container = inlife_container_class();
 			<div class="col-md-6 col-xl-3">
 				<div class="card card-area h-100">
 					<div class="card-body">
-						<h3 class="h5">Obszar 2</h3>
+						<h3 class="h5">Żywność</h3>
 						<p class="mb-0">Opis obszaru działania.</p>
 					</div>
 				</div>
@@ -32,7 +32,7 @@ $container = inlife_container_class();
 			<div class="col-md-6 col-xl-3">
 				<div class="card card-area h-100">
 					<div class="card-body">
-						<h3 class="h5">Obszar 3</h3>
+						<h3 class="h5">Zdrowie</h3>
 						<p class="mb-0">Opis obszaru działania.</p>
 					</div>
 				</div>
@@ -41,7 +41,7 @@ $container = inlife_container_class();
 			<div class="col-md-6 col-xl-3">
 				<div class="card card-area h-100">
 					<div class="card-body">
-						<h3 class="h5">Obszar 4</h3>
+						<h3 class="h5">Współpraca</h3>
 						<p class="mb-0">Opis obszaru działania.</p>
 					</div>
 				</div>

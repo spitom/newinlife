@@ -2,21 +2,34 @@
     background-color: #111a33;
     color: rgba(255, 255, 255, 0.9);
     margin-top: 0;
+    overflow: hidden;
+
+    .row {
+        --bs-gutter-x: 2rem;
+    }
 
     a {
         color: rgba(255, 255, 255, 0.92);
         text-decoration: none;
-        text-underline-offset: 0.2em;
-        transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+        text-underline-offset: 0.22em;
+        text-decoration-thickness: 1px;
+        transition:
+            color 0.2s ease,
+            opacity 0.2s ease,
+            transform 0.2s ease,
+            text-decoration-color 0.2s ease;
 
         &:hover {
             color: #ffffff;
+            text-decoration: underline;
+            text-decoration-color: rgba(255, 255, 255, 0.55);
         }
 
         &:focus-visible {
             outline: 2px solid #d7df23;
             outline-offset: 3px;
             border-radius: 2px;
+            text-decoration: none;
         }
     }
 
@@ -24,12 +37,15 @@
         padding: clamp(3rem, 5vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
     }
 
+    &__brand-col {
+        display: block;
+    }
+
     &__brand {
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        min-height: 100%;
         max-width: 25rem;
     }
 
@@ -37,11 +53,12 @@
         display: inline-flex;
         align-items: center;
         margin-bottom: 1.5rem;
+        max-width: 100%;
     }
 
     &__logo {
         display: block;
-        max-width: 160px;
+        max-width: 140px;
         width: 100%;
         height: auto;
     }
@@ -55,17 +72,7 @@
         font-size: 0.95rem;
         line-height: 1.75;
         color: rgba(255, 255, 255, 0.78);
-    }
-
-    &__copyright {
-        margin: 0;
-        font-size: 0.875rem;
-        line-height: 1.5;
-        color: rgba(255, 255, 255, 0.62);
-    }
-
-    &__copyright--bottom {
-        text-align: left;
+        max-width: 34ch;
     }
 
     &__section {
@@ -73,7 +80,7 @@
     }
 
     &__title {
-        margin: 0 0 1rem;
+        margin: 0 0 1.25rem;
         font-size: 0.875rem;
         font-weight: 700;
         line-height: 1.3;
@@ -93,6 +100,7 @@
     &__list {
         margin: 0;
         padding: 0;
+        list-style: none;
 
         li+li {
             margin-top: 0.65rem;
@@ -113,21 +121,19 @@
     }
 
     &__list--employee {
-        @media (min-width: 992px) {
-            column-count: 2;
-            column-gap: 0.6rem;
-            max-width: 16.5rem;
-        }
-
         li {
             break-inside: avoid;
             -webkit-column-break-inside: avoid;
             page-break-inside: avoid;
-            margin-bottom: 0.65rem;
+            margin-bottom: 0.6rem;
         }
 
         li+li {
             margin-top: 0;
+        }
+
+        a {
+            padding-right: 0.15rem;
         }
     }
 
@@ -150,6 +156,17 @@
         padding-top: 1rem;
     }
 
+    &__copyright {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.62);
+    }
+
+    &__copyright--bottom {
+        text-align: left;
+    }
+
     &__social-wrap {
         margin: 0;
         padding: 0;
@@ -162,6 +179,7 @@
         justify-content: flex-end;
         flex-wrap: wrap;
         gap: 1rem;
+        list-style: none;
         margin: 0;
         padding: 0;
 
@@ -169,30 +187,115 @@
             margin: 0;
         }
 
-        a {
+        a,
+        &-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 2.25rem;
             height: 2.25rem;
-            color: #ffffff;
-            font-size: 1.35rem;
-            line-height: 1;
             border-radius: 50%;
-            transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease;
+            color: #fff;
+            text-decoration: none;
+            line-height: 1;
+            transition: transform 0.2s ease, opacity 0.2s ease;
 
             &:hover {
                 transform: translateY(-2px);
                 opacity: 0.9;
+                text-decoration: none;
             }
+
+            &:focus-visible {
+                outline: 2px solid #d7df23;
+                outline-offset: 3px;
+                border-radius: 50%;
+                text-decoration: none;
+            }
+        }
+
+        i {
+            display: inline-block;
+            font-size: 1.35rem;
+            line-height: 1;
+            pointer-events: none;
         }
     }
 }
 
-@media (max-width: 991.98px) {
+/* =========================
+   >1200
+========================= */
+
+@media (min-width: 1200px) {
     .inlife-footer {
-        &__brand {
+        .row {
+            --bs-gutter-x: 2.15rem;
+        }
+
+        &__brand-col {
+            display: block;
+        }
+
+        &__list--employee {
+            column-count: 2;
+            column-gap: 0.45rem;
+            max-width: 15.75rem;
+        }
+    }
+}
+
+/* =========================
+   768–1199
+========================= */
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .inlife-footer {
+        .row {
+            --bs-gutter-x: 1.9rem;
+        }
+
+        &__brand-col {
+            display: none;
+        }
+
+        &__main {
+            padding: 3rem 0 2.35rem;
+        }
+
+        &__section {
             max-width: none;
+        }
+
+        &__title {
+            margin-bottom: 0.8rem;
+        }
+
+        &__address {
+            font-size: 0.93rem;
+            line-height: 1.65;
+        }
+
+        &__list {
+            a {
+                font-size: 0.94rem;
+            }
+        }
+
+        &__list--contact {
+            a {
+                font-size: 0.92rem;
+            }
+        }
+
+        &__list--employee {
+            column-count: 2;
+            column-gap: 0.5rem;
+            max-width: 15.25rem;
+
+            li {
+                margin-bottom: 0.6rem;
+            }
         }
 
         &__utility {
@@ -200,16 +303,111 @@
         }
 
         &__utility-top {
-            justify-content: flex-start;
-            margin-bottom: 0.9rem;
+            justify-content: center;
+            margin-bottom: 0.95rem;
         }
 
         &__utility-bottom {
-            padding-top: 0.9rem;
+            padding-top: 0.95rem;
+        }
+
+        &__copyright--bottom {
+            text-align: center;
         }
 
         &__social {
-            justify-content: flex-start;
+            justify-content: center;
+            gap: 0.95rem;
+        }
+    }
+}
+
+/* =========================
+   <768
+========================= */
+
+@media (max-width: 767.98px) {
+    .inlife-footer {
+        .row {
+            --bs-gutter-x: 1rem;
+        }
+
+        &__brand-col {
+            display: none;
+        }
+
+        &__main {
+            padding: 2.5rem 0 2rem;
+        }
+
+        &__section {
+            height: auto;
+            margin-bottom: 2.25rem;
+        }
+
+        &__title {
+            margin-bottom: 1rem;
+        }
+
+        &__address {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.1rem;
+        }
+
+        &__list {
+            a {
+                font-size: 0.94rem;
+            }
+
+            li+li {
+                margin-top: 0.7rem;
+            }
+        }
+
+        &__list--contact {
+            a {
+                font-size: 0.9rem;
+            }
+        }
+
+        &__list--employee {
+            column-count: 1;
+            column-gap: 0;
+            max-width: none;
+        }
+
+        &__utility {
+            margin-top: 1.2rem;
+        }
+
+        &__utility-top {
+            justify-content: center;
+            margin-bottom: 0.85rem;
+        }
+
+        &__utility-bottom {
+            justify-content: center;
+            padding-top: 0.85rem;
+        }
+
+        &__social {
+            justify-content: center;
+            gap: 0.8rem;
+
+            a,
+            &-link {
+                width: 2.1rem;
+                height: 2.1rem;
+            }
+
+            i {
+                font-size: 1.25rem;
+            }
+        }
+
+        &__copyright--bottom {
+            text-align: center;
         }
     }
 }

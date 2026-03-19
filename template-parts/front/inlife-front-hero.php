@@ -9,18 +9,18 @@ $container = inlife_container_class();
 		<div class="front-hero__inner">
 			<div class="row align-items-end g-4">
 				<div class="col-xl-8">
-					<p class="front-hero__eyebrow">InLife Institute</p>
+					<p class="front-hero__eyebrow">InLife</p>
 					<h1 id="hero-heading" class="front-hero__title">
-						Nagłówek hero / slider
+						Nagłówek / slider
 					</h1>
 					<p class="front-hero__lead">
-						Miejsce na główny komunikat strony głównej. Docelowo pod slider lub statyczny hero.
+						Slider lub statyczny hero.
 					</p>
 				</div>
 
 				<div class="col-xl-4">
 					<div class="front-hero__aside">
-						Tutaj może wejść skrót do ważnej sekcji, CTA albo panel boczny.
+						Skrót do sekcji.
 					</div>
 				</div>
 			</div>
