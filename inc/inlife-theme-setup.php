@@ -8,11 +8,11 @@ function inlife_theme_setup() {
 
 	register_nav_menus(
 		array(
-			'primary'         => __( 'Primary Menu', 'understrap-child' ),
-			'top'             => __( 'Top Utility Menu', 'understrap-child' ),
-			'footer_employee' => __( 'Footer – Employee Zone', 'understrap-child' ),
-			'footer_info'     => __( 'Footer – Information', 'understrap-child' ),
-			'footer_social'   => __( 'Footer – Social Media', 'understrap-child' ),
+			'primary'         => __( 'Primary Menu', 'newinlife-child' ),
+			'top'             => __( 'Top Utility Menu', 'newinlife-child' ),
+			'footer_employee' => __( 'Footer Employee Menu', 'newinlife-child' ),
+			'footer_info'     => __( 'Footer Info Menu', 'newinlife-child' ),
+			'footer_social'   => __( 'Footer Social Menu', 'newinlife-child' ),
 		)
 	);
 

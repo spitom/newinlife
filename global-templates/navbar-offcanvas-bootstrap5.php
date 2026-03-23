@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$container = inlife_container_class();
+$container = inlife_container_class('page');
 ?>
 
 <header id="wrapper-navbar" class="site-header">

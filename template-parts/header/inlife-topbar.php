@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-$container = inlife_container_class();
+$container = inlife_container_class('page');
 ?>
 
 <div class="header-topbar d-none d-xl-block" aria-label="<?php esc_attr_e( 'Górne menu użytkowe', 'newinlife-child' ); ?>">

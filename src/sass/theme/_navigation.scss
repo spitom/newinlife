@@ -6,7 +6,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-start;
+    align-items: center;
 
     .inlife-primary-nav {
         margin-left: auto;
@@ -19,7 +19,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-end;
-    gap: 1.75rem;
+    gap: 1.55rem;
     margin: 0 0 0 auto;
     padding: 0;
     list-style: none;
@@ -130,6 +130,12 @@
         opacity: 1;
     }
 
+    .submenu-toggle:focus-visible {
+        outline: 3px solid var(--inlife-focus);
+        outline-offset: 3px;
+        border-radius: 999px;
+    }
+
     .submenu-toggle-icon {
         display: inline-block;
         width: 0.46rem;
@@ -140,39 +146,66 @@
         transition: transform 0.2s ease;
     }
 
-    .nav-item-has-children.is-open>.nav-link-group .submenu-toggle-icon {
-        transform: rotate(225deg);
-    }
+
 
     .nav-item-has-children.is-open>.sub-menu {
         opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
         transform: translateY(0);
         transition-delay: 0.02s;
     }
 
+    // .sub-menu {
+    //     position: absolute !important;
+    //     top: calc(100% + 0.9rem) !important;
+    //     right: 0 !important;
+    //     left: auto !important;
+    //     min-width: 13rem !important;
+    //     margin: 0 !important;
+    //     padding: 0 !important;
+    //     list-style: none;
+    //     background: rgba(255, 255, 255, 0.98) !important;
+    //     border: 1px solid var(--inlife-border) !important;
+    //     border-radius: 0 !important;
+    //     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05) !important;
+    //     backdrop-filter: saturate(180%) blur(10px);
+    //     -webkit-backdrop-filter: saturate(180%) blur(10px);
+    //     z-index: 1000;
+    //     overflow: hidden;
+    //     opacity: 0;
+    //     transform: translateY(-8px);
+    //     transition:
+    //         opacity 0.18s ease,
+    //         transform 0.18s ease;
+    //     will-change: opacity, transform;
+    // }
     .sub-menu {
-        position: absolute !important;
-        top: calc(100% + 0.7rem) !important;
-        right: 0 !important;
-        left: auto !important;
-        min-width: 13rem !important;
-        margin: 0 !important;
-        padding: 0 !important;
+        position: absolute;
+        top: calc(100% + 0.9rem);
+        right: 0;
+        min-width: 15rem;
+        margin: 0;
+        padding: 0rem;
         list-style: none;
-        background: rgba(255, 255, 255, 0.98) !important;
-        border: 1px solid rgba(17, 17, 17, 0.08) !important;
-        border-radius: 0 !important;
-        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05) !important;
-        backdrop-filter: saturate(180%) blur(10px);
-        -webkit-backdrop-filter: saturate(180%) blur(10px);
-        z-index: 1000;
+        background: #fff;
+        border: 1px solid var(--inlife-border);
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.08);
         overflow: hidden;
         opacity: 0;
-        transform: translateY(-8px);
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(0.5rem);
         transition:
-            opacity 0.18s ease,
-            transform 0.18s ease;
-        will-change: opacity, transform;
+            opacity 0.2s ease,
+            transform 0.2s ease,
+            visibility 0.2s ease;
+        z-index: 30;
+    }
+
+    .nav-item-has-children.is-open>.nav-link-group .submenu-toggle-icon {
+        transform: rotate(225deg);
     }
 
     .sub-menu[hidden] {
@@ -211,12 +244,12 @@
     .dropdown-item:hover,
     .submenu-link:focus-visible,
     .dropdown-item:focus-visible {
-        color: var(--inlife-nav);
+        color: var(--inlife-primary);
         opacity: 1;
         background: rgba(17, 17, 17, 0.04);
+        outline: none;
     }
 
-    .nav-link:focus-visible,
     .submenu-link:focus-visible,
     .dropdown-item:focus-visible,
     .submenu-toggle:focus-visible {
@@ -224,6 +257,13 @@
         outline-offset: 3px;
         border-radius: 0.125rem;
     }
+
+    .nav-link:focus-visible {
+        outline: 3px solid var(--inlife-focus);
+        outline-offset: 4px;
+        border-radius: 0.35rem;
+    }
+
 }
 
 /* =========================================================

@@ -6941,6 +6941,70 @@
 	  });
 	});
 
+	// Career menu - aktywny stan podczas scrollowania
+
+	document.addEventListener('DOMContentLoaded', () => {
+	  const nav = document.querySelector('.career-op-nav');
+	  if (!nav) return;
+	  const links = Array.from(nav.querySelectorAll('[data-section-target]'));
+	  if (!links.length) return;
+	  const sections = links.map(link => {
+	    const id = link.getAttribute('data-section-target');
+	    if (!id) return null;
+	    const section = document.getElementById(id);
+	    if (!section) return null;
+	    return {
+	      link,
+	      section,
+	      id
+	    };
+	  }).filter(Boolean);
+	  if (!sections.length) return;
+	  const setActiveLink = activeId => {
+	    sections.forEach(({
+	      link,
+	      id
+	    }) => {
+	      const isActive = id === activeId;
+	      link.classList.toggle('is-active', isActive);
+	      link.setAttribute('aria-selected', isActive ? 'true' : 'false');
+	    });
+	  };
+	  const getStickyOffset = () => {
+	    const root = document.documentElement;
+	    const cssOffset = getComputedStyle(root).getPropertyValue('--inlife-header-offset').trim();
+	    const parsed = parseInt(cssOffset, 10);
+	    return Number.isNaN(parsed) ? 120 : parsed + 60;
+	  };
+	  const handleScroll = () => {
+	    const offset = getStickyOffset();
+	    let currentId = sections[0].id;
+	    sections.forEach(({
+	      section,
+	      id
+	    }) => {
+	      const rect = section.getBoundingClientRect();
+	      if (rect.top <= offset) {
+	        currentId = id;
+	      }
+	    });
+	    setActiveLink(currentId);
+	  };
+	  links.forEach(link => {
+	    link.addEventListener('click', () => {
+	      const targetId = link.getAttribute('data-section-target');
+	      if (targetId) {
+	        setActiveLink(targetId);
+	      }
+	    });
+	  });
+	  window.addEventListener('scroll', handleScroll, {
+	    passive: true
+	  });
+	  window.addEventListener('resize', handleScroll);
+	  handleScroll();
+	});
+
 	exports.Alert = alert;
 	exports.Button = button;
 	exports.Carousel = carousel;

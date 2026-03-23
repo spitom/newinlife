@@ -100,3 +100,8 @@ require_once get_stylesheet_directory() . '/inc/class-inlife-accessible-navwalke
 require_once get_stylesheet_directory() . '/inc/inlife-polylang-strings.php';
 require_once get_stylesheet_directory() . '/inc/inlife-footer.php';
 require_once get_stylesheet_directory() . '/inc/inlife-assets.php';
+require_once get_stylesheet_directory() . '/inc/inlife-acf.php';
+require_once get_stylesheet_directory() . '/inc/post-types/career-entry.php';
+require_once get_stylesheet_directory() . '/inc/helpers/career.php';
+require_once get_stylesheet_directory() . '/inc/helpers/career-types.php';
+require_once get_stylesheet_directory() . '/inc/helpers/career-pages.php';

@@ -1,4 +1,8 @@
 :root {
+    --inlife-max-page: 1620px;
+    --inlife-max-content: 1440px;
+    --inlife-gutter: 1.5rem;
+    --inlife-gutter: 1.5rem;
     --inlife-font-sans: "SUSE", sans-serif;
     --inlife-primary: #293458;
     --inlife-accent: #d5db3e;
@@ -13,6 +17,29 @@
 
 body {
     font-family: var(--inlife-font-sans);
+}
+
+.inlife-container {
+    width: min(100% - (var(--inlife-gutter) * 2), var(--inlife-max-page));
+    margin-inline: auto;
+}
+
+.inlife-content {
+    width: min(100%, var(--inlife-max-content));
+    margin-inline: auto;
+    padding-left: clamp(1.25rem, 2vw, 2rem);
+    padding-right: clamp(1.25rem, 2vw, 2rem);
+}
+
+.inlife-text {
+    width: min(100%, 1100px);
+    margin-inline: auto;
+}
+
+@media (max-width: 767.98px) {
+    :root {
+        --inlife-gutter: 1rem;
+    }
 }
 
 /* =========================================================
