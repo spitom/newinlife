@@ -80,14 +80,36 @@ if (!function_exists('inlife_get_career_type_key_from_slug')) {
 	}
 }
 
+if (!function_exists('inlife_get_announcements_base_slug')) {
+	function inlife_get_announcements_base_slug() {
+		return function_exists('pll_current_language') && pll_current_language('slug') === 'en'
+			? 'announcements'
+			: 'komunikaty';
+	}
+}
+
+if (!function_exists('inlife_get_announcements_type_base_slug')) {
+	function inlife_get_announcements_type_base_slug() {
+		return function_exists('pll_current_language') && pll_current_language('slug') === 'en'
+			? 'type'
+			: 'typ';
+	}
+}
+
+if (!function_exists('inlife_get_announcements_entry_base_slug')) {
+	function inlife_get_announcements_entry_base_slug() {
+		return function_exists('pll_current_language') && pll_current_language('slug') === 'en'
+			? 'entry'
+			: 'wpis';
+	}
+}
+
 if (!function_exists('inlife_get_career_term_archive_url')) {
 	function inlife_get_career_term_archive_url($type_key) {
-		$slug = inlife_get_career_type_slug($type_key);
+		$term_slug = inlife_get_career_type_slug($type_key);
+		$base = inlife_get_announcements_base_slug();
+		$type = inlife_get_announcements_type_base_slug();
 
-		if (!$slug) {
-			return home_url('/recruitment/');
-		}
-
-		return home_url(user_trailingslashit('recruitment/' . $slug));
+		return home_url(user_trailingslashit($base . '/' . $type . '/' . $term_slug));
 	}
 }

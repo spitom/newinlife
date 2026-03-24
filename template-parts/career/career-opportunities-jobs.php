@@ -1,129 +1,77 @@
 <?php
 /**
- * Career opportunities - job offers
+ * Career opportunities – Jobs
  *
  * @package UnderStrap
  */
 
 defined('ABSPATH') || exit;
 
-$query = new WP_Query([
-	'post_type'           => 'career_entry',
-	'post_status'         => 'publish',
-	'posts_per_page'      => 10,
-	'ignore_sticky_posts' => true,
-	'tax_query'           => [
+$archive_url = function_exists('inlife_get_career_term_archive_url')
+	? inlife_get_career_term_archive_url('jobs')
+	: home_url('/komunikaty/');
+
+$term_slug = function_exists('inlife_get_career_type_slug')
+	? inlife_get_career_type_slug('jobs')
+	: '';
+
+$args = [
+	'post_type'      => 'career_entry',
+	'posts_per_page' => 4,
+	'post_status'    => 'publish',
+	'no_found_rows'  => true,
+];
+
+if (!empty($term_slug)) {
+	$args['tax_query'] = [
 		[
 			'taxonomy' => 'career_entry_type',
 			'field'    => 'slug',
-			'terms'    => ['jobs'],
+			'terms'    => [$term_slug],
 		],
-	],
-	'meta_query'          => [
-		'relation' => 'OR',
-		[
-			'key'     => 'career_is_archived',
-			'compare' => 'NOT EXISTS',
-		],
-		[
-			'key'     => 'career_is_archived',
-			'value'   => '0',
-			'compare' => '=',
-		],
-	],
-]);
+	];
+}
+
+$query = new WP_Query($args);
 ?>
 
 <div class="career-op-section">
 	<div class="row g-4 align-items-end career-section-head">
 		<div class="col-lg-8">
 			<div class="section-heading mb-0">
-				<p class="section-kicker">Rekrutacja</p>
+				<p class="section-kicker">
+					<?php echo function_exists('pll__') ? esc_html(pll__('Komunikaty')) : 'Komunikaty'; ?>
+				</p>
 				<h2 id="career-jobs-heading" class="section-title">
-					Ogłoszenia o pracę
+					<?php echo esc_html(inlife_get_career_type_label('jobs')); ?>
 				</h2>
 			</div>
 
 			<p class="section-lead mt-3 mb-0">
-				Aktualne oferty pracy w obszarach naukowych, technicznych i administracyjnych.
+				<?php echo function_exists('pll__')
+					? esc_html(pll__('Aktualne ogłoszenia o pracę i naborach prowadzonych przez Instytut.'))
+					: 'Aktualne ogłoszenia o pracę i naborach prowadzonych przez Instytut.'; ?>
 			</p>
+		</div>
+
+		<div class="col-lg-4 text-lg-end">
+			<a href="<?php echo esc_url($archive_url); ?>" class="btn btn-outline-primary">
+				<?php echo function_exists('pll__') ? esc_html(pll__('Zobacz wszystkie')) : 'Zobacz wszystkie'; ?>
+			</a>
 		</div>
 	</div>
 
 	<?php if ($query->have_posts()) : ?>
-		<div class="career-op-list">
+		<div class="career-archive-list mt-4">
 			<?php while ($query->have_posts()) : $query->the_post(); ?>
-				<?php
-				$post_id = get_the_ID();
-
-				$position = function_exists('inlife_get_acf_field')
-					? inlife_get_acf_field('career_position_label', $post_id, '')
-					: '';
-
-				$unit = function_exists('inlife_get_acf_field')
-					? inlife_get_acf_field('career_unit', $post_id, '')
-					: '';
-
-				$employment = function_exists('inlife_get_acf_field')
-					? inlife_get_acf_field('career_employment_type', $post_id, '')
-					: '';
-
-				$deadline_raw = function_exists('inlife_get_acf_field')
-					? inlife_get_acf_field('career_deadline', $post_id, '')
-					: '';
-
-				$deadline = function_exists('inlife_format_career_date')
-					? inlife_format_career_date($deadline_raw)
-					: '';
-				?>
-
-				<article class="career-op-card career-op-card--job">
-					<a class="career-op-card__link" href="<?php the_permalink(); ?>">
-
-						<?php if ($position) : ?>
-							<p class="career-op-card__label">
-								<?php echo esc_html($position); ?>
-							</p>
-						<?php endif; ?>
-
-						<h3 class="career-op-card__title"><?php the_title(); ?></h3>
-
-						<?php if ($unit || $employment || $deadline) : ?>
-							<div class="career-op-card__meta-wrap">
-
-								<?php if ($unit) : ?>
-									<p class="career-op-card__meta">
-										<?php echo esc_html($unit); ?>
-									</p>
-								<?php endif; ?>
-
-								<?php if ($employment) : ?>
-									<p class="career-op-card__meta">
-										<?php echo esc_html($employment); ?>
-									</p>
-								<?php endif; ?>
-
-								<?php if ($deadline) : ?>
-									<p class="career-op-card__meta career-op-card__meta--deadline">
-										Aplikuj do: <?php echo esc_html($deadline); ?>
-									</p>
-								<?php endif; ?>
-
-							</div>
-						<?php endif; ?>
-
-						<span class="career-op-card__cta">Zobacz ofertę</span>
-					</a>
-				</article>
+				<?php get_template_part('template-parts/career/career-archive', 'card'); ?>
 			<?php endwhile; ?>
 		</div>
-
 		<?php wp_reset_postdata(); ?>
-
 	<?php else : ?>
-		<div class="career-op-empty">
+		<div class="career-op-empty mt-4">
 			<p class="career-op-empty__text">
-				Obecnie brak aktywnych ofert pracy.
+				<?php echo function_exists('pll__') ? esc_html(pll__('Brak aktualnych ogłoszeń.')) : 'Brak aktualnych ogłoszeń.'; ?>
 			</p>
 		</div>
 	<?php endif; ?>

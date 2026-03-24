@@ -14,7 +14,7 @@ $current_term = get_queried_object();
 ?>
 
 <main id="main-content" class="site-main site-main--career-taxonomy">
-	<?php get_template_part('template-parts/career/career', 'subnav'); ?>
+	<?php get_template_part('template-parts/career/career', 'subnav', ['container' => $container]); ?>
 
 	<section class="page-section page-section--career-taxonomy-header">
 		<div class="<?php echo esc_attr($container); ?>">
@@ -22,7 +22,7 @@ $current_term = get_queried_object();
 				<div class="col-lg-8">
 					<div class="section-heading mb-0">
 						<p class="section-kicker">
-							<?php echo function_exists('pll__') ? esc_html(pll__('Rekrutacja')) : 'Rekrutacja'; ?>
+							<?php echo function_exists('pll__') ? esc_html(pll__('Komunikaty')) : 'Komunikaty'; ?>
 						</p>
 						<h1 class="section-title">
 							<?php echo esc_html(single_term_title('', false)); ?>

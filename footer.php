@@ -71,13 +71,13 @@ $footer_email = 'instytut@pan.olsztyn.pl';
 					<div class="col-12 col-md-4 col-lg-4 col-xl-3">
 						<section class="inlife-footer__section" aria-labelledby="footer-contact-heading">
 							<h3 id="footer-contact-heading" class="inlife-footer__title">
-								<?php esc_html_e( 'Kontakt', 'newinlife-child' ); ?>
+								<?php echo function_exists('pll__') ? pll__('Kontakt') : 'Kontakt'; ?>
 							</h3>
 
 							<address class="inlife-footer__address">
 								<span><?php echo esc_html( $site_name ); ?></span><br>
-								<span><?php echo esc_html( $footer_address_line_1 ); ?></span><br>
-								<span><?php echo esc_html( $footer_address_line_2 ); ?></span>
+								<span><?php echo function_exists('pll__') ? pll__('ul. Trylińskiego 18') : 'ul. Trylińskiego 18'; ?></span><br>
+								<span><?php echo function_exists('pll__') ? pll__('10-683 Olsztyn, Polska') : '10-683 Olsztyn, Polska'; ?></span>
 							</address>
 
 							<ul class="inlife-footer__list inlife-footer__list--contact list-unstyled">
@@ -98,7 +98,7 @@ $footer_email = 'instytut@pan.olsztyn.pl';
 					<div class="col-12 col-md-4 col-lg-4 col-xl-3">
 						<nav class="inlife-footer__section" aria-labelledby="footer-employee-heading">
 							<h3 id="footer-employee-heading" class="inlife-footer__title">
-								<?php esc_html_e( 'Strefa pracownika', 'newinlife-child' ); ?>
+								<?php echo function_exists('pll__') ? pll__('Strefa pracownika') : 'Strefa pracownika'; ?>
 							</h3>
 
 							<?php
@@ -118,7 +118,7 @@ $footer_email = 'instytut@pan.olsztyn.pl';
 					<div class="col-12 col-md-4 col-lg-3 col-xl-2">
 						<nav class="inlife-footer__section" aria-labelledby="footer-info-heading">
 							<h3 id="footer-info-heading" class="inlife-footer__title">
-								<?php esc_html_e( 'Informacje', 'newinlife-child' ); ?>
+								<?php echo function_exists('pll__') ? pll__('Informacje') : 'Informacje'; ?>
 							</h3>
 
 							<?php

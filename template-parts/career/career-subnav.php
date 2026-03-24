@@ -27,30 +27,32 @@ if (is_tax('career_entry_type')) {
 ?>
 
 <nav class="career-subnav" aria-label="Nawigacja Kariera">
-	<div class="career-subnav__inner">
+	<div class="<?php echo esc_attr($args['container'] ?? 'container'); ?>">
+		<div class="career-subnav__inner">
 
-		<a
-			href="<?php echo esc_url($career_page_url); ?>"
-			class="career-subnav__link<?php echo is_page_template('page-templates/template-career-landing.php') ? ' is-active' : ''; ?>"
-		>
-			<?php echo function_exists('pll__') ? esc_html(pll__('Kariera')) : 'Kariera'; ?>
-		</a>
-
-		<a
-			href="<?php echo esc_url($opportunities_url); ?>"
-			class="career-subnav__link<?php echo (is_page_template('page-templates/template-career-opportunities.php') && empty($current_type)) ? ' is-active' : ''; ?>"
-		>
-			<?php echo function_exists('pll__') ? esc_html(pll__('Oferty i konkursy')) : 'Oferty i konkursy'; ?>
-		</a>
-
-		<?php foreach (array_keys(inlife_get_career_types_map()) as $type_key) : ?>
 			<a
-				href="<?php echo esc_url(inlife_get_career_term_archive_url($type_key)); ?>"
-				class="career-subnav__link<?php echo $current_type === $type_key ? ' is-active' : ''; ?>"
+				href="<?php echo esc_url($career_page_url); ?>"
+				class="career-subnav__link<?php echo is_page_template('page-templates/template-career-landing.php') ? ' is-active' : ''; ?>"
 			>
-				<?php echo esc_html(inlife_get_career_type_label($type_key)); ?>
+				<?php echo function_exists('pll__') ? esc_html(pll__('Kariera')) : 'Kariera'; ?>
 			</a>
-		<?php endforeach; ?>
 
+			<a
+				href="<?php echo esc_url($opportunities_url); ?>"
+				class="career-subnav__link<?php echo (is_page_template('page-templates/template-career-opportunities.php') && empty($current_type)) ? ' is-active' : ''; ?>"
+			>
+				<?php echo function_exists('pll__') ? esc_html(pll__('Oferty i konkursy')) : 'Oferty i konkursy'; ?>
+			</a>
+
+			<?php foreach (array_keys(inlife_get_career_types_map()) as $type_key) : ?>
+				<a
+					href="<?php echo esc_url(inlife_get_career_term_archive_url($type_key)); ?>"
+					class="career-subnav__link<?php echo $current_type === $type_key ? ' is-active' : ''; ?>"
+				>
+					<?php echo esc_html(inlife_get_career_type_label($type_key)); ?>
+				</a>
+			<?php endforeach; ?>
+
+		</div>
 	</div>
 </nav>

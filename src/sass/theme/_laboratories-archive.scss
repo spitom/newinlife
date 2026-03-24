@@ -1,0 +1,122 @@
+.laboratories-archive-header {
+    padding: 5rem 0 3rem;
+
+    .section-title {
+        font-size: 2.75rem;
+        color: #293458;
+    }
+
+    .section-lead {
+        max-width: 560px;
+        color: #6c7890;
+    }
+
+    .laboratories-header-visual {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding: 2rem;
+        border-radius: 1.5rem;
+        background: linear-gradient(135deg, #eef3f8, #dfe7ef);
+
+        &__item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 88px;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: #fff;
+            color: #293458;
+            font-weight: 600;
+            text-align: center;
+        }
+    }
+}
+
+.laboratories-grid {
+    padding-top: 1rem;
+}
+
+.laboratory-card {
+    height: 100%;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 1.5rem;
+        border-radius: 1.25rem;
+        background: #fcfcfc;
+        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    &:hover &__inner,
+    &:focus-within &__inner {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 36px rgba(17, 24, 39, 0.08);
+    }
+
+    &__visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 180px;
+        margin-bottom: 1.25rem;
+        border-radius: 1rem;
+        background: linear-gradient(135deg, #eef3f8, #dfe7ef);
+        color: #293458;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    &__title {
+        margin-bottom: 0.75rem;
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+
+    &__title-link {
+        color: #293458;
+        text-decoration: none;
+    }
+
+    &__title-link:hover,
+    &__title-link:focus {
+        text-decoration: underline;
+    }
+
+    &__excerpt {
+        margin-bottom: auto;
+        color: #6c7890;
+    }
+
+    &__link {
+        margin-top: 1rem;
+        font-weight: 600;
+        color: #293458;
+        text-decoration: none;
+    }
+
+    &__link:hover,
+    &__link:focus {
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .laboratories-archive-header {
+        padding: 4rem 0 2.5rem;
+
+        .section-title {
+            font-size: 2.25rem;
+        }
+    }
+
+    .laboratory-card {
+        &__visual {
+            min-height: 150px;
+        }
+    }
+}

@@ -1,0 +1,403 @@
+.site-main--team-single {
+    background: #f8fafc;
+
+    .page-section {
+        padding: 0 0 5rem;
+    }
+
+    .page-section--team-single-hero {
+        padding-top: 3.5rem;
+        padding-bottom: 4.5rem;
+    }
+
+    .page-section--team-single-overview,
+    .page-section--team-single-leader,
+    .page-section--team-single-people,
+    .page-section--team-single-research,
+    .page-section--team-single-projects,
+    .page-section--team-single-publications,
+    .page-section--team-single-news {
+        position: relative;
+    }
+}
+
+.team-hero {
+    padding: 2.25rem 0 0;
+
+    &__content {
+        max-width: 42rem;
+    }
+
+    &__title {
+        margin-bottom: 0.875rem;
+        font-size: clamp(2.4rem, 4vw, 4.2rem);
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+        color: #293458;
+    }
+
+    &__area {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 1.125rem;
+        padding: 0.5rem 0.95rem;
+        border-radius: 999px;
+        background: #e8eef7;
+        color: #293458;
+        font-size: 0.875rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    &__lead {
+        max-width: 58ch;
+        margin-bottom: 0;
+        font-size: 1.0625rem;
+        line-height: 1.75;
+        color: #5f6b85;
+    }
+
+    &__visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 420px;
+        padding: 2rem;
+        border-radius: 1.75rem;
+        background:
+            linear-gradient(135deg, rgba(238, 243, 248, 0.98), rgba(223, 231, 239, 0.95)),
+            radial-gradient(circle at top right, rgba(213, 219, 62, 0.18), transparent 35%);
+        box-shadow: 0 16px 42px rgba(17, 24, 39, 0.07);
+        overflow: hidden;
+        position: relative;
+    }
+
+    &__visual::before {
+        content: "";
+        position: absolute;
+        inset: 1.25rem;
+        border-radius: 1.25rem;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        pointer-events: none;
+    }
+
+    &__visual-label {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.95rem 1.35rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        color: #293458;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-align: center;
+        box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+    }
+}
+
+.team-overview {
+
+    &__main,
+    &__aside {
+        height: 100%;
+    }
+
+    &__main {
+        padding: 2rem;
+        border-radius: 1.5rem;
+        background: #ffffff;
+        box-shadow: 0 12px 36px rgba(17, 24, 39, 0.05);
+    }
+
+    &__content {
+        color: #4b5565;
+
+        >*:last-child {
+            margin-bottom: 0;
+        }
+
+        p,
+        li {
+            line-height: 1.8;
+        }
+    }
+
+    &__aside {
+        display: grid;
+        gap: 1rem;
+    }
+}
+
+.team-info-card {
+    padding: 1.5rem 1.5rem 1.35rem;
+    border-radius: 1.25rem;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+    box-shadow: 0 10px 30px rgba(17, 24, 39, 0.045);
+
+    &__title {
+        margin-bottom: 0.7rem;
+        font-size: 1.125rem;
+        line-height: 1.3;
+        color: #293458;
+    }
+
+    &__text {
+        margin-bottom: 0;
+        color: #6c7890;
+        line-height: 1.7;
+    }
+}
+
+.team-leader {
+    &__card {
+        display: grid;
+        grid-template-columns: minmax(240px, 300px) 1fr;
+        gap: 2rem;
+        padding: 2rem;
+        border-radius: 1.6rem;
+        background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+        box-shadow: 0 14px 40px rgba(17, 24, 39, 0.06);
+    }
+
+    &__image,
+    &__placeholder {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 320px;
+        object-fit: cover;
+        border-radius: 1.1rem;
+        background: linear-gradient(135deg, #e7edf4, #dfe7ef);
+    }
+
+    &__name {
+        margin-bottom: 0.5rem;
+        font-size: 1.85rem;
+        line-height: 1.15;
+        color: #293458;
+    }
+
+    &__role {
+        margin-bottom: 1rem;
+        color: #5f6b85;
+        font-weight: 700;
+    }
+
+    &__bio {
+        max-width: 62ch;
+        color: #4b5565;
+        line-height: 1.8;
+    }
+
+    &__link {
+        display: inline-flex;
+        margin-top: 1.25rem;
+        font-weight: 700;
+        color: #293458;
+        text-decoration: none;
+    }
+
+    &__link:hover,
+    &__link:focus {
+        text-decoration: underline;
+    }
+}
+
+.team-people {
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+.team-section-block {
+    padding: 2rem;
+    border-radius: 1.5rem;
+    background: #ffffff;
+    box-shadow: 0 12px 36px rgba(17, 24, 39, 0.05);
+}
+
+.team-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+
+    &--two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &--three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.team-feature-card {
+    height: 100%;
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    background: linear-gradient(180deg, #fcfdff 0%, #f8fbfd 100%);
+    border: 1px solid rgba(223, 231, 239, 0.9);
+
+    &__title {
+        margin-bottom: 0.8rem;
+        font-size: 1.125rem;
+        line-height: 1.3;
+        color: #293458;
+    }
+
+    &__text {
+        margin-bottom: 0;
+        color: #6c7890;
+        line-height: 1.7;
+    }
+}
+
+.team-publications {
+    display: grid;
+    gap: 1.5rem;
+
+    &__year {
+        padding: 1.5rem;
+        border-radius: 1.2rem;
+        background: linear-gradient(180deg, #fcfdff 0%, #f8fbfd 100%);
+        border: 1px solid rgba(223, 231, 239, 0.9);
+    }
+
+    &__heading {
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        line-height: 1.25;
+        color: #293458;
+    }
+
+    &__list {
+        margin: 0;
+        padding-left: 1.25rem;
+        color: #5f6b85;
+
+        li+li {
+            margin-top: 0.5rem;
+        }
+    }
+}
+
+.team-empty-state {
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background: #f5f8fc;
+    color: #5f6b85;
+    border: 1px solid #e4ebf2;
+}
+
+@media (max-width: 1199.98px) {
+
+    .team-people__grid,
+    .team-feature-grid,
+    .team-feature-grid--three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .team-hero__visual {
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .site-main--team-single {
+        .page-section {
+            padding-bottom: 4rem;
+        }
+    }
+
+    .team-leader {
+        &__card {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .team-feature-grid--two {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .team-people__grid,
+    .team-feature-grid,
+    .team-feature-grid--three {
+        grid-template-columns: 1fr;
+    }
+
+    .team-hero {
+        &__title {
+            font-size: 2.35rem;
+        }
+
+        &__visual {
+            min-height: 240px;
+        }
+    }
+
+    .team-overview__main,
+    .team-section-block,
+    .team-leader__card {
+        padding: 1.4rem;
+    }
+}
+
+
+.team-section-block--projects {
+    padding: 2rem 2rem 2.25rem;
+}
+
+.team-projects {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.team-project {
+    padding: 1.25rem 1.4rem 1.2rem;
+    border-radius: 1rem;
+    background: #f8fafc;
+    border: 1px solid #e4ebf2;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: #ffffff;
+        box-shadow: 0 10px 26px rgba(17, 24, 39, 0.06);
+        transform: translateY(-2px);
+    }
+
+    &__title {
+        margin-bottom: 0.45rem;
+        font-size: 1.1rem;
+        line-height: 1.35;
+        color: #293458;
+    }
+
+    &__meta {
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+        color: #6c7890;
+        font-weight: 600;
+    }
+
+    &__desc {
+        margin-bottom: 0;
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: #5f6b85;
+        max-width: 75ch;
+    }
+}
+
+.team-projects__footer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-start;
+}

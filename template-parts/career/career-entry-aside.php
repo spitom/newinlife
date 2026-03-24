@@ -15,26 +15,43 @@ $application_url = function_exists('inlife_get_acf_field') ? inlife_get_acf_fiel
 
 <?php if ($unit || $project_name || $employment_type || $location_text || $contact_email || $contact_phone || $contact_person || $application_url) : ?>
 	<div class="career-entry-panel">
-		<h2 class="career-entry-panel__title">Informacje podstawowe</h2>
+		<h2 class="career-entry-panel__title">
+			<?php echo function_exists('pll__') ? esc_html(pll__('Informacje podstawowe')) : 'Informacje podstawowe'; ?>
+		</h2>
 
 		<?php if ($unit) : ?>
-			<p class="career-entry-panel__text"><strong>Jednostka:</strong> <?php echo esc_html($unit); ?></p>
+			<p class="career-entry-panel__text">
+				<strong><?php echo function_exists('pll__') ? esc_html(pll__('Jednostka')) : 'Jednostka'; ?>:</strong>
+				<?php echo esc_html($unit); ?>
+			</p>
 		<?php endif; ?>
 
 		<?php if ($project_name) : ?>
-			<p class="career-entry-panel__text"><strong>Projekt:</strong> <?php echo esc_html($project_name); ?></p>
+			<p class="career-entry-panel__text">
+				<strong><?php echo function_exists('pll__') ? esc_html(pll__('Projekt')) : 'Projekt'; ?>:</strong>
+				<?php echo esc_html($project_name); ?>
+			</p>
 		<?php endif; ?>
 
 		<?php if ($employment_type) : ?>
-			<p class="career-entry-panel__text"><strong>Forma współpracy:</strong> <?php echo esc_html($employment_type); ?></p>
+			<p class="career-entry-panel__text">
+				<strong><?php echo function_exists('pll__') ? esc_html(pll__('Forma współpracy')) : 'Forma współpracy'; ?>:</strong>
+				<?php echo esc_html($employment_type); ?>
+			</p>
 		<?php endif; ?>
 
 		<?php if ($location_text) : ?>
-			<p class="career-entry-panel__text"><strong>Miejsce:</strong> <?php echo esc_html($location_text); ?></p>
+			<p class="career-entry-panel__text">
+				<strong><?php echo function_exists('pll__') ? esc_html(pll__('Miejsce')) : 'Miejsce'; ?>:</strong>
+				<?php echo esc_html($location_text); ?>
+			</p>
 		<?php endif; ?>
 
 		<?php if ($contact_person) : ?>
-			<p class="career-entry-panel__text"><strong>Kontakt:</strong> <?php echo esc_html($contact_person); ?></p>
+			<p class="career-entry-panel__text">
+				<strong><?php echo function_exists('pll__') ? esc_html(pll__('Kontakt')) : 'Kontakt'; ?>:</strong>
+				<?php echo esc_html($contact_person); ?>
+			</p>
 		<?php endif; ?>
 
 		<?php if ($contact_email) : ?>
@@ -56,7 +73,7 @@ $application_url = function_exists('inlife_get_acf_field') ? inlife_get_acf_fiel
 		<?php if ($application_url) : ?>
 			<p class="career-entry-panel__actions">
 				<a class="btn btn-primary" href="<?php echo esc_url($application_url); ?>">
-					Przejdź do aplikacji
+					<?php echo function_exists('pll__') ? esc_html(pll__('Przejdź do aplikacji')) : 'Przejdź do aplikacji'; ?>
 				</a>
 			</p>
 		<?php endif; ?>
@@ -68,7 +85,9 @@ $application_url = function_exists('inlife_get_acf_field') ? inlife_get_acf_fiel
 
 	<?php if (!empty($attachments) && is_array($attachments)) : ?>
 		<div class="career-entry-panel">
-			<h2 class="career-entry-panel__title">Załączniki</h2>
+			<h2 class="career-entry-panel__title">
+				<?php echo function_exists('pll__') ? esc_html(pll__('Załączniki')) : 'Załączniki'; ?>
+			</h2>
 
 			<ul class="career-entry-files">
 				<?php foreach ($attachments as $attachment) : ?>

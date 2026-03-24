@@ -16,7 +16,7 @@ while (have_posts()) :
 	?>
 
 <main id="main-content" class="site-main site-main--career-entry">
-	<?php get_template_part('template-parts/career/career-subnav'); ?>
+	<?php get_template_part('template-parts/career/career', 'subnav', ['container' => $container]); ?>
 
 	<section class="page-section page-section--career-entry-breadcrumbs">
 		<div class="<?php echo esc_attr($container); ?>">

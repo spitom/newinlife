@@ -24,10 +24,14 @@ $deadline = function_exists('inlife_format_career_date')
 	<a class="career-archive-card__link" href="<?php the_permalink(); ?>">
 
 		<?php if ($type_label) : ?>
-			<p class="career-archive-card__type"><?php echo esc_html($type_label); ?></p>
+			<p class="career-archive-card__type">
+				<?php echo esc_html($type_label); ?>
+			</p>
 		<?php endif; ?>
 
-		<h2 class="career-archive-card__title"><?php the_title(); ?></h2>
+		<h2 class="career-archive-card__title">
+			<?php the_title(); ?>
+		</h2>
 
 		<?php if (has_excerpt()) : ?>
 			<p class="career-archive-card__excerpt">
@@ -38,17 +42,22 @@ $deadline = function_exists('inlife_format_career_date')
 		<?php if ($unit || $deadline) : ?>
 			<div class="career-archive-card__meta">
 				<?php if ($unit) : ?>
-					<p class="career-archive-card__meta-item"><?php echo esc_html($unit); ?></p>
+					<p class="career-archive-card__meta-item">
+						<?php echo esc_html($unit); ?>
+					</p>
 				<?php endif; ?>
 
 				<?php if ($deadline) : ?>
 					<p class="career-archive-card__meta-item career-archive-card__meta-item--deadline">
-						Termin składania: <?php echo esc_html($deadline); ?>
+						<?php echo function_exists('pll__') ? esc_html(pll__('Termin składania')) : 'Termin składania'; ?>:
+						<?php echo esc_html($deadline); ?>
 					</p>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 
-		<span class="career-archive-card__cta">Przejdź do wpisu</span>
+		<span class="career-archive-card__cta">
+			<?php echo function_exists('pll__') ? esc_html(pll__('Przejdź do wpisu')) : 'Przejdź do wpisu'; ?>
+		</span>
 	</a>
 </article>

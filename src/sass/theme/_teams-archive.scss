@@ -1,0 +1,119 @@
+.teams-archive-header {
+    padding: 5rem 0 3rem;
+
+    .section-title {
+        font-size: 2.75rem;
+        color: #293458;
+    }
+
+    .section-lead {
+        color: #6c7890;
+        max-width: 520px;
+    }
+
+    .teams-header-visual {
+        background: linear-gradient(135deg, #eef3f8, #dfe7ef);
+        border-radius: 20px;
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+
+        div {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1rem;
+        }
+    }
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.team-card {
+    height: 100%;
+
+    &__inner {
+        background: #fcfcfc;
+        border-radius: 18px;
+        padding: 1.75rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: 0.2s ease;
+    }
+
+    &:hover .team-card__inner {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    &__area {
+        font-size: 0.75rem;
+        background: #e9eff6;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+    }
+
+    &__title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #293458;
+    }
+
+    &__excerpt {
+        color: #6c7890;
+        margin-bottom: auto;
+    }
+
+    &__link {
+        margin-top: 1rem;
+        color: #293458;
+        font-weight: 500;
+        text-decoration: none;
+    }
+}
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.teams-area-nav {
+    padding: 1rem 0 2rem;
+
+    &__inner {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    &__btn {
+        border-radius: 999px;
+        padding: 0.5rem 1.25rem;
+        background: #f2f5f9;
+        color: #293458;
+        text-decoration: none;
+
+        &.is-active {
+            background: #293458;
+            color: #fff;
+        }
+    }
+}
+
+
+/* =========================================================
+   Sections
+========================================================= */
+
+.teams-section {
+    margin-bottom: 4rem;
+
+    &__title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+        color: #293458;
+    }
+}
