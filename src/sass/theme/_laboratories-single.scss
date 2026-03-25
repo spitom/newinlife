@@ -1,15 +1,328 @@
-.person-card--manager {
-    background: #f5f7fa;
-    border: 1px solid #e2e8f0;
+.site-main--laboratory-single {
+    background: #f8fafc;
+
+    .page-section {
+        padding: 0 0 5rem;
+    }
+
+    .page-section--lab-single-hero {
+        padding-top: 3.5rem;
+        padding-bottom: 4.5rem;
+    }
 }
 
-.person-card__badge {
-    display: inline-block;
+.lab-hero {
+    padding: 2.25rem 0 0;
+
+    &__content {
+        max-width: 42rem;
+    }
+
+    &__title {
+        margin-bottom: 0.875rem;
+        font-size: clamp(2.4rem, 4vw, 4.2rem);
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+        color: #293458;
+    }
+
+    &__lead {
+        max-width: 58ch;
+        margin-bottom: 0;
+        font-size: 1.0625rem;
+        line-height: 1.75;
+        color: #5f6b85;
+    }
+
+    &__visual {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 420px;
+        padding: 2rem;
+        border-radius: 1.75rem;
+        background:
+            linear-gradient(135deg, rgba(238, 243, 248, 0.98), rgba(223, 231, 239, 0.95)),
+            radial-gradient(circle at top right, rgba(213, 219, 62, 0.18), transparent 35%);
+        box-shadow: 0 16px 42px rgba(17, 24, 39, 0.07);
+        overflow: hidden;
+    }
+
+    &__visual::before {
+        content: "";
+        position: absolute;
+        inset: 1.25rem;
+        border-radius: 1.25rem;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        pointer-events: none;
+    }
+
+    &__visual-label {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.95rem 1.35rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        color: #293458;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-align: center;
+        box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+    }
+}
+
+.lab-profile {
+    &__main {
+        padding: 2rem;
+        border-radius: 1.5rem;
+        background: #ffffff;
+        box-shadow: 0 12px 36px rgba(17, 24, 39, 0.05);
+    }
+
+    &__content {
+        color: #4b5565;
+
+        >*:last-child {
+            margin-bottom: 0;
+        }
+
+        p,
+        li {
+            line-height: 1.8;
+        }
+    }
+
+    &__aside {
+        display: grid;
+        gap: 1rem;
+    }
+}
+
+.lab-info-card {
+    padding: 1.5rem 1.5rem 1.35rem;
+    border-radius: 1.25rem;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
+    box-shadow: 0 10px 30px rgba(17, 24, 39, 0.045);
+
+    &__title {
+        margin-bottom: 0.7rem;
+        font-size: 1.125rem;
+        line-height: 1.3;
+        color: #293458;
+    }
+
+    &__text {
+        margin-bottom: 0;
+        color: #6c7890;
+        line-height: 1.7;
+    }
+}
+
+.lab-people {
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+.people-card--manager {
+    border: 1px solid #dbe4ee;
+    background: linear-gradient(180deg, #ffffff 0%, #f6f9fd 100%);
+}
+
+.people-card__badge {
     margin-bottom: 0.5rem;
-    padding: 0.25rem 0.6rem;
-    font-size: 0.75rem;
-    font-weight: 600;
     color: #293458;
-    background: #e9eef6;
-    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.lab-section-block {
+    padding: 2rem;
+    border-radius: 1.5rem;
+    background: #ffffff;
+    box-shadow: 0 12px 36px rgba(17, 24, 39, 0.05);
+}
+
+.lab-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.lab-method-card {
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    background: linear-gradient(180deg, #fcfdff 0%, #f8fbfd 100%);
+    border: 1px solid rgba(223, 231, 239, 0.9);
+
+    &__title {
+        margin-bottom: 0.8rem;
+        font-size: 1.125rem;
+        line-height: 1.3;
+        color: #293458;
+    }
+
+    &__text {
+        margin-bottom: 0;
+        color: #6c7890;
+        line-height: 1.7;
+    }
+}
+
+.lab-equipment-list {
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    background: linear-gradient(180deg, #fcfdff 0%, #f8fbfd 100%);
+    border: 1px solid rgba(223, 231, 239, 0.9);
+
+    ul {
+        margin: 0;
+        padding-left: 1.25rem;
+        color: #5f6b85;
+    }
+
+    li+li {
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .lab-people__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .lab-methods-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .lab-hero__visual {
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .site-main--laboratory-single {
+        .page-section {
+            padding-bottom: 4rem;
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .lab-people__grid,
+    .lab-methods-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lab-hero {
+        &__title {
+            font-size: 2.35rem;
+        }
+
+        &__visual {
+            min-height: 240px;
+        }
+    }
+
+    .lab-profile__main,
+    .lab-section-block {
+        padding: 1.4rem;
+    }
+}
+
+.lab-members-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.lab-member-mini-card {
+    padding: 1rem 1rem 0.95rem;
+    border: 1px solid #e4ebf2;
+    border-radius: 1rem;
+    background: #f5f8fc;
+    min-height: 100%;
+
+    &--manager {
+        border-color: #dbe4ee;
+        background: #f5f8fc;
+        box-shadow: inset 0 0 0 1px rgba(41, 52, 88, 0.05);
+    }
+
+    .lab-member-mini-card__name {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .lab-member-mini-card__role-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.2rem 0.55rem;
+        border-radius: 999px;
+        background: #e8eef7;
+        color: #293458;
+        font-size: 0.7rem;
+        font-weight: 700;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    &__name {
+        margin-bottom: 0.35rem;
+        font-size: 1rem;
+        line-height: 1.35;
+        color: #293458;
+    }
+
+    &__link {
+        color: #293458;
+        text-decoration: none;
+    }
+
+    &__link:hover,
+    &__link:focus {
+        text-decoration: underline;
+    }
+
+    &__position {
+        margin-bottom: 0.35rem;
+        color: #5f6b85;
+        font-size: 0.92rem;
+        line-height: 1.5;
+    }
+
+    &__meta {
+        margin-bottom: 0;
+        color: #7a869f;
+        font-size: 0.85rem;
+        line-height: 1.45;
+        word-break: break-word;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .lab-members-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 991.98px) {
+    .lab-members-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767.98px) {
+    .lab-members-list {
+        grid-template-columns: 1fr;
+    }
 }

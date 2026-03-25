@@ -1,22 +1,44 @@
-<section class="lab-methods section">
-	<div class="container">
+<?php
+defined( 'ABSPATH' ) || exit;
+?>
 
-		<h2 class="section-title">
-			Oferowane metody i analizy
-		</h2>
+<div class="lab-section-block">
+	<header class="section-heading">
+		<h2 class="section-title"><?php echo esc_html( inlife_t( 'Oferowane metody i analizy' ) ); ?></h2>
+	</header>
 
-		<div class="row g-4">
+	<?php if ( function_exists( 'have_rows' ) && have_rows( 'laboratory_methods' ) ) : ?>
 
-			<?php for ( $i = 0; $i < 4; $i++ ) : ?>
-				<div class="col-md-6 col-xl-3">
-					<div class="method-card">
-						<h3>Metoda analityczna</h3>
-						<p>Opis metody lub zakresu usług.</p>
-					</div>
-				</div>
-			<?php endfor; ?>
+		<div class="lab-methods-grid">
+			<?php while ( have_rows( 'laboratory_methods' ) ) : the_row(); ?>
+				<?php
+				$title = get_sub_field( 'title' );
+				$desc  = get_sub_field( 'description' );
+				?>
 
+				<?php if ( $title || $desc ) : ?>
+					<article class="lab-method-card">
+						<?php if ( $title ) : ?>
+							<h3 class="lab-method-card__title">
+								<?php echo esc_html( $title ); ?>
+							</h3>
+						<?php endif; ?>
+
+						<?php if ( $desc ) : ?>
+							<p class="lab-method-card__text">
+								<?php echo esc_html( $desc ); ?>
+							</p>
+						<?php endif; ?>
+					</article>
+				<?php endif; ?>
+			<?php endwhile; ?>
 		</div>
 
-	</div>
-</section>
+	<?php else : ?>
+
+		<div class="team-empty-state">
+			<p><?php esc_html_e( 'Sekcja metod i analiz nie została jeszcze uzupełniona.', 'newinlife' ); ?></p>
+		</div>
+
+	<?php endif; ?>
+</div>

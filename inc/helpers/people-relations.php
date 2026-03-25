@@ -1,215 +1,54 @@
 <?php
-/**
- * People relations helpers (ACF-based).
- *
- * @package newinlife
- */
-
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'inlife_get_person_team_memberships' ) ) {
-	/**
-	 * Get normalized team memberships for a person.
-	 *
-	 * ACF structure:
-	 * repeater: team_memberships
-	 *  - team (post object -> teams)
-	 *  - is_team_leader (true/false)
-	 *
-	 * @param int $person_id
-	 * @return array<int, array{
-	 *   team_id:int,
-	 *   is_team_leader:bool,
-	 *   row_index:int
-	 * }>
-	 */
-	function inlife_get_person_team_memberships( int $person_id ): array {
+function inlife_get_people_by_team( int $team_id ): array {
+	global $wpdb;
 
-		if ( $person_id <= 0 || ! function_exists( 'get_field' ) ) {
-			return array();
-		}
+	$meta_key_like = $wpdb->esc_like( 'team_memberships' ) . '\_%\_team';
 
-		$rows = get_field( 'team_memberships', $person_id );
+	$sql = $wpdb->prepare(
+		"
+		SELECT DISTINCT pm.post_id
+		FROM {$wpdb->postmeta} pm
+		INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+		WHERE p.post_type = 'people'
+		AND p.post_status = 'publish'
+		AND pm.meta_key LIKE %s
+		AND pm.meta_value = %s
+		",
+		$meta_key_like,
+		(string) $team_id
+	);
 
-		if ( empty( $rows ) || ! is_array( $rows ) ) {
-			return array();
-		}
-
-		$memberships = array();
-
-		foreach ( $rows as $index => $row ) {
-
-			$team_value = $row['team'] ?? null;
-
-			if ( empty( $team_value ) ) {
-				continue;
-			}
-
-			$team_id = is_object( $team_value )
-				? (int) $team_value->ID
-				: (int) $team_value;
-
-			if ( $team_id <= 0 ) {
-				continue;
-			}
-
-			$memberships[] = array(
-				'team_id'        => $team_id,
-				'is_team_leader' => ! empty( $row['is_team_leader'] ),
-				'row_index'      => (int) $index,
-			);
-		}
-
-		return $memberships;
-	}
+	return array_map( 'intval', $wpdb->get_col( $sql ) );
 }
 
-if ( ! function_exists( 'inlife_get_person_teams' ) ) {
-	/**
-	 * Get WP_Post objects of teams for a person.
-	 *
-	 * @param int $person_id
-	 * @return WP_Post[]
-	 */
-	function inlife_get_person_teams( int $person_id ): array {
+function inlife_get_team_leader( int $team_id ): ?int {
+	$people_ids = inlife_get_people_by_team( $team_id );
 
-		$memberships = inlife_get_person_team_memberships( $person_id );
+	foreach ( $people_ids as $person_id ) {
+		if ( have_rows( 'team_memberships', $person_id ) ) {
+			while ( have_rows( 'team_memberships', $person_id ) ) : the_row();
 
-		if ( empty( $memberships ) ) {
-			return array();
+				if (
+					(int) get_sub_field( 'team' ) === $team_id &&
+					get_sub_field( 'is_team_leader' )
+				) {
+					return $person_id;
+				}
+
+			endwhile;
 		}
-
-		$team_ids = array();
-
-		foreach ( $memberships as $membership ) {
-			if ( ! empty( $membership['team_id'] ) ) {
-				$team_ids[] = (int) $membership['team_id'];
-			}
-		}
-
-		$team_ids = array_values( array_unique( $team_ids ) );
-
-		if ( empty( $team_ids ) ) {
-			return array();
-		}
-
-		$teams = get_posts(
-			array(
-				'post_type'      => 'teams',
-				'post_status'    => 'publish',
-				'post__in'       => $team_ids,
-				'posts_per_page' => -1,
-				'orderby'        => 'post__in',
-			)
-		);
-
-		return is_array( $teams ) ? $teams : array();
 	}
+
+	return null;
 }
 
-if ( ! function_exists( 'inlife_is_person_leader_in_team' ) ) {
-	/**
-	 * Check if person is leader in given team.
-	 *
-	 * @param int $person_id
-	 * @param int $team_id
-	 * @return bool
-	 */
-	function inlife_is_person_leader_in_team( int $person_id, int $team_id ): bool {
+function inlife_get_team_members( int $team_id ): array {
+	$leader = inlife_get_team_leader( $team_id );
+	$all    = inlife_get_people_by_team( $team_id );
 
-		$memberships = inlife_get_person_team_memberships( $person_id );
-
-		foreach ( $memberships as $membership ) {
-
-			if ( (int) $membership['team_id'] !== $team_id ) {
-				continue;
-			}
-
-			return ! empty( $membership['is_team_leader'] );
-		}
-
-		return false;
-	}
-}
-
-if ( ! function_exists( 'inlife_get_person_laboratory_memberships' ) ) {
-	/**
-	 * Get normalized laboratory memberships for a person.
-	 *
-	 * ACF structure:
-	 * repeater: laboratory_memberships
-	 *  - laboratory (post object -> laboratories)
-	 *  - is_laboratory_manager (true/false)
-	 *
-	 * @param int $person_id
-	 * @return array<int, array{
-	 *   laboratory_id:int,
-	 *   is_manager:bool,
-	 *   row_index:int
-	 * }>
-	 */
-	function inlife_get_person_laboratory_memberships( int $person_id ): array {
-
-		if ( $person_id <= 0 || ! function_exists( 'get_field' ) ) {
-			return array();
-		}
-
-		$rows = get_field( 'laboratory_memberships', $person_id );
-
-		if ( empty( $rows ) || ! is_array( $rows ) ) {
-			return array();
-		}
-
-		$memberships = array();
-
-		foreach ( $rows as $index => $row ) {
-
-			$lab_value = $row['laboratory'] ?? null;
-
-			if ( empty( $lab_value ) ) {
-				continue;
-			}
-
-			$lab_id = is_object( $lab_value )
-				? (int) $lab_value->ID
-				: (int) $lab_value;
-
-			if ( $lab_id <= 0 ) {
-				continue;
-			}
-
-			$memberships[] = array(
-				'laboratory_id' => $lab_id,
-				'is_manager'    => ! empty( $row['is_laboratory_manager'] ),
-				'row_index'     => (int) $index,
-			);
-		}
-
-		return $memberships;
-	}
-}
-
-if ( ! function_exists( 'inlife_is_person_manager_in_laboratory' ) ) {
-	/**
-	 * Check if person is manager in given laboratory.
-	 *
-	 * @param int $person_id
-	 * @param int $lab_id
-	 * @return bool
-	 */
-	function inlife_is_person_manager_in_laboratory( int $person_id, int $lab_id ): bool {
-
-		$memberships = inlife_get_person_laboratory_memberships( $person_id );
-
-		foreach ( $memberships as $membership ) {
-
-			if ( (int) $membership['laboratory_id'] !== $lab_id ) {
-				continue;
-			}
-
-			return ! empty( $membership['is_manager'] );
-		}
-
-		return false;
-	}
+	return array_values(
+		array_filter( $all, fn( $id ) => $id !== $leader )
+	);
 }

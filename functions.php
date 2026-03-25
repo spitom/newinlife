@@ -95,8 +95,8 @@ add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_co
 
 require_once get_stylesheet_directory() . '/inc/inlife-theme-setup.php';
 require_once get_stylesheet_directory() . '/inc/inlife-template-tags.php';
-require_once get_stylesheet_directory() . '/inc/inlife-polylang-helpers.php';
 require_once get_stylesheet_directory() . '/inc/class-inlife-accessible-navwalker.php';
+require_once get_stylesheet_directory() . '/inc/helpers/i18n.php';
 require_once get_stylesheet_directory() . '/inc/inlife-polylang-strings.php';
 require_once get_stylesheet_directory() . '/inc/inlife-footer.php';
 require_once get_stylesheet_directory() . '/inc/inlife-assets.php';

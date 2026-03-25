@@ -35,44 +35,114 @@
     height: 100%;
 
     &__inner {
-        background: #fcfcfc;
-        border-radius: 18px;
-        padding: 1.75rem;
-        height: 100%;
         display: flex;
         flex-direction: column;
-        transition: 0.2s ease;
+        height: 100%;
+        border-radius: 1.5rem;
+        background: #fcfcfc;
+        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    &:hover .team-card__inner {
+    &:hover &__inner,
+    &:focus-within &__inner {
         transform: translateY(-4px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 16px 40px rgba(17, 24, 39, 0.08);
+    }
+
+    &__media {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        background: linear-gradient(135deg, #eef3f8, #dfe7ef);
+        overflow: hidden;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
+        background:
+            linear-gradient(135deg, rgba(238, 243, 248, 0.98), rgba(223, 231, 239, 0.95)),
+            radial-gradient(circle at top right, rgba(213, 219, 62, 0.16), transparent 35%);
+        color: #293458;
+        font-weight: 700;
+        text-align: center;
+
+        span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        padding: 1.5rem;
     }
 
     &__area {
-        font-size: 0.75rem;
-        background: #e9eff6;
-        padding: 0.25rem 0.75rem;
-        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
         margin-bottom: 1rem;
+        padding: 0.38rem 0.75rem;
+        border-radius: 999px;
+        background: #e9eff6;
+        color: #4b5b7a;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1;
     }
 
     &__title {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.5rem;
+        line-height: 1.2;
+    }
+
+    &__title-link {
         color: #293458;
+        text-decoration: none;
+    }
+
+    &__title-link:hover,
+    &__title-link:focus {
+        text-decoration: underline;
     }
 
     &__excerpt {
+        margin-bottom: 1.25rem;
         color: #6c7890;
-        margin-bottom: auto;
+        line-height: 1.7;
     }
 
     &__link {
-        margin-top: 1rem;
+        margin-top: auto;
+        font-weight: 700;
         color: #293458;
-        font-weight: 500;
         text-decoration: none;
+    }
+
+    &__link:hover,
+    &__link:focus {
+        text-decoration: underline;
     }
 }
 
@@ -111,9 +181,14 @@
 .teams-section {
     margin-bottom: 4rem;
 
-    &__title {
-        font-size: 1.75rem;
+    &__header {
         margin-bottom: 1.5rem;
+    }
+
+    &__title {
+        margin-bottom: 0;
+        font-size: 2rem;
+        line-height: 1.15;
         color: #293458;
     }
 }

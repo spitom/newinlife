@@ -7005,6 +7005,41 @@
 	  handleScroll();
 	});
 
+	// Team menu - przełączanie sekcji
+
+	document.addEventListener('DOMContentLoaded', () => {
+	  const triggers = document.querySelectorAll('[data-team-panel-trigger]');
+	  const panels = document.querySelectorAll('[data-team-panel-content]');
+	  if (!triggers.length || !panels.length) return;
+	  const validPanels = ['badania', 'projekty', 'publikacje', 'aktualnosci'];
+	  const activatePanel = (panelName, updateHash = true) => {
+	    if (!validPanels.includes(panelName)) return;
+	    triggers.forEach(trigger => {
+	      const isActive = trigger.getAttribute('data-team-panel-trigger') === panelName;
+	      trigger.classList.toggle('is-active', isActive);
+	      trigger.setAttribute('aria-selected', isActive ? 'true' : 'false');
+	    });
+	    panels.forEach(panel => {
+	      const isActive = panel.getAttribute('data-team-panel-content') === panelName;
+	      panel.classList.toggle('is-active', isActive);
+	      panel.hidden = !isActive;
+	    });
+	    if (updateHash) {
+	      history.replaceState(null, '', `#${panelName}`);
+	    }
+	  };
+	  triggers.forEach(trigger => {
+	    trigger.addEventListener('click', () => {
+	      const panelName = trigger.getAttribute('data-team-panel-trigger');
+	      activatePanel(panelName, true);
+	    });
+	  });
+	  const initialHash = window.location.hash.replace('#', '');
+	  if (validPanels.includes(initialHash)) {
+	    activatePanel(initialHash, false);
+	  }
+	});
+
 	exports.Alert = alert;
 	exports.Button = button;
 	exports.Carousel = carousel;

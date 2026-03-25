@@ -43,27 +43,12 @@ $container = function_exists( 'inlife_container_class' ) ? inlife_container_clas
 			</div>
 		</section>
 
-		<section class="page-section page-section--team-single-research">
+		<section class="page-section page-section--team-single-sections">
 			<div class="<?php echo esc_attr( $container ); ?>">
-				<?php get_template_part( 'template-parts/teams/teams-single', 'research' ); ?>
-			</div>
-		</section>
 
-		<section class="page-section page-section--team-single-projects">
-			<div class="<?php echo esc_attr( $container ); ?>">
-				<?php get_template_part( 'template-parts/teams/teams-single', 'projects' ); ?>
-			</div>
-		</section>
+				<?php get_template_part( 'template-parts/teams/teams-single-sections', 'nav' ); ?>
+				<?php get_template_part( 'template-parts/teams/teams-single-sections', 'panel' ); ?>
 
-		<section class="page-section page-section--team-single-publications">
-			<div class="<?php echo esc_attr( $container ); ?>">
-				<?php get_template_part( 'template-parts/teams/teams-single', 'publications' ); ?>
-			</div>
-		</section>
-
-		<section class="page-section page-section--team-single-news">
-			<div class="<?php echo esc_attr( $container ); ?>">
-				<?php get_template_part( 'template-parts/teams/teams-single', 'news' ); ?>
 			</div>
 		</section>
 

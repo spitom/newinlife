@@ -1,80 +1,104 @@
 <?php
-$data = function_exists( 'inlife_get_laboratory_people' )
-	? inlife_get_laboratory_people( get_the_ID() )
+defined( 'ABSPATH' ) || exit;
+
+$manager_id = function_exists( 'inlife_get_laboratory_manager' )
+	? inlife_get_laboratory_manager( get_the_ID() )
+	: null;
+
+$members = function_exists( 'inlife_get_laboratory_members' )
+	? inlife_get_laboratory_members( get_the_ID() )
 	: array();
 
-$all = $data['all'] ?? array();
+if ( $manager_id ) {
+	$members = array_values(
+		array_filter(
+			$members,
+			static fn( $member_id ) => (int) $member_id !== (int) $manager_id
+		)
+	);
+}
 ?>
 
-<section class="lab-people section">
-	<div class="container">
-
+<div class="lab-section-block">
+	<header class="section-heading">
 		<h2 class="section-title">
-			Skład osobowy
+			<?php echo esc_html( inlife_t( 'Skład osobowy' ) ); ?>
 		</h2>
+	</header>
 
-		<?php if ( ! empty( $all ) ) : ?>
+	<?php if ( $manager_id || ! empty( $members ) ) : ?>
 
-			<div class="row g-4">
+		<div class="lab-members-list">
 
-				<?php foreach ( $all as $person ) : ?>
-					<?php
-					$id   = $person->ID;
-					$name = get_the_title( $id );
-					$link = get_permalink( $id );
-					$role = function_exists( 'get_field' ) ? get_field( 'position', $id ) : '';
-					$img  = get_the_post_thumbnail( $id, 'medium', [ 'class' => 'person-card__image' ] );
+			<?php if ( $manager_id ) : ?>
+				<?php
+				$name     = get_the_title( $manager_id );
+				$link     = get_permalink( $manager_id );
+				$position = function_exists( 'get_field' ) ? get_field( 'person_position', $manager_id ) : '';
+				$email    = function_exists( 'get_field' ) ? get_field( 'person_email', $manager_id ) : '';
+				?>
 
-					$is_manager = function_exists( 'inlife_is_person_manager_in_laboratory' )
-						? inlife_is_person_manager_in_laboratory( $id, get_the_ID() )
-						: false;
-					?>
+				<article class="lab-member-mini-card lab-member-mini-card--manager">
+					
+					<h3 class="lab-member-mini-card__name">
+						<a href="<?php echo esc_url( $link ); ?>" class="lab-member-mini-card__link">
+							<?php echo esc_html( $name ); ?>
+						</a>
+						<span class="lab-member-mini-card__role-badge">
+							<?php echo esc_html( inlife_t( 'Kierownik' ) ); ?>
+						</span>
+					</h3>
 
-					<div class="col-md-6 col-xl-4">
-						<article class="person-card <?php echo $is_manager ? 'person-card--manager' : ''; ?>">
+					<?php if ( $position ) : ?>
+						<p class="lab-member-mini-card__position">
+							<?php echo esc_html( $position ); ?>
+						</p>
+					<?php endif; ?>
 
-							<div class="person-card__media">
-								<?php echo $img ?: '<div class="person-card__photo"></div>'; ?>
-							</div>
+					<?php if ( $email ) : ?>
+						<p class="lab-member-mini-card__meta">
+							<?php echo esc_html( antispambot( $email ) ); ?>
+						</p>
+					<?php endif; ?>
+				</article>
+			<?php endif; ?>
 
-							<div class="person-card__content">
+			<?php foreach ( $members as $member_id ) : ?>
+				<?php
+				$name     = get_the_title( $member_id );
+				$link     = get_permalink( $member_id );
+				$position = function_exists( 'get_field' ) ? get_field( 'person_position', $member_id ) : '';
+				$email    = function_exists( 'get_field' ) ? get_field( 'person_email', $member_id ) : '';
+				?>
 
-								<?php if ( $is_manager ) : ?>
-									<span class="person-card__badge">
-										Kierownik laboratorium
-									</span>
-								<?php endif; ?>
+				<article class="lab-member-mini-card">
+					<h3 class="lab-member-mini-card__name">
+						<a href="<?php echo esc_url( $link ); ?>" class="lab-member-mini-card__link">
+							<?php echo esc_html( $name ); ?>
+						</a>
+					</h3>
 
-								<h3 class="person-card__name">
-									<?php echo esc_html( $name ); ?>
-								</h3>
+					<?php if ( $position ) : ?>
+						<p class="lab-member-mini-card__position">
+							<?php echo esc_html( $position ); ?>
+						</p>
+					<?php endif; ?>
 
-								<?php if ( $role ) : ?>
-									<p class="person-card__role">
-										<?php echo esc_html( $role ); ?>
-									</p>
-								<?php endif; ?>
+					<?php if ( $email ) : ?>
+						<p class="lab-member-mini-card__meta">
+							<?php echo esc_html( antispambot( $email ) ); ?>
+						</p>
+					<?php endif; ?>
+				</article>
+			<?php endforeach; ?>
 
-								<a href="<?php echo esc_url( $link ); ?>" class="person-card__link">
-									Zobacz profil →
-								</a>
+		</div>
 
-							</div>
+	<?php else : ?>
 
-						</article>
-					</div>
+		<div class="team-empty-state">
+			<p><?php echo esc_html( inlife_t( 'Skład osobowy nie został jeszcze uzupełniony.' ) ); ?></p>
+		</div>
 
-				<?php endforeach; ?>
-
-			</div>
-
-		<?php else : ?>
-
-			<div class="team-empty-state">
-				<p>Skład osobowy nie został jeszcze uzupełniony.</p>
-			</div>
-
-		<?php endif; ?>
-
-	</div>
-</section>
+	<?php endif; ?>
+</div>
