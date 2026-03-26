@@ -31,7 +31,10 @@ if ( $leader_id ) {
 		<div class="team-members-list">
 			<?php foreach ( $members as $member_id ) : ?>
 				<?php
-				$name     = get_the_title( $member_id );
+				$name = function_exists( 'inlife_get_person_display_name' )
+					? inlife_get_person_display_name( $member_id )
+					: get_the_title( $member_id );
+
 				$link     = get_permalink( $member_id );
 				$position = function_exists( 'get_field' ) ? get_field( 'person_position', $member_id ) : '';
 				$email    = function_exists( 'get_field' ) ? get_field( 'person_email', $member_id ) : '';
@@ -55,6 +58,10 @@ if ( $leader_id ) {
 							<?php echo esc_html( antispambot( $email ) ); ?>
 						</p>
 					<?php endif; ?>
+
+					<a href="<?php echo esc_url( $link ); ?>" class="team-member-mini-card__cta">
+						<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?> →
+					</a>
 				</article>
 			<?php endforeach; ?>
 		</div>

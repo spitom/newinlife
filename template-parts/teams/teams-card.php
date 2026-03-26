@@ -1,68 +1,82 @@
 <?php
 /**
- * Team archive card.
+ * Teams archive card.
  *
  * @package newinlife
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$terms = get_the_terms( get_the_ID(), 'team_area' );
-$area  = ( ! empty( $terms ) && ! is_wp_error( $terms ) ) ? $terms[0]->name : '';
+$team_id = get_the_ID();
+$terms   = get_the_terms( $team_id, 'team_area' );
 
-$raw_excerpt = has_excerpt() ? get_the_excerpt() : get_the_content();
+/**
+ * Obraz karty:
+ * 1. ACF team_hero_image (jeśli istnieje)
+ * 2. featured image
+ */
+$card_image_id = 0;
 
-$excerpt = wp_trim_words(
-	wp_strip_all_tags(
-		shortcode_unautop(
-			strip_shortcodes( $raw_excerpt )
-		)
-	),
-	18
-);
+if ( function_exists( 'get_field' ) ) {
+	$team_hero_image = get_field( 'team_hero_image', $team_id );
+
+	if ( is_array( $team_hero_image ) && ! empty( $team_hero_image['ID'] ) ) {
+		$card_image_id = (int) $team_hero_image['ID'];
+	} elseif ( is_numeric( $team_hero_image ) ) {
+		$card_image_id = (int) $team_hero_image;
+	}
+}
+
+if ( ! $card_image_id && has_post_thumbnail( $team_id ) ) {
+	$card_image_id = get_post_thumbnail_id( $team_id );
+}
 ?>
 
-<article class="team-card">
+<article <?php post_class( 'team-card' ); ?>>
 	<div class="team-card__inner">
 
 		<div class="team-card__media">
-			<?php if ( has_post_thumbnail() ) : ?>
-				<?php
-				the_post_thumbnail(
-					'medium_large',
-					array(
-						'class'   => 'team-card__image',
-						'loading' => 'lazy',
-					)
-				);
-				?>
-			<?php else : ?>
-				<div class="team-card__placeholder" aria-hidden="true">
-					<span>
-						<?php echo esc_html( $area ? $area : inlife_t( 'Zespół' ) ); ?>
-					</span>
-				</div>
-			<?php endif; ?>
+			<a class="team-card__media-link" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+				<?php if ( $card_image_id ) : ?>
+					<?php
+					echo wp_get_attachment_image(
+						$card_image_id,
+						'large',
+						false,
+						array(
+							'class' => 'team-card__image',
+							'alt'   => '',
+						)
+					);
+					?>
+				<?php else : ?>
+					<div class="team-card__placeholder">
+						<span><?php echo esc_html( inlife_t( 'Zespół badawczy' ) ); ?></span>
+					</div>
+				<?php endif; ?>
+			</a>
 		</div>
 
 		<div class="team-card__body">
 
-			<?php if ( $area ) : ?>
-				<span class="team-card__area"><?php echo esc_html( $area ); ?></span>
+			<?php if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) : ?>
+				<div class="team-card__areas" aria-label="<?php echo esc_attr( inlife_t( 'Obszary badawcze' ) ); ?>">
+					<?php foreach ( $terms as $term ) : ?>
+						<span class="team-card__area">
+							<?php echo esc_html( $term->name ); ?>
+						</span>
+					<?php endforeach; ?>
+				</div>
 			<?php endif; ?>
 
-			<h3 class="team-card__title">
-				<a href="<?php the_permalink(); ?>" class="team-card__title-link">
+			<h2 class="team-card__title">
+				<a class="team-card__title-link" href="<?php the_permalink(); ?>">
 					<?php the_title(); ?>
 				</a>
-			</h3>
+			</h2>
 
-			<?php if ( $excerpt ) : ?>
-				<p class="team-card__excerpt"><?php echo esc_html( $excerpt ); ?></p>
-			<?php endif; ?>
-
-			<a href="<?php the_permalink(); ?>" class="team-card__link">
-				<?php echo esc_html( inlife_t( 'Zobacz zespół' ) ); ?> →
+			<a class="team-card__link" href="<?php the_permalink(); ?>">
+				<?php echo esc_html( inlife_t( 'Zobacz zespół' ) ); ?> <span aria-hidden="true">→</span>
 			</a>
 
 		</div>

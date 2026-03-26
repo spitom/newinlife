@@ -6,10 +6,10 @@ $post_id = isset( $args['post_id'] ) ? (int) $args['post_id'] : get_the_ID();
 $card_args = wp_parse_args(
 	$args ?? [],
 	[
-		'post_id'    => $post_id,
-		'featured'   => false,
-		'show_type'  => true,
-		'cta_label'  => __( 'Zobacz profil', 'newinlife' ),
+		'post_id'   => $post_id,
+		'featured'  => false,
+		'show_type' => true,
+		'cta_label' => __( 'Zobacz profil', 'newinlife' ),
 	]
 );
 
@@ -17,7 +17,10 @@ if ( ! $post_id ) {
 	return;
 }
 
-$title     = get_the_title( $post_id );
+$title = function_exists( 'inlife_get_person_display_name' )
+	? inlife_get_person_display_name( $post_id )
+	: get_the_title( $post_id );
+
 $permalink = get_permalink( $post_id );
 
 $position = function_exists( 'get_field' ) ? get_field( 'person_position', $post_id ) : '';

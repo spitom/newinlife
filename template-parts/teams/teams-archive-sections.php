@@ -1,52 +1,59 @@
 <?php
-$areas = [
-	'zywnosc'   => 'Żywność',
-	'zwierzeta' => 'Zwierzęta',
-	'zdrowie'   => 'Zdrowie',
-];
+/**
+ * Teams archive list/grid with frontend filtering.
+ *
+ * @package newinlife
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+$query = new WP_Query(
+	array(
+		'post_type'      => 'teams',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'orderby'        => 'rand',
+	)
+);
 ?>
 
-<section id="all" class="teams-sections section">
+<section class="teams-listing section">
 	<div class="container">
 
-		<?php foreach ( $areas as $slug => $label ) : ?>
+		<?php if ( $query->have_posts() ) : ?>
+			<div class="row g-4 teams-listing__grid" data-team-grid>
+				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+					<?php
+					$terms = get_the_terms( get_the_ID(), 'team_area' );
+					$slugs = array();
 
-			<?php
-			$query = new WP_Query([
-				'post_type'      => 'teams',
-				'posts_per_page' => -1,
-				'orderby'        => 'title',
-				'order'          => 'ASC',
-				'tax_query'      => [
-					[
-						'taxonomy' => 'team_area',
-						'field'    => 'slug',
-						'terms'    => $slug,
-					],
-				],
-			]);
+					if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+						$slugs = wp_list_pluck( $terms, 'slug' );
+					}
+					?>
+					<div
+						class="col-md-6 col-xl-4 team-filter-item"
+						data-team-item
+						data-team-area="<?php echo esc_attr( implode( ' ', $slugs ) ); ?>"
+					>
+						<?php get_template_part( 'template-parts/teams/teams', 'card' ); ?>
+					</div>
+				<?php endwhile; ?>
+			</div>
 
-			if ( $query->have_posts() ) :
-				?>
+			<?php wp_reset_postdata(); ?>
 
-				<?php
-				get_template_part(
-					'template-parts/teams/teams-archive',
-					'section',
-					[
-						'label' => $label,
-						'slug'  => $slug,
-						'query' => $query,
-					]
-				);
-				?>
+			<div class="teams-listing__empty" data-team-empty hidden>
+				<p><?php echo esc_html( inlife_t( 'Brak zespołów w wybranej kategorii.' ) ); ?></p>
+			</div>
 
-			<?php
-			endif;
-			wp_reset_postdata();
-			?>
+		<?php else : ?>
 
-		<?php endforeach; ?>
+			<div class="team-empty-state">
+				<p><?php echo esc_html( inlife_t( 'Lista zespołów zostanie uzupełniona wkrótce.' ) ); ?></p>
+			</div>
+
+		<?php endif; ?>
 
 	</div>
 </section>

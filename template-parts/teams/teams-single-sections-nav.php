@@ -4,11 +4,11 @@ defined( 'ABSPATH' ) || exit;
 
 <div class="team-sections-nav-wrap">
 	<header class="section-heading">
-		<p class="section-kicker"><?php esc_html_e( 'Dorobek i aktywność zespołu', 'newinlife' ); ?></p>
-		<h2 class="section-title"><?php esc_html_e( 'Szczegóły działalności', 'newinlife' ); ?></h2>
+		<p class="section-kicker"><?php echo esc_html( inlife_t( 'Dorobek i aktywność zespołu' ) ); ?></p>
+		<h2 class="section-title"><?php echo esc_html( inlife_t( 'Szczegóły działalności' ) ); ?></h2>
 	</header>
 
-	<nav class="team-sections-nav" aria-label="<?php esc_attr_e( 'Nawigacja sekcji zespołu', 'newinlife' ); ?>">
+	<nav class="team-sections-nav" aria-label="<?php echo esc_attr( inlife_t( 'Nawigacja sekcji zespołu' ) ); ?>">
 		<button
 			type="button"
 			class="team-sections-nav__btn is-active"
@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 			aria-controls="team-panel-badania"
 			aria-selected="true"
 		>
-			<?php esc_html_e( 'Badania', 'newinlife' ); ?>
+			<?php echo esc_html( inlife_t( 'Osiągnięcia naukowe' ) ); ?>
 		</button>
 
 		<button
@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 			aria-controls="team-panel-projekty"
 			aria-selected="false"
 		>
-			<?php esc_html_e( 'Aktualne projekty', 'newinlife' ); ?>
+			<?php echo esc_html( inlife_t( 'Aktualne projekty' ) ); ?>
 		</button>
 
 		<button
@@ -36,7 +36,7 @@ defined( 'ABSPATH' ) || exit;
 			aria-controls="team-panel-publikacje"
 			aria-selected="false"
 		>
-			<?php esc_html_e( 'Publikacje', 'newinlife' ); ?>
+			<?php echo esc_html( inlife_t( 'Publikacje' ) ); ?>
 		</button>
 
 		<button
@@ -46,7 +46,7 @@ defined( 'ABSPATH' ) || exit;
 			aria-controls="team-panel-aktualnosci"
 			aria-selected="false"
 		>
-			<?php esc_html_e( 'Aktualności', 'newinlife' ); ?>
+			<?php echo esc_html( inlife_t( 'Aktualności' ) ); ?>
 		</button>
 	</nav>
 </div>

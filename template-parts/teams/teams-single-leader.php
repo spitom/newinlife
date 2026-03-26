@@ -15,32 +15,40 @@ $leader_id = function_exists( 'inlife_get_team_leader' )
 
 	<?php if ( $leader_id ) : ?>
 		<?php
-		$name      = get_the_title( $leader_id );
+		$name = function_exists( 'inlife_get_person_display_name' )
+			? inlife_get_person_display_name( $leader_id )
+			: get_the_title( $leader_id );
+
 		$link      = get_permalink( $leader_id );
 		$position  = function_exists( 'get_field' ) ? get_field( 'person_position', $leader_id ) : '';
 		$short_bio = function_exists( 'get_field' ) ? get_field( 'person_short_bio', $leader_id ) : '';
 		$email     = function_exists( 'get_field' ) ? get_field( 'person_email', $leader_id ) : '';
+
+		$has_image = has_post_thumbnail( $leader_id );
 		?>
 
-		<div class="team-leader-card">
-			<div class="team-leader-card__media">
-				<?php if ( has_post_thumbnail( $leader_id ) ) : ?>
+		<div class="team-leader-card<?php echo $has_image ? '' : ' team-leader-card--no-media'; ?>">
+
+			<?php if ( $has_image ) : ?>
+				<div class="team-leader-card__media">
 					<?php
 					echo get_the_post_thumbnail(
 						$leader_id,
 						'medium',
-						[
+						array(
 							'class'   => 'team-leader-card__image',
 							'loading' => 'lazy',
-						]
+						)
 					);
 					?>
-				<?php else : ?>
-					<div class="team-leader-card__placeholder" aria-hidden="true"></div>
-				<?php endif; ?>
-			</div>
+				</div>
+			<?php endif; ?>
 
 			<div class="team-leader-card__content">
+				<p class="team-leader-card__badge">
+					<?php echo esc_html( inlife_t( 'Kierownik zespołu' ) ); ?>
+				</p>
+
 				<h3 class="team-leader-card__name"><?php echo esc_html( $name ); ?></h3>
 
 				<?php if ( $position ) : ?>
@@ -60,14 +68,14 @@ $leader_id = function_exists( 'inlife_get_team_leader' )
 				<?php endif; ?>
 
 				<a href="<?php echo esc_url( $link ); ?>" class="team-leader-card__link">
-					<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?> →
+					<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?> <span aria-hidden="true">→</span>
 				</a>
 			</div>
 		</div>
 
 	<?php else : ?>
 		<div class="team-empty-state">
-			<p><?php esc_html_e( 'Nie przypisano kierownika zespołu.', 'newinlife' ); ?></p>
+			<p><?php echo esc_html( inlife_t( 'Nie przypisano kierownika zespołu.' ) ); ?></p>
 		</div>
 	<?php endif; ?>
 </div>

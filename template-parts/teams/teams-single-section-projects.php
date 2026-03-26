@@ -3,57 +3,86 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <div class="team-section-block team-section-block--projects">
+	<header class="section-heading">
+		<h2 class="section-title">
+			<?php echo esc_html( inlife_t( 'Aktualne projekty' ) ); ?>
+		</h2>
+	</header>
 
-	<div class="team-projects">
+	<?php if ( function_exists( 'have_rows' ) && have_rows( 'team_projects' ) ) : ?>
 
-		<article class="team-project">
-			<h3 class="team-project__title">
-				<?php esc_html_e( 'Projekt badawczy NCN OPUS', 'newinlife' ); ?>
-			</h3>
+		<div class="team-projects-list">
+			<?php
+			while ( have_rows( 'team_projects' ) ) :
+				the_row();
 
-			<p class="team-project__meta">
-				<?php esc_html_e( 'Narodowe Centrum Nauki • 2023–2026 • Kierownik projektu', 'newinlife' ); ?>
-			</p>
+				$content = get_sub_field( 'project_content' );
+				$role    = get_sub_field( 'project_role_label' );
+				$person  = get_sub_field( 'project_person' );
+				$url     = get_sub_field( 'project_url' );
 
-			<p class="team-project__desc">
-				<?php esc_html_e( 'Badania nad mechanizmami odpowiedzi immunologicznej w modelach eksperymentalnych.', 'newinlife' ); ?>
-			</p>
-		</article>
+				$person_id = $person ? $person->ID : null;
 
-		<article class="team-project">
-			<h3 class="team-project__title">
-				<?php esc_html_e( 'Projekt międzynarodowy Horizon Europe', 'newinlife' ); ?>
-			</h3>
+				if ( ! $content && ! $role && ! $person_id && ! $url ) {
+					continue;
+				}
 
-			<p class="team-project__meta">
-				<?php esc_html_e( 'Horizon Europe • 2022–2025 • Partner projektu', 'newinlife' ); ?>
-			</p>
+				// dane osoby
+				$name = $person_id
+					? ( function_exists( 'inlife_get_person_display_name' )
+						? inlife_get_person_display_name( $person_id )
+						: get_the_title( $person_id ) )
+					: '';
 
-			<p class="team-project__desc">
-				<?php esc_html_e( 'Rozwój nowych metod diagnostycznych w obszarze bezpieczeństwa żywności.', 'newinlife' ); ?>
-			</p>
-		</article>
+				$link = $person_id ? get_permalink( $person_id ) : '';
+			?>
+				<article class="team-project-item">
 
-		<article class="team-project">
-			<h3 class="team-project__title">
-				<?php esc_html_e( 'Projekt aplikacyjny (EIT Food)', 'newinlife' ); ?>
-			</h3>
+					<?php if ( $role || $name ) : ?>
+						<div class="team-project-item__meta">
 
-			<p class="team-project__meta">
-				<?php esc_html_e( 'EIT Food • 2024–2026 • Wykonawca', 'newinlife' ); ?>
-			</p>
+							<?php if ( $role ) : ?>
+								<span class="team-project-item__role">
+									<?php echo esc_html( $role ); ?>
+								</span>
+							<?php endif; ?>
 
-			<p class="team-project__desc">
-				<?php esc_html_e( 'Implementacja rozwiązań technologicznych wspierających przemysł spożywczy.', 'newinlife' ); ?>
-			</p>
-		</article>
+							<?php if ( $name ) : ?>
+								<span class="team-project-item__person">
+									<?php if ( $link ) : ?>
+										<a href="<?php echo esc_url( $link ); ?>">
+											<?php echo esc_html( $name ); ?>
+										</a>
+									<?php else : ?>
+										<?php echo esc_html( $name ); ?>
+									<?php endif; ?>
+								</span>
+							<?php endif; ?>
 
-	</div>
+						</div>
+					<?php endif; ?>
 
-	<div class="team-projects__footer">
-		<a href="#" class="btn btn-outline-primary">
-			<?php esc_html_e( 'Zobacz wszystkie projekty zespołu', 'newinlife' ); ?>
-		</a>
-	</div>
+					<?php if ( $content ) : ?>
+						<div class="team-project-item__content entry-content">
+							<?php echo wp_kses_post( $content ); ?>
+						</div>
+					<?php endif; ?>
 
+					<?php if ( $url ) : ?>
+						<a href="<?php echo esc_url( $url ); ?>" class="team-project-item__link">
+							<?php echo esc_html( inlife_t( 'Zobacz projekt' ) ); ?> →
+						</a>
+					<?php endif; ?>
+
+				</article>
+			<?php endwhile; ?>
+		</div>
+
+	<?php else : ?>
+
+		<div class="team-empty-state">
+			<p><?php echo esc_html( inlife_t( 'Sekcja projektów nie została jeszcze uzupełniona.' ) ); ?></p>
+		</div>
+
+	<?php endif; ?>
 </div>

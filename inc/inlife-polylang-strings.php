@@ -259,7 +259,55 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 			$group
 		);
 
-				/*
+		// Archive - area filtering / dynamic hero.
+		pll_register_string(
+			'teams_archive_filter_aria',
+			'Filtruj zespoły według obszaru badawczego',
+			$group
+		);
+
+		pll_register_string(
+			'teams_archive_animals_lead',
+			'Nauki o zwierzętach – badania nad biologią zwierząt oraz nad metodami ich hodowli, rozrodu, żywienia i zarządzania.',
+			$group
+		);
+
+		pll_register_string(
+			'teams_archive_food_lead',
+			'Nauki o żywności – badania nad składem, właściwościami i jakością żywności oraz wpływem składników odżywczych i bioaktywnych na zdrowie człowieka.',
+			$group
+		);
+
+		pll_register_string(
+			'teams_archive_health_lead',
+			'Nauki o zdrowiu – badania nad mechanizmami warunkującymi zdrowie i chorobę oraz nad biologicznymi podstawami profilaktyki, diagnostyki i terapii.',
+			$group
+		);
+
+		pll_register_string(
+			'teams_archive_empty_filtered',
+			'Brak zespołów w wybranej kategorii.',
+			$group
+		);
+
+		pll_register_string(
+			'teams_archive_empty_all',
+			'Lista zespołów zostanie uzupełniona wkrótce.',
+			$group
+		);
+
+		pll_register_string( 'teams_single_show_more', 'Pokaż więcej', $group );
+		pll_register_string( 'teams_single_show_less', 'Pokaż mniej', $group );
+
+		pll_register_string( 'teams_single_tab_achievements', 'Osiągnięcia naukowe', $group );
+		pll_register_string( 'teams_single_achievements_title', 'Osiągnięcia naukowe', $group );
+		pll_register_string(
+			'teams_single_achievements_empty',
+			'Sekcja osiągnięć naukowych nie została jeszcze uzupełniona.',
+			$group
+		);
+
+		/*
 		 * ------------------------------------------------------------
 		 * InLife Laboratories
 		 * ------------------------------------------------------------

@@ -244,6 +244,8 @@
 }
 
 .lab-member-mini-card {
+    display: flex;
+    flex-direction: column;
     padding: 1rem 1rem 0.95rem;
     border: 1px solid #e4ebf2;
     border-radius: 1rem;
@@ -306,6 +308,21 @@
         font-size: 0.85rem;
         line-height: 1.45;
         word-break: break-word;
+    }
+
+    &__cta {
+        display: inline-flex;
+        margin-top: auto;
+        padding-top: 0.65rem;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #293458;
+        text-decoration: none;
+    }
+
+    &__cta:hover,
+    &__cta:focus {
+        text-decoration: underline;
     }
 }
 

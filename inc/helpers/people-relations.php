@@ -52,3 +52,19 @@ function inlife_get_team_members( int $team_id ): array {
 		array_filter( $all, fn( $id ) => $id !== $leader )
 	);
 }
+
+if ( ! function_exists( 'inlife_get_person_display_name' ) ) {
+	function inlife_get_person_display_name( int $person_id ): string {
+		$name  = get_the_title( $person_id );
+		$title = function_exists( 'get_field' ) ? get_field( 'person_academic_title', $person_id ) : '';
+
+		$title = is_string( $title ) ? trim( $title ) : '';
+		$name  = is_string( $name ) ? trim( $name ) : '';
+
+		if ( '' === $title ) {
+			return $name;
+		}
+
+		return trim( $title . ' ' . $name );
+	}
+}

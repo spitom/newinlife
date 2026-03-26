@@ -7005,7 +7005,114 @@
 	  handleScroll();
 	});
 
-	// Team menu - przełączanie sekcji
+	// Archive Teams - filtrowanie obszarów + dynamiczny hero
+
+	document.addEventListener('DOMContentLoaded', () => {
+	  const filterWrap = document.querySelector('[data-team-filters]');
+	  const items = document.querySelectorAll('[data-team-item]');
+	  const emptyState = document.querySelector('[data-team-empty]');
+	  const heroWrap = document.getElementById('teamsArchiveHero');
+	  const heroKicker = document.getElementById('teamsArchiveHeroKicker');
+	  const heroTitle = document.getElementById('teamsArchiveHeroTitle');
+	  const heroDescription = document.getElementById('teamsArchiveHeroDescription');
+	  const heroDataElement = document.getElementById('teamsArchiveHeroData');
+	  if (!filterWrap) return;
+	  const buttons = filterWrap.querySelectorAll('[data-team-filter]');
+	  if (!buttons.length) return;
+	  let heroData = {};
+	  if (heroDataElement) {
+	    try {
+	      heroData = JSON.parse(heroDataElement.textContent);
+	    } catch (error) {
+	      console.error('Invalid teams hero JSON data.', error);
+	    }
+	  }
+	  const updateButtons = filterValue => {
+	    buttons.forEach(button => {
+	      const isActive = button.getAttribute('data-team-filter') === filterValue;
+	      button.classList.toggle('is-active', isActive);
+	      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+	    });
+	  };
+	  const updateHero = filterValue => {
+	    if (!heroWrap || !heroDescription || !heroData) return;
+	    const content = heroData[filterValue] || heroData.all;
+	    if (!content) return;
+	    if (heroKicker && content.kicker) {
+	      heroKicker.textContent = content.kicker;
+	    }
+	    if (heroTitle && content.title) {
+	      heroTitle.textContent = content.title;
+	    }
+	    if (content.description) {
+	      heroDescription.textContent = content.description;
+	    }
+	    heroWrap.setAttribute('data-current-area', filterValue);
+	  };
+	  const updateListing = filterValue => {
+	    if (!items.length) return;
+	    let visibleCount = 0;
+	    items.forEach(item => {
+	      const areas = (item.getAttribute('data-team-area') || '').split(' ').map(value => value.trim()).filter(Boolean);
+	      const isVisible = filterValue === 'all' || areas.includes(filterValue);
+	      item.hidden = !isVisible;
+	      if (isVisible) {
+	        visibleCount += 1;
+	      }
+	    });
+	    if (emptyState) {
+	      emptyState.hidden = visibleCount !== 0;
+	    }
+	  };
+	  const updateUrl = filterValue => {
+	    const url = new URL(window.location.href);
+	    if (filterValue === 'all') {
+	      url.searchParams.delete('area');
+	    } else {
+	      url.searchParams.set('area', filterValue);
+	    }
+	    window.history.replaceState({}, '', url);
+	  };
+	  const applyFilter = (filterValue, updateHistory = true) => {
+	    const normalizedValue = filterValue || 'all';
+	    updateButtons(normalizedValue);
+	    updateHero(normalizedValue);
+	    updateListing(normalizedValue);
+	    if (updateHistory) {
+	      updateUrl(normalizedValue);
+	    }
+	  };
+	  buttons.forEach(button => {
+	    button.addEventListener('click', () => {
+	      const filterValue = button.getAttribute('data-team-filter') || 'all';
+	      applyFilter(filterValue, true);
+	    });
+	  });
+	  const url = new URL(window.location.href);
+	  const initialArea = url.searchParams.get('area') || 'all';
+	  const allowedFilters = Array.from(buttons).map(button => button.getAttribute('data-team-filter'));
+	  applyFilter(allowedFilters.includes(initialArea) ? initialArea : 'all', false);
+	});
+
+	// Single Team - Pokaż więcej/mniej
+
+	document.addEventListener('DOMContentLoaded', () => {
+	  const description = document.querySelector('[data-team-description]');
+	  const toggle = document.querySelector('[data-team-description-toggle]');
+	  if (!description || !toggle) return;
+	  const setExpanded = expanded => {
+	    description.classList.toggle('is-collapsed', !expanded);
+	    description.classList.toggle('is-expanded', expanded);
+	    toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+	  };
+	  toggle.addEventListener('click', () => {
+	    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+	    setExpanded(!expanded);
+	  });
+	  setExpanded(false);
+	});
+
+	// Single Team menu - przełączanie sekcji
 
 	document.addEventListener('DOMContentLoaded', () => {
 	  const triggers = document.querySelectorAll('[data-team-panel-trigger]');

@@ -2,42 +2,56 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="team-section-block">
+<div class="team-section-block team-section-block--research">
 	<header class="section-heading">
-		<h2 class="section-title"><?php echo esc_html( inlife_t( 'Badania' ) ); ?></h2>
+		<h2 class="section-title"><?php echo esc_html( inlife_t( 'Osiągnięcia naukowe' ) ); ?></h2>
 	</header>
 
 	<?php if ( function_exists( 'have_rows' ) && have_rows( 'team_research_items' ) ) : ?>
 
-		<div class="team-feature-grid">
-			<?php while ( have_rows( 'team_research_items' ) ) : the_row(); ?>
-				<?php
+		<div class="team-achievements-list">
+			<?php
+			$index = 1;
+
+			while ( have_rows( 'team_research_items' ) ) :
+				the_row();
+
 				$title = get_sub_field( 'title' );
 				$desc  = get_sub_field( 'description' );
-				?>
 
-				<?php if ( $title || $desc ) : ?>
-					<article class="team-feature-card">
+				if ( ! $title && ! $desc ) {
+					continue;
+				}
+				?>
+				<article class="team-achievement-item">
+					<div class="team-achievement-item__number" aria-hidden="true">
+						<?php echo esc_html( str_pad( (string) $index, 2, '0', STR_PAD_LEFT ) ); ?>
+					</div>
+
+					<div class="team-achievement-item__content">
 						<?php if ( $title ) : ?>
-							<h3 class="team-feature-card__title">
+							<h3 class="team-achievement-item__title">
 								<?php echo esc_html( $title ); ?>
 							</h3>
 						<?php endif; ?>
 
 						<?php if ( $desc ) : ?>
-							<p class="team-feature-card__text">
-								<?php echo esc_html( $desc ); ?>
-							</p>
+							<div class="team-achievement-item__text entry-content">
+								<?php echo wpautop( wp_kses_post( $desc ) ); ?>
+							</div>
 						<?php endif; ?>
-					</article>
-				<?php endif; ?>
-			<?php endwhile; ?>
+					</div>
+				</article>
+				<?php
+				$index++;
+			endwhile;
+			?>
 		</div>
 
 	<?php else : ?>
 
 		<div class="team-empty-state">
-			<p><?php esc_html_e( 'Sekcja badań nie została jeszcze uzupełniona.', 'newinlife' ); ?></p>
+			<p><?php echo esc_html( inlife_t( 'Sekcja osiągnięć naukowych nie została jeszcze uzupełniona.' ) ); ?></p>
 		</div>
 
 	<?php endif; ?>
