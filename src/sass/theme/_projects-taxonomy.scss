@@ -1,0 +1,391 @@
+.site-main--projects-taxonomy {
+    background: #f8fafc;
+
+    .page-section--projects-taxonomy-intro {
+        padding-top: clamp(3rem, 5vw, 4.5rem);
+        padding-bottom: clamp(2rem, 3vw, 2.5rem);
+    }
+
+    .page-section--projects-taxonomy-content {
+        padding-top: 0;
+        padding-bottom: clamp(3.5rem, 6vw, 5rem);
+    }
+
+    .projects-taxonomy-intro {
+        &__lead {
+            max-width: min(100%, 980px);
+            margin: 0;
+            font-size: clamp(1.1rem, 1.4vw, 1.3rem);
+            line-height: 1.75;
+            color: #6c7890;
+
+            p:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .section-heading {
+        margin-bottom: 2rem;
+    }
+
+    .section-kicker {
+        margin-bottom: 0.9rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #293458;
+    }
+
+    .section-title {
+        max-width: 100%;
+        margin-bottom: 0;
+        font-size: clamp(2rem, 3.2vw, 3rem);
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+        color: #293458;
+    }
+
+    .projects-empty-state {
+        padding: 1.5rem 1.75rem;
+        border: 1px solid #e4ebf2;
+        background: #f5f8fc;
+        color: #5f6b85;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* =========================================
+   PODKATEGORIE
+========================================= */
+
+.project-type-card {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 220px;
+        height: 100%;
+        padding: 1.5rem;
+        border: 1px solid #e4ebf2;
+        background: #f5f8fc;
+        transition:
+            transform 0.2s ease,
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+        position: relative;
+    }
+
+    &__inner::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 3px;
+        background: var(--inlife-accent);
+        opacity: 0.85;
+    }
+
+    &:hover &__inner,
+    &:focus &__inner {
+        transform: translateY(-4px);
+        background: #f8fbff;
+        border-color: #d8e2ec;
+        box-shadow: 0 14px 28px rgba(17, 24, 39, 0.04);
+    }
+
+    &__meta {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__count {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: rgba(41, 52, 88, 0.5);
+    }
+
+    &__title {
+        margin: 1.75rem 0 1.5rem;
+        font-size: clamp(1.45rem, 1.8vw, 1.75rem);
+        line-height: 1.18;
+        letter-spacing: -0.02em;
+        color: #293458;
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-weight: 700;
+        color: #293458;
+
+        &::after {
+            content: "→";
+            display: inline-block;
+            line-height: 1;
+            transition: transform 0.2s ease;
+        }
+    }
+
+    &:hover &__link::after,
+    &:focus &__link::after {
+        transform: translateX(4px);
+    }
+}
+
+/* =========================================
+   LISTA PROJEKTÓW
+========================================= */
+
+.projects-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.project-list-item {
+    &__inner {
+        padding: 1rem 1.25rem;
+        border: 1px solid #e4ebf2;
+        background: #f5f8fc;
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    &:hover &__inner,
+    &:focus-within &__inner {
+        background: #f8fbff;
+        border-color: #d8e2ec;
+        box-shadow: 0 10px 20px rgba(17, 24, 39, 0.035);
+    }
+
+    &__title {
+        margin: 0 0 0.5rem;
+        font-size: 1.12rem;
+        line-height: 1.45;
+        color: #293458;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__lead {
+        margin: 0 0 0.75rem;
+        line-height: 1.7;
+        color: #6c7890;
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-weight: 700;
+        color: #293458;
+        text-decoration: none;
+
+        &::after {
+            content: "→";
+            display: inline-block;
+            line-height: 1;
+            transform: translateX(0);
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            opacity: 0.85;
+        }
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+
+        &:hover::after,
+        &:focus::after {
+            transform: translateX(4px);
+            opacity: 1;
+        }
+    }
+}
+
+/* =========================================
+   KARTY PROJEKTÓW
+========================================= */
+
+.project-card {
+    height: 100%;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        border: 1px solid #e4ebf2;
+        background: #f5f8fc;
+        overflow: hidden;
+        transition:
+            transform 0.2s ease,
+            border-color 0.2s ease,
+            background-color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    &:hover &__inner,
+    &:focus-within &__inner {
+        transform: translateY(-4px);
+        border-color: #d8e2ec;
+        background: #f8fbff;
+        box-shadow: 0 16px 40px rgba(17, 24, 39, 0.04);
+    }
+
+    &__media {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        background: linear-gradient(135deg, #eef3f8, #dfe7ef);
+        overflow: hidden;
+    }
+
+    &__media-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+    }
+
+    &:hover &__image,
+    &:focus-within &__image {
+        transform: scale(1.03);
+    }
+
+    &__placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 1.5rem;
+        background:
+            linear-gradient(135deg, rgba(238, 243, 248, 0.98), rgba(223, 231, 239, 0.95)),
+            radial-gradient(circle at top right, rgba(213, 219, 62, 0.16), transparent 35%);
+        color: #293458;
+        font-weight: 700;
+        text-align: center;
+
+        span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 1rem;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+        }
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        padding: 1.5rem;
+    }
+
+    &__title {
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        line-height: 1.2;
+        color: #293458;
+    }
+
+    &__title-link {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+
+    &__lead {
+        margin-bottom: 1.25rem;
+        line-height: 1.75;
+        color: #6c7890;
+    }
+
+    &__link {
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-weight: 700;
+        color: #293458;
+        text-decoration: none;
+
+        &::after {
+            content: "→";
+            display: inline-block;
+            line-height: 1;
+            transform: translateX(0);
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            opacity: 0.85;
+        }
+
+        &:hover,
+        &:focus {
+            color: #293458;
+            text-decoration: none;
+        }
+
+        &:hover::after,
+        &:focus::after {
+            transform: translateX(4px);
+            opacity: 1;
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .site-main--projects-taxonomy {
+        .projects-taxonomy-intro__lead {
+            font-size: 1.02rem;
+            line-height: 1.7;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 9vw, 2.4rem);
+            line-height: 1.1;
+        }
+    }
+
+    .project-type-card {
+        &__inner {
+            min-height: 180px;
+            padding: 1.25rem;
+        }
+
+        &__title {
+            margin: 1.25rem 0 1.25rem;
+            font-size: 1.35rem;
+        }
+    }
+}

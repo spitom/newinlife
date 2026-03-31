@@ -21,7 +21,7 @@ $container = inlife_container_class();
 
 					<div class="col-xl-4">
 						<div class="front-hero__aside">
-							Skrót do sekcji.
+							Do ustalenia
 						</div>
 					</div>
 				</div>

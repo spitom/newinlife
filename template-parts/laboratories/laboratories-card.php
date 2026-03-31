@@ -1,58 +1,70 @@
 <?php
 /**
- * Laboratory archive card.
+ * Laboratories archive card.
  *
  * @package newinlife
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$raw_excerpt = has_excerpt() ? get_the_excerpt() : get_the_content();
+$laboratory_id = get_the_ID();
 
-$excerpt = wp_trim_words(
-	wp_strip_all_tags(
-		shortcode_unautop(
-			strip_shortcodes( $raw_excerpt )
-		)
-	),
-	18
-);
+/**
+ * Obraz karty:
+ * 1. ACF laboratory_hero_image
+ * 2. featured image
+ */
+$card_image_id = 0;
+
+if ( function_exists( 'get_field' ) ) {
+	$laboratory_hero_image = get_field( 'laboratory_hero_image', $laboratory_id );
+
+	if ( is_array( $laboratory_hero_image ) && ! empty( $laboratory_hero_image['ID'] ) ) {
+		$card_image_id = (int) $laboratory_hero_image['ID'];
+	} elseif ( is_numeric( $laboratory_hero_image ) ) {
+		$card_image_id = (int) $laboratory_hero_image;
+	}
+}
+
+if ( ! $card_image_id && has_post_thumbnail( $laboratory_id ) ) {
+	$card_image_id = get_post_thumbnail_id( $laboratory_id );
+}
 ?>
 
-<article class="laboratory-card">
+<article <?php post_class( 'laboratory-card' ); ?>>
 	<div class="laboratory-card__inner">
 
 		<div class="laboratory-card__media">
-			<?php if ( has_post_thumbnail() ) : ?>
-				<?php
-				the_post_thumbnail(
-					'medium_large',
-					array(
-						'class'   => 'laboratory-card__image',
-						'loading' => 'lazy',
-					)
-				);
-				?>
-			<?php else : ?>
-				<div class="laboratory-card__placeholder" aria-hidden="true">
-					<span><?php echo esc_html( inlife_t( 'Laboratorium' ) ); ?></span>
-				</div>
-			<?php endif; ?>
+			<a class="laboratory-card__media-link" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+				<?php if ( $card_image_id ) : ?>
+					<?php
+					echo wp_get_attachment_image(
+						$card_image_id,
+						'large',
+						false,
+						array(
+							'class' => 'laboratory-card__image',
+							'alt'   => '',
+						)
+					);
+					?>
+				<?php else : ?>
+					<div class="laboratory-card__placeholder">
+						<span><?php echo esc_html( inlife_t( 'Laboratorium' ) ); ?></span>
+					</div>
+				<?php endif; ?>
+			</a>
 		</div>
 
 		<div class="laboratory-card__body">
-			<h3 class="laboratory-card__title">
-				<a href="<?php the_permalink(); ?>" class="laboratory-card__title-link">
+			<h2 class="laboratory-card__title">
+				<a class="laboratory-card__title-link" href="<?php the_permalink(); ?>">
 					<?php the_title(); ?>
 				</a>
-			</h3>
+			</h2>
 
-			<?php if ( $excerpt ) : ?>
-				<p class="laboratory-card__excerpt"><?php echo esc_html( $excerpt ); ?></p>
-			<?php endif; ?>
-
-			<a href="<?php the_permalink(); ?>" class="laboratory-card__link">
-				<?php echo esc_html( inlife_t( 'Zobacz laboratorium' ) ); ?> →
+			<a class="laboratory-card__link" href="<?php the_permalink(); ?>">
+				<?php echo esc_html( inlife_t( 'Zobacz laboratorium' ) ); ?> <span aria-hidden="true">→</span>
 			</a>
 		</div>
 

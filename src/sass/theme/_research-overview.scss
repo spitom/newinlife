@@ -1,341 +1,236 @@
-.site-main--research {
-    background: #fff;
-}
+/* =========================================================
+   Research Overview
+========================================================= */
 
-/* ---------------------------------
-   GLOBALNY RYTM SEKCJI
----------------------------------- */
-.site-main--research .page-section {
-    padding-top: clamp(2.75rem, 4vw, 4rem);
-    padding-bottom: clamp(2.75rem, 4vw, 4rem);
-}
+.site-main--research-overview {
+    background: #f8fafc;
 
-.site-main--research .page-section--intro {
-    padding-top: clamp(1.5rem, 2vw, 2rem);
-    padding-bottom: clamp(1.25rem, 2vw, 1.75rem);
-}
-
-.site-main--research .page-section--research-intro-extended {
-    padding-top: 0;
-    padding-bottom: clamp(2rem, 3vw, 2.75rem);
-}
-
-/* ---------------------------------
-   PANELE SEKCJI
----------------------------------- */
-.research-panel {
-    padding: clamp(1.5rem, 2.5vw, 2rem);
-    border-radius: 1.25rem;
-    border: 1px solid rgba(41, 52, 88, 0.08);
-    background: #fff;
-    box-shadow: 0 0.75rem 1.75rem rgba(41, 52, 88, 0.035);
-}
-
-.page-section--research-units .research-panel,
-.page-section--research-projects .research-panel,
-.page-section--research-publishing .research-panel {
-    background: #fff;
-}
-
-.page-section--research-areas .research-panel,
-.page-section--research-publications .research-panel,
-.page-section--research-seminars .research-panel {
-    background: linear-gradient(180deg,
-            rgba(41, 52, 88, 0.025) 0%,
-            rgba(41, 52, 88, 0.01) 100%);
-}
-
-/* ---------------------------------
-   INTRO ROZSZERZONE
----------------------------------- */
-.research-intro-extended {
-    &__lead {
-        margin: 0 0 1rem;
-        max-width: 66ch;
-        font-size: clamp(1.0625rem, 1.2vw, 1.1875rem);
-        line-height: 1.7;
-        color: var(--inlife-primary);
+    .page-section--research-intro {
+        padding-top: clamp(4rem, 7vw, 6.5rem);
+        padding-bottom: clamp(2rem, 4vw, 3rem);
     }
 
-    &__text {
-        max-width: 70ch;
-        margin: 0;
-        line-height: 1.75;
-        color: var(--inlife-text);
-    }
-}
-
-/* ---------------------------------
-   OGÓLNE SEKCJE
----------------------------------- */
-.research-section {
-    .section-heading {
-        margin-bottom: 1.25rem;
-    }
-
-    .section-kicker {
-        display: inline-block;
-        margin-bottom: 0.625rem;
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--inlife-primary);
-    }
-
-    .section-title {
+    .research-overview-intro {
+        max-width: 100%;
         margin-bottom: 0;
-        color: var(--inlife-primary);
-        line-height: 1.12;
+
+        &__lead {
+            max-width: min(100%, 1100px);
+            margin-bottom: 1.25rem;
+            font-size: clamp(1.125rem, 1.4vw, 1.375rem);
+            line-height: 1.75;
+            color: #6c7890;
+        }
+
+        &__text {
+            max-width: min(100%, 980px);
+            margin-bottom: 0;
+            font-size: 1.0625rem;
+            line-height: 1.75;
+            color: #6c7890;
+        }
     }
 
-    .section-lead {
-        max-width: 62ch;
-        margin: 0;
-        font-size: 1.0625rem;
-        line-height: 1.75;
+    .page-section--research-nav {
+        padding-top: 0;
+        padding-bottom: clamp(3.5rem, 6vw, 5rem);
     }
-}
 
-/* odstęp między headerem a contentem sekcji */
-.research-section__top {
-    margin-bottom: 1.5rem;
-}
+    .research-navigation {
+        &__top {
+            max-width: 100%;
+            margin-bottom: 2rem;
+        }
 
-.research-section__top--split {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+        .section-heading {
+            margin-bottom: 0;
+        }
 
-    @media (min-width: 992px) {
-        flex-direction: row;
-        align-items: end;
-        justify-content: space-between;
+        .section-kicker {
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #293458;
+        }
+
+        .section-title {
+            max-width: 100%;
+            margin-bottom: 0;
+            font-size: clamp(2rem, 3.4vw, 3rem);
+            line-height: 1.08;
+            letter-spacing: -0.025em;
+            color: #293458;
+        }
+
+        &__grid {
+            align-items: stretch;
+        }
     }
-}
 
-/* ---------------------------------
-   KARTY
----------------------------------- */
-.card-feature,
-.card-area,
-.card-project-type {
-    border: 1px solid rgba(41, 52, 88, 0.12);
-    border-radius: 1rem;
-    background: #fff;
-    box-shadow: 0 0.4rem 1rem rgba(41, 52, 88, 0.035);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.card-feature:hover,
-.card-feature:focus-within,
-.card-area:hover,
-.card-area:focus-within,
-.card-project-type:hover,
-.card-project-type:focus-within {
-    transform: translateY(-2px);
-    box-shadow: 0 0.8rem 1.5rem rgba(41, 52, 88, 0.06);
-    border-color: rgba(41, 52, 88, 0.16);
-}
-
-/* ---------------------------------
-   ZESPOŁY / LABORATORIA
----------------------------------- */
-.card-feature {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
-    border-width: 1.5px;
-
-    .card-body {
-        display: flex;
-        flex-direction: column;
+    .research-nav-card {
         height: 100%;
-        padding: 1.5rem;
-    }
 
-    h3 {
-        margin: 0 0 0.875rem;
-        font-size: clamp(1.25rem, 1.6vw, 1.5rem);
-        color: var(--inlife-primary);
-    }
+        &__inner {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #e4ebf2;
+            // border-radius: 1.5rem;
+            background: #f5f8fc;
+            overflow: hidden;
+            transition:
+                transform 0.2s ease,
+                border-color 0.2s ease,
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
 
-    p {
-        margin-bottom: 0.875rem;
-        line-height: 1.7;
-    }
+        &__inner::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 3px;
+            background: #e4ebf2;
+            opacity: 0.85;
+            transition: opacity 0.2s ease;
+        }
 
-    .btn {
-        margin-top: auto;
-        align-self: flex-start;
-    }
-}
+        &:hover &__inner,
+        &:focus-within &__inner {
+            transform: translateY(-4px);
+            border-color: #d8e2ec;
+            background: #f8fbff;
+            box-shadow: 0 16px 40px rgba(17, 24, 39, 0.04);
+        }
 
-.card-feature__eyebrow {
-    display: inline-block;
-    margin-bottom: 0.625rem;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--inlife-primary);
-}
+        &:hover &__inner::before,
+        &:focus-within &__inner::before {
+            opacity: 1;
+        }
 
-/* ---------------------------------
-   LISTY W KARTACH
----------------------------------- */
-.feature-list {
-    margin: 0 0 1.25rem;
-    padding-left: 1.1rem;
+        &__body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100%;
+            padding: 1.5rem;
+        }
 
-    li+li {
-        margin-top: 0.25rem;
-    }
-}
+        &__meta {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
 
-/* ---------------------------------
-   OBSZARY I PROJEKTY
----------------------------------- */
-.card-area,
-.card-project-type {
-    .card-body {
-        padding: 1.125rem 1.25rem;
-    }
+        &__kicker {
+            margin: 0;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #293458;
+        }
 
-    h3 {
-        margin: 0 0 0.75rem;
-        color: var(--inlife-primary);
-        font-size: 1rem;
-    }
+        &__index {
+            flex: 0 0 auto;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: rgba(41, 52, 88, 0.42);
+        }
 
-    p {
-        margin: 0;
-        line-height: 1.65;
-        font-size: 0.95rem;
-    }
-}
+        &__title {
+            max-width: 11ch;
+            margin: 0 0 2rem;
+            font-size: clamp(1.5rem, 2vw, 1.9rem);
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            color: #293458;
+        }
 
-/* ---------------------------------
-   PUBLIKACJE
----------------------------------- */
-.research-publications-list {
-    display: grid;
-    gap: 0.875rem;
-}
+        &__footer {
+            margin-top: auto;
+        }
 
-.publication-item {
-    padding: 1.125rem 1.25rem;
-    border-radius: 1rem;
-    border: 1px solid rgba(41, 52, 88, 0.12);
-    background: #fff;
-    box-shadow: 0 0.4rem 1rem rgba(41, 52, 88, 0.035);
+        &__link {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-weight: 700;
+            color: #293458;
+            text-decoration: none;
+            transition: color 0.2s ease;
 
-    &__meta {
-        margin: 0 0 0.375rem;
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: var(--inlife-primary);
-    }
+            &::after {
+                content: "→";
+                display: inline-block;
+                line-height: 1;
+                transform: translateX(0);
+                transition: transform 0.2s ease, opacity 0.2s ease;
+                opacity: 0.85;
+            }
 
-    &__title {
-        margin: 0 0 0.5rem;
-        font-size: 1.05rem;
-        line-height: 1.35;
-        color: var(--inlife-primary);
-    }
+            &:hover,
+            &:focus {
+                color: #293458;
+                text-decoration: none;
+            }
 
-    &__text {
-        margin: 0;
-        line-height: 1.65;
-        color: var(--inlife-text);
-        font-size: 0.95rem;
-    }
-}
+            &:hover::after,
+            &:focus::after {
+                transform: translateX(4px);
+                opacity: 1;
+            }
 
-/* ---------------------------------
-   BLOKI GRAFICZNE
----------------------------------- */
-.research-visual {
-    position: relative;
-    min-height: 250px;
-    border-radius: 1.125rem;
-    border: 1px solid rgba(41, 52, 88, 0.12);
-    background:
-        linear-gradient(135deg, rgba(41, 52, 88, 0.08) 0%, rgba(41, 52, 88, 0.03) 100%);
-    box-shadow: 0 0.6rem 1.4rem rgba(41, 52, 88, 0.04);
-    overflow: hidden;
-    display: grid;
-    place-items: center;
-    padding: 1.5rem;
-    text-align: center;
-
-    @media (min-width: 992px) {
-        min-height: 300px;
-    }
-
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-            radial-gradient(circle at top right, rgba(207, 211, 54, 0.16), transparent 32%),
-            radial-gradient(circle at bottom left, rgba(41, 52, 88, 0.1), transparent 38%);
-        pointer-events: none;
-    }
-
-    span {
-        position: relative;
-        z-index: 1;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        max-width: 20rem;
-        min-height: 4.5rem;
-        padding: 0.875rem 1rem;
-        border-radius: 0.875rem;
-        background: rgba(255, 255, 255, 0.84);
-        border: 1px dashed rgba(41, 52, 88, 0.24);
-        color: var(--inlife-primary);
-        font-weight: 700;
-        line-height: 1.45;
-        backdrop-filter: blur(2px);
+            &:focus-visible {
+                outline: 2px solid var(--inlife-accent);
+                outline-offset: 3px;
+            }
+        }
     }
 }
 
-/* ---------------------------------
-   CTA
----------------------------------- */
-.page-section--cta {
-    padding-top: clamp(3.5rem, 5vw, 4.5rem);
-    padding-bottom: clamp(4rem, 6vw, 5rem);
-}
-
-.page-cta {
-    padding: 2.25rem 1.5rem;
-    border-radius: 1.25rem;
-    background: rgba(41, 52, 88, 0.05);
-}
-
-/* ---------------------------------
-   MOBILE
----------------------------------- */
 @media (max-width: 991.98px) {
-    .research-panel {
-        padding: 1.25rem;
-    }
+    .site-main--research-overview {
+        .research-overview-intro {
+            &__lead {
+                font-size: 1.05rem;
+                line-height: 1.7;
+            }
 
-    .card-feature {
-        .card-body {
-            padding: 1.25rem;
+            &__text {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
         }
 
-        h3 {
-            font-size: 1.25rem;
-        }
-    }
+        .research-navigation {
+            &__top {
+                margin-bottom: 1.5rem;
+            }
 
-    .research-visual {
-        min-height: 220px;
-        padding: 1.25rem;
+            .section-title {
+                font-size: clamp(1.6rem, 7vw, 2.15rem);
+                line-height: 1.12;
+            }
+        }
+
+        .research-nav-card {
+            &__body {
+                padding: 1.25rem;
+            }
+
+            &__title {
+                max-width: none;
+                margin-bottom: 1.5rem;
+                font-size: 1.45rem;
+            }
+        }
     }
 }

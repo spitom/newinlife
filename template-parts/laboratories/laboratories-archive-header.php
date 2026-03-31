@@ -11,32 +11,19 @@ defined( 'ABSPATH' ) || exit;
 <section class="laboratories-archive-header section">
 	<div class="container">
 
-		<div class="row align-items-center g-5">
+		<header class="laboratories-archive-header__content">
+			<p class="section-eyebrow laboratories-archive-header__eyebrow">
+				<?php echo esc_html( inlife_t( 'Badania' ) ); ?>
+			</p>
 
-			<div class="col-lg-6">
-				<p class="section-eyebrow">
-					<?php echo esc_html( inlife_t( 'Badania' ) ); ?>
-				</p>
+			<h1 class="section-title laboratories-archive-header__title">
+				<?php echo esc_html( inlife_t( 'Laboratoria' ) ); ?>
+			</h1>
 
-				<h1 class="section-title">
-					<?php echo esc_html( inlife_t( 'Laboratoria' ) ); ?>
-				</h1>
-
-				<p class="section-lead">
-					<?php echo esc_html( inlife_t( 'Poznaj laboratoria wspierające działalność badawczą instytutu, oferujące specjalistyczne metody, analizy oraz zaplecze aparaturowe.' ) ); ?>
-				</p>
-			</div>
-
-			<div class="col-lg-6">
-				<div class="laboratories-archive-header__visual">
-					<div class="laboratories-archive-header__visual-card"><?php esc_html_e( 'Metody', 'newinlife' ); ?></div>
-					<div class="laboratories-archive-header__visual-card"><?php esc_html_e( 'Analizy', 'newinlife' ); ?></div>
-					<div class="laboratories-archive-header__visual-card"><?php esc_html_e( 'Sprzęt', 'newinlife' ); ?></div>
-					<div class="laboratories-archive-header__visual-card"><?php esc_html_e( 'Zespół', 'newinlife' ); ?></div>
-				</div>
-			</div>
-
-		</div>
+			<p class="section-lead laboratories-archive-header__lead">
+				<?php echo esc_html( inlife_t( 'Poznaj laboratoria wspierające działalność badawczą instytutu, oferujące specjalistyczne metody, analizy oraz zaplecze aparaturowe.' ) ); ?>
+			</p>
+		</header>
 
 	</div>
 </section>

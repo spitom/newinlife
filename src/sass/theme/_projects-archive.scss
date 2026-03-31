@@ -1,0 +1,94 @@
+.site-main--projects-archive {
+    background: #f8fafc;
+
+    .page-section--projects-intro {
+        padding-top: clamp(4rem, 7vw, 6.5rem);
+        padding-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .projects-intro {
+        &__lead {
+            font-size: clamp(1.125rem, 1.4vw, 1.375rem);
+            line-height: 1.75;
+            color: #6c7890;
+            margin-bottom: 1rem;
+        }
+
+        &__text {
+            font-size: 1.0625rem;
+            line-height: 1.75;
+            color: #6c7890;
+        }
+    }
+
+    .page-section--projects-types {
+        padding-bottom: clamp(3.5rem, 6vw, 5rem);
+    }
+
+    .project-type-card {
+        display: block;
+        height: 100%;
+        text-decoration: none;
+
+        &__inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            padding: 1.75rem;
+            border: 1px solid #e4ebf2;
+            background: #f5f8fc;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        &__inner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--inlife-accent);
+            opacity: 0.8;
+        }
+
+        &:hover &__inner {
+            transform: translateY(-4px);
+            background: #f8fbff;
+            border-color: #d8e2ec;
+        }
+
+        &__meta {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        &__count {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: rgba(41, 52, 88, 0.5);
+        }
+
+        &__title {
+            margin: 2rem 0;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            color: #293458;
+        }
+
+        &__link {
+            font-weight: 700;
+            color: #293458;
+
+            &::after {
+                content: " →";
+                transition: transform 0.2s ease;
+            }
+        }
+
+        &:hover &__link::after {
+            transform: translateX(4px);
+        }
+    }
+}

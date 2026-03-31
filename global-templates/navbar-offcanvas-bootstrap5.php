@@ -100,23 +100,6 @@ $container = inlife_container_class('page');
 		<?php
 		wp_nav_menu(
 			array(
-				'theme_location'       => 'top',
-				'container'            => 'nav',
-				'container_class'      => 'offcanvas-utility-nav',
-				'container_aria_label' => esc_attr__( 'Menu użytkowe', 'newinlife-child' ),
-				'menu_class'           => 'navbar-nav offcanvas-utility-menu',
-				'fallback_cb'          => false,
-				'menu_id'              => 'offcanvas-top-menu',
-				'depth'                => 1,
-			)
-		);
-		?>
-
-		<hr class="offcanvas-divider">
-
-		<?php
-		wp_nav_menu(
-			array(
 				'theme_location'       => 'primary',
 				'container'            => 'nav',
 				'container_class'      => 'offcanvas-primary-nav',
@@ -129,5 +112,23 @@ $container = inlife_container_class('page');
 			)
 		);
 		?>
+		
+		<hr class="offcanvas-divider">
+		
+		<?php
+		wp_nav_menu(
+			array(
+				'theme_location'       => 'top',
+				'container'            => 'nav',
+				'container_class'      => 'offcanvas-utility-nav',
+				'container_aria_label' => esc_attr__( 'Menu użytkowe', 'newinlife-child' ),
+				'menu_class'           => 'navbar-nav offcanvas-utility-menu',
+				'fallback_cb'          => false,
+				'menu_id'              => 'offcanvas-top-menu',
+				'depth'                => 1,
+			)
+		);
+		?>
+
 	</div>
 </div>

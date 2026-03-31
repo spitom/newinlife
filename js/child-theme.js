@@ -7147,6 +7147,24 @@
 	  }
 	});
 
+	// Single Laboratory - Pokaż więcej/mniej
+
+	document.addEventListener('DOMContentLoaded', () => {
+	  const description = document.querySelector('[data-lab-profile-description]');
+	  const toggle = document.querySelector('[data-lab-profile-toggle]');
+	  if (!description || !toggle) return;
+	  const setExpanded = expanded => {
+	    description.classList.toggle('is-collapsed', !expanded);
+	    description.classList.toggle('is-expanded', expanded);
+	    toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+	  };
+	  toggle.addEventListener('click', () => {
+	    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+	    setExpanded(!expanded);
+	  });
+	  setExpanded(false);
+	});
+
 	exports.Alert = alert;
 	exports.Button = button;
 	exports.Carousel = carousel;

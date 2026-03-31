@@ -1,5 +1,5 @@
 .site-main--landing {
-    background: #fff;
+    background: #f8fafc;
 }
 
 .page-section {
@@ -46,4 +46,34 @@
     padding: 2rem;
     border-radius: 1.25rem;
     background: rgba(41, 52, 88, 0.05);
+}
+
+
+.page-hero--inner {
+    padding-top: clamp(4rem, 7vw, 6.5rem);
+    padding-bottom: clamp(1.25rem, 2vw, 2rem);
+    background: transparent;
+
+    .page-hero__content {
+        max-width: 100%;
+        margin-bottom: 0;
+    }
+
+    .page-hero__title {
+        max-width: 1100px;
+        margin-bottom: 0;
+        font-size: clamp(2.4rem, 4.8vw, 4.15rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        color: #293458;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .page-hero--inner {
+        .page-hero__title {
+            font-size: clamp(2rem, 10vw, 2.8rem);
+            line-height: 1.08;
+        }
+    }
 }

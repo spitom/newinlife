@@ -6,64 +6,41 @@ defined('ABSPATH') || exit;
 	<div class="row g-4 align-items-end">
 		<div class="col-lg-8">
 			<div class="section-heading mb-0">
-				<p class="section-kicker">Kierunki badań</p>
-				<h2 id="research-areas-heading" class="section-title">Obszary działania</h2>
+				<p class="section-kicker"><?php echo esc_html( inlife_t( 'Kierunki badań' ) ); ?></p>
+				<h2 id="research-areas-heading" class="section-title"><?php echo esc_html( inlife_t( 'Obszary działania' ) ); ?></h2>
 			</div>
 
 			<p class="section-lead mt-3 mb-0">
-				Sekcja prowadząca do obszarów badawczych oraz przypisanych do nich zespołów
-				i kompetencji naukowych.
+				<?php echo esc_html( inlife_t( 'Główne obszary badawcze.' ) ); ?>
 			</p>
 		</div>
 
 		<div class="col-lg-4 text-lg-end">
-			<a href="#" class="btn btn-outline-primary">Zobacz wszystkie obszary</a>
+			<a href="#" class="research-pill-link"><?php echo esc_html( inlife_t( 'Zobacz wszystkie obszary' ) ); ?></a>
 		</div>
 	</div>
 
 	<div class="row g-4 mt-1">
-		<div class="col-md-6 col-xl-3">
-			<article class="card card-area h-100">
-				<div class="card-body">
-					<h3 class="h5">Obszar 1</h3>
-					<p class="mb-0">
-						Krótki opis obszaru badawczego z wejściem do powiązanych zespołów.
-					</p>
-				</div>
-			</article>
-		</div>
+		<?php for ( $i = 1; $i <= 4; $i++ ) : ?>
+			<div class="col-md-6 col-xl-3">
+				<article class="research-area-card h-100">
+					<div class="research-area-card__body">
+						<span class="research-area-card__badge"><?php echo esc_html( '0' . $i ); ?></span>
 
-		<div class="col-md-6 col-xl-3">
-			<article class="card card-area h-100">
-				<div class="card-body">
-					<h3 class="h5">Obszar 2</h3>
-					<p class="mb-0">
-						Krótki opis obszaru badawczego z wejściem do powiązanych zespołów.
-					</p>
-				</div>
-			</article>
-		</div>
+						<h3 class="research-area-card__title">
+							<?php echo esc_html( inlife_t( 'Obszar' ) . ' ' . $i ); ?>
+						</h3>
 
-		<div class="col-md-6 col-xl-3">
-			<article class="card card-area h-100">
-				<div class="card-body">
-					<h3 class="h5">Obszar 3</h3>
-					<p class="mb-0">
-						Krótki opis obszaru badawczego z wejściem do powiązanych zespołów.
-					</p>
-				</div>
-			</article>
-		</div>
+						<p class="research-area-card__text">
+							<?php echo esc_html( inlife_t( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod elementum nisl, vitae iaculis justo.' ) ); ?>
+						</p>
 
-		<div class="col-md-6 col-xl-3">
-			<article class="card card-area h-100">
-				<div class="card-body">
-					<h3 class="h5">Obszar 4</h3>
-					<p class="mb-0">
-						Krótki opis obszaru badawczego z wejściem do powiązanych zespołów.
-					</p>
-				</div>
-			</article>
-		</div>
+						<a href="#" class="research-inline-link">
+							<?php echo esc_html( inlife_t( 'Przejdź do obszaru' ) ); ?> <span aria-hidden="true">→</span>
+						</a>
+					</div>
+				</article>
+			</div>
+		<?php endfor; ?>
 	</div>
 </div>

@@ -12,61 +12,38 @@ get_header();
 $container = inlife_container_class();
 ?>
 
-<main id="main-content" class="site-main site-main--landing site-main--research">
+<main id="main-content" class="site-main site-main--landing site-main--research-overview">
 
 	<?php get_template_part('template-parts/page/page', 'hero-inner'); ?>
 
-	<section class="page-section page-section--intro">
+	<section class="page-section page-section--research-intro" aria-labelledby="research-intro-heading">
 		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/page/page', 'intro'); ?>
-		</div>
-	</section>
-    
-    <section class="page-section page-section--research-intro-extended" aria-labelledby="research-intro-extended-heading">
-		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/research/research', 'intro-extended'); ?>
+			<div class="research-overview-intro">
+				<div class="row">
+					<div class="col-xl-10">
+						<h2 id="research-intro-heading" class="visually-hidden">
+							Wprowadzenie do działu Badania
+						</h2>
+
+						<p class="research-overview-intro__lead">
+							Poznaj główne obszary działalności naukowej Instytutu: zespoły badawcze,
+							laboratoria, projekty, publikacje oraz pozostałe zasoby wspierające rozwój badań.
+						</p>
+
+						<!-- <p class="research-overview-intro__text">
+							Główna zakładka „Badania” pełni rolę czytelnego punktu wejścia do najważniejszych
+							obszarów działalności naukowej Instytutu. Każdy z poniższych modułów prowadzi
+							do osobnego widoku z bardziej szczegółową strukturą treści.
+						</p> -->
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 
-	<section class="page-section page-section--research-units" aria-labelledby="research-units-heading">
+	<section class="page-section page-section--research-nav" aria-labelledby="research-navigation-heading">
 		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/research/research', 'units'); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--research-areas" aria-labelledby="research-areas-heading">
-		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/research/research', 'areas'); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--research-projects" aria-labelledby="research-projects-heading">
-		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/research/research', 'projects'); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--research-publications" aria-labelledby="research-publications-heading">
-		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/research/research', 'publications'); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--research-publishing" aria-labelledby="research-publishing-heading">
-		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/research/research', 'publishing'); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--research-seminars" aria-labelledby="research-seminars-heading">
-		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/research/research', 'seminars'); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--cta">
-		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/page/page', 'cta'); ?>
+			<?php get_template_part('template-parts/research/research', 'navigation-grid'); ?>
 		</div>
 	</section>
 

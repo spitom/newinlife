@@ -1,0 +1,130 @@
+.site-main--project-single {
+    background: #f8fafc;
+
+    .page-section--project-intro {
+        padding-top: clamp(3rem, 5vw, 4.5rem);
+        padding-bottom: 2.25rem;
+    }
+
+    .page-section--project-content,
+    .page-section--project-gallery,
+    .page-section--project-documents {
+        padding-bottom: clamp(3rem, 5vw, 4.5rem);
+    }
+
+    .project-single-intro {
+        max-width: 1100px;
+
+        &__logo {
+            margin-bottom: 1.5rem;
+
+            img {
+                display: block;
+                max-width: 220px;
+                height: auto;
+            }
+        }
+
+        &__lead {
+            max-width: 960px;
+            margin-bottom: 2rem;
+            font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+            line-height: 1.75;
+            color: #6c7890;
+        }
+    }
+
+    .project-single-meta {
+        display: grid;
+        gap: 0.75rem;
+        max-width: 980px;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid #e4ebf2;
+        background: #f5f8fc;
+
+        &__item {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #293458;
+
+            strong {
+                margin-right: 0.4rem;
+            }
+        }
+    }
+
+    .project-single-content {
+        max-width: 900px;
+
+        p,
+        li {
+            line-height: 1.8;
+            color: #465066;
+        }
+
+        h2,
+        h3,
+        h4 {
+            color: #293458;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .page-section--project-gallery {
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .project-documents {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-width: 900px;
+
+        li+li {
+            margin-top: 0.5rem;
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-decoration: none;
+            font-weight: 600;
+            color: #293458;
+
+            &::after {
+                content: "→";
+            }
+
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .site-main--project-single {
+        .project-single-intro {
+            &__lead {
+                font-size: 1.02rem;
+                line-height: 1.7;
+            }
+        }
+
+        .project-single-meta {
+            padding: 1rem 1.1rem;
+        }
+    }
+}

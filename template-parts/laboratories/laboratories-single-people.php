@@ -38,7 +38,6 @@ if ( $manager_id ) {
 
 				$link     = get_permalink( $manager_id );
 				$position = function_exists( 'get_field' ) ? get_field( 'person_position', $manager_id ) : '';
-				$email    = function_exists( 'get_field' ) ? get_field( 'person_email', $manager_id ) : '';
 				?>
 
 				<article class="lab-member-mini-card lab-member-mini-card--manager">
@@ -58,14 +57,8 @@ if ( $manager_id ) {
 						</p>
 					<?php endif; ?>
 
-					<?php if ( $email ) : ?>
-						<p class="lab-member-mini-card__meta">
-							<?php echo esc_html( antispambot( $email ) ); ?>
-						</p>
-					<?php endif; ?>
-
 					<a href="<?php echo esc_url( $link ); ?>" class="lab-member-mini-card__cta">
-						<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?> →
+						<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?> <span aria-hidden="true">→</span>
 					</a>
 				</article>
 			<?php endif; ?>
@@ -78,7 +71,6 @@ if ( $manager_id ) {
 
 				$link     = get_permalink( $member_id );
 				$position = function_exists( 'get_field' ) ? get_field( 'person_position', $member_id ) : '';
-				$email    = function_exists( 'get_field' ) ? get_field( 'person_email', $member_id ) : '';
 				?>
 
 				<article class="lab-member-mini-card">
@@ -94,14 +86,8 @@ if ( $manager_id ) {
 						</p>
 					<?php endif; ?>
 
-					<?php if ( $email ) : ?>
-						<p class="lab-member-mini-card__meta">
-							<?php echo esc_html( antispambot( $email ) ); ?>
-						</p>
-					<?php endif; ?>
-
 					<a href="<?php echo esc_url( $link ); ?>" class="lab-member-mini-card__cta">
-						<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?> →
+						<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?> <span aria-hidden="true">→</span>
 					</a>
 				</article>
 			<?php endforeach; ?>

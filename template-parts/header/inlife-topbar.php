@@ -8,10 +8,6 @@ $container = inlife_container_class('page');
 	<div class="<?php echo esc_attr( $container ); ?>">
 		<div class="header-topbar__inner">
 
-			<div class="topbar-tools">
-				<?php get_template_part( 'template-parts/header/inlife', 'search-toggle' ); ?>
-			</div>
-
 			<?php
 			wp_nav_menu(
 				array(
@@ -33,6 +29,10 @@ $container = inlife_container_class('page');
 
 			<div class="topbar-lang">
 				<?php get_template_part( 'template-parts/header/inlife', 'language-switcher' ); ?>
+			</div>
+
+			<div class="topbar-tools">
+				<?php get_template_part( 'template-parts/header/inlife', 'search-toggle' ); ?>
 			</div>
 
 		</div>

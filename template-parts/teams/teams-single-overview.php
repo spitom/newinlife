@@ -19,10 +19,7 @@ $description_plain = trim(
 	)
 );
 
-/**
- * Próg pokazania przycisku.
- * Możesz go później podbić/obniżyć, np. 500 / 650 / 800.
- */
+
 $show_description_toggle = mb_strlen( $description_plain ) > 650;
 
 $terms = get_the_terms( $team_id, 'team_area' );
@@ -79,12 +76,12 @@ $terms = get_the_terms( $team_id, 'team_area' );
 						<?php if ( $profile_text ) : ?>
 							<?php echo wp_kses_post( wpautop( $profile_text ) ); ?>
 						<?php else : ?>
-							<p><?php echo esc_html( inlife_t( 'Szczegółowe informacje o zakresie działalności zespołu zostaną uzupełnione w kolejnym etapie wdrożenia.' ) ); ?></p>
+							<p><?php echo esc_html( inlife_t( 'Integer aliquam elit eget neque condimentum, eget sollicitudin orci sodales. Nulla facilisi. Quisque fermentum eros ac sapien mattis volutpat varius vitae nunc. Sed rutrum, purus et semper laoreet, dui massa congue dui, ut convallis ligula mi ut orci.' ) ); ?></p>
 						<?php endif; ?>
 					</div>
 				</div>
 
-				<div class="team-info-card">
+				<!-- <div class="team-info-card">
 					<h3 class="team-info-card__title">
 						<?php echo esc_html( inlife_t( 'Obszary badawcze' ) ); ?>
 					</h3>
@@ -102,7 +99,7 @@ $terms = get_the_terms( $team_id, 'team_area' );
 							<p><?php echo esc_html( inlife_t( 'Ta sekcja będzie rozwijana wraz z docelowymi polami i treściami redakcyjnymi.' ) ); ?></p>
 						<?php endif; ?>
 					</div>
-				</div>
+				</div> -->
 
 			</aside>
 		</div>

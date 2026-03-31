@@ -324,6 +324,7 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		);
 		pll_register_string( 'labs_archive_placeholder_label', 'Laboratorium', $group );
 		pll_register_string( 'labs_archive_view_lab', 'Zobacz laboratorium', $group );
+		pll_register_string( 'labs_archive_empty_all', 'Lista laboratoriów zostanie uzupełniona wkrótce.', $group );
 
 		// Single.
 		pll_register_string( 'labs_single_kicker', 'Badania', $group );
@@ -367,6 +368,61 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'labs_single_equipment_item_4', 'Mikroskop konfokalny', $group );
 
 		pll_register_string( 'labs_single_view_profile', 'Zobacz profil', $group );
+
+		/*
+		* ------------------------------------------------------------
+		* Projects
+		* ------------------------------------------------------------
+		*/
+		$group = 'Projects';
+
+		// Archive
+		pll_register_string( 'projects_intro_lead', 'Projekty badawcze realizowane w Instytucie obejmują szeroki zakres działań finansowanych ze źródeł krajowych i międzynarodowych.', $group );
+
+		pll_register_string( 'projects_intro_text', 'Wybierz obszar finansowania, aby przejść do listy projektów i szczegółowych informacji.', $group );
+
+		pll_register_string( 'projects_section_kicker', 'Źródła finansowania', $group );
+
+		pll_register_string( 'projects_section_title', 'Wybierz typ projektu', $group );
+
+		pll_register_string( 'projects_card_link', 'Zobacz projekty', $group );
+
+		// Taxonomy
+		pll_register_string( 'projects_taxonomy_title', 'Projekty', $group );
+
+		pll_register_string( 'projects_empty', 'Brak projektów w tej kategorii.', $group );
+
+		// Single
+		pll_register_string( 'projects_meta_period', 'Okres realizacji', $group );
+
+		pll_register_string( 'projects_meta_funding', 'Finansowanie', $group );
+
+		pll_register_string( 'projects_meta_partners', 'Partnerzy', $group );
+
+		pll_register_string( 'projects_related_projects', 'Powiązane projekty', $group );
+
+		pll_register_string('projects_go_to_project', 'Przejdź do projektu', 'Projects');
+		pll_register_string('projects_choose_program', 'Wybierz program', 'Projects');
+
+		pll_register_string('projects_hub_menu', 'Menu projektu', $group);
+		pll_register_string('projects_hub_label', 'Projekt', $group);
+pll_register_string('projects_empty_types', 'Brak typów projektów.', $group);
+pll_register_string('projects_choose_area_or_list', 'Wybierz odpowiedni obszar lub przejdź do listy projektów przypisanych do tej kategorii.', $group);
+		pll_register_string('projects_choose_area_or_list', 'Wybierz odpowiedni obszar lub przejdź do listy projektów przypisanych do tej kategorii.', $group);
+		pll_register_string('projects_subcategories', 'Podkategorie', $group);
+		pll_register_string('projects_choose_program', 'Wybierz program', $group);
+		pll_register_string('projects_projects_label', 'Projekty', $group);
+		pll_register_string('projects_list_title', 'Lista projektów', $group);
+		pll_register_string('projects_card_link', 'Zobacz projekty', $group);
+		pll_register_string('projects_go_to_project', 'Przejdź do projektu', $group);
+		pll_register_string('projects_empty', 'Brak projektów w tej kategorii.', $group);
+		pll_register_string('projects_logo_placeholder', 'Logo projektu', $group);
+
+		pll_register_string('projects_breadcrumbs', 'Okruszki', $group);
+		pll_register_string('projects_home', 'Strona główna', $group);
+		pll_register_string('projects_label', 'Projekt', $group);
+		pll_register_string('projects_archive_label', 'Projekty', $group);
+		pll_register_string('projects_menu_label', 'Menu projektu', $group);
 	}
 
 	add_action( 'init', 'inlife_register_polylang_strings' );

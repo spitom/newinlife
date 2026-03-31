@@ -1,14 +1,39 @@
 <?php
 defined('ABSPATH') || exit;
+
+$title = '';
+$eyebrow = '';
+
+if (is_post_type_archive('projects')) {
+	$title = post_type_archive_title('', false);
+	$eyebrow = '';
+} elseif (is_tax('project_type')) {
+	$title = single_term_title('', false);
+	$eyebrow = post_type_archive_title('', false);
+} elseif (is_archive()) {
+	$title = get_the_archive_title();
+	$eyebrow = '';
+} else {
+	$title = get_the_title();
+	$eyebrow = '';
+}
 ?>
 
-<section class="page-hero" aria-labelledby="page-heading">
+<section class="page-hero page-hero--inner" aria-labelledby="page-heading">
 	<div class="inlife-container">
 		<div class="inlife-content">
 			<div class="page-hero__inner">
-				<h1 id="page-heading" class="page-hero__title">
-					<?php the_title(); ?>
-				</h1>
+				<div class="page-hero__content">
+					<?php if (!empty($eyebrow)) : ?>
+						<p class="page-hero__eyebrow">
+							<?php echo esc_html($eyebrow); ?>
+						</p>
+					<?php endif; ?>
+
+					<h1 id="page-heading" class="page-hero__title">
+						<?php echo esc_html($title); ?>
+					</h1>
+				</div>
 			</div>
 		</div>
 	</div>

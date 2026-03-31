@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="container">
 
 		<?php if ( have_posts() ) : ?>
-			<div class="row g-4">
+			<div class="row g-4 laboratories-grid__listing">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 					<div class="col-md-6 col-xl-4">
@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 			</div>
 		<?php else : ?>
 			<div class="team-empty-state">
-				<p><?php esc_html_e( 'Lista laboratoriów zostanie uzupełniona wkrótce.', 'newinlife' ); ?></p>
+				<p><?php echo esc_html( inlife_t( 'Lista laboratoriów zostanie uzupełniona wkrótce.' ) ); ?></p>
 			</div>
 		<?php endif; ?>
 
