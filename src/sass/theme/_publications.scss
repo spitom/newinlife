@@ -1,0 +1,686 @@
+.publications-page {
+    .publications-index-section {
+        background-color: #f8fafc;
+    }
+
+    .publications-empty {
+        padding: 2rem 1.5rem;
+        border: 1px solid rgba(41, 52, 88, 0.12);
+        border-radius: 1.25rem;
+        background: #fff;
+        color: #293458;
+    }
+}
+
+.publications-year-nav {
+    margin-bottom: 2rem;
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.75rem;
+        padding: 0.65rem 1rem;
+        border: 1px solid rgba(41, 52, 88, 0.14);
+        border-radius: 999px;
+        background: #fff;
+        color: #293458;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            background: #eef2f8;
+            border-color: rgba(41, 52, 88, 0.26);
+            color: #293458;
+            text-decoration: none;
+        }
+    }
+}
+
+.publications-grouped-list {
+    display: grid;
+    gap: 2rem;
+}
+
+.publications-year-group {
+    padding: 1.5rem 1.25rem;
+    border: 1px solid rgba(41, 52, 88, 0.1);
+    border-radius: 1.5rem;
+    background: #fff;
+
+    &__header {
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(41, 52, 88, 0.1);
+    }
+
+    &__title {
+        margin: 0;
+        font-size: clamp(1.35rem, 2vw, 1.8rem);
+        font-weight: 700;
+        color: #293458;
+    }
+}
+
+.publications-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.publications-list__item {
+    margin: 0;
+    padding: 0;
+}
+
+.publication-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(41, 52, 88, 0.08);
+
+    &:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    &__citation {
+        margin: 0;
+        color: #293458;
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    &__meta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 0.16em;
+    }
+}
+
+@media (min-width: 992px) {
+    .publications-year-group {
+        padding: 2rem;
+    }
+
+    .publication-item {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.5rem;
+
+        &__main {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        &__meta {
+            flex: 0 0 auto;
+            padding-top: 0.15rem;
+        }
+    }
+}
+
+.site-main--publications-index,
+.site-main--publications-year {
+    background: #f8fafc;
+}
+
+.publications-overview-intro,
+.publications-year-intro {
+    &__lead {
+        font-size: 1.125rem;
+        color: var(--inlife-text);
+        max-width: 60ch;
+    }
+
+    &__back a {
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 0.16em;
+    }
+}
+
+.publications-years {
+    &__heading {
+        margin-bottom: 1.5rem;
+        font-size: clamp(1.5rem, 2.2vw, 2rem);
+        color: var(--inlife-primary);
+    }
+}
+
+.publications-years-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.publications-year-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(41, 52, 88, 0.1);
+    border-radius: 1.5rem;
+    background: #fff;
+    min-height: 100%;
+
+    &__title {
+        margin: 0;
+        font-size: clamp(1.4rem, 2vw, 1.8rem);
+        font-weight: 700;
+        color: var(--inlife-primary);
+    }
+
+    &__meta {
+        margin: 0;
+        color: var(--inlife-text);
+    }
+
+    &__link {
+        margin-top: auto;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 0.16em;
+    }
+}
+
+.publications-year-list-wrap {
+    &__heading {
+        margin-bottom: 1.5rem;
+        font-size: clamp(1.5rem, 2.2vw, 2rem);
+        color: var(--inlife-primary);
+    }
+}
+
+.publications-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.publications-list__item {
+    margin: 0;
+    padding: 0;
+}
+
+.publication-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(41, 52, 88, 0.08);
+
+    &:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    &__citation {
+        margin: 0;
+        color: #293458;
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    &__meta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 0.16em;
+    }
+}
+
+.publications-empty {
+    padding: 1.5rem;
+    border: 1px solid rgba(41, 52, 88, 0.1);
+    border-radius: 1.25rem;
+    background: #fff;
+    color: var(--inlife-text);
+}
+
+@media (min-width: 992px) {
+    .publication-item {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.5rem;
+
+        &__main {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        &__meta {
+            flex: 0 0 auto;
+            padding-top: 0.15rem;
+        }
+    }
+}
+
+/* =========================================================
+   PUBLICATIONS NAV (years selector)
+========================================================= */
+
+.publications-nav-wrap {
+    margin-bottom: 1.75rem;
+}
+
+.publications-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.1rem;
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+
+        padding: 0.7rem 1.15rem;
+        border: 1px solid #dbe4ee;
+        border-radius: 999px;
+
+        background: #f4f7fb;
+        color: #293458;
+
+        font-weight: 600;
+        line-height: 1;
+
+        text-decoration: none;
+        cursor: pointer;
+
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease,
+            box-shadow 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            background: #eaf0f7;
+            border-color: #cfd9e5;
+            color: #293458;
+            text-decoration: none;
+        }
+
+        &.is-active {
+            background: #293458;
+            border-color: #293458;
+            color: #fff;
+            box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.14);
+        }
+    }
+
+    &__count {
+        font-size: 0.75rem;
+        font-weight: 700;
+        opacity: 0.7;
+    }
+}
+
+.site-main--publications-index,
+.site-main--publications-year {
+    background: #f8fafc;
+}
+
+/* =========================================================
+   PUBLICATIONS NAV
+========================================================= */
+
+.publications-nav-wrap {
+    margin-bottom: 1.75rem;
+}
+
+.publications-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.1rem;
+
+    &__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+        padding: 0.7rem 1.15rem;
+        border: 1px solid #dbe4ee;
+        border-radius: 999px;
+        background: #f4f7fb;
+        color: #293458;
+        font-weight: 600;
+        line-height: 1;
+        text-decoration: none;
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease,
+            box-shadow 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            background: #eaf0f7;
+            border-color: #cfd9e5;
+            color: #293458;
+            text-decoration: none;
+        }
+
+        &.is-active {
+            background: #293458;
+            border-color: #293458;
+            color: #fff;
+            box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.14);
+        }
+    }
+
+    &__count {
+        font-size: 0.75rem;
+        font-weight: 700;
+        opacity: 0.7;
+    }
+}
+
+/* =========================================================
+   INTRO / EMPTY
+========================================================= */
+
+.publications-overview-intro,
+.publications-year-intro {
+    &__lead {
+        font-size: 1.125rem;
+        color: var(--inlife-text);
+        max-width: 60ch;
+    }
+
+    &__back a {
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 0.16em;
+    }
+}
+
+.publications-years {
+    &__heading {
+        margin-bottom: 1.5rem;
+        font-size: clamp(1.5rem, 2.2vw, 2rem);
+        color: var(--inlife-primary);
+    }
+}
+
+.publications-empty {
+    padding: 1.5rem;
+    border: 1px solid rgba(41, 52, 88, 0.1);
+    border-radius: 1.25rem;
+    background: #fff;
+    color: var(--inlife-text);
+}
+
+/* =========================================================
+   YEAR CARDS ON INDEX
+========================================================= */
+
+.publications-years-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.publications-year-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(41, 52, 88, 0.1);
+    border-radius: 1.5rem;
+    background: #fff;
+    min-height: 100%;
+
+    &__title {
+        margin: 0;
+        font-size: clamp(1.4rem, 2vw, 1.8rem);
+        font-weight: 700;
+        color: var(--inlife-primary);
+    }
+
+    &__meta {
+        margin: 0;
+        color: var(--inlife-text);
+    }
+
+    &__link {
+        margin-top: auto;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 0.16em;
+    }
+}
+
+/* =========================================================
+   YEAR PAGE LIST
+========================================================= */
+
+.publications-year-list-wrap {
+    &__heading {
+        margin-bottom: 1.5rem;
+        font-size: clamp(1.5rem, 2.2vw, 2rem);
+        color: var(--inlife-primary);
+    }
+}
+
+.publications-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.publications-list__item {
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================================
+   PUBLICATION ITEM
+========================================================= */
+
+.publication-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &__citation {
+        margin: 0;
+        color: #293458;
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    &__meta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 0.16em;
+    }
+}
+
+/* Wariant karty dla strony rocznej */
+.publication-item--card {
+    padding: 1.25rem 1.25rem 1.1rem;
+    border: 1px solid rgba(41, 52, 88, 0.1);
+    border-radius: 1.25rem;
+    background: #fff;
+    box-shadow: 0 12px 36px rgba(17, 24, 39, 0.05);
+
+    .publication-item__citation {
+        font-size: 0.98rem;
+        line-height: 1.7;
+    }
+
+    .publication-item__meta {
+        padding-top: 0.15rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .publication-item--card {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1.5rem;
+
+        .publication-item__main {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .publication-item__meta {
+            flex: 0 0 auto;
+        }
+    }
+}
+
+/* =========================================================
+   TEAM PUBLICATIONS
+========================================================= */
+
+.team-publications {
+    &__heading {
+        margin-bottom: 1rem;
+        font-size: clamp(1.5rem, 2.2vw, 2rem);
+        color: var(--inlife-primary);
+    }
+}
+
+.team-publications-filter {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+
+    &__list {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 0.9rem;
+        min-width: max-content;
+    }
+
+    &__item {
+        position: relative;
+
+        &:not(:first-child)::before {
+            content: '|';
+            position: relative;
+            left: -0.45rem;
+            color: #c7d2e0;
+            font-weight: 400;
+        }
+    }
+
+    &__link {
+        position: relative;
+        display: inline-block;
+        padding: 0.2rem 0;
+        font-size: 0.95rem;
+        font-weight: 500;
+        line-height: 1.2;
+        color: #5b6b82;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 0.2s ease;
+
+        &:hover,
+        &:focus-visible {
+            color: #293458;
+            text-decoration: none;
+        }
+
+        &.is-active {
+            color: #293458;
+            font-weight: 700;
+        }
+
+        &.is-active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.12rem;
+            width: 100%;
+            height: 2px;
+            background: #293458;
+            border-radius: 2px;
+        }
+    }
+}
+
+.team-publications-groups {
+    display: grid;
+    gap: 1rem;
+}
+
+.team-publications-year {
+    &__header {
+        margin-bottom: 0.75rem;
+        padding-bottom: 0.65rem;
+        border-bottom: 1px solid rgba(41, 52, 88, 0.08);
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #293458;
+    }
+}

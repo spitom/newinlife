@@ -25,7 +25,7 @@ $research_links = [
 	[
 		'kicker' => 'Dorobek naukowy',
 		'title'  => 'Publikacje',
-		'url'    => '#',
+		'url'    => 'http://localhost/newinlife/badania/publikacje',
 	],
 	[
 		'kicker' => 'Dodatkowe treści',

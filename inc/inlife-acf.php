@@ -24,3 +24,23 @@ if (!function_exists('inlife_have_rows')) {
 		return function_exists('have_rows') && have_rows($field_name, $post_id);
 	}
 }
+
+
+/**
+ * Save ACF JSON to theme folder.
+ */
+add_filter(
+	'acf/settings/save_json',
+	function () {
+		return get_stylesheet_directory() . '/acf-json';
+	}
+);
+
+/**
+ * Load ACF JSON from theme folder.
+ */
+add_filter('acf/settings/load_json', function ($paths) {
+	unset($paths[0]);
+	$paths[] = get_stylesheet_directory() . '/acf-json';
+	return $paths;
+});

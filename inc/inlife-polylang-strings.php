@@ -406,8 +406,8 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 
 		pll_register_string('projects_hub_menu', 'Menu projektu', $group);
 		pll_register_string('projects_hub_label', 'Projekt', $group);
-pll_register_string('projects_empty_types', 'Brak typów projektów.', $group);
-pll_register_string('projects_choose_area_or_list', 'Wybierz odpowiedni obszar lub przejdź do listy projektów przypisanych do tej kategorii.', $group);
+		pll_register_string('projects_empty_types', 'Brak typów projektów.', $group);
+		pll_register_string('projects_choose_area_or_list', 'Wybierz odpowiedni obszar lub przejdź do listy projektów przypisanych do tej kategorii.', $group);
 		pll_register_string('projects_choose_area_or_list', 'Wybierz odpowiedni obszar lub przejdź do listy projektów przypisanych do tej kategorii.', $group);
 		pll_register_string('projects_subcategories', 'Podkategorie', $group);
 		pll_register_string('projects_choose_program', 'Wybierz program', $group);
@@ -423,6 +423,31 @@ pll_register_string('projects_choose_area_or_list', 'Wybierz odpowiedni obszar l
 		pll_register_string('projects_label', 'Projekt', $group);
 		pll_register_string('projects_archive_label', 'Projekty', $group);
 		pll_register_string('projects_menu_label', 'Menu projektu', $group);
+
+		/*
+		* ------------------------------------------------------------
+		* Publications
+		* ------------------------------------------------------------
+		*/
+		$group = 'Publications';
+
+		pll_register_string('publications_eyebrow_research', 'Badania', $group);
+		pll_register_string('publications_intro_heading', 'Wprowadzenie do publikacji', $group);
+		pll_register_string('publications_intro_lead', 'Przegląd dorobku publikacyjnego Instytutu w podziale na lata.', $group);
+		pll_register_string('publications_years_heading', 'Wybierz rok', $group);
+		pll_register_string('publications_years_nav_label', 'Lata publikacji', $group);
+		pll_register_string('publications_year_count_label', '%d publikacji', $group);
+		pll_register_string('publications_cta_view', 'Zobacz publikacje', $group);
+		pll_register_string('publications_empty', 'Brak publikacji do wyświetlenia.', $group);
+
+		pll_register_string('publications_year_eyebrow', 'Publikacje', $group);
+		pll_register_string('publications_year_intro_heading', 'Wprowadzenie do publikacji rocznych', $group);
+		pll_register_string('publications_year_intro_lead', 'Lista publikacji naukowych z roku %s.', $group);
+		pll_register_string('publications_year_back', 'Wróć do listy lat', $group);
+		pll_register_string('publications_year_empty', 'Brak publikacji do wyświetlenia dla tego roku.', $group);
+
+		pll_register_string('publications_link_view', 'Zobacz publikację', $group);
+		pll_register_string('publications_link_new_tab', 'otwiera się w nowej karcie', $group);
 	}
 
 	add_action( 'init', 'inlife_register_polylang_strings' );

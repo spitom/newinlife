@@ -485,8 +485,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (!triggers.length || !panels.length) return;
 
 	const validPanels = ['badania', 'projekty', 'publikacje', 'aktualnosci'];
+	const url = new URL(window.location.href);
 
-	const activatePanel = (panelName, updateHash = true) => {
+	const activatePanel = (panelName, updateUrl = true) => {
 		if (!validPanels.includes(panelName)) return;
 
 		triggers.forEach((trigger) => {
@@ -501,8 +502,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			panel.hidden = !isActive;
 		});
 
-		if (updateHash) {
-			history.replaceState(null, '', `#${panelName}`);
+		if (updateUrl) {
+			const nextUrl = new URL(window.location.href);
+			nextUrl.searchParams.set('team_section', panelName);
+			nextUrl.hash = '';
+			window.history.replaceState(null, '', nextUrl.toString());
 		}
 	};
 
@@ -513,10 +517,52 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	});
 
+	const initialSectionFromQuery = url.searchParams.get('team_section');
 	const initialHash = window.location.hash.replace('#', '');
+
+	if (validPanels.includes(initialSectionFromQuery)) {
+		activatePanel(initialSectionFromQuery, false);
+		return;
+	}
+
 	if (validPanels.includes(initialHash)) {
 		activatePanel(initialHash, false);
+		return;
 	}
+
+	activatePanel('badania', false);
+});
+
+// Team publications filter - restore section position after year filter reload
+
+document.addEventListener('DOMContentLoaded', () => {
+	const restoreKey = 'inlifeRestoreTeamPublications';
+
+	if (sessionStorage.getItem(restoreKey) === '1') {
+		const section = document.getElementById('team-publications-section');
+
+		if (section) {
+			const top = section.getBoundingClientRect().top + window.pageYOffset - 24;
+
+			window.scrollTo({
+				top,
+				left: 0,
+				behavior: 'auto',
+			});
+		}
+
+		sessionStorage.removeItem(restoreKey);
+	}
+
+	const publicationFilterLinks = document.querySelectorAll('.team-publications-filter__link');
+
+	if (!publicationFilterLinks.length) return;
+
+	publicationFilterLinks.forEach((link) => {
+		link.addEventListener('click', () => {
+			sessionStorage.setItem(restoreKey, '1');
+		});
+	});
 });
 
 // Single Laboratory - Pokaż więcej/mniej

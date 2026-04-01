@@ -11,21 +11,15 @@ $publications_url = function_exists( 'get_field' ) ? get_field( 'team_publicatio
 
 	<div class="team-publications-list">
 
-		<section class="team-publications-group">
-			<h3 class="team-publications-group__year">2026</h3>
-			<ul class="team-publications-group__list">
-				<li><?php echo esc_html( inlife_t( 'Miejsce na publikację przypisaną do zespołu.' ) ); ?></li>
-				<li><?php echo esc_html( inlife_t( 'Układ sekcji przygotowany pod grupowanie po latach.' ) ); ?></li>
-			</ul>
-		</section>
-
-		<section class="team-publications-group">
-			<h3 class="team-publications-group__year">2025</h3>
-			<ul class="team-publications-group__list">
-				<li><?php echo esc_html( inlife_t( 'Docelowo lista będzie generowana automatycznie.' ) ); ?></li>
-				<li><?php echo esc_html( inlife_t( 'Na tym etapie jest to makieta akceptacyjna zgodna z przyszłym wdrożeniem.' ) ); ?></li>
-			</ul>
-		</section>
+		<?php
+		get_template_part(
+			'template-parts/publications/publications',
+			'team-section',
+			array(
+				'team_id' => get_the_ID(),
+			)
+		);
+		?>
 
 	</div>
 

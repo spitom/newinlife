@@ -1,0 +1,452 @@
+[
+  {
+    "key": "group_inlife_publications_fields",
+    "title": "Publications – Fields",
+    "fields": [
+      {
+        "key": "field_inlife_publication_year",
+        "label": "Rok publikacji",
+        "name": "publication_year",
+        "aria-label": "",
+        "type": "number",
+        "instructions": "",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "20",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "min": 1900,
+        "max": 2100,
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "step": 1,
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_inlife_publication_title_full",
+        "label": "Pełny tytuł publikacji",
+        "name": "publication_title_full",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "Pole zasilane z importu CSV.",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "80",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_inlife_publication_authors",
+        "label": "Autorzy",
+        "name": "publication_authors",
+        "aria-label": "",
+        "type": "textarea",
+        "instructions": "Pole zasilane z importu CSV.",
+        "required": 1,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "100",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "rows": 3,
+        "placeholder": "",
+        "new_lines": "",
+        "allow_in_bindings": 0
+      },
+      {
+        "key": "field_inlife_publication_source",
+        "label": "Czasopismo / źródło",
+        "name": "publication_source",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_inlife_publication_volume",
+        "label": "Wolumin",
+        "name": "publication_volume",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "16",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_inlife_publication_issue",
+        "label": "Numer",
+        "name": "publication_issue",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "17",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_inlife_publication_pages",
+        "label": "Strony",
+        "name": "publication_pages",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "17",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_inlife_publication_doi",
+        "label": "DOI",
+        "name": "publication_doi",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "DOI po normalizacji, bez prefiksu https://doi.org/ jeśli importer tak ustawi.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_inlife_publication_external_url",
+        "label": "Link zewnętrzny",
+        "name": "publication_external_url",
+        "aria-label": "",
+        "type": "url",
+        "instructions": "PDF lub link DOI.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "placeholder": ""
+      },
+      {
+        "key": "field_inlife_publication_citation",
+        "label": "Cytowanie",
+        "name": "publication_citation",
+        "aria-label": "",
+        "type": "textarea",
+        "instructions": "Generowane automatycznie przez importer. Nie edytować ręcznie, chyba że wyjątkowo.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "100",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "rows": 4,
+        "placeholder": "",
+        "new_lines": "",
+        "allow_in_bindings": 0
+      },
+      {
+        "key": "field_inlife_publication_teams",
+        "label": "Powiązane zespoły",
+        "name": "publication_teams",
+        "aria-label": "",
+        "type": "relationship",
+        "instructions": "Ustawiane automatycznie przez importer na podstawie kodów zespołów z CSV.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "100",
+          "class": "",
+          "id": ""
+        },
+        "post_type": [
+          "teams"
+        ],
+        "post_status": "",
+        "taxonomy": "",
+        "filters": [
+          "search"
+        ],
+        "return_format": "id",
+        "min": "",
+        "max": "",
+        "elements": "",
+        "bidirectional": 0,
+        "bidirectional_target": []
+      },
+      {
+        "key": "field_inlife_publication_raw_affiliation",
+        "label": "Surowa afiliacja z CSV",
+        "name": "publication_raw_affiliation",
+        "aria-label": "",
+        "type": "textarea",
+        "instructions": "Pole techniczne do debugowania importu.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "rows": 4,
+        "placeholder": "",
+        "new_lines": "",
+        "allow_in_bindings": 0
+      },
+      {
+        "key": "field_inlife_publication_raw_author_team_string",
+        "label": "Surowe pole Autorzy; Zakład z CSV",
+        "name": "publication_raw_author_team_string",
+        "aria-label": "",
+        "type": "textarea",
+        "instructions": "Pole techniczne do debugowania importu.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "rows": 4,
+        "placeholder": "",
+        "new_lines": "",
+        "allow_in_bindings": 0
+      },
+      {
+        "key": "field_inlife_publication_import_uid",
+        "label": "Import UID",
+        "name": "publication_import_uid",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "Techniczny identyfikator rekordu. Nie edytować ręcznie.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "33",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": "",
+        "readonly": 1
+      },
+      {
+        "key": "field_inlife_publication_import_hash",
+        "label": "Import hash",
+        "name": "publication_import_hash",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "Hash pełnego rekordu dla wykrywania zmian.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "33",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": "",
+        "readonly": 1
+      },
+      {
+        "key": "field_inlife_publication_import_run_id",
+        "label": "Import run ID",
+        "name": "publication_import_run_id",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "Identyfikator przebiegu pełnej synchronizacji.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "34",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "allow_in_bindings": 0,
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_inlife_publication_last_imported_at",
+        "label": "Ostatni import",
+        "name": "publication_last_imported_at",
+        "aria-label": "",
+        "type": "date_time_picker",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "33",
+          "class": "",
+          "id": ""
+        },
+        "display_format": "d/m/Y H:i",
+        "return_format": "Y-m-d H:i:s",
+        "first_day": 1
+      },
+      {
+        "key": "field_inlife_publication_import_status",
+        "label": "Status importu",
+        "name": "publication_import_status",
+        "aria-label": "",
+        "type": "select",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "33",
+          "class": "",
+          "id": ""
+        },
+        "choices": {
+          "ok": "ok",
+          "updated": "updated",
+          "missing_in_latest_import": "missing_in_latest_import",
+          "error": "error"
+        },
+        "default_value": false,
+        "return_format": "value",
+        "multiple": 0,
+        "allow_null": 1,
+        "ui": 1,
+        "ajax": 0,
+        "placeholder": ""
+      },
+      {
+        "key": "field_inlife_publication_import_notes",
+        "label": "Notatki importu",
+        "name": "publication_import_notes",
+        "aria-label": "",
+        "type": "textarea",
+        "instructions": "Pole techniczne do logowania problemów lub uwag importera.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "34",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "rows": 4,
+        "placeholder": "",
+        "new_lines": "",
+        "allow_in_bindings": 0
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "publications"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+      "the_content",
+      "excerpt",
+      "discussion",
+      "comments",
+      "revisions",
+      "slug",
+      "author",
+      "format",
+      "page_attributes",
+      "featured_image",
+      "categories",
+      "tags",
+      "send-trackbacks"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1710000001
+  }
+]

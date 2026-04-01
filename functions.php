@@ -115,3 +115,6 @@ require_once get_stylesheet_directory() . '/inc/helpers/teams.php';
 require_once get_stylesheet_directory() . '/inc/helpers/laboratories.php';
 require_once get_stylesheet_directory() . '/inc/post-types/projects.php';
 require_once get_stylesheet_directory() . '/inc/helpers/projects.php';
+require_once get_stylesheet_directory() . '/inc/post-types/publications.php';
+require_once get_stylesheet_directory() . '/inc/admin/inlife-publications-admin.php';
+require_once get_stylesheet_directory() . '/inc/helpers/publications.php';
