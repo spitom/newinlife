@@ -1,0 +1,148 @@
+{
+    "key": "group_ff06eccfa424",
+    "title": "People – Basic",
+    "fields": [
+        {
+            "key": "field_f1a5750258b3",
+            "label": "Stanowisko",
+            "name": "person_position",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Krótka nazwa stanowiska wyświetlana na kartach i single osoby.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "np. adiunkt, profesor, specjalista",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_a689ad6b1a47",
+            "label": "E-mail",
+            "name": "person_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Publiczny adres e-mail osoby.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_f99966ad14a4",
+            "label": "Telefon",
+            "name": "person_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Opcjonalny numer telefonu do kontaktu.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_65ea27a7550b",
+            "label": "Krótki bio",
+            "name": "person_short_bio",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Krótki opis osoby do sekcji lidera i skróconych widoków.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "new_lines": "wpautop",
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_cfb1194044a0",
+            "label": "Pokaż w katalogu",
+            "name": "person_show_in_directory",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Włącz, jeśli osoba ma być widoczna w archiwum People.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Tak",
+            "ui_off_text": "Nie"
+        },
+        {
+            "key": "field_69c4d6add566b",
+            "label": "Tytuł naukowy",
+            "name": "person_academic_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Wpisz tylko tytuł przed nazwiskiem. Nie wpisuj imienia i nazwiska.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "np. prof. dr hab., dr, mgr",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "people"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "Pola podstawowe osoby używane w kartach, single i katalogu.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775134098
+}

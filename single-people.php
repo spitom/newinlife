@@ -25,9 +25,7 @@ while ( have_posts() ) :
 
 	<section class="page-section page-section--people-single-content">
 		<div class="<?php echo esc_attr( $container ); ?>">
-
 			<div class="people-single-layout">
-
 				<div class="people-single-main">
 					<?php get_template_part( 'template-parts/people/people-single', 'bio' ); ?>
 				</div>
@@ -36,18 +34,7 @@ while ( have_posts() ) :
 					<?php get_template_part( 'template-parts/people/people-single', 'contact' ); ?>
 					<?php get_template_part( 'template-parts/people/people-single', 'related-context' ); ?>
 				</aside>
-
 			</div>
-
-		</div>
-	</section>
-
-	<section class="page-section page-section--people-single-relations">
-		<div class="<?php echo esc_attr( $container ); ?>">
-
-			<?php get_template_part( 'template-parts/people/people-single', 'teams' ); ?>
-			<?php get_template_part( 'template-parts/people/people-single', 'laboratories' ); ?>
-
 		</div>
 	</section>
 

@@ -53,8 +53,6 @@ function inlife_register_projects_cpt(): void {
 		'hierarchical'          => false,
 		'supports'              => [
 			'title',
-			'editor',
-			'excerpt',
 			'thumbnail',
 			'revisions',
 		],

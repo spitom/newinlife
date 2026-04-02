@@ -3,8 +3,40 @@ defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-$teams = get_field( 'team_memberships', $post_id );
-$labs  = get_field( 'laboratory_memberships', $post_id );
+$teams_raw = function_exists( 'get_field' ) ? get_field( 'team_memberships', $post_id ) : [];
+$labs_raw  = function_exists( 'get_field' ) ? get_field( 'laboratory_memberships', $post_id ) : [];
+
+$teams = [];
+$labs  = [];
+
+if ( is_array( $teams_raw ) ) {
+	foreach ( $teams_raw as $row ) {
+		if ( ! is_array( $row ) ) {
+			continue;
+		}
+
+		$team_id = isset( $row['team'] ) ? (int) $row['team'] : 0;
+		if ( $team_id > 0 ) {
+			$teams[] = $team_id;
+		}
+	}
+}
+
+if ( is_array( $labs_raw ) ) {
+	foreach ( $labs_raw as $row ) {
+		if ( ! is_array( $row ) ) {
+			continue;
+		}
+
+		$lab_id = isset( $row['laboratory'] ) ? (int) $row['laboratory'] : 0;
+		if ( $lab_id > 0 ) {
+			$labs[] = $lab_id;
+		}
+	}
+}
+
+$teams = array_values( array_unique( $teams ) );
+$labs  = array_values( array_unique( $labs ) );
 
 if ( empty( $teams ) && empty( $labs ) ) {
 	return;
@@ -16,36 +48,29 @@ if ( empty( $teams ) && empty( $labs ) ) {
 		<?php esc_html_e( 'Powiązania', 'newinlife' ); ?>
 	</h2>
 
-	<?php if ( $teams ) : ?>
-		<p><strong><?php esc_html_e( 'Zespoły:', 'newinlife' ); ?></strong></p>
-		<ul>
-			<?php foreach ( $teams as $row ) : 
-				$team = $row['team'] ?? null;
-				if ( ! $team ) continue;
-			?>
-				<li>
-					<a href="<?php echo esc_url( get_permalink( $team ) ); ?>">
-						<?php echo esc_html( get_the_title( $team ) ); ?>
+	<?php if ( ! empty( $teams ) ) : ?>
+		<div class="people-single-relations-group">
+			<h3 class="people-single-relations-group__title"><?php esc_html_e( 'Zespoły', 'newinlife' ); ?></h3>
+			<div class="people-single-relations-group__links">
+				<?php foreach ( $teams as $team_id ) : ?>
+					<a href="<?php echo esc_url( get_permalink( $team_id ) ); ?>">
+						<?php echo esc_html( get_the_title( $team_id ) ); ?>
 					</a>
-				</li>
-			<?php endforeach; ?>
-		</ul>
+				<?php endforeach; ?>
+			</div>
+		</div>
 	<?php endif; ?>
 
-	<?php if ( $labs ) : ?>
-		<p><strong><?php esc_html_e( 'Laboratoria:', 'newinlife' ); ?></strong></p>
-		<ul>
-			<?php foreach ( $labs as $row ) : 
-				$lab = $row['laboratory'] ?? null;
-				if ( ! $lab ) continue;
-			?>
-				<li>
-					<a href="<?php echo esc_url( get_permalink( $lab ) ); ?>">
-						<?php echo esc_html( get_the_title( $lab ) ); ?>
+	<?php if ( ! empty( $labs ) ) : ?>
+		<div class="people-single-relations-group">
+			<h3 class="people-single-relations-group__title"><?php esc_html_e( 'Laboratoria', 'newinlife' ); ?></h3>
+			<div class="people-single-relations-group__links">
+				<?php foreach ( $labs as $lab_id ) : ?>
+					<a href="<?php echo esc_url( get_permalink( $lab_id ) ); ?>">
+						<?php echo esc_html( get_the_title( $lab_id ) ); ?>
 					</a>
-				</li>
-			<?php endforeach; ?>
-		</ul>
+				<?php endforeach; ?>
+			</div>
+		</div>
 	<?php endif; ?>
-
 </div>

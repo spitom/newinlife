@@ -1,247 +1,521 @@
 .site-main--people-archive {
+    background: #f8fafc;
+
     .page-section--people-archive {
-        padding-block: clamp(2.5rem, 5vw, 4rem);
+        padding-top: clamp(4rem, 7vw, 6.25rem);
+        padding-bottom: clamp(3.5rem, 6vw, 5rem);
+    }
+
+    /* =========================================================
+	   HEADER
+	========================================================= */
+
+    .people-section-head {
+        margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+    }
+
+    /* =========================================================
+	   SEARCH
+	========================================================= */
+
+    .people-search {
+        margin-bottom: 1rem;
+    }
+
+    .people-search__inner {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0.75rem;
+    }
+
+    .people-search__input.form-control {
+        width: 100%;
+        min-width: 0;
+        height: 44px;
+        min-height: 44px;
+        padding: 0.75rem 1rem;
+        border: 1px solid #dbe4ee;
+        border-radius: 999px;
+        background: #fcfcfc;
+        color: #293458;
+        font-size: 0.95rem;
+        line-height: 1.2;
+        box-shadow: none;
+    }
+
+    .people-search__input.form-control::placeholder {
+        color: #7a869f;
+        opacity: 1;
+    }
+
+    .people-search__button.btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        min-height: 44px;
+        padding: 0.75rem 1.15rem;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1;
+    }
+
+    /* =========================================================
+	   FILTER WRAP
+	========================================================= */
+
+    .people-filters-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    /* =========================================================
+	   TYPE PILLS
+	========================================================= */
+
+    .people-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .people-filters__pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        min-height: 42px;
+        padding: 0.75rem 1.15rem;
+        border: 1px solid #dbe4ee;
+        border-radius: 999px;
+        background: #f4f7fb;
+        color: #293458;
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1;
+        text-decoration: none;
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .people-filters__pill:hover,
+    .people-filters__pill:focus-visible {
+        background: #eaf0f7;
+        border-color: #cfd9e5;
+        color: #293458;
+        text-decoration: none;
+    }
+
+    .people-filters__pill.is-active {
+        background: #293458;
+        border-color: #293458;
+        color: #ffffff;
+        box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.16);
+    }
+
+    .people-filters__pill:focus-visible,
+    .people-alpha-filter__link:focus-visible {
+        outline: 3px solid rgba(49, 169, 225, 0.35);
+        outline-offset: 2px;
+    }
+
+    /* =========================================================
+	   FILTER FORM
+	========================================================= */
+
+    .people-filters-form,
+    .people-alpha-filter {
+        padding: 1.25rem;
+        border: 1px solid #e4ebf2;
+        border-radius: 24px;
+        background: #fcfcfc;
+        box-shadow: 0 10px 24px rgba(18, 38, 63, 0.04);
+    }
+
+    .people-filters-form__label {
+        margin-bottom: 0.4rem;
+        font-weight: 600;
+        color: #293458;
+    }
+
+    .people-filters-form .form-select {
+        height: 44px;
+        min-height: 44px;
+        padding: 0.75rem 2.75rem 0.75rem 1rem;
+        border: 1px solid #dbe4ee;
+        border-radius: 999px;
+        background-color: #fcfcfc;
+        color: #293458;
+        font-size: 0.95rem;
+        line-height: 1.2;
+        box-shadow: none;
+    }
+
+    .people-filters-form .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        min-height: 44px;
+        padding: 0.75rem 1.15rem;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1;
+    }
+
+    .people-filters-form .btn-primary {
+        box-shadow: none;
+    }
+
+    .people-filters-form .btn-outline-primary {
+        background: #f4f7fb;
+        color: #293458;
+        border-color: #dbe4ee;
+        color: #293458;
+        box-shadow: none;
+    }
+
+    .people-filters-form .btn-outline-primary:hover,
+    .people-filters-form .btn-outline-primary:focus-visible {
+        background: #eaf0f7;
+        border-color: #cfd9e5;
+        color: #293458;
+        box-shadow: none;
+    }
+
+    .people-filters-form__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    /* =========================================================
+	   ALPHABET FILTER
+	========================================================= */
+
+    .people-alpha-filter {
+        margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .people-alpha-filter__inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+    }
+
+    .people-alpha-filter__link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        height: 36px;
+        min-height: 36px;
+        padding: 0.35rem 0.55rem;
+        border-radius: 999px;
+        background: #f4f7fb;
+        border: 1px solid #dbe4ee;
+        color: #293458;
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1;
+        text-decoration: none;
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .people-alpha-filter__link:hover,
+    .people-alpha-filter__link:focus-visible {
+        background: #eaf0f7;
+        border-color: #cfd9e5;
+        color: #293458;
+        text-decoration: none;
+    }
+
+    .people-alpha-filter__link.is-active {
+        background: #293458;
+        border-color: #293458;
+        color: #ffffff;
+        box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.16);
+    }
+
+    /* =========================================================
+	   DIRECTORY LIST
+	========================================================= */
+
+    .people-directory-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .people-list-item {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+        gap: 1.5rem;
+        padding: 1.35rem 1.4rem;
+        border: 1px solid #e4ebf2;
+        border-radius: 24px;
+        background: #fcfcfc;
+        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
+    }
+
+    .people-list-item__main {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .people-list-item__head {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+    }
+
+    .people-list-item__type {
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
+        padding: 0.38rem 0.75rem;
+        border-radius: 999px;
+        background: #e9eff6;
+        color: #4b5b7a;
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .people-list-item__title {
+        margin: 0;
+        font-size: clamp(1.35rem, 2vw, 1.7rem);
+        line-height: 1.2;
+        color: #293458;
+    }
+
+    .people-list-item__title-link,
+    .people-list-item__title-text {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .people-list-item__title-link:hover,
+    .people-list-item__title-link:focus {
+        text-decoration: underline;
+    }
+
+    .people-list-item__position {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.55;
+        color: #5f6b85;
+    }
+
+    .people-list-item__excerpt {
+        margin: 0;
+        max-width: 72ch;
+        color: #4b5565;
+        line-height: 1.72;
+    }
+
+    .people-list-item__relations {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .people-list-item__relation-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 0.75rem;
+        align-items: baseline;
+    }
+
+    .people-list-item__relation-label {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #7a869f;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    .people-list-item__relation-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .people-list-item__relation-link,
+    .people-list-item__relation-text {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        background: #f4f7fb;
+        color: #293458;
+        font-size: 0.85rem;
+        font-weight: 600;
+        line-height: 1.2;
+        text-decoration: none;
+    }
+
+    .people-list-item__relation-link:hover,
+    .people-list-item__relation-link:focus {
+        text-decoration: underline;
+    }
+
+    .people-list-item__meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+        padding-left: 1rem;
+        border-left: 1px solid #e4ebf2;
+        min-width: 0;
+    }
+
+    .people-list-item__meta-row {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        color: #4b5565;
+        line-height: 1.6;
+    }
+
+    .people-list-item__meta-row a {
+        color: #293458;
+        text-decoration: none;
+        word-break: break-word;
+    }
+
+    .people-list-item__meta-row a:hover,
+    .people-list-item__meta-row a:focus {
+        text-decoration: underline;
+    }
+
+    .people-list-item__meta-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: #7a869f;
+    }
+
+    .people-list-item__cta-wrap {
+        margin: auto 0 0;
+        padding-top: 0.5rem;
+    }
+
+    .people-list-item__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-weight: 700;
+        color: #293458;
+        text-decoration: none;
+    }
+
+    .people-list-item__cta::after {
+        content: "→";
+    }
+
+    .people-list-item__cta:hover,
+    .people-list-item__cta:focus {
+        text-decoration: underline;
+    }
+
+    /* =========================================================
+	   EMPTY / PAGINATION
+	========================================================= */
+
+    .people-empty {
+        padding: 1.5rem 1.75rem;
+        border: 1px solid #e4ebf2;
+        border-radius: 24px;
+        background: #f8fafc;
+        color: #5f6b85;
+    }
+
+    .people-empty__text {
+        margin: 0;
+    }
+
+    .people-pagination {
+        margin-top: clamp(1.5rem, 3vw, 2.5rem);
     }
 }
 
-.people-filters-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-}
+@media (max-width: 1199.98px) {
+    .site-main--people-archive {
+        .people-filters__pill {
+            min-height: 46px;
+            padding: 0.7rem 1rem;
+            font-size: 0.9rem;
+        }
 
-.people-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
+        .people-alpha-filter__inner {
+            gap: 0.35rem;
+        }
 
-.people-filters__pill {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.45rem 0.9rem;
-    border-radius: 999px;
-    background: rgba(47, 70, 108, 0.08);
-    color: #2f466c;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.people-filters__pill:hover,
-.people-filters__pill:focus-visible {
-    background: rgba(47, 70, 108, 0.14);
-    color: #2f466c;
-    text-decoration: none;
-}
-
-.people-filters__pill.is-active {
-    background: #2f466c;
-    color: #fff;
-}
-
-.people-filters__pill:focus-visible {
-    outline: 3px solid rgba(49, 169, 225, 0.35);
-    outline-offset: 2px;
-}
-
-.people-filters-form {
-    padding: 1rem 1.125rem;
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 10px 24px rgba(18, 38, 63, 0.04);
-}
-
-.people-filters-form__label {
-    margin-bottom: 0.4rem;
-    font-weight: 600;
-    color: #293458;
-}
-
-.people-filters-form__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.people-directory {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-}
-
-.people-card {
-    height: 100%;
-}
-
-.people-card__link {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: hidden;
-    border: 1px solid rgba(47, 70, 108, 0.12);
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 10px 28px rgba(18, 38, 63, 0.05);
-    color: inherit;
-    text-decoration: none;
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
-}
-
-.people-card__link:hover,
-.people-card__link:focus-visible {
-    transform: translateY(-2px);
-    border-color: rgba(47, 70, 108, 0.2);
-    box-shadow: 0 18px 38px rgba(18, 38, 63, 0.08);
-    text-decoration: none;
-}
-
-.people-card__link:focus-visible {
-    outline: 3px solid rgba(49, 169, 225, 0.3);
-    outline-offset: 2px;
-}
-
-.people-card__link,
-.people-card__link:hover,
-.people-card__link:focus,
-.people-card__link:focus-visible,
-.people-card__link:active,
-.people-card__link:visited {
-    color: inherit;
-    text-decoration: none;
-}
-
-.people-card__media {
-    position: relative;
-    aspect-ratio: 4 / 3;
-    background: linear-gradient(135deg, rgba(47, 70, 108, 0.06) 0%, rgba(49, 169, 225, 0.08) 100%);
-}
-
-.people-card__image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.people-card__placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(47, 70, 108, 0.08) 0%, rgba(107, 168, 115, 0.12) 100%);
-}
-
-.people-card__body {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem 1rem 1.125rem;
-}
-
-.people-card__type {
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: #2f466c;
-}
-
-.people-card__title {
-    margin: 0;
-    font-size: 1.15rem;
-    font-weight: 700;
-    line-height: 1.3;
-    color: #293458;
-}
-
-.people-card__position {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: rgba(41, 52, 88, 0.82);
-}
-
-.people-card__meta {
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: rgba(41, 52, 88, 0.74);
-    word-break: break-word;
-}
-
-.people-card__cta {
-    margin-top: auto;
-    padding-top: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #2f466c;
-}
-
-.people-card__cta::after {
-    content: " →";
-}
-
-.people-card--featured .people-card__link {
-    border-color: rgba(49, 169, 225, 0.28);
-    box-shadow: 0 18px 42px rgba(18, 38, 63, 0.08);
-}
-
-.people-empty {
-    padding: 1.5rem;
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
-}
-
-.people-empty__text {
-    margin: 0;
-    color: #293458;
-}
-
-.people-pagination {
-    margin-top: clamp(1.5rem, 3vw, 2.5rem);
-}
-
-@media (min-width: 768px) {
-    .people-directory {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        .people-alpha-filter__link {
+            min-width: 34px;
+            height: 34px;
+            min-height: 34px;
+            padding: 0.3rem 0.45rem;
+            font-size: 0.78rem;
+        }
     }
 }
 
-@media (min-width: 1200px) {
-    .people-directory {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+@media (max-width: 991.98px) {
+    .site-main--people-archive {
+        .people-list-item {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .people-list-item__meta {
+            padding-left: 0;
+            padding-top: 1rem;
+            border-left: 0;
+            border-top: 1px solid #e4ebf2;
+        }
     }
 }
 
+@media (max-width: 767.98px) {
+    .site-main--people-archive {
+        .people-search__inner {
+            grid-template-columns: 1fr;
+        }
 
-.people-section-head {
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-}
+        .people-search__button,
+        .people-filters-form .btn {
+            width: 100%;
+        }
 
-.people-search {
-    margin-bottom: 1rem;
-}
+        .people-list-item {
+            padding: 1.15rem;
+            border-radius: 20px;
+        }
 
-.people-search__inner {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
+        .people-list-item__title {
+            font-size: 1.25rem;
+        }
 
-.people-search__input {
-    flex: 1 1 320px;
-    min-width: 0;
-}
-
-.people-search__button {
-    flex: 0 0 auto;
+        .people-filters-form,
+        .people-alpha-filter {
+            border-radius: 20px;
+        }
+    }
 }

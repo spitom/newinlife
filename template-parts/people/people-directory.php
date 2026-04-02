@@ -3,9 +3,9 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <?php if ( have_posts() ) : ?>
-	<div class="people-directory">
+	<div class="people-directory-list">
 		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'template-parts/people/people', 'card' ); ?>
+			<?php get_template_part( 'template-parts/people/people', 'list-item' ); ?>
 		<?php endwhile; ?>
 	</div>
 

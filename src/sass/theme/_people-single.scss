@@ -1,156 +1,244 @@
 .site-main--people-single {
+    background: #f8fafc;
 
-    .page-section--people-single-header,
+    .page-section--people-single-header {
+        padding-top: clamp(4rem, 7vw, 6rem);
+        padding-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
     .page-section--people-single-content {
-        padding-block: clamp(2.5rem, 5vw, 4rem);
+        padding-bottom: clamp(3.5rem, 6vw, 5rem);
     }
 }
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 .people-single-header {
     display: grid;
-    gap: 1.5rem;
+    gap: 2rem;
+    align-items: start;
+}
+
+.people-single-header--has-photo {
+    grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+}
+
+.people-single-header--no-photo {
+    grid-template-columns: minmax(0, 820px);
+}
+
+.people-single-header__media {
+    max-width: 320px;
 }
 
 .people-single-header__image {
+    display: block;
     width: 100%;
-    border-radius: 1.25rem;
+    height: auto;
+    border-radius: 1.5rem;
+    box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
 }
+
+.people-single-header__content {
+    min-width: 0;
+}
+
+.people-single-header__title {
+    margin-bottom: 1rem;
+}
+
+.people-single-header__position {
+    margin-bottom: 0.75rem;
+}
+
+.people-single-header__lead {
+    max-width: 72ch;
+    color: #4b5565;
+    line-height: 1.75;
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
 
 .people-single-layout {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.people-single-main,
+.people-single-aside {
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
 }
 
-.people-single-panel {
-    padding: 1.25rem;
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
-}
+/* =========================================================
+   PANELS / SECTIONS
+========================================================= */
 
-@media (min-width: 992px) {
-    .people-single-layout {
-        grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
-    }
-
-    .people-single-header {
-        grid-template-columns: 280px 1fr;
-        align-items: center;
-    }
-}
-
-.people-related {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(2rem, 4vw, 3rem);
-    margin-top: clamp(2rem, 5vw, 3rem);
-}
-
-.people-related__section {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.people-related__leader {
-    display: grid;
-    grid-template-columns: 1fr;
-    max-width: 420px;
-}
-
-.people-related__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-}
-
-@media (min-width: 768px) {
-    .people-related__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1200px) {
-    .people-related__grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.person-hero {
-    padding: 5rem 0;
-
-    &__photo {
-        width: 100%;
-    }
-
-    &__image,
-    &__placeholder {
-        width: 100%;
-        height: 320px;
-        object-fit: cover;
-        border-radius: 16px;
-        background: #e7edf4;
-    }
-
-    &__name {
-        font-size: 2.25rem;
-        color: #293458;
-    }
-
-    &__position {
-        margin-top: 0.5rem;
-        color: #6c7890;
-        font-weight: 600;
-    }
-}
-
-.relation-card {
-    background: #fcfcfc;
+.people-single-panel,
+.people-single-section {
     padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
-
-    &__title {
-        font-size: 1.125rem;
-    }
-
-    a {
-        color: #293458;
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-}
-
-.page-section--people-single-relations {
-    padding: 0 0 5rem;
-}
-
-.person-relations+.person-relations {
-    margin-top: 3rem;
-}
-
-.relation-card {
+    border: 1px solid #e4ebf2;
+    border-radius: 1.5rem;
     background: #fcfcfc;
-    padding: 1.5rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
+    box-shadow: 0 10px 24px rgba(18, 38, 63, 0.04);
+}
 
-    &__title {
-        font-size: 1.125rem;
+.people-single-panel__title,
+.people-single-section__title {
+    margin-bottom: 1rem;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: #293458;
+}
+
+.people-single-section__content {
+    color: #4b5565;
+
+    p,
+    li {
+        line-height: 1.75;
+    }
+
+    >*:last-child {
         margin-bottom: 0;
     }
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.people-single-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.people-single-contact-list__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.people-single-contact-list__label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #7a869f;
+}
+
+.people-single-contact-list__item a,
+.people-single-contact-list__item span {
+    color: #293458;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.people-single-contact-list__item a {
+    text-decoration: none;
+}
+
+.people-single-contact-list__item a:hover,
+.people-single-contact-list__item a:focus {
+    text-decoration: underline;
+}
+
+.people-single-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
 
     a {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        background: #f4f7fb;
         color: #293458;
+        font-size: 0.85rem;
+        font-weight: 600;
         text-decoration: none;
     }
 
     a:hover,
     a:focus {
         text-decoration: underline;
+    }
+}
+
+/* =========================================================
+   RELATIONS
+========================================================= */
+
+.people-single-relations-group+.people-single-relations-group {
+    margin-top: 1.25rem;
+}
+
+.people-single-relations-group__title {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #293458;
+}
+
+.people-single-relations-group__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        background: #f4f7fb;
+        color: #293458;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+        text-decoration: underline;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .people-single-header--has-photo,
+    .people-single-header--no-photo,
+    .people-single-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .people-single-header__media {
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 767.98px) {
+
+    .people-single-panel,
+    .people-single-section {
+        padding: 1.25rem;
+        border-radius: 1.25rem;
     }
 }

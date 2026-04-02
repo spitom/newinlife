@@ -9,7 +9,12 @@ $current_lab    = isset( $_GET['lab'] ) ? (int) $_GET['lab'] : 0;
 $archive_url = get_post_type_archive_link( 'people' );
 ?>
 
-<form class="people-search" method="get" action="<?php echo esc_url( $archive_url ); ?>">
+<form
+	class="people-search"
+	method="get"
+	action="<?php echo esc_url( $archive_url ); ?>"
+	onsubmit="var input=this.querySelector('#people-search-input'); if(input && !input.value.trim()){ window.location=this.action; return false; }"
+>
 	<label class="visually-hidden" for="people-search-input">
 		<?php esc_html_e( 'Szukaj osoby', 'newinlife' ); ?>
 	</label>

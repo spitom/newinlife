@@ -51,8 +51,6 @@ function inlife_register_research_post_types() {
 			),
 			'supports'            => array(
 				'title',
-				'editor',
-				'excerpt',
 				'thumbnail',
 				'revisions',
 				'page-attributes',
@@ -104,8 +102,6 @@ function inlife_register_research_post_types() {
 			),
 			'supports'            => array(
 				'title',
-				'editor',
-				'excerpt',
 				'thumbnail',
 				'revisions',
 				'page-attributes',

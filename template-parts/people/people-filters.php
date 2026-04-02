@@ -9,7 +9,7 @@ $current_s    = get_query_var( 's' );
 $types = get_terms(
 	[
 		'taxonomy'   => 'people_type',
-		'hide_empty' => true,
+		'hide_empty' => false,
 	]
 );
 
@@ -53,22 +53,25 @@ if ( $current_lab ) {
 ?>
 
 <div class="people-filters-wrap">
-	<?php if ( ! empty( $types ) && ! is_wp_error( $types ) ) : ?>
+	<?php if ( ! empty( $types ) && is_array( $types ) && ! is_wp_error( $types ) ) : ?>
 		<div class="people-filters people-filters--pills" aria-label="<?php echo esc_attr__( 'Filtruj według typu osoby', 'newinlife' ); ?>">
 			<a
 				class="people-filters__pill<?php echo '' === $current_type ? ' is-active' : ''; ?>"
+				<?php echo '' === $current_type ? 'aria-current="page"' : ''; ?>
 				href="<?php echo esc_url( add_query_arg( $all_url_args, $archive_url ) ); ?>"
 			>
 				<?php esc_html_e( 'Wszyscy', 'newinlife' ); ?>
 			</a>
 
 			<?php foreach ( $types as $type ) : ?>
+				<?php if ( ! $type || empty( $type->slug ) ) { continue; } ?>
 				<?php
 				$type_url_args = $all_url_args;
 				$type_url_args['people_type'] = $type->slug;
 				?>
 				<a
 					class="people-filters__pill<?php echo $current_type === $type->slug ? ' is-active' : ''; ?>"
+					<?php echo $current_type === $type->slug ? 'aria-current="page"' : ''; ?>
 					href="<?php echo esc_url( add_query_arg( $type_url_args, $archive_url ) ); ?>"
 				>
 					<?php echo esc_html( $type->name ); ?>
@@ -123,7 +126,7 @@ if ( $current_lab ) {
 						<?php esc_html_e( 'Filtruj', 'newinlife' ); ?>
 					</button>
 
-					<a class="btn btn-outline-secondary" href="<?php echo esc_url( get_post_type_archive_link( 'people' ) ); ?>">
+					<a class="btn btn-outline-primary" href="<?php echo esc_url( get_post_type_archive_link( 'people' ) ); ?>">
 						<?php esc_html_e( 'Wyczyść', 'newinlife' ); ?>
 					</a>
 				</div>

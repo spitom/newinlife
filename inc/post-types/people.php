@@ -45,9 +45,7 @@ if ( ! function_exists( 'inlife_register_people_cpt' ) ) {
 			],
 			'supports'            => [
 				'title',
-				'editor',
 				'thumbnail',
-				'excerpt',
 				'revisions',
 			],
 			'exclude_from_search' => false,

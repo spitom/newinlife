@@ -19,6 +19,7 @@ $container = function_exists( 'inlife_container_class' ) ? inlife_container_clas
 			<?php get_template_part( 'template-parts/people/people', 'archive-header' ); ?>
 			<?php get_template_part( 'template-parts/people/people', 'search' ); ?>
 			<?php get_template_part( 'template-parts/people/people', 'filters' ); ?>
+			<?php get_template_part( 'template-parts/people/people', 'alpha-filter' ); ?>
 			<?php get_template_part( 'template-parts/people/people', 'directory' ); ?>
 
 		</div>

@@ -54,13 +54,9 @@ if ( ! function_exists( 'inlife_get_people_archive_candidate_ids_by_relation' ) 
 }
 
 if ( ! function_exists( 'inlife_modify_people_archive_query' ) ) {
-	/**
-	 * Modifies People archive main query.
-	 *
-	 * @param WP_Query $query Query object.
-	 * @return void
-	 */
 	function inlife_modify_people_archive_query( $query ) {
+		global $wpdb;
+
 		if ( is_admin() || ! $query->is_main_query() ) {
 			return;
 		}
@@ -75,19 +71,29 @@ if ( ! function_exists( 'inlife_modify_people_archive_query' ) ) {
 		$query->set( 'order', 'ASC' );
 
 		$meta_query = [
+			'relation' => 'OR',
 			[
 				'key'     => 'person_show_in_directory',
 				'value'   => '1',
 				'compare' => '=',
 			],
+			[
+				'key'     => 'person_show_in_directory',
+				'compare' => 'NOT EXISTS',
+			],
 		];
 
 		$tax_query = [];
 
-		$current_type = isset( $_GET['people_type'] ) ? sanitize_text_field( wp_unslash( $_GET['people_type'] ) ) : '';
-		$current_team = isset( $_GET['team'] ) ? (int) $_GET['team'] : 0;
-		$current_lab  = isset( $_GET['lab'] ) ? (int) $_GET['lab'] : 0;
+		$current_type   = isset( $_GET['people_type'] ) ? sanitize_text_field( wp_unslash( $_GET['people_type'] ) ) : '';
+		$current_team   = isset( $_GET['team'] ) ? (int) $_GET['team'] : 0;
+		$current_lab    = isset( $_GET['lab'] ) ? (int) $_GET['lab'] : 0;
+		$current_letter = isset( $_GET['letter'] ) ? strtoupper( sanitize_text_field( wp_unslash( $_GET['letter'] ) ) ) : '';
 
+		if ( $current_letter && preg_match( '/^[A-Z]$/', $current_letter ) ) {
+			$query->set( 'people_archive_letter', $current_letter );
+		}
+		
 		if ( $current_type ) {
 			$tax_query[] = [
 				'taxonomy' => 'people_type',
@@ -100,14 +106,21 @@ if ( ! function_exists( 'inlife_modify_people_archive_query' ) ) {
 			$query->set( 'tax_query', $tax_query );
 		}
 
-		/**
-		 * Guard for pre-ACF stage:
-		 * - archive still works,
-		 * - people_type still works,
-		 * - team/lab relation filters are skipped until ACF is available.
-		 */
 		if ( ! function_exists( 'get_field' ) ) {
 			$query->set( 'meta_query', $meta_query );
+
+			if ( $current_letter && preg_match( '/^[A-Z]$/', $current_letter ) ) {
+				add_filter(
+					'posts_where',
+					static function ( $where ) use ( $wpdb, $current_letter ) {
+						return $where . $wpdb->prepare(
+							" AND {$wpdb->posts}.post_title LIKE %s",
+							$wpdb->esc_like( $current_letter ) . '%'
+						);
+					}
+				);
+			}
+
 			return;
 		}
 
@@ -150,6 +163,36 @@ if ( ! function_exists( 'inlife_modify_people_archive_query' ) ) {
 		}
 
 		$query->set( 'meta_query', $meta_query );
+
+		
 	}
 	add_action( 'pre_get_posts', 'inlife_modify_people_archive_query' );
 }
+
+if ( ! function_exists( 'inlife_filter_people_archive_by_letter' ) ) {
+	function inlife_filter_people_archive_by_letter( $where, $query ) {
+		global $wpdb;
+
+		if ( is_admin() || ! $query->is_main_query() ) {
+			return $where;
+		}
+
+		if ( ! $query->is_post_type_archive( 'people' ) ) {
+			return $where;
+		}
+
+		$letter = $query->get( 'people_archive_letter' );
+
+		if ( ! $letter || ! preg_match( '/^[A-Z]$/', $letter ) ) {
+			return $where;
+		}
+
+		$where .= $wpdb->prepare(
+			" AND {$wpdb->posts}.post_title LIKE %s",
+			$wpdb->esc_like( $letter ) . '%'
+		);
+
+		return $where;
+	}
+}
+add_filter( 'posts_where', 'inlife_filter_people_archive_by_letter', 10, 2 );
