@@ -1,0 +1,402 @@
+{
+  "key": "group_inlife_partners_fields",
+  "title": "Partner — pola",
+  "fields": [
+    {
+      "key": "field_inlife_partner_tab_basic",
+      "label": "Podstawowe informacje",
+      "name": "",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0,
+      "selected": 0
+    },
+    {
+      "key": "field_inlife_partner_logo",
+      "label": "Logo partnera",
+      "name": "partner_logo",
+      "aria-label": "",
+      "type": "image",
+      "instructions": "Logo partnera (preferowany SVG lub PNG).",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array",
+      "library": "all",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": "",
+      "preview_size": "medium"
+    },
+    {
+      "key": "field_inlife_partner_hero_image",
+      "label": "Obraz hero partnera",
+      "name": "partner_hero_image",
+      "aria-label": "",
+      "type": "image",
+      "instructions": "Opcjonalny obraz hero dla strony partnera.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array",
+      "library": "all",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": "",
+      "preview_size": "large"
+    },
+    {
+      "key": "field_inlife_partner_short_description",
+      "label": "Krótki opis",
+      "name": "partner_short_description",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Krótki opis używany na karcie partnera i w popupie mapy.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "rows": 3,
+      "placeholder": "",
+      "new_lines": "br"
+    },
+    {
+      "key": "field_inlife_partner_tab_location",
+      "label": "Lokalizacja",
+      "name": "",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0,
+      "selected": 0
+    },
+    {
+      "key": "field_inlife_partner_country",
+      "label": "Kraj",
+      "name": "partner_country",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "33",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_inlife_partner_city",
+      "label": "Miasto",
+      "name": "partner_city",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "33",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_inlife_partner_address",
+      "label": "Adres",
+      "name": "partner_address",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "34",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "rows": 3,
+      "placeholder": "",
+      "new_lines": "br"
+    },
+    {
+      "key": "field_inlife_partner_lat",
+      "label": "Szerokość geograficzna (lat)",
+      "name": "partner_lat",
+      "aria-label": "",
+      "type": "number",
+      "instructions": "Np. 52.229770. Wymagane, jeśli partner ma być widoczny na mapie.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "min": "",
+      "max": "",
+      "placeholder": "",
+      "step": "0.000001",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_inlife_partner_lng",
+      "label": "Długość geograficzna (lng)",
+      "name": "partner_lng",
+      "aria-label": "",
+      "type": "number",
+      "instructions": "Np. 21.011780. Wymagane, jeśli partner ma być widoczny na mapie.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "min": "",
+      "max": "",
+      "placeholder": "",
+      "step": "0.000001",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_inlife_partner_tab_contact",
+      "label": "Kontakt i linki",
+      "name": "",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0,
+      "selected": 0
+    },
+    {
+      "key": "field_inlife_partner_website",
+      "label": "Strona www",
+      "name": "partner_website",
+      "aria-label": "",
+      "type": "url",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": ""
+    },
+    {
+      "key": "field_inlife_partner_email",
+      "label": "E-mail",
+      "name": "partner_email",
+      "aria-label": "",
+      "type": "email",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": ""
+    },
+    {
+      "key": "field_inlife_partner_phone",
+      "label": "Telefon",
+      "name": "partner_phone",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_inlife_partner_cooperation_link",
+      "label": "Link do współpracy / projektu",
+      "name": "partner_cooperation_link",
+      "aria-label": "",
+      "type": "url",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "placeholder": ""
+    },
+    {
+      "key": "field_inlife_partner_cooperation_label",
+      "label": "Etykieta linku do współpracy",
+      "name": "partner_cooperation_label",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "Opcjonalnie. Jeśli puste, w kodzie zadziała fallback „Zobacz współpracę”.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_inlife_partner_tab_settings",
+      "label": "Ustawienia",
+      "name": "",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0,
+      "selected": 0
+    },
+    {
+      "key": "field_inlife_partner_featured_on_map",
+      "label": "Pokazuj na mapie",
+      "name": "partner_featured_on_map",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "Odznacz, jeśli partner ma pozostać w katalogu, ale nie ma być pokazywany na mapie.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Tak",
+      "ui_off_text": "Nie"
+    },
+    {
+      "key": "field_inlife_partner_is_light",
+      "label": "Wymuś uproszczony widok",
+      "name": "partner_is_light",
+      "aria-label": "",
+      "type": "true_false",
+      "instructions": "Włącz, jeśli partner ma mieć uproszczony widok bez rozbudowanej sekcji treści.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "50",
+        "class": "",
+        "id": ""
+      },
+      "message": "",
+      "default_value": 0,
+      "ui": 1,
+      "ui_on_text": "Tak",
+      "ui_off_text": "Nie"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "partners"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [],
+  "active": true,
+  "description": "Pola ACF dla CPT partners w module Sieć / Network.",
+  "show_in_rest": 1,
+  "modified": 1775554032
+}

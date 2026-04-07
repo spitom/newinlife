@@ -1,0 +1,94 @@
+{
+    "key": "group_abc39a637d51",
+    "title": "Teams – Hero & Overview",
+    "fields": [
+        {
+            "key": "field_1ac62db6340f",
+            "label": "Lead zespołu",
+            "name": "team_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Krótki lead do hero. Jeśli puste, szablon może użyć excerpt\/content fallback.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_e04bb15498dc",
+            "label": "Zdjęcie hero",
+            "name": "team_hero_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Wyróżnik zdjęciowy zespołu do hero.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "mime_types": "jpg,jpeg,png,webp",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0
+        },
+        {
+            "key": "field_9698d75bb145",
+            "label": "Opis działalności",
+            "name": "team_description",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Opcjonalny opis działalności zespołu. Jeśli nie używasz, możesz zostać przy the_content().",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "default_value": "",
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "teams"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Pola hero i overview dla strony zespołu.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775553575
+}

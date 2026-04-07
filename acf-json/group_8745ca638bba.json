@@ -1,0 +1,93 @@
+{
+    "key": "group_8745ca638bba",
+    "title": "Laboratories – Methods",
+    "fields": [
+        {
+            "key": "field_fb8315f25cf5",
+            "label": "Metody i analizy",
+            "name": "laboratory_methods",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Sekcja Oferowane metody i analizy.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "layout": "block",
+            "button_label": "Dodaj metodę lub analizę",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_44757bda769c",
+                    "label": "Tytuł",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Nazwa metody lub analizy.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_fb8315f25cf5"
+                },
+                {
+                    "key": "field_a2497bcb2561",
+                    "label": "Opis",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Krótki opis zakresu i przeznaczenia.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 4,
+                    "new_lines": "wpautop",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_fb8315f25cf5"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "laboratories"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Sekcja metod i analiz laboratorium.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775553585
+}

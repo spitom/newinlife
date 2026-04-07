@@ -448,6 +448,56 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 
 		pll_register_string('publications_link_view', 'Zobacz publikację', $group);
 		pll_register_string('publications_link_new_tab', 'otwiera się w nowej karcie', $group);
+
+		$group = 'InLife Network';
+
+		// Hero / landing.
+		pll_register_string( 'network_kicker', 'Sieć współpracy', $group );
+		pll_register_string( 'network_default_lead', 'Rozwijamy międzynarodową sieć współpracy naukowej i instytucjonalnej, łącząc partnerów z różnych regionów świata w obszarach żywności, zdrowia i nauk o zwierzętach.', $group );
+
+		// Filters.
+		pll_register_string( 'network_filters_heading', 'Filtry partnerów', $group );
+		pll_register_string( 'network_filter_toolbar_label', 'Filtruj partnerów według regionu', $group );
+		pll_register_string( 'network_filter_all', 'Wszyscy partnerzy', $group );
+
+		// Map.
+		pll_register_string( 'network_map_heading', 'Partnerzy na świecie', $group );
+		pll_register_string( 'network_map_intro', 'Mapa pokazuje lokalizacje naszych partnerów. Pełna lista partnerów znajduje się poniżej i pozostaje podstawową, w pełni dostępną formą nawigacji.', $group );
+		pll_register_string( 'network_map_aria_label', 'Interaktywna mapa partnerów', $group );
+		pll_register_string( 'network_map_empty', 'Brak partnerów z przypisanymi współrzędnymi.', $group );
+		pll_register_string( 'network_map_noscript', 'Mapa wymaga obsługi JavaScript. Skorzystaj z listy partnerów poniżej.', $group );
+		pll_register_string( 'network_map_popup_link', 'Zobacz partnera', $group );
+
+		// Listing / cards.
+		pll_register_string( 'network_listing_heading', 'Lista partnerów', $group );
+		pll_register_string( 'network_listing_empty', 'Brak partnerów do wyświetlenia.', $group );
+		pll_register_string( 'network_partner_regions_aria', 'Regiony partnera', $group );
+		pll_register_string( 'network_partner_card_link', 'Zobacz partnera', $group );
+
+		// Single.
+		pll_register_string( 'network_partner_kicker', 'Partner sieci', $group );
+		pll_register_string( 'network_breadcrumbs_label', 'Okruszki', $group );
+		pll_register_string( 'network_partner_info_heading', 'Informacje o partnerze', $group );
+		pll_register_string( 'network_partner_light_fallback', 'Profil %s zawiera podstawowe informacje kontaktowe i odnośniki do współpracy.', $group );
+		pll_register_string( 'network_partner_visit_website', 'Odwiedź stronę partnera', $group );
+		pll_register_string( 'network_partner_cooperation_cta', 'Zobacz współpracę', $group );
+		pll_register_string( 'network_partner_data_heading', 'Dane partnera', $group );
+
+		// Single labels.
+		pll_register_string( 'network_label_country', 'Kraj', $group );
+		pll_register_string( 'network_label_city', 'Miasto', $group );
+		pll_register_string( 'network_label_address', 'Adres', $group );
+		pll_register_string( 'network_label_email', 'E-mail', $group );
+		pll_register_string( 'network_label_phone', 'Telefon', $group );
+		pll_register_string( 'network_label_website', 'Strona www', $group );
+
+		// Archive.
+		pll_register_string( 'network_archive_kicker', 'Sieć współpracy', $group );
+		pll_register_string( 'network_archive_lead', 'Poznaj instytucje i organizacje współpracujące z Instytutem w ramach międzynarodowej sieci partnerstw naukowych i instytucjonalnych.', $group );
+		pll_register_string( 'network_region_title', 'Partnerzy: %s', $group );
+		pll_register_string( 'network_region_lead', 'Zobacz partnerów współpracujących z Instytutem w regionie: %s.', $group );
+		pll_register_string( 'network_region_all_cta', 'Zobacz wszystkich partnerów', $group );
+		pll_register_string( 'network_region_empty', 'Brak partnerów w tym regionie.', $group );
 	}
 
 	add_action( 'init', 'inlife_register_polylang_strings' );

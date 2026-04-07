@@ -1,0 +1,82 @@
+{
+    "key": "group_3e77610d10ff",
+    "title": "Teams – Related Content Settings",
+    "fields": [
+        {
+            "key": "field_4ad721e33d69",
+            "label": "Tag aktualności zespołu",
+            "name": "team_news_tag",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Opcjonalny tag\/slug używany później do pobierania aktualności zespołowych.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placeholder": "np. immunologia-zywnosci",
+            "default_value": "",
+            "maxlength": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_441ac0152cb2",
+            "label": "Link do pełnej listy projektów",
+            "name": "team_projects_archive_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Opcjonalny link do pełnej podstrony projektów zespołu.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_9519053da618",
+            "label": "Link do pełnej listy publikacji",
+            "name": "team_publications_archive_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Opcjonalny link do pełnej podstrony publikacji zespołu.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "teams"
+            }
+        ]
+    ],
+    "menu_order": 20,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Ustawienia pomocnicze dla relacji do projektów, publikacji i aktualności. Bez duplikowania relacji people.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775553643
+}

@@ -146,10 +146,10 @@ if ( ! function_exists( 'inlife_register_people_acf_fields' ) ) {
 
 					[
 						'key'           => 'field_inlife_person_research_interests',
-						'label'         => __( 'Zainteresowania badawcze', 'newinlife' ),
+						'label'         => __( 'Najważniejsze publikacje', 'newinlife' ),
 						'name'          => 'person_research_interests',
 						'type'          => 'textarea',
-						'instructions'  => __( 'Pole przeznaczone głównie dla pracowników naukowych.', 'newinlife' ),
+						'instructions'  => __( 'Pole przeznaczone głównie dla pracowników naukowych. Możesz wkleić ręcznie przygotowaną listę najważniejszych publikacji.', 'newinlife' ),
 						'required'      => 0,
 						'wrapper'       => [
 							'width' => '100',

@@ -1,0 +1,74 @@
+{
+    "key": "group_69cb9ec616dfe",
+    "title": "Project Hub - Settings",
+    "fields": [
+        {
+            "key": "field_projects_safe_hub_logo",
+            "label": "Logo strony-huba",
+            "name": "project_hub_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Logo używane w hero strony typu Project Hub.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_project_hub_lead",
+            "label": "Lead strony-huba",
+            "name": "project_hub_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Używane na stronach typu Project Hub.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/template-project-hub.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775553520
+}

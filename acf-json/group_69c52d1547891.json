@@ -1,0 +1,124 @@
+{
+    "key": "group_69c52d1547891",
+    "title": "Teams – Projects",
+    "fields": [
+        {
+            "key": "field_69c52d1550cc0",
+            "label": "Aktualne projekty badawcze",
+            "name": "team_projects",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Sekcja Osiągnięć w przełączanym panelu single Team.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Dodaj kolejne osiągnięcia naukowe zespołu",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_69c52d15549a9",
+                    "label": "Opis projektu",
+                    "name": "project_content",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Opis projektu badawczego.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 1,
+                    "delay": 0,
+                    "parent_repeater": "field_69c52d1550cc0"
+                },
+                {
+                    "key": "field_69c52d155965a",
+                    "label": "Etykieta",
+                    "name": "project_role_label",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Wpisz Kierownik, Lider itd.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "rows": 1,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_69c52d1550cc0"
+                },
+                {
+                    "key": "field_69c530e185479",
+                    "label": "Osoba odpowiedzialna za projekt",
+                    "name": "project_person",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "Wpisz tytuł, imię i nazwisko osoby odpowiedzialnej.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "people"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "object",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 1,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "parent_repeater": "field_69c52d1550cc0"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "teams"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Pola dla sekcji Badania na single Team.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775553614
+}

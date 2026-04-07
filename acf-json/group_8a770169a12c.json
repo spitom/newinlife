@@ -1,0 +1,93 @@
+{
+    "key": "group_8a770169a12c",
+    "title": "Laboratories – Equipment",
+    "fields": [
+        {
+            "key": "field_4f767d4e3b6f",
+            "label": "Wyposażenie laboratorium",
+            "name": "laboratory_equipment",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Sekcja sprzętu i aparatury laboratorium.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "layout": "table",
+            "button_label": "Dodaj urządzenie",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_bdeb14fbd192",
+                    "label": "Nazwa urządzenia",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Nazwa aparatury lub urządzenia.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_4f767d4e3b6f"
+                },
+                {
+                    "key": "field_707a67f9543f",
+                    "label": "Opis",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Opcjonalny opis możliwości urządzenia.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 3,
+                    "new_lines": "wpautop",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_4f767d4e3b6f"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "laboratories"
+            }
+        ]
+    ],
+    "menu_order": 20,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Sekcja wyposażenia laboratorium.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775553632
+}

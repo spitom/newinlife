@@ -1,0 +1,94 @@
+{
+    "key": "group_50c2516be5a1",
+    "title": "Teams – Research",
+    "fields": [
+        {
+            "key": "field_735a668b0ead",
+            "label": "Najważniejsze osiągnięcia naukowe",
+            "name": "team_research_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Sekcja Osiągnięć w przełączanym panelu single Team.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Dodaj kolejne osiągnięcia naukowe zespołu",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_23a9670da9e1",
+                    "label": "Tytuł",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Nazwa obszaru badawczego.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_735a668b0ead"
+                },
+                {
+                    "key": "field_5c4ec4556b07",
+                    "label": "Opis",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Krótki opis obszaru badawczego.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 4,
+                    "new_lines": "wpautop",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_735a668b0ead"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "teams"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Pola dla sekcji Badania na single Team.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775553623
+}

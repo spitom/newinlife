@@ -1,0 +1,74 @@
+{
+    "key": "group_inlife_teams_import_codes",
+    "title": "Teams – Import Codes",
+    "fields": [
+        {
+            "key": "field_inlife_team_import_codes",
+            "label": "Kody importowe zespołu",
+            "name": "team_import_codes",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Kody używane przez importer publikacji do przypisywania rekordów z CSV do zespołów. Jeden kod = jeden wiersz, np. ZBG, ZPiMTR, ZMPRK.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Dodaj kod",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_inlife_team_import_code",
+                    "label": "Kod",
+                    "name": "code",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "np. ZBG",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_inlife_team_import_codes"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "teams"
+            }
+        ]
+    ],
+    "menu_order": 99,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1775553658
+}

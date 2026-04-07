@@ -38,7 +38,7 @@ $specializations = function_exists( 'get_field' ) ? get_field( 'person_specializ
 
 		<?php if ( $interests ) : ?>
 			<div class="people-single-section">
-				<h2 class="people-single-section__title"><?php esc_html_e( 'Zainteresowania badawcze', 'newinlife' ); ?></h2>
+				<h2 class="people-single-section__title"><?php esc_html_e( 'Najważniejsze publikacje', 'newinlife' ); ?></h2>
 				<div class="people-single-section__content">
 					<?php echo wp_kses_post( wpautop( $interests ) ); ?>
 				</div>

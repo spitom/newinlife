@@ -7201,6 +7201,164 @@
 	  setExpanded(false);
 	});
 
+	// Network map
+
+	document.addEventListener('DOMContentLoaded', () => {
+	  const mapElement = document.querySelector('[data-network-map]');
+	  const filterButtons = document.querySelectorAll('[data-network-filter]');
+	  const gridItems = document.querySelectorAll('[data-network-item]');
+	  if (!mapElement) return;
+	  if (typeof L === 'undefined') return;
+	  const rawData = mapElement.dataset.networkMapData || '[]';
+	  const emptyLabel = mapElement.dataset.networkMapEmptyLabel || '';
+	  const linkLabel = mapElement.dataset.networkMapLinkLabel || 'Zobacz partnera';
+	  let partners = [];
+	  try {
+	    partners = JSON.parse(rawData);
+	  } catch (error) {
+	    console.error('Network map JSON parse error:', error);
+	    partners = [];
+	  }
+	  if (!Array.isArray(partners) || !partners.length) {
+	    mapElement.innerHTML = `<p class="network-map__empty">${emptyLabel}</p>`;
+	    return;
+	  }
+	  const map = L.map(mapElement, {
+	    scrollWheelZoom: false,
+	    worldCopyJump: true
+	  }).setView([20, 10], 2);
+	  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+	    maxZoom: 18,
+	    attribution: '&copy; OpenStreetMap &copy; CARTO'
+	  }).addTo(map);
+	  const defaultIcon = L.divIcon({
+	    className: 'network-map-marker',
+	    html: '<span class="network-map-marker__dot" aria-hidden="true"></span>',
+	    iconSize: [16, 16],
+	    iconAnchor: [8, 8],
+	    popupAnchor: [0, -10]
+	  });
+	  const markers = [];
+	  const escapeHtml = value => {
+	    if (!value) return '';
+	    return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+	  };
+	  const escapeAttribute = value => {
+	    if (!value) return '';
+	    return String(value).replace(/"/g, '&quot;');
+	  };
+	  partners.forEach(partner => {
+	    if (typeof partner.lat !== 'number' || typeof partner.lng !== 'number') return;
+	    const marker = L.marker([partner.lat, partner.lng], {
+	      icon: defaultIcon,
+	      keyboard: true,
+	      title: partner.title || ''
+	    });
+	    const title = escapeHtml(partner.title || '');
+	    const location = escapeHtml(partner.location || '');
+	    const short = escapeHtml(partner.short || '');
+	    const permalink = partner.permalink || '#';
+	    const logo = partner.logo ? escapeAttribute(partner.logo) : '';
+	    const popupHtml = `
+			<div class="network-map-popup">
+
+				<div class="network-map-popup__top">
+					${logo ? `
+						<div class="network-map-popup__logo">
+							<img src="${logo}" alt="">
+						</div>
+					` : ''}
+
+					<div class="network-map-popup__head">
+						<h3 class="network-map-popup__title">${title}</h3>
+						${location ? `<p class="network-map-popup__location">${location}</p>` : ''}
+					</div>
+				</div>
+
+				${short ? `<p class="network-map-popup__excerpt">${short}</p>` : ''}
+
+				<div class="network-map-popup__footer">
+					<a href="${permalink}" class="network-map-popup__cta">
+						${escapeHtml(linkLabel)}
+					</a>
+				</div>
+
+			</div>
+		`;
+	    marker.bindPopup(popupHtml, {
+	      maxWidth: 300,
+	      closeButton: true,
+	      autoPan: true
+	    });
+	    marker.partnerRegions = Array.isArray(partner.region_slugs) ? partner.region_slugs : [];
+	    marker.addTo(map);
+	    markers.push(marker);
+	  });
+	  const fitMapToVisibleMarkers = () => {
+	    const visibleMarkers = markers.filter(marker => map.hasLayer(marker));
+	    if (!visibleMarkers.length) {
+	      map.setView([20, 10], 2);
+	      return;
+	    }
+	    if (visibleMarkers.length === 1) {
+	      map.setView(visibleMarkers[0].getLatLng(), 4);
+	      return;
+	    }
+	    const bounds = L.latLngBounds(visibleMarkers.map(marker => marker.getLatLng()));
+	    map.fitBounds(bounds, {
+	      padding: [40, 40]
+	    });
+	  };
+	  const filterGrid = filterValue => {
+	    gridItems.forEach(item => {
+	      const itemRegions = (item.dataset.networkRegions || '').split(' ').filter(Boolean);
+	      const matches = filterValue === 'all' || itemRegions.includes(filterValue);
+	      item.hidden = !matches;
+	    });
+	  };
+	  const filterMap = filterValue => {
+	    markers.forEach(marker => {
+	      const matches = filterValue === 'all' || marker.partnerRegions.includes(filterValue);
+	      if (matches) {
+	        if (!map.hasLayer(marker)) {
+	          marker.addTo(map);
+	        }
+	      } else if (map.hasLayer(marker)) {
+	        map.removeLayer(marker);
+	      }
+	    });
+	    fitMapToVisibleMarkers();
+	  };
+	  const setActiveFilter = activeButton => {
+	    filterButtons.forEach(button => {
+	      const isActive = button === activeButton;
+	      button.classList.toggle('is-active', isActive);
+	      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+	    });
+	  };
+	  filterButtons.forEach(button => {
+	    button.addEventListener('click', () => {
+	      const filterValue = button.dataset.networkFilter || 'all';
+	      setActiveFilter(button);
+	      filterGrid(filterValue);
+	      filterMap(filterValue);
+	    });
+	  });
+	  fitMapToVisibleMarkers();
+	  mapElement.addEventListener('focusin', () => {
+	    map.scrollWheelZoom.enable();
+	  });
+	  mapElement.addEventListener('focusout', () => {
+	    map.scrollWheelZoom.disable();
+	  });
+	  mapElement.addEventListener('mouseenter', () => {
+	    map.scrollWheelZoom.enable();
+	  });
+	  mapElement.addEventListener('mouseleave', () => {
+	    map.scrollWheelZoom.disable();
+	  });
+	});
+
 	exports.Alert = alert;
 	exports.Button = button;
 	exports.Carousel = carousel;

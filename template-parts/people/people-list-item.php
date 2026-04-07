@@ -64,11 +64,11 @@ $labs  = array_values( array_unique( $labs ) );
 <article class="people-list-item">
 	<div class="people-list-item__main">
 		<div class="people-list-item__head">
-			<?php if ( $type_label ) : ?>
+			<!-- <?php if ( $type_label ) : ?>
 				<p class="people-list-item__type people-list-item__type--<?php echo esc_attr( $type_slug ); ?>">
 					<?php echo esc_html( $type_label ); ?>
 				</p>
-			<?php endif; ?>
+			<?php endif; ?> -->
 
 			<h2 class="people-list-item__title">
                 <?php if ( 'scientific' === $type_slug ) : ?>
@@ -84,12 +84,6 @@ $labs  = array_values( array_unique( $labs ) );
 				<p class="people-list-item__position"><?php echo esc_html( $position ); ?></p>
 			<?php endif; ?>
 		</div>
-
-		<?php if ( 'scientific' === $type_slug && $short_bio ) : ?>
-			<p class="people-list-item__excerpt">
-				<?php echo esc_html( $short_bio ); ?>
-			</p>
-		<?php endif; ?>
 
 		<?php if ( ! empty( $teams ) || ! empty( $labs ) || ( 'staff' === $type_slug && $department ) ) : ?>
 			<div class="people-list-item__relations">
@@ -128,6 +122,14 @@ $labs  = array_values( array_unique( $labs ) );
 					</div>
 				<?php endif; ?>
 			</div>
+
+			<?php if ( 'scientific' === $type_slug ) : ?>
+				<p class="people-list-item__cta-wrap people-list-item__cta-wrap--inline">
+					<a href="<?php the_permalink(); ?>" class="people-list-item__cta">
+						<?php esc_html_e( 'Zobacz profil', 'newinlife' ); ?>
+					</a>
+				</p>
+			<?php endif; ?>
 		<?php endif; ?>
 	</div>
 
@@ -156,13 +158,5 @@ $labs  = array_values( array_unique( $labs ) );
 				<span><?php echo esc_html( $room ); ?></span>
 			</p>
 		<?php endif; ?>
-
-		<?php if ( 'scientific' === $type_slug ) : ?>
-            <p class="people-list-item__cta-wrap">
-                <a href="<?php the_permalink(); ?>" class="people-list-item__cta">
-                    <?php esc_html_e( 'Zobacz profil', 'newinlife' ); ?>
-                </a>
-            </p>
-        <?php endif; ?>
 	</div>
 </article>

@@ -3,10 +3,6 @@ defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-$email = function_exists( 'get_field' ) ? get_field( 'person_email', $post_id ) : '';
-$phone = function_exists( 'get_field' ) ? get_field( 'person_phone', $post_id ) : '';
-$room  = function_exists( 'get_field' ) ? get_field( 'person_room', $post_id ) : '';
-
 $linkedin = function_exists( 'get_field' ) ? get_field( 'person_linkedin', $post_id ) : '';
 $orcid    = function_exists( 'get_field' ) ? get_field( 'person_orcid', $post_id ) : '';
 $scholar  = function_exists( 'get_field' ) ? get_field( 'person_google_scholar', $post_id ) : '';
@@ -18,60 +14,71 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 	$type_slug = $terms[0]->slug;
 }
 
-if ( ! $email && ! $phone && ! $room && ! $linkedin && ! $orcid && ! $scholar && ! $rg ) {
+if ( 'scientific' !== $type_slug || ( ! $linkedin && ! $orcid && ! $scholar && ! $rg ) ) {
 	return;
 }
 ?>
 
 <div class="people-single-panel">
 	<h2 class="people-single-panel__title">
-		<?php esc_html_e( 'Kontakt', 'newinlife' ); ?>
+		<?php esc_html_e( 'Profile i identyfikatory', 'newinlife' ); ?>
 	</h2>
 
-	<div class="people-single-contact-list">
-		<?php if ( $email ) : ?>
-			<div class="people-single-contact-list__item">
-				<span class="people-single-contact-list__label"><?php esc_html_e( 'E-mail', 'newinlife' ); ?></span>
-				<a href="mailto:<?php echo esc_attr( antispambot( $email ) ); ?>">
-					<?php echo esc_html( antispambot( $email ) ); ?>
-				</a>
-			</div>
+	<div class="people-single-links" role="list">
+		<?php if ( $orcid ) : ?>
+			<a
+				href="<?php echo esc_url( $orcid ); ?>"
+				target="_blank"
+				rel="noopener"
+				class="people-single-links__item"
+				aria-label="<?php esc_attr_e( 'Profil ORCID', 'newinlife' ); ?>"
+				title="<?php esc_attr_e( 'ORCID', 'newinlife' ); ?>"
+			>
+				<span class="people-single-links__icon" aria-hidden="true">iD</span>
+				<span class="people-single-links__label">ORCID</span>
+			</a>
 		<?php endif; ?>
 
-		<?php if ( $phone ) : ?>
-			<div class="people-single-contact-list__item">
-				<span class="people-single-contact-list__label"><?php esc_html_e( 'Telefon', 'newinlife' ); ?></span>
-				<a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $phone ) ); ?>">
-					<?php echo esc_html( $phone ); ?>
-				</a>
-			</div>
+		<?php if ( $linkedin ) : ?>
+			<a
+				href="<?php echo esc_url( $linkedin ); ?>"
+				target="_blank"
+				rel="noopener"
+				class="people-single-links__item"
+				aria-label="<?php esc_attr_e( 'Profil LinkedIn', 'newinlife' ); ?>"
+				title="<?php esc_attr_e( 'LinkedIn', 'newinlife' ); ?>"
+			>
+				<i class="bi bi-linkedin people-single-links__icon" aria-hidden="true"></i>
+				<span class="people-single-links__label">LinkedIn</span>
+			</a>
 		<?php endif; ?>
 
-		<?php if ( $room ) : ?>
-			<div class="people-single-contact-list__item">
-				<span class="people-single-contact-list__label"><?php esc_html_e( 'Pokój / lokalizacja', 'newinlife' ); ?></span>
-				<span><?php echo esc_html( $room ); ?></span>
-			</div>
+		<?php if ( $scholar ) : ?>
+			<a
+				href="<?php echo esc_url( $scholar ); ?>"
+				target="_blank"
+				rel="noopener"
+				class="people-single-links__item"
+				aria-label="<?php esc_attr_e( 'Profil Google Scholar', 'newinlife' ); ?>"
+				title="<?php esc_attr_e( 'Google Scholar', 'newinlife' ); ?>"
+			>
+				<i class="bi bi-mortarboard people-single-links__icon" aria-hidden="true"></i>
+				<span class="people-single-links__label">Scholar</span>
+			</a>
+		<?php endif; ?>
+
+		<?php if ( $rg ) : ?>
+			<a
+				href="<?php echo esc_url( $rg ); ?>"
+				target="_blank"
+				rel="noopener"
+				class="people-single-links__item"
+				aria-label="<?php esc_attr_e( 'Profil ResearchGate', 'newinlife' ); ?>"
+				title="<?php esc_attr_e( 'ResearchGate', 'newinlife' ); ?>"
+			>
+				<i class="bi bi-journal-text people-single-links__icon" aria-hidden="true"></i>
+				<span class="people-single-links__label">ResearchGate</span>
+			</a>
 		<?php endif; ?>
 	</div>
-
-	<?php if ( 'scientific' === $type_slug && ( $orcid || $linkedin || $scholar || $rg ) ) : ?>
-		<div class="people-single-links">
-			<?php if ( $orcid ) : ?>
-				<a href="<?php echo esc_url( $orcid ); ?>" target="_blank" rel="noopener">ORCID</a>
-			<?php endif; ?>
-
-			<?php if ( $linkedin ) : ?>
-				<a href="<?php echo esc_url( $linkedin ); ?>" target="_blank" rel="noopener">LinkedIn</a>
-			<?php endif; ?>
-
-			<?php if ( $scholar ) : ?>
-				<a href="<?php echo esc_url( $scholar ); ?>" target="_blank" rel="noopener">Google Scholar</a>
-			<?php endif; ?>
-
-			<?php if ( $rg ) : ?>
-				<a href="<?php echo esc_url( $rg ); ?>" target="_blank" rel="noopener">ResearchGate</a>
-			<?php endif; ?>
-		</div>
-	<?php endif; ?>
 </div>

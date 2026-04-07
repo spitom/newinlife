@@ -3,7 +3,7 @@
 
     .page-section--people-single-header {
         padding-top: clamp(4rem, 7vw, 6rem);
-        padding-bottom: clamp(2rem, 4vw, 3rem);
+        padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
     }
 
     .page-section--people-single-content {
@@ -12,55 +12,126 @@
 }
 
 /* =========================================================
-   HEADER
+   HERO
 ========================================================= */
 
-.people-single-header {
+.people-single-hero {
     display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
     gap: 2rem;
     align-items: start;
 }
 
-.people-single-header--has-photo {
-    grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
-}
-
-.people-single-header--no-photo {
-    grid-template-columns: minmax(0, 820px);
-}
-
-.people-single-header__media {
-    max-width: 320px;
-}
-
-.people-single-header__image {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 1.5rem;
-    box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
-}
-
-.people-single-header__content {
+.people-single-hero__main {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
     min-width: 0;
 }
 
-.people-single-header__title {
+.people-single-hero--no-photo .people-single-hero__main {
+    grid-template-columns: 1fr;
+}
+
+.people-single-hero__media {
+    width: 220px;
+    min-width: 220px;
+}
+
+.people-single-hero__image {
+    display: block;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
+}
+
+.people-single-hero__content {
+    min-width: 0;
+}
+
+.people-single-hero__title {
     margin-bottom: 1rem;
 }
 
-.people-single-header__position {
+.people-single-hero__position {
     margin-bottom: 0.75rem;
 }
 
-.people-single-header__lead {
-    max-width: 72ch;
-    color: #4b5565;
-    line-height: 1.75;
+// .people-single-hero__lead {
+    //     max-width: 68ch;
+    //     color: #4b5565;
+    //     line-height: 1.75;
+    //     margin-bottom: 1rem;
 
-    p:last-child {
-        margin-bottom: 0;
-    }
+    //     p:last-child {
+    //         margin-bottom: 0;
+    //     }
+    // }
+
+.people-single-hero__relations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.people-single-hero__relation-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0;
+    border-radius: 999px;
+    background: #f4f7fb;
+    color: #293458;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.people-single-hero__relation-link:hover,
+.people-single-hero__relation-link:focus {
+    text-decoration: underline;
+}
+
+.people-single-hero__meta {
+    min-width: 0;
+}
+
+.people-single-hero__meta-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid #e4ebf2;
+}
+
+.people-single-hero__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.people-single-hero__meta-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #7a869f;
+}
+
+.people-single-hero__meta-item a,
+.people-single-hero__meta-item span {
+    color: #293458;
+    line-height: 1.6;
+    word-break: break-word;
+    text-decoration: none;
+}
+
+.people-single-hero__meta-item a:hover,
+.people-single-hero__meta-item a:focus {
+    text-decoration: underline;
 }
 
 /* =========================================================
@@ -116,72 +187,48 @@
 }
 
 /* =========================================================
-   CONTACT
+   LINKS / RELATIONS
 ========================================================= */
-
-.people-single-contact-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-}
-
-.people-single-contact-list__item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-
-.people-single-contact-list__label {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: #7a869f;
-}
-
-.people-single-contact-list__item a,
-.people-single-contact-list__item span {
-    color: #293458;
-    line-height: 1.6;
-    word-break: break-word;
-}
-
-.people-single-contact-list__item a {
-    text-decoration: none;
-}
-
-.people-single-contact-list__item a:hover,
-.people-single-contact-list__item a:focus {
-    text-decoration: underline;
-}
 
 .people-single-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1.25rem;
-
-    a {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.45rem 0.8rem;
-        border-radius: 999px;
-        background: #f4f7fb;
-        color: #293458;
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-decoration: none;
-    }
-
-    a:hover,
-    a:focus {
-        text-decoration: underline;
-    }
+    gap: 0.75rem;
 }
 
-/* =========================================================
-   RELATIONS
-========================================================= */
+.people-single-links__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #293458;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.people-single-links__item:hover,
+.people-single-links__item:focus {
+    text-decoration: underline;
+}
+
+.people-single-links__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: #f4f7fb;
+    border: 1px solid #e4ebf2;
+    font-size: 1rem;
+    color: #293458;
+    flex-shrink: 0;
+}
+
+.people-single-links__label {
+    font-size: 0.9rem;
+    color: #293458;
+}
 
 .people-single-relations-group+.people-single-relations-group {
     margin-top: 1.25rem;
@@ -223,14 +270,30 @@
 
 @media (max-width: 991.98px) {
 
-    .people-single-header--has-photo,
-    .people-single-header--no-photo,
+    .people-single-hero,
     .people-single-layout {
         grid-template-columns: 1fr;
     }
 
-    .people-single-header__media {
-        max-width: 280px;
+    .people-single-hero__main {
+        grid-template-columns: 1fr;
+    }
+
+    .people-single-hero__media {
+        width: 180px;
+        min-width: 180px;
+    }
+
+    .people-single-hero__image {
+        width: 180px;
+        height: 180px;
+    }
+
+    .people-single-hero__meta-inner {
+        padding-left: 0;
+        padding-top: 1rem;
+        border-left: 0;
+        border-top: 1px solid #e4ebf2;
     }
 }
 
