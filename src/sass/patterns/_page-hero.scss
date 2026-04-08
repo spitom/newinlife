@@ -1,0 +1,103 @@
+.p-page-hero {
+    background: var(--inlife-surface-soft);
+    padding-block: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.p-page-hero__inner {
+    max-width: var(--inlife-max-content);
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 2vw, 2rem);
+}
+
+.p-page-hero__breadcrumbs {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.4;
+
+    .breadcrumb,
+    .rank-math-breadcrumb,
+    .yoast-breadcrumbs {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+    }
+
+    a {
+        color: var(--inlife-primary);
+        text-decoration-color: rgba(41, 52, 88, 0.3);
+        text-underline-offset: 0.15em;
+
+        &:hover,
+        &:focus {
+            color: var(--inlife-primary);
+            text-decoration-color: currentColor;
+        }
+    }
+
+    span,
+    .breadcrumb_last {
+        color: var(--inlife-text-muted);
+    }
+}
+
+.p-page-hero__kicker {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--inlife-primary);
+}
+
+.p-page-hero__title {
+    max-width: var(--inlife-hero-title-max);
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 4.75rem);
+    line-height: 1;
+    color: var(--inlife-primary);
+    text-wrap: balance;
+}
+
+.p-page-hero__lead {
+    max-width: var(--inlife-hero-lead-max);
+    margin-top: 1.75rem;
+    font-size: clamp(1.0625rem, 1.2vw, 1.375rem);
+    line-height: 1.7;
+    color: var(--inlife-text-muted);
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.p-page-hero--compact {
+    padding-block: clamp(2.75rem, 5vw, 4.5rem);
+}
+
+@media (max-width: 767.98px) {
+    .p-page-hero {
+        padding-block: 3rem;
+    }
+
+    .p-page-hero__breadcrumbs {
+        margin-bottom: 0.875rem;
+        font-size: 0.875rem;
+    }
+
+    .p-page-hero__kicker {
+        margin-bottom: 0.875rem;
+        font-size: 0.8125rem;
+    }
+
+    .p-page-hero__title {
+        font-size: clamp(2.25rem, 10vw, 3.25rem);
+        line-height: 1.02;
+    }
+
+    .p-page-hero__lead {
+        margin-top: 1.25rem;
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+}

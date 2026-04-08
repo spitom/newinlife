@@ -17,9 +17,7 @@ $container = function_exists( 'inlife_container_class' ) ? inlife_container_clas
 	<?php while ( have_posts() ) : the_post(); ?>
 
 		<section class="page-section page-section--lab-single-hero">
-			<div class="<?php echo esc_attr( $container ); ?>">
-				<?php get_template_part( 'template-parts/laboratories/laboratories-single', 'hero' ); ?>
-			</div>
+			<?php get_template_part( 'template-parts/laboratories/laboratories-single', 'hero' ); ?>
 		</section>
 
 		<section class="page-section page-section--lab-single-profile">

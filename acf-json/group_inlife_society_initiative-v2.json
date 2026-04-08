@@ -1,0 +1,2076 @@
+{
+  "key": "group_society_initiative_v2",
+  "title": "Society — Initiative",
+  "fields": [
+    {
+      "key": "field_d57a9d5923bf4",
+      "label": "Hero",
+      "name": "hero",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0,
+      "selected": 0
+    },
+    {
+      "key": "field_d1de2404b4864",
+      "label": "Kicker",
+      "name": "initiative_kicker",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "25",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_e3952a18707a4",
+      "label": "Tytuł",
+      "name": "initiative_title",
+      "aria-label": "",
+      "type": "text",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "75",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "placeholder": "",
+      "prepend": "",
+      "append": ""
+    },
+    {
+      "key": "field_2fe2cf4198f24",
+      "label": "Lead",
+      "name": "initiative_lead",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "rows": 3,
+      "placeholder": "",
+      "new_lines": "br"
+    },
+    {
+      "key": "field_8d3e3219c4604",
+      "label": "Krótki tekst na kartę",
+      "name": "initiative_card_text",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Krótki teaser do karty na stronie głównej Society i listingach.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "rows": 2,
+      "placeholder": "",
+      "new_lines": "br"
+    },
+    {
+      "key": "field_3242694dfec44",
+      "label": "Obraz hero",
+      "name": "initiative_image",
+      "aria-label": "",
+      "type": "image",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "return_format": "array",
+      "preview_size": "medium",
+      "library": "all",
+      "min_width": "",
+      "min_height": "",
+      "min_size": "",
+      "max_width": "",
+      "max_height": "",
+      "max_size": "",
+      "mime_types": ""
+    },
+    {
+      "key": "field_764e78824a774",
+      "label": "Quick links / actions",
+      "name": "initiative_actions",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "pagination": 0,
+      "min": 0,
+      "max": 0,
+      "collapsed": "",
+      "button_label": "Dodaj link",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_83a263d1981c4",
+          "label": "Etykieta",
+          "name": "label",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "35",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_ffab5ec7d0474",
+          "label": "Link",
+          "name": "link",
+          "aria-label": "",
+          "type": "link",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "65",
+            "class": "",
+            "id": ""
+          },
+          "return_format": "array"
+        }
+      ]
+    },
+    {
+      "key": "field_eaf98de710284",
+      "label": "Sekcje elastyczne",
+      "name": "sekcje_elastyczne",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0,
+      "selected": 0
+    },
+    {
+      "key": "field_bb44eaa7590e4",
+      "label": "Sekcje strony",
+      "name": "initiative_sections",
+      "aria-label": "",
+      "type": "flexible_content",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layouts": [
+        {
+          "key": "layout_rich_text",
+          "name": "rich_text",
+          "label": "Rich text",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_c78cea3cc9b04",
+              "label": "ID sekcji (anchor)",
+              "name": "section_id",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Np. materialy, aktualnosci, podcasty. Bez polskich znaków i spacji.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_15b62ea4e1a24",
+              "label": "Etykieta w local nav",
+              "name": "section_label",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_11919fbb10db4",
+              "label": "Pokaż w local nav",
+              "name": "show_in_local_nav",
+              "aria-label": "",
+              "type": "true_false",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "message": "",
+              "default_value": 0,
+              "ui": 1,
+              "ui_on_text": "",
+              "ui_off_text": ""
+            },
+            {
+              "key": "field_41125da4c8394",
+              "label": "Kicker",
+              "name": "kicker",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_82322199796a4",
+              "label": "Tytuł sekcji",
+              "name": "title",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_29965dbfc3b74",
+              "label": "Treść",
+              "name": "content",
+              "aria-label": "",
+              "type": "wysiwyg",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 1,
+              "delay": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        {
+          "key": "layout_text_media",
+          "name": "text_media",
+          "label": "Text + media",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_99397d32e9d04",
+              "label": "ID sekcji (anchor)",
+              "name": "section_id",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Np. materialy, aktualnosci, podcasty. Bez polskich znaków i spacji.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_38e246f59a6a4",
+              "label": "Etykieta w local nav",
+              "name": "section_label",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_4e2cfb4763604",
+              "label": "Pokaż w local nav",
+              "name": "show_in_local_nav",
+              "aria-label": "",
+              "type": "true_false",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "message": "",
+              "default_value": 0,
+              "ui": 1,
+              "ui_on_text": "",
+              "ui_off_text": ""
+            },
+            {
+              "key": "field_ea922f29e3c34",
+              "label": "Kicker",
+              "name": "kicker",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_03142a94897a4",
+              "label": "Tytuł sekcji",
+              "name": "title",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_33c23a7eba584",
+              "label": "Tekst",
+              "name": "text",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 4,
+              "placeholder": "",
+              "new_lines": "br"
+            },
+            {
+              "key": "field_475a86ba517d4",
+              "label": "Typ medium",
+              "name": "media_type",
+              "aria-label": "",
+              "type": "select",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+              },
+              "choices": {
+                "image": "Obraz",
+                "embed": "Embed"
+              },
+              "default_value": false,
+              "return_format": "value",
+              "multiple": 0,
+              "allow_null": 0,
+              "ui": 0,
+              "ajax": 0,
+              "placeholder": ""
+            },
+            {
+              "key": "field_e2e1f182f3a04",
+              "label": "Pozycja medium",
+              "name": "media_position",
+              "aria-label": "",
+              "type": "select",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+              },
+              "choices": {
+                "right": "Po prawej",
+                "left": "Po lewej"
+              },
+              "default_value": false,
+              "return_format": "value",
+              "multiple": 0,
+              "allow_null": 0,
+              "ui": 0,
+              "ajax": 0,
+              "placeholder": ""
+            },
+            {
+              "key": "field_4a5bddc0b0da4",
+              "label": "Obraz",
+              "name": "image",
+              "aria-label": "",
+              "type": "image",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array",
+              "preview_size": "medium",
+              "library": "all",
+              "min_width": "",
+              "min_height": "",
+              "min_size": "",
+              "max_width": "",
+              "max_height": "",
+              "max_size": "",
+              "mime_types": ""
+            },
+            {
+              "key": "field_d9d0bce97fa94",
+              "label": "Embed",
+              "name": "embed",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 4,
+              "placeholder": "",
+              "new_lines": "br"
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        {
+          "key": "layout_cards_grid",
+          "name": "cards_grid",
+          "label": "Cards / link grid",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_95b5dd76d4444",
+              "label": "ID sekcji (anchor)",
+              "name": "section_id",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Np. materialy, aktualnosci, podcasty. Bez polskich znaków i spacji.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_6f4d5b7591e54",
+              "label": "Etykieta w local nav",
+              "name": "section_label",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_b75539c880914",
+              "label": "Pokaż w local nav",
+              "name": "show_in_local_nav",
+              "aria-label": "",
+              "type": "true_false",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "message": "",
+              "default_value": 0,
+              "ui": 1,
+              "ui_on_text": "",
+              "ui_off_text": ""
+            },
+            {
+              "key": "field_a703284ac0d34",
+              "label": "Kicker",
+              "name": "kicker",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_7c9a9428e60e4",
+              "label": "Tytuł sekcji",
+              "name": "title",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_f32954fb798d4",
+              "label": "Intro",
+              "name": "intro",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 3,
+              "placeholder": "",
+              "new_lines": "br"
+            },
+            {
+              "key": "field_a24f489e70694",
+              "label": "Karty / linki",
+              "name": "items",
+              "aria-label": "",
+              "type": "repeater",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "layout": "block",
+              "pagination": 0,
+              "min": 1,
+              "max": 0,
+              "collapsed": "",
+              "button_label": "Dodaj kartę",
+              "rows_per_page": 20,
+              "sub_fields": [
+                {
+                  "key": "field_ff5c985eac084",
+                  "label": "Tytuł",
+                  "name": "title",
+                  "aria-label": "",
+                  "type": "text",
+                  "instructions": "",
+                  "required": 1,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "maxlength": "",
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": ""
+                },
+                {
+                  "key": "field_869d7157b5ec4",
+                  "label": "Opis",
+                  "name": "text",
+                  "aria-label": "",
+                  "type": "textarea",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "35",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "maxlength": "",
+                  "rows": 2,
+                  "placeholder": "",
+                  "new_lines": "br"
+                },
+                {
+                  "key": "field_bb303a7b31434",
+                  "label": "Obraz / ikona",
+                  "name": "image",
+                  "aria-label": "",
+                  "type": "image",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "20",
+                    "class": "",
+                    "id": ""
+                  },
+                  "return_format": "array",
+                  "preview_size": "medium",
+                  "library": "all",
+                  "min_width": "",
+                  "min_height": "",
+                  "min_size": "",
+                  "max_width": "",
+                  "max_height": "",
+                  "max_size": "",
+                  "mime_types": ""
+                },
+                {
+                  "key": "field_1004de0607864",
+                  "label": "Badge",
+                  "name": "badge",
+                  "aria-label": "",
+                  "type": "text",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "15",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "maxlength": "",
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": ""
+                },
+                {
+                  "key": "field_fe767ee30f424",
+                  "label": "Link",
+                  "name": "link",
+                  "aria-label": "",
+                  "type": "link",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "return_format": "array"
+                }
+              ]
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        {
+          "key": "layout_selected_posts",
+          "name": "selected_posts",
+          "label": "Selected posts",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_dbacc328de494",
+              "label": "ID sekcji (anchor)",
+              "name": "section_id",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Np. materialy, aktualnosci, podcasty. Bez polskich znaków i spacji.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_02d465b6ea4d4",
+              "label": "Etykieta w local nav",
+              "name": "section_label",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_9f062594685f4",
+              "label": "Pokaż w local nav",
+              "name": "show_in_local_nav",
+              "aria-label": "",
+              "type": "true_false",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "message": "",
+              "default_value": 0,
+              "ui": 1,
+              "ui_on_text": "",
+              "ui_off_text": ""
+            },
+            {
+              "key": "field_21df4ff264204",
+              "label": "Kicker",
+              "name": "kicker",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_8e5d3535d0524",
+              "label": "Tytuł sekcji",
+              "name": "title",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_f84d0e2c4b4f4",
+              "label": "Intro",
+              "name": "intro",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 3,
+              "placeholder": "",
+              "new_lines": "br"
+            },
+            {
+              "key": "field_57212dc4c1a44",
+              "label": "Wybrane wpisy",
+              "name": "posts",
+              "aria-label": "",
+              "type": "relationship",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "post_type": [
+                "post"
+              ],
+              "post_status": [
+                "publish"
+              ],
+              "taxonomy": "",
+              "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+              ],
+              "elements": "",
+              "min": 0,
+              "max": "12",
+              "return_format": "object",
+              "bidirectional": 0,
+              "bidirectional_target": []
+            },
+            {
+              "key": "field_8579c2fea7144",
+              "label": "Liczba kolumn",
+              "name": "posts_per_row",
+              "aria-label": "",
+              "type": "select",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+              },
+              "choices": {
+                "2": "2",
+                "3": "3",
+                "4": "4"
+              },
+              "default_value": false,
+              "return_format": "value",
+              "multiple": 0,
+              "allow_null": 0,
+              "ui": 0,
+              "ajax": 0,
+              "placeholder": ""
+            },
+            {
+              "key": "field_9730732d08e34",
+              "label": "CTA sekcji",
+              "name": "cta",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "80",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array"
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        {
+          "key": "layout_auto_posts",
+          "name": "auto_posts",
+          "label": "Auto posts",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_f0dff2b4b4374",
+              "label": "ID sekcji (anchor)",
+              "name": "section_id",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Np. materialy, aktualnosci, podcasty. Bez polskich znaków i spacji.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_dca9d9120a594",
+              "label": "Etykieta w local nav",
+              "name": "section_label",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_5f58d0ab6f2a4",
+              "label": "Pokaż w local nav",
+              "name": "show_in_local_nav",
+              "aria-label": "",
+              "type": "true_false",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "message": "",
+              "default_value": 0,
+              "ui": 1,
+              "ui_on_text": "",
+              "ui_off_text": ""
+            },
+            {
+              "key": "field_8674a59d9b184",
+              "label": "Kicker",
+              "name": "kicker",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_4527b42bcd3a4",
+              "label": "Tytuł sekcji",
+              "name": "title",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_f0cf34b0c3754",
+              "label": "Intro",
+              "name": "intro",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 3,
+              "placeholder": "",
+              "new_lines": "br"
+            },
+            {
+              "key": "field_eb1a62526c2d4",
+              "label": "Tryb query",
+              "name": "query_mode",
+              "aria-label": "",
+              "type": "select",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "choices": {
+                "by_category": "Po kategorii",
+                "by_tag": "Po tagu",
+                "by_society_format": "Po formacie Society",
+                "mixed": "Mieszany"
+              },
+              "default_value": false,
+              "return_format": "value",
+              "multiple": 0,
+              "allow_null": 0,
+              "ui": 0,
+              "ajax": 0,
+              "placeholder": ""
+            },
+            {
+              "key": "field_04b9142550c44",
+              "label": "Kategorie wpisów",
+              "name": "post_category",
+              "aria-label": "",
+              "type": "taxonomy",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "taxonomy": "category",
+              "field_type": "multi_select",
+              "allow_null": 0,
+              "add_term": 0,
+              "save_terms": 0,
+              "load_terms": 0,
+              "return_format": "id",
+              "multiple": 1,
+              "bidirectional": 0,
+              "bidirectional_target": []
+            },
+            {
+              "key": "field_ade549ad293f4",
+              "label": "Tagi wpisów",
+              "name": "post_tag",
+              "aria-label": "",
+              "type": "taxonomy",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "taxonomy": "post_tag",
+              "field_type": "multi_select",
+              "allow_null": 0,
+              "add_term": 0,
+              "save_terms": 0,
+              "load_terms": 0,
+              "return_format": "id",
+              "multiple": 1,
+              "bidirectional": 0,
+              "bidirectional_target": []
+            },
+            {
+              "key": "field_7b17af8b55cd4",
+              "label": "Termy society_format",
+              "name": "society_format_terms",
+              "aria-label": "",
+              "type": "taxonomy",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "taxonomy": "society_format",
+              "field_type": "multi_select",
+              "allow_null": 0,
+              "add_term": 0,
+              "save_terms": 0,
+              "load_terms": 0,
+              "return_format": "id",
+              "multiple": 1,
+              "bidirectional": 0,
+              "bidirectional_target": []
+            },
+            {
+              "key": "field_c8c34124b28c4",
+              "label": "Liczba wpisów",
+              "name": "posts_per_page",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_d0fb918493c74",
+              "label": "Sortowanie",
+              "name": "orderby",
+              "aria-label": "",
+              "type": "select",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+              },
+              "choices": {
+                "date_desc": "Najnowsze",
+                "date_asc": "Najstarsze",
+                "rand": "Losowo"
+              },
+              "default_value": false,
+              "return_format": "value",
+              "multiple": 0,
+              "allow_null": 0,
+              "ui": 0,
+              "ajax": 0,
+              "placeholder": ""
+            },
+            {
+              "key": "field_2afc7fcf35f64",
+              "label": "CTA sekcji",
+              "name": "cta",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array"
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        {
+          "key": "layout_embed",
+          "name": "embed",
+          "label": "Embed",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_954d1ec4cc824",
+              "label": "ID sekcji (anchor)",
+              "name": "section_id",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Np. materialy, aktualnosci, podcasty. Bez polskich znaków i spacji.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_f721088e64474",
+              "label": "Etykieta w local nav",
+              "name": "section_label",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_f645c6a41d5b4",
+              "label": "Pokaż w local nav",
+              "name": "show_in_local_nav",
+              "aria-label": "",
+              "type": "true_false",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "message": "",
+              "default_value": 0,
+              "ui": 1,
+              "ui_on_text": "",
+              "ui_off_text": ""
+            },
+            {
+              "key": "field_8bf99880d2c14",
+              "label": "Kicker",
+              "name": "kicker",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_66ca2eaaf4eb4",
+              "label": "Tytuł sekcji",
+              "name": "title",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_cb0de95c4fea4",
+              "label": "Intro",
+              "name": "intro",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 3,
+              "placeholder": "",
+              "new_lines": "br"
+            },
+            {
+              "key": "field_ec47a1ec57404",
+              "label": "Kod embed",
+              "name": "embed_code",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 5,
+              "placeholder": "",
+              "new_lines": "br"
+            },
+            {
+              "key": "field_9ac93e9c0c2f4",
+              "label": "Podpis / caption",
+              "name": "embed_caption",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        {
+          "key": "layout_downloads",
+          "name": "downloads",
+          "label": "Downloads",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_57a23da7fd6c4",
+              "label": "ID sekcji (anchor)",
+              "name": "section_id",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Np. materialy, aktualnosci, podcasty. Bez polskich znaków i spacji.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_4fa9c2d3031b4",
+              "label": "Etykieta w local nav",
+              "name": "section_label",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_ec0cca5504514",
+              "label": "Pokaż w local nav",
+              "name": "show_in_local_nav",
+              "aria-label": "",
+              "type": "true_false",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "message": "",
+              "default_value": 0,
+              "ui": 1,
+              "ui_on_text": "",
+              "ui_off_text": ""
+            },
+            {
+              "key": "field_3c29e992164a4",
+              "label": "Kicker",
+              "name": "kicker",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_3b623e6307f54",
+              "label": "Tytuł sekcji",
+              "name": "title",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_bffc448586664",
+              "label": "Intro",
+              "name": "intro",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 3,
+              "placeholder": "",
+              "new_lines": "br"
+            },
+            {
+              "key": "field_c785e169beaf4",
+              "label": "Pliki",
+              "name": "files",
+              "aria-label": "",
+              "type": "repeater",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "layout": "block",
+              "pagination": 0,
+              "min": 1,
+              "max": 0,
+              "collapsed": "",
+              "button_label": "Dodaj plik",
+              "rows_per_page": 20,
+              "sub_fields": [
+                {
+                  "key": "field_00b198dc09e84",
+                  "label": "Plik",
+                  "name": "file",
+                  "aria-label": "",
+                  "type": "file",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "35",
+                    "class": "",
+                    "id": ""
+                  },
+                  "return_format": "array",
+                  "library": "all",
+                  "min_size": "",
+                  "max_size": "",
+                  "mime_types": ""
+                },
+                {
+                  "key": "field_c48d354230df4",
+                  "label": "Etykieta",
+                  "name": "label",
+                  "aria-label": "",
+                  "type": "text",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "35",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "maxlength": "",
+                  "placeholder": "",
+                  "prepend": "",
+                  "append": ""
+                },
+                {
+                  "key": "field_217ef03487d14",
+                  "label": "Opis",
+                  "name": "description",
+                  "aria-label": "",
+                  "type": "textarea",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "30",
+                    "class": "",
+                    "id": ""
+                  },
+                  "default_value": "",
+                  "maxlength": "",
+                  "rows": 2,
+                  "placeholder": "",
+                  "new_lines": "br"
+                }
+              ]
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        {
+          "key": "layout_form",
+          "name": "form",
+          "label": "Form",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_210d35df68cd4",
+              "label": "ID sekcji (anchor)",
+              "name": "section_id",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Np. materialy, aktualnosci, podcasty. Bez polskich znaków i spacji.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_82d69de383af4",
+              "label": "Etykieta w local nav",
+              "name": "section_label",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_92d6e25627f44",
+              "label": "Pokaż w local nav",
+              "name": "show_in_local_nav",
+              "aria-label": "",
+              "type": "true_false",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "message": "",
+              "default_value": 0,
+              "ui": 1,
+              "ui_on_text": "",
+              "ui_off_text": ""
+            },
+            {
+              "key": "field_b42fb60a65484",
+              "label": "Kicker",
+              "name": "kicker",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_782e2f21f7884",
+              "label": "Tytuł sekcji",
+              "name": "title",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_1543988ee6944",
+              "label": "Intro",
+              "name": "intro",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 3,
+              "placeholder": "",
+              "new_lines": "br"
+            },
+            {
+              "key": "field_16d7d23113f04",
+              "label": "Shortcode formularza",
+              "name": "form_shortcode",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 2,
+              "placeholder": "",
+              "new_lines": "br"
+            },
+            {
+              "key": "field_0e21b95a302f4",
+              "label": "Treść po formularzu",
+              "name": "after_form_text",
+              "aria-label": "",
+              "type": "wysiwyg",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "tabs": "all",
+              "toolbar": "full",
+              "media_upload": 1,
+              "delay": 0
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        {
+          "key": "layout_cta",
+          "name": "cta",
+          "label": "CTA",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_42e22bec58904",
+              "label": "ID sekcji (anchor)",
+              "name": "section_id",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "Np. materialy, aktualnosci, podcasty. Bez polskich znaków i spacji.",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_e69f3db7df9f4",
+              "label": "Etykieta w local nav",
+              "name": "section_label",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_c74e29380cba4",
+              "label": "Pokaż w local nav",
+              "name": "show_in_local_nav",
+              "aria-label": "",
+              "type": "true_false",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+              },
+              "message": "",
+              "default_value": 0,
+              "ui": 1,
+              "ui_on_text": "",
+              "ui_off_text": ""
+            },
+            {
+              "key": "field_0b824b37ffd64",
+              "label": "Kicker",
+              "name": "kicker",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_1ea3e4f1277c4",
+              "label": "Tytuł sekcji",
+              "name": "title",
+              "aria-label": "",
+              "type": "text",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "75",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "placeholder": "",
+              "prepend": "",
+              "append": ""
+            },
+            {
+              "key": "field_afe4ec1de2104",
+              "label": "Treść",
+              "name": "text",
+              "aria-label": "",
+              "type": "textarea",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+              },
+              "default_value": "",
+              "maxlength": "",
+              "rows": 3,
+              "placeholder": "",
+              "new_lines": "br"
+            },
+            {
+              "key": "field_97c244a31bd64",
+              "label": "Primary CTA",
+              "name": "primary_cta",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array"
+            },
+            {
+              "key": "field_0dedffbe42e04",
+              "label": "Secondary CTA",
+              "name": "secondary_cta",
+              "aria-label": "",
+              "type": "link",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+              },
+              "return_format": "array"
+            }
+          ],
+          "min": "",
+          "max": ""
+        }
+      ],
+      "button_label": "Dodaj sekcję",
+      "min": "",
+      "max": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-templates/template-society-initiative.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1770000002
+}

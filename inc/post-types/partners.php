@@ -53,6 +53,7 @@ function inlife_register_partners_post_type() {
 		'hierarchical'        => false,
 		'supports'            => [
 			'title',
+			'editor',
 			'thumbnail',
 			'revisions',
 			'page-attributes',

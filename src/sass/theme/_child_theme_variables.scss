@@ -1,6 +1,33 @@
-// Use this file to overwrite the basic Bootstrap variables and add your own variables
-// To overwrite a Bootstrap variable you don´t have to touch the Bootstrap folder.
-// Just copy a variable from src/sass/assets/bootstrap5/_variables.scss, paste it here and edit the value.
+:root {
+    --inlife-max-page: 1620px;
+    --inlife-max-content: 1440px;
+    --inlife-gutter: 1.5rem;
 
+    --inlife-font-sans: "SUSE", sans-serif;
 
-$primary: #293458; // Once we've changed the value, we'll also make it the primary brand color.
+    --inlife-primary: #293458;
+    --inlife-accent: #d5db3e;
+    --inlife-popielno: #00ab8e;
+
+    --inlife-text: #16181d;
+    // --inlife-text-muted: rgba(17, 17, 17, 0.68);
+    --inlife-text-muted: rgba(41, 52, 88, 0.78);
+
+    --inlife-nav: #293458;
+
+    --inlife-bg: #ffffff;
+    --inlife-surface-soft: #f8fafc;
+    --inlife-border: rgba(41, 52, 88, 0.10);
+
+    --inlife-focus: #d5db3e;
+
+    --inlife-section-space-y: clamp(4rem, 8vw, 7rem);
+    --inlife-hero-title-max: 980px;
+    --inlife-hero-lead-max: 860px;
+}
+
+@media (max-width: 767.98px) {
+    :root {
+        --inlife-gutter: 1rem;
+    }
+}

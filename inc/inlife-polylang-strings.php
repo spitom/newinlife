@@ -126,6 +126,25 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'career_type_label', 'Typ komunikatu', $group );
 
 		/*
+		* ------------------------------------------------------------
+		* Research Overview
+		* ------------------------------------------------------------
+		*/
+		$group = 'Research Overview';
+
+		pll_register_string( 'research_overview_eyebrow', 'Badania', $group );
+		pll_register_string(
+			'research_overview_hero_lead',
+			'Poznaj główne obszary działalności naukowej Instytutu: zespoły badawcze, laboratoria, projekty, publikacje oraz pozostałe zasoby wspierające rozwój badań.',
+			$group
+		);
+		pll_register_string(
+			'research_overview_navigation_heading',
+			'Nawigacja po dziale Badania',
+			$group
+		);
+
+		/*
 		 * ------------------------------------------------------------
 		 * InLife Teams
 		 * ------------------------------------------------------------
