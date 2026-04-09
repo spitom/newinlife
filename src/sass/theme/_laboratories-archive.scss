@@ -3,49 +3,14 @@
 ========================================================= */
 
 .site-main--laboratories {
-    background: #f8fafc;
+    background: var(--inlife-surface-soft);
 
-    /* =====================================================
-	   Header
-	===================================================== */
-
-    .laboratories-archive-header {
-        padding-top: clamp(4rem, 7vw, 6.5rem);
-        padding-bottom: clamp(2rem, 4vw, 3rem);
-
-        &__content {
-            max-width: 100%;
-            margin-bottom: 0;
-        }
-
-        &__eyebrow {
-            margin-bottom: 1rem;
-        }
-
-        &__title {
-            max-width: 100%;
-            margin-bottom: 1.35rem;
-            font-size: clamp(2.75rem, 5vw, 4.5rem);
-            line-height: 1.03;
-            letter-spacing: -0.03em;
-            color: #293458;
-        }
-
-        &__lead {
-            max-width: min(100%, 1100px);
-            margin-bottom: 0;
-            font-size: clamp(1.125rem, 1.4vw, 1.375rem);
-            line-height: 1.75;
-            color: #6c7890;
-        }
+    .page-section--laboratories-hero {
+        padding: 0;
     }
 
-    /* =====================================================
-	   Grid
-	===================================================== */
-
     .laboratories-grid {
-        padding-top: 0;
+        padding-top: clamp(3rem, 6vw, 5rem);
         padding-bottom: clamp(3.5rem, 6vw, 5rem);
 
         &__listing {
@@ -64,10 +29,6 @@
             margin-bottom: 0;
         }
     }
-
-    /* =====================================================
-	   Card
-	===================================================== */
 
     .laboratory-card {
         height: 100%;
@@ -203,22 +164,14 @@
                 outline-offset: 3px;
             }
         }
-
     }
 }
 
 @media (max-width: 767.98px) {
     .site-main--laboratories {
-        .laboratories-archive-header {
-            &__title {
-                font-size: clamp(2.2rem, 11vw, 3rem);
-                line-height: 1.06;
-            }
-
-            &__lead {
-                font-size: 1.05rem;
-                line-height: 1.7;
-            }
+        .laboratories-grid {
+            padding-top: clamp(2.25rem, 5vw, 3.5rem);
+            padding-bottom: clamp(2.75rem, 5vw, 4rem);
         }
     }
 }

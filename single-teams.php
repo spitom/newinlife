@@ -14,15 +14,10 @@ $container = function_exists( 'inlife_container_class' ) ? inlife_container_clas
 
 <main id="main-content" class="site-main site-main--team-single">
 
-	<?php
-	while ( have_posts() ) :
-		the_post();
-		?>
+	<?php while ( have_posts() ) : the_post(); ?>
 
 		<section class="page-section page-section--team-single-hero">
-			<div class="<?php echo esc_attr( $container ); ?>">
-				<?php get_template_part( 'template-parts/teams/teams-single', 'hero' ); ?>
-			</div>
+			<?php get_template_part( 'template-parts/teams/teams-single', 'hero' ); ?>
 		</section>
 
 		<section class="page-section page-section--team-single-overview">

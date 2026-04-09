@@ -18,11 +18,6 @@ if ( ! $lead ) {
 	);
 }
 
-/*
- * Obraz hero:
- * 1. ACF team_hero_image
- * 2. featured image
- */
 $hero_image_id = 0;
 
 if ( function_exists( 'get_field' ) ) {
@@ -39,54 +34,31 @@ if ( ! $hero_image_id && has_post_thumbnail( $team_id ) ) {
 	$hero_image_id = (int) get_post_thumbnail_id( $team_id );
 }
 
-$hero_has_media    = ! empty( $hero_image_id );
-$content_col_class = $hero_has_media ? 'col-lg-6' : 'col-12';
-?>
+$before_lead = '';
 
-<div class="team-hero<?php echo $hero_has_media ? '' : ' team-hero--no-media'; ?>">
-	<div class="row align-items-center g-4 g-xl-5">
-
-		<div class="<?php echo esc_attr( $content_col_class ); ?>">
-			<div class="team-hero__content">
-				<p class="section-kicker">
-					<?php echo esc_html( inlife_t( 'Badania' ) ); ?>
-				</p>
-
-				<h1 class="team-hero__title"><?php the_title(); ?></h1>
-
-				<?php if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) : ?>
-					<div class="team-hero__areas">
-						<?php foreach ( $terms as $term ) : ?>
-							<span class="team-hero__area">
-								<?php echo esc_html( $term->name ); ?>
-							</span>
-						<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
-
-				<?php if ( $lead ) : ?>
-					<p class="team-hero__lead"><?php echo esc_html( $lead ); ?></p>
-				<?php endif; ?>
-			</div>
-		</div>
-
-		<?php if ( $hero_has_media ) : ?>
-			<div class="col-lg-6">
-				<div class="team-hero__visual">
-					<?php
-					echo wp_get_attachment_image(
-						$hero_image_id,
-						'large',
-						false,
-						array(
-							'class'   => 'team-hero__image',
-							'loading' => 'eager',
-						)
-					);
-					?>
-				</div>
-			</div>
-		<?php endif; ?>
-
+if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+	ob_start();
+	?>
+	<div class="p-media-hero__tags">
+		<?php foreach ( $terms as $term ) : ?>
+			<span class="p-media-hero__tag">
+				<?php echo esc_html( $term->name ); ?>
+			</span>
+		<?php endforeach; ?>
 	</div>
-</div>
+	<?php
+	$before_lead = (string) ob_get_clean();
+}
+
+get_template_part(
+	'template-parts/patterns/pattern-media-hero',
+	null,
+	[
+		'kicker'      => inlife_t( 'Badania' ),
+		'title'       => get_the_title( $team_id ),
+		'lead'        => $lead,
+		'image_id'    => $hero_image_id,
+		'breadcrumbs' => true,
+		'before_lead' => $before_lead,
+	]
+);

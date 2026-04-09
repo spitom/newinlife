@@ -3,77 +3,23 @@
 ========================================================= */
 
 .site-main--team-single {
-    background: #f8fafc;
+    background: var(--inlife-surface-soft);
 
     .page-section {
         padding: 0 0 4rem;
     }
 
     .page-section--team-single-hero {
-        padding-top: 3.25rem;
-        padding-bottom: 5.25rem;
+        padding: 0;
     }
 
-    .page-section--team-single-sections {
-        padding-bottom: 5rem;
-    }
 }
 
-/* =========================================================
-   HERO
-========================================================= */
-
-.team-hero {
-    padding: 2.5rem 0 0;
-
-    &__content {
-        max-width: 640px;
-    }
-
-    &__title {
-        margin-bottom: 0.875rem;
-        font-size: clamp(2.4rem, 4vw, 4.2rem);
-        line-height: 1.02;
-        letter-spacing: -0.02em;
-        color: #293458;
-    }
-
-    &__areas {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-    }
-
-    &__area {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.4rem 0.75rem;
-        border-radius: 999px;
-        background: #e9eff6;
-        color: #4b5b7a;
-        font-size: 0.75rem;
-        font-weight: 700;
-    }
-
-    &__lead {
-        font-size: 1.05rem;
-        line-height: 1.7;
-        color: #5f6b85;
-    }
-
-    &__visual {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    &__image {
-        width: 100%;
-        height: auto;
-        border-radius: 1.25rem;
-        border: 6px solid #ffffff;
-        box-shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
+@media (max-width: 991.98px) {
+    .site-main--team-single {
+        .page-section--team-single-sections {
+            padding-bottom: 4rem;
+        }
     }
 }
 

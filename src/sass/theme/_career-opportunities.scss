@@ -3,16 +3,19 @@
 ========================================================= */
 
 .site-main--career-opportunities {
+    background: var(--inlife-surface-soft);
+
     .page-section--career-opportunities-hero {
-        padding-block: clamp(2.5rem, 5vw, 4rem);
+        padding: 0;
     }
 
     .page-section--career-opportunities-nav {
         position: sticky;
         top: calc(var(--inlife-header-offset, 88px) + 0.25rem);
         z-index: 20;
-        padding-block: 0 1.25rem;
-        background: rgba(255, 255, 255, 0.94);
+        padding-top: clamp(0.5rem, 1vw, 0.75rem);
+        padding-bottom: 1.25rem;
+        // background: rgba(255, 255, 255, 0.94);
         backdrop-filter: blur(8px);
     }
 

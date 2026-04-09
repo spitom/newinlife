@@ -1,0 +1,38 @@
+.site-main {
+    display: block;
+}
+
+.page-section {
+    padding-block: var(--inlife-section-space-y);
+}
+
+.page-section--tight {
+    padding-block: clamp(2rem, 4vw, 3.5rem);
+}
+
+.page-section--no-top {
+    padding-top: 0;
+}
+
+.page-section--no-bottom {
+    padding-bottom: 0;
+}
+
+/* Hero sections reset spacing */
+.page-section--about-hero,
+.page-section--research-hero,
+.page-section--business-hero,
+.page-section--society-hero,
+.page-section--career-hero {
+    padding: 0;
+}
+
+@media (max-width: 991.98px) {
+    .page-section {
+        padding-block: clamp(2.75rem, 6vw, 4rem);
+    }
+
+    .page-section--tight {
+        padding-block: clamp(1.75rem, 4vw, 2.75rem);
+    }
+}

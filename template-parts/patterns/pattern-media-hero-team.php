@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Media hero (text + image/custom media)
+ * Media hero (text + image)
  *
  * Args:
  * - kicker
@@ -11,21 +11,17 @@ defined( 'ABSPATH' ) || exit;
  * - image_id (int)
  * - breadcrumbs (bool|callable|string)
  * - before_lead (string HTML)
- * - actions_html (string HTML)
- * - custom_media_html (string HTML)
  */
 
 $args = wp_parse_args(
 	$args ?? [],
 	[
-		'kicker'            => '',
-		'title'             => '',
-		'lead'              => '',
-		'image_id'          => 0,
-		'breadcrumbs'       => true,
-		'before_lead'       => '',
-		'actions_html'      => '',
-		'custom_media_html' => '',
+		'kicker'      => '',
+		'title'       => '',
+		'lead'        => '',
+		'image_id'    => 0,
+		'breadcrumbs' => true,
+		'before_lead' => '',
 	]
 );
 
@@ -35,15 +31,13 @@ if ( '' === $title ) {
 	return;
 }
 
-$kicker            = trim( (string) $args['kicker'] );
-$lead              = (string) $args['lead'];
-$image_id          = (int) $args['image_id'];
-$breadcrumbs       = $args['breadcrumbs'];
-$before_lead       = (string) $args['before_lead'];
-$actions_html      = (string) $args['actions_html'];
-$custom_media_html = (string) $args['custom_media_html'];
+$kicker      = trim( (string) $args['kicker'] );
+$lead        = (string) $args['lead'];
+$image_id    = (int) $args['image_id'];
+$breadcrumbs = $args['breadcrumbs'];
+$before_lead = (string) $args['before_lead'];
 
-$has_media = ( $image_id > 0 ) || ( '' !== trim( $custom_media_html ) );
+$has_media = $image_id > 0;
 ?>
 
 <section class="p-media-hero<?php echo $has_media ? '' : ' p-media-hero--no-media'; ?>">
@@ -89,31 +83,21 @@ $has_media = ( $image_id > 0 ) || ( '' !== trim( $custom_media_html ) );
 					</div>
 				<?php endif; ?>
 
-				<?php if ( '' !== trim( $actions_html ) ) : ?>
-					<div class="p-media-hero__actions">
-						<?php echo wp_kses_post( $actions_html ); ?>
-					</div>
-				<?php endif; ?>
-
 			</div>
 
 			<?php if ( $has_media ) : ?>
 				<div class="p-media-hero__media">
-					<?php if ( '' !== trim( $custom_media_html ) ) : ?>
-						<?php echo wp_kses_post( $custom_media_html ); ?>
-					<?php else : ?>
-						<?php
-						echo wp_get_attachment_image(
-							$image_id,
-							'large',
-							false,
-							[
-								'class'   => 'p-media-hero__image',
-								'loading' => 'eager',
-							]
-						);
-						?>
-					<?php endif; ?>
+					<?php
+					echo wp_get_attachment_image(
+						$image_id,
+						'large',
+						false,
+						[
+							'class'   => 'p-media-hero__image',
+							'loading' => 'eager',
+						]
+					);
+					?>
 				</div>
 			<?php endif; ?>
 		</div>

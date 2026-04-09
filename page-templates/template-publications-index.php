@@ -15,33 +15,20 @@ $years     = function_exists( 'inlife_get_publication_year_overview' ) ? inlife_
 
 <main id="main-content" class="site-main site-main--landing site-main--publications-index">
 
-	<?php
-	get_template_part(
-		'template-parts/page/page',
-		'hero-inner',
-		array(
-			'eyebrow' => function_exists( 'inlife_t' ) ? inlife_t( 'Badania' ) : __( 'Badania', 'newinlife-child' ),
-			'title'   => get_the_title(),
-		)
-	);
-	?>
-
-	<section class="page-section page-section--publications-intro" aria-labelledby="publications-intro-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<div class="publications-overview-intro">
-				<div class="row">
-					<div class="col-xl-10">
-						<h2 id="publications-intro-heading" class="visually-hidden">
-							<?php echo esc_html( function_exists( 'inlife_t' ) ? inlife_t( 'Wprowadzenie do publikacji' ) : __( 'Wprowadzenie do publikacji', 'newinlife-child' ) ); ?>
-						</h2>
-
-						<p class="publications-overview-intro__lead">
-							<?php echo esc_html( function_exists( 'inlife_t' ) ? inlife_t( 'Przegląd dorobku publikacyjnego Instytutu w podziale na lata.' ) : __( 'Przegląd dorobku publikacyjnego Instytutu w podziale na lata.', 'newinlife-child' ) ); ?>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
+	<section class="page-section page-section--publications-index-hero">
+		<?php
+		get_template_part(
+			'template-parts/patterns/pattern-page-hero',
+			null,
+			array(
+				'kicker'      => function_exists( 'inlife_t' ) ? inlife_t( 'Badania' ) : __( 'Badania', 'newinlife-child' ),
+				'title'       => get_the_title(),
+				'lead'        => function_exists( 'inlife_t' ) ? inlife_t( 'Przegląd dorobku publikacyjnego Instytutu w podziale na lata.' ) : __( 'Przegląd dorobku publikacyjnego Instytutu w podziale na lata.', 'newinlife-child' ),
+				'breadcrumbs' => true,
+				'modifier'    => 'flush',
+			)
+		);
+		?>
 	</section>
 
 	<section class="page-section page-section--publications-years" aria-labelledby="publications-years-heading">
@@ -57,40 +44,38 @@ $years     = function_exists( 'inlife_get_publication_year_overview' ) ? inlife_
 
 				<?php if ( ! empty( $years ) ) : ?>
 					<div class="publications-nav-wrap">
-                        <nav class="publications-nav" aria-label="<?php echo esc_attr( function_exists( 'inlife_t' ) ? inlife_t( 'Lata publikacji' ) : __( 'Lata publikacji', 'newinlife-child' ) ); ?>">
-                            <?php foreach ($years as $year_item) : ?>
-                                <?php
-                                $year  = $year_item['year'];
-                                $count = $year_item['count'];
+						<nav class="publications-nav" aria-label="<?php echo esc_attr( function_exists( 'inlife_t' ) ? inlife_t( 'Lata publikacji' ) : __( 'Lata publikacji', 'newinlife-child' ) ); ?>">
+							<?php foreach ( $years as $year_item ) : ?>
+								<?php
+								$year  = $year_item['year'];
+								$count = $year_item['count'];
 
-                                // ✅ poprawiony URL
-                                $url = home_url('/badania/publikacje-' . $year . '/');
+								$url = home_url( '/badania/publikacje-' . $year . '/' );
 
-                                if (function_exists('pll_current_language') && pll_current_language() === 'en') {
-                                    $url = home_url('/en/research/publications-' . $year . '/');
-                                }
-                                ?>
+								if ( function_exists( 'pll_current_language' ) && 'en' === pll_current_language() ) {
+									$url = home_url( '/en/research/publications-' . $year . '/' );
+								}
+								?>
 
-                                <a
-                                    class="publications-nav__btn"
-                                    href="<?php echo esc_url($url); ?>"
-                                >
-                                    <?php echo esc_html($year); ?>
+								<a class="publications-nav__btn" href="<?php echo esc_url( $url ); ?>">
+									<?php echo esc_html( $year ); ?>
 
-                                    <span class="publications-nav__count">
-                                        <?php printf(
-                                            esc_html(
-                                                function_exists( 'inlife_t' )
-                                                    ? inlife_t( '%d publikacji' )
-                                                    : __( '%d publikacji', 'newinlife-child' )
-                                            ),
-                                            (int) $count
-                                        ); ?>
-                                    </span>
-                                </a>
-                            <?php endforeach; ?>
-                        </nav>
-                    </div>
+									<span class="publications-nav__count">
+										<?php
+										printf(
+											esc_html(
+												function_exists( 'inlife_t' )
+													? inlife_t( '%d publikacji' )
+													: __( '%d publikacji', 'newinlife-child' )
+											),
+											(int) $count
+										);
+										?>
+									</span>
+								</a>
+							<?php endforeach; ?>
+						</nav>
+					</div>
 				<?php else : ?>
 					<div class="publications-empty">
 						<p class="mb-0">

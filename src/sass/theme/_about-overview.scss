@@ -1,18 +1,23 @@
+/* =========================================================
+   About Overview
+========================================================= */
+
 .site-main--about {
-    background: #fff;
-}
+    background: var(--inlife-surface-soft);
 
-/* ---------------------------------
-   GLOBALNY RYTM SEKCJI
----------------------------------- */
-.site-main--about .page-section {
-    padding-top: clamp(2.75rem, 4vw, 4rem);
-    padding-bottom: clamp(2.75rem, 4vw, 4rem);
-}
+    .page-section--about-hero {
+        padding: 0;
+    }
 
-.site-main--about .page-section--intro {
-    padding-top: clamp(1.5rem, 2vw, 2rem);
-    padding-bottom: clamp(1.25rem, 2vw, 1.75rem);
+    .page-section--intro {
+        padding-top: clamp(2.5rem, 5vw, 4rem);
+        padding-bottom: clamp(1.75rem, 3vw, 2.5rem);
+    }
+
+    .page-section--cta {
+        padding-top: clamp(3.5rem, 5vw, 4.5rem);
+        padding-bottom: clamp(4rem, 6vw, 5rem);
+    }
 }
 
 /* ---------------------------------
@@ -68,6 +73,7 @@
         margin: 0;
         font-size: 1.0625rem;
         line-height: 1.75;
+        color: var(--inlife-text-muted);
     }
 
     &__content {
@@ -91,8 +97,10 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
 
-    @media (min-width: 992px) {
+@media (min-width: 992px) {
+    .about-section__top--split {
         flex-direction: row;
         align-items: end;
         justify-content: space-between;
@@ -108,7 +116,10 @@
     border-radius: 1rem;
     background: #fff;
     box-shadow: 0 0.4rem 1rem rgba(41, 52, 88, 0.035);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .card-person:hover,
@@ -167,18 +178,15 @@
     min-height: 250px;
     border-radius: 1.125rem;
     border: 1px solid rgba(41, 52, 88, 0.12);
-    background:
-        linear-gradient(135deg, rgba(41, 52, 88, 0.08) 0%, rgba(41, 52, 88, 0.03) 100%);
+    background: linear-gradient(135deg,
+            rgba(41, 52, 88, 0.08) 0%,
+            rgba(41, 52, 88, 0.03) 100%);
     box-shadow: 0 0.6rem 1.4rem rgba(41, 52, 88, 0.04);
     overflow: hidden;
     display: grid;
     place-items: center;
     padding: 1.5rem;
     text-align: center;
-
-    @media (min-width: 992px) {
-        min-height: 300px;
-    }
 
     &::before {
         content: "";
@@ -209,24 +217,31 @@
     }
 }
 
-/* ---------------------------------
-   CTA
----------------------------------- */
-.page-section--cta {
-    padding-top: clamp(3.5rem, 5vw, 4.5rem);
-    padding-bottom: clamp(4rem, 6vw, 5rem);
-}
-
 .page-cta {
     padding: 2.25rem 1.5rem;
     border-radius: 1.25rem;
     background: rgba(41, 52, 88, 0.05);
 }
 
-/* ---------------------------------
-   MOBILE
----------------------------------- */
+@media (min-width: 992px) {
+    .about-visual {
+        min-height: 300px;
+    }
+}
+
 @media (max-width: 991.98px) {
+    .site-main--about {
+        .page-section--intro {
+            padding-top: clamp(2rem, 5vw, 3rem);
+            padding-bottom: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .page-section--cta {
+            padding-top: clamp(2.75rem, 5vw, 3.5rem);
+            padding-bottom: clamp(3rem, 5vw, 4rem);
+        }
+    }
+
     .about-panel {
         padding: 1.25rem;
     }

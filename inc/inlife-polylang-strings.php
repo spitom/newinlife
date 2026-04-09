@@ -41,6 +41,20 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'footer_copyright', '© InLife – Polska Akademia Nauk', $group );
 
 		/*
+		* ------------------------------------------------------------
+		* About Overview
+		* ------------------------------------------------------------
+		*/
+		$group = 'About Overview';
+
+		pll_register_string( 'about_overview_eyebrow', 'O nas', $group );
+		pll_register_string(
+			'about_overview_hero_lead',
+			'Poznaj Instytut, jego misję, strukturę, historię oraz najważniejsze informacje wspierające zrozumienie naszej działalności naukowej i organizacyjnej.',
+			$group
+		);
+
+		/*
 		 * ------------------------------------------------------------
 		 * InLife Career
 		 * ------------------------------------------------------------

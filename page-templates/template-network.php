@@ -13,18 +13,33 @@ $container      = function_exists( 'inlife_container_class' ) ? inlife_container
 $partners_query = inlife_get_network_partners_query();
 $region_terms   = inlife_get_partner_region_terms();
 $map_data       = inlife_get_network_map_data( $partners_query );
+
+$title = get_the_title();
+$lead  = function_exists( 'get_field' ) ? get_field( 'network_lead' ) : '';
+
+if ( ! $lead ) {
+	$lead = inlife_t( 'Rozwijamy międzynarodową sieć współpracy naukowej i instytucjonalnej, łącząc partnerów z różnych regionów świata w obszarach żywności, zdrowia i nauk o zwierzętach.' );
+}
 ?>
 
 <main id="main-content" class="site-main site-main--network">
-	<?php
-	get_template_part(
-		'template-parts/network/network-hero',
-		null,
-		[
-			'container' => $container,
-		]
-	);
 
+	<section class="page-section page-section--network-hero">
+		<?php
+		get_template_part(
+			'template-parts/patterns/pattern-page-hero',
+			null,
+			[
+				'kicker'      => inlife_t( 'Sieć współpracy' ),
+				'title'       => $title,
+				'lead'        => $lead,
+				'breadcrumbs' => true,
+			]
+		);
+		?>
+	</section>
+
+	<?php
 	get_template_part(
 		'template-parts/network/network-filters',
 		null,
