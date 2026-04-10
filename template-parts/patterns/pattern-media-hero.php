@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
  * - title (required)
  * - lead
  * - image_id (int)
- * - breadcrumbs (bool|callable|string)
+ * - breadcrumbs (bool|callable|string|array)
  * - before_lead (string HTML)
  * - actions_html (string HTML)
  * - custom_media_html (string HTML)
@@ -54,14 +54,14 @@ $has_media = ( $image_id > 0 ) || ( '' !== trim( $custom_media_html ) );
 				<?php if ( false !== $breadcrumbs ) : ?>
 					<div class="p-media-hero__breadcrumbs">
 						<?php
-						if ( is_callable( $breadcrumbs ) ) {
-							call_user_func( $breadcrumbs );
-						} elseif ( is_string( $breadcrumbs ) && '' !== trim( $breadcrumbs ) ) {
-							echo wp_kses_post( $breadcrumbs );
-						} elseif ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
-							rank_math_the_breadcrumbs();
-						} elseif ( function_exists( 'yoast_breadcrumb' ) ) {
-							yoast_breadcrumb( '<div>', '</div>' );
+						if ( is_array( $breadcrumbs ) || true === $breadcrumbs ) {
+							get_template_part( 'template-parts/components/breadcrumbs' );
+						} else {
+							if ( is_callable( $breadcrumbs ) ) {
+								call_user_func( $breadcrumbs );
+							} elseif ( is_string( $breadcrumbs ) && '' !== trim( $breadcrumbs ) ) {
+								echo wp_kses_post( $breadcrumbs );
+							}
 						}
 						?>
 					</div>

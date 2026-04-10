@@ -1,10 +1,33 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-$current_type = isset( $_GET['people_type'] ) ? sanitize_text_field( wp_unslash( $_GET['people_type'] ) ) : '';
+/**
+ * Current filters.
+ * Bierzemy people_type najpierw z GET, a jeśli z jakiegoś powodu go tam nie ma,
+ * próbujemy fallback do query var.
+ */
+$current_type = '';
+
+if ( isset( $_GET['people_type'] ) && is_string( $_GET['people_type'] ) ) {
+	$current_type = sanitize_title( wp_unslash( $_GET['people_type'] ) );
+}
+
+if ( '' === $current_type ) {
+	$query_var_type = get_query_var( 'people_type' );
+	if ( is_string( $query_var_type ) ) {
+		$current_type = sanitize_title( $query_var_type );
+	}
+}
+
 $current_team = isset( $_GET['team'] ) ? (int) $_GET['team'] : 0;
 $current_lab  = isset( $_GET['lab'] ) ? (int) $_GET['lab'] : 0;
-$current_s    = get_query_var( 's' );
+$current_s    = isset( $_GET['s'] ) && is_string( $_GET['s'] )
+	? sanitize_text_field( wp_unslash( $_GET['s'] ) )
+	: '';
+
+$current_letter = isset( $_GET['letter'] ) && is_string( $_GET['letter'] )
+	? strtoupper( sanitize_text_field( wp_unslash( $_GET['letter'] ) ) )
+	: '';
 
 $types = get_terms(
 	[
@@ -12,6 +35,23 @@ $types = get_terms(
 		'hide_empty' => false,
 	]
 );
+
+if ( ! empty( $types ) && is_array( $types ) ) {
+	$desired_order = [ 'scientific', 'staff' ];
+
+	usort(
+		$types,
+		static function( $a, $b ) use ( $desired_order ) {
+			$a_index = array_search( $a->slug, $desired_order, true );
+			$b_index = array_search( $b->slug, $desired_order, true );
+
+			$a_index = false === $a_index ? 999 : $a_index;
+			$b_index = false === $b_index ? 999 : $b_index;
+
+			return $a_index <=> $b_index;
+		}
+	);
+}
 
 $teams = get_posts(
 	[
@@ -35,20 +75,28 @@ $labs = get_posts(
 
 $archive_url = get_post_type_archive_link( 'people' );
 
-$all_url_args = [
+/**
+ * Bazowe argumenty zachowywane przy klikaniu pillsów.
+ * people_type dokładamy osobno dla konkretnego pillsa.
+ */
+$base_args = [
 	'post_type' => 'people',
 ];
 
-if ( $current_s ) {
-	$all_url_args['s'] = $current_s;
+if ( '' !== $current_s ) {
+	$base_args['s'] = $current_s;
+}
+
+if ( '' !== $current_letter ) {
+	$base_args['letter'] = $current_letter;
 }
 
 if ( $current_team ) {
-	$all_url_args['team'] = $current_team;
+	$base_args['team'] = $current_team;
 }
 
 if ( $current_lab ) {
-	$all_url_args['lab'] = $current_lab;
+	$base_args['lab'] = $current_lab;
 }
 ?>
 
@@ -58,21 +106,25 @@ if ( $current_lab ) {
 			<a
 				class="people-filters__pill<?php echo '' === $current_type ? ' is-active' : ''; ?>"
 				<?php echo '' === $current_type ? 'aria-current="page"' : ''; ?>
-				href="<?php echo esc_url( add_query_arg( $all_url_args, $archive_url ) ); ?>"
+				href="<?php echo esc_url( add_query_arg( $base_args, $archive_url ) ); ?>"
 			>
 				<?php esc_html_e( 'Wszyscy', 'newinlife' ); ?>
 			</a>
 
 			<?php foreach ( $types as $type ) : ?>
-				<?php if ( ! $type || empty( $type->slug ) ) { continue; } ?>
 				<?php
-				$type_url_args = $all_url_args;
-				$type_url_args['people_type'] = $type->slug;
+				if ( ! $type || empty( $type->slug ) ) {
+					continue;
+				}
+
+				$type_slug = sanitize_title( (string) $type->slug );
+				$type_args = $base_args;
+				$type_args['people_type'] = $type_slug;
 				?>
 				<a
-					class="people-filters__pill<?php echo $current_type === $type->slug ? ' is-active' : ''; ?>"
-					<?php echo $current_type === $type->slug ? 'aria-current="page"' : ''; ?>
-					href="<?php echo esc_url( add_query_arg( $type_url_args, $archive_url ) ); ?>"
+					class="people-filters__pill<?php echo $current_type === $type_slug ? ' is-active' : ''; ?>"
+					<?php echo $current_type === $type_slug ? 'aria-current="page"' : ''; ?>
+					href="<?php echo esc_url( add_query_arg( $type_args, $archive_url ) ); ?>"
 				>
 					<?php echo esc_html( $type->name ); ?>
 				</a>
@@ -83,12 +135,16 @@ if ( $current_lab ) {
 	<form class="people-filters-form" method="get" action="<?php echo esc_url( $archive_url ); ?>">
 		<input type="hidden" name="post_type" value="people">
 
-		<?php if ( $current_s ) : ?>
+		<?php if ( '' !== $current_s ) : ?>
 			<input type="hidden" name="s" value="<?php echo esc_attr( $current_s ); ?>">
 		<?php endif; ?>
 
-		<?php if ( $current_type ) : ?>
+		<?php if ( '' !== $current_type ) : ?>
 			<input type="hidden" name="people_type" value="<?php echo esc_attr( $current_type ); ?>">
+		<?php endif; ?>
+
+		<?php if ( '' !== $current_letter ) : ?>
+			<input type="hidden" name="letter" value="<?php echo esc_attr( $current_letter ); ?>">
 		<?php endif; ?>
 
 		<div class="row g-3 align-items-end">

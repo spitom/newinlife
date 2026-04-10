@@ -112,6 +112,7 @@ require_once get_stylesheet_directory() . '/inc/acf/people-fields.php';
 require_once get_stylesheet_directory() . '/inc/helpers/people-query.php';
 require_once get_stylesheet_directory() . '/inc/helpers/people-relations.php';
 require_once get_stylesheet_directory() . '/inc/helpers/teams.php';
+require_once get_stylesheet_directory() . '/inc/helpers/breadcrumbs.php';
 require_once get_stylesheet_directory() . '/inc/helpers/laboratories.php';
 require_once get_stylesheet_directory() . '/inc/post-types/projects.php';
 require_once get_stylesheet_directory() . '/inc/helpers/projects.php';

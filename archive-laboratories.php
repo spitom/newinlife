@@ -22,10 +22,12 @@ get_header();
 				'title'       => inlife_t( 'Laboratoria' ),
 				'lead'        => inlife_t( 'Poznaj laboratoria wspierające działalność badawczą instytutu, oferujące specjalistyczne metody, analizy oraz zaplecze aparaturowe.' ),
 				'breadcrumbs' => true,
+				'modifier'    => 'flush',
 			]
 		);
 		?>
 	</section>
+
 	<?php get_template_part( 'template-parts/laboratories/laboratories-archive', 'grid' ); ?>
 
 </main>

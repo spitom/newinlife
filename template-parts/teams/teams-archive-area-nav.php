@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 $area_order = array( 'zywnosc', 'zwierzeta', 'zdrowie' );
 ?>
 
-<section class="teams-area-nav section-sm">
+<section class="teams-area-nav">
 	<div class="container">
 
 		<div

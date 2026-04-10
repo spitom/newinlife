@@ -3,14 +3,6 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Shared page hero pattern.
- *
- * Expected args:
- * - kicker (string)
- * - title (string) [required]
- * - lead (string)
- * - breadcrumbs (string|callable|bool)
- * - modifier (string)
- * - actions_html (string HTML)
  */
 
 $args = wp_parse_args(
@@ -22,6 +14,13 @@ $args = wp_parse_args(
 		'breadcrumbs'  => true,
 		'modifier'     => '',
 		'actions_html' => '',
+
+		// 🔥 NOWE (pod JS teams)
+		'section_id' => '',
+		'data_attrs' => [],
+		'title_id'   => '',
+		'kicker_id'  => '',
+		'lead_id'    => '',
 	]
 );
 
@@ -44,38 +43,61 @@ if ( '' !== $modifier ) {
 }
 ?>
 
-<section class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+<section
+	class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
+	<?php if ( $args['section_id'] ) : ?>
+		id="<?php echo esc_attr( $args['section_id'] ); ?>"
+	<?php endif; ?>
+	<?php if ( ! empty( $args['data_attrs'] ) ) : ?>
+		<?php foreach ( $args['data_attrs'] as $attr => $value ) : ?>
+			data-<?php echo esc_attr( $attr ); ?>="<?php echo esc_attr( $value ); ?>"
+		<?php endforeach; ?>
+	<?php endif; ?>
+>
 	<div class="p-page-hero__inner">
-		<div class="p-page-hero__content">
 
-			<?php if ( false !== $breadcrumbs ) : ?>
-				<div class="p-page-hero__breadcrumbs">
-					<?php
+		<?php if ( false !== $breadcrumbs ) : ?>
+			<div class="p-page-hero__breadcrumbs">
+				<?php
+				if ( is_array( $breadcrumbs ) || true === $breadcrumbs ) {
+					get_template_part( 'template-parts/components/breadcrumbs' );
+				} else {
 					if ( is_callable( $breadcrumbs ) ) {
 						call_user_func( $breadcrumbs );
 					} elseif ( is_string( $breadcrumbs ) && '' !== trim( $breadcrumbs ) ) {
 						echo wp_kses_post( $breadcrumbs );
-					} elseif ( function_exists( 'rank_math_the_breadcrumbs' ) ) {
-						rank_math_the_breadcrumbs();
-					} elseif ( function_exists( 'yoast_breadcrumb' ) ) {
-						yoast_breadcrumb( '<div>', '</div>' );
 					}
-					?>
-				</div>
-			<?php endif; ?>
+				}
+				?>
+			</div>
+		<?php endif; ?>
+
+		<div class="p-page-hero__content">
 
 			<?php if ( '' !== $kicker ) : ?>
-				<div class="p-page-hero__kicker">
+				<div class="p-page-hero__kicker"
+					<?php if ( $args['kicker_id'] ) : ?>
+						id="<?php echo esc_attr( $args['kicker_id'] ); ?>"
+					<?php endif; ?>
+				>
 					<?php echo esc_html( $kicker ); ?>
 				</div>
 			<?php endif; ?>
 
-			<h1 class="p-page-hero__title">
+			<h1 class="p-page-hero__title"
+				<?php if ( $args['title_id'] ) : ?>
+					id="<?php echo esc_attr( $args['title_id'] ); ?>"
+				<?php endif; ?>
+			>
 				<?php echo esc_html( $title ); ?>
 			</h1>
 
 			<?php if ( trim( wp_strip_all_tags( $lead ) ) ) : ?>
-				<div class="p-page-hero__lead">
+				<div class="p-page-hero__lead"
+					<?php if ( $args['lead_id'] ) : ?>
+						id="<?php echo esc_attr( $args['lead_id'] ); ?>"
+					<?php endif; ?>
+				>
 					<?php echo wp_kses_post( wpautop( $lead ) ); ?>
 				</div>
 			<?php endif; ?>
