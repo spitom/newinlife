@@ -100,33 +100,35 @@ if (function_exists('have_rows') && have_rows('business_technology_tiles', $post
 		];
 	}
 }
+
+ob_start();
+?>
+<a href="#" class="btn btn-outline-primary">
+	<?php echo esc_html( inlife_t( 'Zobacz wszystkie technologie' ) ); ?>
+</a>
+<?php
+$section_action = (string) ob_get_clean();
 ?>
 
 <div class="business-technologies">
-	<div class="row g-4 align-items-end business-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker"><?php echo esc_html($section_kicker); ?></p>
-				<h2 id="business-technologies-heading" class="section-title">
-					<?php echo esc_html($section_title); ?>
-				</h2>
-			</div>
 
-			<?php if (!empty($section_text)) : ?>
-				<p class="section-lead mt-3 mb-0">
-					<?php echo esc_html($section_text); ?>
-				</p>
-			<?php endif; ?>
-		</div>
+	<?php
+	get_template_part(
+		'template-parts/components/section-header',
+		null,
+		[
+			'kicker'      => $section_kicker,
+			'title'       => $section_title,
+			'lead'        => $section_text,
+			'action_html' => $section_action,
+			'title_id'    => 'business-technologies-heading',
+		]
+	);
+	?>
 
-		<div class="col-lg-4 text-lg-end">
-			<a href="#" class="btn btn-outline-primary">Zobacz wszystkie technologie</a>
-		</div>
-	</div>
-
-	<?php if (!empty($tiles)) : 
-	$main = $tiles[0] ?? null;
-	$side = array_slice($tiles, 1);
+	<?php if (!empty($tiles)) :
+		$main = $tiles[0] ?? null;
+		$side = array_slice($tiles, 1);
 	?>
 
 	<div class="business-technologies__layout">

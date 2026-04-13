@@ -1,0 +1,43 @@
+.c-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.4;
+
+    color: var(--inlife-primary);
+    text-decoration: none;
+
+    transition: color var(--inlife-transition);
+}
+
+.c-readmore__icon {
+    display: inline-block;
+    transition:
+        transform var(--inlife-transition),
+        opacity var(--inlife-transition);
+    opacity: 0.85;
+}
+
+/* HOVER */
+
+.c-readmore:hover,
+.c-readmore:focus {
+    color: var(--inlife-primary);
+    text-decoration: none;
+}
+
+.c-readmore:hover .c-readmore__icon,
+.c-readmore:focus .c-readmore__icon {
+    transform: translateX(4px);
+    opacity: 1;
+}
+
+/* WCAG */
+
+.c-readmore:focus-visible {
+    outline: 2px solid var(--inlife-accent);
+    outline-offset: 3px;
+}

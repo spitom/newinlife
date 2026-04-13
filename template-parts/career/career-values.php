@@ -80,22 +80,17 @@ if (function_exists('have_rows') && have_rows('career_values_highlights', $post_
 ?>
 
 <div class="career-values">
-	<div class="row g-4 align-items-end career-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker"><?php echo esc_html($section_kicker); ?></p>
-				<h2 id="career-values-heading" class="section-title">
-					<?php echo esc_html($section_title); ?>
-				</h2>
-			</div>
-
-			<?php if (!empty($section_text)) : ?>
-				<p class="section-lead mt-3 mb-0">
-					<?php echo esc_html($section_text); ?>
-				</p>
-			<?php endif; ?>
-		</div>
-	</div>
+	<?php
+	get_template_part(
+		'template-parts/components/section-header',
+		null,
+		[
+			'kicker' => $section_kicker,
+			'title'  => $section_title,
+			'lead'   => $section_text,
+		]
+	);
+	?>
 
 	<div class="career-values__layout">
 		<div class="career-values__content">

@@ -103,23 +103,19 @@ if (function_exists('have_rows') && have_rows('business_industry_tiles', $post_i
 ?>
 
 <div class="business-services business-services--industries">
-	<div class="row g-4 align-items-end business-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker"><?php echo esc_html($section_kicker); ?></p>
-				<h2 id="business-services-industries-heading" class="section-title">
-					<?php echo esc_html($section_title); ?>
-				</h2>
-			</div>
 
-			<?php if (!empty($section_text)) : ?>
-				<p class="section-lead mt-3 mb-0">
-					<?php echo esc_html($section_text); ?>
-				</p>
-			<?php endif; ?>
-		</div>
-	</div>
-
+	<?php
+	get_template_part(
+		'template-parts/components/section-header',
+		null,
+		[
+			'kicker' => $section_kicker,
+			'title'  => $section_title,
+			'lead'   => $section_text,
+			'title_id' => 'business-services-industries-heading',
+		]
+	);
+	?>
 
 	<?php if (!empty($tiles)) : ?>
 		<div class="business-services__grid business-services__grid--industries">
@@ -145,11 +141,12 @@ if (function_exists('have_rows') && have_rows('business_industry_tiles', $post_i
 								</p>
 							<?php endif; ?>
 
-							<span class="business-service-card__meta">
-								Zobacz więcej
+							<span class="c-readmore">
+								<?php echo esc_html( inlife_t( 'Zobacz więcej' ) ); ?>
 								<span class="visually-hidden">
-									o obszarze <?php echo esc_html($tile['title']); ?>
+									<?php echo esc_html( $tile['title'] ); ?>
 								</span>
+								<span class="c-readmore__icon" aria-hidden="true">→</span>
 							</span>
 						</div>
 					</a>

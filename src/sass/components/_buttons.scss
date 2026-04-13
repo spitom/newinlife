@@ -1,28 +1,64 @@
-.btn {
+/* =========================================================
+   BUTTON SYSTEM — INLIFE (v1)
+========================================================= */
+
+.btn,
+.btn-primary,
+.btn-outline-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0.75rem 1.25rem;
     border-radius: 999px;
     font-weight: 600;
-    padding: 0.8rem 1.25rem;
+    line-height: 1.2;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
 }
 
+/* FOCUS (WCAG) */
+
+.btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-outline-primary:focus-visible {
+    outline: 2px solid var(--inlife-accent);
+    outline-offset: 3px;
+}
+
+/* PRIMARY */
+
 .btn-primary {
-    background-color: var(--inlife-primary);
-    border-color: var(--inlife-primary);
+    border: 1px solid var(--inlife-primary);
+    background: var(--inlife-primary);
+    color: #fff;
 
     &:hover,
     &:focus {
-        background-color: #1f2843;
-        border-color: #1f2843;
+        background: #1f2744;
+        border-color: #1f2744;
+        color: #fff;
+        box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.14);
     }
 }
 
+/* OUTLINE */
+
 .btn-outline-primary {
+    border: 1px solid #dbe4ee;
+    background: #f4f7fb;
     color: var(--inlife-primary);
-    border-color: var(--inlife-primary);
 
     &:hover,
     &:focus {
+        background: #eaf0f7;
+        border-color: #cfd9e5;
         color: var(--inlife-primary);
-        background-color: rgba(213, 219, 62, 0.22);
-        border-color: var(--inlife-primary);
     }
 }
