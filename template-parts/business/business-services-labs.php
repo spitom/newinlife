@@ -9,11 +9,6 @@ defined('ABSPATH') || exit;
 
 $post_id = get_the_ID();
 
-/**
- * Fallback bezpieczeństwa:
- * jeśli helper nie jest jeszcze załadowany,
- * zdefiniuj lokalną wersję awaryjną.
- */
 if (!function_exists('inlife_get_acf_field')) {
 	function inlife_get_acf_field($field_name, $post_id = 0, $default = null) {
 		if (function_exists('get_field')) {
@@ -46,35 +41,33 @@ $section_text = inlife_get_acf_field(
 	'Nasze laboratoria i zespoły badawcze zapewniają zaplecze eksperckie dla usług, analiz oraz projektów realizowanych z partnerami zewnętrznymi.'
 );
 
-/**
- * Fallback tiles
- */
 $tiles = [
 	[
-		'title'   => 'Laboratorium Analizy Żywności',
-		'text'    => 'Badania jakości, bezpieczeństwa i parametrów fizykochemicznych produktów spożywczych.',
-		'url'     => '#',
-		'badge'   => 'Laboratorium',
-		'variant' => 'lab',
+		'title' => 'Laboratorium Analizy Żywności',
+		'text'  => 'Badania jakości, bezpieczeństwa i parametrów fizykochemicznych produktów spożywczych.',
+		'url'   => '#',
+		'badge' => 'Laboratorium',
 	],
 	[
-		'title'   => 'Laboratorium Mikrobiologii',
-		'text'    => 'Analizy mikrobiologiczne wspierające ocenę bezpieczeństwa i stabilności produktów.',
-		'url'     => '#',
-		'badge'   => 'Laboratorium',
-		'variant' => 'lab',
+		'title' => 'Laboratorium Mikrobiologii',
+		'text'  => 'Analizy mikrobiologiczne wspierające ocenę bezpieczeństwa i stabilności produktów.',
+		'url'   => '#',
+		'badge' => 'Laboratorium',
 	],
 	[
-		'title'   => 'Laboratorium Biotechnologii',
-		'text'    => 'Zaplecze do projektów rozwojowych, wdrożeń, testów i walidacji rozwiązań.',
-		'url'     => '#',
-		'badge'   => 'Laboratorium',
-		'variant' => 'lab',
+		'title' => 'Laboratorium Biotechnologii',
+		'text'  => 'Zaplecze do projektów rozwojowych, wdrożeń, testów i walidacji rozwiązań.',
+		'url'   => '#',
+		'badge' => 'Laboratorium',
+	],
+	[
+		'title' => 'Laboratorium Sensoryczne',
+		'text'  => 'Zaplecze do projektów rozwojowych, wdrożeń, testów i walidacji rozwiązań.',
+		'url'   => '#',
+		'badge' => 'Laboratorium',
 	],
 ];
-/**
- * Jeśli działa ACF i repeater istnieje, nadpisujemy fallback.
- */
+
 if (function_exists('have_rows') && have_rows('business_lab_tiles', $post_id)) {
 	$tiles = [];
 
@@ -95,66 +88,67 @@ if (function_exists('have_rows') && have_rows('business_lab_tiles', $post_id)) {
 		}
 
 		$tiles[] = [
-			'title'   => $title ?: '',
-			'text'    => $text ?: '',
-			'url'     => $url,
-			'badge'   => $badge ?: 'Laboratorium',
-			'variant' => 'lab',
+			'title' => $title ?: '',
+			'text'  => $text ?: '',
+			'url'   => $url,
+			'badge' => $badge ?: 'Laboratorium',
 		];
 	}
 }
 ?>
 
 <div class="business-services business-services--labs">
-	<div class="row g-4 align-items-end business-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker"><?php echo esc_html($section_kicker); ?></p>
-				<h2 id="business-services-labs-heading" class="section-title">
-					<?php echo esc_html($section_title); ?>
-				</h2>
-			</div>
 
-			<?php if (!empty($section_text)) : ?>
-				<p class="section-lead mt-3 mb-0">
-					<?php echo esc_html($section_text); ?>
-				</p>
-			<?php endif; ?>
-		</div>
-	</div>
+	<?php
+	get_template_part(
+		'template-parts/components/section-header',
+		null,
+		[
+			'kicker'   => $section_kicker,
+			'title'    => $section_title,
+			'lead'     => $section_text,
+			'title_id' => 'business-services-labs-heading',
+		]
+	);
+	?>
 
 	<?php if (!empty($tiles)) : ?>
-		<div class="business-services__grid business-services__grid--labs">
+		<div class="business-services__grid business-services__grid--labs c-card-grid">
 			<?php foreach ($tiles as $tile) : ?>
-				<article class="business-service-card business-service-card--lab">
-					<a class="business-service-card__link" href="<?php echo esc_url($tile['url']); ?>">
-						<div class="business-service-card__media" aria-hidden="true">
-							<div class="business-service-card__placeholder business-service-card__placeholder--lab">
-								<span class="business-service-card__badge">
-									<?php echo esc_html($tile['badge']); ?>
-								</span>
+				<article class="business-service-card business-service-card--lab c-card c-card--unit c-card--with-media">
+					<div class="business-service-card__frame c-card__frame c-card__frame--cut-tl">
+						<div class="business-service-card__inner c-card__inner">
+							<div class="business-service-card__media c-card__media" aria-hidden="true">
+								<div class="business-service-card__placeholder business-service-card__placeholder--lab c-card__placeholder">
+									<span class="business-service-card__badge">
+										<?php echo esc_html($tile['badge']); ?>
+									</span>
+								</div>
+							</div>
+
+							<div class="business-service-card__body c-card__body">
+								<h3 class="business-service-card__title c-card__title">
+									<a class="business-service-card__title-link c-card__title-link" href="<?php echo esc_url($tile['url']); ?>">
+										<?php echo esc_html($tile['title']); ?>
+									</a>
+								</h3>
+
+								<?php if (!empty($tile['text'])) : ?>
+									<p class="business-service-card__text">
+										<?php echo esc_html($tile['text']); ?>
+									</p>
+								<?php endif; ?>
+
+								<a class="c-readmore" href="<?php echo esc_url($tile['url']); ?>">
+									<?php echo esc_html(inlife_t('Poznaj kompetencje')); ?>
+									<span class="visually-hidden">
+										<?php echo esc_html($tile['title']); ?>
+									</span>
+									<span class="c-readmore__icon" aria-hidden="true">→</span>
+								</a>
 							</div>
 						</div>
-
-						<div class="business-service-card__body">
-							<h3 class="business-service-card__title">
-								<?php echo esc_html($tile['title']); ?>
-							</h3>
-
-							<?php if (!empty($tile['text'])) : ?>
-								<p class="business-service-card__text">
-									<?php echo esc_html($tile['text']); ?>
-								</p>
-							<?php endif; ?>
-
-							<span class="business-service-card__meta">
-								Poznaj kompetencje
-								<span class="visually-hidden">
-									laboratorium <?php echo esc_html($tile['title']); ?>
-								</span>
-							</span>
-						</div>
-					</a>
+					</div>
 				</article>
 			<?php endforeach; ?>
 		</div>

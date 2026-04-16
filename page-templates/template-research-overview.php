@@ -29,13 +29,18 @@ $container = function_exists( 'inlife_container_class' ) ? inlife_container_clas
 		?>
 	</section>
 
-	<section class="page-section page-section--research-nav" aria-labelledby="research-navigation-heading">
+	<section class="page-section page-section--research-nav">
 		<div class="<?php echo esc_attr( $container ); ?>">
-			<h2 id="research-navigation-heading" class="visually-hidden">
-				<?php echo esc_html( inlife_t( 'Nawigacja po dziale Badania' ) ); ?>
-			</h2>
-
-			<?php get_template_part( 'template-parts/research/research', 'navigation-grid' ); ?>
+			<?php
+			get_template_part(
+				'template-parts/research/research',
+				'navigation-grid',
+				[
+					'section_id' => 'research-navigation',
+					'title_id'   => 'research-navigation-heading',
+				]
+			);
+			?>
 		</div>
 	</section>
 

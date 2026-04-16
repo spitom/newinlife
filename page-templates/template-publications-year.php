@@ -33,7 +33,8 @@ if ( function_exists( 'pll_home_url' ) && function_exists( 'pll_current_language
 
 ob_start();
 ?>
-<a class="btn btn-outline-primary" href="<?php echo esc_url( $back_url ); ?>">
+<a class="publications-year-back c-readmore" href="<?php echo esc_url( $back_url ); ?>">
+	<span class="c-readmore__icon" aria-hidden="true">←</span>
 	<?php
 	echo esc_html(
 		function_exists( 'inlife_t' )
@@ -90,7 +91,7 @@ $hero_actions = trim( (string) ob_get_clean() );
 						<?php endforeach; ?>
 					</ol>
 				<?php else : ?>
-					<div class="publications-empty">
+					<div class="publications-empty c-surface c-surface--soft c-surface--panel">
 						<p class="mb-0">
 							<?php
 							echo esc_html(

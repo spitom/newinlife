@@ -14,7 +14,6 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 
 $academic_title = function_exists( 'get_field' ) ? get_field( 'person_academic_title', $post_id ) : '';
 $position       = function_exists( 'get_field' ) ? get_field( 'person_position', $post_id ) : '';
-$short_bio      = function_exists( 'get_field' ) ? get_field( 'person_short_bio', $post_id ) : '';
 
 $email = function_exists( 'get_field' ) ? get_field( 'person_email', $post_id ) : '';
 $phone = function_exists( 'get_field' ) ? get_field( 'person_phone', $post_id ) : '';
@@ -57,7 +56,6 @@ if ( is_array( $labs_raw ) ) {
 			$labs[] = $lab_id;
 		}
 	}
-
 }
 
 $teams = array_values( array_unique( $teams ) );
@@ -124,9 +122,12 @@ $has_photo = has_post_thumbnail( $post_id );
 				<?php if ( $email ) : ?>
 					<div class="people-single-hero__meta-item">
 						<span class="people-single-hero__meta-label"><?php esc_html_e( 'E-mail', 'newinlife' ); ?></span>
-						<a href="mailto:<?php echo esc_attr( antispambot( $email ) ); ?>">
-							<?php echo esc_html( antispambot( $email ) ); ?>
-						</a>
+						<?php
+						echo inlife_render_obfuscated_email_link(
+							$email,
+							'people-single-hero__email-link'
+						); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						?>
 					</div>
 				<?php endif; ?>
 

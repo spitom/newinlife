@@ -196,3 +196,59 @@ if ( ! function_exists( 'inlife_filter_people_archive_by_letter' ) ) {
 	}
 }
 add_filter( 'posts_where', 'inlife_filter_people_archive_by_letter', 10, 2 );
+
+
+if ( ! function_exists( 'inlife_render_obfuscated_email_link' ) ) {
+	/**
+	 * Link e-mail oparty o data-*.
+	 *
+	 * W HTML nie zapisujemy pełnego adresu e-mail, tylko:
+	 * - data-user
+	 * - data-domain
+	 * oraz tekst typu "user [at] domain".
+	 *
+	 * Po kliknięciu JS składa adres i otwiera mailto:.
+	 *
+	 * @param string $email       Pełny adres e-mail.
+	 * @param string $class       Dodatkowe klasy dla linku.
+	 * @param string $label_html  Opcjonalny HTML przed adresem / wewnątrz linku.
+	 * @return string
+	 */
+	function inlife_render_obfuscated_email_link( $email, $class = '', $label_html = '' ) {
+		$email = trim( (string) $email );
+
+		if ( '' === $email || false === strpos( $email, '@' ) ) {
+			return '';
+		}
+
+		$parts = explode( '@', $email, 2 );
+		$user  = trim( $parts[0] );
+		$domain = trim( $parts[1] );
+
+		if ( '' === $user || '' === $domain ) {
+			return '';
+		}
+
+		$classes = trim( 'js-obfuscated-email ' . $class );
+		$visible = $user . ' [at] ' . $domain;
+
+		ob_start();
+		?>
+		<a
+			href="#"
+			class="<?php echo esc_attr( $classes ); ?>"
+			data-user="<?php echo esc_attr( $user ); ?>"
+			data-domain="<?php echo esc_attr( $domain ); ?>"
+			aria-label="<?php echo esc_attr( $email ); ?>"
+		>
+			<?php
+			if ( '' !== $label_html ) {
+				echo $label_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
+			?>
+			<span class="js-obfuscated-email__text"><?php echo esc_html( $visible ); ?></span>
+		</a>
+		<?php
+		return trim( (string) ob_get_clean() );
+	}
+}

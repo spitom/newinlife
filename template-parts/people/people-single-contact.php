@@ -19,7 +19,7 @@ if ( 'scientific' !== $type_slug || ( ! $linkedin && ! $orcid && ! $scholar && !
 }
 ?>
 
-<div class="people-single-panel">
+<div class="people-single-panel c-surface c-surface--panel">
 	<h2 class="people-single-panel__title">
 		<?php esc_html_e( 'Profile i identyfikatory', 'newinlife' ); ?>
 	</h2>

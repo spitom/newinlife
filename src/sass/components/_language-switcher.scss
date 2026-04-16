@@ -14,13 +14,14 @@
         border-radius: 999px;
         color: var(--inlife-primary);
         text-decoration: none;
-        font-weight: 700;
+        font-weight: 600;
         letter-spacing: 0.04em;
 
         &:hover,
         &:focus {
             text-decoration: none;
-            background: rgba(213, 219, 62, 0.22);
+            background: rgba(41, 52, 88, 0.08);
+            color: var(--inlife-primary);
         }
 
         &.is-active {
@@ -41,7 +42,7 @@
 
         &:hover,
         &:focus {
-            background: rgba(213, 219, 62, 0.18);
+            background: rgba(41, 52, 88, 0.08);
             color: #fff;
         }
     }

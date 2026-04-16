@@ -31,13 +31,12 @@ if ( $current_lab ) {
 }
 ?>
 
-<nav class="people-alpha-filter" aria-label="<?php echo esc_attr__( 'Filtr alfabetyczny osób', 'newinlife' ); ?>">
-	<div class="people-alpha-filter__inner">
-		<?php
-		$all_args = $base_args;
-		?>
+<nav class="people-alpha-filter c-surface c-surface--compact" aria-label="<?php echo esc_attr__( 'Filtr alfabetyczny osób', 'newinlife' ); ?>">
+	<div class="people-alpha-filter__inner c-pills">
+		<?php $all_args = $base_args; ?>
 		<a
-			class="people-alpha-filter__link<?php echo '' === $current_letter ? ' is-active' : ''; ?>"
+			class="people-alpha-filter__link c-pill c-pill--compact<?php echo '' === $current_letter ? ' is-active' : ''; ?>"
+			<?php echo '' === $current_letter ? 'aria-current="page"' : ''; ?>
 			href="<?php echo esc_url( add_query_arg( $all_args, $archive_url ) ); ?>"
 		>
 			<?php esc_html_e( 'Wszystkie', 'newinlife' ); ?>
@@ -49,7 +48,8 @@ if ( $current_lab ) {
 			$letter_args['letter'] = $letter;
 			?>
 			<a
-				class="people-alpha-filter__link<?php echo $current_letter === $letter ? ' is-active' : ''; ?>"
+				class="people-alpha-filter__link c-pill c-pill--compact<?php echo $current_letter === $letter ? ' is-active' : ''; ?>"
+				<?php echo $current_letter === $letter ? 'aria-current="page"' : ''; ?>
 				href="<?php echo esc_url( add_query_arg( $letter_args, $archive_url ) ); ?>"
 			>
 				<?php echo esc_html( $letter ); ?>

@@ -10,52 +10,12 @@
         padding-bottom: clamp(3.5rem, 6vw, 5rem);
     }
 
-
     /* =========================================================
 	   SEARCH
 	========================================================= */
 
     .people-search {
         margin-bottom: 1rem;
-    }
-
-    .people-search__inner {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 0.75rem;
-    }
-
-    .people-search__input.form-control {
-        width: 100%;
-        min-width: 0;
-        height: 44px;
-        min-height: 44px;
-        padding: 0.75rem 1rem;
-        border: 1px solid #dbe4ee;
-        border-radius: 999px;
-        background: #fcfcfc;
-        color: #293458;
-        font-size: 0.95rem;
-        line-height: 1.2;
-        box-shadow: none;
-    }
-
-    .people-search__input.form-control::placeholder {
-        color: #7a869f;
-        opacity: 1;
-    }
-
-    .people-search__button.btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        height: 44px;
-        min-height: 44px;
-        padding: 0.75rem 1.15rem;
-        border-radius: 999px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        line-height: 1;
     }
 
     /* =========================================================
@@ -79,61 +39,9 @@
         gap: 0.5rem;
     }
 
-    .people-filters__pill {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        height: 42px;
-        min-height: 42px;
-        padding: 0.75rem 1.15rem;
-        border: 1px solid #dbe4ee;
-        border-radius: 999px;
-        background: #f4f7fb;
-        color: #293458;
-        font-size: 0.95rem;
-        font-weight: 600;
-        line-height: 1;
-        text-decoration: none;
-        transition:
-            background-color 0.2s ease,
-            border-color 0.2s ease,
-            color 0.2s ease,
-            box-shadow 0.2s ease;
-    }
-
-    .people-filters__pill:hover,
-    .people-filters__pill:focus-visible {
-        background: #eaf0f7;
-        border-color: #cfd9e5;
-        color: #293458;
-        text-decoration: none;
-    }
-
-    .people-filters__pill.is-active {
-        background: #293458;
-        border-color: #293458;
-        color: #ffffff;
-        box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.16);
-    }
-
-    .people-filters__pill:focus-visible,
-    .people-alpha-filter__link:focus-visible {
-        outline: 3px solid rgba(49, 169, 225, 0.35);
-        outline-offset: 2px;
-    }
-
     /* =========================================================
-	   FILTER FORM
+	   FILTER FORM / ALPHA WRAP
 	========================================================= */
-
-    .people-filters-form,
-    .people-alpha-filter {
-        padding: 1.25rem;
-        border: 1px solid #e4ebf2;
-        border-radius: 24px;
-        background: #fcfcfc;
-        box-shadow: 0 10px 24px rgba(18, 38, 63, 0.04);
-    }
 
     .people-filters-form__label {
         margin-bottom: 0.4rem;
@@ -161,7 +69,6 @@
         height: 44px;
         min-height: 44px;
         padding: 0.75rem 1.15rem;
-        border-radius: 999px;
         font-size: 0.95rem;
         font-weight: 600;
         line-height: 1;
@@ -175,7 +82,6 @@
         background: #f4f7fb;
         color: #293458;
         border-color: #dbe4ee;
-        color: #293458;
         box-shadow: none;
     }
 
@@ -207,44 +113,6 @@
         gap: 0.45rem;
     }
 
-    .people-alpha-filter__link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 36px;
-        height: 36px;
-        min-height: 36px;
-        padding: 0.35rem 0.55rem;
-        border-radius: 999px;
-        background: #f4f7fb;
-        border: 1px solid #dbe4ee;
-        color: #293458;
-        font-size: 0.82rem;
-        font-weight: 700;
-        line-height: 1;
-        text-decoration: none;
-        transition:
-            background-color 0.2s ease,
-            border-color 0.2s ease,
-            color 0.2s ease,
-            box-shadow 0.2s ease;
-    }
-
-    .people-alpha-filter__link:hover,
-    .people-alpha-filter__link:focus-visible {
-        background: #eaf0f7;
-        border-color: #cfd9e5;
-        color: #293458;
-        text-decoration: none;
-    }
-
-    .people-alpha-filter__link.is-active {
-        background: #293458;
-        border-color: #293458;
-        color: #ffffff;
-        box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.16);
-    }
-
     /* =========================================================
 	   DIRECTORY LIST
 	========================================================= */
@@ -257,13 +125,9 @@
 
     .people-list-item {
         display: grid;
-        grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+        grid-template-columns: minmax(0, 1.65fr) minmax(320px, 0.85fr);
         gap: 1.5rem;
-        padding: 1.35rem 1.4rem;
-        border: 1px solid #e4ebf2;
-        border-radius: 24px;
-        background: #fcfcfc;
-        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.04);
+        align-items: start;
     }
 
     .people-list-item__main {
@@ -294,9 +158,10 @@
 
     .people-list-item__title {
         margin: 0;
-        font-size: clamp(1.35rem, 2vw, 1.7rem);
-        line-height: 1.2;
+        font-size: clamp(1.45rem, 2vw, 1.85rem);
+        line-height: 1.16;
         color: #293458;
+        text-wrap: balance;
     }
 
     .people-list-item__title-link,
@@ -356,11 +221,11 @@
     .people-list-item__relation-text {
         display: inline-flex;
         align-items: center;
-        padding: 0.35rem 0.7rem;
+        padding: 0.3rem 0.65rem;
         border-radius: 999px;
         background: #f4f7fb;
         color: #293458;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         font-weight: 600;
         line-height: 1.2;
         text-decoration: none;
@@ -374,25 +239,70 @@
     .people-list-item__meta {
         display: flex;
         flex-direction: column;
-        gap: 0.7rem;
-        padding-left: 1rem;
-        border-left: 1px solid #e4ebf2;
+        justify-content: center;
+        gap: 0.65rem;
+        padding-left: 1.5rem;
         min-width: 0;
+        max-width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .people-list-item__meta::before {
+        content: "";
+        position: absolute;
+        top: -0.1rem;
+        bottom: -0.1rem;
+        left: 0;
+        width: 1px;
+        background: #e4ebf2;
     }
 
     .people-list-item__meta-row {
         margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.15rem;
+        display: grid;
+        grid-template-columns: 5.75rem minmax(0, 1fr);
+        column-gap: 0.9rem;
+        row-gap: 0;
+        align-items: baseline;
         color: #4b5565;
-        line-height: 1.6;
+        line-height: 1.45;
+    }
+
+    .people-list-item__meta-row .js-obfuscated-email,
+    .people-single-hero__meta-item .js-obfuscated-email {
+        color: #293458;
+        text-decoration: none;
+    }
+
+    .people-list-item__meta-row .js-obfuscated-email:hover,
+    .people-list-item__meta-row .js-obfuscated-email:focus,
+    .people-single-hero__meta-item .js-obfuscated-email:hover,
+    .people-single-hero__meta-item .js-obfuscated-email:focus {
+        text-decoration: underline;
+    }
+
+    .people-list-item__meta-label {
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: #7a869f;
+        line-height: 1.45;
+    }
+
+    .people-list-item__meta-row a,
+    .people-list-item__meta-row span:last-child {
+        display: block;
+        min-width: 0;
+        line-height: 1.45;
+        word-break: break-word;
+        overflow-wrap: anywhere;
     }
 
     .people-list-item__meta-row a {
         color: #293458;
         text-decoration: none;
-        word-break: break-word;
     }
 
     .people-list-item__meta-row a:hover,
@@ -400,77 +310,22 @@
         text-decoration: underline;
     }
 
-    .people-list-item__meta-label {
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-        color: #7a869f;
-    }
-
     .people-list-item__cta-wrap--inline {
         margin: 0;
         padding-top: 0.15rem;
-    }
-
-    .people-list-item__cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        font-weight: 700;
-        color: #293458;
-        text-decoration: none;
-    }
-
-    .people-list-item__cta::after {
-        content: "→";
-    }
-
-    .people-list-item__cta:hover,
-    .people-list-item__cta:focus {
-        text-decoration: underline;
     }
 
     /* =========================================================
 	   EMPTY / PAGINATION
 	========================================================= */
 
-    .people-empty {
-        padding: 1.5rem 1.75rem;
-        border: 1px solid #e4ebf2;
-        border-radius: 24px;
-        background: #f8fafc;
-        color: #5f6b85;
-    }
-
     .people-empty__text {
         margin: 0;
+        color: #5f6b85;
     }
 
     .people-pagination {
         margin-top: clamp(1.5rem, 3vw, 2.5rem);
-    }
-}
-
-@media (max-width: 1199.98px) {
-    .site-main--people-archive {
-        .people-filters__pill {
-            min-height: 46px;
-            padding: 0.7rem 1rem;
-            font-size: 0.9rem;
-        }
-
-        .people-alpha-filter__inner {
-            gap: 0.35rem;
-        }
-
-        .people-alpha-filter__link {
-            min-width: 34px;
-            height: 34px;
-            min-height: 34px;
-            padding: 0.3rem 0.45rem;
-            font-size: 0.78rem;
-        }
     }
 }
 
@@ -484,35 +339,32 @@
         .people-list-item__meta {
             padding-left: 0;
             padding-top: 1rem;
-            border-left: 0;
+            height: auto;
             border-top: 1px solid #e4ebf2;
         }
+
+        .people-list-item__meta::before {
+            display: none;
+        }
+
     }
 }
 
 @media (max-width: 767.98px) {
     .site-main--people-archive {
-        .people-search__inner {
-            grid-template-columns: 1fr;
-        }
 
         .people-search__button,
         .people-filters-form .btn {
             width: 100%;
         }
 
-        .people-list-item {
-            padding: 1.15rem;
-            border-radius: 20px;
-        }
-
         .people-list-item__title {
             font-size: 1.25rem;
         }
 
-        .people-filters-form,
-        .people-alpha-filter {
-            border-radius: 20px;
+        .people-list-item__meta-row {
+            grid-template-columns: 1fr;
+            gap: 0.1rem;
         }
     }
 }

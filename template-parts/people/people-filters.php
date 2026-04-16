@@ -104,7 +104,7 @@ if ( $current_lab ) {
 	<?php if ( ! empty( $types ) && is_array( $types ) && ! is_wp_error( $types ) ) : ?>
 		<div class="people-filters people-filters--pills" aria-label="<?php echo esc_attr__( 'Filtruj według typu osoby', 'newinlife' ); ?>">
 			<a
-				class="people-filters__pill<?php echo '' === $current_type ? ' is-active' : ''; ?>"
+				class="people-filters__pill c-pill<?php echo '' === $current_type ? ' is-active' : ''; ?>"
 				<?php echo '' === $current_type ? 'aria-current="page"' : ''; ?>
 				href="<?php echo esc_url( add_query_arg( $base_args, $archive_url ) ); ?>"
 			>
@@ -122,7 +122,7 @@ if ( $current_lab ) {
 				$type_args['people_type'] = $type_slug;
 				?>
 				<a
-					class="people-filters__pill<?php echo $current_type === $type_slug ? ' is-active' : ''; ?>"
+					class="people-filters__pill c-pill<?php echo $current_type === $type_slug ? ' is-active' : ''; ?>"
 					<?php echo $current_type === $type_slug ? 'aria-current="page"' : ''; ?>
 					href="<?php echo esc_url( add_query_arg( $type_args, $archive_url ) ); ?>"
 				>
@@ -132,7 +132,7 @@ if ( $current_lab ) {
 		</div>
 	<?php endif; ?>
 
-	<form class="people-filters-form" method="get" action="<?php echo esc_url( $archive_url ); ?>">
+	<form class="people-filters-form c-surface c-surface--panel" method="get" action="<?php echo esc_url( $archive_url ); ?>">
 		<input type="hidden" name="post_type" value="people">
 
 		<?php if ( '' !== $current_s ) : ?>
@@ -177,7 +177,7 @@ if ( $current_lab ) {
 			</div>
 
 			<div class="col-lg-4 col-md-12">
-				<div class="people-filters-form__actions">
+				<div class="people-filters-form__actions c-filter-panel__actions">
 					<button type="submit" class="btn btn-primary">
 						<?php esc_html_e( 'Filtruj', 'newinlife' ); ?>
 					</button>

@@ -9,13 +9,13 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <section class="laboratories-grid section">
-	<div class="container">
+	<div class="<?php echo esc_attr( inlife_container_class() ); ?>">
 
 		<?php if ( have_posts() ) : ?>
-			<div class="row g-4 laboratories-grid__listing">
+			<div class="laboratories-grid__listing c-card-grid">
 
 				<?php while ( have_posts() ) : the_post(); ?>
-					<div class="col-md-6 col-xl-4">
+					<div class="laboratories-grid__item">
 						<?php get_template_part( 'template-parts/laboratories/laboratories', 'card' ); ?>
 					</div>
 				<?php endwhile; ?>

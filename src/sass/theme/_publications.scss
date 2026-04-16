@@ -38,10 +38,6 @@
 ========================================================= */
 
 .publications-empty {
-    padding: 1.5rem;
-    border: 1px solid rgba(41, 52, 88, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
     color: var(--inlife-text);
 }
 
@@ -66,47 +62,21 @@
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 1.1rem;
+}
 
-    &__btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.4rem;
-        padding: 0.7rem 1.15rem;
-        border: 1px solid #dbe4ee;
-        border-radius: 999px;
-        background: #f4f7fb;
-        color: #293458;
-        font-weight: 600;
-        line-height: 1;
-        text-decoration: none;
-        transition:
-            background-color 0.2s ease,
-            border-color 0.2s ease,
-            color 0.2s ease,
-            box-shadow 0.2s ease;
+.publications-nav__btn {
+    gap: 0.5rem;
+}
 
-        &:hover,
-        &:focus-visible {
-            background: #eaf0f7;
-            border-color: #cfd9e5;
-            color: #293458;
-            text-decoration: none;
-        }
-
-        &.is-active {
-            background: #293458;
-            border-color: #293458;
-            color: #fff;
-            box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.14);
-        }
-    }
-
-    &__count {
-        font-size: 0.75rem;
-        font-weight: 700;
-        opacity: 0.7;
-    }
+.publications-nav__count {
+    display: inline-flex;
+    align-items: baseline;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.62;
+    letter-spacing: 0;
+    white-space: nowrap;
 }
 
 /* =========================================================
@@ -176,6 +146,24 @@
 }
 
 /* =========================================================
+   YEAR BACK LINK
+========================================================= */
+
+.publications-year-back {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.publications-year-back .c-readmore__icon {
+    transform: none;
+}
+
+.publications-year-back:hover .c-readmore__icon,
+.publications-year-back:focus-visible .c-readmore__icon {
+    transform: translateX(-4px);
+}
+
+/* =========================================================
    PUBLICATION ITEM
 ========================================================= */
 
@@ -184,11 +172,16 @@
     flex-direction: column;
     gap: 0.5rem;
 
+    &__main {
+        min-width: 0;
+    }
+
     &__citation {
         margin: 0;
         color: #293458;
         font-size: 1rem;
-        line-height: 1.65;
+        line-height: 1.72;
+        max-width: 100%;
     }
 
     &__meta {
@@ -203,22 +196,18 @@
         gap: 0.35rem;
         font-size: 0.95rem;
         font-weight: 600;
+        color: var(--inlife-primary);
         text-decoration: underline;
         text-underline-offset: 0.16em;
+        white-space: nowrap;
     }
 }
 
-/* Wariant karty dla strony rocznej */
+/* Wariant karty dla strony rocznej / team */
 .publication-item--card {
-    padding: 1.25rem 1.25rem 1.1rem;
-    border: 1px solid rgba(41, 52, 88, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 12px 36px rgba(17, 24, 39, 0.05);
-
     .publication-item__citation {
         font-size: 0.98rem;
-        line-height: 1.7;
+        line-height: 1.72;
     }
 
     .publication-item__meta {
@@ -435,9 +424,5 @@
 
     .publications-nav {
         gap: 0.6rem;
-
-        &__btn {
-            padding: 0.65rem 1rem;
-        }
     }
 }

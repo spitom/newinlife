@@ -7,6 +7,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$container = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
+
 $query = new WP_Query(
 	array(
 		'post_type'      => 'teams',
@@ -18,10 +20,9 @@ $query = new WP_Query(
 ?>
 
 <section class="teams-listing section">
-	<div class="container">
-
+	<div class="<?php echo esc_attr( $container ); ?>">
 		<?php if ( $query->have_posts() ) : ?>
-			<div class="row g-4 teams-listing__grid" data-team-grid>
+			<div class="teams-listing__grid c-card-grid" data-team-grid>
 				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 					<?php
 					$terms = get_the_terms( get_the_ID(), 'team_area' );
@@ -32,7 +33,7 @@ $query = new WP_Query(
 					}
 					?>
 					<div
-						class="col-md-6 col-xl-4 team-filter-item"
+						class="teams-listing__item team-filter-item"
 						data-team-item
 						data-team-area="<?php echo esc_attr( implode( ' ', $slugs ) ); ?>"
 					>
@@ -54,6 +55,5 @@ $query = new WP_Query(
 			</div>
 
 		<?php endif; ?>
-
 	</div>
 </section>

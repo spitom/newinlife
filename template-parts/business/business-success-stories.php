@@ -108,90 +108,86 @@ $secondary_stories = array_slice($stories, 1);
 ?>
 
 <div class="business-success-stories">
-	<div class="row g-4 align-items-end business-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker"><?php echo esc_html($section_kicker); ?></p>
-				<h2 id="business-success-stories-heading" class="section-title">
-					<?php echo esc_html($section_title); ?>
-				</h2>
-			</div>
+	<?php
+	get_template_part(
+		'template-parts/components/section-header',
+		null,
+		[
+			'kicker'   => $section_kicker,
+			'title'    => $section_title,
+			'lead'     => $section_text,
+			'title_id' => 'business-success-stories-heading',
+		]
+	);
+	?>
 
-			<?php if (!empty($section_text)) : ?>
-				<p class="section-lead mt-3 mb-0">
-					<?php echo esc_html($section_text); ?>
-				</p>
-			<?php endif; ?>
-		</div>
-	</div>
-
-	<?php if ($featured_story || !empty($secondary_stories)) : ?>
+	<?php if ( $featured_story || ! empty( $secondary_stories ) ) : ?>
 		<div class="business-success-stories__layout">
 
-			<?php if ($featured_story) : ?>
+			<?php if ( $featured_story ) : ?>
 				<article class="business-success-card business-success-card--featured">
-					<a class="business-success-card__link" href="<?php echo esc_url($featured_story['url']); ?>">
+					<a class="business-success-card__link" href="<?php echo esc_url( $featured_story['url'] ); ?>">
 						<div class="business-success-card__media" aria-hidden="true">
 							<div class="business-success-card__placeholder">
 								<span class="business-success-card__badge">
-									<?php echo esc_html($featured_story['badge']); ?>
+									<?php echo esc_html( $featured_story['badge'] ); ?>
 								</span>
 							</div>
 						</div>
 
 						<div class="business-success-card__body">
 							<h3 class="business-success-card__title">
-								<?php echo esc_html($featured_story['title']); ?>
+								<?php echo esc_html( $featured_story['title'] ); ?>
 							</h3>
 
-							<?php if (!empty($featured_story['text'])) : ?>
+							<?php if ( ! empty( $featured_story['text'] ) ) : ?>
 								<p class="business-success-card__text">
-									<?php echo esc_html($featured_story['text']); ?>
+									<?php echo esc_html( $featured_story['text'] ); ?>
 								</p>
 							<?php endif; ?>
 
-							<?php if (!empty($featured_story['result'])) : ?>
+							<?php if ( ! empty( $featured_story['result'] ) ) : ?>
 								<p class="business-success-card__result">
-									<?php echo esc_html($featured_story['result']); ?>
+									<?php echo esc_html( $featured_story['result'] ); ?>
 								</p>
 							<?php endif; ?>
 
 							<span class="business-success-card__meta">
-								<?php echo esc_html($featured_story['meta']); ?>
+								<?php echo esc_html( $featured_story['meta'] ); ?>
 							</span>
 						</div>
 					</a>
 				</article>
 			<?php endif; ?>
 
-			<?php if (!empty($secondary_stories)) : ?>
+			<?php if ( ! empty( $secondary_stories ) ) : ?>
 				<div class="business-success-stories__aside">
-					<?php foreach ($secondary_stories as $story) : ?>
+					<?php foreach ( $secondary_stories as $story ) : ?>
 						<article class="business-success-card business-success-card--standard">
-							<a class="business-success-card__link" href="<?php echo esc_url($story['url']); ?>">
+							<a class="business-success-card__link" href="<?php echo esc_url( $story['url'] ); ?>">
 								<div class="business-success-card__body">
 									<span class="business-success-card__badge business-success-card__badge--inline">
-										<?php echo esc_html($story['badge']); ?>
+										<?php echo esc_html( $story['badge'] ); ?>
 									</span>
 
 									<h3 class="business-success-card__title">
-										<?php echo esc_html($story['title']); ?>
+										<?php echo esc_html( $story['title'] ); ?>
 									</h3>
 
-									<?php if (!empty($story['text'])) : ?>
+									<?php if ( ! empty( $story['text'] ) ) : ?>
 										<p class="business-success-card__text">
-											<?php echo esc_html($story['text']); ?>
+											<?php echo esc_html( $story['text'] ); ?>
 										</p>
 									<?php endif; ?>
 
-									<?php if (!empty($story['result'])) : ?>
+									<?php if ( ! empty( $story['result'] ) ) : ?>
 										<p class="business-success-card__result">
-											<?php echo esc_html($story['result']); ?>
+											<?php echo esc_html( $story['result'] ); ?>
 										</p>
 									<?php endif; ?>
 
 									<span class="business-success-card__meta">
-										<?php echo esc_html($story['meta']); ?>
+										<?php echo esc_html( $story['meta'] ); ?>
 									</span>
 								</div>
 							</a>

@@ -5,7 +5,6 @@
  * @package newinlife-child
  */
 
-
 defined( 'ABSPATH' ) || exit;
 
 $publication_post = $args['publication_post'] ?? null;
@@ -29,36 +28,40 @@ $link_label = '';
 if ( ! empty( $external_url ) ) {
 	$link_url   = $external_url;
 	$link_label = ! empty( $doi )
-	? 'DOI'
-	: ( function_exists( 'inlife_t' ) ? inlife_t( 'Zobacz publikację' ) : __( 'Zobacz publikację', 'newinlife-child' ) );
+		? 'DOI'
+		: ( function_exists( 'inlife_t' ) ? inlife_t( 'Zobacz publikację' ) : __( 'Zobacz publikację', 'newinlife-child' ) );
 }
 
 $classes = array( 'publication-item' );
 
 if ( in_array( $context, array( 'year', 'team' ), true ) ) {
 	$classes[] = 'publication-item--card';
+	$classes[] = 'c-surface';
+	$classes[] = 'c-surface--record';
+}
+
+$fallback_parts = array_filter(
+	array(
+		$authors,
+		$title_full,
+		$source,
+	)
+);
+
+$display_citation = '';
+
+if ( ! empty( $citation ) ) {
+	$display_citation = $citation;
+} elseif ( ! empty( $fallback_parts ) ) {
+	$display_citation = implode( '. ', $fallback_parts );
 }
 ?>
 
 <article class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<div class="publication-item__main">
-		<?php if ( ! empty( $citation ) ) : ?>
+		<?php if ( $display_citation ) : ?>
 			<p class="publication-item__citation mb-0">
-				<?php echo esc_html( $citation ); ?>
-			</p>
-		<?php else : ?>
-			<p class="publication-item__citation mb-0">
-				<?php
-				$fallback_parts = array_filter(
-					array(
-						$authors,
-						$title_full,
-						$source,
-					)
-				);
-
-				echo esc_html( implode( '. ', $fallback_parts ) );
-				?>
+				<?php echo esc_html( $display_citation ); ?>
 			</p>
 		<?php endif; ?>
 	</div>
@@ -76,8 +79,8 @@ if ( in_array( $context, array( 'year', 'team' ), true ) ) {
 					<?php
 					echo esc_html(
 						function_exists( 'inlife_t' )
-                            ? inlife_t( 'otwiera się w nowej karcie' )
-                            : __( 'otwiera się w nowej karcie', 'newinlife-child' )
+							? inlife_t( 'otwiera się w nowej karcie' )
+							: __( 'otwiera się w nowej karcie', 'newinlife-child' )
 					);
 					?>
 				</span>

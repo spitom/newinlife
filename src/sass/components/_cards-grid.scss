@@ -1,0 +1,52 @@
+/* =========================================================
+   Card Grid (global)
+========================================================= */
+
+.c-card-grid {
+    display: grid;
+    gap: 1rem;
+
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* ===============================
+   Explicit column variants
+================================ */
+
+/* 2 columns */
+.c-card-grid--2 {
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* 4 columns */
+.c-card-grid--4 {
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* 5 columns */
+.c-card-grid--5 {
+    @media (min-width: 1400px) {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+/* 5 columns */
+.c-card-grid--5 {
+    @media (min-width: 1400px) {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}

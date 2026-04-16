@@ -1,0 +1,11 @@
+.c-empty-state {
+    padding: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+
+    p {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: var(--inlife-text-muted);
+    }
+}

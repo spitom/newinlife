@@ -782,3 +782,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		map.scrollWheelZoom.disable();
 	});
 });
+
+// Maskowanie adresu e-mail
+
+document.addEventListener('click', function (event) {
+	const link = event.target.closest('.js-obfuscated-email');
+	if (!link) return;
+
+	event.preventDefault();
+
+	const user = link.getAttribute('data-user') || '';
+	const domain = link.getAttribute('data-domain') || '';
+
+	if (!user || !domain) return;
+
+	const email = `${user}@${domain}`;
+	window.location.href = `mailto:${email}`;
+});

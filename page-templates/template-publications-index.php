@@ -44,7 +44,7 @@ $years     = function_exists( 'inlife_get_publication_year_overview' ) ? inlife_
 
 				<?php if ( ! empty( $years ) ) : ?>
 					<div class="publications-nav-wrap">
-						<nav class="publications-nav" aria-label="<?php echo esc_attr( function_exists( 'inlife_t' ) ? inlife_t( 'Lata publikacji' ) : __( 'Lata publikacji', 'newinlife-child' ) ); ?>">
+						<nav class="publications-nav c-pills" aria-label="<?php echo esc_attr( function_exists( 'inlife_t' ) ? inlife_t( 'Lata publikacji' ) : __( 'Lata publikacji', 'newinlife-child' ) ); ?>">
 							<?php foreach ( $years as $year_item ) : ?>
 								<?php
 								$year  = $year_item['year'];
@@ -57,10 +57,10 @@ $years     = function_exists( 'inlife_get_publication_year_overview' ) ? inlife_
 								}
 								?>
 
-								<a class="publications-nav__btn" href="<?php echo esc_url( $url ); ?>">
+								<a class="publications-nav__btn c-pill" href="<?php echo esc_url( $url ); ?>">
 									<?php echo esc_html( $year ); ?>
 
-									<span class="publications-nav__count">
+									<span class="publications-nav__count c-pill__meta">
 										<?php
 										printf(
 											esc_html(

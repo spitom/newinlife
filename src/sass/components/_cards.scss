@@ -1,26 +1,170 @@
-.card {
-    border: 1px solid var(--inlife-border);
-    border-radius: 1.25rem;
-    overflow: hidden;
-    background: #fff;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* =========================================================
+   INLIFE CARD SYSTEM (v2)
+========================================================= */
 
-    &:hover,
-    &:focus-within {
-        transform: translateY(-2px);
-        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.06);
+.c-card {
+    height: 100%;
+}
+
+/* Shape + outline */
+.c-card__frame {
+    position: relative;
+    height: 100%;
+    padding: 1px;
+    /* fake border */
+    background: rgba(41, 52, 88, 0.10);
+    border-radius: 4px;
+    overflow: hidden;
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+/* Cut whole card */
+.c-card__frame--cut-tl {
+    position: relative;
+    clip-path: polygon(var(--inlife-card-cut-x) 0,
+            100% 0,
+            100% 100%,
+            0 100%,
+            0 var(--inlife-card-cut-y));
+    border-radius: 4px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        pointer-events: none;
+
+        width: calc(var(--inlife-card-cut-x) + 1px);
+        height: calc(var(--inlife-card-cut-y) + 1px);
+
+        background: linear-gradient(to bottom right,
+                transparent calc(50% - 0.75px),
+                rgba(41, 52, 88, 0.05) calc(50% - 0.75px),
+                rgba(41, 52, 88, 0.05) calc(50% + 0.75px),
+                transparent calc(50% + 0.75px));
     }
 }
 
-.card-area,
-.card-news,
-.card-business {
-    .card-body {
-        padding: 1.5rem;
-    }
+.c-card:hover .c-card__frame,
+.c-card:focus-within .c-card__frame {
+    transform: translateY(-4px);
+    background: rgba(41, 52, 88, 0.16);
+    box-shadow: 0 16px 40px rgba(17, 24, 39, 0.06);
+}
 
-    h3 {
-        color: var(--inlife-primary);
-        margin-bottom: 0.75rem;
+/* INNER */
+.c-card__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fcfcfc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.c-card__frame--cut-tl>.c-card__inner {
+    clip-path: polygon(calc(var(--inlife-card-cut-x) - 1px) 0,
+            100% 0,
+            100% 100%,
+            0 100%,
+            0 calc(var(--inlife-card-cut-y) - 1px));
+    border-radius: 4px;
+}
+
+/* MEDIA */
+
+.c-card__media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, #eef3f8, #dfe7ef);
+    overflow: hidden;
+}
+
+.c-card__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.c-card:hover .c-card__image,
+.c-card:focus-within .c-card__image {
+    transform: scale(1.03);
+}
+
+.c-card__media-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.c-card__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    background:
+        linear-gradient(135deg, rgba(238, 243, 248, 0.98), rgba(223, 231, 239, 0.95)),
+        radial-gradient(circle at top right, rgba(111, 149, 200, 0.16), transparent 35%);
+    color: var(--inlife-primary);
+    font-weight: 700;
+    text-align: center;
+
+    span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.6rem 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
     }
+}
+
+.c-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 1.5rem;
+}
+
+.c-card__title {
+    margin-bottom: 1.25rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--inlife-primary);
+}
+
+.c-card__title-link {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+/* NAV VARIANT */
+
+.c-card--nav .c-card__frame {
+    background: rgba(41, 52, 88, 0.11);
+}
+
+.c-card--nav:hover .c-card__frame,
+.c-card--nav:focus-within .c-card__frame {
+    background: rgba(41, 52, 88, 0.18);
+}
+
+.c-card--nav .c-card__inner {
+    background: #f9fbfd;
 }

@@ -1,0 +1,27 @@
+/* =========================================================
+   Section Split
+========================================================= */
+
+.c-section-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+.c-section-split__main,
+.c-section-split__aside {
+    min-width: 0;
+}
+
+@media (min-width: 992px) {
+    .c-section-split--main-wide {
+        grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+        gap: 1.5rem;
+    }
+
+    .c-section-split--aside-wide {
+        grid-template-columns: minmax(320px, 0.8fr) minmax(0, 1.2fr);
+        gap: 1.5rem;
+    }
+}

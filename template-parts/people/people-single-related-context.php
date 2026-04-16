@@ -43,14 +43,14 @@ if ( empty( $teams ) && empty( $labs ) ) {
 }
 ?>
 
-<div class="people-single-panel">
+<div class="people-single-panel c-surface c-surface--panel">
 	<h2 class="people-single-panel__title">
 		<?php esc_html_e( 'Powiązania', 'newinlife' ); ?>
 	</h2>
 
 	<?php if ( ! empty( $teams ) ) : ?>
 		<div class="people-single-relations-group">
-			<h3 class="people-single-relations-group__title"><?php esc_html_e( 'Zespoły', 'newinlife' ); ?></h3>
+			<!-- <h3 class="people-single-relations-group__title"><?php esc_html_e( 'Zespoły', 'newinlife' ); ?></h3> -->
 			<div class="people-single-relations-group__links">
 				<?php foreach ( $teams as $team_id ) : ?>
 					<a href="<?php echo esc_url( get_permalink( $team_id ) ); ?>">

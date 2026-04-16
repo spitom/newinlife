@@ -98,36 +98,32 @@ if (function_exists('have_rows') && have_rows('business_cooperation_points', $po
 ?>
 
 <div class="business-cooperation">
-	<div class="row g-4 align-items-end business-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker"><?php echo esc_html($section_kicker); ?></p>
-				<h2 id="business-cooperation-heading" class="section-title">
-					<?php echo esc_html($section_title); ?>
-				</h2>
-			</div>
+	<?php
+	get_template_part(
+		'template-parts/components/section-header',
+		null,
+		[
+			'kicker'   => $section_kicker,
+			'title'    => $section_title,
+			'lead'     => $section_text,
+			'title_id' => 'business-cooperation-heading',
+		]
+	);
+	?>
 
-			<?php if (!empty($section_text)) : ?>
-				<p class="section-lead mt-3 mb-0">
-					<?php echo esc_html($section_text); ?>
-				</p>
-			<?php endif; ?>
-		</div>
-	</div>
-
-	<div class="business-cooperation__layout">
-		<div class="business-cooperation__content">
-			<?php if (!empty($points)) : ?>
+	<div class="business-cooperation__layout c-section-split c-section-split--main-wide">
+		<div class="business-cooperation__content c-section-split__main">
+			<?php if ( ! empty( $points ) ) : ?>
 				<div class="business-cooperation__points">
-					<?php foreach ($points as $point) : ?>
+					<?php foreach ( $points as $point ) : ?>
 						<article class="business-cooperation__point">
 							<h3 class="business-cooperation__point-title">
-								<?php echo esc_html($point['title']); ?>
+								<?php echo esc_html( $point['title'] ); ?>
 							</h3>
 
-							<?php if (!empty($point['text'])) : ?>
+							<?php if ( ! empty( $point['text'] ) ) : ?>
 								<p class="business-cooperation__point-text">
-									<?php echo esc_html($point['text']); ?>
+									<?php echo esc_html( $point['text'] ); ?>
 								</p>
 							<?php endif; ?>
 						</article>
@@ -136,18 +132,18 @@ if (function_exists('have_rows') && have_rows('business_cooperation_points', $po
 			<?php endif; ?>
 		</div>
 
-		<aside class="business-cooperation__aside">
+		<aside class="business-cooperation__aside c-section-split__aside">
 			<div class="business-cooperation__cta">
 				<h3 class="business-cooperation__cta-title">
-					<?php echo esc_html($cta_title); ?>
+					<?php echo esc_html( $cta_title ); ?>
 				</h3>
 
 				<p class="business-cooperation__cta-text">
-					<?php echo esc_html($cta_text); ?>
+					<?php echo esc_html( $cta_text ); ?>
 				</p>
 
-				<a class="business-cooperation__cta-link btn btn-primary" href="<?php echo esc_url($cta_url); ?>">
-					<?php echo esc_html($cta_label); ?>
+				<a class="business-cooperation__cta-link btn btn-primary" href="<?php echo esc_url( $cta_url ); ?>">
+					<?php echo esc_html( $cta_label ); ?>
 				</a>
 			</div>
 		</aside>

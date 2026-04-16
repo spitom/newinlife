@@ -1,0 +1,82 @@
+/* =========================================================
+   HEX MEDIA — traced from reference
+========================================================= */
+
+.c-hex-media {
+    --hex-size: 220px;
+
+    position: relative;
+    display: block;
+    width: var(--hex-size);
+    height: calc(var(--hex-size) * 1.2);
+    flex: 0 0 auto;
+}
+
+.c-hex-media__shape {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #fcfcfc;
+
+    -webkit-mask-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 871 975'>\
+<path d='\
+M425 4 \
+Q388 18 351 36 \
+L43 217 \
+Q25 227 19 240 \
+Q8 278 8 330 \
+L8 697 \
+Q14 725 24 740 \
+Q37 754 53 765 \
+L391 960 \
+Q418 968 446 971 \
+Q474 968 500 957 \
+L757 802 \
+Q815 770 847 742 \
+Q863 717 863 685 \
+L862 275 \
+Q855 248 842 230 \
+Q825 213 796 197 \
+L475 12 \
+Q450 5 425 4 Z' fill='black'/>\
+</svg>");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-position: center;
+
+    mask-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 871 975'>\
+<path d='\
+M425 4 \
+Q388 18 351 36 \
+L43 217 \
+Q25 227 19 240 \
+Q8 278 8 330 \
+L8 697 \
+Q14 725 24 740 \
+Q37 754 53 765 \
+L391 960 \
+Q418 968 446 971 \
+Q474 968 500 957 \
+L757 802 \
+Q815 770 847 742 \
+Q863 717 863 685 \
+L862 275 \
+Q855 248 842 230 \
+Q825 213 796 197 \
+L475 12 \
+Q450 5 425 4 Z' fill='black'/>\
+</svg>");
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    mask-position: center;
+}
+
+.c-hex-media__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+}

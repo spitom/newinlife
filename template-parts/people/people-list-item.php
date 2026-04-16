@@ -61,7 +61,7 @@ $teams = array_values( array_unique( $teams ) );
 $labs  = array_values( array_unique( $labs ) );
 ?>
 
-<article class="people-list-item">
+<article class="people-list-item c-surface c-surface--record">
 	<div class="people-list-item__main">
 		<div class="people-list-item__head">
 			<!-- <?php if ( $type_label ) : ?>
@@ -125,8 +125,9 @@ $labs  = array_values( array_unique( $labs ) );
 
 			<?php if ( 'scientific' === $type_slug ) : ?>
 				<p class="people-list-item__cta-wrap people-list-item__cta-wrap--inline">
-					<a href="<?php the_permalink(); ?>" class="people-list-item__cta">
+					<a href="<?php the_permalink(); ?>" class="people-list-item__cta c-readmore">
 						<?php esc_html_e( 'Zobacz profil', 'newinlife' ); ?>
+						<span class="c-readmore__icon" aria-hidden="true">→</span>
 					</a>
 				</p>
 			<?php endif; ?>
@@ -137,9 +138,12 @@ $labs  = array_values( array_unique( $labs ) );
 		<?php if ( $email ) : ?>
 			<p class="people-list-item__meta-row">
 				<span class="people-list-item__meta-label"><?php esc_html_e( 'E-mail', 'newinlife' ); ?></span>
-				<a href="mailto:<?php echo esc_attr( antispambot( $email ) ); ?>">
-					<?php echo esc_html( antispambot( $email ) ); ?>
-				</a>
+				<?php
+				echo inlife_render_obfuscated_email_link(
+					$email,
+					'people-list-item__email-link'
+				); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				?>
 			</p>
 		<?php endif; ?>
 

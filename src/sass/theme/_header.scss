@@ -36,7 +36,9 @@
     height: auto;
     width: 100%;
     transform: none;
-    transition: max-width 0.2s ease;
+    transition:
+        max-width 0.2s ease,
+        transform 0.2s ease;
 }
 
 .site-header.is-scrolled .site-branding .navbar-brand img.custom-logo,
@@ -110,7 +112,7 @@
     text-decoration: none;
     line-height: 1;
 
-    &:hover,
+    // &:hover,
     &:focus {
         text-decoration: none;
     }
@@ -127,9 +129,9 @@
     .inlife-bip-link {
         color: #c00418;
 
-        &:hover,
+        // &:hover,
         &:focus {
-            background: rgba(213, 219, 62, 0.18);
+            background: rgba(41, 52, 88, 0.08);
         }
     }
 }
@@ -171,7 +173,7 @@
 
     &:hover,
     &:focus-visible {
-        background: rgba(213, 219, 62, 0.18);
+        background: rgba(41, 52, 88, 0.08);
         color: var(--inlife-nav);
     }
 
@@ -187,7 +189,9 @@
     opacity: 0;
     transform: translateY(-8px);
     pointer-events: none;
-    transition: all 0.2s ease;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
 
     &__inner {
         padding: 1rem 0 1.25rem;
@@ -200,42 +204,52 @@
     }
 }
 
-.inlife-search-form {
+/* zewnętrzny layout: search + close */
+.inlife-search-form__layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 0.75rem;
     align-items: center;
 }
 
-.inlife-search-form__input {
-    min-height: 3.5rem;
-    padding: 0.875rem 1rem;
-    border: 1px solid var(--inlife-border);
-    border-radius: 999px;
-    background: #fff;
-    color: var(--inlife-text);
+/* wewnętrzny layout: input + submit */
+.inlife-search-form__main {
+    min-width: 0;
+}
+
+/* desktop header search: lokalny wygląd jak People, ale bez ruszania globalnego c-search */
+.inlife-search-form__input.c-search__input {
+    height: 44px;
+    min-height: 44px;
+    background: #fcfcfc;
+    border-color: #dbe4ee;
+    color: #293458;
 
     &::placeholder {
-        color: rgba(31, 36, 48, 0.65);
+        color: #7a869f;
+        opacity: 1;
     }
 
-    &:focus {
+    &:focus,
+    &:focus-visible {
         outline: none;
-        border-color: var(--inlife-primary);
-        box-shadow: 0 0 0 3px rgba(213, 219, 62, 0.35);
+        border-color: #cfd9e5;
+        box-shadow: 0 0 0 3px rgba(234, 240, 247, 0.95);
+        background: #fcfcfc;
     }
 }
 
-.inlife-search-form__submit {
-    min-height: 3.5rem;
+.inlife-search-form__submit.c-search__button.btn {
+    height: 44px;
+    min-height: 44px;
 }
 
 .inlife-search-form__close {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
+    width: 2.75rem;
+    height: 2.75rem;
     padding: 0;
     border: 0;
     border-radius: 999px;
@@ -244,10 +258,22 @@
     font-size: 2rem;
     line-height: 1;
     cursor: pointer;
+    flex: 0 0 auto;
 
     &:hover,
     &:focus-visible {
-        background: rgba(213, 219, 62, 0.18);
+        background: rgba(41, 52, 88, 0.08);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .inlife-search-form__layout {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
+
+    .inlife-search-form__close {
+        justify-self: end;
     }
 }
 
@@ -337,7 +363,7 @@
         min-height: 2.5rem;
         padding: 0.25rem 0.6rem;
         border-radius: 999px;
-        background: rgba(213, 219, 62, 0.16);
+        background: rgba(41, 52, 88, 0.14);
         color: var(--inlife-primary);
         text-decoration: none;
         font-size: 0.82rem;
@@ -347,7 +373,7 @@
 
         &:hover,
         &:focus {
-            background: rgba(213, 219, 62, 0.24);
+            background: rgba(41, 52, 88, 0.14);
             text-decoration: none;
         }
     }
@@ -409,46 +435,6 @@
     transform: translateY(-6px) rotate(-45deg);
 }
 
-/* =========================================================
-   LANGUAGE SWITCHER
-========================================================= */
-
-.language-switcher {
-    &__list {
-        display: flex;
-        align-items: center;
-        gap: 0.35rem;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    &__link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 2.4rem;
-        min-height: 2.4rem;
-        padding: 0.25rem 0.55rem;
-        border-radius: 999px;
-        color: var(--inlife-primary);
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 0.85rem;
-        letter-spacing: 0.06em;
-
-        &:hover,
-        &:focus {
-            text-decoration: none;
-            background: rgba(213, 219, 62, 0.22);
-        }
-
-        &.is-active {
-            background: var(--inlife-primary);
-            color: #fff;
-        }
-    }
-}
 
 /* =========================================================
    OFFCANVAS
@@ -540,7 +526,7 @@
 
         &:hover,
         &:focus {
-            background: rgba(213, 219, 62, 0.18);
+            background: rgba(255, 255, 255, 0.12);
             color: #fff;
         }
     }
@@ -557,21 +543,18 @@
 .offcanvas-search {
     margin-bottom: 1.25rem;
 
-    &__form {
-        display: flex;
-        align-items: center;
+    &__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 0.5rem;
+        align-items: center;
         width: 100%;
     }
 
-    &__input {
-        flex: 1 1 auto;
-        min-width: 0;
+    &__input.c-search__input {
         min-height: 3.1rem;
-        padding: 0.8rem 1rem;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 999px;
         background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.18);
         color: #fff;
         font-size: 1rem;
 
@@ -582,13 +565,15 @@
         &:focus {
             outline: 3px solid var(--inlife-focus);
             outline-offset: 2px;
+            box-shadow: none;
         }
     }
 
-    &__submit {
+    &__submit.c-search__button {
         flex: 0 0 auto;
         width: 3rem;
         height: 3rem;
+        min-height: 3rem;
         padding: 0;
         border: 0;
         border-radius: 999px;
@@ -663,8 +648,7 @@ a:focus-visible,
 button:focus-visible,
 .nav-link:focus-visible,
 .dropdown-item:focus-visible,
-.btn-close:focus-visible,
-input:focus-visible {
+.btn-close:focus-visible {
     outline: 3px solid var(--inlife-focus);
     outline-offset: 2px;
 }
@@ -691,12 +675,16 @@ input:focus-visible {
 }
 
 @media (max-width: 767.98px) {
-    .offcanvas-inlife {
-        width: min(100vw, 420px);
+    .inlife-search-form__layout {
+        grid-template-columns: 1fr;
     }
 
-    .inlife-search-form {
-        grid-template-columns: 1fr;
+    .inlife-search-form__close {
+        justify-self: end;
+    }
+
+    .offcanvas-inlife {
+        width: min(100vw, 420px);
     }
 }
 

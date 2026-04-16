@@ -7,11 +7,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$container = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
+
 $area_order = array( 'zywnosc', 'zwierzeta', 'zdrowie' );
 ?>
 
 <section class="teams-area-nav">
-	<div class="container">
+	<div class="<?php echo esc_attr( $container ); ?>">
 
 		<div
 			class="teams-area-nav__inner"

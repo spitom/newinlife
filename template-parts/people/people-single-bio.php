@@ -17,7 +17,7 @@ $specializations = function_exists( 'get_field' ) ? get_field( 'person_specializ
 <div class="people-single-bio">
 	<?php if ( 'staff' === $type_slug ) : ?>
 		<?php if ( $long_bio ) : ?>
-			<div class="people-single-section">
+			<div class="people-single-section c-surface c-surface--panel">
 				<h2 class="people-single-section__title"><?php esc_html_e( 'Informacje', 'newinlife' ); ?></h2>
 				<div class="people-single-section__content">
 					<?php echo wp_kses_post( wpautop( $long_bio ) ); ?>
@@ -28,7 +28,7 @@ $specializations = function_exists( 'get_field' ) ? get_field( 'person_specializ
 
 	<?php if ( 'scientific' === $type_slug ) : ?>
 		<?php if ( $long_bio ) : ?>
-			<div class="people-single-section">
+			<div class="people-single-section c-surface c-surface--panel">
 				<h2 class="people-single-section__title"><?php esc_html_e( 'Profil', 'newinlife' ); ?></h2>
 				<div class="people-single-section__content">
 					<?php echo wp_kses_post( wpautop( $long_bio ) ); ?>
@@ -37,7 +37,7 @@ $specializations = function_exists( 'get_field' ) ? get_field( 'person_specializ
 		<?php endif; ?>
 
 		<?php if ( $interests ) : ?>
-			<div class="people-single-section">
+			<div class="people-single-section c-surface c-surface--panel">
 				<h2 class="people-single-section__title"><?php esc_html_e( 'Najważniejsze publikacje', 'newinlife' ); ?></h2>
 				<div class="people-single-section__content">
 					<?php echo wp_kses_post( wpautop( $interests ) ); ?>
@@ -46,7 +46,7 @@ $specializations = function_exists( 'get_field' ) ? get_field( 'person_specializ
 		<?php endif; ?>
 
 		<?php if ( $specializations ) : ?>
-			<div class="people-single-section">
+			<div class="people-single-section c-surface c-surface--panel">
 				<h2 class="people-single-section__title"><?php esc_html_e( 'Specjalizacje / słowa kluczowe', 'newinlife' ); ?></h2>
 				<div class="people-single-section__content">
 					<?php echo wp_kses_post( wpautop( $specializations ) ); ?>

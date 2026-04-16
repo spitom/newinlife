@@ -1,0 +1,85 @@
+/* =========================================================
+   PILLS / FILTER CHIPS
+   Source of truth: People archive
+========================================================= */
+
+.c-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.c-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    min-height: 42px;
+    padding: 0.75rem 1.15rem;
+    border: 1px solid #dbe4ee;
+    border-radius: 999px;
+    background: #f4f7fb;
+    color: #293458;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.c-pill:hover,
+.c-pill:focus-visible {
+    background: #eaf0f7;
+    border-color: #cfd9e5;
+    color: #293458;
+    text-decoration: none;
+}
+
+.c-pill.is-active,
+.c-pill[aria-current="page"] {
+    background: #293458;
+    border-color: #293458;
+    color: #ffffff;
+    box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.16);
+}
+
+.c-pill:focus-visible {
+    outline: 3px solid rgba(49, 169, 225, 0.35);
+    outline-offset: 2px;
+}
+
+.c-pill__meta {
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.7;
+}
+
+.c-pill--compact {
+    min-width: 36px;
+    height: 36px;
+    min-height: 36px;
+    padding: 0.35rem 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+@media (max-width: 1199.98px) {
+    .c-pill {
+        min-height: 46px;
+        padding: 0.7rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .c-pill--compact {
+        min-width: 34px;
+        height: 34px;
+        min-height: 34px;
+        padding: 0.3rem 0.45rem;
+        font-size: 0.78rem;
+    }
+}
