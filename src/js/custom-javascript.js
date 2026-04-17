@@ -476,28 +476,35 @@ document.addEventListener('DOMContentLoaded', () => {
 	setExpanded(false);
 });
 
-// Single Team menu - przełączanie sekcji
+// Single Team menu - przełączanie sekcji / tabs WCAG / automatic activation
 
 document.addEventListener('DOMContentLoaded', () => {
-	const triggers = document.querySelectorAll('[data-team-panel-trigger]');
-	const panels = document.querySelectorAll('[data-team-panel-content]');
+	const triggers = Array.from(document.querySelectorAll('[data-team-panel-trigger]'));
+	const panels = Array.from(document.querySelectorAll('[data-team-panel-content]'));
 
 	if (!triggers.length || !panels.length) return;
 
 	const validPanels = ['badania', 'projekty', 'publikacje', 'aktualnosci'];
 	const url = new URL(window.location.href);
 
-	const activatePanel = (panelName, updateUrl = true) => {
+	const activatePanel = (panelName, updateUrl = true, moveFocus = false) => {
 		if (!validPanels.includes(panelName)) return;
 
 		triggers.forEach((trigger) => {
 			const isActive = trigger.getAttribute('data-team-panel-trigger') === panelName;
+
 			trigger.classList.toggle('is-active', isActive);
 			trigger.setAttribute('aria-selected', isActive ? 'true' : 'false');
+			trigger.setAttribute('tabindex', isActive ? '0' : '-1');
+
+			if (isActive && moveFocus) {
+				trigger.focus();
+			}
 		});
 
 		panels.forEach((panel) => {
 			const isActive = panel.getAttribute('data-team-panel-content') === panelName;
+
 			panel.classList.toggle('is-active', isActive);
 			panel.hidden = !isActive;
 		});
@@ -510,10 +517,55 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	};
 
+	const getTriggerIndex = (trigger) => triggers.indexOf(trigger);
+
+	const focusAndActivateByIndex = (index) => {
+		const normalizedIndex = (index + triggers.length) % triggers.length;
+		const trigger = triggers[normalizedIndex];
+		const panelName = trigger.getAttribute('data-team-panel-trigger');
+
+		activatePanel(panelName, true, true);
+	};
+
 	triggers.forEach((trigger) => {
 		trigger.addEventListener('click', () => {
 			const panelName = trigger.getAttribute('data-team-panel-trigger');
-			activatePanel(panelName, true);
+			activatePanel(panelName, true, false);
+		});
+
+		trigger.addEventListener('keydown', (event) => {
+			const currentIndex = getTriggerIndex(trigger);
+
+			switch (event.key) {
+				case 'ArrowRight':
+				case 'Right': {
+					event.preventDefault();
+					focusAndActivateByIndex(currentIndex + 1);
+					break;
+				}
+
+				case 'ArrowLeft':
+				case 'Left': {
+					event.preventDefault();
+					focusAndActivateByIndex(currentIndex - 1);
+					break;
+				}
+
+				case 'Home': {
+					event.preventDefault();
+					focusAndActivateByIndex(0);
+					break;
+				}
+
+				case 'End': {
+					event.preventDefault();
+					focusAndActivateByIndex(triggers.length - 1);
+					break;
+				}
+
+				default:
+					break;
+			}
 		});
 	});
 
@@ -521,49 +573,49 @@ document.addEventListener('DOMContentLoaded', () => {
 	const initialHash = window.location.hash.replace('#', '');
 
 	if (validPanels.includes(initialSectionFromQuery)) {
-		activatePanel(initialSectionFromQuery, false);
+		activatePanel(initialSectionFromQuery, false, false);
 		return;
 	}
 
 	if (validPanels.includes(initialHash)) {
-		activatePanel(initialHash, false);
+		activatePanel(initialHash, false, false);
 		return;
 	}
 
-	activatePanel('badania', false);
+	activatePanel('badania', false, false);
 });
 
-// Team publications filter - restore section position after year filter reload
+// // Team publications filter - restore section position after year filter reload
 
-document.addEventListener('DOMContentLoaded', () => {
-	const restoreKey = 'inlifeRestoreTeamPublications';
+// document.addEventListener('DOMContentLoaded', () => {
+// 	const restoreKey = 'inlifeRestoreTeamPublications';
 
-	if (sessionStorage.getItem(restoreKey) === '1') {
-		const section = document.getElementById('team-publications-section');
+// 	if (sessionStorage.getItem(restoreKey) === '1') {
+// 		const section = document.getElementById('team-publications-section');
 
-		if (section) {
-			const top = section.getBoundingClientRect().top + window.pageYOffset - 24;
+// 		if (section) {
+// 			const top = section.getBoundingClientRect().top + window.pageYOffset - 24;
 
-			window.scrollTo({
-				top,
-				left: 0,
-				behavior: 'auto',
-			});
-		}
+// 			window.scrollTo({
+// 				top,
+// 				left: 0,
+// 				behavior: 'auto',
+// 			});
+// 		}
 
-		sessionStorage.removeItem(restoreKey);
-	}
+// 		sessionStorage.removeItem(restoreKey);
+// 	}
 
-	const publicationFilterLinks = document.querySelectorAll('.team-publications-filter__link');
+// 	const publicationFilterLinks = document.querySelectorAll('.team-publications-filter__link');
 
-	if (!publicationFilterLinks.length) return;
+// 	if (!publicationFilterLinks.length) return;
 
-	publicationFilterLinks.forEach((link) => {
-		link.addEventListener('click', () => {
-			sessionStorage.setItem(restoreKey, '1');
-		});
-	});
-});
+// 	publicationFilterLinks.forEach((link) => {
+// 		link.addEventListener('click', () => {
+// 			sessionStorage.setItem(restoreKey, '1');
+// 		});
+// 	});
+// });
 
 // Single Laboratory - Pokaż więcej/mniej
 

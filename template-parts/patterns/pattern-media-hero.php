@@ -13,6 +13,7 @@ defined( 'ABSPATH' ) || exit;
  * - before_lead (string HTML)
  * - actions_html (string HTML)
  * - custom_media_html (string HTML)
+ * - media_shape (string) Optional. Example: 'cut-tl'
  */
 
 $args = wp_parse_args(
@@ -26,6 +27,7 @@ $args = wp_parse_args(
 		'before_lead'       => '',
 		'actions_html'      => '',
 		'custom_media_html' => '',
+		'media_shape'       => '',
 	]
 );
 
@@ -42,8 +44,15 @@ $breadcrumbs       = $args['breadcrumbs'];
 $before_lead       = (string) $args['before_lead'];
 $actions_html      = (string) $args['actions_html'];
 $custom_media_html = (string) $args['custom_media_html'];
+$media_shape       = trim( (string) $args['media_shape'] );
 
 $has_media = ( $image_id > 0 ) || ( '' !== trim( $custom_media_html ) );
+
+$media_classes = 'p-media-hero__media';
+
+if ( 'cut-tl' === $media_shape ) {
+	$media_classes .= ' p-media-hero__media--cut-tl';
+}
 ?>
 
 <section class="p-media-hero<?php echo $has_media ? '' : ' p-media-hero--no-media'; ?>">
@@ -98,7 +107,7 @@ $has_media = ( $image_id > 0 ) || ( '' !== trim( $custom_media_html ) );
 			</div>
 
 			<?php if ( $has_media ) : ?>
-				<div class="p-media-hero__media">
+				<div class="<?php echo esc_attr( $media_classes ); ?>">
 					<?php if ( '' !== trim( $custom_media_html ) ) : ?>
 						<?php echo wp_kses_post( $custom_media_html ); ?>
 					<?php else : ?>

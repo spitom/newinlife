@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="team-section-block team-section-block--projects">
+<div class="team-section-block team-section-block--projects c-surface c-surface--panel">
 	<header class="section-heading">
 		<h2 class="section-title">
 			<?php echo esc_html( inlife_t( 'Aktualne projekty' ) ); ?>
@@ -27,7 +27,6 @@ defined( 'ABSPATH' ) || exit;
 					continue;
 				}
 
-				// dane osoby
 				$name = $person_id
 					? ( function_exists( 'inlife_get_person_display_name' )
 						? inlife_get_person_display_name( $person_id )
@@ -69,8 +68,11 @@ defined( 'ABSPATH' ) || exit;
 					<?php endif; ?>
 
 					<?php if ( $url ) : ?>
-						<a href="<?php echo esc_url( $url ); ?>" class="team-project-item__link">
-							<?php echo esc_html( inlife_t( 'Zobacz projekt' ) ); ?> →
+						<a href="<?php echo esc_url( $url ); ?>" class="team-project-item__link c-readmore">
+							<span class="c-readmore__label">
+								<?php echo esc_html( inlife_t( 'Zobacz projekt' ) ); ?>
+							</span>
+							<span class="c-readmore__icon" aria-hidden="true">→</span>
 						</a>
 					<?php endif; ?>
 

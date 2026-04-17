@@ -68,3 +68,68 @@ if ( ! function_exists( 'inlife_get_person_display_name' ) ) {
 		return trim( $title . ' ' . $name );
 	}
 }
+
+
+if ( ! function_exists( 'inlife_get_person_team_memberships' ) ) {
+	/**
+	 * Get normalized team memberships for a given person.
+	 *
+	 * Source of truth:
+	 * people -> team_memberships (repeater)
+	 *   - team (post object -> teams)
+	 *   - is_team_leader (true/false)
+	 *
+	 * Returns normalized rows:
+	 * [
+	 *   [
+	 *     'team_id'        => 123,
+	 *     'is_team_leader' => true,
+	 *   ],
+	 * ]
+	 *
+	 * @param int $person_id Person post ID.
+	 * @return array<int, array{team_id:int, is_team_leader:bool}>
+	 */
+	function inlife_get_person_team_memberships( int $person_id ): array {
+		if ( $person_id <= 0 ) {
+			return array();
+		}
+
+		if ( ! function_exists( 'have_rows' ) ) {
+			return array();
+		}
+
+		if ( ! have_rows( 'team_memberships', $person_id ) ) {
+			return array();
+		}
+
+		$memberships = array();
+
+		while ( have_rows( 'team_memberships', $person_id ) ) {
+			the_row();
+
+			$team = get_sub_field( 'team' );
+
+			$team_id = 0;
+
+			if ( $team instanceof WP_Post ) {
+				$team_id = (int) $team->ID;
+			} elseif ( is_array( $team ) && ! empty( $team['ID'] ) ) {
+				$team_id = (int) $team['ID'];
+			} elseif ( is_numeric( $team ) ) {
+				$team_id = (int) $team;
+			}
+
+			if ( $team_id <= 0 ) {
+				continue;
+			}
+
+			$memberships[] = array(
+				'team_id'        => $team_id,
+				'is_team_leader' => (bool) get_sub_field( 'is_team_leader' ),
+			);
+		}
+
+		return $memberships;
+	}
+}

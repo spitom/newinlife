@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="team-section-block">
+<div class="team-section-block team-section-block--news c-surface c-surface--panel
 	<div class="team-feature-grid team-feature-grid--three">
 		<article class="team-feature-card">
 			<h3 class="team-feature-card__title"><?php esc_html_e( 'Tytuł aktualności', 'newinlife' ); ?></h3>

@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="team-section-block team-section-block--research">
+<div class="team-section-block team-section-block--research c-surface c-surface--panel">
 	<header class="section-heading">
 		<h2 class="section-title"><?php echo esc_html( inlife_t( 'Osiągnięcia naukowe' ) ); ?></h2>
 	</header>

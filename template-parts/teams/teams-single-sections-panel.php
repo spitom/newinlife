@@ -1,42 +1,34 @@
 <?php
 defined( 'ABSPATH' ) || exit;
+
+$valid_panels = array( 'badania', 'projekty', 'publikacje', 'aktualnosci' );
+$active_panel = isset( $_GET['team_section'] ) ? sanitize_key( wp_unslash( $_GET['team_section'] ) ) : 'badania';
+
+if ( ! in_array( $active_panel, $valid_panels, true ) ) {
+	$active_panel = 'badania';
+}
+
+$panel_templates = array(
+	'badania'     => 'research',
+	'projekty'    => 'projects',
+	'publikacje'  => 'publications',
+	'aktualnosci' => 'news',
+);
 ?>
 
 <div class="team-sections-panel" data-team-panels>
-
-	<section
-		id="team-panel-badania"
-		class="team-sections-panel__item is-active"
-		data-team-panel-content="badania"
-	>
-		<?php get_template_part( 'template-parts/teams/teams-single-section', 'research' ); ?>
-	</section>
-
-	<section
-		id="team-panel-projekty"
-		class="team-sections-panel__item"
-		data-team-panel-content="projekty"
-		hidden
-	>
-		<?php get_template_part( 'template-parts/teams/teams-single-section', 'projects' ); ?>
-	</section>
-
-	<section
-		id="team-panel-publikacje"
-		class="team-sections-panel__item"
-		data-team-panel-content="publikacje"
-		hidden
-	>
-		<?php get_template_part( 'template-parts/teams/teams-single-section', 'publications' ); ?>
-	</section>
-
-	<section
-		id="team-panel-aktualnosci"
-		class="team-sections-panel__item"
-		data-team-panel-content="aktualnosci"
-		hidden
-	>
-		<?php get_template_part( 'template-parts/teams/teams-single-section', 'news' ); ?>
-	</section>
-
+	<?php foreach ( $panel_templates as $panel_key => $template_slug ) : ?>
+		<?php $is_active = ( $panel_key === $active_panel ); ?>
+		<section
+			id="team-panel-<?php echo esc_attr( $panel_key ); ?>"
+			class="team-sections-panel__item<?php echo $is_active ? ' is-active' : ''; ?>"
+			data-team-panel-content="<?php echo esc_attr( $panel_key ); ?>"
+			role="tabpanel"
+			aria-labelledby="team-tab-<?php echo esc_attr( $panel_key ); ?>"
+			tabindex="0"
+			<?php echo $is_active ? '' : 'hidden'; ?>
+		>
+			<?php get_template_part( 'template-parts/teams/teams-single-section', $template_slug ); ?>
+		</section>
+	<?php endforeach; ?>
 </div>

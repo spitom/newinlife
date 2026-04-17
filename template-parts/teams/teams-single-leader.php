@@ -6,9 +6,9 @@ $leader_id = function_exists( 'inlife_get_team_leader' )
 	: null;
 ?>
 
-<div class="team-section-block team-section-block--leader">
+<section class="team-leader-section" aria-labelledby="team-leader-title">
 	<header class="section-heading">
-		<h2 class="section-title">
+		<h2 id="team-leader-title" class="section-title">
 			<?php echo esc_html( inlife_t( 'Kierownik zespołu' ) ); ?>
 		</h2>
 	</header>
@@ -45,7 +45,7 @@ $leader_id = function_exists( 'inlife_get_team_leader' )
 			<?php endif; ?>
 
 			<div class="team-leader-card__content">
-				<p class="team-leader-card__badge">
+				<p class="team-leader-card__eyebrow">
 					<?php echo esc_html( inlife_t( 'Kierownik zespołu' ) ); ?>
 				</p>
 
@@ -63,12 +63,17 @@ $leader_id = function_exists( 'inlife_get_team_leader' )
 
 				<?php if ( $email ) : ?>
 					<p class="team-leader-card__meta">
-						<?php echo esc_html( antispambot( $email ) ); ?>
+						<a href="mailto:<?php echo esc_attr( antispambot( $email ) ); ?>">
+							<?php echo esc_html( antispambot( $email ) ); ?>
+						</a>
 					</p>
 				<?php endif; ?>
 
-				<a href="<?php echo esc_url( $link ); ?>" class="team-leader-card__link">
-					<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?> <span aria-hidden="true">→</span>
+				<a href="<?php echo esc_url( $link ); ?>" class="team-leader-card__link c-readmore">
+					<span class="c-readmore__label">
+						<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?>
+					</span>
+					<span class="c-readmore__icon" aria-hidden="true">→</span>
 				</a>
 			</div>
 		</div>
@@ -78,4 +83,4 @@ $leader_id = function_exists( 'inlife_get_team_leader' )
 			<p><?php echo esc_html( inlife_t( 'Nie przypisano kierownika zespołu.' ) ); ?></p>
 		</div>
 	<?php endif; ?>
-</div>
+</section>
