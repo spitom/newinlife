@@ -33,8 +33,152 @@
     flex-direction: column;
 }
 
+// /* =========================================================
+//    KARTY NAVIGACYJNE — BRANŻE / DARK PRIMARY TEST
+// ========================================================= */
+
+// .business-service-card--industry {
+//     height: 100%;
+// }
+
+// .business-service-card__link--nav {
+//     display: block;
+//     height: 100%;
+//     color: inherit;
+//     text-decoration: none;
+// }
+
+// .business-service-card__link--nav:hover,
+// .business-service-card__link--nav:focus-visible {
+//     text-decoration: none;
+// }
+
+// .business-service-card--industry .business-service-card__body {
+//     justify-content: space-between;
+//     min-height: 100%;
+//     gap: 0;
+// }
+
+// .business-service-card__meta-row {
+//     display: flex;
+//     align-items: flex-start;
+//     justify-content: space-between;
+//     gap: 1rem;
+//     margin-bottom: 1.25rem;
+// }
+
+// .business-service-card__badge {
+//     display: inline-flex;
+//     align-items: center;
+//     padding: 0.4rem 0.78rem;
+//     border-radius: 999px;
+//     font-size: 0.78rem;
+//     font-weight: 700;
+//     line-height: 1;
+// }
+
+// .business-service-card__badge--soft {
+//     background: rgba(255, 255, 255, 0.12);
+//     color: rgba(255, 255, 255, 0.92);
+//     border: 1px solid rgba(255, 255, 255, 0.14);
+//     box-shadow: none;
+// }
+
+// .business-service-card__index {
+//     flex: 0 0 auto;
+//     font-size: 0.92rem;
+//     font-weight: 700;
+//     letter-spacing: 0.08em;
+//     color: rgba(255, 255, 255, 0.46);
+// }
+
+// .business-service-card__text {
+//     margin: 0 0 1.5rem;
+//     font-size: 0.95rem;
+//     line-height: 1.7;
+//     color: rgba(255, 255, 255, 0.78);
+// }
+
+// .business-service-card--industry:hover .c-readmore__icon,
+// .business-service-card--industry:focus-within .c-readmore__icon {
+//     transform: translateX(4px);
+//     opacity: 1;
+// }
+
+// /* nav card tone */
+// .business-service-card--industry.c-card--nav .c-card__frame {
+//     background: rgba(17, 24, 39, 0.22);
+// }
+
+// .business-service-card--industry.c-card--nav:hover .c-card__frame,
+// .business-service-card--industry.c-card--nav:focus-within .c-card__frame {
+//     background: rgba(17, 24, 39, 0.32);
+// }
+
+// .business-service-card--industry.c-card--nav .c-card__inner {
+//     position: relative;
+//     background:
+//         linear-gradient(135deg, #293458 0%, #24304f 52%, #1f2945 100%);
+// }
+
+// .business-service-card--industry.c-card--nav .c-card__inner::before {
+//     content: "";
+//     position: absolute;
+//     inset: 0;
+//     background:
+//         linear-gradient(135deg,
+//             rgba(255, 255, 255, 0.10) 0%,
+//             rgba(255, 255, 255, 0.02) 38%,
+//             rgba(255, 255, 255, 0.00) 100%);
+//     pointer-events: none;
+// }
+
+// .business-service-card--industry.c-card--nav .c-card__inner::after {
+//     content: "";
+//     position: absolute;
+//     top: -14%;
+//     right: -10%;
+//     width: 46%;
+//     height: 140%;
+//     border-radius: 999px;
+//     background: rgba(213, 219, 62, 0.08);
+//     transform: rotate(20deg);
+//     pointer-events: none;
+// }
+
+// .business-service-card--industry .c-card__title {
+//     position: relative;
+//     z-index: 1;
+//     max-width: 12ch;
+//     margin-bottom: 1.1rem;
+//     font-size: clamp(1.45rem, 1.8vw, 1.85rem);
+//     line-height: 1.08;
+//     letter-spacing: -0.02em;
+//     color: #ffffff;
+// }
+
+// .business-service-card--industry .business-service-card__text,
+// .business-service-card--industry .c-readmore,
+// .business-service-card--industry .business-service-card__meta-row {
+//     position: relative;
+//     z-index: 1;
+// }
+
+// .business-service-card--industry .c-readmore {
+//     color: rgba(255, 255, 255, 0.94);
+// }
+
+// .business-service-card--industry .c-readmore:hover,
+// .business-service-card--industry .c-readmore:focus-visible {
+//     color: #ffffff;
+// }
+
+// .business-service-card--industry .c-readmore__icon {
+//     opacity: 0.9;
+// }
+
 /* =========================================================
-   KARTY NAVIGACYJNE — BRANŻE
+   KARTY NAVIGACYJNE — BRANŻE / PRIMARY MID TONE
 ========================================================= */
 
 .business-service-card--industry {
@@ -78,9 +222,10 @@
 }
 
 .business-service-card__badge--soft {
-    background: rgba(255, 255, 255, 0.88);
-    color: #3f5278;
-    box-shadow: 0 6px 16px rgba(17, 24, 39, 0.04);
+    background: rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: none;
 }
 
 .business-service-card__index {
@@ -88,14 +233,14 @@
     font-size: 0.92rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: rgba(63, 82, 120, 0.58);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .business-service-card__text {
     margin: 0 0 1.5rem;
     font-size: 0.95rem;
     line-height: 1.7;
-    color: rgba(41, 52, 88, 0.82);
+    color: rgba(255, 255, 255, 0.82);
 }
 
 .business-service-card--industry:hover .c-readmore__icon,
@@ -106,18 +251,18 @@
 
 /* nav card tone */
 .business-service-card--industry.c-card--nav .c-card__frame {
-    background: rgba(41, 52, 88, 0.08);
+    background: rgba(41, 52, 88, 0.16);
 }
 
 .business-service-card--industry.c-card--nav:hover .c-card__frame,
 .business-service-card--industry.c-card--nav:focus-within .c-card__frame {
-    background: rgba(41, 52, 88, 0.14);
+    background: rgba(41, 52, 88, 0.22);
 }
 
 .business-service-card--industry.c-card--nav .c-card__inner {
     position: relative;
     background:
-        linear-gradient(135deg, rgba(244, 247, 251, 0.98) 0%, rgba(234, 241, 248, 0.96) 100%);
+        linear-gradient(135deg, #3a476c 0%, #313d61 52%, #293458 100%);
 }
 
 .business-service-card--industry.c-card--nav .c-card__inner::before {
@@ -126,9 +271,9 @@
     inset: 0;
     background:
         linear-gradient(135deg,
-            rgba(255, 255, 255, 0.22) 0%,
-            rgba(255, 255, 255, 0) 42%,
-            rgba(255, 255, 255, 0.06) 100%);
+            rgba(255, 255, 255, 0.14) 0%,
+            rgba(255, 255, 255, 0.05) 40%,
+            rgba(255, 255, 255, 0.00) 100%);
     pointer-events: none;
 }
 
@@ -140,7 +285,7 @@
     width: 42%;
     height: 135%;
     border-radius: 999px;
-    background: rgba(111, 149, 200, 0.08);
+    background: rgba(120, 140, 190, 0.12);
     transform: rotate(20deg);
     pointer-events: none;
 }
@@ -153,6 +298,7 @@
     font-size: clamp(1.45rem, 1.8vw, 1.85rem);
     line-height: 1.08;
     letter-spacing: -0.02em;
+    color: #ffffff;
 }
 
 .business-service-card--industry .business-service-card__text,
@@ -161,6 +307,148 @@
     position: relative;
     z-index: 1;
 }
+
+.business-service-card--industry .c-readmore {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.business-service-card--industry .c-readmore:hover,
+.business-service-card--industry .c-readmore:focus-visible {
+    color: #ffffff;
+}
+
+.business-service-card--industry .c-readmore__icon {
+    opacity: 0.9;
+}
+
+// /* =========================================================
+//    KARTY NAVIGACYJNE — BRANŻE
+// ========================================================= */
+
+// .business-service-card--industry {
+//     height: 100%;
+// }
+
+// .business-service-card__link--nav {
+//     display: block;
+//     height: 100%;
+//     color: inherit;
+//     text-decoration: none;
+// }
+
+// .business-service-card__link--nav:hover,
+// .business-service-card__link--nav:focus-visible {
+//     text-decoration: none;
+// }
+
+// .business-service-card--industry .business-service-card__body {
+//     justify-content: space-between;
+//     min-height: 100%;
+//     gap: 0;
+// }
+
+// .business-service-card__meta-row {
+//     display: flex;
+//     align-items: flex-start;
+//     justify-content: space-between;
+//     gap: 1rem;
+//     margin-bottom: 1.25rem;
+// }
+
+// .business-service-card__badge {
+//     display: inline-flex;
+//     align-items: center;
+//     padding: 0.4rem 0.78rem;
+//     border-radius: 999px;
+//     font-size: 0.78rem;
+//     font-weight: 700;
+//     line-height: 1;
+// }
+
+// .business-service-card__badge--soft {
+//     background: rgba(255, 255, 255, 0.88);
+//     color: #3f5278;
+//     box-shadow: 0 6px 16px rgba(17, 24, 39, 0.04);
+// }
+
+// .business-service-card__index {
+//     flex: 0 0 auto;
+//     font-size: 0.92rem;
+//     font-weight: 700;
+//     letter-spacing: 0.08em;
+//     color: rgba(63, 82, 120, 0.58);
+// }
+
+// .business-service-card__text {
+//     margin: 0 0 1.5rem;
+//     font-size: 0.95rem;
+//     line-height: 1.7;
+//     color: rgba(41, 52, 88, 0.82);
+// }
+
+// .business-service-card--industry:hover .c-readmore__icon,
+// .business-service-card--industry:focus-within .c-readmore__icon {
+//     transform: translateX(4px);
+//     opacity: 1;
+// }
+
+// /* nav card tone */
+// .business-service-card--industry.c-card--nav .c-card__frame {
+//     background: rgba(41, 52, 88, 0.08);
+// }
+
+// .business-service-card--industry.c-card--nav:hover .c-card__frame,
+// .business-service-card--industry.c-card--nav:focus-within .c-card__frame {
+//     background: rgba(41, 52, 88, 0.14);
+// }
+
+// .business-service-card--industry.c-card--nav .c-card__inner {
+//     position: relative;
+//     background:
+//         linear-gradient(135deg, rgba(244, 247, 251, 0.98) 0%, rgba(234, 241, 248, 0.96) 100%);
+// }
+
+// .business-service-card--industry.c-card--nav .c-card__inner::before {
+//     content: "";
+//     position: absolute;
+//     inset: 0;
+//     background:
+//         linear-gradient(135deg,
+//             rgba(255, 255, 255, 0.22) 0%,
+//             rgba(255, 255, 255, 0) 42%,
+//             rgba(255, 255, 255, 0.06) 100%);
+//     pointer-events: none;
+// }
+
+// .business-service-card--industry.c-card--nav .c-card__inner::after {
+//     content: "";
+//     position: absolute;
+//     top: -12%;
+//     right: -8%;
+//     width: 42%;
+//     height: 135%;
+//     border-radius: 999px;
+//     background: rgba(111, 149, 200, 0.08);
+//     transform: rotate(20deg);
+//     pointer-events: none;
+// }
+
+// .business-service-card--industry .c-card__title {
+//     position: relative;
+//     z-index: 1;
+//     max-width: 12ch;
+//     margin-bottom: 1.1rem;
+//     font-size: clamp(1.45rem, 1.8vw, 1.85rem);
+//     line-height: 1.08;
+//     letter-spacing: -0.02em;
+// }
+
+// .business-service-card--industry .business-service-card__text,
+// .business-service-card--industry .c-readmore,
+// .business-service-card--industry .business-service-card__meta-row {
+//     position: relative;
+//     z-index: 1;
+// }
 
 /* =========================================================
    KARTY Z MEDIAMI — LABORATORIA
