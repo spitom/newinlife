@@ -1,59 +1,70 @@
 <?php
+/**
+ * Society - Media
+ *
+ * @package UnderStrap
+ */
+
 defined( 'ABSPATH' ) || exit;
 
 $post_id   = $args['post_id'] ?? get_the_ID();
-$container = $args['container'] ?? 'container';
+$container = $args['container'] ?? ( function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container' );
 
-$kicker = get_field( 'media_kicker', $post_id );
-$title  = get_field( 'media_title', $post_id );
-$intro  = get_field( 'media_intro', $post_id );
-$posts  = get_field( 'media_posts', $post_id );
-$cta    = get_field( 'media_cta', $post_id );
+$kicker = function_exists( 'get_field' ) ? get_field( 'media_kicker', $post_id ) : '';
+$title  = function_exists( 'get_field' ) ? get_field( 'media_title', $post_id ) : '';
+$intro  = function_exists( 'get_field' ) ? get_field( 'media_intro', $post_id ) : '';
+$posts  = function_exists( 'get_field' ) ? get_field( 'media_posts', $post_id ) : [];
+$cta    = function_exists( 'get_field' ) ? get_field( 'media_cta', $post_id ) : null;
 
 $title = $title ?: inlife_t( 'Podcasty i infografiki' );
 
 if ( empty( $posts ) || ! is_array( $posts ) ) {
 	return;
 }
+
+ob_start();
+?>
+<?php if ( ! empty( $cta['url'] ) && ! empty( $cta['title'] ) ) : ?>
+	<a
+		class="btn btn-outline-primary"
+		href="<?php echo esc_url( $cta['url'] ); ?>"
+		<?php echo ! empty( $cta['target'] ) ? 'target="' . esc_attr( $cta['target'] ) . '"' : ''; ?>
+	>
+		<?php echo esc_html( $cta['title'] ); ?>
+	</a>
+<?php endif; ?>
+<?php
+$section_action = trim( (string) ob_get_clean() );
 ?>
 
-<section class="society-section society-section--media">
+<section class="society-section society-section--media" aria-labelledby="society-media-heading">
 	<div class="<?php echo esc_attr( $container ); ?>">
-		<div class="society-section__header society-section__header--split">
-			<div>
-				<?php if ( $kicker ) : ?>
-					<p class="society-section-kicker"><?php echo esc_html( $kicker ); ?></p>
-				<?php endif; ?>
+		<?php
+		get_template_part(
+			'template-parts/components/section-header',
+			null,
+			[
+				'kicker'      => $kicker,
+				'title'       => $title,
+				'lead'        => $intro,
+				'action_html' => $section_action,
+				'title_id'    => 'society-media-heading',
+				'class'       => 'society-section-header',
+			]
+		);
+		?>
 
-				<h2 class="society-section-title"><?php echo esc_html( $title ); ?></h2>
-
-				<?php if ( $intro ) : ?>
-					<div class="society-section-intro">
-						<p><?php echo esc_html( $intro ); ?></p>
-					</div>
-				<?php endif; ?>
-			</div>
-
-			<?php if ( ! empty( $cta['url'] ) && ! empty( $cta['title'] ) ) : ?>
-				<div class="society-section__actions">
-					<a
-						class="btn btn-outline-primary"
-						href="<?php echo esc_url( $cta['url'] ); ?>"
-						<?php echo ! empty( $cta['target'] ) ? 'target="' . esc_attr( $cta['target'] ) . '"' : ''; ?>
-					>
-						<?php echo esc_html( $cta['title'] ); ?>
-					</a>
-				</div>
-			<?php endif; ?>
-		</div>
-
-		<div class="society-cards society-cards--media">
-			<?php foreach ( $posts as $post ) : ?>
+		<div class="society-cards society-cards--media c-card-grid">
+			<?php foreach ( $posts as $post_item ) : ?>
 				<?php
-				$post_id_item = is_object( $post ) ? $post->ID : (int) $post;
+				$post_id_item = $post_item instanceof WP_Post ? $post_item->ID : (int) $post_item;
+
+				if ( ! $post_id_item ) {
+					continue;
+				}
 
 				get_template_part(
-					'template-parts/society/components/card',
+					'template-parts/posts/posts-card',
 					'post',
 					[
 						'post_id' => $post_id_item,

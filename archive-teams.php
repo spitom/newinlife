@@ -47,7 +47,6 @@ $hero_content = [
 				'breadcrumbs' => true,
 				'modifier'    => 'flush',
 
-				// 🔥 KLUCZ — przywraca JS
 				'section_id' => 'teamsArchiveHero',
 				'data_attrs' => [
 					'current-area' => 'all',

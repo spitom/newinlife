@@ -7,6 +7,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.c-pills>li {
+    list-style: none;
 }
 
 .c-pill {

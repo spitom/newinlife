@@ -1,11 +1,237 @@
 /* =========================================================
-   SOCIETY
+   Society
 ========================================================= */
 
-.site-main--society {
+.site-main--society,
+.site-main--society-archive {
     background: var(--inlife-surface-soft);
+}
 
-    .page-section--society-hero {
-        padding: 0;
+.page-section--society-hero,
+.page-section--society-archive-hero {
+    padding: 0;
+}
+
+.society-section-header {
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+/* =========================================================
+   Science
+========================================================= */
+
+.society-science {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+
+    @media (min-width: 992px) {
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
     }
+
+    &__wysiwyg {
+        max-width: 78ch;
+    }
+
+    &__points {
+        display: grid;
+        gap: 0.875rem;
+        margin: 1.5rem 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__point {
+        position: relative;
+        padding-left: 1.25rem;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0.7em;
+            left: 0;
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 50%;
+            background: var(--inlife-accent);
+            transform: translateY(-50%);
+        }
+    }
+
+    &__video {
+        padding: 1rem;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* =========================================================
+   Society cards / listings
+   Grid comes from global c-card-grid
+========================================================= */
+
+.society-cards {
+    min-width: 0;
+}
+
+.society-card {
+    height: 100%;
+
+    &__badge {
+        margin-bottom: 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--inlife-primary);
+    }
+
+    &__text {
+        margin-top: 0.75rem;
+    }
+
+    .c-readmore {
+        margin-top: 1rem;
+    }
+}
+
+/* =========================================================
+   Schools
+========================================================= */
+
+.society-schools {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: start;
+
+    @media (min-width: 992px) {
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+    }
+
+    &__text {
+        max-width: 78ch;
+    }
+
+    &__points {
+        display: grid;
+        gap: 0.875rem;
+        margin: 1.5rem 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &__point {
+        position: relative;
+        padding-left: 1.25rem;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0.7em;
+            left: 0;
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 50%;
+            background: var(--inlife-accent);
+            transform: translateY(-50%);
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.875rem;
+        margin-top: 1.75rem;
+    }
+
+    &__form-surface {
+        padding: clamp(1.25rem, 2vw, 1.75rem);
+    }
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.society-cta {
+    display: grid;
+    gap: 1.25rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+
+    @media (min-width: 992px) {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        column-gap: 2rem;
+    }
+
+    &__title {
+        margin-bottom: 0;
+    }
+
+    &__text {
+        margin-top: 0.875rem;
+        max-width: 68ch;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.875rem;
+    }
+}
+
+/* =========================================================
+   Society archive
+========================================================= */
+
+.society-archive-nav {
+    padding-top: 1rem;
+    padding-bottom: clamp(1.5rem, 3vw, 2rem);
+}
+
+.page-section--society-archive-listing {
+    padding-top: 0;
+}
+
+.society-archive-pagination {
+    margin-top: clamp(2rem, 4vw, 3rem);
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    a,
+    span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        padding: 0.5rem 0.85rem;
+        border: 1px solid rgba(41, 52, 88, 0.14);
+        background: #fff;
+        color: var(--inlife-primary);
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .current {
+        background: var(--inlife-primary);
+        border-color: var(--inlife-primary);
+        color: #fff;
+    }
+}
+
+.society-archive-empty {
+    padding: clamp(1.5rem, 3vw, 2rem);
+    text-align: center;
 }

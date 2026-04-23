@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="lab-section-block lab-section-block--methods">
+<div class="lab-section-block lab-section-block--methods c-surface c-surface--panel">
 	<header class="section-heading">
 		<h2 class="section-title"><?php echo esc_html( inlife_t( 'Oferowane metody i analizy' ) ); ?></h2>
 	</header>

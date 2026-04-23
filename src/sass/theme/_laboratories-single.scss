@@ -23,15 +23,12 @@
 }
 
 /* =========================================================
-   PROFILE
+   PROFILE / INTRO
 ========================================================= */
 
 .lab-profile {
     &__main {
-        padding: 1.5rem;
-        border-radius: 1.5rem;
-        background: #ffffff;
-        box-shadow: 0 12px 36px rgba(17, 24, 39, 0.05);
+        min-width: 0;
     }
 
     &__content {
@@ -90,19 +87,26 @@
     &__toggle {
         display: inline-flex;
         align-items: center;
-        gap: 0.45rem;
+        gap: 0.35rem;
         padding: 0;
         border: 0;
         background: transparent;
-        color: #293458;
+        color: var(--inlife-primary);
         font-weight: 700;
-        line-height: 1.2;
+        font-size: 0.95rem;
+        line-height: 1.4;
         cursor: pointer;
         text-decoration: none;
 
         &:hover,
         &:focus-visible {
-            text-decoration: underline;
+            color: var(--inlife-primary);
+            text-decoration: none;
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--inlife-accent);
+            outline-offset: 3px;
         }
 
         .lab-profile__toggle-text--less {
@@ -120,6 +124,7 @@
 
             .lab-profile__toggle-arrow {
                 transform: rotate(180deg);
+                opacity: 1;
             }
         }
 
@@ -135,32 +140,37 @@
     }
 
     &__toggle-arrow {
-        display: inline-flex;
-        transition: transform 0.2s ease;
+        display: inline-block;
+        font-size: 0.9em;
+        line-height: 1;
+        opacity: 0.85;
+        transition:
+            transform 0.2s ease,
+            opacity 0.2s ease;
     }
 
-    &__aside {
-        display: grid;
-        gap: 1rem;
-        align-content: start;
+    &__cooperation {
+        margin-top: 2rem;
     }
 }
 
 .lab-info-card {
-    padding: 1.2rem 1.25rem 1.15rem;
-    border-radius: 1.1rem;
-    background: linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%);
-    box-shadow: 0 10px 30px rgba(17, 24, 39, 0.045);
+    min-width: 0;
+    padding: 1.25rem;
+    border: 1px solid var(--inlife-border);
+    border-radius: 16px;
+    background: #fcfcfc;
+    box-shadow: 0 8px 20px rgba(18, 38, 63, 0.035);
 
     &__title {
-        margin-bottom: 0.65rem;
+        margin-bottom: 0.75rem;
         font-size: 1.05rem;
         line-height: 1.3;
-        color: #293458;
+        color: var(--inlife-primary);
     }
 
     &__text {
-        color: #6c7890;
+        color: #5f6b85;
         line-height: 1.65;
 
         p:last-child {
@@ -183,19 +193,33 @@
     }
 
     &--cooperation {
-        background: #fff;
-        border: 1px solid #c7505c;
-        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.035);
+        position: relative;
+        background: linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
+        border: 1px solid rgba(41, 52, 88, 0.18);
+        box-shadow: 0 12px 30px rgba(41, 52, 88, 0.08);
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            // background: var(--inlife-primary);
+            background: rgba(49, 169, 225, .35);
+            // background: var(--inlife-popielno);
+        }
 
         .lab-info-card__title {
             margin-bottom: 0.8rem;
-            font-size: 1.22rem;
+            font-size: 1.18rem;
             line-height: 1.25;
-            color: #293458;
+            color: var(--inlife-primary);
         }
 
         .lab-info-card__text {
-            color: #5f6b85;
+            color: #4f5f7d;
 
             p,
             li {
@@ -203,7 +227,7 @@
             }
 
             a {
-                color: #293458;
+                color: var(--inlife-primary);
                 text-decoration: underline;
                 text-underline-offset: 0.14em;
             }
@@ -217,14 +241,11 @@
 }
 
 /* =========================================================
-   SECTION BLOCK
+   SHARED SECTION BLOCKS
 ========================================================= */
 
 .lab-section-block {
-    padding: 1.5rem;
-    border-radius: 1.5rem;
-    background: #ffffff;
-    box-shadow: 0 12px 36px rgba(17, 24, 39, 0.05);
+    min-width: 0;
 }
 
 /* =========================================================
@@ -232,22 +253,55 @@
 ========================================================= */
 
 .lab-members-section {
-    padding-block: 0;
+    border-top: 1px solid var(--inlife-border);
+    padding: 1.5rem 1.5rem 0;
+    background: #f5f8fc;
+    border-radius: 16px;
 }
 
-.lab-manager-brief {
-    margin-bottom: 1.5rem;
-    max-width: 72ch;
+.lab-members-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+    align-items: stretch;
+}
+
+.lab-member-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-height: 100%;
+    padding: 0.8rem 0.85rem;
+    border-radius: 14px;
+    background: #fcfcfc;
+    border: 1px solid rgba(41, 52, 88, 0.08);
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+
+    &:hover {
+        background: #ffffff;
+        border-color: rgba(41, 52, 88, 0.18);
+        transform: translateY(-2px);
+    }
+
+    &--manager {
+        border-color: rgba(41, 52, 88, 0.14);
+        background: #ffffff;
+        box-shadow: 0 6px 18px rgba(18, 38, 63, 0.04);
+    }
 
     &__name {
         display: flex;
         align-items: center;
-        gap: 0.55rem;
+        gap: 0.45rem;
         flex-wrap: wrap;
-        margin-bottom: 0.3rem;
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.35;
+        font-weight: 700;
         color: var(--inlife-primary);
-        font-size: clamp(1.2rem, 1.05rem + 0.35vw, 1.5rem);
-        line-height: 1.2;
 
         a {
             color: inherit;
@@ -263,99 +317,27 @@
     &__badge {
         display: inline-flex;
         align-items: center;
-        padding: 0.24rem 0.6rem;
+        padding: 0.18rem 0.5rem;
         border-radius: 999px;
-        background: #e8eef7;
+        background: rgba(41, 52, 88, 0.08);
         color: var(--inlife-primary);
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         font-weight: 700;
         line-height: 1;
         white-space: nowrap;
     }
 
     &__position {
-        margin-bottom: 0.45rem;
-        color: #5f6b85;
-        font-size: 0.96rem;
-        line-height: 1.45;
-    }
-
-    &__meta {
-        margin-bottom: 0;
-        color: #6c7890;
-        font-size: 0.9rem;
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        a:hover,
-        a:focus {
-            text-decoration: underline;
-        }
-    }
-
-    &__cta {
-        margin-top: 0.85rem;
-    }
-}
-
-.lab-members-list {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.75rem;
-}
-
-.lab-member-tile {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    min-height: 100%;
-
-    padding: 0.85rem 0.9rem;
-    border: 1px solid var(--inlife-border);
-    border-radius: 14px;
-    background: #f5f8fc;
-
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.15s ease;
-
-    &:hover {
-        background: #eef3f9;
-        border-color: rgba(41, 52, 88, 0.18);
-        transform: translateY(-2px);
-    }
-
-    &__name {
-        margin-bottom: 0.2rem;
-        color: var(--inlife-primary);
-        font-size: 0.95rem;
-        line-height: 1.35;
-        font-weight: 700;
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        a:hover,
-        a:focus {
-            text-decoration: underline;
-        }
-    }
-
-    &__position {
-        color: #5f6b85;
+        margin: 0;
         font-size: 0.84rem;
+        color: #5f6b85;
         line-height: 1.45;
     }
 
     &__meta {
-        color: #6c7890;
+        margin: 0;
         font-size: 0.82rem;
+        color: #6c7890;
 
         a {
             color: inherit;
@@ -369,17 +351,14 @@
     }
 
     &__cta {
-        margin-top: 0.35rem;
+        margin-top: auto;
+        padding-top: 0.35rem;
     }
 }
 
 /* =========================================================
    METHODS
 ========================================================= */
-
-.lab-section-block--methods {
-    padding: 1.5rem;
-}
 
 .lab-methods-list {
     display: grid;
@@ -419,7 +398,7 @@
         }
 
         strong {
-            color: #293458;
+            color: var(--inlife-primary);
             font-weight: 700;
         }
 
@@ -429,7 +408,7 @@
         }
 
         a {
-            color: #293458;
+            color: var(--inlife-primary);
             text-decoration: underline;
             text-underline-offset: 0.14em;
         }
@@ -461,10 +440,6 @@
 /* =========================================================
    EQUIPMENT
 ========================================================= */
-
-.lab-section-block--equipment {
-    padding: 1.5rem;
-}
 
 .lab-equipment-items {
     display: grid;
@@ -504,7 +479,7 @@
         }
 
         strong {
-            color: #293458;
+            color: var(--inlife-primary);
             font-weight: 700;
         }
 
@@ -514,7 +489,7 @@
         }
 
         a {
-            color: #293458;
+            color: var(--inlife-primary);
             text-decoration: underline;
             text-underline-offset: 0.14em;
         }
@@ -537,12 +512,6 @@
 }
 
 @media (max-width: 991.98px) {
-    .site-main--laboratory-single {
-        .page-section {
-            padding-bottom: 4rem;
-        }
-    }
-
     .lab-members-list {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -553,8 +522,17 @@
         font-size: 2.2rem;
     }
 
+    .lab-members-section {
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
     .lab-members-list {
         grid-template-columns: 1fr;
+    }
+
+    .lab-manager-brief__name {
+        align-items: flex-start;
     }
 
     .lab-method-item {
@@ -565,14 +543,5 @@
             padding-top: 0;
             font-size: 0.88rem;
         }
-    }
-
-    .lab-profile__main,
-    .lab-section-block {
-        padding: 1.25rem;
-    }
-
-    .lab-manager-brief__name {
-        align-items: flex-start;
     }
 }

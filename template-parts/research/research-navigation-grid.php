@@ -114,7 +114,7 @@ if ( empty( $items ) ) {
 	?> -->
 
 	<?php if ( ! empty( $items ) ) : ?>
-		<div class="research-navigation-grid__list c-card-grid c-card-grid--4" role="list">
+		<div class="research-navigation-grid__list c-card-grid" role="list">
 			<?php foreach ( $items as $item ) : ?>
 				<?php
 				$item = wp_parse_args(

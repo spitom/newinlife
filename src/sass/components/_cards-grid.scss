@@ -43,10 +43,3 @@
         grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 }
-
-/* 5 columns */
-.c-card-grid--5 {
-    @media (min-width: 1400px) {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-    }
-}

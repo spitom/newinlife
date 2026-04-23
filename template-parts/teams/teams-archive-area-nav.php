@@ -16,14 +16,14 @@ $area_order = array( 'zywnosc', 'zwierzeta', 'zdrowie' );
 	<div class="<?php echo esc_attr( $container ); ?>">
 
 		<div
-			class="teams-area-nav__inner"
+			class="c-pills"
 			data-team-filters
 			role="group"
 			aria-label="<?php echo esc_attr( inlife_t( 'Filtruj zespoły według obszaru badawczego' ) ); ?>"
 		>
 			<button
 				type="button"
-				class="teams-area-nav__btn is-active"
+				class="c-pill is-active"
 				data-team-filter="all"
 				aria-pressed="true"
 			>
@@ -40,7 +40,7 @@ $area_order = array( 'zywnosc', 'zwierzeta', 'zdrowie' );
 				?>
 				<button
 					type="button"
-					class="teams-area-nav__btn"
+					class="c-pill"
 					data-team-filter="<?php echo esc_attr( $term->slug ); ?>"
 					aria-pressed="false"
 				>

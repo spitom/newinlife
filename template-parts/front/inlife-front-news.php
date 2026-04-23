@@ -1,56 +1,78 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-$container = inlife_container_class();
+$container = function_exists( 'inlife_container_class' )
+	? inlife_container_class()
+	: 'container';
+
+$query = new WP_Query(
+	[
+		'post_type'      => 'post',
+		'posts_per_page' => 4,
+		'post_status'    => 'publish',
+		'no_found_rows'  => true,
+		'meta_query'     => [
+			[
+				'key'     => 'show_on_front_news',
+				'value'   => '1',
+				'compare' => '=',
+			],
+		],
+	]
+);
+
+if ( ! $query->have_posts() ) {
+	return;
+}
 ?>
 
-<section id="news" class="front-section front-news" aria-labelledby="news-heading">
-	<div class="inlife-container">
-		<div class="inlife-content">
-			<div class="section-heading d-flex justify-content-between align-items-end gap-3 flex-wrap">
-				<div>
-					<h2 id="news-heading" class="section-title">Aktualności</h2>
-				</div>
-				<a href="#" class="btn btn-outline-primary">Wszystkie aktualności</a>
-			</div>
+<section class="page-section page-section--front-news">
+	<div class="<?php echo esc_attr( $container ); ?>">
 
-			<div class="row g-4">
-				<div class="col-lg-4">
-					<div class="card card-news h-100">
-						<div class="card-body">
-							<div class="news-tags mb-3">
-								<span class="badge text-bg-light">Nauka</span>
-							</div>
-							<h3 class="h5">Przykładowy news</h3>
-							<p class="mb-0">Lead aktualności.</p>
-						</div>
-					</div>
-				</div>
+		<?php
+		get_template_part(
+			'template-parts/components/section-header',
+			null,
+			[
+				'kicker' => inlife_t( 'Aktualności' ),
+				'title'  => inlife_t( 'Aktualności' ),
+				'lead'   => '',
+			]
+		);
+		?>
 
-				<div class="col-lg-4">
-					<div class="card card-news h-100">
-						<div class="card-body">
-							<div class="news-tags mb-3">
-								<span class="badge text-bg-light">Badania</span>
-							</div>
-							<h3 class="h5">Przykładowy news</h3>
-							<p class="mb-0">Lead aktualności.</p>
-						</div>
-					</div>
+		<div class="front-news__grid c-card-grid">
+			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+				<div class="front-news__item">
+					<?php
+					get_template_part(
+						'template-parts/posts/posts',
+						'card',
+						[
+							'post_id' => get_the_ID(),
+						]
+					);
+					?>
 				</div>
-
-				<div class="col-lg-4">
-					<div class="card card-news h-100">
-						<div class="card-body">
-							<div class="news-tags mb-3">
-								<span class="badge text-bg-light">Instytut</span>
-							</div>
-							<h3 class="h5">Przykładowy news</h3>
-							<p class="mb-0">Lead aktualności.</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			<?php endwhile; ?>
 		</div>
+
+		<?php
+		$posts_page_id = (int) get_option( 'page_for_posts' );
+
+		if ( $posts_page_id ) :
+		?>
+			<div class="front-news__footer">
+				<a
+					class="btn btn-outline-primary"
+					href="<?php echo esc_url( get_permalink( $posts_page_id ) ); ?>"
+				>
+					<?php echo esc_html( inlife_t( 'Zobacz wszystkie aktualności' ) ); ?>
+				</a>
+			</div>
+		<?php endif; ?>
+
 	</div>
 </section>
+
+<?php wp_reset_postdata(); ?>

@@ -1,54 +1,78 @@
 <?php
+/**
+ * Society - Schools
+ *
+ * @package UnderStrap
+ */
+
 defined( 'ABSPATH' ) || exit;
 
 $post_id   = $args['post_id'] ?? get_the_ID();
-$container = $args['container'] ?? 'container';
+$container = $args['container'] ?? ( function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container' );
 
-$kicker         = get_field( 'schools_kicker', $post_id );
-$title          = get_field( 'schools_title', $post_id );
-$text           = get_field( 'schools_text', $post_id );
-$points         = get_field( 'schools_points', $post_id );
-$form_shortcode = get_field( 'schools_form_shortcode', $post_id );
-$primary_cta    = get_field( 'schools_primary_cta', $post_id );
-$secondary_cta  = get_field( 'schools_secondary_cta', $post_id );
+$kicker         = function_exists( 'get_field' ) ? get_field( 'schools_kicker', $post_id ) : '';
+$title          = function_exists( 'get_field' ) ? get_field( 'schools_title', $post_id ) : '';
+$text           = function_exists( 'get_field' ) ? get_field( 'schools_text', $post_id ) : '';
+$points         = function_exists( 'get_field' ) ? get_field( 'schools_points', $post_id ) : [];
+$form_shortcode = function_exists( 'get_field' ) ? get_field( 'schools_form_shortcode', $post_id ) : '';
+$primary_cta    = function_exists( 'get_field' ) ? get_field( 'schools_primary_cta', $post_id ) : null;
+$secondary_cta  = function_exists( 'get_field' ) ? get_field( 'schools_secondary_cta', $post_id ) : null;
 
 $title = $title ?: inlife_t( 'Dla szkół' );
 
-if ( ! $title && ! $text && ! $form_shortcode ) {
+$has_points        = ! empty( $points ) && is_array( $points );
+$has_form          = ! empty( $form_shortcode );
+$has_primary_cta   = ! empty( $primary_cta['url'] ) && ! empty( $primary_cta['title'] );
+$has_secondary_cta = ! empty( $secondary_cta['url'] ) && ! empty( $secondary_cta['title'] );
+
+if ( empty( $text ) && ! $has_points && ! $has_form && ! $has_primary_cta && ! $has_secondary_cta ) {
 	return;
 }
 ?>
 
-<section class="society-section society-section--schools">
+<section class="society-section society-section--schools" aria-labelledby="society-schools-heading">
 	<div class="<?php echo esc_attr( $container ); ?>">
 		<div class="society-schools">
 			<div class="society-schools__content">
-				<?php if ( $kicker ) : ?>
-					<p class="society-section-kicker"><?php echo esc_html( $kicker ); ?></p>
-				<?php endif; ?>
-
-				<?php if ( $title ) : ?>
-					<h2 class="society-section-title"><?php echo esc_html( $title ); ?></h2>
-				<?php endif; ?>
+				<?php
+				get_template_part(
+					'template-parts/components/section-header',
+					null,
+					[
+						'kicker'   => $kicker,
+						'title'    => $title,
+						'lead'     => '',
+						'title_id' => 'society-schools-heading',
+					]
+				);
+				?>
 
 				<?php if ( $text ) : ?>
-					<div class="society-wysiwyg">
+					<div class="entry-content society-schools__text">
 						<?php echo wp_kses_post( $text ); ?>
 					</div>
 				<?php endif; ?>
 
-				<?php if ( ! empty( $points ) && is_array( $points ) ) : ?>
-					<ul class="society-schools__points">
+				<?php if ( $has_points ) : ?>
+					<ul class="society-schools__points" role="list">
 						<?php foreach ( $points as $point ) : ?>
-							<?php if ( empty( $point['text'] ) ) { continue; } ?>
-							<li><?php echo esc_html( $point['text'] ); ?></li>
+							<?php
+							$point_text = $point['text'] ?? '';
+
+							if ( '' === trim( (string) $point_text ) ) {
+								continue;
+							}
+							?>
+							<li class="society-schools__point">
+								<span class="society-schools__point-text"><?php echo esc_html( $point_text ); ?></span>
+							</li>
 						<?php endforeach; ?>
 					</ul>
 				<?php endif; ?>
 
-				<?php if ( ! empty( $primary_cta ) || ! empty( $secondary_cta ) ) : ?>
+				<?php if ( $has_primary_cta || $has_secondary_cta ) : ?>
 					<div class="society-schools__actions">
-						<?php if ( ! empty( $primary_cta['url'] ) && ! empty( $primary_cta['title'] ) ) : ?>
+						<?php if ( $has_primary_cta ) : ?>
 							<a
 								class="btn btn-primary"
 								href="<?php echo esc_url( $primary_cta['url'] ); ?>"
@@ -58,7 +82,7 @@ if ( ! $title && ! $text && ! $form_shortcode ) {
 							</a>
 						<?php endif; ?>
 
-						<?php if ( ! empty( $secondary_cta['url'] ) && ! empty( $secondary_cta['title'] ) ) : ?>
+						<?php if ( $has_secondary_cta ) : ?>
 							<a
 								class="btn btn-outline-primary"
 								href="<?php echo esc_url( $secondary_cta['url'] ); ?>"
@@ -71,9 +95,11 @@ if ( ! $title && ! $text && ! $form_shortcode ) {
 				<?php endif; ?>
 			</div>
 
-			<?php if ( $form_shortcode ) : ?>
+			<?php if ( $has_form ) : ?>
 				<div class="society-schools__form">
-					<?php echo do_shortcode( wp_kses_post( $form_shortcode ) ); ?>
+					<div class="society-schools__form-surface c-surface">
+						<?php echo do_shortcode( wp_kses_post( $form_shortcode ) ); ?>
+					</div>
 				</div>
 			<?php endif; ?>
 		</div>

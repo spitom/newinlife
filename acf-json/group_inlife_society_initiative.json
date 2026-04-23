@@ -1,0 +1,2138 @@
+{
+    "key": "group_inlife_society_initiative",
+    "title": "InLife – Society Initiative",
+    "fields": [
+        {
+            "key": "field_society_initiative_tab_settings",
+            "label": "General",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 1
+        },
+        {
+            "key": "field_society_initiative_kicker",
+            "label": "Hero kicker",
+            "name": "society_initiative_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short label above the initiative title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "SPOŁECZEŃSTWO",
+            "maxlength": 80,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_society_initiative_lead",
+            "label": "Hero lead",
+            "name": "society_initiative_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Short lead under the page title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "70",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "rows": 3,
+            "new_lines": "br",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_society_initiative_hero_media_type",
+            "label": "Hero media type",
+            "name": "society_initiative_hero_media_type",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Choose visual type for the initiative hero.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "image": "Image",
+                "video": "Video",
+                "none": "None"
+            },
+            "default_value": "image",
+            "return_format": "value",
+            "layout": "horizontal",
+            "allow_null": 0
+        },
+        {
+            "key": "field_society_initiative_hero_image",
+            "label": "Hero image",
+            "name": "society_initiative_hero_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optional custom hero image; falls back to featured image if left empty.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_society_initiative_hero_media_type",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "preview_size": "medium",
+            "mime_types": "jpg,jpeg,png,webp,svg",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0
+        },
+        {
+            "key": "field_society_initiative_hero_video",
+            "label": "Hero video embed URL",
+            "name": "society_initiative_hero_video",
+            "aria-label": "",
+            "type": "oembed",
+            "instructions": "YouTube\/Vimeo URL.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_society_initiative_hero_media_type",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "width": "",
+            "height": ""
+        },
+        {
+            "key": "field_society_initiative_hero_note",
+            "label": "Hero note",
+            "name": "society_initiative_hero_note",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional short note near the hero media.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 140,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_society_initiative_local_nav_mode",
+            "label": "Local navigation",
+            "name": "society_initiative_local_nav_mode",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Choose how the page-level navigation works.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "auto_anchors": "Auto from sections",
+                "manual": "Manual menu items",
+                "none": "None"
+            },
+            "default_value": "auto_anchors",
+            "return_format": "value",
+            "layout": "horizontal",
+            "allow_null": 0
+        },
+        {
+            "key": "field_society_initiative_manual_nav",
+            "label": "Manual local navigation items",
+            "name": "society_initiative_manual_nav",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Used only when local navigation is set to manual.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_society_initiative_local_nav_mode",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "66",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 12,
+            "collapsed": "field_society_initiative_manual_nav_label",
+            "button_label": "Add nav item",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_society_initiative_manual_nav_label",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "maxlength": 60,
+                    "allow_in_bindings": 0,
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_society_initiative_manual_nav"
+                },
+                {
+                    "key": "field_society_initiative_manual_nav_type",
+                    "label": "Destination type",
+                    "name": "type",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "anchor": "Anchor",
+                        "page": "Page",
+                        "url": "Custom URL"
+                    },
+                    "default_value": "anchor",
+                    "return_format": "value",
+                    "layout": "horizontal",
+                    "allow_null": 0,
+                    "parent_repeater": "field_society_initiative_manual_nav"
+                },
+                {
+                    "key": "field_society_initiative_manual_nav_anchor",
+                    "label": "Anchor ID",
+                    "name": "anchor",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_society_initiative_manual_nav_type",
+                                "operator": "==",
+                                "value": "anchor"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 80,
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_society_initiative_manual_nav"
+                },
+                {
+                    "key": "field_society_initiative_manual_nav_page",
+                    "label": "Page",
+                    "name": "page",
+                    "aria-label": "",
+                    "type": "page_link",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_society_initiative_manual_nav_type",
+                                "operator": "==",
+                                "value": "page"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "15",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page"
+                    ],
+                    "post_status": [
+                        "publish",
+                        "draft"
+                    ],
+                    "allow_null": 1,
+                    "multiple": 0,
+                    "allow_archives": 0,
+                    "taxonomy": [],
+                    "parent_repeater": "field_society_initiative_manual_nav"
+                },
+                {
+                    "key": "field_society_initiative_manual_nav_url",
+                    "label": "Custom URL",
+                    "name": "url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_society_initiative_manual_nav_type",
+                                "operator": "==",
+                                "value": "url"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "15",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_society_initiative_manual_nav"
+                }
+            ]
+        },
+        {
+            "key": "field_society_initiative_show_related_news",
+            "label": "Related posts block",
+            "name": "society_initiative_show_related_news",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Optional bottom block for related posts\/news.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable related posts section",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Show",
+            "ui_off_text": "Hide"
+        },
+        {
+            "key": "field_society_initiative_related_posts_mode",
+            "label": "Related posts mode",
+            "name": "society_initiative_related_posts_mode",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "Manual selection is safest; taxonomy\/tag mode is convenient for recurring initiatives.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_society_initiative_show_related_news",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "manual": "Manual selection",
+                "tag": "By tag slug",
+                "category": "By category slug"
+            },
+            "default_value": "manual",
+            "return_format": "value",
+            "layout": "horizontal",
+            "allow_null": 0
+        },
+        {
+            "key": "field_society_initiative_related_posts_count",
+            "label": "Related posts count",
+            "name": "society_initiative_related_posts_count",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Recommended: 3.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_society_initiative_show_related_news",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": 1,
+            "max": 12,
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_society_initiative_related_posts_manual",
+            "label": "Manual related posts",
+            "name": "society_initiative_related_posts_manual",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Pick posts related to this initiative.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_society_initiative_show_related_news",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_society_initiative_related_posts_mode",
+                        "operator": "==",
+                        "value": "manual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "post_status": [
+                "publish",
+                "draft"
+            ],
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "return_format": "object",
+            "min": 0,
+            "max": 12,
+            "elements": [
+                "featured_image"
+            ],
+            "taxonomy": [],
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_society_initiative_related_posts_tag_slug",
+            "label": "Tag slug",
+            "name": "society_initiative_related_posts_tag_slug",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter post tag slug for automatic query.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_society_initiative_show_related_news",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_society_initiative_related_posts_mode",
+                        "operator": "==",
+                        "value": "tag"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 120,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_society_initiative_related_posts_category_slug",
+            "label": "Category slug",
+            "name": "society_initiative_related_posts_category_slug",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter post category slug for automatic query.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_society_initiative_show_related_news",
+                        "operator": "==",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_society_initiative_related_posts_mode",
+                        "operator": "==",
+                        "value": "category"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 120,
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_society_initiative_tab_flexible",
+            "label": "Flexible sections",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_society_initiative_sections",
+            "label": "Page sections",
+            "name": "society_initiative_sections",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "Build initiative pages from reusable blocks. Add anchor IDs only when you want section links in local navigation.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_society_intro": {
+                    "key": "layout_society_intro",
+                    "name": "intro",
+                    "label": "Intro \/ rich text",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_society_intro_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": 80,
+                            "allow_in_bindings": 0,
+                            "placeholder": "about",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_intro_nav_label",
+                            "label": "Navigation label",
+                            "name": "nav_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Optional label for local navigation.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": 60,
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_intro_title",
+                            "label": "Section title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": 120,
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_intro_content",
+                            "label": "Content",
+                            "name": "content",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0,
+                            "default_value": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_society_text_media": {
+                    "key": "layout_society_text_media",
+                    "name": "text_media",
+                    "label": "Text + media",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_society_text_media_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": 80,
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_text_media_nav_label",
+                            "label": "Navigation label",
+                            "name": "nav_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": 60,
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_text_media_title",
+                            "label": "Section title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 120,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_text_media_content",
+                            "label": "Content",
+                            "name": "content",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0,
+                            "default_value": ""
+                        },
+                        {
+                            "key": "field_society_text_media_kind",
+                            "label": "Media type",
+                            "name": "media_type",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "image": "Image",
+                                "video": "Video"
+                            },
+                            "default_value": "image",
+                            "return_format": "value",
+                            "layout": "horizontal",
+                            "allow_null": 0
+                        },
+                        {
+                            "key": "field_society_text_media_image",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_society_text_media_kind",
+                                        "operator": "==",
+                                        "value": "image"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "preview_size": "medium",
+                            "mime_types": "jpg,jpeg,png,webp,svg",
+                            "min_width": 0,
+                            "min_height": 0,
+                            "min_size": 0,
+                            "max_width": 0,
+                            "max_height": 0,
+                            "max_size": 0
+                        },
+                        {
+                            "key": "field_society_text_media_video",
+                            "label": "Video URL",
+                            "name": "video",
+                            "aria-label": "",
+                            "type": "oembed",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_society_text_media_kind",
+                                        "operator": "==",
+                                        "value": "video"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "width": "",
+                            "height": ""
+                        },
+                        {
+                            "key": "field_society_text_media_position",
+                            "label": "Media position",
+                            "name": "media_position",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "right": "Right",
+                                "left": "Left"
+                            },
+                            "default_value": "right",
+                            "return_format": "value",
+                            "layout": "horizontal",
+                            "allow_null": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_society_cards": {
+                    "key": "layout_society_cards",
+                    "name": "cards",
+                    "label": "Cards \/ link grid",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_society_cards_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 80,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_cards_nav_label",
+                            "label": "Navigation label",
+                            "name": "nav_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 60,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_cards_title",
+                            "label": "Section title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 120,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_cards_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 2,
+                            "new_lines": "br",
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_society_cards_items",
+                            "label": "Cards",
+                            "name": "items",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "row",
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 12,
+                            "collapsed": "field_society_cards_item_title",
+                            "button_label": "Add card",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_society_cards_item_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "20",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "maxlength": 120,
+                                    "allow_in_bindings": 0,
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_society_cards_items"
+                                },
+                                {
+                                    "key": "field_society_cards_item_text",
+                                    "label": "Text",
+                                    "name": "text",
+                                    "aria-label": "",
+                                    "type": "textarea",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "35",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "rows": 3,
+                                    "new_lines": "br",
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "parent_repeater": "field_society_cards_items"
+                                },
+                                {
+                                    "key": "field_society_cards_item_link_mode",
+                                    "label": "Link type",
+                                    "name": "link_mode",
+                                    "aria-label": "",
+                                    "type": "button_group",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "15",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "page": "Page",
+                                        "post": "Post",
+                                        "url": "Custom URL"
+                                    },
+                                    "default_value": "page",
+                                    "return_format": "value",
+                                    "layout": "horizontal",
+                                    "allow_null": 0,
+                                    "parent_repeater": "field_society_cards_items"
+                                },
+                                {
+                                    "key": "field_society_cards_item_page",
+                                    "label": "Page",
+                                    "name": "page",
+                                    "aria-label": "",
+                                    "type": "page_link",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_society_cards_item_link_mode",
+                                                "operator": "==",
+                                                "value": "page"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "15",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "page"
+                                    ],
+                                    "post_status": [
+                                        "publish",
+                                        "draft"
+                                    ],
+                                    "allow_null": 1,
+                                    "multiple": 0,
+                                    "allow_archives": 0,
+                                    "taxonomy": [],
+                                    "parent_repeater": "field_society_cards_items"
+                                },
+                                {
+                                    "key": "field_society_cards_item_post",
+                                    "label": "Post",
+                                    "name": "post",
+                                    "aria-label": "",
+                                    "type": "relationship",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_society_cards_item_link_mode",
+                                                "operator": "==",
+                                                "value": "post"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "15",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "post"
+                                    ],
+                                    "post_status": [
+                                        "publish",
+                                        "draft"
+                                    ],
+                                    "filters": [
+                                        "search",
+                                        "post_type",
+                                        "taxonomy"
+                                    ],
+                                    "return_format": "object",
+                                    "min": 0,
+                                    "max": 1,
+                                    "elements": [
+                                        "featured_image"
+                                    ],
+                                    "taxonomy": [],
+                                    "bidirectional_target": [],
+                                    "parent_repeater": "field_society_cards_items"
+                                },
+                                {
+                                    "key": "field_society_cards_item_url",
+                                    "label": "Custom URL",
+                                    "name": "url",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_society_cards_item_link_mode",
+                                                "operator": "==",
+                                                "value": "url"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "15",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "parent_repeater": "field_society_cards_items"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_society_selected_posts": {
+                    "key": "layout_society_selected_posts",
+                    "name": "selected_posts",
+                    "label": "Selected posts",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_society_selected_posts_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 80,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_selected_posts_nav_label",
+                            "label": "Navigation label",
+                            "name": "nav_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 60,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_selected_posts_title",
+                            "label": "Section title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 120,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_selected_posts_count",
+                            "label": "Cards count",
+                            "name": "count",
+                            "aria-label": "",
+                            "type": "number",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "15",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": 3,
+                            "min": 1,
+                            "max": 12,
+                            "step": 1,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_selected_posts_items",
+                            "label": "Posts",
+                            "name": "posts",
+                            "aria-label": "",
+                            "type": "relationship",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "post"
+                            ],
+                            "post_status": [
+                                "publish",
+                                "draft"
+                            ],
+                            "filters": [
+                                "search",
+                                "post_type",
+                                "taxonomy"
+                            ],
+                            "return_format": "object",
+                            "min": 1,
+                            "max": 12,
+                            "elements": [
+                                "featured_image"
+                            ],
+                            "taxonomy": [],
+                            "bidirectional_target": []
+                        },
+                        {
+                            "key": "field_society_selected_posts_show_badge",
+                            "label": "Show badge",
+                            "name": "show_badge",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Enable badges on cards",
+                            "default_value": 1,
+                            "ui": 1,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
+                            "key": "field_society_selected_posts_archive_page",
+                            "label": "Optional archive page",
+                            "name": "archive_page",
+                            "aria-label": "",
+                            "type": "page_link",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "page"
+                            ],
+                            "post_status": [
+                                "publish",
+                                "draft"
+                            ],
+                            "allow_null": 1,
+                            "multiple": 0,
+                            "allow_archives": 0,
+                            "taxonomy": []
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_society_query_posts": {
+                    "key": "layout_society_query_posts",
+                    "name": "query_posts",
+                    "label": "Automatic posts query",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_society_query_posts_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 80,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_query_posts_nav_label",
+                            "label": "Navigation label",
+                            "name": "nav_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 60,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_query_posts_title",
+                            "label": "Section title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 120,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_query_posts_count",
+                            "label": "Posts count",
+                            "name": "count",
+                            "aria-label": "",
+                            "type": "number",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "15",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": 3,
+                            "min": 1,
+                            "max": 12,
+                            "step": 1,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_query_posts_query_mode",
+                            "label": "Query by",
+                            "name": "query_mode",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "15",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "tag": "Tag slug",
+                                "category": "Category slug"
+                            },
+                            "default_value": "tag",
+                            "return_format": "value",
+                            "layout": "horizontal",
+                            "allow_null": 0
+                        },
+                        {
+                            "key": "field_society_query_posts_slug",
+                            "label": "Term slug",
+                            "name": "slug",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 120,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_query_posts_show_badge",
+                            "label": "Show badge",
+                            "name": "show_badge",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "Enable badges on cards",
+                            "default_value": 1,
+                            "ui": 1,
+                            "ui_on_text": "Show",
+                            "ui_off_text": "Hide"
+                        },
+                        {
+                            "key": "field_society_query_posts_archive_page",
+                            "label": "Optional archive page",
+                            "name": "archive_page",
+                            "aria-label": "",
+                            "type": "page_link",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "page"
+                            ],
+                            "post_status": [
+                                "publish",
+                                "draft"
+                            ],
+                            "allow_null": 1,
+                            "multiple": 0,
+                            "allow_archives": 0,
+                            "taxonomy": []
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_society_embed": {
+                    "key": "layout_society_embed",
+                    "name": "embed",
+                    "label": "Embed (video \/ podcast)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_society_embed_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 80,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_embed_nav_label",
+                            "label": "Navigation label",
+                            "name": "nav_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 60,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_embed_title",
+                            "label": "Section title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 120,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_embed_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 2,
+                            "new_lines": "br",
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_society_embed_url",
+                            "label": "Embed URL",
+                            "name": "embed_url",
+                            "aria-label": "",
+                            "type": "oembed",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "width": "",
+                            "height": ""
+                        },
+                        {
+                            "key": "field_society_embed_caption",
+                            "label": "Caption \/ note",
+                            "name": "caption",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 160,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_society_downloads": {
+                    "key": "layout_society_downloads",
+                    "name": "downloads",
+                    "label": "Downloads \/ files",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_society_downloads_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 80,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_downloads_nav_label",
+                            "label": "Navigation label",
+                            "name": "nav_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 60,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_downloads_title",
+                            "label": "Section title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 120,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_downloads_items",
+                            "label": "Files",
+                            "name": "items",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "row",
+                            "pagination": 0,
+                            "min": 1,
+                            "max": 20,
+                            "collapsed": "field_society_downloads_item_title",
+                            "button_label": "Add file",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_society_downloads_item_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "maxlength": 120,
+                                    "allow_in_bindings": 0,
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_society_downloads_items"
+                                },
+                                {
+                                    "key": "field_society_downloads_item_file",
+                                    "label": "File",
+                                    "name": "file",
+                                    "aria-label": "",
+                                    "type": "file",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "35",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "min_size": "",
+                                    "max_size": "",
+                                    "mime_types": "pdf,doc,docx,ppt,pptx,xls,xlsx,zip,jpg,jpeg,png,webp,svg",
+                                    "parent_repeater": "field_society_downloads_items"
+                                },
+                                {
+                                    "key": "field_society_downloads_item_description",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "25",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "maxlength": 160,
+                                    "allow_in_bindings": 0,
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_society_downloads_items"
+                                },
+                                {
+                                    "key": "field_society_downloads_item_new_tab",
+                                    "label": "Open in new tab",
+                                    "name": "new_tab",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "15",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "Enable",
+                                    "default_value": 0,
+                                    "ui": 1,
+                                    "ui_on_text": "Yes",
+                                    "ui_off_text": "No",
+                                    "parent_repeater": "field_society_downloads_items"
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_society_form": {
+                    "key": "layout_society_form",
+                    "name": "form",
+                    "label": "Form block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_society_form_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 80,
+                            "allow_in_bindings": 0,
+                            "default_value": "contact",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_form_nav_label",
+                            "label": "Navigation label",
+                            "name": "nav_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 60,
+                            "allow_in_bindings": 0,
+                            "default_value": "Kontakt",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_form_title",
+                            "label": "Section title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 120,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_form_intro",
+                            "label": "Intro",
+                            "name": "intro",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 3,
+                            "new_lines": "br",
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_society_form_shortcode",
+                            "label": "Form shortcode",
+                            "name": "shortcode",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 255,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "[forminator_form id=\"123\"]",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_society_cta": {
+                    "key": "layout_society_cta",
+                    "name": "cta",
+                    "label": "CTA block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_society_cta_anchor",
+                            "label": "Anchor ID",
+                            "name": "anchor_id",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 80,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_cta_nav_label",
+                            "label": "Navigation label",
+                            "name": "nav_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "20",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 60,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_cta_title",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "maxlength": 120,
+                            "allow_in_bindings": 0,
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_society_cta_text",
+                            "label": "Text",
+                            "name": "text",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "60",
+                                "class": "",
+                                "id": ""
+                            },
+                            "rows": 3,
+                            "new_lines": "br",
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": ""
+                        },
+                        {
+                            "key": "field_society_cta_button",
+                            "label": "Button",
+                            "name": "button",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "40",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_society_cta_button_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "maxlength": 60,
+                                    "allow_in_bindings": 0,
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
+                                    "key": "field_society_cta_button_url",
+                                    "label": "URL",
+                                    "name": "url",
+                                    "aria-label": "",
+                                    "type": "url",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "button_label": "Add section",
+            "min": 0,
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "default"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for flexible Society initiative pages.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1776667917
+}

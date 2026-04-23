@@ -36,40 +36,6 @@
             height: 100%;
         }
 
-        &__inner,
-        .c-card__inner {
-            position: relative;
-            background: linear-gradient(135deg,
-                    rgba(248, 250, 252, 0.98) 0%,
-                    rgba(239, 244, 249, 0.98) 100%);
-        }
-
-        &__inner::before,
-        .c-card__inner::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.18) 0%,
-                    rgba(255, 255, 255, 0) 42%,
-                    rgba(255, 255, 255, 0.04) 100%);
-            pointer-events: none;
-        }
-
-        &__inner::after,
-        .c-card__inner::after {
-            content: "";
-            position: absolute;
-            top: -14%;
-            right: -10%;
-            width: 38%;
-            height: 130%;
-            border-radius: 999px;
-            background: rgba(111, 149, 200, 0.08);
-            transform: rotate(20deg);
-            pointer-events: none;
-        }
-
         &__body {
             position: relative;
             z-index: 1;
@@ -82,7 +48,8 @@
         &__meta {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
             margin-bottom: 1rem;
         }
 
@@ -92,27 +59,32 @@
             justify-content: center;
             min-width: 3rem;
             padding: 0.35rem 0.75rem;
-            border: 1px solid rgba(41, 52, 88, 0.14);
             border-radius: 999px;
-            background-color: rgba(255, 255, 255, 0.78);
-            color: var(--inlife-primary);
+            background: rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.16);
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.08em;
             line-height: 1;
+            box-shadow: none;
         }
 
         &__title,
         .c-card__title {
-            margin: 0 0 0.75rem;
-            color: var(--inlife-primary);
+            position: relative;
+            z-index: 1;
+            margin: 0 0 0.85rem;
+            color: #ffffff;
             font-size: clamp(1.125rem, 1.2rem + 0.2vw, 1.35rem);
-            line-height: 1.25;
+            line-height: 1.2;
         }
 
         &__text {
+            position: relative;
+            z-index: 1;
             margin: 0;
-            color: var(--inlife-text-muted);
+            color: rgba(255, 255, 255, 0.82);
             font-size: 0.97rem;
             line-height: 1.7;
         }
@@ -120,16 +92,62 @@
         &__readmore {
             margin-top: auto;
             padding-top: 1.25rem;
+            position: relative;
+            z-index: 1;
         }
 
         &.c-card--nav .c-card__frame {
-            background: rgba(41, 52, 88, 0.09);
+            background: rgba(17, 24, 39, 0.22);
         }
 
         &.c-card--nav:hover .c-card__frame,
         &.c-card--nav:focus-visible .c-card__frame,
         &.c-card--nav:focus-within .c-card__frame {
-            background: rgba(41, 52, 88, 0.14);
+            background: rgba(17, 24, 39, 0.32);
+        }
+
+        &.c-card--nav .c-card__inner {
+            position: relative;
+            background:
+                linear-gradient(135deg, #293458 0%, #24304f 52%, #1f2945 100%);
+        }
+
+        &.c-card--nav .c-card__inner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.10) 0%,
+                    rgba(255, 255, 255, 0.02) 38%,
+                    rgba(255, 255, 255, 0.00) 100%);
+            pointer-events: none;
+        }
+
+        &.c-card--nav .c-card__inner::after {
+            content: "";
+            position: absolute;
+            top: -14%;
+            right: -10%;
+            width: 46%;
+            height: 140%;
+            border-radius: 999px;
+            background: rgba(120, 140, 190, 0.12);
+            transform: rotate(20deg);
+            pointer-events: none;
+        }
+
+        .c-readmore {
+            color: rgba(255, 255, 255, 0.94);
+        }
+
+        .c-readmore:hover,
+        .c-readmore:focus-visible {
+            color: #ffffff;
+        }
+
+        .c-readmore__icon {
+            opacity: 0.9;
         }
 
         &:hover .c-readmore__icon,

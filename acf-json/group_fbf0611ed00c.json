@@ -1,0 +1,98 @@
+{
+    "key": "group_fbf0611ed00c",
+    "title": "People – Team Relations",
+    "fields": [
+        {
+            "key": "field_b572810731f7",
+            "label": "Przynależność do zespołów",
+            "name": "team_memberships",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Jedyne źródło prawdy dla relacji osoba → zespoły.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "layout": "row",
+            "button_label": "Dodaj zespół",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_197ca45c9758",
+                    "label": "Zespół",
+                    "name": "team",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "Wybierz zespół, do którego należy osoba.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "teams"
+                    ],
+                    "return_format": "id",
+                    "ui": 1,
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "bidirectional": 0,
+                    "taxonomy": [],
+                    "bidirectional_target": [],
+                    "parent_repeater": "field_b572810731f7"
+                },
+                {
+                    "key": "field_e42dc29561ab",
+                    "label": "Kierownik zespołu",
+                    "name": "is_team_leader",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Zaznacz tylko dla osoby będącej kierownikiem tego zespołu.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "Tak",
+                    "ui_off_text": "Nie",
+                    "message": "",
+                    "parent_repeater": "field_b572810731f7"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "people"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "Relacje osoby do zespołów. Jedyna warstwa źródłowa dla reverse lookup w Teams.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1776668144
+}

@@ -51,5 +51,6 @@ get_template_part(
 		'lead'        => $lead,
 		'image_id'    => $hero_image_id,
 		'breadcrumbs' => true,
+		'media_shape' => 'cut-tl',
 	]
 );

@@ -304,29 +304,82 @@ if ( ! function_exists( 'inlife_get_singular_breadcrumb_items' ) ) {
 		}
 
 		if ( 'post' === $post_type ) {
-			$posts_page_id = (int) get_option( 'page_for_posts' );
+			$context             = function_exists( 'inlife_get_entry_context' ) ? inlife_get_entry_context() : '';
+			$default_category_id = (int) get_option( 'default_category' );
 
-			if ( $posts_page_id ) {
+			/* =========================================
+			   CONTEXT: SOCIETY
+			========================================= */
+			if ( 'society' === $context ) {
+				$society_page = function_exists( 'inlife_get_society_archive_page' )
+					? inlife_get_society_archive_page()
+					: null;
+
+				if ( $society_page ) {
+					$items[] = [
+						'label'   => get_the_title( $society_page->ID ),
+						'url'     => get_permalink( $society_page->ID ),
+						'current' => false,
+					];
+				} else {
+					$items[] = [
+						'label'   => inlife_t( 'Społeczeństwo' ),
+						'url'     => '',
+						'current' => false,
+					];
+				}
+
 				$items[] = [
-					'label'   => get_the_title( $posts_page_id ),
-					'url'     => get_permalink( $posts_page_id ),
-					'current' => false,
+					'label'   => get_the_title( $post_id ),
+					'url'     => '',
+					'current' => true,
 				];
+
+				return $items;
 			}
 
-			$categories = get_the_category( $post_id );
-			if ( ! empty( $categories ) ) {
-				$primary_category = $categories[0];
-				$items            = array_merge(
-					$items,
-					inlife_get_term_ancestor_items( $primary_category )
-				);
+			/* =========================================
+			   DEFAULT: NEWS / POSTS PAGE
+			========================================= */
 
-				$items[] = [
-					'label'   => $primary_category->name,
-					'url'     => get_term_link( $primary_category ),
-					'current' => false,
-				];
+			$posts_page_id = (int) get_option( 'page_for_posts' );
+
+			$items[] = [
+				'label'   => $posts_page_id ? get_the_title( $posts_page_id ) : inlife_t( 'Aktualności' ),
+				'url'     => $posts_page_id ? get_permalink( $posts_page_id ) : '',
+				'current' => false,
+			];
+
+			$categories = get_the_category( $post_id );
+
+			if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
+				$primary_category = null;
+
+				foreach ( $categories as $category ) {
+					if ( ! $category instanceof WP_Term ) {
+						continue;
+					}
+
+					if ( (int) $category->term_id === $default_category_id ) {
+						continue;
+					}
+
+					$primary_category = $category;
+					break;
+				}
+
+				if ( $primary_category ) {
+					$items = array_merge(
+						$items,
+						inlife_get_term_ancestor_items( $primary_category )
+					);
+
+					$items[] = [
+						'label'   => $primary_category->name,
+						'url'     => get_term_link( $primary_category ),
+						'current' => false,
+					];
+				}
 			}
 
 			$items[] = [
@@ -484,5 +537,81 @@ if ( ! function_exists( 'inlife_get_term_ancestor_items' ) ) {
 		}
 
 		return $items;
+	}
+}
+
+if ( ! function_exists( 'inlife_get_entry_context' ) ) {
+	/**
+	 * Returns entry context from URL query arg.
+	 *
+	 * Supported examples:
+	 * ?from=society
+	 *
+	 * @return string
+	 */
+	function inlife_get_entry_context() {
+		if ( isset( $_GET['from'] ) ) {
+			return sanitize_key( wp_unslash( $_GET['from'] ) );
+		}
+
+		return '';
+	}
+}
+
+if ( ! function_exists( 'inlife_get_society_archive_page' ) ) {
+	/**
+	 * Returns the page assigned to the Society archive template.
+	 *
+	 * @return WP_Post|null
+	 */
+	function inlife_get_society_archive_page() {
+		$pages = get_posts(
+			[
+				'post_type'      => 'page',
+				'post_status'    => 'publish',
+				'meta_key'       => '_wp_page_template',
+				'meta_value'     => 'page-templates/template-society-archive.php',
+				'posts_per_page' => 1,
+				'no_found_rows'  => true,
+			]
+		);
+
+		if ( empty( $pages ) ) {
+			return null;
+		}
+
+		return $pages[0];
+	}
+}
+
+if ( ! function_exists( 'inlife_get_posts_listing_url_for_context' ) ) {
+	function inlife_get_posts_listing_url_for_context() {
+
+		$context = function_exists( 'inlife_get_entry_context' )
+			? inlife_get_entry_context()
+			: '';
+
+		// SOCIETY
+		if ( 'society' === $context ) {
+
+			// jeśli masz konkretną stronę
+			$page = get_page_by_path( 'spoleczenstwo/artykuly' );
+
+			if ( $page ) {
+				return get_permalink( $page );
+			}
+
+			// fallback (ważne)
+			return home_url( '/spoleczenstwo/artykuly/' );
+		}
+
+		// DEFAULT: Aktualności
+		$posts_page_id = (int) get_option( 'page_for_posts' );
+
+		if ( $posts_page_id ) {
+			return get_permalink( $posts_page_id );
+		}
+
+		return home_url( '/' );
 	}
 }

@@ -1,0 +1,152 @@
+{
+    "key": "group_projects_modes_safe_v1",
+    "title": "Projects - Modes & Hub Settings",
+    "fields": [
+        {
+            "key": "field_projects_modes_tab",
+            "label": "Tryb projektu",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_projects_safe_template_mode",
+            "label": "Tryb projektu",
+            "name": "project_template_mode",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Wybierz sposób wejścia do projektu.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "standard": "Standardowy projekt",
+                "hub_page": "Rozbudowany projekt \/ strona-hub",
+                "external_url": "Zewnętrzny adres URL"
+            },
+            "default_value": "standard",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_projects_safe_custom_url",
+            "label": "URL niestandardowy",
+            "name": "project_custom_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Wymagane dla trybu „Rozbudowany projekt \/ strona-hub” oraz „Zewnętrzny adres URL”.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_projects_safe_template_mode",
+                        "operator": "==",
+                        "value": "hub_page"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_projects_safe_template_mode",
+                        "operator": "==",
+                        "value": "external_url"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https:\/\/example.com\/projekt\/"
+        },
+        {
+            "key": "field_projects_hub_tab",
+            "label": "Project Hub",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_projects_safe_hub_lead",
+            "label": "Lead strony-huba",
+            "name": "project_hub_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Krótki lead wyświetlany pod tytułem na stronie typu Project Hub.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "projects"
+            }
+        ],
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/template-project-hub.php"
+            }
+        ]
+    ],
+    "menu_order": 99,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Bezpieczna grupa pól dla trybów projektów i stron typu Project Hub.",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1776667426
+}

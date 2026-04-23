@@ -11,8 +11,7 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $container = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
-
-$post_id = get_the_ID();
+$post_id   = get_the_ID();
 
 $kicker = function_exists( 'get_field' ) ? get_field( 'hero_kicker', $post_id ) : '';
 $title  = function_exists( 'get_field' ) ? get_field( 'hero_title', $post_id ) : '';
@@ -75,9 +74,8 @@ $context = [
 	</section>
 
 	<?php get_template_part( 'template-parts/society/society', 'science-for-you', $context ); ?>
-	<?php get_template_part( 'template-parts/society/society', 'articles', $context ); ?>
+	<?php get_template_part( 'template-parts/society/society', 'content', $context ); ?>
 	<?php get_template_part( 'template-parts/society/society', 'initiatives', $context ); ?>
-	<?php get_template_part( 'template-parts/society/society', 'media', $context ); ?>
 	<?php get_template_part( 'template-parts/society/society', 'meet-us', $context ); ?>
 	<?php get_template_part( 'template-parts/society/society', 'schools', $context ); ?>
 	<?php get_template_part( 'template-parts/society/society', 'cta', $context ); ?>

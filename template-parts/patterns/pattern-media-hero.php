@@ -10,6 +10,7 @@ defined( 'ABSPATH' ) || exit;
  * - lead
  * - image_id (int)
  * - breadcrumbs (bool|callable|string|array)
+ * - breadcrumbs_full_width (bool)
  * - before_lead (string HTML)
  * - actions_html (string HTML)
  * - custom_media_html (string HTML)
@@ -19,15 +20,17 @@ defined( 'ABSPATH' ) || exit;
 $args = wp_parse_args(
 	$args ?? [],
 	[
-		'kicker'            => '',
-		'title'             => '',
-		'lead'              => '',
-		'image_id'          => 0,
-		'breadcrumbs'       => true,
-		'before_lead'       => '',
-		'actions_html'      => '',
-		'custom_media_html' => '',
-		'media_shape'       => '',
+		'kicker'                => '',
+		'title'                 => '',
+		'lead'                  => '',
+		'image_id'              => 0,
+		'breadcrumbs'           => true,
+		'breadcrumbs_full_width'=> false,
+		'before_lead'           => '',
+		'actions_html'          => '',
+		'custom_media_html'     => '',
+		'media_shape'           => '',
+		'variant'           => '',
 	]
 );
 
@@ -37,14 +40,16 @@ if ( '' === $title ) {
 	return;
 }
 
-$kicker            = trim( (string) $args['kicker'] );
-$lead              = (string) $args['lead'];
-$image_id          = (int) $args['image_id'];
-$breadcrumbs       = $args['breadcrumbs'];
-$before_lead       = (string) $args['before_lead'];
-$actions_html      = (string) $args['actions_html'];
-$custom_media_html = (string) $args['custom_media_html'];
-$media_shape       = trim( (string) $args['media_shape'] );
+$kicker                 = trim( (string) $args['kicker'] );
+$lead                   = (string) $args['lead'];
+$image_id               = (int) $args['image_id'];
+$breadcrumbs            = $args['breadcrumbs'];
+$breadcrumbs_full_width = ! empty( $args['breadcrumbs_full_width'] );
+$before_lead            = (string) $args['before_lead'];
+$actions_html           = (string) $args['actions_html'];
+$custom_media_html      = (string) $args['custom_media_html'];
+$media_shape            = trim( (string) $args['media_shape'] );
+$variant = trim( (string) $args['variant'] );
 
 $has_media = ( $image_id > 0 ) || ( '' !== trim( $custom_media_html ) );
 
@@ -55,12 +60,29 @@ if ( 'cut-tl' === $media_shape ) {
 }
 ?>
 
-<section class="p-media-hero<?php echo $has_media ? '' : ' p-media-hero--no-media'; ?>">
+<section class="p-media-hero<?php echo $has_media ? '' : ' p-media-hero--no-media'; ?><?php echo '' !== $variant ? ' p-media-hero--' . esc_attr( $variant ) : ''; ?>">
 	<div class="p-media-hero__inner">
+
+		<?php if ( false !== $breadcrumbs && $breadcrumbs_full_width ) : ?>
+			<div class="p-media-hero__breadcrumbs p-media-hero__breadcrumbs--full">
+				<?php
+				if ( is_array( $breadcrumbs ) || true === $breadcrumbs ) {
+					get_template_part( 'template-parts/components/breadcrumbs' );
+				} else {
+					if ( is_callable( $breadcrumbs ) ) {
+						call_user_func( $breadcrumbs );
+					} elseif ( is_string( $breadcrumbs ) && '' !== trim( $breadcrumbs ) ) {
+						echo wp_kses_post( $breadcrumbs );
+					}
+				}
+				?>
+			</div>
+		<?php endif; ?>
+
 		<div class="p-media-hero__grid">
 			<div class="p-media-hero__content">
 
-				<?php if ( false !== $breadcrumbs ) : ?>
+				<?php if ( false !== $breadcrumbs && ! $breadcrumbs_full_width ) : ?>
 					<div class="p-media-hero__breadcrumbs">
 						<?php
 						if ( is_array( $breadcrumbs ) || true === $breadcrumbs ) {

@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // 	});
 // });
 
-// Single Laboratory - Pokaż więcej/mniej
+// Single Laboratory - Pokaż więcej / mniej
 
 document.addEventListener('DOMContentLoaded', () => {
 	const description = document.querySelector('[data-lab-profile-description]');
@@ -636,6 +636,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		setExpanded(!expanded);
 	});
 
+	// Initial state
 	setExpanded(false);
 });
 
@@ -850,4 +851,22 @@ document.addEventListener('click', function (event) {
 
 	const email = `${user}@${domain}`;
 	window.location.href = `mailto:${email}`;
+});
+
+
+// Kopiowanie linku (post share)
+
+document.addEventListener('click', function (e) {
+	const btn = e.target.closest('.js-copy-link');
+	if (!btn) return;
+
+	const url = btn.dataset.url;
+
+	navigator.clipboard.writeText(url).then(() => {
+		btn.classList.add('is-copied');
+
+		setTimeout(() => {
+			btn.classList.remove('is-copied');
+		}, 2000);
+	});
 });
