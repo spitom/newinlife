@@ -39,11 +39,11 @@ get_template_part(
 		</p>
 
 		<span class="c-readmore career-opportunities-entry-card__readmore">
-            <span class="c-readmore__label">
-                <?php echo esc_html( inlife_t( 'Przejdź do wyników' ) ); ?>
-            </span>
-            <span class="c-readmore__icon" aria-hidden="true">→</span>
-        </span>
+			<span class="c-readmore__label">
+				<?php echo esc_html( inlife_t( 'Przejdź do wyników' ) ); ?>
+			</span>
+			<span class="c-readmore__icon" aria-hidden="true">→</span>
+		</span>
 	</a>
 
 	<a class="c-surface c-surface--panel career-opportunities-entry-card" href="<?php echo esc_url( $archive_url ); ?>">
@@ -55,12 +55,12 @@ get_template_part(
 			<?php echo esc_html( inlife_t( 'Przeglądaj archiwalne ogłoszenia o pracę i konkursy.' ) ); ?>
 		</p>
 
-        <span class="c-readmore career-opportunities-entry-card__readmore">
-            <span class="c-readmore__label">
-                <?php echo esc_html( inlife_t( 'Zobacz archiwum' ) ); ?>
-            </span>
-            <span class="c-readmore__icon" aria-hidden="true">→</span>
-        </span>
+		<span class="c-readmore career-opportunities-entry-card__readmore">
+			<span class="c-readmore__label">
+				<?php echo esc_html( inlife_t( 'Zobacz archiwum' ) ); ?>
+			</span>
+			<span class="c-readmore__icon" aria-hidden="true">→</span>
+		</span>
 	</a>
 
 </div>

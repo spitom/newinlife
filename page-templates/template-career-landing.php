@@ -56,6 +56,7 @@ $hero_actions = (string) ob_get_clean();
 				'lead'         => $hero_lead,
 				'breadcrumbs'  => true,
 				'actions_html' => $hero_actions,
+				'modifier'     => 'landing',
 			]
 		);
 		?>

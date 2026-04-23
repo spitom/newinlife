@@ -3,6 +3,19 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Shared page hero pattern.
+ *
+ * Args:
+ * - kicker (string)
+ * - title (string) [required]
+ * - lead (string)
+ * - breadcrumbs (bool|callable|string|array)
+ * - modifier (string|array) e.g. 'single flush' or ['single', 'flush']
+ * - actions_html (string)
+ * - section_id (string)
+ * - data_attrs (array)
+ * - title_id (string)
+ * - kicker_id (string)
+ * - lead_id (string)
  */
 
 $args = wp_parse_args(
@@ -15,12 +28,12 @@ $args = wp_parse_args(
 		'modifier'     => '',
 		'actions_html' => '',
 
-		// 🔥 NOWE (pod JS teams)
-		'section_id' => '',
-		'data_attrs' => [],
-		'title_id'   => '',
-		'kicker_id'  => '',
-		'lead_id'    => '',
+		// JS / dynamic variants support
+		'section_id'   => '',
+		'data_attrs'   => [],
+		'title_id'     => '',
+		'kicker_id'    => '',
+		'lead_id'      => '',
 	]
 );
 
@@ -33,13 +46,35 @@ if ( '' === $title ) {
 $kicker       = trim( (string) $args['kicker'] );
 $lead         = (string) $args['lead'];
 $breadcrumbs  = $args['breadcrumbs'];
-$modifier     = trim( (string) $args['modifier'] );
 $actions_html = (string) $args['actions_html'];
 
 $classes = [ 'p-page-hero' ];
 
-if ( '' !== $modifier ) {
-	$classes[] = 'p-page-hero--' . sanitize_html_class( $modifier );
+/**
+ * Supports:
+ * - 'single'
+ * - 'single flush'
+ * - ['single', 'flush']
+ */
+$modifier_input = $args['modifier'];
+$modifiers      = [];
+
+if ( is_array( $modifier_input ) ) {
+	$modifiers = $modifier_input;
+} elseif ( is_string( $modifier_input ) && '' !== trim( $modifier_input ) ) {
+	$modifiers = preg_split( '/\s+/', trim( $modifier_input ) );
+}
+
+if ( ! empty( $modifiers ) ) {
+	foreach ( $modifiers as $modifier ) {
+		$modifier = trim( (string) $modifier );
+
+		if ( '' === $modifier ) {
+			continue;
+		}
+
+		$classes[] = 'p-page-hero--' . sanitize_html_class( $modifier );
+	}
 }
 ?>
 
@@ -48,7 +83,7 @@ if ( '' !== $modifier ) {
 	<?php if ( $args['section_id'] ) : ?>
 		id="<?php echo esc_attr( $args['section_id'] ); ?>"
 	<?php endif; ?>
-	<?php if ( ! empty( $args['data_attrs'] ) ) : ?>
+	<?php if ( ! empty( $args['data_attrs'] ) && is_array( $args['data_attrs'] ) ) : ?>
 		<?php foreach ( $args['data_attrs'] as $attr => $value ) : ?>
 			data-<?php echo esc_attr( $attr ); ?>="<?php echo esc_attr( $value ); ?>"
 		<?php endforeach; ?>
@@ -75,7 +110,8 @@ if ( '' !== $modifier ) {
 		<div class="p-page-hero__content">
 
 			<?php if ( '' !== $kicker ) : ?>
-				<div class="p-page-hero__kicker"
+				<div
+					class="p-page-hero__kicker"
 					<?php if ( $args['kicker_id'] ) : ?>
 						id="<?php echo esc_attr( $args['kicker_id'] ); ?>"
 					<?php endif; ?>
@@ -84,7 +120,8 @@ if ( '' !== $modifier ) {
 				</div>
 			<?php endif; ?>
 
-			<h1 class="p-page-hero__title"
+			<h1
+				class="p-page-hero__title"
 				<?php if ( $args['title_id'] ) : ?>
 					id="<?php echo esc_attr( $args['title_id'] ); ?>"
 				<?php endif; ?>
@@ -93,7 +130,8 @@ if ( '' !== $modifier ) {
 			</h1>
 
 			<?php if ( trim( wp_strip_all_tags( $lead ) ) ) : ?>
-				<div class="p-page-hero__lead"
+				<div
+					class="p-page-hero__lead"
 					<?php if ( $args['lead_id'] ) : ?>
 						id="<?php echo esc_attr( $args['lead_id'] ); ?>"
 					<?php endif; ?>

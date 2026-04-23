@@ -5,45 +5,41 @@
  * @package UnderStrap
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-$container = inlife_container_class();
+$container    = inlife_container_class();
 $current_term = get_queried_object();
+
+$term_title = single_term_title( '', false );
+$term_lead  = ! empty( $current_term->description ) ? $current_term->description : inlife_t( 'Przeglądaj ogłoszenia i komunikaty przypisane do wybranej kategorii.' );
 ?>
 
 <main id="main-content" class="site-main site-main--career-taxonomy">
-	<?php get_template_part('template-parts/career/career', 'subnav', ['container' => $container]); ?>
 
-	<section class="page-section page-section--career-taxonomy-header">
-		<div class="<?php echo esc_attr($container); ?>">
-			<div class="row g-4 align-items-end career-section-head">
-				<div class="col-lg-8">
-					<div class="section-heading mb-0">
-						<p class="section-kicker">
-							<?php echo function_exists('pll__') ? esc_html(pll__('Komunikaty')) : 'Komunikaty'; ?>
-						</p>
-						<h1 class="section-title">
-							<?php echo esc_html(single_term_title('', false)); ?>
-						</h1>
-					</div>
-
-					<?php if (!empty($current_term->description)) : ?>
-						<p class="section-lead mt-3 mb-0">
-							<?php echo esc_html($current_term->description); ?>
-						</p>
-					<?php endif; ?>
-				</div>
-			</div>
-		</div>
+	<section class="page-section page-section--career-taxonomy-hero" aria-labelledby="career-taxonomy-heading">
+		<?php
+		get_template_part(
+			'template-parts/patterns/pattern-page-hero',
+			null,
+			[
+				'kicker'      => inlife_t( 'Kariera' ),
+				'title'       => $term_title,
+				'lead'        => $term_lead,
+				'breadcrumbs' => true,
+				'modifier'    => 'archive',
+			]
+		);
+		?>
 	</section>
 
 	<section class="page-section page-section--career-taxonomy-loop">
-		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/career/career-archive', 'loop'); ?>
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<?php get_template_part( 'template-parts/career/career-archive', 'loop' ); ?>
 		</div>
 	</section>
+
 </main>
 
 <?php

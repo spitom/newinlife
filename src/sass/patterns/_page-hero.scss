@@ -89,6 +89,53 @@
     padding-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
 }
 
+.p-page-hero--landing {
+    .p-page-hero__title {
+        max-width: 16ch;
+        font-size: clamp(2.5rem, 4.2vw, 4.4rem);
+        line-height: 1.08;
+    }
+
+    .p-page-hero__lead {
+        max-width: 60rem;
+        font-size: clamp(1rem, 1.2vw, 1.3rem);
+        line-height: 1.7;
+    }
+}
+
+.p-page-hero--archive {
+    .p-page-hero__title {
+        max-width: none;
+        font-size: clamp(2.1rem, 3.2vw, 3rem);
+        line-height: 1.12;
+    }
+
+    .p-page-hero__lead {
+        max-width: 54rem;
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+}
+
+.p-page-hero--single {
+    .p-page-hero__content {
+        max-width: 100%;
+    }
+
+    .p-page-hero__title {
+        max-width: none;
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        line-height: 1.14;
+    }
+
+    .p-page-hero__lead {
+        max-width: 52rem;
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
+
+
 @media (max-width: 767.98px) {
     .p-page-hero__title {
         font-size: clamp(2rem, 10vw, 2.8rem);

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Career archive loop
+ *
+ * @package UnderStrap
+ */
+
 defined( 'ABSPATH' ) || exit;
 ?>
 

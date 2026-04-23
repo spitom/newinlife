@@ -1,5 +1,11 @@
 /* =========================================================
    CAREER LANDING
+   Scope:
+   - page shell
+   - section spacing
+   - section-specific layouts
+   - local arrangements only
+   - avoid duplicating archive/shared card system
 ========================================================= */
 
 .site-main--career {
@@ -22,12 +28,8 @@
 }
 
 /* =========================================================
-   COMMON
+   COMMON SECTION WRAPPERS
 ========================================================= */
-
-.career-section-head {
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-}
 
 .career-values,
 .career-job-offers,
@@ -42,7 +44,7 @@
 }
 
 /* =========================================================
-   WARTOŚCI I KULTURA
+   VALUES
 ========================================================= */
 
 .career-values__layout {
@@ -60,10 +62,10 @@
 
 .career-values__item {
     padding: 1.25rem 1.25rem 1.375rem;
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 10px 28px rgba(18, 38, 63, 0.05);
+    border: 1px solid #e4ebf2;
+    border-radius: 8px;
+    background: #fcfcfc;
+    box-shadow: 0 10px 24px rgba(18, 38, 63, 0.04);
 }
 
 .career-values__item-title {
@@ -89,7 +91,7 @@
 .career-values__video-placeholder {
     overflow: hidden;
     border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.5rem;
+    border-radius: 1.25rem;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%);
     box-shadow: 0 16px 40px rgba(18, 38, 63, 0.08);
 }
@@ -162,25 +164,25 @@
 }
 
 /* =========================================================
-   OFERTY PRACY
+   JOB OFFERS PREVIEW
 ========================================================= */
 
-.career-job-offers {
-    display: flex;
-    flex-direction: column;
+.career-job-offers__header {
+    margin-bottom: clamp(1.5rem, 2vw, 2rem);
+}
+
+.career-job-offers__empty {
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+    border: 1px solid var(--inlife-border);
+    background: #fff;
+}
+
+.career-job-offers__empty-text {
+    color: var(--inlife-text);
 }
 
 /* =========================================================
-   SZKOŁA DOKTORSKA
-========================================================= */
-
-.career-doctoral-school {
-    display: flex;
-    flex-direction: column;
-}
-
-/* =========================================================
-   SZKOLENIA
+   TRAININGS
 ========================================================= */
 
 .career-trainings__grid {
@@ -191,10 +193,10 @@
 
 .career-trainings__card {
     padding: 1.25rem 1.25rem 1.375rem;
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 10px 28px rgba(18, 38, 63, 0.05);
+    border: 1px solid #e4ebf2;
+    border-radius: 8px;
+    background: #fcfcfc;
+    box-shadow: 0 10px 24px rgba(18, 38, 63, 0.04);
 }
 
 .career-trainings__card-title {
@@ -213,7 +215,7 @@
 }
 
 /* =========================================================
-   RÓŻNORODNOŚĆ
+   DIVERSITY
 ========================================================= */
 
 .career-diversity__layout {
@@ -247,10 +249,10 @@
 
 .career-diversity__point {
     padding: 1.25rem 1.25rem 1.375rem;
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 10px 28px rgba(18, 38, 63, 0.05);
+    border: 1px solid #e4ebf2;
+    border-radius: 8px;
+    background: #fcfcfc;
+    box-shadow: 0 10px 24px rgba(18, 38, 63, 0.04);
 }
 
 .career-diversity__point-title {
@@ -269,7 +271,7 @@
 }
 
 /* =========================================================
-   LOKALIZACJA / OLSZTYN
+   LOCATION
 ========================================================= */
 
 .career-location__grid {
@@ -287,10 +289,10 @@
     flex-direction: column;
     height: 100%;
     padding: 1.25rem 1.25rem 1.375rem;
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 10px 28px rgba(18, 38, 63, 0.05);
+    border: 1px solid #e4ebf2;
+    border-radius: 8px;
+    background: #fcfcfc;
+    box-shadow: 0 10px 24px rgba(18, 38, 63, 0.04);
     color: inherit;
     text-decoration: none;
     transition:
@@ -338,14 +340,14 @@
     font-size: 0.9rem;
     font-weight: 700;
     color: #2f466c;
-}
 
-.career-location__cta::after {
-    content: " →";
+    &::after {
+        content: " →";
+    }
 }
 
 /* =========================================================
-   HR EXCELLENCE IN RESEARCH
+   HR DOCUMENTS
 ========================================================= */
 
 .career-hr-documents__layout {
@@ -358,7 +360,7 @@
 .career-hr-documents__brand-card,
 .career-hr-documents__item {
     border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.5rem;
+    border-radius: 1.25rem;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%);
     box-shadow: 0 16px 40px rgba(18, 38, 63, 0.06);
 }
@@ -407,7 +409,7 @@
     flex-direction: column;
     height: 100%;
     padding: 1.25rem 1.25rem 1.375rem;
-    border-radius: 1.5rem;
+    border-radius: 1.25rem;
     color: inherit;
     text-decoration: none;
     transition:
@@ -452,10 +454,10 @@
     font-size: 0.9rem;
     font-weight: 700;
     color: #2f466c;
-}
 
-.career-hr-documents__item-cta::after {
-    content: " →";
+    &::after {
+        content: " →";
+    }
 }
 
 /* =========================================================
@@ -477,10 +479,10 @@
     flex-direction: column;
     height: 100%;
     padding: 1.25rem 1.25rem 1.375rem;
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 10px 28px rgba(18, 38, 63, 0.05);
+    border: 1px solid #e4ebf2;
+    border-radius: 8px;
+    background: #fcfcfc;
+    box-shadow: 0 10px 24px rgba(18, 38, 63, 0.04);
     color: inherit;
     text-decoration: none;
     transition:
@@ -533,10 +535,10 @@
     font-size: 0.9rem;
     font-weight: 700;
     color: #2f466c;
-}
 
-.career-onboarding__cta::after {
-    content: " →";
+    &::after {
+        content: " →";
+    }
 }
 
 /* =========================================================
@@ -566,7 +568,6 @@
 }
 
 @media (min-width: 992px) {
-
     .career-hr-documents__layout {
         grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
         gap: 1.5rem;

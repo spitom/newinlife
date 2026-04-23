@@ -1,4 +1,10 @@
 <?php
+/**
+ * Career entry header
+ *
+ * @package UnderStrap
+ */
+
 defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();

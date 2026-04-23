@@ -1,4 +1,10 @@
 <?php
+/**
+ * Career archive card
+ *
+ * @package UnderStrap
+ */
+
 defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
@@ -7,15 +13,20 @@ $type_label = function_exists( 'inlife_get_career_entry_type_label' )
 	? inlife_get_career_entry_type_label( $post_id )
 	: '';
 
+$unit = function_exists( 'get_field' ) ? get_field( 'career_unit', $post_id ) : '';
+$deadline_raw = function_exists( 'get_field' ) ? get_field( 'career_deadline', $post_id ) : '';
+
+$deadline = function_exists( 'inlife_format_career_date' )
+	? inlife_format_career_date( $deadline_raw )
+	: '';
+
 $type_class = '';
 
 $terms = get_the_terms( $post_id, 'career_entry_type' );
 
-if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_get_career_type_key_from_slug' ) ) {
 	foreach ( $terms as $term ) {
-		$resolved_key = function_exists( 'inlife_get_career_type_key_from_slug' )
-			? inlife_get_career_type_key_from_slug( $term->slug )
-			: null;
+		$resolved_key = inlife_get_career_type_key_from_slug( $term->slug );
 
 		if ( in_array( $resolved_key, [ 'scientific', 'jobs' ], true ) ) {
 			$type_class = 'career-archive-card--' . $resolved_key;
@@ -23,13 +34,6 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 		}
 	}
 }
-
-$unit = function_exists( 'get_field' ) ? get_field( 'career_unit', $post_id ) : '';
-$deadline_raw = function_exists( 'get_field' ) ? get_field( 'career_deadline', $post_id ) : '';
-
-$deadline = function_exists( 'inlife_format_career_date' )
-	? inlife_format_career_date( $deadline_raw )
-	: '';
 ?>
 
 <article class="career-archive-card <?php echo esc_attr( $type_class ); ?>">

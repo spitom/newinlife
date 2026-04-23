@@ -112,12 +112,12 @@ get_template_part(
 				}
 				?>
 				<div
-                    class="career-archive-list__item"
-                    data-career-item
-                    data-career-type="<?php echo esc_attr( $type_key ?: 'other' ); ?>"
-                >
-                    <?php get_template_part( 'template-parts/career/career-archive', 'card' ); ?>
-                </div>
+					class="career-archive-list__item"
+					data-career-item
+					data-career-type="<?php echo esc_attr( $type_key ?: 'other' ); ?>"
+				>
+					<?php get_template_part( 'template-parts/career/career-archive', 'card' ); ?>
+				</div>
 			<?php endwhile; ?>
 		</div>
 		<?php wp_reset_postdata(); ?>
