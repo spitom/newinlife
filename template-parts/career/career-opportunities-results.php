@@ -36,30 +36,18 @@ $query = new WP_Query($args);
 ?>
 
 <div class="career-op-section">
-	<div class="row g-4 align-items-end career-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker">
-					<?php echo function_exists('pll__') ? esc_html(pll__('Komunikaty')) : 'Komunikaty'; ?>
-				</p>
-				<h2 id="career-results-heading" class="section-title">
-					<?php echo esc_html(inlife_get_career_type_label('results')); ?>
-				</h2>
-			</div>
-
-			<p class="section-lead mt-3 mb-0">
-				<?php echo function_exists('pll__')
-					? esc_html(pll__('Rozstrzygnięcia postępowań, wyniki konkursów oraz informacje o zakończonych naborach.'))
-					: 'Rozstrzygnięcia postępowań, wyniki konkursów oraz informacje o zakończonych naborach.'; ?>
-			</p>
-		</div>
-
-		<div class="col-lg-4 text-lg-end">
-			<a href="<?php echo esc_url($archive_url); ?>" class="btn btn-outline-primary">
-				<?php echo function_exists('pll__') ? esc_html(pll__('Zobacz wszystkie')) : 'Zobacz wszystkie'; ?>
-			</a>
-		</div>
-	</div>
+	<?php
+	get_template_part(
+		'template-parts/components/section-header',
+		null,
+		[
+			'kicker'   => inlife_t( 'Komunikaty' ),
+			'title'    => inlife_t( 'Wyniki konkursów' ),
+			'lead'     => inlife_t( 'Rozstrzygnięcia postępowań, wyniki konkursów oraz informacje o zakończonych naborach.' ),
+			'title_id' => 'career-results-heading',
+		]
+	);
+	?>
 
 	<?php if ($query->have_posts()) : ?>
 		<div class="career-archive-list mt-4">

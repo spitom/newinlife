@@ -10,71 +10,32 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $container = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
+$post_id   = get_the_ID();
 
-$post_id = get_the_ID();
+$hero_kicker = function_exists( 'get_field' ) ? get_field( 'career_hero_kicker', $post_id ) : '';
+$hero_title  = function_exists( 'get_field' ) ? get_field( 'career_hero_title', $post_id ) : '';
+$hero_lead   = function_exists( 'get_field' ) ? get_field( 'career_hero_lead', $post_id ) : '';
 
-if ( ! function_exists( 'inlife_get_acf_field' ) ) {
-	function inlife_get_acf_field( $field_name, $post_id = 0, $default = null ) {
-		if ( function_exists( 'get_field' ) ) {
-			$value = get_field( $field_name, $post_id );
+$primary_label = function_exists( 'get_field' ) ? get_field( 'career_hero_cta_primary_label', $post_id ) : '';
+$primary_url   = function_exists( 'get_field' ) ? get_field( 'career_hero_cta_primary_url', $post_id ) : '';
+$secondary_label = function_exists( 'get_field' ) ? get_field( 'career_hero_cta_secondary_label', $post_id ) : '';
+$secondary_url   = function_exists( 'get_field' ) ? get_field( 'career_hero_cta_secondary_url', $post_id ) : '';
 
-			if ( null !== $value && '' !== $value ) {
-				return $value;
-			}
-		}
+$hero_kicker = $hero_kicker ?: inlife_t( 'Kariera' );
+$hero_title  = $hero_title ?: inlife_t( 'Dołącz do zespołu InLife' );
+$hero_lead   = $hero_lead ?: inlife_t( 'Tworzymy środowisko pracy oparte na nauce, współpracy i rozwoju. Sprawdź aktualne możliwości dołączenia do Instytutu, poznaj nasze wartości oraz ścieżki rozwoju zawodowego.' );
 
-		return $default;
-	}
-}
+$primary_label = $primary_label ?: inlife_t( 'Zobacz aktualne oferty' );
+$primary_url   = $primary_url ?: '#career-job-offers-heading';
 
-$hero_kicker = inlife_get_acf_field(
-	'career_hero_kicker',
-	$post_id,
-	'Kariera'
-);
-
-$hero_title = inlife_get_acf_field(
-	'career_hero_title',
-	$post_id,
-	'Dołącz do zespołu InLife'
-);
-
-$hero_lead = inlife_get_acf_field(
-	'career_hero_lead',
-	$post_id,
-	'Tworzymy środowisko pracy oparte na nauce, współpracy i rozwoju. Sprawdź aktualne możliwości dołączenia do Instytutu, poznaj nasze wartości oraz ścieżki rozwoju zawodowego.'
-);
-
-$primary_label = inlife_get_acf_field(
-	'career_hero_cta_primary_label',
-	$post_id,
-	'Zobacz oferty pracy'
-);
-
-$primary_url = inlife_get_acf_field(
-	'career_hero_cta_primary_url',
-	$post_id,
-	'#career-job-offers-heading'
-);
-
-$secondary_label = inlife_get_acf_field(
-	'career_hero_cta_secondary_label',
-	$post_id,
-	'Poznaj nasze wartości'
-);
-
-$secondary_url = inlife_get_acf_field(
-	'career_hero_cta_secondary_url',
-	$post_id,
-	'#career-values-heading'
-);
+$secondary_label = $secondary_label ?: inlife_t( 'Poznaj nasze wartości' );
+$secondary_url   = $secondary_url ?: '#career-values-heading';
 
 ob_start();
 ?>
 <a class="btn btn-primary" href="<?php echo esc_url( $primary_url ); ?>">
 	<?php echo esc_html( $primary_label ); ?>
 </a>
-
 <a class="btn btn-outline-primary" href="<?php echo esc_url( $secondary_url ); ?>">
 	<?php echo esc_html( $secondary_label ); ?>
 </a>

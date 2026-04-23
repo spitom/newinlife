@@ -1,31 +1,43 @@
 <?php
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-$type_label = function_exists('inlife_get_career_entry_type_label')
-	? inlife_get_career_entry_type_label($post_id)
+$type_label = function_exists( 'inlife_get_career_entry_type_label' )
+	? inlife_get_career_entry_type_label( $post_id )
 	: '';
 
-$unit = function_exists('inlife_get_acf_field')
-	? inlife_get_acf_field('career_unit', $post_id, '')
-	: '';
+$type_class = '';
 
-$deadline_raw = function_exists('inlife_get_acf_field')
-	? inlife_get_acf_field('career_deadline', $post_id, '')
-	: '';
+$terms = get_the_terms( $post_id, 'career_entry_type' );
 
-$deadline = function_exists('inlife_format_career_date')
-	? inlife_format_career_date($deadline_raw)
+if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+	foreach ( $terms as $term ) {
+		$resolved_key = function_exists( 'inlife_get_career_type_key_from_slug' )
+			? inlife_get_career_type_key_from_slug( $term->slug )
+			: null;
+
+		if ( in_array( $resolved_key, [ 'scientific', 'jobs' ], true ) ) {
+			$type_class = 'career-archive-card--' . $resolved_key;
+			break;
+		}
+	}
+}
+
+$unit = function_exists( 'get_field' ) ? get_field( 'career_unit', $post_id ) : '';
+$deadline_raw = function_exists( 'get_field' ) ? get_field( 'career_deadline', $post_id ) : '';
+
+$deadline = function_exists( 'inlife_format_career_date' )
+	? inlife_format_career_date( $deadline_raw )
 	: '';
 ?>
 
-<article class="career-archive-card">
-	<a class="career-archive-card__link" href="<?php the_permalink(); ?>">
+<article class="career-archive-card <?php echo esc_attr( $type_class ); ?>">
+	<a class="career-archive-card__link c-surface c-surface--record" href="<?php the_permalink(); ?>">
 
-		<?php if ($type_label) : ?>
+		<?php if ( $type_label ) : ?>
 			<p class="career-archive-card__type">
-				<?php echo esc_html($type_label); ?>
+				<?php echo esc_html( $type_label ); ?>
 			</p>
 		<?php endif; ?>
 
@@ -33,31 +45,34 @@ $deadline = function_exists('inlife_format_career_date')
 			<?php the_title(); ?>
 		</h2>
 
-		<?php if (has_excerpt()) : ?>
+		<?php if ( has_excerpt() ) : ?>
 			<p class="career-archive-card__excerpt">
-				<?php echo esc_html(get_the_excerpt()); ?>
+				<?php echo esc_html( get_the_excerpt() ); ?>
 			</p>
 		<?php endif; ?>
 
-		<?php if ($unit || $deadline) : ?>
+		<?php if ( $unit || $deadline ) : ?>
 			<div class="career-archive-card__meta">
-				<?php if ($unit) : ?>
+				<?php if ( $unit ) : ?>
 					<p class="career-archive-card__meta-item">
-						<?php echo esc_html($unit); ?>
+						<?php echo esc_html( $unit ); ?>
 					</p>
 				<?php endif; ?>
 
-				<?php if ($deadline) : ?>
+				<?php if ( $deadline ) : ?>
 					<p class="career-archive-card__meta-item career-archive-card__meta-item--deadline">
-						<?php echo function_exists('pll__') ? esc_html(pll__('Termin składania')) : 'Termin składania'; ?>:
-						<?php echo esc_html($deadline); ?>
+						<?php echo esc_html( inlife_t( 'Termin składania' ) ); ?>:
+						<?php echo esc_html( $deadline ); ?>
 					</p>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 
-		<span class="career-archive-card__cta">
-			<?php echo function_exists('pll__') ? esc_html(pll__('Przejdź do wpisu')) : 'Przejdź do wpisu'; ?>
+		<span class="c-readmore career-archive-card__readmore">
+			<span class="c-readmore__label">
+				<?php echo esc_html( inlife_t( 'Przejdź do wpisu' ) ); ?>
+			</span>
+			<span class="c-readmore__icon" aria-hidden="true">→</span>
 		</span>
 	</a>
 </article>

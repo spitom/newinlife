@@ -870,3 +870,79 @@ document.addEventListener('click', function (e) {
 		}, 2000);
 	});
 });
+
+// Career opportunities - current offers filter
+document.addEventListener('DOMContentLoaded', () => {
+	const filterWrap = document.querySelector('[data-career-filters]');
+	const items = document.querySelectorAll('[data-career-item]');
+	const emptyState = document.querySelector('[data-career-empty]');
+
+	if (!filterWrap || !items.length) return;
+
+	const buttons = filterWrap.querySelectorAll('[data-career-filter]');
+	if (!buttons.length) return;
+
+	const updateButtons = (filterValue) => {
+		buttons.forEach((button) => {
+			const isActive = button.getAttribute('data-career-filter') === filterValue;
+
+			button.classList.toggle('is-active', isActive);
+			button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+		});
+	};
+
+	const updateListing = (filterValue) => {
+		let visibleCount = 0;
+
+		items.forEach((item) => {
+			const itemType = item.getAttribute('data-career-type') || '';
+			const isVisible = filterValue === 'all' || itemType === filterValue;
+
+			item.hidden = !isVisible;
+
+			if (isVisible) {
+				visibleCount += 1;
+			}
+		});
+
+		if (emptyState) {
+			emptyState.hidden = visibleCount !== 0;
+		}
+	};
+
+	const updateUrl = (filterValue) => {
+		const url = new URL(window.location.href);
+
+		if (filterValue === 'all') {
+			url.searchParams.delete('career_type');
+		} else {
+			url.searchParams.set('career_type', filterValue);
+		}
+
+		window.history.replaceState({}, '', url);
+	};
+
+	const applyFilter = (filterValue, updateHistory = true) => {
+		const normalizedValue = filterValue || 'all';
+
+		updateButtons(normalizedValue);
+		updateListing(normalizedValue);
+
+		if (updateHistory) {
+			updateUrl(normalizedValue);
+		}
+	};
+
+	buttons.forEach((button) => {
+		button.addEventListener('click', () => {
+			const filterValue = button.getAttribute('data-career-filter') || 'all';
+			applyFilter(filterValue, true);
+		});
+	});
+
+	const url = new URL(window.location.href);
+	const initialType = url.searchParams.get('career_type') || 'all';
+	const allowedFilters = Array.from(buttons).map((button) => button.getAttribute('data-career-filter'));
+
+	applyFilter(allowedFilters.includes(initialType) ? initialType : 'all', false);
+});

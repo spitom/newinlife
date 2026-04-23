@@ -36,30 +36,18 @@ $query = new WP_Query($args);
 ?>
 
 <div class="career-op-section">
-	<div class="row g-4 align-items-end career-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker">
-					<?php echo function_exists('pll__') ? esc_html(pll__('Komunikaty')) : 'Komunikaty'; ?>
-				</p>
-				<h2 id="career-archive-heading" class="section-title">
-					<?php echo esc_html(inlife_get_career_type_label('archive')); ?>
-				</h2>
-			</div>
-
-			<p class="section-lead mt-3 mb-0">
-				<?php echo function_exists('pll__')
-					? esc_html(pll__('Wcześniejsze ogłoszenia i komunikaty zachowane do celów informacyjnych.'))
-					: 'Wcześniejsze ogłoszenia i komunikaty zachowane do celów informacyjnych.'; ?>
-			</p>
-		</div>
-
-		<div class="col-lg-4 text-lg-end">
-			<a href="<?php echo esc_url($archive_url); ?>" class="btn btn-outline-primary">
-				<?php echo function_exists('pll__') ? esc_html(pll__('Zobacz wszystkie')) : 'Zobacz wszystkie'; ?>
-			</a>
-		</div>
-	</div>
+	<?php
+	get_template_part(
+		'template-parts/components/section-header',
+		null,
+		[
+			'kicker'   => inlife_t( 'Komunikaty' ),
+			'title'    => inlife_t( 'Archiwum' ),
+			'lead'     => inlife_t( 'Wcześniejsze ogłoszenia i komunikaty zachowane do celów informacyjnych.' ),
+			'title_id' => 'career-results-heading',
+		]
+	);
+	?>
 
 	<?php if ($query->have_posts()) : ?>
 		<div class="career-archive-list mt-4">

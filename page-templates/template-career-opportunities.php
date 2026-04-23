@@ -22,40 +22,22 @@ $container = function_exists( 'inlife_container_class' ) ? inlife_container_clas
 			[
 				'kicker'      => inlife_t( 'Kariera' ),
 				'title'       => inlife_t( 'Oferty pracy, konkursy i dokumenty' ),
-				'lead'        => inlife_t( 'W tej sekcji znajdują się aktualne konkursy na stanowiska naukowe, ogłoszenia o pracę, wyniki naborów, materiały archiwalne, dokumenty oraz informacje wspierające mobilność zawodową.' ),
+				'lead'        => inlife_t( 'W tej sekcji znajdują się aktualne konkursy na stanowiska naukowe, ogłoszenia o pracę, wyniki naborów, materiały archiwalne oraz informacje wspierające mobilność zawodową.' ),
 				'breadcrumbs' => true,
 			]
 		);
 		?>
 	</section>
 
-	<section class="page-section page-section--career-opportunities-nav" aria-label="<?php echo esc_attr( inlife_t( 'Nawigacja sekcji ofert i konkursów' ) ); ?>">
+	<section class="page-section page-section--career-opportunities-current" id="aktualne-oferty" aria-labelledby="career-current-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/career/career-opportunities', 'nav' ); ?>
+			<?php get_template_part( 'template-parts/career/career-opportunities', 'current' ); ?>
 		</div>
 	</section>
 
-	<section class="page-section page-section--career-opportunities-scientific" id="konkursy-naukowe" aria-labelledby="career-scientific-heading">
+	<section class="page-section page-section--career-opportunities-secondary" aria-labelledby="career-secondary-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/career/career-opportunities', 'scientific' ); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--career-opportunities-jobs" id="ogloszenia-o-prace" aria-labelledby="career-jobs-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/career/career-opportunities', 'jobs' ); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--career-opportunities-results" id="wyniki-konkursow" aria-labelledby="career-results-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/career/career-opportunities', 'results' ); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--career-opportunities-archive" id="ogloszenia-archiwalne" aria-labelledby="career-archive-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/career/career-opportunities', 'archive' ); ?>
+			<?php get_template_part( 'template-parts/career/career-opportunities', 'secondary' ); ?>
 		</div>
 	</section>
 

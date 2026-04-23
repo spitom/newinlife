@@ -5,7 +5,7 @@
  * @package UnderStrap
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
@@ -45,66 +45,66 @@ $items = [
 		'text'  => 'Wsparcie w rozwiązywaniu problemów związanych z prawami na rynku UE.',
 		'url'   => 'https://ec.europa.eu/solvit/',
 	],
+
 ];
 
-
-if (function_exists('have_rows') && have_rows('career_mobility_links', $post_id)) {
+if ( function_exists( 'have_rows' ) && have_rows( 'career_mobility_links', $post_id ) ) {
 	$items = [];
 
-	while (have_rows('career_mobility_links', $post_id)) {
+	while ( have_rows( 'career_mobility_links', $post_id ) ) {
 		the_row();
 
-		$link = get_sub_field('link');
+		$link = get_sub_field( 'link' );
 		$url  = '#';
 
-		if (is_array($link) && !empty($link['url'])) {
+		if ( is_array( $link ) && ! empty( $link['url'] ) ) {
 			$url = $link['url'];
-		} elseif (is_string($link) && !empty($link)) {
+		} elseif ( is_string( $link ) && ! empty( $link ) ) {
 			$url = $link;
 		}
 
 		$items[] = [
-			'title' => get_sub_field('title') ?: '',
-			'text'  => get_sub_field('description') ?: '',
+			'title' => get_sub_field( 'title' ) ?: '',
+			'text'  => get_sub_field( 'description' ) ?: '',
 			'url'   => $url,
 		];
 	}
 }
+
+get_template_part(
+	'template-parts/components/section-header',
+	null,
+	[
+		'kicker'   => inlife_t( 'Rozwój' ),
+		'title'    => inlife_t( 'Wsparcie mobilności zawodowej' ),
+		'lead'     => inlife_t( 'Zebrane w jednym miejscu przydatne serwisy i źródła informacji wspierające rozwój zawodowy, mobilność międzynarodową i formalności związane z pracą oraz edukacją w Europie.' ),
+		'title_id' => 'career-mobility-heading',
+	]
+);
 ?>
 
-<div class="career-op-section">
-	<div class="row g-4 align-items-end career-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker">Rozwój</p>
-				<h2 id="career-mobility-heading" class="section-title">Wsparcie mobilności zawodowej</h2>
-			</div>
-
-			<p class="section-lead mt-3 mb-0">
-				Zebrane w jednym miejscu przydatne serwisy i źródła informacji wspierające rozwój zawodowy, mobilność międzynarodową i formalności związane z pracą oraz edukacją w Europie.
-			</p>
-		</div>
-	</div>
-
-	<?php if (!empty($items)) : ?>
+<div class="career-opportunities-mobility">
+	<?php if ( ! empty( $items ) ) : ?>
 		<div class="career-op-list">
-			<?php foreach ($items as $item) : ?>
+			<?php foreach ( $items as $item ) : ?>
 				<article class="career-op-card career-op-card--mobility">
 					<a
 						class="career-op-card__link"
-						href="<?php echo esc_url($item['url']); ?>"
+						href="<?php echo esc_url( $item['url'] ); ?>"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						<h3 class="career-op-card__title"><?php echo esc_html($item['title']); ?></h3>
+						<h3 class="career-op-card__title"><?php echo esc_html( $item['title'] ); ?></h3>
 
-						<?php if (!empty($item['text'])) : ?>
+						<?php if ( ! empty( $item['text'] ) ) : ?>
 							<p class="career-op-card__meta">
-								<?php echo esc_html($item['text']); ?>
+								<?php echo esc_html( $item['text'] ); ?>
 							</p>
 						<?php endif; ?>
 
-						<span class="career-op-card__cta">Przejdź do serwisu</span>
+						<span class="career-op-card__cta">
+							<?php echo esc_html( inlife_t( 'Przejdź do serwisu' ) ); ?>
+						</span>
 					</a>
 				</article>
 			<?php endforeach; ?>

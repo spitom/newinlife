@@ -1,80 +1,105 @@
 <?php
 /**
- * Career job offers teaser
+ * Career job offers section
+ *
+ * Landing preview of current opportunities based on real career entries.
  *
  * @package UnderStrap
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-if (!function_exists('inlife_get_acf_field')) {
-	function inlife_get_acf_field($field_name, $post_id = 0, $default = null) {
-		if (function_exists('get_field')) {
-			$value = get_field($field_name, $post_id);
+$section_kicker = function_exists( 'get_field' ) ? get_field( 'career_job_offers_kicker', $post_id ) : '';
+$section_title  = function_exists( 'get_field' ) ? get_field( 'career_job_offers_title', $post_id ) : '';
+$section_text   = function_exists( 'get_field' ) ? get_field( 'career_job_offers_text', $post_id ) : '';
+$cta_label      = function_exists( 'get_field' ) ? get_field( 'career_job_offers_cta_label', $post_id ) : '';
+$cta_url        = function_exists( 'get_field' ) ? get_field( 'career_job_offers_cta_url', $post_id ) : '';
 
-			if ($value !== null && $value !== '') {
-				return $value;
-			}
-		}
+$section_kicker = $section_kicker ?: inlife_t( 'Praca' );
+$section_title  = $section_title ?: inlife_t( 'Aktualne oferty i konkursy' );
+$section_text   = $section_text ?: inlife_t( 'Sprawdź najnowsze konkursy na stanowiska naukowe oraz aktualne ogłoszenia o pracę. Możesz od razu przejść do konkretnej oferty albo zobaczyć pełną sekcję ofert, wyników i archiwum.' );
+$cta_label      = $cta_label ?: inlife_t( 'Zobacz wszystkie oferty i konkursy' );
+$cta_url        = $cta_url ?: home_url( '/kariera/konkursy-i-oferty-pracy/' );
 
-		return $default;
-	}
+$preview_limit = 6;
+
+/**
+ * Na tym etapie landing pokazuje wpisy z typów:
+ * - scientific
+ * - jobs
+ *
+ * To najbezpieczniejszy pierwszy krok bez przebudowy modelu danych.
+ */
+$type_slugs = array_filter(
+	[
+		function_exists( 'inlife_get_career_type_slug' ) ? inlife_get_career_type_slug( 'scientific' ) : '',
+		function_exists( 'inlife_get_career_type_slug' ) ? inlife_get_career_type_slug( 'jobs' ) : '',
+	]
+);
+
+$query_args = [
+	'post_type'           => 'career_entry',
+	'post_status'         => 'publish',
+	'posts_per_page'      => $preview_limit,
+	'ignore_sticky_posts' => true,
+	'no_found_rows'       => true,
+];
+
+if ( ! empty( $type_slugs ) ) {
+	$query_args['tax_query'] = [
+		[
+			'taxonomy' => 'career_entry_type',
+			'field'    => 'slug',
+			'terms'    => $type_slugs,
+		],
+	];
 }
 
-$section_kicker = inlife_get_acf_field(
-	'career_job_offers_kicker',
-	$post_id,
-	'Praca'
-);
+$career_query = new WP_Query( $query_args );
 
-$section_title = inlife_get_acf_field(
-	'career_job_offers_title',
-	$post_id,
-	'Oferty pracy i konkursy'
-);
-
-$section_text = inlife_get_acf_field(
-	'career_job_offers_text',
-	$post_id,
-	'W jednym miejscu zebraliśmy aktualne oferty pracy, konkursy na stanowiska, wyniki naborów, ogłoszenia archiwalne oraz materiały wspierające kandydatów. Przejdź do dedykowanej podstrony, aby zobaczyć wszystkie kategorie i aktualne informacje.'
-);
-
-$cta_label = inlife_get_acf_field(
-	'career_job_offers_cta_label',
-	$post_id,
-	'Przejdź do ofert'
-);
-
-$cta_url = inlife_get_acf_field(
-	'career_job_offers_cta_url',
-	$post_id,
-	home_url('/kariera/konkursy-i-oferty-pracy/')
-);
+ob_start();
+?>
+<a class="btn btn-outline-primary" href="<?php echo esc_url( $cta_url ); ?>">
+	<?php echo esc_html( $cta_label ); ?>
+</a>
+<?php
+$action_html = (string) ob_get_clean();
 ?>
 
 <div class="career-job-offers">
-	<div class="row g-4 align-items-end career-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker"><?php echo esc_html($section_kicker); ?></p>
-				<h2 id="career-job-offers-heading" class="section-title">
-					<?php echo esc_html($section_title); ?>
-				</h2>
-			</div>
+	<?php
+	get_template_part(
+		'template-parts/components/section-header',
+		null,
+		[
+			'kicker'      => $section_kicker,
+			'title'       => $section_title,
+			'lead'        => $section_text,
+			'action_html' => $action_html,
+			'title_id'    => 'career-job-offers-heading',
+			'class'       => 'career-job-offers__header',
+		]
+	);
+	?>
 
-			<?php if (!empty($section_text)) : ?>
-				<p class="section-lead mt-3 mb-0">
-					<?php echo esc_html($section_text); ?>
-				</p>
-			<?php endif; ?>
-		</div>
+	<?php if ( $career_query->have_posts() ) : ?>
+		<div class="career-job-offers__list career-archive-list">
+			<?php
+			while ( $career_query->have_posts() ) :
+				$career_query->the_post();
 
-		<div class="col-lg-4 text-lg-end">
-			<a href="<?php echo esc_url($cta_url); ?>" class="btn btn-outline-primary">
-				<?php echo esc_html($cta_label); ?>
-			</a>
+				get_template_part( 'template-parts/career/career-archive', 'card' );
+			endwhile;
+			?>
 		</div>
-	</div>
+		<?php wp_reset_postdata(); ?>
+	<?php else : ?>
+		<div class="career-job-offers__empty c-surface c-surface--panel">
+			<p class="career-job-offers__empty-text mb-0">
+				<?php echo esc_html( inlife_t( 'Obecnie nie ma opublikowanych aktywnych ofert w tej sekcji.' ) ); ?>
+			</p>
+		</div>
+	<?php endif; ?>
 </div>
