@@ -10,6 +10,15 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $container = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
+$post_id   = get_the_ID();
+
+$hero_kicker = function_exists( 'get_field' ) ? get_field( 'career_opportunities_hero_kicker', $post_id ) : '';
+$hero_title  = function_exists( 'get_field' ) ? get_field( 'career_opportunities_hero_title', $post_id ) : '';
+$hero_lead   = function_exists( 'get_field' ) ? get_field( 'career_opportunities_hero_lead', $post_id ) : '';
+
+$hero_kicker = $hero_kicker ?: inlife_t( 'Kariera' );
+$hero_title  = $hero_title ?: inlife_t( 'Oferty pracy, konkursy i dokumenty' );
+$hero_lead   = $hero_lead ?: inlife_t( 'W tej sekcji znajdują się aktualne konkursy na stanowiska naukowe, ogłoszenia o pracę, wyniki naborów, materiały archiwalne oraz informacje wspierające mobilność zawodową.' );
 ?>
 
 <main id="main-content" class="site-main site-main--career-opportunities">
@@ -20,10 +29,12 @@ $container = function_exists( 'inlife_container_class' ) ? inlife_container_clas
 			'template-parts/patterns/pattern-page-hero',
 			null,
 			[
-				'kicker'      => inlife_t( 'Kariera' ),
-				'title'       => inlife_t( 'Oferty pracy, konkursy i dokumenty' ),
-				'lead'        => inlife_t( 'W tej sekcji znajdują się aktualne konkursy na stanowiska naukowe, ogłoszenia o pracę, wyniki naborów, materiały archiwalne oraz informacje wspierające mobilność zawodową.' ),
+				'kicker'      => $hero_kicker,
+				'title'       => $hero_title,
+				'lead'        => $hero_lead,
 				'breadcrumbs' => true,
+				'modifier'    => 'archive',
+				'title_id'    => 'career-opportunities-heading',
 			]
 		);
 		?>

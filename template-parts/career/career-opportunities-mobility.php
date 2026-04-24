@@ -9,6 +9,14 @@ defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
+$section_kicker = function_exists( 'get_field' ) ? get_field( 'career_mobility_kicker', $post_id ) : '';
+$section_title  = function_exists( 'get_field' ) ? get_field( 'career_mobility_title', $post_id ) : '';
+$section_text   = function_exists( 'get_field' ) ? get_field( 'career_mobility_text', $post_id ) : '';
+
+$section_kicker = $section_kicker ?: inlife_t( 'Rozwój' );
+$section_title  = $section_title ?: inlife_t( 'Wsparcie mobilności zawodowej' );
+$section_text   = $section_text ?: inlife_t( 'Zebrane w jednym miejscu przydatne serwisy i źródła informacji wspierające rozwój zawodowy, mobilność międzynarodową i formalności związane z pracą oraz edukacją w Europie.' );
+
 $items = [
 	[
 		'title' => 'EURES',
@@ -45,7 +53,6 @@ $items = [
 		'text'  => 'Wsparcie w rozwiązywaniu problemów związanych z prawami na rynku UE.',
 		'url'   => 'https://ec.europa.eu/solvit/',
 	],
-
 ];
 
 if ( function_exists( 'have_rows' ) && have_rows( 'career_mobility_links', $post_id ) ) {
@@ -75,9 +82,9 @@ get_template_part(
 	'template-parts/components/section-header',
 	null,
 	[
-		'kicker'   => inlife_t( 'Rozwój' ),
-		'title'    => inlife_t( 'Wsparcie mobilności zawodowej' ),
-		'lead'     => inlife_t( 'Zebrane w jednym miejscu przydatne serwisy i źródła informacji wspierające rozwój zawodowy, mobilność międzynarodową i formalności związane z pracą oraz edukacją w Europie.' ),
+		'kicker'   => $section_kicker,
+		'title'    => $section_title,
+		'lead'     => $section_text,
 		'title_id' => 'career-mobility-heading',
 	]
 );

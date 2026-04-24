@@ -9,6 +9,10 @@ defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
+$excerpt = function_exists( 'inlife_get_card_excerpt' )
+	? inlife_get_card_excerpt( $post_id, 26 )
+	: '';
+
 $type_label = function_exists( 'inlife_get_career_entry_type_label' )
 	? inlife_get_career_entry_type_label( $post_id )
 	: '';
@@ -49,9 +53,9 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_ge
 			<?php the_title(); ?>
 		</h2>
 
-		<?php if ( has_excerpt() ) : ?>
+		<?php if ( $excerpt ) : ?>
 			<p class="career-archive-card__excerpt">
-				<?php echo esc_html( get_the_excerpt() ); ?>
+				<?php echo esc_html( $excerpt ); ?>
 			</p>
 		<?php endif; ?>
 

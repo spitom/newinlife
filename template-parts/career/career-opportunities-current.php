@@ -2,12 +2,20 @@
 /**
  * Career opportunities - current offers and competitions
  *
- * Frontend filtering, without page reload.
- *
  * @package UnderStrap
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$post_id = get_the_ID();
+
+$section_kicker = function_exists( 'get_field' ) ? get_field( 'career_opportunities_current_kicker', $post_id ) : '';
+$section_title  = function_exists( 'get_field' ) ? get_field( 'career_opportunities_current_title', $post_id ) : '';
+$section_text   = function_exists( 'get_field' ) ? get_field( 'career_opportunities_current_text', $post_id ) : '';
+
+$section_kicker = $section_kicker ?: inlife_t( 'Aktualne nabory' );
+$section_title  = $section_title ?: inlife_t( 'Aktualne oferty i konkursy' );
+$section_text   = $section_text ?: inlife_t( 'Poniżej znajdziesz bieżące konkursy na stanowiska naukowe oraz aktualne ogłoszenia o pracę.' );
 
 $type_map = [
 	'scientific' => function_exists( 'inlife_get_career_type_slug' ) ? inlife_get_career_type_slug( 'scientific' ) : '',
@@ -44,30 +52,15 @@ ob_start();
 	role="group"
 	aria-label="<?php echo esc_attr( inlife_t( 'Filtrowanie aktualnych ofert' ) ); ?>"
 >
-	<button
-		type="button"
-		class="c-pill is-active"
-		data-career-filter="all"
-		aria-pressed="true"
-	>
+	<button type="button" class="c-pill is-active" data-career-filter="all" aria-pressed="true">
 		<?php echo esc_html( inlife_t( 'Wszystkie' ) ); ?>
 	</button>
 
-	<button
-		type="button"
-		class="c-pill"
-		data-career-filter="scientific"
-		aria-pressed="false"
-	>
+	<button type="button" class="c-pill" data-career-filter="scientific" aria-pressed="false">
 		<?php echo esc_html( inlife_get_career_type_label( 'scientific' ) ); ?>
 	</button>
 
-	<button
-		type="button"
-		class="c-pill"
-		data-career-filter="jobs"
-		aria-pressed="false"
-	>
+	<button type="button" class="c-pill" data-career-filter="jobs" aria-pressed="false">
 		<?php echo esc_html( inlife_get_career_type_label( 'jobs' ) ); ?>
 	</button>
 </div>
@@ -78,9 +71,9 @@ get_template_part(
 	'template-parts/components/section-header',
 	null,
 	[
-		'kicker'      => inlife_t( 'Aktualne nabory' ),
-		'title'       => inlife_t( 'Aktualne oferty i konkursy' ),
-		'lead'        => inlife_t( 'Poniżej znajdziesz bieżące konkursy na stanowiska naukowe oraz aktualne ogłoszenia o pracę.' ),
+		'kicker'      => $section_kicker,
+		'title'       => $section_title,
+		'lead'        => $section_text,
 		'action_html' => $action_html,
 		'title_id'    => 'career-current-heading',
 		'class'       => 'career-opportunities-current__header',
@@ -102,7 +95,7 @@ get_template_part(
 					foreach ( $terms as $term ) {
 						$resolved_key = function_exists( 'inlife_get_career_type_key_from_slug' )
 							? inlife_get_career_type_key_from_slug( $term->slug )
-							: null;
+							: '';
 
 						if ( in_array( $resolved_key, [ 'scientific', 'jobs' ], true ) ) {
 							$type_key = $resolved_key;
@@ -111,11 +104,7 @@ get_template_part(
 					}
 				}
 				?>
-				<div
-					class="career-archive-list__item"
-					data-career-item
-					data-career-type="<?php echo esc_attr( $type_key ?: 'other' ); ?>"
-				>
+				<div class="career-archive-list__item" data-career-item data-career-type="<?php echo esc_attr( $type_key ?: 'other' ); ?>">
 					<?php get_template_part( 'template-parts/career/career-archive', 'card' ); ?>
 				</div>
 			<?php endwhile; ?>

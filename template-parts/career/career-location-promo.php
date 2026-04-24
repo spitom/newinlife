@@ -5,130 +5,125 @@
  * @package UnderStrap
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-if (!function_exists('inlife_get_acf_field')) {
-	function inlife_get_acf_field($field_name, $post_id = 0, $default = null) {
-		if (function_exists('get_field')) {
-			$value = get_field($field_name, $post_id);
+$section_kicker = function_exists( 'get_field' ) ? get_field( 'career_location_kicker', $post_id ) : '';
+$section_title  = function_exists( 'get_field' ) ? get_field( 'career_location_title', $post_id ) : '';
+$section_text   = function_exists( 'get_field' ) ? get_field( 'career_location_text', $post_id ) : '';
+$image          = function_exists( 'get_field' ) ? get_field( 'career_location_image', $post_id ) : null;
 
-			if ($value !== null && $value !== '') {
-				return $value;
-			}
-		}
-		return $default;
-	}
+$section_kicker = $section_kicker ?: inlife_t( 'Lokalizacja' );
+$section_title  = $section_title ?: inlife_t( 'Polska / Olsztyn / InLife' );
+$section_text   = $section_text ?: inlife_t( 'Olsztyn to nowoczesne miasto akademickie położone w regionie Warmii i Mazur, łączące rozwój naukowy z wyjątkowym otoczeniem przyrodniczym.' );
+
+$image_id = 0;
+
+if ( is_array( $image ) && ! empty( $image['ID'] ) ) {
+	$image_id = (int) $image['ID'];
+} elseif ( is_numeric( $image ) ) {
+	$image_id = (int) $image;
 }
 
-$section_kicker = inlife_get_acf_field(
-	'career_location_kicker',
-	$post_id,
-	'Lokalizacja'
-);
-
-$section_title = inlife_get_acf_field(
-	'career_location_title',
-	$post_id,
-	'Polska / Olsztyn / InLife'
-);
-
-$section_text = inlife_get_acf_field(
-	'career_location_text',
-	$post_id,
-	'Olsztyn to nowoczesne miasto akademickie położone w regionie Warmii i Mazur, łączące rozwój naukowy z wyjątkowym otoczeniem przyrodniczym.'
-);
-
-/**
- * Fallback content – oparty o realne fakty
- */
 $items = [
 	[
-		'title' => 'Miasto nauki',
-		'text'  => 'Olsztyn jest ważnym ośrodkiem akademickim i kulturalnym regionu, z rozwiniętą infrastrukturą naukową i edukacyjną.', // :contentReference[oaicite:0]{index=0}
+		'title' => inlife_t( 'Miasto nauki' ),
+		'text'  => inlife_t( 'Olsztyn jest ważnym ośrodkiem akademickim i kulturalnym regionu.' ),
 		'url'   => 'https://visit.olsztyn.eu',
 	],
 	[
-		'title' => 'Miasto jezior',
-		'text'  => 'Na terenie miasta znajduje się kilkanaście jezior i rozległe tereny zielone, co tworzy wyjątkowe warunki do życia i pracy.', // :contentReference[oaicite:1]{index=1}
+		'title' => inlife_t( 'Miasto jezior' ),
+		'text'  => inlife_t( 'Jeziora, lasy i tereny zielone tworzą wyjątkowe warunki do życia i pracy.' ),
 		'url'   => 'https://visit.olsztyn.eu',
 	],
 	[
-		'title' => 'Historia i kultura',
-		'text'  => 'Miasto łączy bogate dziedzictwo historyczne z nowoczesną przestrzenią miejską i aktywnym życiem kulturalnym.', // :contentReference[oaicite:2]{index=2}
+		'title' => inlife_t( 'Kultura i historia' ),
+		'text'  => inlife_t( 'Miasto łączy dziedzictwo historyczne z nowoczesną przestrzenią miejską.' ),
 		'url'   => 'https://visit.olsztyn.eu',
-	],
-	[
-		'title' => 'Środowisko pracy',
-		'text'  => 'Instytut działa w otoczeniu sprzyjającym rozwojowi naukowemu oraz współpracy międzynarodowej.',
-		'url'   => '#',
 	],
 ];
 
-if (function_exists('have_rows') && have_rows('career_location_items', $post_id)) {
+if ( function_exists( 'have_rows' ) && have_rows( 'career_location_items', $post_id ) ) {
 	$items = [];
 
-	while (have_rows('career_location_items', $post_id)) {
+	while ( have_rows( 'career_location_items', $post_id ) ) {
 		the_row();
 
-		$link = get_sub_field('link');
-		$url  = '#';
+		$title = get_sub_field( 'title' );
+		$text  = get_sub_field( 'text' );
+		$link  = get_sub_field( 'link' );
 
-		if (is_array($link) && !empty($link['url'])) {
+		$url = '#';
+
+		if ( is_array( $link ) && ! empty( $link['url'] ) ) {
 			$url = $link['url'];
-		} elseif (is_string($link) && !empty($link)) {
+		} elseif ( is_string( $link ) && '' !== trim( $link ) ) {
 			$url = $link;
 		}
 
+		if ( ! $title && ! $text ) {
+			continue;
+		}
+
 		$items[] = [
-			'title' => get_sub_field('title') ?: '',
-			'text'  => get_sub_field('text') ?: '',
+			'title' => $title ?: '',
+			'text'  => $text ?: '',
 			'url'   => $url,
 		];
 	}
 }
 ?>
 
-<div class="career-location">
-	<div class="row g-4 align-items-end career-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker"><?php echo esc_html($section_kicker); ?></p>
-				<h2 id="career-location-heading" class="section-title">
-					<?php echo esc_html($section_title); ?>
-				</h2>
-			</div>
+<div class="career-location career-location--featured">
 
-			<?php if (!empty($section_text)) : ?>
-				<p class="section-lead mt-3 mb-0">
-					<?php echo esc_html($section_text); ?>
-				</p>
-			<?php endif; ?>
-		</div>
-	</div>
-
-	<?php if (!empty($items)) : ?>
-		<div class="career-location__grid">
-			<?php foreach ($items as $item) : ?>
-				<article class="career-location__card">
-					<a href="<?php echo esc_url($item['url']); ?>" class="career-location__link">
-						<h3 class="career-location__title">
-							<?php echo esc_html($item['title']); ?>
-						</h3>
-
-						<?php if (!empty($item['text'])) : ?>
-							<p class="career-location__text">
-								<?php echo esc_html($item['text']); ?>
-							</p>
-						<?php endif; ?>
-
-						<span class="career-location__cta">
-							Dowiedz się więcej
-						</span>
-					</a>
-				</article>
-			<?php endforeach; ?>
+	<?php if ( $image_id ) : ?>
+		<div class="career-location__media" aria-hidden="true">
+			<?php
+			echo wp_get_attachment_image(
+				$image_id,
+				'large',
+				false,
+				[
+					'class'   => 'career-location__image',
+					'loading' => 'lazy',
+				]
+			);
+			?>
 		</div>
 	<?php endif; ?>
+
+	<div class="career-location__content">
+		<p class="career-location__kicker">
+			<?php echo esc_html( $section_kicker ); ?>
+		</p>
+
+		<h2 id="career-location-heading" class="career-location__title">
+			<?php echo esc_html( $section_title ); ?>
+		</h2>
+
+		<?php if ( $section_text ) : ?>
+			<div class="career-location__text">
+				<?php echo wp_kses_post( wpautop( $section_text ) ); ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if ( ! empty( $items ) ) : ?>
+			<div class="career-location__links">
+				<?php foreach ( $items as $item ) : ?>
+					<?php if ( empty( $item['title'] ) ) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+
+					<a class="c-readmore career-location__readmore" href="<?php echo esc_url( $item['url'] ); ?>">
+						<span class="c-readmore__label">
+							<?php echo esc_html( $item['title'] ); ?>
+						</span>
+						<span class="c-readmore__icon" aria-hidden="true">→</span>
+					</a>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
+	</div>
+
 </div>

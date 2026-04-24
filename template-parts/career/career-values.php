@@ -5,71 +5,45 @@
  * @package UnderStrap
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-if (!function_exists('inlife_get_acf_field')) {
-	function inlife_get_acf_field($field_name, $post_id = 0, $default = null) {
-		if (function_exists('get_field')) {
-			$value = get_field($field_name, $post_id);
+$section_kicker = function_exists( 'get_field' ) ? get_field( 'career_values_kicker', $post_id ) : '';
+$section_title  = function_exists( 'get_field' ) ? get_field( 'career_values_title', $post_id ) : '';
+$section_text   = function_exists( 'get_field' ) ? get_field( 'career_values_text', $post_id ) : '';
 
-			if ($value !== null && $value !== '') {
-				return $value;
-			}
-		}
-
-		return $default;
-	}
-}
-
-$section_kicker = inlife_get_acf_field(
-	'career_values_kicker',
-	$post_id,
-	'Wartości'
-);
-
-$section_title = inlife_get_acf_field(
-	'career_values_title',
-	$post_id,
-	'Nasze wartości i kultura pracy'
-);
-
-$section_text = inlife_get_acf_field(
-	'career_values_text',
-	$post_id,
-	'Tworzymy środowisko pracy oparte na współpracy, odpowiedzialności i rozwoju. Łączymy wysokie standardy naukowe z codzienną kulturą organizacyjną, w której liczą się relacje, wzajemny szacunek i realne możliwości wzrostu.'
-);
-
-$video_url = inlife_get_acf_field(
-	'career_values_video_url',
-	$post_id,
-	''
-);
+$section_kicker = $section_kicker ?: inlife_t( 'Wartości' );
+$section_title  = $section_title ?: inlife_t( 'Nasze wartości i kultura pracy' );
+$section_text   = $section_text ?: inlife_t( 'Tworzymy środowisko pracy oparte na współpracy, odpowiedzialności i rozwoju. Łączymy wysokie standardy naukowe z codzienną kulturą organizacyjną, w której liczą się relacje, wzajemny szacunek i realne możliwości wzrostu.' );
 
 $highlights = [
 	[
-		'title' => 'Współpraca',
-		'text'  => 'Budujemy zespoły, w których wiedza i doświadczenie są wymieniane między obszarami i pokoleniami.',
+		'title' => inlife_t( 'Współpraca' ),
+		'text'  => inlife_t( 'Budujemy zespoły, w których wiedza i doświadczenie są wymieniane między obszarami i pokoleniami.' ),
 	],
 	[
-		'title' => 'Rozwój',
-		'text'  => 'Wspieramy rozwój kompetencji, ścieżki naukowe, zawodowe i wejście w nowe role.',
+		'title' => inlife_t( 'Rozwój' ),
+		'text'  => inlife_t( 'Wspieramy rozwój kompetencji, ścieżki naukowe, zawodowe i wejście w nowe role.' ),
 	],
 	[
-		'title' => 'Odpowiedzialność',
-		'text'  => 'Dbamy o jakość pracy, etykę działania i szacunek wobec ludzi, partnerów oraz otoczenia.',
+		'title' => inlife_t( 'Odpowiedzialność' ),
+		'text'  => inlife_t( 'Dbamy o jakość pracy, etykę działania i szacunek wobec ludzi, partnerów oraz otoczenia.' ),
 	],
 ];
 
-if (function_exists('have_rows') && have_rows('career_values_highlights', $post_id)) {
+if ( function_exists( 'have_rows' ) && have_rows( 'career_values_highlights', $post_id ) ) {
 	$highlights = [];
 
-	while (have_rows('career_values_highlights', $post_id)) {
+	while ( have_rows( 'career_values_highlights', $post_id ) ) {
 		the_row();
 
-		$item_title = get_sub_field('title');
-		$item_text  = get_sub_field('text');
+		$item_title = get_sub_field( 'title' );
+		$item_text  = get_sub_field( 'text' );
+
+		if ( ! $item_title && ! $item_text ) {
+			continue;
+		}
 
 		$highlights[] = [
 			'title' => $item_title ?: '',
@@ -77,6 +51,8 @@ if (function_exists('have_rows') && have_rows('career_values_highlights', $post_
 		];
 	}
 }
+
+$highlights = array_slice( $highlights, 0, 3 );
 ?>
 
 <div class="career-values">
@@ -85,55 +61,31 @@ if (function_exists('have_rows') && have_rows('career_values_highlights', $post_
 		'template-parts/components/section-header',
 		null,
 		[
-			'kicker' => $section_kicker,
-			'title'  => $section_title,
-			'lead'   => $section_text,
+			'kicker'   => $section_kicker,
+			'title'    => $section_title,
+			'lead'     => $section_text,
+			'title_id' => 'career-values-heading',
 		]
 	);
 	?>
 
-	<div class="career-values__layout">
-		<div class="career-values__content">
-			<?php if (!empty($highlights)) : ?>
-				<div class="career-values__highlights">
-					<?php foreach ($highlights as $item) : ?>
-						<article class="career-values__item">
-							<h3 class="career-values__item-title">
-								<?php echo esc_html($item['title']); ?>
-							</h3>
+	<?php if ( ! empty( $highlights ) ) : ?>
+		<div class="career-values__grid c-card-grid c-card-grid--3">
+			<?php foreach ( $highlights as $item ) : ?>
+				<article class="career-values__item c-surface c-surface--panel">
+					<?php if ( ! empty( $item['title'] ) ) : ?>
+						<h3 class="career-values__item-title">
+							<?php echo esc_html( $item['title'] ); ?>
+						</h3>
+					<?php endif; ?>
 
-							<?php if (!empty($item['text'])) : ?>
-								<p class="career-values__item-text">
-									<?php echo esc_html($item['text']); ?>
-								</p>
-							<?php endif; ?>
-						</article>
-					<?php endforeach; ?>
-				</div>
-			<?php endif; ?>
+					<?php if ( ! empty( $item['text'] ) ) : ?>
+						<p class="career-values__item-text">
+							<?php echo esc_html( $item['text'] ); ?>
+						</p>
+					<?php endif; ?>
+				</article>
+			<?php endforeach; ?>
 		</div>
-
-		<div class="career-values__media">
-			<?php if (!empty($video_url)) : ?>
-				<div class="career-values__video">
-					<div class="ratio ratio-16x9">
-						<iframe
-							src="<?php echo esc_url($video_url); ?>"
-							title="<?php echo esc_attr($section_title); ?>"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowfullscreen
-						></iframe>
-					</div>
-				</div>
-			<?php else : ?>
-				<div class="career-values__video-placeholder" aria-hidden="true">
-					<div class="career-values__video-badge">Wideo / kultura organizacyjna</div>
-
-					<div class="career-values__video-card">
-						<span class="career-values__video-card-label">Przestrzeń do rozwoju</span>
-					</div>
-				</div>
-			<?php endif; ?>
-		</div>
-	</div>
+	<?php endif; ?>
 </div>

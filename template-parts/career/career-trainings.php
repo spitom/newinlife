@@ -1,126 +1,119 @@
 <?php
 /**
- * Career trainings teaser
+ * Career trainings section
  *
  * @package UnderStrap
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-if (!function_exists('inlife_get_acf_field')) {
-	function inlife_get_acf_field($field_name, $post_id = 0, $default = null) {
-		if (function_exists('get_field')) {
-			$value = get_field($field_name, $post_id);
+$section_kicker = function_exists( 'get_field' ) ? get_field( 'career_trainings_kicker', $post_id ) : '';
+$section_title  = function_exists( 'get_field' ) ? get_field( 'career_trainings_title', $post_id ) : '';
+$section_text   = function_exists( 'get_field' ) ? get_field( 'career_trainings_text', $post_id ) : '';
+$cta_label      = function_exists( 'get_field' ) ? get_field( 'career_trainings_cta_label', $post_id ) : '';
+$cta_url        = function_exists( 'get_field' ) ? get_field( 'career_trainings_cta_url', $post_id ) : '';
 
-			if ($value !== null && $value !== '') {
-				return $value;
-			}
-		}
-
-		return $default;
-	}
-}
-
-$section_kicker = inlife_get_acf_field(
-	'career_trainings_kicker',
-	$post_id,
-	'Rozwój'
-);
-
-$section_title = inlife_get_acf_field(
-	'career_trainings_title',
-	$post_id,
-	'Szkolenia i rozwój kompetencji'
-);
-
-$section_text = inlife_get_acf_field(
-	'career_trainings_text',
-	$post_id,
-	'Wspieramy rozwój kompetencji zawodowych i naukowych poprzez szkolenia, warsztaty oraz inicjatywy rozwojowe. W tej sekcji docelowo może pojawić się harmonogram, kalendarz i możliwość zapisów.'
-);
-
-$cta_label = inlife_get_acf_field(
-	'career_trainings_cta_label',
-	$post_id,
-	'Zobacz szkolenia'
-);
-
-$cta_url = inlife_get_acf_field(
-	'career_trainings_cta_url',
-	$post_id,
-	'#'
-);
+$section_kicker = $section_kicker ?: inlife_t( 'Rozwój' );
+$section_title  = $section_title ?: inlife_t( 'Szkolenia i rozwój kompetencji' );
+$section_text   = $section_text ?: inlife_t( 'Wspieramy rozwój kompetencji zawodowych i naukowych poprzez szkolenia, warsztaty oraz inicjatywy rozwojowe. W tej sekcji docelowo może pojawić się harmonogram, kalendarz i możliwość zapisów.' );
+$cta_label      = $cta_label ?: inlife_t( 'Zobacz szkolenia' );
+$cta_url        = $cta_url ?: '#';
 
 $items = [
 	[
-		'title' => 'Warsztaty i kursy',
-		'text'  => 'Rozwój praktycznych kompetencji wspierających pracę naukową, organizacyjną i projektową.',
+		'title' => inlife_t( 'Warsztaty i kursy' ),
+		'text'  => inlife_t( 'Rozwój praktycznych kompetencji wspierających pracę naukową, organizacyjną i projektową.' ),
 	],
 	[
-		'title' => 'Kalendarz szkoleń',
-		'text'  => 'Docelowo sekcja może prezentować harmonogram nadchodzących szkoleń i terminów zapisów.',
+		'title' => inlife_t( 'Kalendarz szkoleń' ),
+		'text'  => inlife_t( 'Docelowo sekcja może prezentować harmonogram nadchodzących szkoleń i terminów zapisów.' ),
 	],
 	[
-		'title' => 'Rozwój długofalowy',
-		'text'  => 'Szkolenia wpisują się w szerszy model wzmacniania kompetencji oraz planowania ścieżek rozwoju.',
+		'title' => inlife_t( 'Rozwój długofalowy' ),
+		'text'  => inlife_t( 'Szkolenia wpisują się w szerszy model wzmacniania kompetencji oraz planowania ścieżek rozwoju.' ),
 	],
 ];
 
-if (function_exists('have_rows') && have_rows('career_trainings_items', $post_id)) {
+if ( function_exists( 'have_rows' ) && have_rows( 'career_trainings_items', $post_id ) ) {
 	$items = [];
 
-	while (have_rows('career_trainings_items', $post_id)) {
+	while ( have_rows( 'career_trainings_items', $post_id ) ) {
 		the_row();
 
+		$title = get_sub_field( 'title' );
+		$text  = get_sub_field( 'text' );
+
+		if ( ! $title && ! $text ) {
+			continue;
+		}
+
 		$items[] = [
-			'title' => get_sub_field('title') ?: '',
-			'text'  => get_sub_field('text') ?: '',
+			'title' => $title ?: '',
+			'text'  => $text ?: '',
 		];
 	}
+}
+
+$action_html = '';
+
+if ( $cta_label && $cta_url ) {
+	$action_html = sprintf(
+		'<a href="%s" class="btn btn-outline-primary">%s</a>',
+		esc_url( $cta_url ),
+		esc_html( $cta_label )
+	);
 }
 ?>
 
 <div class="career-trainings">
-	<div class="row g-4 align-items-end career-section-head">
-		<div class="col-lg-8">
-			<div class="section-heading mb-0">
-				<p class="section-kicker"><?php echo esc_html($section_kicker); ?></p>
-				<h2 id="career-trainings-heading" class="section-title">
-					<?php echo esc_html($section_title); ?>
-				</h2>
-			</div>
 
-			<?php if (!empty($section_text)) : ?>
-				<p class="section-lead mt-3 mb-0">
-					<?php echo esc_html($section_text); ?>
-				</p>
-			<?php endif; ?>
-		</div>
+	<?php
+	get_template_part(
+		'template-parts/components/section-header',
+		null,
+		[
+			'kicker'      => $section_kicker,
+			'title'       => $section_title,
+			'lead'        => $section_text,
+			'action_html' => $action_html,
+			'title_id'    => 'career-trainings-heading',
+		]
+	);
+	?>
 
-		<div class="col-lg-4 text-lg-end">
-			<a href="<?php echo esc_url($cta_url); ?>" class="btn btn-outline-primary">
-				<?php echo esc_html($cta_label); ?>
-			</a>
-		</div>
-	</div>
+	<?php if ( ! empty( $items ) ) : ?>
+		<div class="career-trainings__grid c-card-grid c-card-grid--3">
+			<?php foreach ( $items as $item ) : ?>
+				<article class="career-trainings__item c-surface c-surface--panel">
+					<?php if ( ! empty( $item['title'] ) ) : ?>
+						<h3 class="career-trainings__title">
+							<?php echo esc_html( $item['title'] ); ?>
+						</h3>
+					<?php endif; ?>
 
-	<?php if (!empty($items)) : ?>
-		<div class="career-trainings__grid">
-			<?php foreach ($items as $item) : ?>
-				<article class="career-trainings__card">
-					<h3 class="career-trainings__card-title">
-						<?php echo esc_html($item['title']); ?>
-					</h3>
-
-					<?php if (!empty($item['text'])) : ?>
-						<p class="career-trainings__card-text">
-							<?php echo esc_html($item['text']); ?>
+					<?php if ( ! empty( $item['text'] ) ) : ?>
+						<p class="career-trainings__text">
+							<?php echo esc_html( $item['text'] ); ?>
 						</p>
 					<?php endif; ?>
+
+					<div class="career-trainings__readmore">
+						<?php
+						get_template_part(
+							'template-parts/components/readmore',
+							null,
+							[
+								'label' => inlife_t( 'Przejdź dalej' ),
+								'url'   => $cta_url,
+							]
+						);
+						?>
+					</div>
 				</article>
 			<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
+
 </div>

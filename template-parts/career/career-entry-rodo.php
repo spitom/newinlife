@@ -1,27 +1,73 @@
 <?php
-defined('ABSPATH') || exit;
+/**
+ * Career entry RODO notice.
+ *
+ * @package UnderStrap
+ */
 
-$post_id = get_the_ID();
+defined( 'ABSPATH' ) || exit;
 
-$show_rodo    = function_exists('inlife_get_acf_field') ? (bool) inlife_get_acf_field('career_show_rodo_block', $post_id, true) : true;
-$rodo_variant = function_exists('inlife_get_acf_field') ? inlife_get_acf_field('career_rodo_variant', $post_id, 'standard_recruitment') : 'standard_recruitment';
-$rodo_custom  = function_exists('inlife_get_acf_field') ? inlife_get_acf_field('career_rodo_custom', $post_id, '') : '';
+$rodo_page_id = 0;
 
-if (!$show_rodo) {
+$pages = get_posts(
+	[
+		'post_type'      => 'page',
+		'post_status'    => 'publish',
+		'posts_per_page' => 1,
+		'meta_key'       => '_wp_page_template',
+		'meta_value'     => 'page-templates/template-career-opportunities.php',
+		'lang'           => function_exists( 'pll_current_language' ) ? pll_current_language( 'slug' ) : '',
+	]
+);
+
+if ( ! empty( $pages ) ) {
+	$rodo_page_id = (int) $pages[0]->ID;
+}
+
+$enabled = true;
+
+if ( $rodo_page_id && function_exists( 'get_field' ) ) {
+	$field_enabled = get_field( 'career_rodo_enabled', $rodo_page_id );
+
+	if ( null !== $field_enabled ) {
+		$enabled = (bool) $field_enabled;
+	}
+}
+
+if ( ! $enabled ) {
 	return;
+}
+
+$kicker  = '';
+$title   = '';
+$content = '';
+
+if ( $rodo_page_id && function_exists( 'get_field' ) ) {
+	$kicker  = get_field( 'career_rodo_kicker', $rodo_page_id );
+	$title   = get_field( 'career_rodo_title', $rodo_page_id );
+	$content = get_field( 'career_rodo_content', $rodo_page_id );
+}
+
+$kicker = $kicker ?: inlife_t( 'Klauzula informacyjna' );
+$title  = $title ?: inlife_t( 'Informacja o przetwarzaniu danych osobowych' );
+
+if ( ! $content ) {
+	$content = inlife_t( 'Treść klauzuli RODO i zgody rekrutacyjnej będzie renderowana automatycznie na podstawie wybranego wariantu.' );
 }
 ?>
 
-<div class="career-entry-rodo">
-	<h2 class="career-entry-rodo__title">Informacje formalne</h2>
-
-	<?php if ('custom' === $rodo_variant && $rodo_custom) : ?>
-		<div class="career-entry-rodo__content">
-			<?php echo wp_kses_post(wpautop($rodo_custom)); ?>
-		</div>
-	<?php else : ?>
-		<div class="career-entry-rodo__content">
-			<p>Treść klauzuli RODO i zgody rekrutacyjnej będzie renderowana automatycznie na podstawie wybranego wariantu.</p>
-		</div>
+<section class="career-entry-rodo c-surface c-surface--panel" aria-labelledby="career-entry-rodo-heading">
+	<?php if ( $kicker ) : ?>
+		<p class="career-entry-rodo__kicker">
+			<?php echo esc_html( $kicker ); ?>
+		</p>
 	<?php endif; ?>
-</div>
+
+	<h2 id="career-entry-rodo-heading" class="career-entry-rodo__title">
+		<?php echo esc_html( $title ); ?>
+	</h2>
+
+	<div class="career-entry-rodo__content">
+		<?php echo wp_kses_post( wpautop( $content ) ); ?>
+	</div>
+</section>

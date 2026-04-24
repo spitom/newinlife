@@ -127,3 +127,4 @@ require_once get_stylesheet_directory() . '/inc/taxonomies/partner-region.php';
 require_once get_stylesheet_directory() . '/inc/helpers/society.php';
 require_once get_stylesheet_directory() . '/inc/helpers/posts.php';
 require_once get_stylesheet_directory() . '/inc/taxonomies/society.php';
+require_once get_stylesheet_directory() . '/inc/helpers/excerpts.php';

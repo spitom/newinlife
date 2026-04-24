@@ -1,361 +1,446 @@
 /* =========================================================
-   CAREER — SHARED ARCHIVE + SINGLE ENTRY
-   Scope:
-   - taxonomy/archive listing
-   - archive card shared by taxonomy and opportunities
-   - single career entry layout
+   CAREER — ARCHIVE / CARDS / SINGLE ENTRY
 ========================================================= */
 
+
 /* =========================================================
-   ARCHIVE / LISTING
+   CAREER TAXONOMY / ARCHIVE SHELL
 ========================================================= */
 
 .site-main--career-taxonomy {
+	background: var(--inlife-surface-soft);
 
-    background: var(--inlife-surface-soft);
+	.page-section--career-taxonomy-hero {
+		padding: 0;
+	}
 
-    .page-section--career-taxonomy-hero {
-        padding: 0;
-    }
-
-    .page-section--career-taxonomy-intro,
-    .page-section--career-taxonomy-loop {
-        padding-block: clamp(2.5rem, 5vw, 4rem);
-    }
+	.page-section--career-taxonomy-loop {
+		padding-block: clamp(2.5rem, 5vw, 4rem);
+	}
+    .career-archive-card__type {
+		display: none;
+	}
 }
 
+
+/* =========================================================
+   CAREER ARCHIVE LIST / CARDS
+   Used by:
+   - Career landing preview
+   - Career opportunities current list
+   - Career taxonomy archive
+========================================================= */
+
 .career-archive-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
 }
 
 .career-archive-list__item {
-    display: flex;
-    min-width: 0;
+	display: flex;
+	min-width: 0;
 }
 
 .career-archive-card {
-    display: flex;
-    width: 100%;
+	display: flex;
+	width: 100%;
 }
 
 .career-archive-card__link {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    color: inherit;
-    text-decoration: none;
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	color: inherit;
+	text-decoration: none;
+	transition:
+		transform 0.2s ease,
+		box-shadow 0.2s ease,
+		border-color 0.2s ease;
 }
 
 .career-archive-card__link:hover,
 .career-archive-card__link:focus-visible {
-    transform: translateY(-2px);
-    text-decoration: none;
-    box-shadow: 0 18px 38px rgba(18, 38, 63, 0.08);
+	transform: translateY(-2px);
+	text-decoration: none;
+	box-shadow: 0 18px 38px rgba(18, 38, 63, 0.08);
 }
 
 .career-archive-card__type {
-    display: inline-flex;
-    align-items: center;
-    align-self: flex-start;
-    margin: 0 0 0.85rem;
-    padding: 0.38rem 0.7rem;
-    border-radius: 999px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    line-height: 1;
-    text-transform: uppercase;
-    border: 1px solid transparent;
+	display: inline-flex;
+	align-items: center;
+	align-self: flex-start;
+	margin: 0 0 0.85rem;
+	padding: 0.38rem 0.7rem;
+	border: 1px solid transparent;
+	border-radius: 999px;
+	font-size: 0.7rem;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
 }
 
-/* Konkursy naukowe */
 .career-archive-card--scientific .career-archive-card__type {
-    background: rgba(41, 52, 88, 0.1);
-    color: var(--inlife-primary);
-    border-color: rgba(41, 52, 88, 0.16);
+	background: rgba(41, 52, 88, 0.1);
+	border-color: rgba(41, 52, 88, 0.16);
+	color: var(--inlife-primary);
 }
 
-/* Oferty pracy */
 .career-archive-card--jobs .career-archive-card__type {
-    background: rgba(213, 219, 62, 0.22);
-    color: var(--inlife-primary);
-    border-color: rgba(213, 219, 62, 0.4);
+	background: rgba(213, 219, 62, 0.22);
+	border-color: rgba(213, 219, 62, 0.4);
+	color: var(--inlife-primary);
 }
 
 .career-archive-card__title {
-    margin: 0 0 0.6rem;
-    font-size: clamp(1.08rem, 1.4vw, 1.14rem);
-    font-weight: 600;
-    line-height: 1.35;
-    color: var(--inlife-primary);
+	margin: 0 0 0.6rem;
+	font-size: clamp(1.08rem, 1.4vw, 1.14rem);
+	font-weight: 700;
+	line-height: 1.35;
+	color: var(--inlife-primary);
 }
 
 .career-archive-card__excerpt {
-    margin: 0 0 0.85rem;
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--inlife-text-muted);
+	margin: 0 0 0.85rem;
+	font-size: 0.95rem;
+	line-height: 1.65;
+	color: var(--inlife-text-muted);
 }
 
 .career-archive-card__meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    margin-top: auto;
-    padding-top: 0.35rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	margin-top: auto;
+	padding-top: 0.35rem;
 }
 
 .career-archive-card__meta-item {
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.55;
-    color: var(--inlife-text-muted);
+	margin: 0;
+	font-size: 0.9rem;
+	line-height: 1.55;
+	color: var(--inlife-text-muted);
 }
 
 .career-archive-card__meta-item--deadline {
-    font-weight: 700;
-    color: var(--inlife-primary);
+	font-weight: 700;
+	color: var(--inlife-primary);
 }
 
 .career-archive-card__readmore {
-    margin-top: 1rem;
+	margin-top: auto;
+	padding-top: 1rem;
 }
 
+
+/* =========================================================
+   EMPTY STATE / PAGINATION
+========================================================= */
+
 .career-archive-empty {
-    margin-top: 0.5rem;
+	margin-top: 0.5rem;
 }
 
 .career-archive-empty__text {
-    color: var(--inlife-text-muted);
+	color: var(--inlife-text-muted);
 }
 
 .career-archive-pagination {
-    margin-top: clamp(1.75rem, 3vw, 2.5rem);
+	margin-top: clamp(1.75rem, 3vw, 2.5rem);
 
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        align-items: center;
-    }
+	.nav-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		align-items: center;
+	}
 
-    .page-numbers {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 42px;
-        height: 42px;
-        padding: 0.55rem 0.9rem;
-        border: 1px solid #dbe4ee;
-        border-radius: 999px;
-        background: #f4f7fb;
-        color: #293458;
-        font-size: 0.92rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition:
-            background-color 0.2s ease,
-            border-color 0.2s ease,
-            color 0.2s ease,
-            box-shadow 0.2s ease;
-    }
+	.page-numbers {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 42px;
+		height: 42px;
+		padding: 0.55rem 0.9rem;
+		border: 1px solid #dbe4ee;
+		border-radius: 999px;
+		background: #f4f7fb;
+		color: var(--inlife-primary);
+		font-size: 0.92rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease,
+			color 0.2s ease,
+			box-shadow 0.2s ease;
+	}
 
-    .page-numbers:hover,
-    .page-numbers:focus-visible {
-        background: #eaf0f7;
-        border-color: #cfd9e5;
-        color: #293458;
-        text-decoration: none;
-    }
+	.page-numbers:hover,
+	.page-numbers:focus-visible {
+		background: #eaf0f7;
+		border-color: #cfd9e5;
+		color: var(--inlife-primary);
+		text-decoration: none;
+	}
 
-    .page-numbers.current {
-        background: #293458;
-        border-color: #293458;
-        color: #fff;
-        box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.16);
-    }
+	.page-numbers.current {
+		background: var(--inlife-primary);
+		border-color: var(--inlife-primary);
+		color: #fff;
+		box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.16);
+	}
 }
+
+/* =========================================================
+   CAREER TAXONOMY — DOCUMENT LIST VIEW
+   Used by: /kariera/konkursy-i-oferty-pracy/archiwum/
+========================================================= */
+
+.site-main--career-taxonomy {
+	.career-archive-list {
+		grid-template-columns: 1fr;
+		gap: 0;
+	}
+
+	.career-archive-list__item {
+		display: block;
+	}
+
+	.career-archive-card {
+		display: block;
+		width: 100%;
+	}
+
+	.career-archive-card__link {
+		display: block;
+		width: 100%;
+		height: auto;
+		padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+		border-top: 1px solid var(--inlife-border);
+		border-right: 0;
+		border-bottom: 0;
+		border-left: 0;
+		border-radius: 0;
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.career-archive-list__item:last-child .career-archive-card__link {
+		border-bottom: 1px solid var(--inlife-border);
+	}
+
+	.career-archive-card__link:hover,
+	.career-archive-card__link:focus-visible {
+		transform: none;
+		background: rgba(255, 255, 255, 0.45);
+		box-shadow: none;
+	}
+
+	.career-archive-card__type {
+		margin-bottom: 0.9rem;
+	}
+
+	.career-archive-card__title {
+		max-width: 58rem;
+		margin-bottom: 0.7rem;
+		font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+	}
+
+	.career-archive-card__excerpt {
+		max-width: 72rem;
+		margin-bottom: 1rem;
+	}
+
+	.career-archive-card__readmore {
+		margin-top: 0.5rem;
+		padding-top: 0;
+	}
+}
+
 
 /* =========================================================
    SINGLE CAREER ENTRY
 ========================================================= */
 
 .site-main--career-entry {
+	background: var(--inlife-surface-soft);
 
-    background: var(--inlife-surface-soft);
+	.page-section--career-entry-hero {
+		padding: 0;
+	}
 
-    .page-section--career-entry-hero {
-        padding: 0;
-    }
+	.page-section--career-entry-content {
+		padding-block: clamp(2.5rem, 5vw, 4rem);
+	}
 
-    .page-section--career-entry-header,
-    .page-section--career-entry-content,
-    .page-section--career-entry-rodo {
-        padding-block: clamp(2rem, 4vw, 3rem);
-    }
-
-    // .page-section--career-entry-hero {
-    //     .p-page-hero__title {
-    //         font-size: clamp(2rem, 3.2vw, 2.8rem);
-    //         line-height: 1.2;
-    //     }
-    // }
-}
-
-.career-entry-header__section-header {
-    margin-bottom: 1.25rem;
-}
-
-.career-entry-header__back-link {
-    .c-readmore__icon {
-        order: -1;
-        transform: none;
-    }
-}
-
-.career-entry-header__back-link:hover .c-readmore__icon,
-.career-entry-header__back-link:focus-visible .c-readmore__icon {
-    transform: translateX(-4px);
-}
-
-.career-entry-header__meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    max-width: 42rem;
-}
-
-.career-entry-header__meta-item {
-    margin: 0;
-    font-size: 0.96rem;
-    line-height: 1.6;
-    color: var(--inlife-text-muted);
-}
-
-.career-entry-header__meta-item--deadline {
-    font-weight: 700;
-    color: var(--inlife-primary);
+	.page-section--career-entry-rodo {
+		padding-top: 0;
+		padding-bottom: clamp(3rem, 5vw, 4.5rem);
+	}
 }
 
 .career-entry-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: clamp(2rem, 4vw, 3rem);
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: clamp(2rem, 4vw, 3rem);
 }
 
 .career-entry-main {
-    min-width: 0;
+	min-width: 0;
 }
 
 .career-entry-aside {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+	min-width: 0;
 }
+
+
+/* =========================================================
+   SINGLE CONTENT — NEWS-LIKE, NO CARD
+========================================================= */
 
 .career-entry-content {
-    min-width: 0;
-}
-
-.career-entry-content__lead {
-    margin-bottom: 1.5rem;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--inlife-text);
+	border-top: 1px solid var(--inlife-border);
+	border-bottom: 1px solid var(--inlife-border);
+	padding-block: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .career-entry-content__body {
-    font-size: 0.98rem;
-    line-height: 1.7;
+	max-width: 70rem;
+	font-size: 1rem;
+	line-height: 1.78;
+	color: var(--inlife-text);
 }
 
-.career-entry-content__body>*:last-child {
-    margin-bottom: 0;
+.career-entry-content__body > *:last-child {
+	margin-bottom: 0;
+}
+
+.career-entry-content__footer {
+	margin-top: clamp(1.75rem, 3vw, 2.5rem);
+	padding-top: 1.25rem;
+	border-top: 1px solid var(--inlife-border);
+}
+
+.career-entry-share {
+	margin: 0;
+}
+
+
+/* =========================================================
+   SINGLE ASIDE — TEXTUAL, NO CARDS
+========================================================= */
+
+.career-entry-aside__stack {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.career-entry-aside__panel {
+	border-top: 1px solid var(--inlife-border);
+	padding-top: 1rem;
 }
 
 .career-entry-aside__heading {
-    margin: 0 0 0.75rem;
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--inlife-primary);
+	margin: 0 0 0.85rem;
+	font-size: 0.78rem;
+	font-weight: 700;
+	line-height: 1.35;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--inlife-primary);
 }
 
 .career-entry-aside__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .career-entry-aside__label {
-    display: block;
-    font-size: 0.78rem;
-    color: var(--inlife-text-muted);
+	display: block;
+	margin-bottom: 0.15rem;
+	font-size: 0.78rem;
+	line-height: 1.35;
+	color: var(--inlife-text-muted);
 }
 
 .career-entry-aside__value {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--inlife-text);
+	display: block;
+	font-size: 0.95rem;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--inlife-text);
 }
 
-.career-entry-aside__value--deadline {
-    color: var(--inlife-primary);
+.career-entry-aside__note {
+	margin: 0;
+	font-size: 0.95rem;
+	line-height: 1.65;
+	color: var(--inlife-text-muted);
 }
 
-.career-entry-aside__links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
 
-    li+li {
-        margin-top: 0.4rem;
-    }
-}
-
-.career-entry-aside__links a {
-    text-decoration: none;
-    font-weight: 600;
-    color: var(--inlife-primary);
-}
-
-.career-entry-aside__links a:hover,
-.career-entry-aside__links a:focus-visible {
-    text-decoration: underline;
-}
+/* =========================================================
+   RODO
+========================================================= */
 
 .career-entry-rodo {
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.25rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%);
-    padding: 1.25rem;
+	padding: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+.career-entry-rodo__kicker {
+	margin: 0 0 0.5rem;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--inlife-primary);
 }
 
 .career-entry-rodo__title {
-    margin: 0 0 1rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #293458;
+	margin: 0 0 1rem;
+	font-size: 1.05rem;
+	font-weight: 700;
+	line-height: 1.35;
+	color: var(--inlife-primary);
+}
+
+.career-entry-rodo__content {
+	font-size: 0.92rem;
+	line-height: 1.75;
+	color: var(--inlife-text-muted);
+}
+
+.career-entry-rodo__content > *:last-child {
+	margin-bottom: 0;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (min-width: 768px) {
+	.career-archive-list {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
 }
 
 @media (min-width: 992px) {
-    .career-archive-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+	.career-entry-layout {
+		grid-template-columns: minmax(0, 1fr) minmax(260px, 300px);
+		align-items: start;
+	}
 
-    .career-entry-layout {
-        grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-        align-items: start;
-    }
+	.career-entry-aside {
+		position: sticky;
+		top: calc(var(--inlife-header-offset, 88px) + 1.5rem);
+	}
 }
