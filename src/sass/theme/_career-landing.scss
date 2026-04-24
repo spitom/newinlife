@@ -603,40 +603,17 @@
 		justify-content: flex-end;
 	}
 
-    .career-hr-documents__layout {
-        grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
-        gap: 1.5rem;
-    }
 }
 
 @media (min-width: 1200px) {
-    .career-values__layout {
-        grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-        gap: 1.5rem;
-    }
 
-    .career-values__highlights {
+    .career-trainings__grid,
+    .career-onboarding__grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .career-trainings__grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .career-diversity__layout {
-        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-        gap: 1.5rem;
     }
 
     .career-diversity__points {
         grid-template-columns: 1fr;
     }
 
-    .career-location__grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .career-onboarding__grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
 }

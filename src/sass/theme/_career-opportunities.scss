@@ -137,16 +137,9 @@
         color: var(--inlife-text-muted);
     }
 
-    .career-op-card__cta {
-        margin-top: auto;
-        padding-top: 0.9rem;
-        font-size: 0.92rem;
-        font-weight: 700;
-        color: var(--inlife-primary);
-
-        &::after {
-            content: " →";
-        }
+    .career-op-card__readmore {
+	margin-top: auto;
+	padding-top: 0.9rem;
     }
 }
 

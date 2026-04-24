@@ -57,7 +57,7 @@ $custom_breadcrumbs = (string) ob_get_clean();
 				'title'       => $term_title,
 				'lead'        => $term_lead,
 				'breadcrumbs' => $custom_breadcrumbs,
-				'modifier'    =>  [ 'single', 'flush' ],
+				'modifier' => [ 'archive', 'flush' ],
 				'title_id'    => 'career-taxonomy-heading',
 			]
 		);

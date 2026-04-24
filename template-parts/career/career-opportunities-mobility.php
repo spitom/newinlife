@@ -109,8 +109,11 @@ get_template_part(
 							</p>
 						<?php endif; ?>
 
-						<span class="career-op-card__cta">
-							<?php echo esc_html( inlife_t( 'Przejdź do serwisu' ) ); ?>
+						<span class="c-readmore career-op-card__readmore">
+							<span class="c-readmore__label">
+								<?php echo esc_html( inlife_t( 'Przejdź do serwisu' ) ); ?>
+							</span>
+							<span class="c-readmore__icon" aria-hidden="true">→</span>
 						</span>
 					</a>
 				</article>
