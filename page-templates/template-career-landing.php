@@ -60,17 +60,15 @@ $hero_actions = (string) ob_get_clean();
 			'template-parts/patterns/pattern-media-hero',
 			null,
 			[
-				'kicker'      => $hero_kicker ?? '',
-				'title'       => $hero_title,
-				'lead'        => $hero_lead,
-				'image_id'    => $hero_image_id,
-				'breadcrumbs' => true,
-
-				'variant'     => 'career',
-				'media_shape' => 'hex',
-
-				// jeśli jest CTA:
-				'actions_html' => $hero_actions ?? '',
+				'kicker'       => $hero_kicker,
+				'title'        => $hero_title,
+				'lead'         => $hero_lead,
+				'image_id'     => $hero_image_id,
+				'breadcrumbs'  => true,
+				'actions_html' => $hero_actions,
+				'variant'      => 'landing',
+				'media_shape'  => 'hex',
+				'title_id'     => 'career-hero-heading',
 			]
 		);
 		?>
