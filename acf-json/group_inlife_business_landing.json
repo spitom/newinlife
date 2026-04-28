@@ -1,0 +1,1118 @@
+{
+    "key": "group_inlife_business_landing",
+    "title": "Business — Landing",
+    "fields": [
+        {
+            "key": "field_eaf8f03b045c",
+            "label": "Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_d2dc38b50348",
+            "label": "Hero: kicker",
+            "name": "business_hero_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Biznes",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_cfdf7cbf98fa",
+            "label": "Hero: tytuł",
+            "name": "business_hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Rozwiązania dla przemysłu i partnerów zewnętrznych",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_972d96523028",
+            "label": "Hero: lead",
+            "name": "business_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Wspieramy firmy i instytucje poprzez usługi laboratoryjne, transfer wiedzy, rozwój technologii oraz współpracę badawczo-rozwojową. Łączymy zaplecze naukowe z praktycznym podejściem do potrzeb biznesu.",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_752ed249afb9",
+            "label": "Hero: CTA główne — etykieta",
+            "name": "business_hero_cta_primary_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Skontaktuj się z nami",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_f8ff902993e0",
+            "label": "Hero: CTA główne — URL",
+            "name": "business_hero_cta_primary_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#business-contact-heading",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_4736d027f1b0",
+            "label": "Hero: CTA drugorzędne — etykieta",
+            "name": "business_hero_cta_secondary_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Zobacz usługi",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_250b8c4e539b",
+            "label": "Hero: CTA drugorzędne — URL",
+            "name": "business_hero_cta_secondary_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#business-services-industries-heading",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_0a238e9dae6e",
+            "label": "Usługi według branż",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_0c9e675b00e0",
+            "label": "Branże: kicker",
+            "name": "business_services_industries_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Katalog usług",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_29aa5fe5b330",
+            "label": "Branże: tytuł",
+            "name": "business_services_industries_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Usługi według branż",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_9600c37b909d",
+            "label": "Branże: lead",
+            "name": "business_services_industries_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Wspieramy partnerów z różnych sektorów gospodarki, oferując ekspertyzę naukową, zaplecze laboratoryjne oraz rozwiązania dopasowane do potrzeb konkretnych branż.",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_1aef1c33c67b",
+            "label": "Branże: kafelki",
+            "name": "business_industry_tiles",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "5–6 kafelków kierujących do konkretnych podstron.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_d5d3db176528",
+            "button_label": "Dodaj branżę",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_d5d3db176528",
+                    "label": "Tytuł",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_1cb251ec0d56",
+                    "label": "Opis",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_2a304a134845",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_dcdd1274f35a",
+                    "label": "Badge / etykieta",
+                    "name": "badge",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Branża",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        },
+        {
+            "key": "field_4f073c64e6aa",
+            "label": "Usługi według laboratoriów",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_ebf8a49b4589",
+            "label": "Laboratoria: kicker",
+            "name": "business_services_labs_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Zaplecze laboratoryjne",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_58c46c3222f9",
+            "label": "Laboratoria: tytuł",
+            "name": "business_services_labs_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Usługi według laboratoriów",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_0886277aae08",
+            "label": "Laboratoria: lead",
+            "name": "business_services_labs_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Poznaj laboratoria i jednostki wspierające współpracę z biznesem: analizy, ekspertyzy, badania, wdrożenia oraz projekty rozwojowe.",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_7c45c3f2d854",
+            "label": "Laboratoria: lista",
+            "name": "business_lab_tiles",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Lista laboratoriów renderowana jako kompaktowy indeks linków.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_d5d3db176528",
+            "button_label": "Dodaj laboratorium",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_d5d3db176528",
+                    "label": "Nazwa laboratorium",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_1cb251ec0d56",
+                    "label": "Krótki opis opcjonalny",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_2a304a134845",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_dcdd1274f35a",
+                    "label": "Etykieta pomocnicza",
+                    "name": "badge",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Laboratorium",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        },
+        {
+            "key": "field_de8c2625d548",
+            "label": "Technologie",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_9b6edb3dd01e",
+            "label": "Technologie: kicker",
+            "name": "business_technologies_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Nasze technologie",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_0f3e4e840dff",
+            "label": "Technologie: tytuł",
+            "name": "business_technologies_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Patenty, know-how i rozwiązania gotowe do współpracy",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6cae7012632a",
+            "label": "Technologie: lead",
+            "name": "business_technologies_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Rozwijamy rozwiązania o potencjale wdrożeniowym i transferowym. Łączymy badania, doświadczenie eksperckie oraz zaplecze instytutowe, aby wspierać partnerów biznesowych w rozwoju nowych produktów i procesów.",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_a19d8b89cdf1",
+            "label": "Technologie: CTA sekcji",
+            "name": "business_technologies_cta",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_19c4c18c77a4",
+            "label": "Technologie: panele",
+            "name": "business_technology_tiles",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Pierwszy element może być użyty jako główne CTA/portfolio; kolejne jako panele boczne.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_d5d3db176528",
+            "button_label": "Dodaj technologię",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_d5d3db176528",
+                    "label": "Tytuł",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_1cb251ec0d56",
+                    "label": "Opis",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_2a304a134845",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_dcdd1274f35a",
+                    "label": "Badge / etykieta",
+                    "name": "badge",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Technologia",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_e9a23cbc4551",
+                    "label": "Tekst linku / meta",
+                    "name": "meta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Dowiedz się więcej",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ]
+        },
+        {
+            "key": "field_b697b433fca4",
+            "label": "Nasze sukcesy",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_e0208eaacecf",
+            "label": "Sukcesy: kicker",
+            "name": "business_success_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Nasze sukcesy",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_16b4c433550f",
+            "label": "Sukcesy: tytuł",
+            "name": "business_success_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Wybrane wdrożenia i współprace",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_d23fe9610a17",
+            "label": "Sukcesy: lead",
+            "name": "business_success_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Zobacz przykłady działań realizowanych we współpracy z partnerami biznesowymi – od badań i analiz po wdrożenia i rozwój produktów.",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5081ee8cfbb0",
+            "label": "Sukcesy: przykłady",
+            "name": "business_success_cases",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Pierwszy element będzie wyróżniony jako główny przykład.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_d5d3db176528",
+            "button_label": "Dodaj przykład",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_d5d3db176528",
+                    "label": "Tytuł",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_9a0364b9e99b",
+                    "label": "Opis",
+                    "name": "content",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0
+                },
+                {
+                    "key": "field_78805a221a98",
+                    "label": "Zdjęcie",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                },
+                {
+                    "key": "field_40484bf17715",
+                    "label": "Film / YouTube / Vimeo",
+                    "name": "video_embed",
+                    "aria-label": "",
+                    "type": "oembed",
+                    "instructions": "Opcjonalnie. Film ma pierwszeństwo przed zdjęciem.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "width": "",
+                    "height": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5b0a8c2b7cd9",
+            "label": "Kontakt",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_35b29c63e7cd",
+            "label": "Kontakt: kicker",
+            "name": "business_contact_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Współpraca",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_1a24d1db102f",
+            "label": "Kontakt: tytuł",
+            "name": "business_contact_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Porozmawiajmy o współpracy",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_e54ed83b636b",
+            "label": "Kontakt: lead",
+            "name": "business_contact_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Współpracujemy z firmami, instytucjami i partnerami badawczo-rozwojowymi w zakresie badań, analiz, wdrożeń oraz projektów innowacyjnych. Skontaktuj się z nami, aby omówić potrzeby i możliwe kierunki współpracy.",
+            "maxlength": "",
+            "rows": 5,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_58b9411142b6",
+            "label": "Kontakt: nazwa / osoba",
+            "name": "business_contact_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Zespół współpracy z biznesem",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_16871eb11676",
+            "label": "Kontakt: rola",
+            "name": "business_contact_role",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Koordynacja usług, analiz i projektów B+R",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_21ea0be5476f",
+            "label": "Kontakt: e-mail",
+            "name": "business_contact_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "m.kowalik@pan.olsztyn.pl",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_2cc6f7f29ae3",
+            "label": "Kontakt: telefon",
+            "name": "business_contact_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_a3da13d08528",
+            "label": "Kontakt: shortcode formularza",
+            "name": "business_contact_form",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Np. shortcode formularza Forminator.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/template-business-landing.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Pola ACF dla landing page Biznes. Zgodne z partialami template-parts/business/*.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1777376344
+}

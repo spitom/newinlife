@@ -78,7 +78,6 @@ $context = [
 	<?php get_template_part( 'template-parts/society/society', 'initiatives', $context ); ?>
 	<?php get_template_part( 'template-parts/society/society', 'meet-us', $context ); ?>
 	<?php get_template_part( 'template-parts/society/society', 'schools', $context ); ?>
-	<?php get_template_part( 'template-parts/society/society', 'cta', $context ); ?>
 
 </main>
 

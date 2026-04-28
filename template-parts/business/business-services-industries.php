@@ -9,20 +9,6 @@ defined('ABSPATH') || exit;
 
 $post_id = get_the_ID();
 
-if (!function_exists('inlife_get_acf_field')) {
-	function inlife_get_acf_field($field_name, $post_id = 0, $default = null) {
-		if (function_exists('get_field')) {
-			$value = get_field($field_name, $post_id);
-
-			if ($value !== null && $value !== '') {
-				return $value;
-			}
-		}
-
-		return $default;
-	}
-}
-
 $section_kicker = inlife_get_acf_field(
 	'business_services_industries_kicker',
 	$post_id,
@@ -61,8 +47,8 @@ $tiles = [
 		'badge'   => 'Branża',
 	],
 	[
-		'title'   => 'Suplementy i nutraceutyki',
-		'text'    => 'Ekspertyzy, walidacja oraz wsparcie dla rozwoju produktów funkcjonalnych.',
+		'title'   => 'Lorem ipsum',
+		'text'    => 'Aliquam magna magna, auctor quis enim eu, vestibulum fermentum mi..',
 		'url'     => '#',
 		'badge'   => 'Branża',
 	],
@@ -77,7 +63,6 @@ if (function_exists('have_rows') && have_rows('business_industry_tiles', $post_i
 		$title = get_sub_field('title');
 		$text  = get_sub_field('text');
 		$link  = get_sub_field('link');
-		$badge = get_sub_field('badge');
 
 		$url = '#';
 
@@ -91,7 +76,6 @@ if (function_exists('have_rows') && have_rows('business_industry_tiles', $post_i
 			'title' => $title ?: '',
 			'text'  => $text ?: '',
 			'url'   => $url,
-			'badge' => $badge ?: 'Branża',
 		];
 	}
 }
@@ -116,17 +100,12 @@ if (function_exists('have_rows') && have_rows('business_industry_tiles', $post_i
 		<div class="business-services__grid business-services__grid--industries c-card-grid c-card-grid--4">
 			<?php foreach ($tiles as $index => $tile) : ?>
 				<article class="business-service-card business-service-card--industry c-card c-card--nav">
-					<div class="business-service-card__frame c-card__frame c-card__frame--cut-tl">
+					<div class="business-service-card__frame c-card__frame">
 						<a class="business-service-card__link business-service-card__link--nav" href="<?php echo esc_url($tile['url']); ?>">
 							<div class="business-service-card__inner c-card__inner">
 								<div class="business-service-card__body c-card__body">
+									
 									<div class="business-service-card__meta-row">
-										<?php if (!empty($tile['badge'])) : ?>
-											<span class="business-service-card__badge business-service-card__badge--soft">
-												<?php echo esc_html($tile['badge']); ?>
-											</span>
-										<?php endif; ?>
-
 										<span class="business-service-card__index" aria-hidden="true">
 											<?php echo esc_html(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)); ?>
 										</span>

@@ -1,19 +1,19 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-if ( ! function_exists( 'inlife_get_acf_field' ) ) {
-	function inlife_get_acf_field( $field_name, $post_id = 0, $default = null ) {
-		if ( function_exists( 'get_field' ) ) {
-			$value = get_field( $field_name, $post_id );
+// if ( ! function_exists( 'inlife_get_acf_field' ) ) {
+// 	function inlife_get_acf_field( $field_name, $post_id = 0, $default = null ) {
+// 		if ( function_exists( 'get_field' ) ) {
+// 			$value = get_field( $field_name, $post_id );
 
-			if ( null !== $value && '' !== $value ) {
-				return $value;
-			}
-		}
+// 			if ( null !== $value && '' !== $value ) {
+// 				return $value;
+// 			}
+// 		}
 
-		return $default;
-	}
-}
+// 		return $default;
+// 	}
+// }
 
 if ( ! function_exists( 'inlife_get_society_format_label' ) ) {
 	/**

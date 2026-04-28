@@ -97,6 +97,7 @@ require_once get_stylesheet_directory() . '/inc/inlife-theme-setup.php';
 require_once get_stylesheet_directory() . '/inc/inlife-template-tags.php';
 require_once get_stylesheet_directory() . '/inc/class-inlife-accessible-navwalker.php';
 require_once get_stylesheet_directory() . '/inc/helpers/i18n.php';
+require_once get_stylesheet_directory() . '/inc/helpers/acf-fields.php';
 require_once get_stylesheet_directory() . '/inc/inlife-polylang-strings.php';
 require_once get_stylesheet_directory() . '/inc/inlife-nav-filters.php';
 require_once get_stylesheet_directory() . '/inc/inlife-footer.php';

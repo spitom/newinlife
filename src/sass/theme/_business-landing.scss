@@ -33,152 +33,8 @@
     flex-direction: column;
 }
 
-/* =========================================================
-   KARTY NAVIGACYJNE — BRANŻE / DARK PRIMARY TEST
-========================================================= */
-
-.business-service-card--industry {
-    height: 100%;
-}
-
-.business-service-card__link--nav {
-    display: block;
-    height: 100%;
-    color: inherit;
-    text-decoration: none;
-}
-
-.business-service-card__link--nav:hover,
-.business-service-card__link--nav:focus-visible {
-    text-decoration: none;
-}
-
-.business-service-card--industry .business-service-card__body {
-    justify-content: space-between;
-    min-height: 100%;
-    gap: 0;
-}
-
-.business-service-card__meta-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-}
-
-.business-service-card__badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.4rem 0.78rem;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    line-height: 1;
-}
-
-.business-service-card__badge--soft {
-    background: rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    box-shadow: none;
-}
-
-.business-service-card__index {
-    flex: 0 0 auto;
-    font-size: 0.92rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.46);
-}
-
-.business-service-card__text {
-    margin: 0 0 1.5rem;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.78);
-}
-
-.business-service-card--industry:hover .c-readmore__icon,
-.business-service-card--industry:focus-within .c-readmore__icon {
-    transform: translateX(4px);
-    opacity: 1;
-}
-
-/* nav card tone */
-.business-service-card--industry.c-card--nav .c-card__frame {
-    background: rgba(17, 24, 39, 0.22);
-}
-
-.business-service-card--industry.c-card--nav:hover .c-card__frame,
-.business-service-card--industry.c-card--nav:focus-within .c-card__frame {
-    background: rgba(17, 24, 39, 0.32);
-}
-
-.business-service-card--industry.c-card--nav .c-card__inner {
-    position: relative;
-    background:
-        linear-gradient(135deg, #293458 0%, #24304f 52%, #1f2945 100%);
-}
-
-.business-service-card--industry.c-card--nav .c-card__inner::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(135deg,
-            rgba(255, 255, 255, 0.10) 0%,
-            rgba(255, 255, 255, 0.02) 38%,
-            rgba(255, 255, 255, 0.00) 100%);
-    pointer-events: none;
-}
-
-.business-service-card--industry.c-card--nav .c-card__inner::after {
-    content: "";
-    position: absolute;
-    top: -14%;
-    right: -10%;
-    width: 46%;
-    height: 140%;
-    border-radius: 999px;
-    background: rgba(120, 140, 190, 0.12);
-    transform: rotate(20deg);
-    pointer-events: none;
-}
-
-.business-service-card--industry .c-card__title {
-    position: relative;
-    z-index: 1;
-    max-width: 12ch;
-    margin-bottom: 1.1rem;
-    font-size: clamp(1.45rem, 1.8vw, 1.85rem);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-}
-
-.business-service-card--industry .business-service-card__text,
-.business-service-card--industry .c-readmore,
-.business-service-card--industry .business-service-card__meta-row {
-    position: relative;
-    z-index: 1;
-}
-
-.business-service-card--industry .c-readmore {
-    color: rgba(255, 255, 255, 0.94);
-}
-
-.business-service-card--industry .c-readmore:hover,
-.business-service-card--industry .c-readmore:focus-visible {
-    color: #ffffff;
-}
-
-.business-service-card--industry .c-readmore__icon {
-    opacity: 0.9;
-}
-
 // /* =========================================================
-//    KARTY NAVIGACYJNE — BRANŻE / PRIMARY MID TONE
+//    KARTY NAVIGACYJNE — BRANŻE / DARK PRIMARY TEST
 // ========================================================= */
 
 // .business-service-card--industry {
@@ -222,9 +78,9 @@
 // }
 
 // .business-service-card__badge--soft {
-//     background: rgba(255, 255, 255, 0.18);
-//     color: rgba(255, 255, 255, 0.94);
-//     border: 1px solid rgba(255, 255, 255, 0.16);
+//     background: rgba(255, 255, 255, 0.12);
+//     color: rgba(255, 255, 255, 0.92);
+//     border: 1px solid rgba(255, 255, 255, 0.14);
 //     box-shadow: none;
 // }
 
@@ -233,14 +89,14 @@
 //     font-size: 0.92rem;
 //     font-weight: 700;
 //     letter-spacing: 0.08em;
-//     color: rgba(255, 255, 255, 0.5);
+//     color: rgba(255, 255, 255, 0.46);
 // }
 
 // .business-service-card__text {
 //     margin: 0 0 1.5rem;
 //     font-size: 0.95rem;
 //     line-height: 1.7;
-//     color: rgba(255, 255, 255, 0.82);
+//     color: rgba(255, 255, 255, 0.78);
 // }
 
 // .business-service-card--industry:hover .c-readmore__icon,
@@ -251,18 +107,18 @@
 
 // /* nav card tone */
 // .business-service-card--industry.c-card--nav .c-card__frame {
-//     background: rgba(41, 52, 88, 0.16);
+//     background: rgba(17, 24, 39, 0.22);
 // }
 
 // .business-service-card--industry.c-card--nav:hover .c-card__frame,
 // .business-service-card--industry.c-card--nav:focus-within .c-card__frame {
-//     background: rgba(41, 52, 88, 0.22);
+//     background: rgba(17, 24, 39, 0.32);
 // }
 
 // .business-service-card--industry.c-card--nav .c-card__inner {
 //     position: relative;
 //     background:
-//         linear-gradient(135deg, #3a476c 0%, #313d61 52%, #293458 100%);
+//         linear-gradient(135deg, #293458 0%, #24304f 52%, #1f2945 100%);
 // }
 
 // .business-service-card--industry.c-card--nav .c-card__inner::before {
@@ -271,8 +127,8 @@
 //     inset: 0;
 //     background:
 //         linear-gradient(135deg,
-//             rgba(255, 255, 255, 0.14) 0%,
-//             rgba(255, 255, 255, 0.05) 40%,
+//             rgba(255, 255, 255, 0.10) 0%,
+//             rgba(255, 255, 255, 0.02) 38%,
 //             rgba(255, 255, 255, 0.00) 100%);
 //     pointer-events: none;
 // }
@@ -280,10 +136,10 @@
 // .business-service-card--industry.c-card--nav .c-card__inner::after {
 //     content: "";
 //     position: absolute;
-//     top: -12%;
-//     right: -8%;
-//     width: 42%;
-//     height: 135%;
+//     top: -14%;
+//     right: -10%;
+//     width: 46%;
+//     height: 140%;
 //     border-radius: 999px;
 //     background: rgba(120, 140, 190, 0.12);
 //     transform: rotate(20deg);
@@ -309,7 +165,7 @@
 // }
 
 // .business-service-card--industry .c-readmore {
-//     color: rgba(255, 255, 255, 0.92);
+//     color: rgba(255, 255, 255, 0.94);
 // }
 
 // .business-service-card--industry .c-readmore:hover,
@@ -322,175 +178,438 @@
 // }
 
 // /* =========================================================
-//    KARTY NAVIGACYJNE — BRANŻE
+//    BUSINESS — INDUSTRY CARDS
 // ========================================================= */
 
+// .business-services__grid--industries {
+// 	display: grid;
+// 	gap: clamp(1rem, 2vw, 1.5rem);
+
+// 	@media (min-width: 768px) {
+// 		grid-template-columns: repeat(2, minmax(0, 1fr));
+// 	}
+
+// 	@media (min-width: 1200px) {
+// 		grid-template-columns: repeat(4, minmax(0, 1fr));
+// 	}
+// }
+
 // .business-service-card--industry {
-//     height: 100%;
+// 	height: 100%;
+
+// 	.business-service-card__frame,
+// 	.c-card__frame {
+// 		height: 100%;
+// 		border: 0;
+// 		border-radius: 14px;
+// 		background: var(--inlife-primary);
+// 		box-shadow: 0 18px 42px rgba(18, 38, 63, 0.12);
+// 		overflow: hidden;
+// 		transition:
+// 			transform 0.22s ease,
+// 			box-shadow 0.22s ease;
+// 	}
+
+// 	.business-service-card__inner,
+// 	.c-card__inner {
+// 		position: relative;
+// 		display: flex;
+// 		height: 100%;
+// 		min-height: clamp(260px, 22vw, 320px);
+// 		padding: clamp(1.35rem, 2vw, 1.75rem);
+// 		background: var(--inlife-primary);
+// 		color: #fff;
+// 		overflow: hidden;
+// 	}
+
+// 	.business-service-card__inner::after,
+// 	.c-card__inner::after {
+// 		content: "";
+// 		position: absolute;
+// 		right: -4.5rem;
+// 		bottom: -5.5rem;
+// 		width: 15rem;
+// 		height: 15rem;
+// 		background-image: url("../images/inlife-hero-hex-outline.svg");
+// 		background-repeat: no-repeat;
+// 		background-position: center;
+// 		background-size: contain;
+// 		opacity: 0.16;
+// 		pointer-events: none;
+// 	}
+
+// 	.business-service-card__body,
+// 	.c-card__body {
+// 		position: relative;
+// 		z-index: 1;
+// 		display: flex;
+// 		flex-direction: column;
+// 		width: 100%;
+// 		min-height: 100%;
+// 		padding: 0;
+// 	}
+
+// 	&:hover,
+// 	&:focus-within {
+// 		.business-service-card__frame,
+// 		.c-card__frame {
+// 			transform: translateY(-4px);
+// 			box-shadow: 0 24px 52px rgba(18, 38, 63, 0.18);
+// 		}
+// 	}
 // }
 
 // .business-service-card__link--nav {
-//     display: block;
-//     height: 100%;
-//     color: inherit;
-//     text-decoration: none;
-// }
+// 	display: block;
+// 	height: 100%;
+// 	color: inherit;
+// 	text-decoration: none;
 
-// .business-service-card__link--nav:hover,
-// .business-service-card__link--nav:focus-visible {
-//     text-decoration: none;
-// }
+// 	&:hover,
+// 	&:focus,
+// 	&:focus-visible {
+// 		color: inherit;
+// 		text-decoration: none;
+// 	}
 
-// .business-service-card--industry .business-service-card__body {
-//     justify-content: space-between;
-//     min-height: 100%;
-//     gap: 0;
+// 	&:focus-visible {
+// 		outline: 3px solid var(--inlife-accent);
+// 		outline-offset: 4px;
+// 	}
 // }
 
 // .business-service-card__meta-row {
-//     display: flex;
-//     align-items: flex-start;
-//     justify-content: space-between;
-//     gap: 1rem;
-//     margin-bottom: 1.25rem;
+// 	display: flex;
+// 	align-items: flex-start;
+// 	justify-content: space-between;
+// 	gap: 1rem;
+// 	margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
 // }
 
 // .business-service-card__badge {
-//     display: inline-flex;
-//     align-items: center;
-//     padding: 0.4rem 0.78rem;
-//     border-radius: 999px;
-//     font-size: 0.78rem;
-//     font-weight: 700;
-//     line-height: 1;
-// }
-
-// .business-service-card__badge--soft {
-//     background: rgba(255, 255, 255, 0.88);
-//     color: #3f5278;
-//     box-shadow: 0 6px 16px rgba(17, 24, 39, 0.04);
+// 	display: inline-flex;
+// 	align-items: center;
+// 	max-width: 100%;
+// 	padding: 0.4rem 0.72rem;
+// 	border: 1px solid rgba(255, 255, 255, 0.22);
+// 	border-radius: 999px;
+// 	background: rgba(255, 255, 255, 0.12);
+// 	color: rgba(255, 255, 255, 0.94);
+// 	font-size: 0.76rem;
+// 	font-weight: 700;
+// 	line-height: 1;
 // }
 
 // .business-service-card__index {
-//     flex: 0 0 auto;
-//     font-size: 0.92rem;
-//     font-weight: 700;
-//     letter-spacing: 0.08em;
-//     color: rgba(63, 82, 120, 0.58);
+// 	flex: 0 0 auto;
+// 	font-size: 0.92rem;
+// 	font-weight: 800;
+// 	line-height: 1;
+// 	letter-spacing: 0.08em;
+// 	color: rgba(255, 255, 255, 0.46);
 // }
 
-// .business-service-card__text {
-//     margin: 0 0 1.5rem;
-//     font-size: 0.95rem;
-//     line-height: 1.7;
-//     color: rgba(41, 52, 88, 0.82);
+// .business-service-card--industry .business-service-card__title,
+// .business-service-card--industry .c-card__title {
+// 	max-width: 13ch;
+// 	margin: 0 0 1rem;
+// 	font-size: clamp(1.55rem, 1.6vw, 2rem);
+// 	font-weight: 700;
+// 	line-height: 1.12;
+// 	letter-spacing: -0.03em;
+// 	color: #fff;
+// }
+
+// .business-service-card--industry .business-service-card__text {
+// 	max-width: 34ch;
+// 	margin: 0 0 1.4rem;
+// 	font-size: 0.96rem;
+// 	line-height: 1.75;
+// 	color: rgba(255, 255, 255, 0.8);
+// }
+
+// .business-service-card--industry .c-readmore {
+// 	margin-top: auto;
+// 	color: rgba(255, 255, 255, 0.96);
+
+// 	&:hover,
+// 	&:focus-visible {
+// 		color: #fff;
+// 	}
+
+// 	.c-readmore__icon {
+// 		opacity: 0.9;
+// 		transition: transform 0.2s ease, opacity 0.2s ease;
+// 	}
 // }
 
 // .business-service-card--industry:hover .c-readmore__icon,
 // .business-service-card--industry:focus-within .c-readmore__icon {
-//     transform: translateX(4px);
-//     opacity: 1;
+// 	transform: translateX(4px);
+// 	opacity: 1;
 // }
 
-// /* nav card tone */
-// .business-service-card--industry.c-card--nav .c-card__frame {
-//     background: rgba(41, 52, 88, 0.08);
-// }
-
-// .business-service-card--industry.c-card--nav:hover .c-card__frame,
-// .business-service-card--industry.c-card--nav:focus-within .c-card__frame {
-//     background: rgba(41, 52, 88, 0.14);
-// }
-
-// .business-service-card--industry.c-card--nav .c-card__inner {
-//     position: relative;
-//     background:
-//         linear-gradient(135deg, rgba(244, 247, 251, 0.98) 0%, rgba(234, 241, 248, 0.96) 100%);
-// }
-
-// .business-service-card--industry.c-card--nav .c-card__inner::before {
-//     content: "";
-//     position: absolute;
-//     inset: 0;
-//     background:
-//         linear-gradient(135deg,
-//             rgba(255, 255, 255, 0.22) 0%,
-//             rgba(255, 255, 255, 0) 42%,
-//             rgba(255, 255, 255, 0.06) 100%);
-//     pointer-events: none;
-// }
-
-// .business-service-card--industry.c-card--nav .c-card__inner::after {
-//     content: "";
-//     position: absolute;
-//     top: -12%;
-//     right: -8%;
-//     width: 42%;
-//     height: 135%;
-//     border-radius: 999px;
-//     background: rgba(111, 149, 200, 0.08);
-//     transform: rotate(20deg);
-//     pointer-events: none;
-// }
-
-// .business-service-card--industry .c-card__title {
-//     position: relative;
-//     z-index: 1;
-//     max-width: 12ch;
-//     margin-bottom: 1.1rem;
-//     font-size: clamp(1.45rem, 1.8vw, 1.85rem);
-//     line-height: 1.08;
-//     letter-spacing: -0.02em;
-// }
-
-// .business-service-card--industry .business-service-card__text,
-// .business-service-card--industry .c-readmore,
-// .business-service-card--industry .business-service-card__meta-row {
-//     position: relative;
-//     z-index: 1;
-// }
 
 /* =========================================================
-   KARTY Z MEDIAMI — LABORATORIA
+   BUSINESS — INDUSTRY CARDS
 ========================================================= */
 
-.business-service-card--lab {
+.business-service-card--industry {
     height: 100%;
-}
 
-.business-service-card--lab .business-service-card__placeholder--lab {
-    background:
-        linear-gradient(135deg, rgba(238, 243, 248, 0.98), rgba(223, 231, 239, 0.95)),
-        radial-gradient(circle at top right, rgba(111, 149, 200, 0.14), transparent 35%);
-}
+    .business-service-card__frame {
+        height: 100%;
+        border: 0;
+        border-radius: 14px;
+        background:
+            linear-gradient(135deg, #293458 0%, #2f3b5e 52%, #222b49 100%);
+        box-shadow: 0 18px 42px rgba(18, 38, 63, 0.12);
+        overflow: hidden;
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
 
-.business-service-card--lab .business-service-card__badge {
-    background: rgba(255, 255, 255, 0.92);
-    color: #293458;
-    box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
-}
+    .business-service-card__link--nav {
+        position: relative;
+        display: flex;
+        height: 100%;
+        min-height: clamp(210px, 17vw, 250px);
+        padding: clamp(1.25rem, 1.7vw, 1.55rem);
+        color: #fff;
+        text-decoration: none;
+        background:
+            linear-gradient(135deg, #293458 0%, #314067 54%, #212944 100%);
+        overflow: hidden;
 
-.business-service-card--lab .business-service-card__text {
-    margin: 0 0 1.5rem;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: rgba(41, 52, 88, 0.82);
-}
+        &:hover,
+        &:focus,
+        &:visited {
+            color: #fff;
+            text-decoration: none;
+        }
 
-.business-service-card--lab:hover .c-readmore__icon,
-.business-service-card--lab:focus-within .c-readmore__icon {
-    transform: translateX(4px);
-    opacity: 1;
+        &::after {
+            content: "";
+            position: absolute;
+            right: -4.25rem;
+            bottom: -7.25rem;
+            width: 15rem;
+            height: 15rem;
+            background-image: url("../assets/images/inlife-hero-hex-outline-white.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+    }
+
+    .business-service-card__inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        width: 100%;
+        background: transparent;
+    }
+
+    .business-service-card__body {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        background: transparent;
+    }
+
+    .business-service-card__meta-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+    }
+
+    // .business-service-card__badge {
+    //     display: inline-flex;
+    //     align-items: center;
+    //     padding: 0.4rem 0.72rem;
+    //     border: 1px solid rgba(255, 255, 255, 0.22);
+    //     border-radius: 999px;
+    //     background: rgba(255, 255, 255, 0.12);
+    //     color: rgba(255, 255, 255, 0.94);
+    //     font-size: 0.76rem;
+    //     font-weight: 700;
+    //     line-height: 1;
+    // }
+
+    .business-service-card__index {
+        font-size: 0.92rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--inlife-accent);
+        // color: rgba(255, 255, 255, 0.46);
+    }
+
+    .business-service-card__title {
+        max-width: 13ch;
+        margin-bottom: 0.75rem;
+        font-size: clamp(1.35rem, 1.45vw, 1.75rem);
+        font-weight: 600;
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .business-service-card__text {
+        max-width: 34ch;
+        margin-bottom: 1rem;
+        font-size: 0.96rem;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+    }
+
+    .c-readmore {
+        margin-top: auto;
+        color: rgba(255, 255, 255, 0.96);
+        text-decoration: none;
+
+        .c-readmore__icon {
+            transition: transform 0.2s ease;
+        }
+    }
+
+    &:hover,
+    &:focus-within {
+        .business-service-card__frame {
+            transform: translateY(-4px);
+            box-shadow: 0 24px 52px rgba(18, 38, 63, 0.18);
+        }
+
+        .c-readmore__icon {
+            transform: translateX(4px);
+        }
+    }
 }
 
 /* =========================================================
-   NASZE TECHNOLOGIE
+   BUSINESS — LABS INDEX
 ========================================================= */
+
+.business-labs-catalog {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 4vw, 3rem);
+
+    @media (min-width: 1200px) {
+        grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+        align-items: start;
+    }
+}
+
+.business-labs-catalog__intro {
+    min-width: 0;
+}
+
+.business-labs-catalog__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: clamp(1.5rem, 3vw, 2.5rem);
+        row-gap: 1.35rem;
+    }
+}
+
+.business-lab-link {
+    position: relative;
+}
+
+.business-lab-link__anchor {
+    position: relative;
+    display: block;
+    min-height: 100%;
+    padding: 0.1rem 2rem 0.1rem 1.35rem;
+    color: inherit;
+    text-decoration: none;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.2rem;
+        bottom: 0.2rem;
+        width: 3px;
+        border-radius: 999px;
+        background: var(--inlife-accent);
+    }
+
+    &:hover,
+    &:focus {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &:focus-visible {
+        outline: 3px solid var(--inlife-accent);
+        outline-offset: 4px;
+    }
+}
+
+.business-lab-link__title {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--inlife-primary);
+}
+
+.business-lab-link__text {
+    max-width: 36rem;
+    margin: 0.4rem 0 0;
+    font-size: 0.94rem;
+    line-height: 1.65;
+    color: var(--inlife-text-muted);
+}
+
+.business-lab-link__icon {
+    position: absolute;
+    right: 0;
+    top: 0.1rem;
+    font-weight: 800;
+    color: var(--inlife-primary);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+}
+
+.business-lab-link__anchor:hover .business-lab-link__icon,
+.business-lab-link__anchor:focus-visible .business-lab-link__icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* =========================================================
+   BUSINESS — TECHNOLOGIES
+========================================================= */
+
+.business-technologies {
+    display: flex;
+    flex-direction: column;
+}
 
 .business-technologies__layout {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: clamp(1rem, 2vw, 1.5rem);
+
+    @media (min-width: 992px) {
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        align-items: stretch;
+    }
 }
 
 .business-tech-panel {
@@ -498,145 +617,187 @@
 }
 
 .business-tech-panel__link {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: clamp(1.5rem, 2.5vw, 2rem);
-    border-radius: 1.5rem;
+    min-height: 100%;
+    padding: clamp(1.35rem, 2.2vw, 1.9rem);
+    border-radius: 14px;
+    color: inherit;
     text-decoration: none;
+    overflow: hidden;
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease,
-        background-color 0.25s ease,
-        color 0.25s ease;
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease,
+        background-color 0.22s ease;
+
+    &:hover,
+    &:focus,
+    &:visited {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    &:focus-visible {
+        outline: 3px solid var(--inlife-accent);
+        outline-offset: 4px;
+    }
 }
 
-.business-tech-panel__link:hover,
-.business-tech-panel__link:focus-visible,
-.business-tech-panel__link:active,
-.business-tech-panel__link:visited {
-    text-decoration: none;
-}
-
-.business-tech-panel__link:hover,
-.business-tech-panel__link:focus-visible {
-    transform: translateY(-2px);
-}
-
-.business-tech-panel__link:focus-visible {
-    outline: 3px solid rgba(49, 169, 225, 0.35);
-    outline-offset: 3px;
-}
+/* Main technology panel */
 
 .business-tech-panel--main .business-tech-panel__link {
-    background: linear-gradient(135deg, #293458 0%, #2f466c 100%);
+    min-height: clamp(260px, 22vw, 320px);
+    border: 0;
+    background:
+        linear-gradient(135deg, #293458 0%, #314067 54%, #212944 100%);
+    box-shadow: 0 22px 52px rgba(18, 38, 63, 0.16);
     color: #fff;
-    box-shadow: 0 20px 50px rgba(18, 38, 63, 0.15);
-}
 
-.business-tech-panel--main .business-tech-panel__link:hover,
-.business-tech-panel--main .business-tech-panel__link:focus-visible,
-.business-tech-panel--main .business-tech-panel__link:active,
-.business-tech-panel--main .business-tech-panel__link:visited {
-    color: #fff;
-    box-shadow: 0 28px 60px rgba(18, 38, 63, 0.2);
-}
+    &::after {
+        content: "";
+        position: absolute;
+        right: -7rem;
+        bottom: -4rem;
+        width: 22rem;
+        height: 22rem;
+        background-image: url("../assets/images/inlife-hero-hex-outline.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0.16;
+        pointer-events: none;
+    }
 
-.business-tech-panel__aside {
-    display: grid;
-    gap: 1rem;
-}
-
-.business-tech-panel--side .business-tech-panel__link {
-    border: 1px solid rgba(47, 70, 108, 0.12);
-    background: #fff;
-    color: #293458;
-    box-shadow: 0 10px 28px rgba(18, 38, 63, 0.06);
-}
-
-.business-tech-panel--side .business-tech-panel__link:hover,
-.business-tech-panel--side .business-tech-panel__link:focus-visible,
-.business-tech-panel--side .business-tech-panel__link:active,
-.business-tech-panel--side .business-tech-panel__link:visited {
-    color: #293458;
-    border-color: rgba(49, 169, 225, 0.35);
-    box-shadow: 0 18px 38px rgba(18, 38, 63, 0.1);
+    &:hover,
+    &:focus-visible {
+        transform: translateY(-4px);
+        box-shadow: 0 28px 64px rgba(18, 38, 63, 0.22);
+        color: #fff;
+    }
 }
 
 .business-tech-panel__content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 42rem;
     height: 100%;
+    max-width: 42rem;
 }
+
+.business-tech-panel--main .business-tech-panel__content {
+    max-width: 38rem;
+}
+
+/* Side technology panels */
+
+.business-tech-panel__aside {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.business-tech-panel--side .business-tech-panel__link {
+    min-height: clamp(155px, 14vw, 205px);
+    padding: clamp(1.15rem, 1.8vw, 1.45rem);
+    border: 1px solid var(--inlife-border);
+    background: #fff;
+    box-shadow: 0 14px 34px rgba(18, 38, 63, 0.055);
+    color: var(--inlife-primary);
+
+    &:hover,
+    &:focus-visible {
+        transform: translateY(-3px);
+        border-color: rgba(41, 52, 88, 0.22);
+        box-shadow: 0 20px 44px rgba(18, 38, 63, 0.09);
+        color: var(--inlife-primary);
+    }
+}
+
+/* Badge */
 
 .business-tech-panel__badge {
     display: inline-flex;
     align-self: flex-start;
-    padding: 0.4rem 0.75rem;
+    margin-bottom: clamp(0.75rem, 1.8vw, 1.1rem);
+    padding: 0.38rem 0.72rem;
     border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    line-height: 1;
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .business-tech-panel--main .business-tech-panel__badge {
-    background: rgba(255, 255, 255, 0.15);
-    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.94);
 }
 
 .business-tech-panel--side .business-tech-panel__badge {
-    background: rgba(47, 70, 108, 0.08);
-    color: #2f466c;
+    font-size: 0.65rem;
+    background: #f4f7fb;
+    color: var(--inlife-primary);
+    border: 1px solid #e4ebf2;
+    color: #293458;
 }
+
+/* Typography */
 
 .business-tech-panel__title {
     margin: 0;
-    font-size: 1.4rem;
-    font-weight: 700;
-    line-height: 1.3;
+    font-size: clamp(1.15rem, 1.5vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.16;
+    letter-spacing: -0.025em;
+    color: inherit;
 }
 
 .business-tech-panel--main .business-tech-panel__title {
+    max-width: 13ch;
     color: #fff;
 }
 
 .business-tech-panel--side .business-tech-panel__title {
-    color: #293458;
+    font-size: clamp(1.25rem, 1.35vw, 1.6rem);
+    max-width: 18ch;
+    color: var(--inlife-primary);
 }
 
 .business-tech-panel__text {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.7;
+    margin: clamp(0.6rem, 1.4vw, 0.8rem) 0 0;
+    font-size: 0.96rem;
+    line-height: 1.72;
+    color: inherit;
 }
 
 .business-tech-panel--main .business-tech-panel__text {
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    max-width: 38rem;
+    color: rgba(255, 255, 255, 0.82);
 }
 
 .business-tech-panel--side .business-tech-panel__text {
-    color: rgba(41, 52, 88, 0.82);
+    color: var(--inlife-text-muted);
 }
+
+/* Meta / CTA */
 
 .business-tech-panel__meta {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.45rem;
     margin-top: auto;
-    font-size: 0.9rem;
-    font-weight: 700;
-    line-height: 1.4;
-}
-
-.business-tech-panel--main .business-tech-panel__meta {
-    color: #fff;
-}
-
-.business-tech-panel--side .business-tech-panel__meta {
-    color: #2f466c;
+    padding-top: clamp(1.25rem, 2vw, 1.75rem);
+    font-size: 0.92rem;
+    font-weight: 800;
+    line-height: 1.35;
+    color: inherit;
 }
 
 .business-tech-panel__meta::after {
@@ -648,441 +809,328 @@
 
 .business-tech-panel__link:hover .business-tech-panel__meta::after,
 .business-tech-panel__link:focus-visible .business-tech-panel__meta::after {
-    transform: translateX(2px);
+    transform: translateX(4px);
+}
+
+.business-tech-panel--main .business-tech-panel__meta {
+    color: rgba(255, 255, 255, 0.96);
+}
+
+.business-tech-panel--side .business-tech-panel__meta {
+    color: var(--inlife-primary);
+}
+
+.business-tech-panel__section {
+    max-width: 48rem;
+    margin-bottom: 0;
+}
+
+.business-tech-panel__section-kicker {
+    margin: 0 0 0.65rem;
+    font-size: 0.76rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--inlife-accent);
+}
+
+.business-tech-panel__section-title {
+    max-width: 17ch;
+    margin: 0;
+    font-size: clamp(1.75rem, 2.25vw, 2.45rem);
+    font-weight: 600;
+    line-height: 1.09;
+    letter-spacing: -0.035em;
+    color: #fff;
+}
+
+.business-tech-panel__section-lead {
+    max-width: 40rem;
+    margin-top: 1.05rem;
+    font-size: 0.96rem;
+    line-height: 1.72;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.business-tech-panel--main .business-tech-panel__badge {
+    margin-top: auto;
 }
 
 /* =========================================================
-   WSPÓŁPRACA
+   BUSINESS — CONTACT 
 ========================================================= */
 
-.business-cooperation__points {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-}
-
-.business-cooperation__point {
-    padding: 1.25rem 1.25rem 1.375rem;
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 10px 28px rgba(18, 38, 63, 0.05);
-}
-
-.business-cooperation__point-title {
-    margin: 0 0 0.625rem;
-    font-size: 1.05rem;
-    font-weight: 700;
-    line-height: 1.35;
-    color: #293458;
-}
-
-.business-cooperation__point-text {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: rgba(41, 52, 88, 0.82);
-}
-
-.business-cooperation__aside {
-    min-width: 0;
-}
-
-.business-cooperation__cta {
+.business-contact {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: clamp(1.25rem, 2.5vw, 1.75rem);
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.5rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%);
-    box-shadow: 0 16px 40px rgba(18, 38, 63, 0.08);
 }
 
-.business-cooperation__cta-title {
+.business-contact__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+
+    @media (min-width: 992px) {
+        grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+        align-items: start;
+    }
+}
+
+.business-contact__card {
+    height: 100%;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+/* LEFT SIDE */
+
+.business-contact__card--info {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%);
+}
+
+.business-contact__eyebrow {
+    margin: 0 0 0.85rem;
+    font-size: 0.74rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--inlife-primary);
+}
+
+.business-contact__name {
     margin: 0;
-    font-size: clamp(1.2rem, 1.05rem + 0.4vw, 1.5rem);
-    font-weight: 700;
-    line-height: 1.3;
-    color: #293458;
+    font-size: clamp(1.25rem, 1.5vw, 1.55rem);
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--inlife-primary);
 }
 
-.business-cooperation__cta-text {
+.business-contact__role {
+    margin: 0.5rem 0 1.5rem;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: var(--inlife-text-muted);
+}
+
+.business-contact__details {
+    display: grid;
+    gap: 0.85rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--inlife-border);
+}
+
+.business-contact__item {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: center;
     margin: 0;
     font-size: 0.95rem;
-    line-height: 1.75;
-    color: rgba(41, 52, 88, 0.82);
+    line-height: 1.5;
+    color: var(--inlife-text-muted);
+
+    a {
+        color: var(--inlife-primary);
+        font-weight: 700;
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible {
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+    }
 }
 
-.business-cooperation__cta-link {
+.business-contact__icon {
     display: inline-flex;
-    align-self: flex-start;
-    min-height: 48px;
     align-items: center;
     justify-content: center;
-    padding-inline: 1.125rem;
-    border-radius: 999px;
-    font-weight: 700;
-    text-decoration: none;
+    color: var(--inlife-primary);
+    font-size: 1.2rem;
 }
 
-.business-cooperation__cta-link:hover,
-.business-cooperation__cta-link:focus-visible,
-.business-cooperation__cta-link:active,
-.business-cooperation__cta-link:visited {
-    text-decoration: none;
+/* RIGHT SIDE (FORM) */
+
+.business-contact__form-inner {
+    font-size: 0.95rem;
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding: 0.6rem 0.75rem;
+        border-radius: 8px;
+        border: 1px solid var(--inlife-border);
+    }
+
+    button,
+    input[type="submit"] {
+        margin-top: 0.75rem;
+    }
+}
+
+.business-contact__placeholder {
+    margin: 0;
+    color: var(--inlife-text-muted);
 }
 
 /* =========================================================
-   NASZE SUKCESY
+   BUSINESS — SUCCESS GRID
 ========================================================= */
 
-.business-success-stories__layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    align-items: start;
+.business-success {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.75rem, 3vw, 2.5rem);
 }
 
-.business-success-stories__aside {
+.business-success__grid {
     display: grid;
-    gap: 1rem;
-    align-content: start;
-}
+    gap: clamp(1rem, 2vw, 1.5rem);
 
-@media (min-width: 992px) {
-    .business-success-stories__layout {
-        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-        align-items: stretch;
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .business-success-stories__aside {
-        grid-template-rows: repeat(2, 1fr);
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
 .business-success-card {
+    display: flex;
+    flex-direction: column;
     height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--inlife-border);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 12px 32px rgba(18, 38, 63, 0.055);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
+
+
 
 .business-success-card__link {
     display: flex;
     flex-direction: column;
     height: 100%;
+    color: inherit;
+    text-decoration: none;
+
+    &:focus-visible {
+        outline: 3px solid var(--inlife-accent);
+        outline-offset: 4px;
+    }
+}
+
+.business-success-card:hover,
+.business-success-card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 44px rgba(18, 38, 63, 0.11);
+}
+
+.business-success-card__media {
+    position: relative;
     overflow: hidden;
-    border: 1px solid rgba(47, 70, 108, 0.12);
-    border-radius: 1.25rem;
-    background: #fff;
-    box-shadow: 0 10px 28px rgba(18, 38, 63, 0.06);
-    color: inherit;
-    text-decoration: none;
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease;
+    aspect-ratio: 16 / 10;
+    background: #e9eef5;
 }
 
-.business-success-card__link:hover,
-.business-success-card__link:focus-visible {
-    transform: translateY(-2px);
-    border-color: rgba(49, 169, 225, 0.35);
-    box-shadow: 0 18px 38px rgba(18, 38, 63, 0.1);
-    text-decoration: none;
-}
-
-.business-success-card__link:focus-visible {
-    outline: 3px solid rgba(49, 169, 225, 0.3);
-    outline-offset: 2px;
-}
-
-.business-success-card__link,
-.business-success-card__link:hover,
-.business-success-card__link:focus-visible,
-.business-success-card__link:active,
-.business-success-card__link:visited {
-    color: inherit;
-}
-
-.business-success-card--featured .business-success-card__media {
-    position: relative;
-    aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, rgba(47, 70, 108, 0.06) 0%, rgba(49, 169, 225, 0.12) 100%);
-}
-
-.business-success-card--featured .business-success-card__placeholder {
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
+.business-success-card__image {
+    display: block;
     width: 100%;
     height: 100%;
-    padding: 1rem;
-    overflow: hidden;
-    background: linear-gradient(135deg, rgba(47, 70, 108, 0.08) 0%, rgba(49, 169, 225, 0.18) 100%);
+    object-fit: cover;
 }
 
-.business-success-card--featured .business-success-card__placeholder::before {
-    content: "";
+.business-success-card__video {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+.business-success-card__video iframe {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.18) 0%,
-            rgba(255, 255, 255, 0) 42%,
-            rgba(255, 255, 255, 0.08) 100%);
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
-.business-success-card--featured .business-success-card__placeholder::after {
-    content: "";
-    position: absolute;
-    right: -10%;
-    top: -18%;
-    width: 44%;
-    height: 135%;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.14);
-    transform: rotate(22deg);
-}
-
-.business-success-card__badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.375rem 0.75rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.9);
-    font-size: 0.8rem;
-    font-weight: 700;
-    line-height: 1;
-    color: #2f466c;
-    box-shadow: 0 8px 20px rgba(18, 38, 63, 0.06);
-}
-
-.business-success-card--featured .business-success-card__badge {
-    position: relative;
-    z-index: 1;
-}
-
-.business-success-card__badge--inline {
-    align-self: flex-start;
-    background: rgba(47, 70, 108, 0.08);
-    box-shadow: none;
-}
-
-.business-success-card__body {
+.business-success-card__footer {
     display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding: 1.125rem 1.125rem 1.25rem;
+    align-items: start;
+    min-height: 6.25rem;
+    padding: 1rem 1.15rem;
 }
 
 .business-success-card__title {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: start;
+    width: 100%;
     margin: 0;
-    font-size: 1.125rem;
-    font-weight: 700;
+    font-size: 0.98rem;
+    font-weight: 800;
     line-height: 1.35;
-    color: #293458;
+    letter-spacing: -0.01em;
+    color: inherit;
 }
 
-.business-success-card__text {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: rgba(41, 52, 88, 0.82);
+.business-success-card__title-text {
+    min-width: 0;
 }
 
-.business-success-card__result {
-    margin: 0;
-    padding-left: 0.875rem;
-    border-left: 3px solid rgba(49, 169, 225, 0.35);
-    font-size: 0.92rem;
-    font-weight: 600;
-    line-height: 1.7;
-    color: rgba(41, 52, 88, 0.86);
-}
-
-.business-success-card__meta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: auto;
-    font-size: 0.9rem;
-    font-weight: 700;
-    line-height: 1.4;
-    color: #2f466c;
-}
-
-.business-success-card__meta::after {
-    content: "→";
-    font-size: 1rem;
-    line-height: 1;
-    transition: transform 0.2s ease;
-}
-
-.business-success-card__link:hover .business-success-card__meta::after,
-.business-success-card__link:focus-visible .business-success-card__meta::after {
-    transform: translateX(2px);
-}
-
-.business-success-card--featured .business-success-card__body {
-    min-height: 280px;
-    padding: 1.25rem 1.25rem 1.375rem;
-}
-
-.business-success-card--featured .business-success-card__title {
-    font-size: clamp(1.2rem, 1.05rem + 0.35vw, 1.45rem);
-}
-
-.business-success-card--standard .business-success-card__link {
-    min-height: 100%;
-}
-
-.business-success-card--standard .business-success-card__body {
-    padding: 1.25rem 1.25rem 1.375rem;
-}
-
-.business-success-card--standard .business-success-card__title {
-    font-size: 1.02rem;
-}
-
-.business-success-card--standard .business-success-card__text {
-    font-size: 0.92rem;
-    line-height: 1.65;
-}
-
-.business-success-card--standard .business-success-card__result {
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-/* =========================================================
-   KONTAKT
-========================================================= */
-
-.business-contact__card,
-.business-contact__form-card {
-    padding: clamp(1.25rem, 2.5vw, 1.75rem);
-    border: 1px solid rgba(47, 70, 108, 0.1);
-    border-radius: 1.5rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%);
-    box-shadow: 0 16px 40px rgba(18, 38, 63, 0.08);
-}
-
-.business-contact__card {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.business-contact__card-title,
-.business-contact__form-title {
-    margin: 0;
-    font-size: clamp(1.15rem, 1rem + 0.35vw, 1.4rem);
-    font-weight: 700;
-    line-height: 1.3;
-    color: #293458;
-}
-
-.business-contact__person {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.business-contact__person-name {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.4;
-    color: #293458;
-}
-
-.business-contact__person-role {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: rgba(41, 52, 88, 0.78);
-}
-
-.business-contact__details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
-}
-
-.business-contact__detail {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: rgba(41, 52, 88, 0.84);
-}
-
-.business-contact__detail-label {
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: #2f466c;
-}
-
-.business-contact__detail a {
-    color: #293458;
-    text-decoration: none;
-}
-
-.business-contact__detail a:hover,
-.business-contact__detail a:focus-visible {
-    text-decoration: underline;
-}
-
-.business-contact__actions {
-    padding-top: 0.25rem;
-}
-
-.business-contact__button {
+.business-success-card__arrow {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 48px;
-    padding-inline: 1.125rem;
-    border-radius: 999px;
-    font-weight: 700;
-    text-decoration: none;
+    margin-top: 0.1rem;
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1;
+    transform: translateX(0);
+    transition: transform 0.2s ease;
 }
 
-.business-contact__button:hover,
-.business-contact__button:focus-visible,
-.business-contact__button:active,
-.business-contact__button:visited {
-    text-decoration: none;
+.business-success-card:hover .business-success-card__arrow,
+.business-success-card:focus-within .business-success-card__arrow {
+    transform: translateX(4px);
 }
 
-.business-contact__form-card {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    min-height: 100%;
+/* TONES */
+
+.business-success-card--primary .business-success-card__footer {
+    background: var(--inlife-primary);
+    color: #fff;
 }
 
-.business-contact__form-shortcode {
-    width: 100%;
+.business-success-card--green .business-success-card__footer {
+    background: #145c3a;
+    color: #fff;
 }
 
-.business-contact__form-placeholder {
-    padding: 1rem;
-    border: 1px dashed rgba(47, 70, 108, 0.2);
-    border-radius: 1rem;
-    background: rgba(47, 70, 108, 0.03);
+.business-success-card--orange .business-success-card__footer {
+    background: #ef7a00;
+    color: #111827;
+}
 
-    p {
-        margin: 0;
-        font-size: 0.95rem;
-        line-height: 1.7;
-        color: rgba(41, 52, 88, 0.78);
-    }
+.business-success-card--light .business-success-card__footer {
+    background: #dfe3ea;
+    color: var(--inlife-primary);
+}
+
+.business-success-card--orange .business-success-card__icon {
+    color: #111827;
 }
 
 /* =========================================================

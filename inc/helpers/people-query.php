@@ -252,3 +252,11 @@ if ( ! function_exists( 'inlife_render_obfuscated_email_link' ) ) {
 		return trim( (string) ob_get_clean() );
 	}
 }
+
+function inlife_mask_email( $email ) {
+	if ( empty( $email ) || ! is_string( $email ) ) {
+		return '';
+	}
+
+	return str_replace( '@', ' [at] ', $email );
+}

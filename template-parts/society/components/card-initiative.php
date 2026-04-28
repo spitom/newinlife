@@ -24,51 +24,21 @@ if ( ! $permalink || ! $title ) {
 }
 ?>
 
-<article class="society-card society-card--initiative c-card c-card--with-media">
-	<div class="society-card__frame c-card__frame c-card__frame--cut-tl">
-		<div class="society-card__inner c-card__inner">
-			<?php if ( has_post_thumbnail( $post_id ) ) : ?>
-				<div class="society-card__media c-card__media">
-					<a
-						class="society-card__media-link c-card__media-link"
-						href="<?php echo esc_url( $permalink ); ?>"
-						aria-hidden="true"
-						tabindex="-1"
-					>
-						<?php
-						echo get_the_post_thumbnail(
-							$post_id,
-							'medium_large',
-							false,
-							[
-								'class' => 'society-card__image c-card__image',
-								'alt'   => '',
-							]
-						);
-						?>
-					</a>
-				</div>
-			<?php endif; ?>
+<article class="society-initiative-card c-surface c-surface--panel">
+	<a class="society-initiative-card__link" href="<?php echo esc_url( $permalink ); ?>">
+		<h3 class="society-initiative-card__title">
+			<?php echo esc_html( $title ); ?>
+		</h3>
 
-			<div class="society-card__body c-card__body">
-				<h3 class="society-card__title c-card__title">
-					<a href="<?php echo esc_url( $permalink ); ?>">
-						<?php echo esc_html( $title ); ?>
-					</a>
-				</h3>
+		<?php if ( $lead ) : ?>
+			<p class="society-initiative-card__text">
+				<?php echo esc_html( $lead ); ?>
+			</p>
+		<?php endif; ?>
 
-				<?php if ( $lead ) : ?>
-					<div class="society-card__text">
-						<p><?php echo esc_html( $lead ); ?></p>
-					</div>
-				<?php endif; ?>
-
-				<a class="c-readmore" href="<?php echo esc_url( $permalink ); ?>">
-					<?php echo esc_html( inlife_t( 'Zobacz więcej' ) ); ?>
-					<span class="visually-hidden"><?php echo esc_html( $title ); ?></span>
-					<span class="c-readmore__icon" aria-hidden="true">→</span>
-				</a>
-			</div>
-		</div>
-	</div>
+		<span class="society-initiative-card__readmore c-readmore">
+			<?php echo esc_html( inlife_t( 'Przejdź dalej' ) ); ?>
+			<span class="c-readmore__icon" aria-hidden="true">→</span>
+		</span>
+	</a>
 </article>

@@ -1,90 +1,52 @@
 <?php
 /**
- * Business contact
+ * Business contact (merged cooperation + contact)
  *
  * @package UnderStrap
  */
 
 defined( 'ABSPATH' ) || exit;
 
-$post_id = get_the_ID();
+$post_id = $args['post_id'] ?? get_the_ID();
 
-if ( ! function_exists( 'inlife_get_acf_field' ) ) {
-	function inlife_get_acf_field( $field_name, $post_id = 0, $default = null ) {
-		if ( function_exists( 'get_field' ) ) {
-			$value = get_field( $field_name, $post_id );
-
-			if ( null !== $value && '' !== $value ) {
-				return $value;
-			}
-		}
-
-		return $default;
-	}
-}
-
+/**
+ * Section content
+ */
 $section_kicker = inlife_get_acf_field(
 	'business_contact_kicker',
 	$post_id,
-	'Kontakt'
+	inlife_t( 'Współpraca' )
 );
 
 $section_title = inlife_get_acf_field(
 	'business_contact_title',
 	$post_id,
-	'Porozmawiajmy o współpracy'
+	inlife_t( 'Porozmawiajmy o współpracy' )
 );
 
 $section_text = inlife_get_acf_field(
 	'business_contact_text',
 	$post_id,
-	'Jeśli chcesz omówić możliwy zakres współpracy, usługi laboratoryjne, rozwój technologii albo projekt wdrożeniowy, skontaktuj się z nami. Wspólnie dobierzemy najlepszy model działania.'
+	inlife_t( 'Współpracujemy z firmami, instytucjami i partnerami badawczo-rozwojowymi w zakresie badań, analiz, wdrożeń oraz projektów innowacyjnych. Skontaktuj się z nami, aby omówić potrzeby i możliwe kierunki współpracy.' )
 );
 
-$person_name = inlife_get_acf_field(
-	'business_contact_person_name',
-	$post_id,
-	'Imię i nazwisko'
-);
+/**
+ * Contact data
+ */
+$contact_name  = inlife_get_acf_field( 'business_contact_name', $post_id, '' );
+$contact_role  = inlife_get_acf_field( 'business_contact_role', $post_id, '' );
+$contact_email = inlife_get_acf_field( 'business_contact_email', $post_id, '' );
+$contact_phone = inlife_get_acf_field( 'business_contact_phone', $post_id, '' );
 
-$person_role = inlife_get_acf_field(
-	'business_contact_person_role',
-	$post_id,
-	'Koordynacja współpracy z biznesem'
-);
+/**
+ * Form (shortcode)
+ */
+$form_shortcode = inlife_get_acf_field( 'business_contact_form', $post_id, '' );
 
-$person_email = inlife_get_acf_field(
-	'business_contact_email',
-	$post_id,
-	'instytut@pan.olsztyn.pl'
-);
-
-$person_phone = inlife_get_acf_field(
-	'business_contact_phone',
-	$post_id,
-	'+48 89 500 32 00'
-);
-
-$form_shortcode = inlife_get_acf_field(
-	'business_contact_form_shortcode',
-	$post_id,
-	''
-);
-
-$cta_label = inlife_get_acf_field(
-	'business_contact_cta_label',
-	$post_id,
-	'Napisz do nas'
-);
-
-$cta_url = inlife_get_acf_field(
-	'business_contact_cta_url',
-	$post_id,
-	'mailto:' . $person_email
-);
 ?>
 
 <div class="business-contact">
+
 	<?php
 	get_template_part(
 		'template-parts/components/section-header',
@@ -98,73 +60,71 @@ $cta_url = inlife_get_acf_field(
 	);
 	?>
 
-	<div class="business-contact__layout c-section-split c-section-split--aside-wide">
-		<div class="business-contact__info c-section-split__main">
-			<div class="business-contact__card">
-				<h3 class="business-contact__card-title">
-					<?php echo esc_html( inlife_t( 'Dane kontaktowe' ) ); ?>
-				</h3>
+	<div class="business-contact__layout">
 
-				<div class="business-contact__person">
-					<p class="business-contact__person-name">
-						<?php echo esc_html( $person_name ); ?>
-					</p>
+		<!-- LEFT: CONTACT -->
+		<div class="business-contact__info">
+			<div class="business-contact__card business-contact__card--info c-surface c-surface--panel">
 
-					<?php if ( ! empty( $person_role ) ) : ?>
-						<p class="business-contact__person-role">
-							<?php echo esc_html( $person_role ); ?>
-						</p>
-					<?php endif; ?>
-				</div>
+				<p class="business-contact__eyebrow">
+					<?php echo esc_html( inlife_t( 'Kontakt dla biznesu' ) ); ?>
+				</p>
+
+				<p class="business-contact__name">
+					<?php echo esc_html( $contact_name ?: inlife_t( 'Zespół współpracy z biznesem' ) ); ?>
+				</p>
+
+				<p class="business-contact__role">
+					<?php echo esc_html( $contact_role ?: inlife_t( 'Koordynacja usług, analiz i projektów B+R' ) ); ?>
+				</p>
 
 				<div class="business-contact__details">
-					<?php if ( ! empty( $person_email ) ) : ?>
-						<p class="business-contact__detail">
-							<span class="business-contact__detail-label">
-								<?php echo esc_html( inlife_t( 'E-mail' ) ); ?>
-							</span>
-							<a href="mailto:<?php echo esc_attr( antispambot( $person_email ) ); ?>">
-								<?php echo esc_html( antispambot( $person_email ) ); ?>
+					<?php if ( $contact_email ) : ?>
+						<p class="business-contact__item">
+							<span class="business-contact__icon bi bi-envelope" aria-hidden="true"></span>
+							<a href="mailto:<?php echo esc_attr( antispambot( $contact_email ) ); ?>"></a>
+						</p>
+					<?php endif; ?>
+
+					<?php if ( $contact_phone ) : ?>
+						<p class="business-contact__item">
+							<span class="business-contact__icon bi bi-telephone" aria-hidden="true"></span>
+							<a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $contact_phone ) ); ?>">
+								<?php echo esc_html( $contact_phone ); ?>
 							</a>
 						</p>
 					<?php endif; ?>
 
-					<?php if ( ! empty( $person_phone ) ) : ?>
-						<p class="business-contact__detail">
-							<span class="business-contact__detail-label">
-								<?php echo esc_html( inlife_t( 'Telefon' ) ); ?>
-							</span>
-							<a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $person_phone ) ); ?>">
-								<?php echo esc_html( $person_phone ); ?>
-							</a>
-						</p>
-					<?php endif; ?>
+					<p class="business-contact__item">
+						<span class="business-contact__icon bi bi-envelope" aria-hidden="true"></span>
+						<a href="mailto:<?php echo esc_attr( $contact_email ); ?>">
+							<?php echo esc_html( inlife_mask_email( $contact_email ) ); ?>
+						</a>
+					</p>
 				</div>
 
-				<div class="business-contact__actions">
-					<a class="business-contact__button btn btn-primary" href="<?php echo esc_url( $cta_url ); ?>">
-						<?php echo esc_html( $cta_label ); ?>
-					</a>
-				</div>
 			</div>
 		</div>
 
-		<div class="business-contact__form c-section-split__aside">
-			<div class="business-contact__form-card">
-				<h3 class="business-contact__form-title">
-					<?php echo esc_html( inlife_t( 'Formularz kontaktowy' ) ); ?>
-				</h3>
+		<!-- RIGHT: FORM -->
+		<div class="business-contact__form">
 
-				<?php if ( ! empty( $form_shortcode ) ) : ?>
-					<div class="business-contact__form-shortcode">
+			<div class="business-contact__card c-surface c-surface--panel">
+
+				<?php if ( $form_shortcode ) : ?>
+					<div class="business-contact__form-inner">
 						<?php echo do_shortcode( $form_shortcode ); ?>
 					</div>
 				<?php else : ?>
-					<div class="business-contact__form-placeholder">
-						<p><?php echo esc_html( inlife_t( 'Tu pojawi się formularz kontaktowy.' ) ); ?></p>
-					</div>
+					<p class="business-contact__placeholder">
+						<?php echo esc_html( inlife_t( 'Formularz kontaktowy w przygotowaniu.' ) ); ?>
+					</p>
 				<?php endif; ?>
+
 			</div>
+
 		</div>
+
 	</div>
+
 </div>

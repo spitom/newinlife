@@ -66,7 +66,6 @@ $hero_actions = (string) ob_get_clean();
 				'image_id'     => $hero_image_id,
 				'breadcrumbs'  => true,
 				'actions_html' => $hero_actions,
-				'variant'      => 'landing',
 				'media_shape'  => 'hex',
 				'title_id'     => 'career-hero-heading',
 			]
