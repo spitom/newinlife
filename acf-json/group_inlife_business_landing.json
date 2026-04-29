@@ -607,6 +607,28 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
+                    "key": "field_69f1a7faabc69",
+                    "label": "Tytuł",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_19c4c18c77a4"
+                },
+                {
                     "key": "field_1cb251ec0d56",
                     "label": "Opis",
                     "name": "text",
@@ -1106,5 +1128,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1777444464
+    "modified": 1777444882
 }
