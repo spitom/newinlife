@@ -12,19 +12,19 @@ $post_id = get_the_ID();
 $section_kicker = inlife_get_acf_field(
 	'business_services_industries_kicker',
 	$post_id,
-	'Katalog usług'
+	inlife_t( 'Katalog usług' )
 );
 
 $section_title = inlife_get_acf_field(
 	'business_services_industries_title',
 	$post_id,
-	'Usługi według branż'
+	inlife_t( 'Usługi według branż' )
 );
 
 $section_text = inlife_get_acf_field(
 	'business_services_industries_text',
 	$post_id,
-	'Wspieramy partnerów z różnych sektorów gospodarki, oferując ekspertyzę naukową, zaplecze laboratoryjne oraz rozwiązania dopasowane do potrzeb konkretnych branż.'
+	inlife_t( 'Wspieramy partnerów z różnych sektorów gospodarki, oferując ekspertyzę naukową, zaplecze laboratoryjne oraz rozwiązania dopasowane do potrzeb konkretnych branż.' )
 );
 
 $tiles = [
@@ -65,10 +65,12 @@ if (function_exists('have_rows') && have_rows('business_industry_tiles', $post_i
 		$link  = get_sub_field('link');
 
 		$url = '#';
+		$target = '';
 
-		if (is_array($link) && !empty($link['url'])) {
-			$url = $link['url'];
-		} elseif (is_string($link) && !empty($link)) {
+		if ( is_array( $link ) && ! empty( $link['url'] ) ) {
+			$url    = $link['url'];
+			$target = ! empty( $link['target'] ) ? $link['target'] : '';
+		} elseif ( is_string( $link ) && ! empty( $link ) ) {
 			$url = $link;
 		}
 
@@ -76,6 +78,7 @@ if (function_exists('have_rows') && have_rows('business_industry_tiles', $post_i
 			'title' => $title ?: '',
 			'text'  => $text ?: '',
 			'url'   => $url,
+			'target' => $target,
 		];
 	}
 }

@@ -261,8 +261,8 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_d5d3db176528",
-                    "label": "Tytuł",
+                    "key": "field_69f1a3f09cc82",
+                    "label": "Nazwa branży",
                     "name": "title",
                     "aria-label": "",
                     "type": "text",
@@ -276,50 +276,16 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_1aef1c33c67b"
                 },
                 {
-                    "key": "field_1cb251ec0d56",
-                    "label": "Opis",
+                    "key": "field_69f1a4179cc83",
+                    "label": "Krótki opis",
                     "name": "text",
-                    "aria-label": "",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "rows": 3,
-                    "placeholder": "",
-                    "new_lines": ""
-                },
-                {
-                    "key": "field_2a304a134845",
-                    "label": "Link",
-                    "name": "link",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array"
-                },
-                {
-                    "key": "field_dcdd1274f35a",
-                    "label": "Badge / etykieta",
-                    "name": "badge",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -330,11 +296,32 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Branża",
+                    "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_1aef1c33c67b"
+                },
+                {
+                    "key": "field_69f1a43e9cc84",
+                    "label": "Adres url",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_1aef1c33c67b"
                 }
             ]
         },
@@ -439,7 +426,7 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_d5d3db176528",
+                    "key": "field_69f1a4979cc85",
                     "label": "Nazwa laboratorium",
                     "name": "title",
                     "aria-label": "",
@@ -454,50 +441,16 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_7c45c3f2d854"
                 },
                 {
-                    "key": "field_1cb251ec0d56",
-                    "label": "Krótki opis opcjonalny",
+                    "key": "field_69f1a4b79cc86",
+                    "label": "Krótki opis",
                     "name": "text",
-                    "aria-label": "",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "rows": 2,
-                    "placeholder": "",
-                    "new_lines": ""
-                },
-                {
-                    "key": "field_2a304a134845",
-                    "label": "Link",
-                    "name": "link",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array"
-                },
-                {
-                    "key": "field_dcdd1274f35a",
-                    "label": "Etykieta pomocnicza",
-                    "name": "badge",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -508,11 +461,32 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "Laboratorium",
+                    "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_7c45c3f2d854"
+                },
+                {
+                    "key": "field_69f1a4d29cc87",
+                    "label": "Adres url laboratorium",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_7c45c3f2d854"
                 }
             ]
         },
@@ -616,7 +590,7 @@
             "name": "business_technology_tiles",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "Pierwszy element może być użyty jako główne CTA/portfolio; kolejne jako panele boczne.",
+            "instructions": "Pierwszy element może być użyty jako główne CTA\/portfolio; kolejne jako panele boczne.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -632,26 +606,6 @@
             "button_label": "Dodaj technologię",
             "rows_per_page": 20,
             "sub_fields": [
-                {
-                    "key": "field_d5d3db176528",
-                    "label": "Tytuł",
-                    "name": "title",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                },
                 {
                     "key": "field_1cb251ec0d56",
                     "label": "Opis",
@@ -670,7 +624,8 @@
                     "maxlength": "",
                     "rows": 3,
                     "placeholder": "",
-                    "new_lines": ""
+                    "new_lines": "",
+                    "parent_repeater": "field_19c4c18c77a4"
                 },
                 {
                     "key": "field_2a304a134845",
@@ -686,11 +641,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array"
+                    "return_format": "array",
+                    "parent_repeater": "field_19c4c18c77a4"
                 },
                 {
                     "key": "field_dcdd1274f35a",
-                    "label": "Badge / etykieta",
+                    "label": "Badge \/ etykieta",
                     "name": "badge",
                     "aria-label": "",
                     "type": "text",
@@ -706,11 +662,12 @@
                     "maxlength": "",
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_19c4c18c77a4"
                 },
                 {
                     "key": "field_e9a23cbc4551",
-                    "label": "Tekst linku / meta",
+                    "label": "Tekst linku \/ meta",
                     "name": "meta",
                     "aria-label": "",
                     "type": "text",
@@ -726,7 +683,8 @@
                     "maxlength": "",
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
+                    "append": "",
+                    "parent_repeater": "field_19c4c18c77a4"
                 }
             ]
         },
@@ -848,27 +806,8 @@
                     "maxlength": "",
                     "placeholder": "",
                     "prepend": "",
-                    "append": ""
-                },
-                {
-                    "key": "field_9a0364b9e99b",
-                    "label": "Opis",
-                    "name": "content",
-                    "aria-label": "",
-                    "type": "wysiwyg",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "basic",
-                    "media_upload": 0,
-                    "delay": 0
+                    "append": "",
+                    "parent_repeater": "field_5081ee8cfbb0"
                 },
                 {
                     "key": "field_78805a221a98",
@@ -893,11 +832,12 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
-                    "preview_size": "medium"
+                    "preview_size": "medium",
+                    "parent_repeater": "field_5081ee8cfbb0"
                 },
                 {
                     "key": "field_40484bf17715",
-                    "label": "Film / YouTube / Vimeo",
+                    "label": "Film \/ YouTube \/ Vimeo",
                     "name": "video_embed",
                     "aria-label": "",
                     "type": "oembed",
@@ -910,7 +850,59 @@
                         "id": ""
                     },
                     "width": "",
-                    "height": ""
+                    "height": "",
+                    "parent_repeater": "field_5081ee8cfbb0"
+                },
+                {
+                    "key": "field_69f19bd58a227",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_5081ee8cfbb0"
+                },
+                {
+                    "key": "field_69f19c758a228",
+                    "label": "Kolor karty",
+                    "name": "tone",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "primary": "primary",
+                        "green": "green",
+                        "orange": "orange",
+                        "light": "light"
+                    },
+                    "default_value": false,
+                    "return_format": "array",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_5081ee8cfbb0"
                 }
             ]
         },
@@ -994,7 +986,7 @@
         },
         {
             "key": "field_58b9411142b6",
-            "label": "Kontakt: nazwa / osoba",
+            "label": "Kontakt: nazwa \/ osoba",
             "name": "business_contact_name",
             "aria-label": "",
             "type": "text",
@@ -1098,7 +1090,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates/template-business-landing.php"
+                "value": "page-templates\/template-business-landing.php"
             }
         ]
     ],
@@ -1109,10 +1101,10 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Pola ACF dla landing page Biznes. Zgodne z partialami template-parts/business/*.",
+    "description": "Pola ACF dla landing page Biznes. Zgodne z partialami template-parts\/business\/*.",
     "show_in_rest": 0,
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1777376344
+    "modified": 1777444464
 }

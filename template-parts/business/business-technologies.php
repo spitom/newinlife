@@ -27,11 +27,11 @@ $section_text = inlife_get_acf_field(
 	inlife_t( 'Rozwijamy rozwiązania o potencjale wdrożeniowym i transferowym. Łączymy badania, doświadczenie eksperckie oraz zaplecze instytutowe, aby wspierać partnerów biznesowych w rozwoju nowych produktów i procesów.' )
 );
 
-$section_cta = inlife_get_acf_field(
-	'business_technologies_cta',
-	$post_id,
-	null
-);
+// $section_cta = inlife_get_acf_field(
+// 	'business_technologies_cta',
+// 	$post_id,
+// 	null
+// );
 
 /**
  * Fallback tiles.
@@ -99,22 +99,6 @@ if ( function_exists( 'have_rows' ) && have_rows( 'business_technology_tiles', $
 	}
 }
 
-$section_action = '';
-
-if ( is_array( $section_cta ) && ! empty( $section_cta['url'] ) && ! empty( $section_cta['title'] ) ) {
-	ob_start();
-	?>
-	<a
-		class="c-readmore"
-		href="<?php echo esc_url( $section_cta['url'] ); ?>"
-		<?php echo ! empty( $section_cta['target'] ) ? 'target="' . esc_attr( $section_cta['target'] ) . '"' : ''; ?>
-	>
-		<?php echo esc_html( $section_cta['title'] ); ?>
-		<span class="c-readmore__icon" aria-hidden="true">→</span>
-	</a>
-	<?php
-	$section_action = trim( (string) ob_get_clean() );
-}
 ?>
 
 <div class="business-technologies">

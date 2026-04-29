@@ -131,7 +131,7 @@ $allowed_video_html = [
 					<div class="business-success-card__media">
 						<?php if ( ! empty( $case['video_html'] ) ) : ?>
 							<div class="business-success-card__video">
-								<?php echo $case['video_html']; ?>
+								<?php echo wp_kses( $case['video_html'], $allowed_video_html ); ?>
 							</div>
 						<?php elseif ( $case['image_id'] ) : ?>
 							<?php

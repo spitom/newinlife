@@ -95,12 +95,6 @@ $form_shortcode = inlife_get_acf_field( 'business_contact_form', $post_id, '' );
 						</p>
 					<?php endif; ?>
 
-					<p class="business-contact__item">
-						<span class="business-contact__icon bi bi-envelope" aria-hidden="true"></span>
-						<a href="mailto:<?php echo esc_attr( $contact_email ); ?>">
-							<?php echo esc_html( inlife_mask_email( $contact_email ) ); ?>
-						</a>
-					</p>
 				</div>
 
 			</div>
