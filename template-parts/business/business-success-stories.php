@@ -9,9 +9,6 @@ defined( 'ABSPATH' ) || exit;
 
 $post_id = $args['post_id'] ?? get_the_ID();
 
-/**
- * Section
- */
 $section_kicker = inlife_get_acf_field(
 	'business_success_kicker',
 	$post_id,
@@ -30,9 +27,20 @@ $section_text = inlife_get_acf_field(
 	inlife_t( 'Zobacz przykłady działań realizowanych we współpracy z partnerami biznesowymi – od badań i analiz po wdrożenia i rozwój produktów.' )
 );
 
-/**
- * Cases (ACF repeater)
- */
+$allowed_video_html = [
+	'iframe' => [
+		'src'             => true,
+		'title'           => true,
+		'width'           => true,
+		'height'          => true,
+		'frameborder'     => true,
+		'allow'           => true,
+		'allowfullscreen' => true,
+		'loading'         => true,
+		'referrerpolicy'  => true,
+	],
+];
+
 $cases = [];
 
 if ( function_exists( 'have_rows' ) && have_rows( 'business_success_cases', $post_id ) ) {
@@ -40,9 +48,10 @@ if ( function_exists( 'have_rows' ) && have_rows( 'business_success_cases', $pos
 		the_row();
 
 		$title = get_sub_field( 'title' );
-		$text  = get_sub_field( 'content' );
 		$image = get_sub_field( 'image' );
 		$video = get_sub_field( 'video_embed' );
+		$link  = get_sub_field( 'link' );
+		$tone  = get_sub_field( 'tone' );
 
 		$image_id = 0;
 
@@ -58,18 +67,35 @@ if ( function_exists( 'have_rows' ) && have_rows( 'business_success_cases', $pos
 			$video_html = trim( (string) $video );
 
 			if ( false === strpos( $video_html, '<iframe' ) ) {
-				$oembed = wp_oembed_get( wp_strip_all_tags( $video ) );
+				$oembed = wp_oembed_get( wp_strip_all_tags( $video_html ) );
+
 				if ( $oembed ) {
 					$video_html = $oembed;
 				}
 			}
 		}
 
+		$url    = '#';
+		$target = '';
+
+		if ( is_array( $link ) && ! empty( $link['url'] ) ) {
+			$url    = $link['url'];
+			$target = ! empty( $link['target'] ) ? $link['target'] : '';
+		} elseif ( is_string( $link ) && ! empty( $link ) ) {
+			$url = $link;
+		}
+
+		if ( is_array( $tone ) && ! empty( $tone['value'] ) ) {
+			$tone = $tone['value'];
+		}
+
 		$cases[] = [
 			'title'      => $title ?: '',
-			'text'       => $text ?: '',
 			'image_id'   => $image_id,
 			'video_html' => $video_html,
+			'url'        => $url,
+			'target'     => $target,
+			'tone'       => $tone ?: '',
 		];
 	}
 }
@@ -77,25 +103,6 @@ if ( function_exists( 'have_rows' ) && have_rows( 'business_success_cases', $pos
 if ( empty( $cases ) ) {
 	return;
 }
-
-$featured = $cases[0];
-$others   = array_slice( $cases, 1 );
-
-/**
- * Allow iframe
- */
-$allowed_video_html = [
-	'iframe' => [
-		'src'             => true,
-		'title'           => true,
-		'width'           => true,
-		'height'          => true,
-		'frameborder'     => true,
-		'allow'           => true,
-		'allowfullscreen' => true,
-		'loading'         => true,
-	],
-];
 ?>
 
 <div class="business-success">
@@ -114,20 +121,32 @@ $allowed_video_html = [
 	?>
 
 	<div class="business-success__grid">
+		<?php foreach ( $cases as $index => $case ) : ?>
+			<?php
+			if ( empty( $case['title'] ) ) {
+				continue;
+			}
 
-		<?php foreach ( $cases as $index => $case ) : 
+			$tone = $case['tone'];
 
-			$tone = $case['tone'] ?? '';
-
-			// fallback jeśli nie dodasz pola w ACF
 			if ( ! $tone ) {
 				$tones = [ 'primary', 'green', 'orange', 'light' ];
 				$tone  = $tones[ $index % count( $tones ) ];
 			}
-		?>
+
+			$allowed_tones = [ 'primary', 'green', 'orange', 'light' ];
+
+			if ( ! in_array( $tone, $allowed_tones, true ) ) {
+				$tone = 'primary';
+			}
+			?>
 
 			<article class="business-success-card business-success-card--<?php echo esc_attr( $tone ); ?>">
-				<a class="business-success-card__link" href="<?php echo esc_url( $case['url'] ?? '#' ); ?>">
+				<a
+					class="business-success-card__link"
+					href="<?php echo esc_url( $case['url'] ); ?>"
+					<?php echo ! empty( $case['target'] ) ? 'target="' . esc_attr( $case['target'] ) . '"' : ''; ?>
+				>
 					<div class="business-success-card__media">
 						<?php if ( ! empty( $case['video_html'] ) ) : ?>
 							<div class="business-success-card__video">
@@ -139,7 +158,11 @@ $allowed_video_html = [
 								$case['image_id'],
 								'large',
 								false,
-								[ 'class' => 'business-success-card__image' ]
+								[
+									'class'   => 'business-success-card__image',
+									'loading' => 'lazy',
+									'alt'     => '',
+								]
 							);
 							?>
 						<?php endif; ?>
@@ -155,9 +178,7 @@ $allowed_video_html = [
 					</div>
 				</a>
 			</article>
-
 		<?php endforeach; ?>
-
 	</div>
 
 </div>

@@ -14,6 +14,10 @@
         padding-bottom: clamp(3.5rem, 6vw, 5rem);
     }
 
+    .research-navigation-grid__list {
+        gap: clamp(1rem, 2vw, 1.5rem);
+    }
+
     .research-navigation-grid__item {
         min-width: 0;
     }
@@ -21,141 +25,120 @@
     .research-nav-card {
         display: block;
         height: 100%;
-        color: inherit;
+        color: #fff;
         text-decoration: none;
+
+        &:hover,
+        &:focus,
+        &:visited {
+            color: #fff;
+            text-decoration: none;
+        }
 
         &:focus-visible {
             outline: 3px solid var(--inlife-accent);
             outline-offset: 4px;
         }
+    }
 
-        &__frame,
-        &__inner,
-        .c-card__frame,
-        .c-card__inner {
-            height: 100%;
-        }
+    .research-nav-card__inner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-height: clamp(210px, 17vw, 250px);
+        height: 100%;
+        padding: clamp(1.25rem, 1.7vw, 1.55rem);
+        border-radius: 14px;
+        overflow: hidden;
+        background:
+            linear-gradient(135deg, #293458 0%, #27395f 48%, #1d2746 100%);
+        box-shadow: 0 18px 42px rgba(18, 38, 63, 0.12);
+        transition:
+            transform 0.22s ease,
+            box-shadow 0.22s ease;
 
-        &__body {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            min-height: 100%;
-            padding: clamp(1.25rem, 2vw, 1.75rem);
-        }
-
-        &__meta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        &__badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 3rem;
-            padding: 0.35rem 0.75rem;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.18);
-            color: rgba(255, 255, 255, 0.94);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            line-height: 1;
-            box-shadow: none;
-        }
-
-        &__title,
-        .c-card__title {
-            position: relative;
-            z-index: 1;
-            margin: 0 0 0.85rem;
-            color: #ffffff;
-            font-size: clamp(1.125rem, 1.2rem + 0.2vw, 1.35rem);
-            line-height: 1.2;
-        }
-
-        &__text {
-            position: relative;
-            z-index: 1;
-            margin: 0;
-            color: rgba(255, 255, 255, 0.82);
-            font-size: 0.97rem;
-            line-height: 1.7;
-        }
-
-        &__readmore {
-            margin-top: auto;
-            padding-top: 1.25rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        &.c-card--nav .c-card__frame {
-            background: rgba(17, 24, 39, 0.22);
-        }
-
-        &.c-card--nav:hover .c-card__frame,
-        &.c-card--nav:focus-visible .c-card__frame,
-        &.c-card--nav:focus-within .c-card__frame {
-            background: rgba(17, 24, 39, 0.32);
-        }
-
-        &.c-card--nav .c-card__inner {
-            position: relative;
-            background:
-                linear-gradient(135deg, #293458 0%, #24304f 52%, #1f2945 100%);
-        }
-
-        &.c-card--nav .c-card__inner::before {
+        &::before,
+        &::after {
             content: "";
             position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(135deg,
-                    rgba(255, 255, 255, 0.10) 0%,
-                    rgba(255, 255, 255, 0.02) 38%,
-                    rgba(255, 255, 255, 0.00) 100%);
+            background-image: url("../assets/images/inlife-hero-hex-outline-white.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
             pointer-events: none;
         }
 
-        &.c-card--nav .c-card__inner::after {
-            content: "";
-            position: absolute;
-            top: -14%;
-            right: -10%;
-            width: 46%;
-            height: 140%;
-            border-radius: 999px;
-            background: rgba(120, 140, 190, 0.12);
-            transform: rotate(20deg);
-            pointer-events: none;
+        &::before {
+            left: -4.5rem;
+            top: -9.75rem;
+            width: 16rem;
+            height: 16rem;
+            opacity: 0.035;
         }
 
-        .c-readmore {
-            color: rgba(255, 255, 255, 0.94);
+        &::after {
+            right: -3.75rem;
+            bottom: -7.75rem;
+            width: 13rem;
+            height: 13rem;
+            opacity: 0.055;
         }
+    }
 
-        .c-readmore:hover,
-        .c-readmore:focus-visible {
-            color: #ffffff;
-        }
+    .research-nav-card:hover .research-nav-card__inner,
+    .research-nav-card:focus-within .research-nav-card__inner {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 52px rgba(18, 38, 63, 0.18);
+    }
 
-        .c-readmore__icon {
-            opacity: 0.9;
-        }
+    .research-nav-card__badge,
+    .research-nav-card__title,
+    .research-nav-card__text,
+    .research-nav-card__arrow {
+        position: relative;
+        z-index: 1;
+    }
 
-        &:hover .c-readmore__icon,
-        &:focus-visible .c-readmore__icon,
-        &:focus-within .c-readmore__icon {
-            transform: translateX(4px);
-            opacity: 1;
-        }
+    .research-nav-card__badge {
+        margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+        font-size: 0.92rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0.08em;
+        color: var(--inlife-accent);
+    }
+
+    .research-nav-card__title {
+        max-width: 13ch;
+        margin: 0 0 0.75rem;
+        font-size: clamp(1.35rem, 1.45vw, 1.75rem);
+        font-weight: 600;
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+        color: #fff;
+    }
+
+    .research-nav-card__text {
+        max-width: 34ch;
+        margin: 0 0 1rem;
+        font-size: 0.96rem;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .research-nav-card__arrow {
+        margin-top: auto;
+        align-self: flex-start;
+        font-size: 1.15rem;
+        font-weight: 900;
+        line-height: 1;
+        color: rgba(255, 255, 255, 0.96);
+        transition: transform 0.2s ease;
+    }
+
+    .research-nav-card:hover .research-nav-card__arrow,
+    .research-nav-card:focus-within .research-nav-card__arrow {
+        transform: translateX(4px);
     }
 }
 

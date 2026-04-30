@@ -1,0 +1,927 @@
+{
+    "key": "group_inlife_about_overview",
+    "title": "About — Overview",
+    "fields": [
+        {
+            "key": "field_about_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_about_hero_kicker",
+            "label": "Hero: kicker",
+            "name": "about_hero_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "O nas",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_about_hero_title",
+            "label": "Hero: tytuł",
+            "name": "about_hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Jeśli puste, template użyje tytułu strony.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_about_hero_lead",
+            "label": "Hero: lead",
+            "name": "about_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Poznaj Instytut, jego misję, strukturę, historię oraz najważniejsze informacje wspierające zrozumienie naszej działalności naukowej i organizacyjnej.",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_about_intro_tab",
+            "label": "Misja i wizja",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_about_intro_kicker",
+            "label": "Intro: kicker",
+            "name": "about_intro_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Misja i wizja",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_about_intro_title",
+            "label": "Intro: tytuł",
+            "name": "about_intro_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Tworzymy naukę, która ma znaczenie",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_about_mission_text",
+            "label": "Misja",
+            "name": "about_mission_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Naszą misją w InLife jest pogłębianie wiedzy i tworzenie innowacyjnych rozwiązań w obszarach żywności, zdrowia i rozrodu – z myślą o ludziach, zwierzętach i środowisku. Łączymy interdyscyplinarne badania z dialogiem ze społeczeństwem, aby stawiać czoła globalnym wyzwaniom, wspierać dobrostan oraz zrównoważony rozwój.",
+            "maxlength": "",
+            "rows": 6,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_about_intro_image",
+            "label": "Intro: zdjęcie",
+            "name": "about_intro_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Duże zdjęcie po prawej stronie sekcji Misja i wizja.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_about_intro_stats",
+            "label": "Intro: kafelki z liczbami",
+            "name": "about_intro_stats",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "3–4 krótkie statystyki / wyróżniki pod sekcją misji.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 4,
+            "collapsed": "field_about_intro_stat_value",
+            "button_label": "Dodaj statystykę",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_about_intro_stat_value",
+                    "label": "Wartość",
+                    "name": "value",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Np. 50+, 3, PAN.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_about_intro_stats"
+                },
+                {
+                    "key": "field_about_intro_stat_label",
+                    "label": "Opis",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Krótki opis pod wartością.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_about_intro_stats"
+                }
+            ]
+        },
+        {
+            "key": "field_about_goals_tab",
+            "label": "Cele",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_about_strategic_goals",
+            "label": "Cele strategiczne",
+            "name": "about_strategic_goals",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Lista celów strategicznych.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_about_strategic_goal_text",
+            "button_label": "Dodaj cel",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_about_strategic_goal_text",
+                    "label": "Treść celu",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_about_strategic_goals"
+                }
+            ]
+        },
+        {
+            "key": "field_about_goals_realization",
+            "label": "Realizacja celów",
+            "name": "about_goals_realization",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Lista działań opisujących realizację celów strategicznych.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_about_goals_realization_text",
+            "button_label": "Dodaj działanie",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_about_goals_realization_text",
+                    "label": "Treść działania",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_about_goals_realization"
+                }
+            ]
+        },
+        {
+            "key": "field_about_directorate_tab",
+            "label": "Dyrekcja",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_about_directorate",
+            "label": "Osoby w dyrekcji",
+            "name": "about_directorate",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "3 osoby. Pole Osoba / profil People jest opcjonalne.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 3,
+            "collapsed": "field_about_directorate_name",
+            "button_label": "Dodaj osobę",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_about_directorate_name",
+                    "label": "Imię i nazwisko",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_about_directorate"
+                },
+                {
+                    "key": "field_about_directorate_role",
+                    "label": "Stanowisko",
+                    "name": "role",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_about_directorate"
+                },
+                {
+                    "key": "field_about_directorate_email",
+                    "label": "E-mail",
+                    "name": "email",
+                    "aria-label": "",
+                    "type": "email",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_about_directorate"
+                },
+                {
+                    "key": "field_about_directorate_image",
+                    "label": "Zdjęcie",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_about_directorate"
+                },
+                {
+                    "key": "field_about_directorate_person",
+                    "label": "Osoba / profil People",
+                    "name": "person",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "Opcjonalnie. Jeśli ustawione, karta będzie linkować do profilu osoby.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "people"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "object",
+                    "multiple": 0,
+                    "allow_null": 1,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "parent_repeater": "field_about_directorate"
+                }
+            ]
+        },
+        {
+            "key": "field_about_structure_tab",
+            "label": "Struktura",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_about_structure_title",
+            "label": "Struktura: tytuł",
+            "name": "about_structure_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Struktura organizacyjna",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_about_structure_text",
+            "label": "Struktura: opis",
+            "name": "about_structure_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Poznaj strukturę Instytutu oraz jednostki administracyjne i wsparcia badań.",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_about_structure_link",
+            "label": "Struktura: link",
+            "name": "about_structure_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Link do podstrony struktury lub schematu.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_about_structure_image",
+            "label": "Struktura: zdjęcie / grafika",
+            "name": "about_structure_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Zdjęcie/grafika dla sekcji Struktura.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_about_history_tab",
+            "label": "Historia",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_about_history_title",
+            "label": "Historia: tytuł",
+            "name": "about_history_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Historia Instytutu",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_about_history_text",
+            "label": "Historia: opis",
+            "name": "about_history_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Zobacz kluczowe etapy rozwoju Instytutu oraz najważniejsze wydarzenia.",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_about_history_link",
+            "label": "Historia: link",
+            "name": "about_history_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Link do pełnej podstrony historii / timeline.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_about_history_items",
+            "label": "Historia: najważniejsze daty",
+            "name": "about_history_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Wpisz trzy najważniejsze daty i krótkie opisy. Używane jako teaser timeline na landing page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 3,
+            "collapsed": "field_about_history_item_year",
+            "button_label": "Dodaj datę",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_about_history_item_year",
+                    "label": "Rok / data",
+                    "name": "year",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Np. 1950, 2000+, Dziś.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_about_history_items"
+                },
+                {
+                    "key": "field_about_history_item_label",
+                    "label": "Krótki opis",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Krótki opis wydarzenia.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_about_history_items"
+                }
+            ]
+        },
+        {
+            "key": "field_about_media_tab",
+            "label": "Dla mediów",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_about_media_title",
+            "label": "Dla mediów: tytuł",
+            "name": "about_media_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Dla mediów",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_about_media_text",
+            "label": "Dla mediów: opis",
+            "name": "about_media_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Materiały prasowe, informacje i zasoby dla mediów oraz partnerów.",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_about_media_link",
+            "label": "Dla mediów: link",
+            "name": "about_media_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Link do strony z materiałami do pobrania.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_about_media_items",
+            "label": "Dla mediów: elementy / ikony",
+            "name": "about_media_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Opcjonalne elementy wyświetlane jako ikony w sekcji Dla mediów.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_about_media_item_label",
+            "button_label": "Dodaj element",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_about_media_item_icon",
+                    "label": "Ikona",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "file": "Plik tekstowy",
+                        "image": "Zdjęcia",
+                        "download": "Pobieranie",
+                        "logo": "Logo"
+                    },
+                    "default_value": "file",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_about_media_items"
+                },
+                {
+                    "key": "field_about_media_item_label",
+                    "label": "Etykieta",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_about_media_items"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/template-about-overview.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Pola ACF dla landing page O nas.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1777540078
+}

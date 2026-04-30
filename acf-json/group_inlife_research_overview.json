@@ -1,0 +1,228 @@
+{
+    "key": "group_inlife_research_overview",
+    "title": "Research — Overview",
+    "fields": [
+        {
+            "key": "field_research_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_research_hero_kicker",
+            "label": "Hero: kicker",
+            "name": "research_hero_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Badania",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_research_hero_title",
+            "label": "Hero: tytuł",
+            "name": "research_hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Jeśli puste, template może użyć tytułu strony jako fallback.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_research_hero_lead",
+            "label": "Hero: lead",
+            "name": "research_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Poznaj główne obszary działalności naukowej Instytutu: zespoły badawcze, laboratoria, projekty, publikacje oraz pozostałe zasoby wspierające rozwój badań.",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_research_navigation_tab",
+            "label": "Nawigacja",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_research_navigation_items",
+            "label": "Karty nawigacyjne",
+            "name": "research_navigation_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Karty prowadzące do kluczowych sekcji działu Badania.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_research_navigation_item_title",
+            "button_label": "Dodaj kartę",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_research_navigation_item_title",
+                    "label": "Tytuł",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_research_navigation_items"
+                },
+                {
+                    "key": "field_research_navigation_item_description",
+                    "label": "Opis",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_research_navigation_items"
+                },
+                {
+                    "key": "field_research_navigation_item_link",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_research_navigation_items"
+                },
+                {
+                    "key": "field_research_navigation_item_badge",
+                    "label": "Numer / badge",
+                    "name": "badge",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Opcjonalnie, np. 01, 02, 03. Jeśli puste, partial może nadać numer automatycznie.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "01",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_research_navigation_items"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/template-research-overview.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Pola ACF dla landing page Badania / Research Overview.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1777454313
+}

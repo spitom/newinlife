@@ -569,22 +569,6 @@
             "new_lines": ""
         },
         {
-            "key": "field_a19d8b89cdf1",
-            "label": "Technologie: CTA sekcji",
-            "name": "business_technologies_cta",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
             "key": "field_19c4c18c77a4",
             "label": "Technologie: panele",
             "name": "business_technology_tiles",
@@ -602,7 +586,7 @@
             "pagination": 0,
             "min": 0,
             "max": 0,
-            "collapsed": "field_d5d3db176528",
+            "collapsed": "field_69f1a7faabc69",
             "button_label": "Dodaj technologię",
             "rows_per_page": 20,
             "sub_fields": [
@@ -880,7 +864,7 @@
                     "label": "Link",
                     "name": "link",
                     "aria-label": "",
-                    "type": "url",
+                    "type": "link",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -889,9 +873,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
+                    "return_format": "array",
                     "allow_in_bindings": 0,
-                    "placeholder": "",
                     "parent_repeater": "field_5081ee8cfbb0"
                 },
                 {
@@ -909,13 +892,13 @@
                         "id": ""
                     },
                     "choices": {
-                        "primary": "primary",
-                        "green": "green",
-                        "orange": "orange",
-                        "light": "light"
+                        "primary": "Primary",
+                        "green": "Green",
+                        "orange": "Orange",
+                        "light": "Light"
                     },
                     "default_value": false,
-                    "return_format": "array",
+                    "return_format": "value",
                     "multiple": 0,
                     "allow_null": 0,
                     "allow_in_bindings": 0,
@@ -1128,5 +1111,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1777444882
+    "modified": 1777450554
 }
