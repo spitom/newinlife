@@ -48,7 +48,7 @@ if ( empty( $people ) ) {
 
 <div class="about-directorate">
 
-	<header class="about-directorate__header">
+	<div class="about-directorate__intro">
 		<p class="about-directorate__kicker">
 			<?php echo esc_html( inlife_t( 'Zarządzanie' ) ); ?>
 		</p>
@@ -56,9 +56,13 @@ if ( empty( $people ) ) {
 		<h2 id="about-directorate-heading" class="about-directorate__title">
 			<?php echo esc_html( inlife_t( 'Dyrekcja Instytutu' ) ); ?>
 		</h2>
-	</header>
 
-	<div class="about-directorate__list">
+		<p class="about-directorate__text">
+			<?php echo esc_html( inlife_t( 'Za strategiczny rozwój InLife odpowiada zespół łączący doświadczenie naukowe, organizacyjne i międzynarodową perspektywę badawczą.' ) ); ?>
+		</p>
+	</div>
+
+	<div class="about-directorate__people">
 		<?php foreach ( $people as $person_item ) : ?>
 			<article class="about-leader">
 

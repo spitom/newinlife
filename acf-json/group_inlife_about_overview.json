@@ -189,7 +189,7 @@
             "name": "about_intro_stats",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "3–4 krótkie statystyki / wyróżniki pod sekcją misji.",
+            "instructions": "3–4 krótkie statystyki \/ wyróżniki pod sekcją misji.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -381,7 +381,7 @@
             "name": "about_directorate",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "3 osoby. Pole Osoba / profil People jest opcjonalne.",
+            "instructions": "3 osoby. Pole Osoba \/ profil People jest opcjonalne.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -488,7 +488,7 @@
                 },
                 {
                     "key": "field_about_directorate_person",
-                    "label": "Osoba / profil People",
+                    "label": "Osoba \/ profil People",
                     "name": "person",
                     "aria-label": "",
                     "type": "post_object",
@@ -510,7 +510,8 @@
                     "allow_null": 1,
                     "bidirectional": 0,
                     "ui": 1,
-                    "parent_repeater": "field_about_directorate"
+                    "parent_repeater": "field_about_directorate",
+                    "bidirectional_target": []
                 }
             ]
         },
@@ -590,11 +591,11 @@
         },
         {
             "key": "field_about_structure_image",
-            "label": "Struktura: zdjęcie / grafika",
+            "label": "Struktura: zdjęcie \/ grafika",
             "name": "about_structure_image",
             "aria-label": "",
             "type": "image",
-            "instructions": "Zdjęcie/grafika dla sekcji Struktura.",
+            "instructions": "Zdjęcie\/grafika dla sekcji Struktura.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -677,7 +678,7 @@
             "name": "about_history_link",
             "aria-label": "",
             "type": "link",
-            "instructions": "Link do pełnej podstrony historii / timeline.",
+            "instructions": "Link do pełnej podstrony historii \/ timeline.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -711,7 +712,7 @@
             "sub_fields": [
                 {
                     "key": "field_about_history_item_year",
-                    "label": "Rok / data",
+                    "label": "Rok \/ data",
                     "name": "year",
                     "aria-label": "",
                     "type": "text",
@@ -812,25 +813,9 @@
             "new_lines": ""
         },
         {
-            "key": "field_about_media_link",
-            "label": "Dla mediów: link",
-            "name": "about_media_link",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "Link do strony z materiałami do pobrania.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
             "key": "field_about_media_items",
-            "label": "Dla mediów: elementy / ikony",
-            "name": "about_media_items",
+            "label": "Elementy do pobrania",
+            "name": "about_media_assets",
             "aria-label": "",
             "type": "repeater",
             "instructions": "Opcjonalne elementy wyświetlane jako ikony w sekcji Dla mediów.",
@@ -850,38 +835,9 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_about_media_item_icon",
-                    "label": "Ikona",
-                    "name": "icon",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "file": "Plik tekstowy",
-                        "image": "Zdjęcia",
-                        "download": "Pobieranie",
-                        "logo": "Logo"
-                    },
-                    "default_value": "file",
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "parent_repeater": "field_about_media_items"
-                },
-                {
-                    "key": "field_about_media_item_label",
-                    "label": "Etykieta",
-                    "name": "label",
+                    "key": "field_69f342b98a412",
+                    "label": "Tytuł",
+                    "name": "asset_title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -894,6 +850,124 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_about_media_items"
+                },
+                {
+                    "key": "field_69f342d48a413",
+                    "label": "Opis",
+                    "name": "asset_description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": "",
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_about_media_items"
+                },
+                {
+                    "key": "field_69f342ea8a414",
+                    "label": "Format pliku",
+                    "name": "asset_type",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "PDF": "PDF",
+                        "ZIP": "ZIP",
+                        "SVG": "SVG",
+                        "PNG": "PNG",
+                        "DOCX": "DOCX"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_about_media_items"
+                },
+                {
+                    "key": "field_69f3438612f19",
+                    "label": "Plik do załączenia",
+                    "name": "asset_file",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_about_media_items"
+                },
+                {
+                    "key": "field_69f343ad12f1a",
+                    "label": "Adres zasobu",
+                    "name": "asset_url",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_about_media_items"
+                },
+                {
+                    "key": "field_69f343edc1ad7",
+                    "label": "Etykieta",
+                    "name": "asset_link_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -907,7 +981,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-templates/template-about-overview.php"
+                "value": "page-templates\/template-about-overview.php"
             }
         ]
     ],
@@ -923,5 +997,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1777540078
+    "modified": 1777551778
 }

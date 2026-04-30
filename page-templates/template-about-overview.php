@@ -48,7 +48,6 @@ $hero_lead = inlife_get_acf_field(
 				'title'       => $hero_title,
 				'lead'        => $hero_lead,
 				'breadcrumbs' => true,
-				'modifier'    => 'flush',
 				'title_id'    => 'about-hero-heading',
 			]
 		);
@@ -69,10 +68,23 @@ $hero_lead = inlife_get_acf_field(
 		</div>
 	</section>
 
-	<!-- LINKI / POZNAJ INSTYTUT -->
-	<section class="page-section page-section--about-links" aria-labelledby="about-links-heading">
+	<section class="page-section page-section--about-structure" aria-labelledby="about-structure-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/about/about', 'links' ); ?>
+			<?php get_template_part( 'template-parts/about/about', 'structure' ); ?>
+		</div>
+	</section>
+
+	<!-- HISTORIA -->
+	<section class="page-section page-section--about-history" aria-labelledby="about-history-heading">
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<?php get_template_part( 'template-parts/about/about', 'history' ); ?>
+		</div>
+	</section>
+
+	<!-- DLA MEDIÓW -->
+	<section class="page-section page-section--about-media" aria-labelledby="about-media-heading">
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<?php get_template_part( 'template-parts/about/about', 'media' ); ?>
 		</div>
 	</section>
 
