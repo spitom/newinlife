@@ -1,5 +1,5 @@
 /* =========================================================
-   INLIFE CARD SYSTEM (v2)
+   INLIFE CARD SYSTEM
 ========================================================= */
 
 .c-card {
@@ -11,43 +11,13 @@
     position: relative;
     height: 100%;
     padding: 1px;
-    /* fake border */
     background: rgba(41, 52, 88, 0.10);
-    border-radius: 4px;
+    border-radius: 14px;
     overflow: hidden;
     transition:
         transform 0.2s ease,
         background-color 0.2s ease,
         box-shadow 0.2s ease;
-}
-
-/* Cut whole card */
-.c-card__frame--cut-tl {
-    position: relative;
-    clip-path: polygon(var(--inlife-card-cut-x) 0,
-            100% 0,
-            100% 100%,
-            0 100%,
-            0 var(--inlife-card-cut-y));
-    border-radius: 4px;
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 3;
-        pointer-events: none;
-
-        width: calc(var(--inlife-card-cut-x) + 1px);
-        height: calc(var(--inlife-card-cut-y) + 1px);
-
-        background: linear-gradient(to bottom right,
-                transparent calc(50% - 0.75px),
-                rgba(41, 52, 88, 0.05) calc(50% - 0.75px),
-                rgba(41, 52, 88, 0.05) calc(50% + 0.75px),
-                transparent calc(50% + 0.75px));
-    }
 }
 
 .c-card:hover .c-card__frame,
@@ -63,18 +33,12 @@
     flex-direction: column;
     height: 100%;
     background: #fcfcfc;
-    border-radius: 4px;
+    border-radius: 13px;
     overflow: hidden;
 }
 
-.c-card__frame--cut-tl>.c-card__inner {
-    clip-path: polygon(calc(var(--inlife-card-cut-x) - 1px) 0,
-            100% 0,
-            100% 100%,
-            0 100%,
-            0 calc(var(--inlife-card-cut-y) - 1px));
-    border-radius: 4px;
-}
+/* MEDIA */
+
 
 /* MEDIA */
 

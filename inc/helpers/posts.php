@@ -310,3 +310,37 @@ if ( ! function_exists( 'inlife_get_post_feature_media_html' ) ) {
 		return '';
 	}
 }
+
+if ( ! function_exists( 'inlife_get_post_card_image_id' ) ) {
+	/**
+	 * Returns image ID for post cards.
+	 *
+	 * Priority:
+	 * 1. ACF custom card image
+	 * 2. Featured image
+	 *
+	 * @param int $post_id Post ID.
+	 * @return int
+	 */
+	function inlife_get_post_card_image_id( $post_id ) {
+		$post_id = (int) $post_id;
+
+		if ( ! $post_id ) {
+			return 0;
+		}
+
+		$custom_image = function_exists( 'get_field' )
+			? get_field( 'post_card_image', $post_id )
+			: 0;
+
+		if ( is_array( $custom_image ) && ! empty( $custom_image['ID'] ) ) {
+			return (int) $custom_image['ID'];
+		}
+
+		if ( is_numeric( $custom_image ) ) {
+			return (int) $custom_image;
+		}
+
+		return (int) get_post_thumbnail_id( $post_id );
+	}
+}

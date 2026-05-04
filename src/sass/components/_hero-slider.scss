@@ -1,0 +1,230 @@
+/* =========================================================
+   FRONT — HERO SLIDER
+========================================================= */
+
+.front-hero {
+    padding: 0;
+    margin: 0;
+}
+
+.hero-slider {
+    position: relative;
+    min-height: clamp(520px, 76vh, 860px);
+    overflow: hidden;
+    background: var(--inlife-primary);
+}
+
+.hero-slider__track,
+.hero-slide,
+.hero-slide__media {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-slide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 450ms ease;
+}
+
+.hero-slide.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.hero-slide__media {
+    position: absolute;
+    inset: 0;
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+            linear-gradient(90deg,
+                rgba(20, 28, 52, 0.78) 0%,
+                rgba(20, 28, 52, 0.48) 38%,
+                rgba(20, 28, 52, 0.18) 72%,
+                rgba(20, 28, 52, 0.04) 100%);
+        pointer-events: none;
+    }
+}
+
+.hero-slide__image,
+.hero-slide__video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-slide__content {
+    position: relative;
+    z-index: 2;
+    min-height: clamp(520px, 76vh, 860px);
+    display: flex;
+    align-items: flex-end;
+    padding-block: clamp(2rem, 6vw, 5rem);
+    color: #fff;
+}
+
+.hero-slide__inner {
+    max-width: 760px;
+}
+
+.hero-slide__title {
+    margin: 0 0 1rem;
+    font-size: clamp(2.4rem, 5vw, 5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.055em;
+    color: #fff;
+}
+
+.hero-slide__text {
+    max-width: 58ch;
+    margin: 0 0 1.5rem;
+    font-size: clamp(1rem, 1.35vw, 1.25rem);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.88);
+
+    p {
+        margin: 0;
+    }
+}
+
+.hero-slide__cta {
+    color: #fff;
+}
+
+.hero-slider__nav,
+.hero-slider__toggle {
+    position: absolute;
+    z-index: 6;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    background: rgba(20, 28, 52, 0.58);
+    color: #fff;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.hero-slider__nav {
+    top: 50%;
+    width: clamp(2.75rem, 4vw, 3.5rem);
+    height: clamp(2.75rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    opacity: 0;
+    transform: translateY(-50%);
+}
+
+.hero-slider__nav--prev {
+    left: clamp(1rem, 3vw, 2rem);
+}
+
+.hero-slider__nav--next {
+    right: clamp(1rem, 3vw, 2rem);
+}
+
+.hero-slider:hover .hero-slider__nav,
+.hero-slider:focus-within .hero-slider__nav {
+    opacity: 1;
+}
+
+.hero-slider__toggle {
+    right: clamp(1rem, 3vw, 2rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.hero-slider__icon {
+    display: inline-flex;
+    color: #fff;
+    line-height: 1;
+}
+
+.hero-slider__icon--play {
+    display: none;
+    transform: translateX(0.05em);
+}
+
+.hero-slider__toggle.is-paused {
+    .hero-slider__icon--pause {
+        display: none;
+    }
+
+    .hero-slider__icon--play {
+        display: inline-flex;
+    }
+}
+
+.hero-slider__nav:hover,
+.hero-slider__toggle:hover {
+    background: rgba(20, 28, 52, 0.82);
+    border-color: rgba(255, 255, 255, 0.72);
+}
+
+.hero-slider__nav:focus-visible,
+.hero-slider__toggle:focus-visible {
+    outline: 3px solid var(--inlife-accent);
+    outline-offset: 3px;
+}
+
+.hero-slide__full-link {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: block;
+}
+
+.hero-slide__full-link:focus-visible {
+    outline: 3px solid var(--inlife-accent);
+    outline-offset: -6px;
+}
+
+@media (max-width: 767.98px) {
+    .hero-slider {
+        min-height: 64vh;
+    }
+
+    .hero-slide__content {
+        min-height: 64vh;
+        padding-block: clamp(2rem, 12vw, 4rem);
+    }
+
+    .hero-slide__title {
+        font-size: clamp(2rem, 12vw, 3.25rem);
+    }
+
+    .hero-slider__nav {
+        opacity: 1;
+        width: 2.75rem;
+        height: 2.75rem;
+        font-size: 2rem;
+    }
+
+    .hero-slider__nav--prev {
+        left: 0.75rem;
+    }
+
+    .hero-slider__nav--next {
+        right: 0.75rem;
+    }
+
+    .hero-slider__toggle {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.35rem;
+    }
+}
