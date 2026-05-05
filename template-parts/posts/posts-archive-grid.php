@@ -13,7 +13,8 @@ $container = $args['container'] ?? 'container';
 
 		<?php if ( have_posts() ) : ?>
 
-			<div class="posts-archive__listing c-card-grid">
+			<div class="posts-archive__listing c-card-grid c-card-grid--wide posts-archive__listing--stories">
+
 				<?php while ( have_posts() ) : the_post(); ?>
 					<div class="posts-archive__item">
 						<?php
@@ -27,6 +28,7 @@ $container = $args['container'] ?? 'container';
 						?>
 					</div>
 				<?php endwhile; ?>
+
 			</div>
 
 			<?php

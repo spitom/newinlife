@@ -161,6 +161,20 @@ if ( $format_slug ) {
 					</div>
 				<?php endif; ?>
 
+				<?php
+				$tags = get_the_tags( $post_id );
+				?>
+
+				<?php if ( $tags ) : ?>
+					<div class="post-card__tags">
+						<?php foreach ( array_slice( $tags, 0, 3 ) as $tag ) : ?>
+							<span class="post-card__tag">
+								<?php echo esc_html( $tag->name ); ?>
+							</span>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
+
 				<a class="post-card__link c-readmore" href="<?php echo esc_url( $permalink ); ?>">
 					<?php echo esc_html( inlife_t( 'Czytaj więcej' ) ); ?>
 					<span class="c-readmore__icon" aria-hidden="true">→</span>

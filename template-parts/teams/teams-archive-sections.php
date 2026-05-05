@@ -22,7 +22,7 @@ $query = new WP_Query(
 <section class="teams-listing section">
 	<div class="<?php echo esc_attr( $container ); ?>">
 		<?php if ( $query->have_posts() ) : ?>
-			<div class="teams-listing__grid c-card-grid" data-team-grid>
+			<div class="teams-listing__grid c-card-grid c-card-grid--3" data-team-grid>
 				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 					<?php
 					$terms = get_the_terms( get_the_ID(), 'team_area' );

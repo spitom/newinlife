@@ -26,10 +26,42 @@ if ( $business_page ) {
 } else {
 	$business_url = home_url( '/biznes/' );
 }
+
+$area_cards = [
+	[
+		'url'     => add_query_arg( 'area', 'zywnosc', $teams_url ),
+		'kicker'  => inlife_t( 'Żywność' ),
+		'title'   => inlife_t( 'Bezpieczeństwo, jakość i wpływ żywności' ),
+		'text'    => inlife_t( 'Badamy żywność, jej składniki i procesy, które wpływają na zdrowie oraz jakość życia.' ),
+		'variant' => 'food',
+	],
+	[
+		'url'     => add_query_arg( 'area', 'zwierzeta', $teams_url ),
+		'kicker'  => inlife_t( 'Zwierzęta' ),
+		'title'   => inlife_t( 'Rozród, biologia i dobrostan' ),
+		'text'    => inlife_t( 'Rozwijamy wiedzę o mechanizmach rozrodu, zdrowiu i funkcjonowaniu organizmów zwierzęcych.' ),
+		'variant' => 'animals',
+	],
+	[
+		'url'     => add_query_arg( 'area', 'zdrowie', $teams_url ),
+		'kicker'  => inlife_t( 'Zdrowie' ),
+		'title'   => inlife_t( 'Mechanizmy zdrowia ludzi i zwierząt' ),
+		'text'    => inlife_t( 'Łączymy badania podstawowe i aplikacyjne, aby lepiej rozumieć procesy wpływające na zdrowie.' ),
+		'variant' => 'health',
+	],
+	// [
+	// 	'url'     => $business_url,
+	// 	'kicker'  => inlife_t( 'Współpraca' ),
+	// 	'title'   => inlife_t( 'Nauka blisko praktyki' ),
+	// 	'text'    => inlife_t( 'Wspieramy partnerów w projektach badawczych, usługach laboratoryjnych i wdrażaniu innowacji.' ),
+	// 	'variant' => 'business',
+	// 	'span'    => 'wide',
+	// ],
+];
 ?>
 
 <section id="areas" class="page-section page-section--front-areas" aria-labelledby="front-areas-heading">
-	<div class="inlife-container">
+	<div class="<?php echo esc_attr( $container ); ?>">
 
 		<?php
 		get_template_part(
@@ -44,36 +76,30 @@ if ( $business_page ) {
 		);
 		?>
 
-		<div class="front-areas-grid">
+		<div class="front-areas-grid c-card-grid c-card-grid--front-areas">
+			<?php foreach ( $area_cards as $card ) : ?>
+				<?php
+				$variant = ! empty( $card['variant'] ) ? sanitize_html_class( $card['variant'] ) : 'default';
+				$span    = ! empty( $card['span'] ) ? sanitize_html_class( $card['span'] ) : '';
 
-			<a class="front-area-card front-area-card--food" href="<?php echo esc_url( add_query_arg( 'area', 'zywnosc', $teams_url ) ); ?>">
-				<span class="front-area-card__kicker"><?php echo esc_html( inlife_t( 'Żywność' ) ); ?></span>
-				<h3 class="front-area-card__title"><?php echo esc_html( inlife_t( 'Bezpieczeństwo, jakość i wpływ żywności' ) ); ?></h3>
-				<p class="front-area-card__text"><?php echo esc_html( inlife_t( 'Badamy żywność, jej składniki i procesy, które wpływają na zdrowie oraz jakość życia.' ) ); ?></p>
-				<span class="front-area-card__arrow" aria-hidden="true">→</span>
-			</a>
+				$classes = [
+					'front-area-card',
+					'front-area-card--' . $variant,
+				];
 
-			<a class="front-area-card front-area-card--animals" href="<?php echo esc_url( add_query_arg( 'area', 'zwierzeta', $teams_url ) ); ?>">
-				<span class="front-area-card__kicker"><?php echo esc_html( inlife_t( 'Zwierzęta' ) ); ?></span>
-				<h3 class="front-area-card__title"><?php echo esc_html( inlife_t( 'Rozród, biologia i dobrostan' ) ); ?></h3>
-				<p class="front-area-card__text"><?php echo esc_html( inlife_t( 'Rozwijamy wiedzę o mechanizmach rozrodu, zdrowiu i funkcjonowaniu organizmów zwierzęcych.' ) ); ?></p>
-				<span class="front-area-card__arrow" aria-hidden="true">→</span>
-			</a>
+				if ( $span ) {
+					$classes[] = 'front-area-card--' . $span;
+				}
+				?>
 
-			<a class="front-area-card front-area-card--health" href="<?php echo esc_url( add_query_arg( 'area', 'zdrowie', $teams_url ) ); ?>">
-				<span class="front-area-card__kicker"><?php echo esc_html( inlife_t( 'Zdrowie' ) ); ?></span>
-				<h3 class="front-area-card__title"><?php echo esc_html( inlife_t( 'Mechanizmy zdrowia ludzi i zwierząt' ) ); ?></h3>
-				<p class="front-area-card__text"><?php echo esc_html( inlife_t( 'Łączymy badania podstawowe i aplikacyjne, aby lepiej rozumieć procesy wpływające na zdrowie.' ) ); ?></p>
-				<span class="front-area-card__arrow" aria-hidden="true">→</span>
-			</a>
-
-			<a class="front-area-card front-area-card--wide front-area-card--business" href="<?php echo esc_url( $business_url ); ?>">
-				<span class="front-area-card__kicker"><?php echo esc_html( inlife_t( 'Współpraca' ) ); ?></span>
-				<h3 class="front-area-card__title"><?php echo esc_html( inlife_t( 'Nauka blisko praktyki' ) ); ?></h3>
-				<p class="front-area-card__text"><?php echo esc_html( inlife_t( 'Wspieramy partnerów w projektach badawczych, usługach laboratoryjnych i wdrażaniu innowacji.' ) ); ?></p>
-				<span class="front-area-card__arrow" aria-hidden="true">→</span>
-			</a>
-
+				<a class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" href="<?php echo esc_url( $card['url'] ); ?>">
+					<span class="front-area-card__kicker"><?php echo esc_html( $card['kicker'] ); ?></span>
+					<h3 class="front-area-card__title"><?php echo esc_html( $card['title'] ); ?></h3>
+					<p class="front-area-card__text"><?php echo esc_html( $card['text'] ); ?></p>
+					<span class="front-area-card__arrow" aria-hidden="true">→</span>
+				</a>
+			<?php endforeach; ?>
 		</div>
+
 	</div>
 </section>

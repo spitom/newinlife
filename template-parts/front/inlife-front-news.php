@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+$container = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
+
 $query = new WP_Query(
 	[
 		'post_type'      => 'post',
@@ -29,7 +31,7 @@ $main  = array_shift( $posts );
 ?>
 
 <section class="page-section page-section--front-news" aria-labelledby="front-news-heading">
-	<div class="inlife-container">
+	<div class="<?php echo esc_attr( $container ); ?>">
 
 		<div class="front-news-editorial">
 
@@ -39,7 +41,7 @@ $main  = array_shift( $posts );
 				</p>
 
 				<h2 id="front-news-heading" class="front-news-editorial__title">
-					<?php echo esc_html( inlife_t( 'Najnowsze informacje z życia Instytutu' ) ); ?>
+					<?php echo esc_html( inlife_t( 'Najnowsze informacje z życia InLife' ) ); ?>
 				</h2>
 
 				<p class="front-news-editorial__lead">

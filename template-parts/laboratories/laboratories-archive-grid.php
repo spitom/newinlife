@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
 	<div class="<?php echo esc_attr( inlife_container_class() ); ?>">
 
 		<?php if ( have_posts() ) : ?>
-			<div class="laboratories-grid__listing c-card-grid">
+			<div class="laboratories-grid__listing c-card-grid c-card-grid--3">
 
 				<?php while ( have_posts() ) : the_post(); ?>
 					<div class="laboratories-grid__item">

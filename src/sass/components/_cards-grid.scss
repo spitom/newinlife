@@ -3,43 +3,78 @@
 ========================================================= */
 
 .c-card-grid {
+    --inlife-grid-min: 260px;
+    --inlife-grid-gap: clamp(1rem, 2vw, 1.5rem);
+
     display: grid;
-    gap: 1rem;
+    gap: var(--inlife-grid-gap);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--inlife-grid-min)), 1fr));
+}
 
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+/* ===============================
+   Size variants
+================================ */
 
-    @media (min-width: 768px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.25rem;
-    }
+.c-card-grid--compact {
+    --inlife-grid-min: 220px;
+}
 
-    @media (min-width: 1200px) {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1.5rem;
-    }
+.c-card-grid--wide {
+    --inlife-grid-min: 320px;
+}
+
+.c-card-grid--front-areas {
+    --inlife-grid-min: 250px;
 }
 
 /* ===============================
    Explicit column variants
+   Use only when layout must be fixed
 ================================ */
 
-/* 2 columns */
 .c-card-grid--2 {
     @media (min-width: 992px) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-/* 4 columns */
+.c-card-grid--3 {
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
 .c-card-grid--4 {
     @media (min-width: 1200px) {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
 
-/* 5 columns */
 .c-card-grid--5 {
     @media (min-width: 1400px) {
         grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+/* =========================================================
+   Link Grid (global)
+========================================================= */
+
+.c-link-grid {
+    display: grid;
+    gap: 0;
+}
+
+@media (min-width: 768px) {
+    .c-link-grid--cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .c-link-grid--cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .c-link-grid--cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
