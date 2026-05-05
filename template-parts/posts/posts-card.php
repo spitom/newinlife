@@ -43,7 +43,9 @@ $show_media_icon   = in_array( $format_slug, [ 'posluchaj', 'zobacz' ], true );
 /**
  * Image
  */
-$card_image_id = get_post_thumbnail_id( $post_id );
+$card_image_id = function_exists( 'inlife_get_post_card_image_id' )
+	? inlife_get_post_card_image_id( $post_id )
+	: get_post_thumbnail_id( $post_id );
 
 /**
  * Classes

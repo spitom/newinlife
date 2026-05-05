@@ -1,53 +1,54 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-$container = inlife_container_class();
+$business_url = get_permalink( get_page_by_path( 'biznes' ) );
+
+if ( ! $business_url ) {
+	$business_url = home_url( '/biznes/' );
+}
 ?>
 
-<section id="business" class="front-section front-business" aria-labelledby="business-heading">
+<section class="page-section page-section--front-business" aria-labelledby="front-business-heading">
 	<div class="inlife-container">
-		<div class="inlife-content">
-			<div class="section-heading">
-				<h2 id="business-heading" class="section-title">Biznes</h2>
+
+		<div class="front-business">
+
+			<div class="front-business__intro">
+				<p class="front-business__kicker">
+					<?php echo esc_html( inlife_t( 'Współpraca' ) ); ?>
+				</p>
+
+				<h2 id="front-business-heading" class="front-business__title">
+					<?php echo esc_html( inlife_t( 'Nauka blisko praktyki' ) ); ?>
+				</h2>
+
+				<p class="front-business__text">
+					<?php echo esc_html( inlife_t( 'Wspieramy partnerów w projektach badawczych, usługach laboratoryjnych i wdrażaniu innowacji.' ) ); ?>
+				</p>
+
+				<a class="c-readmore" href="<?php echo esc_url( $business_url ); ?>">
+					<?php echo esc_html( inlife_t( 'Zobacz możliwości współpracy' ) ); ?>
+					<span class="c-readmore__icon">→</span>
+				</a>
 			</div>
 
-			<div class="row g-4">
-				<div class="col-md-6 col-xl-3">
-					<div class="card card-business h-100">
-						<div class="card-body">
-							<h3 class="h5">Obszar współpracy 1</h3>
-							<p class="mb-0">Krótki opis.</p>
-						</div>
-					</div>
-				</div>
+			<div class="front-business__grid">
 
-				<div class="col-md-6 col-xl-3">
-					<div class="card card-business h-100">
-						<div class="card-body">
-							<h3 class="h5">Obszar współpracy 2</h3>
-							<p class="mb-0">Krótki opis.</p>
-						</div>
-					</div>
-				</div>
+				<a class="front-business__panel front-business__panel--main" href="<?php echo esc_url( $business_url ); ?>">
+					<span><?php echo esc_html( inlife_t( 'Katalog usług i współpracy' ) ); ?></span>
+				</a>
 
-				<div class="col-md-6 col-xl-3">
-					<div class="card card-business h-100">
-						<div class="card-body">
-							<h3 class="h5">Obszar współpracy 3</h3>
-							<p class="mb-0">Krótki opis.</p>
-						</div>
-					</div>
-				</div>
+				<a class="front-business__panel" href="#">
+					<span><?php echo esc_html( inlife_t( 'Laboratoria' ) ); ?></span>
+				</a>
 
-				<div class="col-md-6 col-xl-3">
-					<div class="card card-business h-100">
-						<div class="card-body">
-							<h3 class="h5">Obszar współpracy 4</h3>
-							<p class="mb-0">Krótki opis.</p>
-						</div>
-					</div>
-				</div>
+				<a class="front-business__panel" href="#">
+					<span><?php echo esc_html( inlife_t( 'Technologie' ) ); ?></span>
+				</a>
+
 			</div>
+
 		</div>
+
 	</div>
 </section>
