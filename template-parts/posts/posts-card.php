@@ -9,6 +9,7 @@ $post_id        = $args['post_id'] ?? get_the_ID();
 $custom_url     = isset( $args['custom_url'] ) ? (string) $args['custom_url'] : '';
 $show_category  = isset( $args['show_category'] ) ? (bool) $args['show_category'] : true;
 $show_format    = isset( $args['show_format'] ) ? (bool) $args['show_format'] : true;
+$variant		= isset( $args['variant'] ) ? sanitize_html_class( $args['variant'] ) : '';
 $permalink      = $custom_url ?: get_permalink( $post_id );
 $title          = get_the_title( $post_id );
 $date           = get_the_date( '', $post_id );
@@ -59,11 +60,15 @@ $card_classes = [
 if ( $format_slug ) {
 	$card_classes[] = 'post-card--' . sanitize_html_class( $format_slug );
 }
+
+if ( $variant ) {
+	$card_classes[] = 'post-card--' . $variant;
+}
 ?>
 
 <article <?php post_class( implode( ' ', $card_classes ), $post_id ); ?>>
 
-	<div class="post-card__frame c-card__frame c-card__frame--cut-tl">
+	<div class="post-card__frame c-card__frame">
 		<div class="post-card__inner c-card__inner">
 
 			<!-- MEDIA -->
@@ -168,9 +173,9 @@ if ( $format_slug ) {
 				<?php if ( $tags ) : ?>
 					<div class="post-card__tags">
 						<?php foreach ( array_slice( $tags, 0, 3 ) as $tag ) : ?>
-							<span class="post-card__tag">
-								<?php echo esc_html( $tag->name ); ?>
-							</span>
+							<a class="post-card__tag" href="<?php echo esc_url( get_tag_link( $tag ) ); ?>">
+								<span aria-hidden="true">#</span><?php echo esc_html( $tag->name ); ?>
+							</a>
 						<?php endforeach; ?>
 					</div>
 				<?php endif; ?>

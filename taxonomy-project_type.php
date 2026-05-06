@@ -122,9 +122,9 @@ if ( ! empty( $term_intro ) ) {
 					</h2>
 				</div>
 
-				<div class="row g-4 projects-types-grid">
+				<div class="projects-types-grid c-card-grid c-card-grid--wide">
 					<?php foreach ( $children as $child ) : ?>
-						<div class="col-12 col-md-6 col-xl-4">
+						<div class="projects-types-grid__item">
 							<a href="<?php echo esc_url( get_term_link( $child ) ); ?>" class="project-type-card">
 								<div class="project-type-card__inner">
 									<div class="project-type-card__meta">
@@ -169,9 +169,9 @@ if ( ! empty( $term_intro ) ) {
 
 					<?php else : ?>
 
-						<div class="row g-4 projects-grid">
+						<div class="projects-grid c-card-grid c-card-grid--wide">
 							<?php while ( $projects_query->have_posts() ) : $projects_query->the_post(); ?>
-								<div class="col-12 col-md-6 col-xl-4">
+								<div class="projects-grid__item">
 									<?php get_template_part( 'template-parts/projects/project', 'card' ); ?>
 								</div>
 							<?php endwhile; ?>

@@ -80,6 +80,7 @@ $section_action = trim( (string) ob_get_clean() );
 						'show_category' => false,
 						'show_format'   => true,
 						'custom_url'    => $post_url,
+						'variant' => 'story',
 					]
 				);
 				?>

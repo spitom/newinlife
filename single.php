@@ -279,6 +279,18 @@ if ( 'society' === $entry_context ) {
 								?>
 							</div>
 
+							<?php $post_tags = get_the_tags( $post_id ); ?>
+
+							<?php if ( $post_tags ) : ?>
+								<div class="post-content__tags" aria-label="<?php echo esc_attr( inlife_t( 'Tagi wpisu' ) ); ?>">
+									<?php foreach ( $post_tags as $tag ) : ?>
+										<a class="post-tag" href="<?php echo esc_url( get_tag_link( $tag ) ); ?>">
+											<span aria-hidden="true">#</span><?php echo esc_html( $tag->name ); ?>
+										</a>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
+
 							<div class="post-content__footer">
 								<?php $share = inlife_get_share_links(); ?>
 

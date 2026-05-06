@@ -1,9 +1,13 @@
+/* =========================================================
+   Project Single
+========================================================= */
+
 .site-main--project-single {
-    background: #f8fafc;
+    background: var(--inlife-surface-soft);
 
     .page-section--project-intro {
         padding-top: clamp(3rem, 5vw, 4.5rem);
-        padding-bottom: 2.25rem;
+        padding-bottom: clamp(2rem, 4vw, 3rem);
     }
 
     .page-section--project-content,
@@ -13,61 +17,115 @@
     }
 
     .project-single-intro {
-        max-width: 1100px;
+        display: grid;
+        gap: clamp(1.5rem, 3vw, 2.25rem);
+        max-width: 1120px;
+    }
 
-        &__logo {
-            margin-bottom: 1.5rem;
+    .project-single-intro__logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        max-width: 280px;
+        padding: 1rem 1.25rem;
+        background: #fff;
+        border: 1px solid var(--inlife-border);
+        box-shadow: 0 16px 40px rgba(18, 38, 63, 0.05);
 
-            img {
-                display: block;
-                max-width: 220px;
-                height: auto;
-            }
+        img {
+            display: block;
+            max-width: 220px;
+            height: auto;
         }
+    }
 
-        &__lead {
-            max-width: 960px;
-            margin-bottom: 2rem;
-            font-size: clamp(1.1rem, 1.5vw, 1.35rem);
-            line-height: 1.75;
-            color: #6c7890;
-        }
+    .project-single-intro__lead {
+        max-width: 960px;
+        margin: 0;
+        font-size: clamp(1.12rem, 1.45vw, 1.35rem);
+        line-height: 1.75;
+        color: rgba(41, 52, 88, 0.76);
     }
 
     .project-single-meta {
         display: grid;
-        gap: 0.75rem;
+        gap: 0;
         max-width: 980px;
-        padding: 1.25rem 1.5rem;
-        border: 1px solid #e4ebf2;
-        background: #f5f8fc;
+        border-top: 1px solid var(--inlife-border);
+        border-bottom: 1px solid var(--inlife-border);
+        background: transparent;
+    }
 
-        &__item {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: #293458;
+    .project-single-meta__item {
+        display: grid;
+        gap: 0.35rem;
+        padding-block: 0.9rem;
+        border-bottom: 1px solid var(--inlife-border);
+        font-size: 1rem;
+        line-height: 1.6;
+        color: rgba(41, 52, 88, 0.78);
 
-            strong {
-                margin-right: 0.4rem;
-            }
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        strong {
+            color: var(--inlife-primary);
+            font-weight: 800;
+        }
+
+        @media (min-width: 768px) {
+            grid-template-columns: 180px minmax(0, 1fr);
+            gap: 1.25rem;
         }
     }
 
     .project-single-content {
         max-width: 900px;
+        border-top: 1px solid var(--inlife-border);
+        padding-top: clamp(1.75rem, 3vw, 2.5rem);
 
         p,
         li {
-            line-height: 1.8;
-            color: #465066;
+            font-size: clamp(1rem, 1.05vw, 1.08rem);
+            line-height: 1.85;
+            color: rgba(41, 52, 88, 0.8);
+        }
+
+        >*+* {
+            margin-top: 1.25rem;
         }
 
         h2,
         h3,
         h4 {
-            color: #293458;
-            margin-top: 2rem;
+            color: var(--inlife-primary);
+            margin-top: 2.25rem;
             margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        h2 {
+            font-size: clamp(1.65rem, 2.4vw, 2.25rem);
+            line-height: 1.12;
+        }
+
+        h3 {
+            font-size: clamp(1.35rem, 2vw, 1.75rem);
+            line-height: 1.16;
+        }
+
+        a {
+            color: var(--inlife-primary);
+            font-weight: 700;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.18em;
+
+            &:hover,
+            &:focus {
+                text-decoration-thickness: 2px;
+            }
         }
 
         img {
@@ -85,46 +143,82 @@
     }
 
     .project-documents {
-        list-style: none;
+        display: grid;
+        gap: 0;
+        max-width: 900px;
         padding: 0;
         margin: 0;
-        max-width: 900px;
+        border-top: 1px solid var(--inlife-border);
+        list-style: none;
 
-        li+li {
-            margin-top: 0.5rem;
+        li {
+            margin: 0;
+            border-bottom: 1px solid var(--inlife-border);
         }
 
         a {
-            display: inline-flex;
+            position: relative;
+            display: flex;
             align-items: center;
-            gap: 0.35rem;
+            min-height: 64px;
+            padding: 1rem 3rem 1rem 0;
+            color: var(--inlife-primary);
+            font-weight: 800;
+            line-height: 1.35;
             text-decoration: none;
-            font-weight: 600;
-            color: #293458;
 
             &::after {
                 content: "→";
+                position: absolute;
+                top: 50%;
+                right: 0;
+                font-size: 1.25rem;
+                font-weight: 900;
+                transform: translateY(-50%);
+                transition: transform 0.2s ease;
             }
 
             &:hover,
             &:focus {
                 text-decoration: underline;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 0.18em;
             }
+
+            &:hover::after,
+            &:focus::after {
+                transform: translate(5px, -50%);
+            }
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-main--project-single {
+        .project-documents a::after {
+            transition: none;
+        }
+
+        .project-documents a:hover::after,
+        .project-documents a:focus::after {
+            transform: translateY(-50%);
         }
     }
 }
 
 @media (max-width: 767.98px) {
     .site-main--project-single {
-        .project-single-intro {
-            &__lead {
-                font-size: 1.02rem;
-                line-height: 1.7;
-            }
+        .project-single-intro__lead {
+            font-size: 1.02rem;
+            line-height: 1.7;
         }
 
-        .project-single-meta {
-            padding: 1rem 1.1rem;
+        .project-single-intro__logo {
+            max-width: 100%;
+        }
+
+        .project-single-content {
+            padding-top: 1.5rem;
         }
     }
 }

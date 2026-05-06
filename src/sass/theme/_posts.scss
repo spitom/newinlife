@@ -9,7 +9,12 @@
 
 .page-section--posts-hero,
 .page-section--post-hero {
-    padding-bottom: clamp(2rem, 4vw, 3rem);
+    padding: 0;
+}
+
+.page-section--post-layout {
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .page-section--posts-archive {
@@ -118,15 +123,20 @@
 }
 
 .page-section--post-hero .p-media-hero__grid {
-    align-items: start;
+    align-items: center;
 }
 
 .page-section--post-hero .p-media-hero__title {
     margin-bottom: 0.35rem;
-    max-width: 13ch;
-    font-size: clamp(2.6rem, 5vw, 5.3rem);
-    line-height: 0.98;
-    letter-spacing: -0.06em;
+    max-width: 16ch;
+    font-size: clamp(2.25rem, 4.2vw, 4.25rem);
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+}
+
+.page-section--post-hero .p-media-hero__image {
+    min-height: clamp(260px, 28vw, 420px);
+    object-fit: cover;
 }
 
 .page-section--post-hero .p-media-hero__before-lead {
@@ -187,7 +197,8 @@
     align-items: start;
 
     @media (min-width: 1200px) {
-        grid-template-columns: minmax(0, 1fr) 320px;
+        grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.28fr);
+        gap: clamp(3rem, 6vw, 5rem);
     }
 }
 
@@ -205,7 +216,7 @@
 
 .post-content {
     border-top: 1px solid var(--inlife-border);
-    padding-top: clamp(1.75rem, 3vw, 2.5rem);
+    padding-top: clamp(2rem, 4vw, 3rem);
 }
 
 .post-content__body {
@@ -359,6 +370,34 @@
     margin-top: 0;
 }
 
+.post-content__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+    padding-top: 1.25rem;
+}
+
+.post-tag {
+    display: inline-flex;
+    gap: 0.15rem;
+    align-items: center;
+    padding: 0.38rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(41, 52, 88, 0.06);
+    color: var(--inlife-primary);
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+        background: var(--inlife-primary);
+        color: #fff;
+    }
+}
+
 .post-content__footer {
     margin-top: 2rem;
     padding-top: 1.25rem;
@@ -427,8 +466,8 @@
 }
 
 .post-related__title {
-    margin-bottom: 1.25rem;
-    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-size: clamp(1.15rem, 1.4vw, 1.35rem);
     font-weight: 800;
     letter-spacing: -0.035em;
     line-height: 1.15;
@@ -454,7 +493,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem 0.75rem;
-    margin-bottom: 0.45rem;
+    margin-bottom: 0.55rem;
     font-size: 0.78rem;
 }
 
@@ -475,8 +514,9 @@
 
 .post-related-item__title {
     margin: 0;
-    font-size: 1.02rem;
-    line-height: 1.32;
+    font-size: 0.94rem;
+    font-weight: 800;
+    line-height: 1.35;
     color: var(--inlife-primary);
 
     a {

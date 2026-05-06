@@ -30,13 +30,14 @@
 @import "components/surfaces";
 @import "components/hex-media";
 
+@import "helpers/mixins";
+
 @import "components/cards";
+@import "components/post-card";
 @import "components/cards-grid";
 @import "components/empty-state";
 @import "components/career-entry";
 @import "components/hero-slider";
-
-@import "helpers/mixins";
 
 @import "theme/header";
 @import "theme/_navigation";

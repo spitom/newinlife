@@ -141,6 +141,21 @@ if ( ! function_exists( 'inlife_filter_main_posts_archive_query' ) ) {
 				],
 			]
 		);
+		$news_cat = isset( $_GET['news_cat'] )
+			? sanitize_key( wp_unslash( $_GET['news_cat'] ) )
+			: '';
+
+		if ( $news_cat ) {
+			$query->set( 'category_name', $news_cat );
+		}
+
+		$news_year = isset( $_GET['news_year'] )
+			? absint( $_GET['news_year'] )
+			: 0;
+
+		if ( $news_year ) {
+			$query->set( 'year', $news_year );
+		}
 	}
 }
 add_action( 'pre_get_posts', 'inlife_filter_main_posts_archive_query' );
@@ -159,6 +174,18 @@ if ( ! function_exists( 'inlife_get_share_links' ) ) {
 			'linkedin' => "https://www.linkedin.com/sharing/share-offsite/?url={$url}",
 			'mail'     => "mailto:?subject={$title}&body={$url}",
 		];
+
+		$news_cat = isset( $_GET['news_cat'] ) ? sanitize_key( wp_unslash( $_GET['news_cat'] ) ) : '';
+
+		if ( $news_cat ) {
+			$query->set( 'category_name', $news_cat );
+		}
+
+		$news_year = isset( $_GET['news_year'] ) ? absint( $_GET['news_year'] ) : 0;
+
+		if ( $news_year ) {
+			$query->set( 'year', $news_year );
+		}
 	}
 }
 

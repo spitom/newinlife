@@ -86,6 +86,7 @@ $archive_url = get_permalink( $post_id );
 								'show_category' => false,
 								'show_format'   => true,
 								'custom_url'    => $post_url,
+								'variant' => 'story',
 							]
 						);
 						?>

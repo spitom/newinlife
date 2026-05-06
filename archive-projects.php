@@ -45,11 +45,11 @@ $terms = get_terms(
 				</h2>
 			</div>
 
-			<div class="row g-4 projects-types-grid">
+			<div class="projects-types-grid c-card-grid c-card-grid--wide">
 
 				<?php if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) : ?>
 					<?php foreach ( $terms as $term ) : ?>
-						<div class="col-12 col-md-6 col-xl-4">
+						<div class="projects-types-grid__item">
 							<a href="<?php echo esc_url( get_term_link( $term ) ); ?>" class="project-type-card">
 								<div class="project-type-card__inner">
 									<div class="project-type-card__meta">
