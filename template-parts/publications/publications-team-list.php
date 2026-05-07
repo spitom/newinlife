@@ -28,6 +28,7 @@ if ( empty( $grouped_publications ) || ! is_array( $grouped_publications ) ) {
 }
 ?>
 
+
 <div class="team-publications-groups">
 	<?php foreach ( $grouped_publications as $year => $items ) : ?>
 		<section
@@ -36,17 +37,6 @@ if ( empty( $grouped_publications ) || ! is_array( $grouped_publications ) ) {
 			aria-labelledby="team-publications-year-<?php echo esc_attr( sanitize_title( $year ) ); ?>"
 			<?php echo ( $current_year && (string) $year !== (string) $current_year ) ? 'hidden' : ''; ?>
 		>
-			<?php if ( ! $current_year ) : ?>
-			<header class="team-publications-year__header">
-				<h3
-					id="team-publications-year-<?php echo esc_attr( sanitize_title( $year ) ); ?>"
-					class="team-publications-year__title"
-				>
-					<?php echo esc_html( $year ); ?>
-				</h3>
-			</header>
-		<?php endif; ?>
-
 			<div class="team-publications-year__body">
 				<ol class="publications-list list-unstyled mb-0">
 					<?php foreach ( $items as $publication_post ) : ?>

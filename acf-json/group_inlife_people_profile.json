@@ -1,0 +1,367 @@
+{
+  "key": "group_inlife_people_profile",
+  "title": "Profil osoby",
+  "fields": [
+    {
+      "key": "field_inlife_people_tab_basic",
+      "label": "Podstawowe informacje",
+      "name": "",
+      "type": "tab",
+      "placement": "top",
+      "endpoint": 0
+    },
+    {
+      "key": "field_inlife_person_position",
+      "label": "Stanowisko",
+      "name": "person_position",
+      "type": "text",
+      "instructions": "Np. Profesor instytutu, Adiunkt, Specjalista, Asystent administracyjny.",
+      "required": 0,
+      "wrapper": {
+        "width": "50"
+      },
+      "default_value": "",
+      "maxlength": 160
+    },
+    {
+      "key": "field_inlife_person_department_label",
+      "label": "Dział / jednostka organizacyjna",
+      "name": "person_department_label",
+      "type": "text",
+      "instructions": "Pole głównie dla administracji i pracowników bez relacji do zespołów lub laboratoriów.",
+      "required": 0,
+      "wrapper": {
+        "width": "50"
+      },
+      "default_value": "",
+      "maxlength": 160
+    },
+    {
+      "key": "field_inlife_person_show_in_directory",
+      "label": "Pokazuj w katalogu",
+      "name": "person_show_in_directory",
+      "type": "true_false",
+      "instructions": "Włącz, jeśli osoba ma być widoczna na archiwum oraz w publicznych listingach kadry.",
+      "required": 0,
+      "wrapper": {
+        "width": "50"
+      },
+      "message": "Tak, pokazuj tę osobę w katalogu",
+      "default_value": 1,
+      "ui": 1,
+      "ui_on_text": "Tak",
+      "ui_off_text": "Nie"
+    },
+    {
+      "key": "field_inlife_person_email",
+      "label": "E-mail",
+      "name": "person_email",
+      "type": "email",
+      "required": 0,
+      "wrapper": {
+        "width": "50"
+      },
+      "default_value": "",
+      "placeholder": "name@example.com"
+    },
+    {
+      "key": "field_inlife_person_phone",
+      "label": "Telefon",
+      "name": "person_phone",
+      "type": "text",
+      "instructions": "Np. +48 89 523 46 00 lub numer wewnętrzny.",
+      "required": 0,
+      "wrapper": {
+        "width": "25"
+      },
+      "default_value": "",
+      "maxlength": 64
+    },
+    {
+      "key": "field_inlife_person_room",
+      "label": "Pokój / lokalizacja",
+      "name": "person_room",
+      "type": "text",
+      "instructions": "Np. Pokój 214, Budynek B, Sekretariat.",
+      "required": 0,
+      "wrapper": {
+        "width": "25"
+      },
+      "default_value": "",
+      "maxlength": 120
+    },
+    {
+      "key": "field_inlife_person_short_bio",
+      "label": "Krótki opis",
+      "name": "person_short_bio",
+      "type": "textarea",
+      "instructions": "Krótki lead widoczny na profilu osoby. Najlepiej 1–3 zdania.",
+      "required": 0,
+      "wrapper": {
+        "width": "100"
+      },
+      "default_value": "",
+      "maxlength": 450,
+      "rows": 4,
+      "new_lines": "br"
+    },
+    {
+      "key": "field_inlife_person_long_bio",
+      "label": "Opis rozszerzony",
+      "name": "person_long_bio",
+      "type": "wysiwyg",
+      "instructions": "Główna treść profilu osoby. Można zostawić puste i użyć standardowej treści wpisu, ale rekomendowane jest korzystanie z tego pola dla spójności modułu.",
+      "required": 0,
+      "wrapper": {
+        "width": "100"
+      },
+      "default_value": "",
+      "tabs": "all",
+      "toolbar": "basic",
+      "media_upload": 0,
+      "delay": 0
+    },
+    {
+      "key": "field_inlife_people_tab_scientific",
+      "label": "Profil naukowy",
+      "name": "",
+      "type": "tab",
+      "placement": "top",
+      "endpoint": 0
+    },
+    {
+      "key": "field_inlife_person_research_interests",
+      "label": "Najważniejsze publikacje",
+      "name": "person_research_interests",
+      "type": "textarea",
+      "instructions": "Pole przeznaczone głównie dla pracowników naukowych. Możesz wkleić ręcznie przygotowaną listę najważniejszych publikacji.",
+      "required": 0,
+      "wrapper": {
+        "width": "100"
+      },
+      "default_value": "",
+      "rows": 5,
+      "new_lines": "br"
+    },
+    {
+      "key": "field_inlife_person_specializations",
+      "label": "Specjalizacje / słowa kluczowe",
+      "name": "person_specializations",
+      "type": "textarea",
+      "instructions": "Np. biologia rozrodu, nutrigenomika, mikrobiologia żywności.",
+      "required": 0,
+      "wrapper": {
+        "width": "100"
+      },
+      "default_value": "",
+      "rows": 4,
+      "new_lines": "br"
+    },
+    {
+      "key": "field_inlife_person_orcid",
+      "label": "ORCID",
+      "name": "person_orcid",
+      "type": "url",
+      "instructions": "Pełny adres URL do profilu ORCID.",
+      "required": 0,
+      "wrapper": {
+        "width": "50"
+      },
+      "default_value": "",
+      "placeholder": "https://orcid.org/0000-0000-0000-0000"
+    },
+    {
+      "key": "field_inlife_person_google_scholar",
+      "label": "Google Scholar",
+      "name": "person_google_scholar",
+      "type": "url",
+      "instructions": "Pełny adres URL do profilu Google Scholar.",
+      "required": 0,
+      "wrapper": {
+        "width": "50"
+      },
+      "default_value": ""
+    },
+    {
+      "key": "field_inlife_person_researchgate",
+      "label": "ResearchGate",
+      "name": "person_researchgate",
+      "type": "url",
+      "instructions": "Pełny adres URL do profilu ResearchGate.",
+      "required": 0,
+      "wrapper": {
+        "width": "50"
+      },
+      "default_value": ""
+    },
+    {
+      "key": "field_inlife_person_linkedin",
+      "label": "LinkedIn",
+      "name": "person_linkedin",
+      "type": "url",
+      "instructions": "Opcjonalnie — pełny adres URL do profilu LinkedIn.",
+      "required": 0,
+      "wrapper": {
+        "width": "50"
+      },
+      "default_value": ""
+    },
+    {
+      "key": "field_inlife_people_tab_relations",
+      "label": "Powiązania",
+      "name": "",
+      "type": "tab",
+      "placement": "top",
+      "endpoint": 0
+    },
+    {
+      "key": "field_inlife_team_memberships",
+      "label": "Powiązane zespoły",
+      "name": "team_memberships",
+      "type": "repeater",
+      "instructions": "Dodaj zespoły, z którymi powiązana jest dana osoba. W ramach konkretnego powiązania możesz oznaczyć kierownika zespołu.",
+      "required": 0,
+      "wrapper": {
+        "width": "100"
+      },
+      "layout": "row",
+      "min": 0,
+      "max": 0,
+      "collapsed": "field_inlife_team_membership_team",
+      "button_label": "Dodaj zespół",
+      "sub_fields": [
+        {
+          "key": "field_inlife_team_membership_team",
+          "label": "Zespół",
+          "name": "team",
+          "type": "post_object",
+          "required": 1,
+          "wrapper": {
+            "width": "70"
+          },
+          "post_type": [
+            "teams"
+          ],
+          "post_status": [
+            "publish",
+            "draft",
+            "pending",
+            "private"
+          ],
+          "return_format": "id",
+          "multiple": 0,
+          "allow_null": 0,
+          "ui": 1
+        },
+        {
+          "key": "field_inlife_team_membership_is_team_leader",
+          "label": "Kierownik zespołu",
+          "name": "is_team_leader",
+          "type": "true_false",
+          "instructions": "Zaznacz tylko wtedy, gdy ta osoba jest kierownikiem wybranego wyżej zespołu.",
+          "required": 0,
+          "wrapper": {
+            "width": "30"
+          },
+          "message": "Ta osoba jest kierownikiem tego zespołu",
+          "default_value": 0,
+          "ui": 1,
+          "ui_on_text": "Tak",
+          "ui_off_text": "Nie"
+        }
+      ]
+    },
+    {
+      "key": "field_inlife_laboratory_memberships",
+      "label": "Powiązane laboratoria",
+      "name": "laboratory_memberships",
+      "type": "repeater",
+      "instructions": "Dodaj laboratoria, z którymi powiązana jest dana osoba. Możesz również oznaczyć kierownika laboratorium.",
+      "required": 0,
+      "wrapper": {
+        "width": "100"
+      },
+      "layout": "row",
+      "min": 0,
+      "max": 0,
+      "collapsed": "field_inlife_laboratory_membership_laboratory",
+      "button_label": "Dodaj laboratorium",
+      "sub_fields": [
+        {
+          "key": "field_inlife_laboratory_membership_laboratory",
+          "label": "Laboratorium",
+          "name": "laboratory",
+          "type": "post_object",
+          "required": 1,
+          "wrapper": {
+            "width": "70"
+          },
+          "post_type": [
+            "laboratories"
+          ],
+          "post_status": [
+            "publish",
+            "draft",
+            "pending",
+            "private"
+          ],
+          "return_format": "id",
+          "multiple": 0,
+          "allow_null": 0,
+          "ui": 1
+        },
+        {
+          "key": "field_inlife_laboratory_membership_is_laboratory_manager",
+          "label": "Kierownik laboratorium",
+          "name": "is_laboratory_manager",
+          "type": "true_false",
+          "instructions": "Zaznacz tylko wtedy, gdy ta osoba jest kierownikiem wybranego wyżej laboratorium.",
+          "required": 0,
+          "wrapper": {
+            "width": "30"
+          },
+          "message": "Ta osoba jest kierownikiem tego laboratorium",
+          "default_value": 0,
+          "ui": 1,
+          "ui_on_text": "Tak",
+          "ui_off_text": "Nie"
+        }
+      ]
+    },
+    {
+      "key": "field_inlife_people_tab_editorial",
+      "label": "Uwagi redakcyjne",
+      "name": "",
+      "type": "tab",
+      "placement": "top",
+      "endpoint": 0
+    },
+    {
+      "key": "field_inlife_people_type_notice",
+      "label": "Wskazówka redakcyjna",
+      "name": "people_type_notice",
+      "type": "message",
+      "message": "Typ osoby ustawiany jest w taksonomii <strong>Typ osoby</strong>, a nie w polach ACF. Dla pracowników naukowych możesz uzupełnić dodatkowe pola w zakładce „Profil naukowy”.",
+      "new_lines": "wpautop",
+      "esc_html": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "people"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "acf_after_title",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1778140000
+}

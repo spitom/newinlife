@@ -16,6 +16,10 @@ $years = function_exists( 'inlife_get_team_publication_years' )
 	? inlife_get_team_publication_years( $team_id )
 	: array();
 
+if ( empty( $current_year ) && ! empty( $years ) && is_array( $years ) ) {
+	$current_year = (string) reset( $years );
+}
+
 $grouped_publications = function_exists( 'inlife_get_team_grouped_publications' )
 	? inlife_get_team_grouped_publications( $team_id, '' )
 	: array();

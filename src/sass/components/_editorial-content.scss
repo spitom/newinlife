@@ -1,0 +1,43 @@
+/* =========================================================
+   Editorial content
+========================================================= */
+
+.entry-content,
+.c-editorial-content {
+    color: rgba(41, 52, 88, 0.76);
+
+    p,
+    li {
+        line-height: 1.78;
+    }
+
+    ul,
+    ol {
+        display: grid;
+        gap: 0.55rem;
+        margin: 0 0 1.25rem;
+        padding-left: 1.25rem;
+    }
+
+    ul {
+        list-style: disc;
+    }
+
+    ol {
+        list-style: decimal;
+    }
+
+    ul li::marker {
+        color: rgba(41, 52, 88, 0.45);
+    }
+
+    ol li::marker {
+        color: rgba(41, 52, 88, 0.42);
+        font-weight: 800;
+    }
+
+    strong {
+        color: var(--inlife-primary);
+        font-weight: 800;
+    }
+}
