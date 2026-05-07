@@ -32,7 +32,7 @@ if ( ! $card_image_id && has_post_thumbnail( $team_id ) ) {
 }
 ?>
 
-<article <?php post_class( 'team-card c-card c-card--unit c-card--with-media' ); ?>>
+<article <?php post_class( 'team-card c-card c-card--unit c-card--team-archive c-card--with-media' ); ?>>
 	<div class="team-card__frame c-card__frame c-card__frame--cut-tl">
 		<div class="team-card__inner c-card__inner">
 

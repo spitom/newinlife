@@ -115,8 +115,8 @@ if ( ! empty( $members ) ) {
 
 					<?php if ( $email ) : ?>
 						<p class="team-member-tile__meta">
-							<a href="mailto:<?php echo esc_attr( antispambot( $email ) ); ?>">
-								<?php echo esc_html( antispambot( $email ) ); ?>
+							<a href="mailto:<?php echo esc_attr( $email ); ?>">
+								<?php echo esc_html( function_exists( 'inlife_mask_email' ) ? inlife_mask_email( $email ) : str_replace( '@', ' [at] ', $email ) ); ?>
 							</a>
 						</p>
 					<?php endif; ?>

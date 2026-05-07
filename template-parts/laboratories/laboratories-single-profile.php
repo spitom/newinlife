@@ -22,7 +22,7 @@ $show_profile_toggle = mb_strlen( $profile_plain ) > 650;
 ?>
 
 <section class="lab-profile" aria-labelledby="lab-profile-title">
-	<div class="lab-profile__main c-surface c-surface--panel">
+	<div class="lab-profile__main">
 		<header class="section-heading">
 			<h2 id="lab-profile-title" class="section-title">
 				<?php echo esc_html( inlife_t( 'Profil jednostki' ) ); ?>

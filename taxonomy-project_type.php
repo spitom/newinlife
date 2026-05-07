@@ -42,7 +42,7 @@ if ( function_exists( 'get_field' ) ) {
 
 $projects_query = null;
 
-if ( empty( $children ) || is_wp_error( $children ) ) {
+if ( ! is_wp_error( $children ) ) {
 	$projects_query = new WP_Query(
 		[
 			'post_type'      => 'projects',
@@ -61,7 +61,8 @@ if ( empty( $children ) || is_wp_error( $children ) ) {
 	);
 
 	if (
-		$projects_query->have_posts()
+		empty( $children )
+		&& $projects_query->have_posts()
 		&& 1 === (int) $projects_query->found_posts
 		&& 'list' !== $display_mode
 	) {
@@ -122,29 +123,53 @@ if ( ! empty( $term_intro ) ) {
 					</h2>
 				</div>
 
-				<div class="projects-types-grid c-card-grid c-card-grid--wide">
-					<?php foreach ( $children as $child ) : ?>
-						<div class="projects-types-grid__item">
-							<a href="<?php echo esc_url( get_term_link( $child ) ); ?>" class="project-type-card">
-								<div class="project-type-card__inner">
-									<div class="project-type-card__meta">
-										<span class="project-type-card__count">
-											<?php echo intval( function_exists( 'inlife_get_project_type_total_count' ) ? inlife_get_project_type_total_count( (int) $child->term_id ) : $child->count ); ?>
-										</span>
-									</div>
+				<?php if ( 'list' === $display_mode ) : ?>
 
-									<h3 class="project-type-card__title">
-										<?php echo esc_html( $child->name ); ?>
+					<div class="projects-list projects-list--terms">
+						<?php foreach ( $children as $child ) : ?>
+							<article class="project-list-item project-list-item--term">
+								<div class="project-list-item__inner">
+									<h3 class="project-list-item__title">
+										<a href="<?php echo esc_url( get_term_link( $child ) ); ?>">
+											<?php echo esc_html( $child->name ); ?>
+										</a>
 									</h3>
 
-									<span class="project-type-card__link">
+									<a class="project-list-item__link" href="<?php echo esc_url( get_term_link( $child ) ); ?>">
 										<?php echo esc_html( inlife_t( 'Zobacz projekty' ) ); ?>
-									</span>
+									</a>
 								</div>
-							</a>
-						</div>
-					<?php endforeach; ?>
-				</div>
+							</article>
+						<?php endforeach; ?>
+					</div>
+
+				<?php else : ?>
+
+					<div class="projects-types-grid c-card-grid c-card-grid--wide">
+						<?php foreach ( $children as $child ) : ?>
+							<div class="projects-types-grid__item">
+								<a href="<?php echo esc_url( get_term_link( $child ) ); ?>" class="project-type-card">
+									<div class="project-type-card__inner">
+										<div class="project-type-card__meta">
+											<span class="project-type-card__count">
+												<?php echo intval( function_exists( 'inlife_get_project_type_total_count' ) ? inlife_get_project_type_total_count( (int) $child->term_id ) : $child->count ); ?>
+											</span>
+										</div>
+
+										<h3 class="project-type-card__title">
+											<?php echo esc_html( $child->name ); ?>
+										</h3>
+
+										<span class="project-type-card__link">
+											<?php echo esc_html( inlife_t( 'Zobacz projekty' ) ); ?>
+										</span>
+									</div>
+								</a>
+							</div>
+						<?php endforeach; ?>
+					</div>
+
+				<?php endif; ?>
 
 			<?php else : ?>
 

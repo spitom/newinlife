@@ -142,9 +142,12 @@ if ( ! empty( $members ) ) {
 
 					<?php if ( $email ) : ?>
 						<p class="lab-member-tile__meta">
-							<a href="mailto:<?php echo esc_attr( antispambot( $email ) ); ?>">
-								<?php echo esc_html( antispambot( $email ) ); ?>
-							</a>
+							<?php
+							echo inlife_render_obfuscated_email_link(
+								$email,
+								'lab-member-tile__email-link'
+							); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							?>
 						</p>
 					<?php endif; ?>
 

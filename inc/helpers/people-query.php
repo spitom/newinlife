@@ -214,43 +214,26 @@ if ( ! function_exists( 'inlife_render_obfuscated_email_link' ) ) {
 	 * @param string $label_html  Opcjonalny HTML przed adresem / wewnątrz linku.
 	 * @return string
 	 */
-	function inlife_render_obfuscated_email_link( $email, $class = '', $label_html = '' ) {
-		$email = trim( (string) $email );
+	function inlife_render_obfuscated_email_link( $email, $class = '' ) {
+	$email = sanitize_email( $email );
 
-		if ( '' === $email || false === strpos( $email, '@' ) ) {
-			return '';
-		}
-
-		$parts = explode( '@', $email, 2 );
-		$user  = trim( $parts[0] );
-		$domain = trim( $parts[1] );
-
-		if ( '' === $user || '' === $domain ) {
-			return '';
-		}
-
-		$classes = trim( 'js-obfuscated-email ' . $class );
-		$visible = $user . ' [at] ' . $domain;
-
-		ob_start();
-		?>
-		<a
-			href="#"
-			class="<?php echo esc_attr( $classes ); ?>"
-			data-user="<?php echo esc_attr( $user ); ?>"
-			data-domain="<?php echo esc_attr( $domain ); ?>"
-			aria-label="<?php echo esc_attr( $email ); ?>"
-		>
-			<?php
-			if ( '' !== $label_html ) {
-				echo $label_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			}
-			?>
-			<span class="js-obfuscated-email__text"><?php echo esc_html( $visible ); ?></span>
-		</a>
-		<?php
-		return trim( (string) ob_get_clean() );
+	if ( empty( $email ) ) {
+		return '';
 	}
+
+	$masked_email = function_exists( 'inlife_mask_email' )
+		? inlife_mask_email( $email )
+		: str_replace( '@', ' [at] ', $email );
+
+	$class_attr = $class ? ' class="' . esc_attr( $class ) . '"' : '';
+
+	return sprintf(
+		'<a href="mailto:%1$s"%2$s>%3$s</a>',
+		esc_attr( $email ),
+		$class_attr,
+		esc_html( $masked_email )
+	);
+}
 }
 
 function inlife_mask_email( $email ) {

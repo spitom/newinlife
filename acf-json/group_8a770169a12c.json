@@ -5,9 +5,9 @@
         {
             "key": "field_4f767d4e3b6f",
             "label": "Wyposażenie laboratorium",
-            "name": "laboratory_equipment",
+            "name": "laboratory_equipment_content",
             "aria-label": "",
-            "type": "repeater",
+            "type": "wysiwyg",
             "instructions": "Sekcja sprzętu i aparatury laboratorium.",
             "required": 0,
             "conditional_logic": 0,
@@ -16,56 +16,12 @@
                 "class": "",
                 "id": ""
             },
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "layout": "table",
-            "button_label": "Dodaj urządzenie",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_bdeb14fbd192",
-                    "label": "Nazwa urządzenia",
-                    "name": "name",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Nazwa aparatury lub urządzenia.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_4f767d4e3b6f"
-                },
-                {
-                    "key": "field_707a67f9543f",
-                    "label": "Opis",
-                    "name": "description",
-                    "aria-label": "",
-                    "type": "textarea",
-                    "instructions": "Opcjonalny opis możliwości urządzenia.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "rows": 3,
-                    "new_lines": "wpautop",
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "parent_repeater": "field_4f767d4e3b6f"
-                }
-            ]
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -89,5 +45,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1775553632
+    "modified": 1778140582
 }

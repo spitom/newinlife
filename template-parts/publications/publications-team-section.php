@@ -17,7 +17,7 @@ $years = function_exists( 'inlife_get_team_publication_years' )
 	: array();
 
 $grouped_publications = function_exists( 'inlife_get_team_grouped_publications' )
-	? inlife_get_team_grouped_publications( $team_id, $current_year )
+	? inlife_get_team_grouped_publications( $team_id, '' )
 	: array();
 
 $base_url = get_permalink( $team_id );

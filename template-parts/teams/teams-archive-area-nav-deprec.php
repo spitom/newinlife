@@ -1,0 +1,53 @@
+<?php
+/**
+ * Teams archive area navigation.
+ *
+ * @package newinlife
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+$container = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
+
+$area_order = array( 'zywnosc', 'zwierzeta', 'zdrowie' );
+?>
+
+<section class="teams-area-nav">
+	<div class="<?php echo esc_attr( $container ); ?>">
+
+		<div
+			class="c-pills"
+			data-team-filters
+			role="group"
+			aria-label="<?php echo esc_attr( inlife_t( 'Filtruj zespoły według obszaru badawczego' ) ); ?>"
+		>
+			<button
+				type="button"
+				class="c-pill is-active"
+				data-team-filter="all"
+				aria-pressed="true"
+			>
+				<?php echo esc_html( inlife_t( 'Wszystkie' ) ); ?>
+			</button>
+
+			<?php foreach ( $area_order as $slug ) : ?>
+				<?php
+				$term = get_term_by( 'slug', $slug, 'team_area' );
+
+				if ( ! $term || is_wp_error( $term ) ) {
+					continue;
+				}
+				?>
+				<button
+					type="button"
+					class="c-pill"
+					data-team-filter="<?php echo esc_attr( $term->slug ); ?>"
+					aria-pressed="false"
+				>
+					<?php echo esc_html( $term->name ); ?>
+				</button>
+			<?php endforeach; ?>
+		</div>
+
+	</div>
+</section>

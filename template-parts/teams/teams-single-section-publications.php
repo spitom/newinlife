@@ -4,10 +4,7 @@ defined( 'ABSPATH' ) || exit;
 $publications_url = function_exists( 'get_field' ) ? get_field( 'team_publications_archive_url' ) : '';
 ?>
 
-<div class="team-section-block team-section-block--publications c-surface c-surface--panel">
-	<header class="section-heading">
-		<h2 class="section-title"><?php echo esc_html( inlife_t( 'Publikacje' ) ); ?></h2>
-	</header>
+<div class="team-section-block team-section-block--publications">
 
 	<div class="team-publications-list">
 

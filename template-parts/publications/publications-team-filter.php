@@ -30,17 +30,18 @@ if ( empty( $base_url ) ) {
 			$is_active = (string) $year === (string) $current_year;
 
 			$link = add_query_arg(
-                array(
-                    'team_section' => 'publikacje',
-                    'pub_year'     => $year,
-                ),
-                $base_url
-            ) . '#team-publications-section';
+				array(
+					'team_section' => 'publikacje',
+					'pub_year'     => $year,
+				),
+				$base_url
+			);
 			?>
 			<li class="team-publications-filter__item">
 				<a
 					class="team-publications-filter__link<?php echo $is_active ? ' is-active' : ''; ?>"
 					href="<?php echo esc_url( $link ); ?>"
+					data-team-publication-year="<?php echo esc_attr( $year ); ?>"
 					<?php echo $is_active ? 'aria-current="page"' : ''; ?>
 				>
 					<?php echo esc_html( $year ); ?>

@@ -16,14 +16,14 @@ $tabs = array(
 );
 ?>
 
-<div class="team-sections-nav-wrap">
+<div id="team-activity" class="team-sections-nav-wrap">
 	<header class="section-heading">
 		<p class="section-kicker"><?php echo esc_html( inlife_t( 'Dorobek i aktywność zespołu' ) ); ?></p>
 		<h2 class="section-title"><?php echo esc_html( inlife_t( 'Szczegóły działalności' ) ); ?></h2>
 	</header>
 
 	<nav
-		class="team-sections-nav c-pills"
+		class="team-sections-nav"
 		aria-label="<?php echo esc_attr( inlife_t( 'Nawigacja sekcji zespołu' ) ); ?>"
 		role="tablist"
 	>
@@ -32,7 +32,7 @@ $tabs = array(
 			<button
 				type="button"
 				id="team-tab-<?php echo esc_attr( $panel_key ); ?>"
-				class="team-sections-nav__btn c-pill<?php echo $is_active ? ' is-active' : ''; ?>"
+				class="team-sections-nav__btn<?php echo $is_active ? ' is-active' : ''; ?>"
 				data-team-panel-trigger="<?php echo esc_attr( $panel_key ); ?>"
 				role="tab"
 				aria-controls="team-panel-<?php echo esc_attr( $panel_key ); ?>"

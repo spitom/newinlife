@@ -5,9 +5,9 @@
         {
             "key": "field_fb8315f25cf5",
             "label": "Metody i analizy",
-            "name": "laboratory_methods",
+            "name": "laboratory_methods_content",
             "aria-label": "",
-            "type": "repeater",
+            "type": "wysiwyg",
             "instructions": "Sekcja Oferowane metody i analizy.",
             "required": 0,
             "conditional_logic": 0,
@@ -16,56 +16,12 @@
                 "class": "",
                 "id": ""
             },
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "layout": "block",
-            "button_label": "Dodaj metodę lub analizę",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_44757bda769c",
-                    "label": "Tytuł",
-                    "name": "title",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Nazwa metody lub analizy.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_fb8315f25cf5"
-                },
-                {
-                    "key": "field_a2497bcb2561",
-                    "label": "Opis",
-                    "name": "description",
-                    "aria-label": "",
-                    "type": "textarea",
-                    "instructions": "Krótki opis zakresu i przeznaczenia.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "rows": 4,
-                    "new_lines": "wpautop",
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "parent_repeater": "field_fb8315f25cf5"
-                }
-            ]
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -89,5 +45,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1775553585
+    "modified": 1778140530
 }

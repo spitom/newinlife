@@ -2,12 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<div class="team-section-block team-section-block--projects c-surface c-surface--panel">
-	<header class="section-heading">
-		<h2 class="section-title">
-			<?php echo esc_html( inlife_t( 'Aktualne projekty' ) ); ?>
-		</h2>
-	</header>
+<div class="team-section-block team-section-block--projects">
 
 	<?php if ( function_exists( 'have_rows' ) && have_rows( 'team_projects' ) ) : ?>
 

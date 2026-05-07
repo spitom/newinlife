@@ -66,7 +66,7 @@ $news_query = new WP_Query(
 
 	<?php else : ?>
 
-		<div class="team-section-empty c-surface c-surface--panel">
+		<div class="team-section-empty">
 			<p><?php echo esc_html( inlife_t( 'Brak aktualności powiązanych z tym zespołem.' ) ); ?></p>
 		</div>
 

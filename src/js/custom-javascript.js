@@ -364,6 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const updateButtons = (filterValue) => {
 		buttons.forEach((button) => {
 			const isActive = button.getAttribute('data-team-filter') === filterValue;
+
 			button.classList.toggle('is-active', isActive);
 			button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
 		});
@@ -585,37 +586,50 @@ document.addEventListener('DOMContentLoaded', () => {
 	activatePanel('badania', false, false);
 });
 
-// // Team publications filter - restore section position after year filter reload
 
-// document.addEventListener('DOMContentLoaded', () => {
-// 	const restoreKey = 'inlifeRestoreTeamPublications';
+// Team publications year filter — no page reload
 
-// 	if (sessionStorage.getItem(restoreKey) === '1') {
-// 		const section = document.getElementById('team-publications-section');
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('[data-team-publication-year]');
+    const groups = document.querySelectorAll('[data-team-publication-group]');
 
-// 		if (section) {
-// 			const top = section.getBoundingClientRect().top + window.pageYOffset - 24;
+    if (!links.length || !groups.length) return;
 
-// 			window.scrollTo({
-// 				top,
-// 				left: 0,
-// 				behavior: 'auto',
-// 			});
-// 		}
+    const setActiveYear = (year) => {
+        links.forEach((link) => {
+            const isActive = link.getAttribute('data-team-publication-year') === year;
 
-// 		sessionStorage.removeItem(restoreKey);
-// 	}
+            link.classList.toggle('is-active', isActive);
 
-// 	const publicationFilterLinks = document.querySelectorAll('.team-publications-filter__link');
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
 
-// 	if (!publicationFilterLinks.length) return;
+        groups.forEach((group) => {
+            const isActive = group.getAttribute('data-team-publication-group') === year;
 
-// 	publicationFilterLinks.forEach((link) => {
-// 		link.addEventListener('click', () => {
-// 			sessionStorage.setItem(restoreKey, '1');
-// 		});
-// 	});
-// });
+            group.hidden = !isActive;
+            group.classList.toggle('is-hidden', !isActive);
+        });
+    };
+
+    links.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            const year = link.getAttribute('data-team-publication-year');
+            if (!year) return;
+
+            setActiveYear(year);
+
+            const url = new URL(link.href);
+            window.history.pushState({}, '', url);
+        });
+    });
+});
 
 // Single Laboratory - Pokaż więcej / mniej
 
@@ -835,24 +849,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		map.scrollWheelZoom.disable();
 	});
 });
-
-// Maskowanie adresu e-mail
-
-document.addEventListener('click', function (event) {
-	const link = event.target.closest('.js-obfuscated-email');
-	if (!link) return;
-
-	event.preventDefault();
-
-	const user = link.getAttribute('data-user') || '';
-	const domain = link.getAttribute('data-domain') || '';
-
-	if (!user || !domain) return;
-
-	const email = `${user}@${domain}`;
-	window.location.href = `mailto:${email}`;
-});
-
 
 // Kopiowanie linku (post share)
 
@@ -1090,22 +1086,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// IntersectionObserver
+// Reveal cards on viewport
 
 document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.front-area-card');
+    const revealCards = document.querySelectorAll(
+        '.front-area-card, .research-nav-card, .team-card, .laboratory-card'
+    );
 
-    if (!cards.length) return;
+    if (!revealCards.length) return;
 
     if (!('IntersectionObserver' in window)) {
-        cards.forEach((card) => card.classList.add('is-visible'));
+        revealCards.forEach((card) => card.classList.add('is-visible'));
         return;
     }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     if (prefersReducedMotion) {
-        cards.forEach((card) => card.classList.add('is-visible'));
+        revealCards.forEach((card) => card.classList.add('is-visible'));
         return;
     }
 
@@ -1124,8 +1122,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     );
 
-    cards.forEach((card, index) => {
+    revealCards.forEach((card, index) => {
         card.style.transitionDelay = `${index * 70}ms`;
         observer.observe(card);
     });
 });
+
+

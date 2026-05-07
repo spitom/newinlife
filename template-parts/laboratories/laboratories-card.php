@@ -31,7 +31,7 @@ if ( ! $card_image_id && has_post_thumbnail( $laboratory_id ) ) {
 }
 ?>
 
-<article <?php post_class( 'laboratory-card c-card c-card--unit c-card--with-media' ); ?>>
+<article <?php post_class( 'laboratory-card c-card c-card--unit c-card--laboratory-archive c-card--with-media' ); ?>>
 	<div class="laboratory-card__frame c-card__frame c-card__frame--cut-tl">
 		<div class="laboratory-card__inner c-card__inner">
 

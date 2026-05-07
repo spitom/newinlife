@@ -65,7 +65,14 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 			<?php endif; ?>
 
 			<?php if ( $email ) : ?>
-				<p class="people-card__meta"><?php echo esc_html( antispambot( $email ) ); ?></p>
+				<p class="people-card__meta">
+					<?php
+					echo inlife_render_obfuscated_email_link(
+						$email,
+						'people-card__email-link'
+					); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					?>
+				</p>
 			<?php endif; ?>
 
 			<span class="people-card__cta"><?php echo esc_html( $card_args['cta_label'] ); ?></span>
