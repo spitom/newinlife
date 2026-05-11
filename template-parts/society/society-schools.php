@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $post_id   = $args['post_id'] ?? get_the_ID();
-$container = $args['container'] ?? ( function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container' );
+$container = function_exists( 'inlife_container_class' ) ? inlife_container_class( 'page' ) : 'container';
 
 $kicker          = inlife_get_acf_field( 'schools_kicker', $post_id, '' );
 $title           = inlife_get_acf_field( 'schools_title', $post_id, '' );

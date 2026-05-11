@@ -414,59 +414,50 @@
 
 /* =========================================================
    SOCIETY — SCHOOLS / DARK CTA
-   Unified with ABOUT intro dark panel
+   Full-width block, unified with ABOUT intro
 ========================================================= */
 
 .society-section--schools {
     padding-block: clamp(3.5rem, 7vw, 5.5rem);
-
-    >.container,
-    >.container-fluid,
-    >.inlife-container {
-        max-width: none;
-        padding-inline: 0;
-    }
 }
 
 .society-schools {
     position: relative;
     isolation: isolate;
-    display: grid;
-    gap: clamp(2rem, 5vw, 4rem);
-    align-items: center;
     overflow: hidden;
-    padding: clamp(2.25rem, 5vw, 4.25rem) clamp(1.5rem, 8vw, 7rem);
-    border-radius: 0;
-    background:
-        linear-gradient(135deg, #293458 0%, #314067 54%, #212944 100%);
+    width: 100%;
+    background: linear-gradient(135deg, #293458 0%, #314067 54%, #212944 100%);
     color: #fff;
-    box-shadow: 0 20px 48px rgba(18, 38, 63, 0.14);
+}
+
+.society-schools::after {
+    content: "";
+    position: absolute;
+    right: -7rem;
+    bottom: -5rem;
+    width: clamp(20rem, 32vw, 32rem);
+    height: clamp(20rem, 32vw, 32rem);
+    background-image: url("../assets/images/inlife-hero-hex-outline-white.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.16;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.society-schools__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    min-height: clamp(22rem, 34vw, 31rem);
+    padding-block: clamp(3rem, 6vw, 5rem);
 
     @media (min-width: 992px) {
         grid-template-columns: minmax(0, 0.72fr) minmax(460px, 1fr);
     }
-
-    &::after {
-        content: "";
-        position: absolute;
-        right: -7rem;
-        bottom: -5rem;
-        width: clamp(20rem, 32vw, 32rem);
-        height: clamp(20rem, 32vw, 32rem);
-        background-image: url("../assets/images/inlife-hero-hex-outline-white.png");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        opacity: 0.16;
-        pointer-events: none;
-        z-index: -1;
-    }
-}
-
-.society-schools__content,
-.society-schools__form {
-    position: relative;
-    z-index: 1;
 }
 
 .society-schools__content {
@@ -480,6 +471,7 @@
 
     .section-title,
     .c-section-header__title {
+        max-width: 13ch;
         color: #fff;
     }
 }
@@ -489,7 +481,7 @@
     max-width: 58ch;
     font-size: clamp(1rem, 1.05vw, 1.08rem);
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.86);
+    color: rgba(255, 255, 255, 0.84);
 
     >*:last-child {
         margin-bottom: 0;
@@ -497,6 +489,9 @@
 }
 
 .society-schools__form {
+    width: 100%;
+    max-width: 46rem;
+    justify-self: end;
     min-width: 0;
     padding: 0;
     border: 0;
@@ -506,8 +501,8 @@
 
 .society-schools__form-title {
     margin: 0 0 1.25rem;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 0.95rem;
+    font-weight: 800;
     line-height: 1.35;
     color: #fff;
 }
@@ -527,19 +522,18 @@
         margin-bottom: 1rem !important;
     }
 
-    label,
     .forminator-label {
         color: rgba(255, 255, 255, 0.88) !important;
-        font-size: 0.86rem;
-        font-weight: 700;
+        font-size: 0.78rem !important;
+        font-weight: 700 !important;
     }
 
+    .forminator-input,
+    .forminator-textarea,
     input,
     textarea,
-    select,
-    .forminator-input,
-    .forminator-textarea {
-        min-height: 2.65rem;
+    select {
+        min-height: 2.5rem;
         border: 1px solid rgba(255, 255, 255, 0.72) !important;
         border-radius: 0 !important;
         background: transparent !important;
@@ -547,36 +541,29 @@
         box-shadow: none !important;
     }
 
-    textarea,
-    .forminator-textarea {
-        min-height: 5rem;
+    .forminator-textarea,
+    textarea {
+        min-height: 5rem !important;
     }
 
-    input:focus,
-    textarea:focus,
-    select:focus,
-    .forminator-input:focus,
-    .forminator-textarea:focus {
-        outline: 3px solid rgba(213, 219, 62, 0.38);
-        outline-offset: 2px;
-        border-color: #fff !important;
-    }
-
+    .forminator-button-submit,
     button,
-    input[type="submit"],
-    .forminator-button-submit {
-        @extend .c-readmore;
-
-        padding: 0;
+    input[type="submit"] {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0 !important;
         border: 0 !important;
         background: transparent !important;
         color: #fff !important;
         box-shadow: none !important;
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
+        line-height: 1.4 !important;
 
         &::after {
             content: "→";
             display: inline-block;
-            margin-left: 0.35rem;
             opacity: 0.85;
             transition: transform var(--inlife-transition), opacity var(--inlife-transition);
         }
@@ -588,7 +575,7 @@
         }
     }
 
-    >*:last-child {
-        margin-bottom: 0;
+    a {
+        color: #fff;
     }
 }
