@@ -10,67 +10,130 @@ $teams = [];
 $labs  = [];
 
 if ( is_array( $teams_raw ) ) {
+
 	foreach ( $teams_raw as $row ) {
+
 		if ( ! is_array( $row ) ) {
 			continue;
 		}
 
 		$team_id = isset( $row['team'] ) ? (int) $row['team'] : 0;
-		if ( $team_id > 0 ) {
-			$teams[] = $team_id;
+
+		if ( $team_id <= 0 ) {
+			continue;
 		}
+
+		$teams[] = [
+			'id'        => $team_id,
+			'is_leader' => ! empty( $row['is_team_leader'] ),
+		];
 	}
 }
 
 if ( is_array( $labs_raw ) ) {
+
 	foreach ( $labs_raw as $row ) {
+
 		if ( ! is_array( $row ) ) {
 			continue;
 		}
 
 		$lab_id = isset( $row['laboratory'] ) ? (int) $row['laboratory'] : 0;
-		if ( $lab_id > 0 ) {
-			$labs[] = $lab_id;
+
+		if ( $lab_id <= 0 ) {
+			continue;
 		}
+
+		$labs[] = [
+			'id'         => $lab_id,
+			'is_manager' => ! empty( $row['is_laboratory_manager'] ),
+		];
 	}
 }
-
-$teams = array_values( array_unique( $teams ) );
-$labs  = array_values( array_unique( $labs ) );
 
 if ( empty( $teams ) && empty( $labs ) ) {
 	return;
 }
 ?>
 
-<div class="people-single-panel c-surface c-surface--panel">
-	<h2 class="people-single-panel__title">
-		<?php esc_html_e( 'Powiązania', 'newinlife' ); ?>
+<section class="people-profile-aside-section people-profile-aside-section--relations">
+
+	<h2 class="people-profile-aside-section__title">
+		<?php echo esc_html( inlife_t( 'Powiązania' ) ); ?>
 	</h2>
 
 	<?php if ( ! empty( $teams ) ) : ?>
-		<div class="people-single-relations-group">
-			<!-- <h3 class="people-single-relations-group__title"><?php esc_html_e( 'Zespoły', 'newinlife' ); ?></h3> -->
-			<div class="people-single-relations-group__links">
-				<?php foreach ( $teams as $team_id ) : ?>
-					<a href="<?php echo esc_url( get_permalink( $team_id ) ); ?>">
-						<?php echo esc_html( get_the_title( $team_id ) ); ?>
+
+		<div class="people-profile-relations-group">
+
+			<h3 class="people-profile-relations-group__title">
+				<?php echo esc_html( inlife_t( 'Zespoły' ) ); ?>
+			</h3>
+
+			<div class="people-profile-relations-group__items">
+
+				<?php foreach ( $teams as $team ) : ?>
+
+					<a
+						href="<?php echo esc_url( get_permalink( $team['id'] ) ); ?>"
+						class="people-profile-relations-group__link"
+					>
+
+						<span class="people-profile-relations-group__name">
+							<?php echo esc_html( get_the_title( $team['id'] ) ); ?>
+						</span>
+
+						<?php if ( $team['is_leader'] ) : ?>
+							<span class="c-badge c-badge--role">
+								<?php echo esc_html( inlife_t( 'Kierownik' ) ); ?>
+							</span>
+						<?php endif; ?>
+
 					</a>
+
 				<?php endforeach; ?>
+
 			</div>
+
 		</div>
+
 	<?php endif; ?>
 
 	<?php if ( ! empty( $labs ) ) : ?>
-		<div class="people-single-relations-group">
-			<h3 class="people-single-relations-group__title"><?php esc_html_e( 'Laboratoria', 'newinlife' ); ?></h3>
-			<div class="people-single-relations-group__links">
-				<?php foreach ( $labs as $lab_id ) : ?>
-					<a href="<?php echo esc_url( get_permalink( $lab_id ) ); ?>">
-						<?php echo esc_html( get_the_title( $lab_id ) ); ?>
+
+		<div class="people-profile-relations-group">
+
+			<h3 class="people-profile-relations-group__title">
+				<?php echo esc_html( inlife_t( 'Laboratoria' ) ); ?>
+			</h3>
+
+			<div class="people-profile-relations-group__items">
+
+				<?php foreach ( $labs as $lab ) : ?>
+
+					<a
+						href="<?php echo esc_url( get_permalink( $lab['id'] ) ); ?>"
+						class="people-profile-relations-group__link"
+					>
+
+						<span class="people-profile-relations-group__name">
+							<?php echo esc_html( get_the_title( $lab['id'] ) ); ?>
+						</span>
+
+						<?php if ( $lab['is_manager'] ) : ?>
+							<span class="c-badge c-badge--role">
+								<?php echo esc_html( inlife_t( 'Kierownik' ) ); ?>
+							</span>
+						<?php endif; ?>
+
 					</a>
+
 				<?php endforeach; ?>
+
 			</div>
+
 		</div>
+
 	<?php endif; ?>
-</div>
+
+</section>

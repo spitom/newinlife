@@ -56,15 +56,20 @@
         right: 0.9rem;
         bottom: 0.9rem;
         z-index: 2;
+
         display: inline-flex;
         align-items: center;
         justify-content: center;
+
         width: 2.6rem;
         height: 2.6rem;
+
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.92);
         color: var(--inlife-primary);
+
         box-shadow: 0 0.5rem 1rem rgba(41, 52, 88, 0.14);
+
         font-size: 1rem;
         line-height: 1;
     }
@@ -74,23 +79,34 @@
         flex: 1;
         flex-direction: column;
         gap: 0.35rem;
+
         padding-top: 0.95rem;
         padding-bottom: 0.95rem;
     }
 
+    /* Archive/listing metadata labels.
+       Important: archive labels are text-only, no pill background. */
     &__category,
     &__format-badge {
         display: inline-flex;
         align-items: center;
-        padding: 0.3rem 0.72rem;
-        border-radius: 999px;
-        background: rgba(213, 219, 62, 0.22);
-        color: var(--inlife-primary);
+        width: fit-content;
+
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+
         font-size: 0.72rem;
-        font-weight: 700;
-        line-height: 1;
+        font-weight: 900;
+        line-height: 1.2;
+        letter-spacing: 0.07em;
         text-transform: uppercase;
-        letter-spacing: 0.03em;
+    }
+
+    &__category {
+        color: var(--inlife-primary);
     }
 
     &__date {
@@ -128,11 +144,14 @@
         display: inline-flex;
         gap: 0.15rem;
         align-items: center;
+
         width: fit-content;
         padding: 0.3rem 0.58rem;
+
         border-radius: 999px;
         background: rgba(41, 52, 88, 0.06);
         color: rgba(41, 52, 88, 0.82);
+
         font-size: 0.7rem;
         font-weight: 800;
         line-height: 1;
@@ -186,10 +205,11 @@
     .post-card__media {
         width: 100%;
         aspect-ratio: 16 / 10;
-        border-radius: 16px;
         overflow: hidden;
+        border-radius: 16px;
         background: #eef3f7;
         box-shadow: 0 16px 38px rgba(18, 38, 63, 0.08);
+
         transition:
             transform 0.25s ease,
             box-shadow 0.25s ease;
@@ -198,21 +218,11 @@
     .post-card__body {
         width: calc(100% - clamp(1.5rem, 3vw, 2.5rem));
         max-width: 92%;
+
         padding: 1rem 0 0;
         margin-inline: auto;
-        background: transparent;
-    }
 
-    .post-card__category,
-    .post-card__format-badge {
-        padding: 0;
-        border-radius: 0;
         background: transparent;
-        font-size: 0.7rem;
-        font-weight: 900;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        color: var(--inlife-primary);
     }
 
     .post-card__date {
@@ -250,16 +260,41 @@
 }
 
 /* =========================================================
-   Post card variants
+   POST CARD VARIANTS — SOCIETY / EDITORIAL FORMATS
 ========================================================= */
 
+/* Przeczytaj */
+.post-card--przeczytaj {
+    .post-card__format-badge {
+        color: var(--inlife-primary);
+    }
+}
+
+/* Zobacz */
+.post-card--zobacz {
+    .post-card__format-badge {
+        color: #007c6a;
+    }
+
+    .post-card__media-badge {
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--inlife-primary);
+    }
+}
+
+/* Posłuchaj */
 .post-card--posluchaj {
+    .post-card__format-badge {
+        color: rgba(41, 52, 88, .72);
+        background: transparent;
+    }
+
     .post-card__media {
         display: flex;
         align-items: center;
         justify-content: center;
-        background: transparent;
         padding: 0;
+        background: transparent;
     }
 
     .post-card__media-link {
@@ -277,26 +312,8 @@
         margin-inline: auto;
     }
 
-    .post-card__format-badge {
-        background: var(--inlife-accent);
-        color: #000;
-    }
-
     .post-card__media-badge {
         background: rgba(213, 219, 62, 0.95);
         color: #1f2b4d;
     }
-}
-
-.post-card--zobacz {
-    .post-card__media-badge {
-        background: rgba(255, 255, 255, 0.92);
-        color: var(--inlife-primary);
-    }
-}
-
-.post-card--przeczytaj .post-card__format-badge,
-.post-card--zobacz .post-card__format-badge {
-    // background: rgba(213, 219, 62, 0.22);
-    color: var(--inlife-accent);
 }

@@ -59,7 +59,7 @@ $section_action = trim( (string) ob_get_clean() );
 		);
 		?>
 
-		<div class="society-cards society-cards--initiatives c-card-grid">
+		<div class="society-link-list society-link-list--projects">
 			<?php foreach ( $pages as $page_item ) : ?>
 				<?php
 				$page_id = $page_item instanceof WP_Post ? $page_item->ID : (int) $page_item;

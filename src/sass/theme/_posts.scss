@@ -96,23 +96,6 @@
     margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
-/* =========================================================
-   Related
-========================================================= */
-
-.post-related-item__format {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.55rem;
-    border-radius: 999px;
-    background: rgba(213, 219, 62, 0.22);
-    color: var(--inlife-primary);
-    font-weight: 700;
-    font-size: 0.72rem;
-    line-height: 1;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-}
 
 /* =========================================================
    Single post hero
@@ -152,34 +135,13 @@
     flex-wrap: wrap;
     gap: 0.7rem 1rem;
     align-items: center;
-    margin-bottom: 0;
+    margin-bottom: 0.55rem;
     font-size: 0.92rem;
 }
 
 .post-hero__date {
     color: rgba(41, 52, 88, 0.78);
     font-weight: 500;
-}
-
-.post-hero__category-badge,
-.post-hero__format-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.34rem 0.64rem;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 0.76rem;
-    line-height: 1.2;
-}
-
-.post-hero__category-badge {
-    background: rgba(41, 52, 88, 0.08);
-    color: var(--inlife-primary);
-}
-
-.post-hero__format-badge {
-    background: rgba(213, 219, 62, 0.22);
-    color: var(--inlife-primary);
 }
 
 /* =========================================================
@@ -495,16 +457,6 @@
     gap: 0.5rem 0.75rem;
     margin-bottom: 0.55rem;
     font-size: 0.78rem;
-}
-
-.post-related-item__category {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.55rem;
-    border-radius: 999px;
-    background: rgba(213, 219, 62, 0.22);
-    color: var(--inlife-primary);
-    font-weight: 700;
 }
 
 .post-related-item__date {

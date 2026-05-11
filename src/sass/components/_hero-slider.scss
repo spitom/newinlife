@@ -96,6 +96,17 @@
 
 .hero-slide__cta {
     color: #fff;
+
+    &:hover,
+    &:focus-visible {
+        color: #fff;
+    }
+}
+
+.hero-slide__cta:hover .c-readmore__icon,
+.hero-slide__cta:focus-visible .c-readmore__icon {
+    transform: translateX(4px);
+    opacity: 1;
 }
 
 .hero-slider__nav,

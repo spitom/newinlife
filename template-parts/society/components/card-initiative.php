@@ -24,19 +24,25 @@ if ( ! $permalink || ! $title ) {
 }
 ?>
 
-<article class="society-initiative-card c-surface c-surface--panel">
-	<a class="society-initiative-card__link" href="<?php echo esc_url( $permalink ); ?>">
-		<h3 class="society-initiative-card__title">
-			<?php echo esc_html( $title ); ?>
-		</h3>
+<article class="society-link-item">
+	<a class="society-link-item__link" href="<?php echo esc_url( $permalink ); ?>">
+		<div class="society-link-item__content">
+			<span class="society-link-item__eyebrow">
+				<?php echo esc_html( inlife_t( 'Projekt' ) ); ?>
+			</span>
 
-		<?php if ( $lead ) : ?>
-			<p class="society-initiative-card__text">
-				<?php echo esc_html( $lead ); ?>
-			</p>
-		<?php endif; ?>
+			<h3 class="society-link-item__title">
+				<?php echo esc_html( $title ); ?>
+			</h3>
 
-		<span class="society-initiative-card__readmore c-readmore">
+			<?php if ( $lead ) : ?>
+				<p class="society-link-item__text">
+					<?php echo esc_html( $lead ); ?>
+				</p>
+			<?php endif; ?>
+		</div>
+
+		<span class="society-link-item__readmore c-readmore">
 			<?php echo esc_html( inlife_t( 'Przejdź dalej' ) ); ?>
 			<span class="c-readmore__icon" aria-hidden="true">→</span>
 		</span>

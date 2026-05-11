@@ -531,6 +531,52 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'network_region_lead', 'Zobacz partnerów współpracujących z Instytutem w regionie: %s.', $group );
 		pll_register_string( 'network_region_all_cta', 'Zobacz wszystkich partnerów', $group );
 		pll_register_string( 'network_region_empty', 'Brak partnerów w tym regionie.', $group );
+
+		/*
+		* ------------------------------------------------------------
+		* InLife People
+		* ------------------------------------------------------------
+		*/
+		$group = 'InLife People';
+
+		pll_register_string( 'people_archive_kicker', 'Ludzie', $group );
+		pll_register_string( 'people_archive_lead', 'Centralny katalog pracowników instytutu z możliwością wyszukiwania i filtrowania.', $group );
+
+		pll_register_string( 'people_search_label', 'Szukaj osoby', $group );
+		pll_register_string( 'people_search_placeholder', 'Szukaj osoby...', $group );
+		pll_register_string( 'people_search_button', 'Szukaj', $group );
+
+		pll_register_string( 'people_filter_all', 'Wszyscy', $group );
+		pll_register_string( 'people_filter_team', 'Zespół', $group );
+		pll_register_string( 'people_filter_lab', 'Laboratorium', $group );
+		pll_register_string( 'people_filter_all_teams', 'Wszystkie zespoły', $group );
+		pll_register_string( 'people_filter_all_labs', 'Wszystkie laboratoria', $group );
+		pll_register_string( 'people_filter_submit', 'Filtruj', $group );
+		pll_register_string( 'people_filter_clear', 'Wyczyść', $group );
+		pll_register_string( 'people_filter_alpha_aria', 'Filtr alfabetyczny osób', $group );
+
+		pll_register_string( 'people_empty', 'Nie znaleziono osób spełniających wybrane kryteria.', $group );
+		pll_register_string( 'people_view_profile', 'Zobacz profil', $group );
+
+		pll_register_string( 'people_single_contact_aria', 'Dane kontaktowe', $group );
+		pll_register_string( 'people_single_email', 'E-mail', $group );
+		pll_register_string( 'people_single_phone', 'Telefon', $group );
+		pll_register_string( 'people_single_room', 'Pokój', $group );
+
+		pll_register_string( 'people_single_info', 'Informacje', $group );
+		pll_register_string( 'people_single_profile', 'Profil', $group );
+		pll_register_string( 'people_single_publications', 'Najważniejsze publikacje', $group );
+		pll_register_string( 'people_single_specializations', 'Specjalizacje / słowa kluczowe', $group );
+		pll_register_string( 'people_single_profiles', 'Profile i identyfikatory', $group );
+		pll_register_string( 'people_single_relations', 'Powiązania', $group );
+		pll_register_string( 'people_single_teams', 'Zespoły', $group );
+		pll_register_string( 'people_single_labs', 'Laboratoria', $group );
+		pll_register_string( 'people_single_leader', 'Kierownik', $group );
+
+		pll_register_string( 'people_filter_type_aria', 'Filtruj według typu osoby', $group );
+
+		pll_register_string( 'people_pagination_prev', 'Poprzednia', $group );
+		pll_register_string( 'people_pagination_next', 'Następna', $group );
 	}
 
 	add_action( 'init', 'inlife_register_polylang_strings' );

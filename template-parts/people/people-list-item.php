@@ -116,7 +116,7 @@ $relations     = array_values(
 		<?php if ( 'scientific' === $type_slug ) : ?>
 			<p class="people-directory-row__profile">
 				<a href="<?php the_permalink(); ?>" class="people-directory-row__profile-link c-readmore">
-					<?php esc_html_e( 'Zobacz profil', 'newinlife' ); ?>
+					<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?>
 					<span class="c-readmore__icon" aria-hidden="true">→</span>
 				</a>
 			</p>
@@ -166,14 +166,13 @@ $relations     = array_values(
 
 			<?php if ( $room ) : ?>
 				<span class="people-directory-row__contact-item">
-					<?php
-					printf(
-						esc_html__( 'pok. %s', 'newinlife' ),
-						esc_html( $room )
-					);
-					?>
+					<span class="people-directory-row__room-label">
+						<?php echo esc_html( inlife_t( 'Pokój' ) ); ?>:
+					</span>
+					<?php echo esc_html( $room ); ?>
 				</span>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>
 </article>
+

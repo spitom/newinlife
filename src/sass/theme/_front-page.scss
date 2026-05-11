@@ -828,9 +828,19 @@
     }
 }
 
-.front-popielno:hover .c-readmore__icon,
-.front-popielno:focus-within .c-readmore__icon {
-    transform: translateX(5px);
+.front-popielno__readmore {
+    color: #fff;
+
+    &:hover,
+    &:focus-visible {
+        color: #fff;
+    }
+}
+
+.front-popielno__readmore:hover .c-readmore__icon,
+.front-popielno__readmore:focus-visible .c-readmore__icon {
+    transform: translateX(4px);
+    opacity: 1;
 }
 
 @media (max-width: 767.98px) {

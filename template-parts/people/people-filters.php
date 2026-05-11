@@ -102,13 +102,13 @@ if ( $current_lab ) {
 
 <div class="people-filters-wrap">
 	<?php if ( ! empty( $types ) && is_array( $types ) && ! is_wp_error( $types ) ) : ?>
-		<div class="people-filters people-filters--pills" aria-label="<?php echo esc_attr__( 'Filtruj według typu osoby', 'newinlife' ); ?>">
+		<div class="people-filters people-filters--pills" aria-label="<?php echo esc_attr( inlife_t( 'Filtruj według typu osoby' ) ); ?>">
 			<a
 				class="people-filters__pill c-pill<?php echo '' === $current_type ? ' is-active' : ''; ?>"
 				<?php echo '' === $current_type ? 'aria-current="page"' : ''; ?>
 				href="<?php echo esc_url( add_query_arg( $base_args, $archive_url ) ); ?>"
 			>
-				<?php esc_html_e( 'Wszyscy', 'newinlife' ); ?>
+				<?php echo esc_html( inlife_t( 'Wszyscy' ) ); ?>
 			</a>
 
 			<?php foreach ( $types as $type ) : ?>
@@ -150,10 +150,10 @@ if ( $current_lab ) {
 		<div class="row g-3 align-items-end">
 			<div class="col-lg-4 col-md-6">
 				<label class="form-label people-filters-form__label" for="people-team-filter">
-					<?php esc_html_e( 'Zespół', 'newinlife' ); ?>
+					<?php echo esc_html( inlife_t( 'Zespół' ) ); ?>
 				</label>
 				<select id="people-team-filter" name="team" class="form-select">
-					<option value=""><?php esc_html_e( 'Wszystkie zespoły', 'newinlife' ); ?></option>
+					<option value=""><?php echo esc_html( inlife_t( 'Wszystkie zespoły' ) ); ?></option>
 					<?php foreach ( $teams as $team ) : ?>
 						<option value="<?php echo esc_attr( $team->ID ); ?>" <?php selected( $current_team, $team->ID ); ?>>
 							<?php echo esc_html( get_the_title( $team ) ); ?>
@@ -164,10 +164,10 @@ if ( $current_lab ) {
 
 			<div class="col-lg-4 col-md-6">
 				<label class="form-label people-filters-form__label" for="people-lab-filter">
-					<?php esc_html_e( 'Laboratorium', 'newinlife' ); ?>
+					<?php echo esc_html( inlife_t( 'Laboratorium' ) ); ?>
 				</label>
 				<select id="people-lab-filter" name="lab" class="form-select">
-					<option value=""><?php esc_html_e( 'Wszystkie laboratoria', 'newinlife' ); ?></option>
+					<option value=""><?php echo esc_html( inlife_t( 'Wszystkie laboratoria' ) ); ?></option>
 					<?php foreach ( $labs as $lab ) : ?>
 						<option value="<?php echo esc_attr( $lab->ID ); ?>" <?php selected( $current_lab, $lab->ID ); ?>>
 							<?php echo esc_html( get_the_title( $lab ) ); ?>
@@ -179,11 +179,11 @@ if ( $current_lab ) {
 			<div class="col-lg-4 col-md-12">
 				<div class="people-filters-form__actions c-filter-panel__actions">
 					<button type="submit" class="btn btn-primary">
-						<?php esc_html_e( 'Filtruj', 'newinlife' ); ?>
+						<?php echo esc_html( inlife_t( 'Filtruj' ) ); ?>
 					</button>
 
 					<a class="btn btn-outline-primary" href="<?php echo esc_url( get_post_type_archive_link( 'people' ) ); ?>">
-						<?php esc_html_e( 'Wyczyść', 'newinlife' ); ?>
+						<?php echo esc_html( inlife_t( 'Wyczyść' ) ); ?>
 					</a>
 				</div>
 			</div>

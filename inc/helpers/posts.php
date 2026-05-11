@@ -371,3 +371,29 @@ if ( ! function_exists( 'inlife_get_post_card_image_id' ) ) {
 		return (int) get_post_thumbnail_id( $post_id );
 	}
 }
+
+if ( ! function_exists( 'inlife_get_post_badge_class' ) ) {
+	function inlife_get_post_badge_class( int $post_id ): string {
+		$format_terms = get_the_terms( $post_id, 'society_format' );
+
+		if ( ! empty( $format_terms ) && ! is_wp_error( $format_terms ) ) {
+			$format_slug = $format_terms[0]->slug;
+
+			if ( 'posluchaj' === $format_slug ) {
+				return 'c-badge--listen';
+			}
+
+			if ( 'zobacz' === $format_slug ) {
+				return 'c-badge--watch';
+			}
+
+			if ( 'przeczytaj' === $format_slug ) {
+				return 'c-badge--read';
+			}
+
+			return 'c-badge--society';
+		}
+
+		return 'c-badge--news';
+	}
+}

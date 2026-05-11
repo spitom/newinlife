@@ -16,7 +16,7 @@ $archive_url = get_post_type_archive_link( 'people' );
 	onsubmit="var input=this.querySelector('#people-search-input'); if(input && !input.value.trim()){ window.location=this.action; return false; }"
 >
 	<label class="visually-hidden" for="people-search-input">
-		<?php esc_html_e( 'Szukaj osoby', 'newinlife' ); ?>
+		<?php echo esc_html( inlife_t( 'Szukaj osoby' ) ); ?>
 	</label>
 
 	<div class="people-search__inner c-search__inner">
@@ -25,7 +25,7 @@ $archive_url = get_post_type_archive_link( 'people' );
 			type="search"
 			name="s"
 			class="form-control people-search__input c-search__input"
-			placeholder="<?php echo esc_attr__( 'Szukaj osoby…', 'newinlife' ); ?>"
+			placeholder="<?php echo esc_attr( inlife_t( 'Szukaj osoby...' ) ); ?>"
 			value="<?php echo esc_attr( $current_search ); ?>"
 		>
 
@@ -44,7 +44,7 @@ $archive_url = get_post_type_archive_link( 'people' );
 		<?php endif; ?>
 
 		<button type="submit" class="btn btn-primary people-search__button c-search__button">
-			<?php esc_html_e( 'Szukaj', 'newinlife' ); ?>
+			<?php echo esc_html( inlife_t( 'Szukaj' ) ); ?>
 		</button>
 	</div>
 </form>

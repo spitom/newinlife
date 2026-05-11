@@ -220,21 +220,35 @@ if ( 'society' === $entry_context ) {
 
 	<section class="page-section page-section--post-hero">
 		<?php
+		$post_badge_label = '';
+
+		if ( $format_badge ) {
+			$post_badge_label = $format_badge;
+		} elseif ( $primary_category ) {
+			$post_badge_label = $primary_category->name;
+		}
+
+		$post_badge_class = function_exists( 'inlife_get_post_badge_class' )
+			? inlife_get_post_badge_class( $post_id )
+			: 'c-badge--news';
+
 		ob_start();
 		?>
-		<div class="post-hero__meta">
+
+		<div class="post-hero__meta c-meta-row">
+			<?php if ( $post_badge_label ) : ?>
+				<span class="post-hero__badge c-badge <?php echo esc_attr( $post_badge_class ); ?>">
+					<?php echo esc_html( $post_badge_label ); ?>
+				</span>
+			<?php endif; ?>
+
 			<?php if ( $date ) : ?>
-				<span class="post-hero__date"><?php echo esc_html( $date ); ?></span>
-			<?php endif; ?>
-
-			<?php if ( $format_badge ) : ?>
-				<span class="post-hero__format-badge"><?php echo esc_html( $format_badge ); ?></span>
-			<?php endif; ?>
-
-			<?php if ( $primary_category ) : ?>
-				<span class="post-hero__category-badge"><?php echo esc_html( $primary_category->name ); ?></span>
+				<span class="post-hero__date c-meta-row__date">
+					<?php echo esc_html( $date ); ?>
+				</span>
 			<?php endif; ?>
 		</div>
+
 		<?php
 		$before_lead = trim( (string) ob_get_clean() );
 
@@ -358,24 +372,48 @@ if ( 'society' === $entry_context ) {
 									$related_category     = function_exists( 'inlife_get_primary_post_category' )
 										? inlife_get_primary_post_category( $related_id )
 										: null;
+									$related_badge_label = '';
+
+									if ( $related_format_badge ) {
+										$related_badge_label = $related_format_badge;
+									} elseif ( $related_category ) {
+										$related_badge_label = $related_category->name;
+									}
+
+									$related_badge_class = function_exists( 'inlife_get_post_badge_class' )
+										? inlife_get_post_badge_class( $related_id )
+										: 'c-badge--news';
 									?>
 									<article class="post-related-item">
-										<div class="post-related-item__meta">
-											<?php if ( $related_format_badge ) : ?>
-												<span class="post-related-item__format">
-													<?php echo esc_html( $related_format_badge ); ?>
+										<?php
+										$related_badge_label = '';
+										$related_badge_class = has_category( 'spoleczenstwo', $related_id ) ? 'c-badge--society' : 'c-badge--news';
+
+										if ( $related_format_badge ) {
+											$related_badge_label = $related_format_badge;
+
+											if ( 'Posłuchaj' === $related_format_badge ) {
+												$related_badge_class = 'c-badge--listen';
+											} elseif ( 'Zobacz' === $related_format_badge ) {
+												$related_badge_class = 'c-badge--watch';
+											} elseif ( 'Przeczytaj' === $related_format_badge ) {
+												$related_badge_class = 'c-badge--read';
+											}
+										} elseif ( $related_category ) {
+											$related_badge_label = $related_category->name;
+										}
+										?>
+
+										<div class="post-related-item__meta c-meta-row">
+											<?php if ( $related_badge_label ) : ?>
+												<span class="post-related-item__badge c-badge <?php echo esc_attr( $related_badge_class ); ?>">
+													<?php echo esc_html( $related_badge_label ); ?>
 												</span>
 											<?php endif; ?>
 
 											<?php if ( $related_date ) : ?>
-												<span class="post-related-item__date">
+												<span class="post-related-item__date c-meta-row__date">
 													<?php echo esc_html( $related_date ); ?>
-												</span>
-											<?php endif; ?>
-
-											<?php if ( ! $related_format_badge && $related_category ) : ?>
-												<span class="post-related-item__category">
-													<?php echo esc_html( $related_category->name ); ?>
 												</span>
 											<?php endif; ?>
 										</div>

@@ -31,7 +31,7 @@ if ( $current_lab ) {
 }
 ?>
 
-<nav class="people-alpha-filter c-surface c-surface--compact" aria-label="<?php echo esc_attr__( 'Filtr alfabetyczny osób', 'newinlife' ); ?>">
+<nav class="people-alpha-filter" aria-label="<?php echo esc_attr( inlife_t( 'Filtr alfabetyczny osób' ) ); ?>">
 	<div class="people-alpha-filter__inner c-pills">
 		<?php $all_args = $base_args; ?>
 		<a
@@ -39,7 +39,7 @@ if ( $current_lab ) {
 			<?php echo '' === $current_letter ? 'aria-current="page"' : ''; ?>
 			href="<?php echo esc_url( add_query_arg( $all_args, $archive_url ) ); ?>"
 		>
-			<?php esc_html_e( 'Wszystkie', 'newinlife' ); ?>
+			<?php echo esc_html( inlife_t( 'Wszyscy' ) ); ?>
 		</a>
 
 		<?php foreach ( $letters as $letter ) : ?>

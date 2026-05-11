@@ -11,6 +11,19 @@
       "endpoint": 0
     },
     {
+      "key": "field_inlife_person_academic_title",
+      "label": "Tytuł / stopień naukowy",
+      "name": "person_academic_title",
+      "type": "text",
+      "instructions": "Np. dr, dr hab., prof. dr hab.",
+      "required": 0,
+      "wrapper": {
+        "width": "50"
+      },
+      "default_value": "",
+      "maxlength": 80
+    },
+    {
       "key": "field_inlife_person_position",
       "label": "Stanowisko",
       "name": "person_position",

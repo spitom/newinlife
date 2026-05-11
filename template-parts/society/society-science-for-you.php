@@ -67,9 +67,9 @@ $allowed_video_html = [
 
 <section class="society-section society-section--science" aria-labelledby="society-science-heading">
 	<div class="<?php echo esc_attr( $container ); ?>">
-		<div class="society-science<?php echo $has_media ? ' society-science--has-media' : ' society-science--no-media'; ?>">
+		<div class="society-feature society-feature--science<?php echo $has_media ? ' society-feature--has-media' : ' society-feature--no-media'; ?>">
 
-			<div class="society-science__content">
+			<div class="society-feature__content">
 				<?php
 				get_template_part(
 					'template-parts/components/section-header',
@@ -84,27 +84,27 @@ $allowed_video_html = [
 				?>
 
 				<?php if ( ! empty( $section_text ) ) : ?>
-					<div class="entry-content society-science__text">
+					<div class="entry-content society-feature__text">
 						<?php echo wp_kses_post( $section_text ); ?>
 					</div>
 				<?php endif; ?>
 			</div>
 
 			<?php if ( $has_media ) : ?>
-				<div class="society-science__media">
+				<div class="society-feature__media">
 					<?php if ( ! empty( $video_html ) ) : ?>
-						<div class="society-science__video">
+						<div class="society-feature__video">
 							<?php echo wp_kses( $video_html, $allowed_video_html ); ?>
 						</div>
 					<?php elseif ( $image_id ) : ?>
-						<div class="society-science__image-wrapper">
+						<div class="society-feature__image-wrapper">
 							<?php
 							echo wp_get_attachment_image(
 								$image_id,
 								'large',
 								false,
 								[
-									'class' => 'society-science__image',
+									'class' => 'society-feature__image',
 									'alt'   => '',
 								]
 							);
