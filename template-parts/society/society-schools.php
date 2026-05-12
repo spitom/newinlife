@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $post_id   = $args['post_id'] ?? get_the_ID();
-$container = function_exists( 'inlife_container_class' ) ? inlife_container_class( 'page' ) : 'container';
+$container = $args['container'] ?? ( function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container' );
 
 $kicker          = inlife_get_acf_field( 'schools_kicker', $post_id, '' );
 $title           = inlife_get_acf_field( 'schools_title', $post_id, '' );
@@ -53,16 +53,12 @@ if ( empty( $text ) && empty( $form_shortcode ) ) {
 				</div>
 
 				<?php if ( $form_shortcode ) : ?>
-					<div class="society-schools__form" aria-label="<?php echo esc_attr( inlife_t( 'Zapisz się do naszej bazy' ) ); ?>">
-						<div class="society-schools__form-header">
-							<h3 class="society-schools__form-title">
-								<?php echo esc_html( inlife_t( 'Zapisz się do naszej bazy' ) ); ?>
-							</h3>
-						</div>
+					<div class="society-schools__form inlife-form inlife-form--dark">
 
-						<div class="society-schools__form-body">
+						<div class="inlife-form inlife-form--light">
 							<?php echo do_shortcode( wp_kses_post( $form_shortcode ) ); ?>
 						</div>
+						
 					</div>
 				<?php endif; ?>
 

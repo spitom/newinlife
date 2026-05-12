@@ -13,7 +13,7 @@ $container = $args['container'] ?? ( function_exists( 'inlife_container_class' )
 $kicker = inlife_get_acf_field( 'initiatives_kicker', $post_id, '' );
 $title  = inlife_get_acf_field( 'initiatives_title', $post_id, '' );
 $intro  = inlife_get_acf_field( 'initiatives_intro', $post_id, '' );
-$pages  = inlife_get_acf_field( 'initiatives_pages', $post_id, [] );
+$items = inlife_get_acf_field( 'initiatives_items', $post_id, [] );
 $cta    = inlife_get_acf_field( 'initiatives_cta', $post_id, null );
 
 $title = inlife_get_acf_field(
@@ -59,7 +59,7 @@ $section_action = trim( (string) ob_get_clean() );
 		);
 		?>
 
-		<div class="society-link-list society-link-list--projects">
+		<div class="society-projects-grid c-card-grid c-card-grid">
 			<?php foreach ( $pages as $page_item ) : ?>
 				<?php
 				$page_id = $page_item instanceof WP_Post ? $page_item->ID : (int) $page_item;
@@ -72,7 +72,8 @@ $section_action = trim( (string) ob_get_clean() );
 					'template-parts/society/components/card',
 					'initiative',
 					[
-						'post_id' => $page_id,
+						'title' => $item_title,
+						'link'  => $item_link,
 					]
 				);
 				?>

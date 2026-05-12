@@ -18,27 +18,21 @@
 
 .society-section--science,
 .society-section--content {
-    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.society-section--content {
+    background-color: var(--inlife-surface-soft);
 }
 
 /* =========================================================
    SOCIETY — FEATURE / SCIENCE FOR YOU
+   Dark editorial accent, unified with About intro
 ========================================================= */
 
 .society-section--science {
     position: relative;
-    padding-block: clamp(3rem, 6vw, 5.25rem);
-}
-
-.society-section--science::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto;
-    height: 72%;
-    background:
-        radial-gradient(circle at 86% 24%, rgba(213, 219, 62, 0.14), transparent 28rem),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.64), rgba(248, 250, 252, 0));
-    pointer-events: none;
+    padding-block: clamp(4rem, 7vw, 6rem);
 }
 
 .society-section--science>.container,
@@ -50,25 +44,62 @@
 
 .society-feature {
     display: grid;
-    gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: center;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: stretch;
 
     @media (min-width: 992px) {
-        grid-template-columns: minmax(0, 0.82fr) minmax(420px, 0.78fr);
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 0.72fr);
     }
 }
 
 .society-feature__content {
+    position: relative;
     min-width: 0;
-    max-width: 54rem;
+    overflow: hidden;
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    border-radius: 16px;
+    background: linear-gradient(135deg, #293458 0%, #314067 54%, #212944 100%);
+    color: #fff;
+    box-shadow: 0 20px 48px rgba(18, 38, 63, 0.14);
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: -7rem;
+        bottom: -4rem;
+        width: 22rem;
+        height: 22rem;
+        background-image: url("../assets/images/inlife-hero-hex-outline-white.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0.16;
+        pointer-events: none;
+    }
+
+    .section-kicker,
+    .c-section-header__kicker {
+        color: var(--inlife-accent);
+    }
+
+    .section-title,
+    .c-section-header__title {
+        max-width: 13ch;
+        color: #fff;
+    }
+}
+
+.society-feature__content>* {
+    position: relative;
+    z-index: 1;
 }
 
 .society-feature__text {
     margin-top: 1.35rem;
-    max-width: 64ch;
+    max-width: 62ch;
     font-size: clamp(1rem, 1.05vw, 1.08rem);
     line-height: 1.85;
-    color: var(--inlife-text-muted);
+    color: rgba(255, 255, 255, 0.84);
 
     >*:last-child {
         margin-bottom: 0;
@@ -79,19 +110,6 @@
     position: relative;
     min-width: 0;
     width: 100%;
-
-    &::before {
-        content: "";
-        position: absolute;
-        right: clamp(1rem, 3vw, 2rem);
-        bottom: clamp(-1.25rem, -2vw, -0.75rem);
-        width: 42%;
-        height: 38%;
-        background: var(--inlife-accent);
-        opacity: 0.75;
-        transform: translate(18%, 18%);
-        z-index: 0;
-    }
 }
 
 .society-feature__video,
@@ -100,10 +118,12 @@
     z-index: 1;
     overflow: hidden;
     width: 100%;
+    height: 100%;
+    min-height: clamp(260px, 25vw, 380px);
     aspect-ratio: 16 / 9;
+    border-radius: 16px;
     background: var(--inlife-primary);
-    border-radius: 14px;
-    box-shadow: 0 24px 54px rgba(18, 38, 63, 0.14);
+    box-shadow: 0 20px 48px rgba(18, 38, 63, 0.12);
 }
 
 .society-feature__video iframe,
@@ -122,116 +142,18 @@
     object-fit: cover;
 }
 
-/* =========================================================
-   Society cards / listings
-   Grid comes from global c-card-grid
-========================================================= */
+@media (max-width: 767.98px) {
+    .society-feature__content {
 
-.society-cards {
-    min-width: 0;
-}
-
-.society-card {
-    height: 100%;
-
-    &__badge {
-        margin-bottom: 0.75rem;
-        font-size: 0.875rem;
-        font-weight: 700;
-        color: var(--inlife-primary);
-    }
-
-    &__text {
-        margin-top: 0.75rem;
-    }
-
-    .c-readmore {
-        margin-top: 1rem;
-    }
-}
-
-/* =========================================================
-   Schools
-========================================================= */
-
-.society-schools {
-    display: grid;
-    gap: clamp(1.5rem, 3vw, 3rem);
-    align-items: start;
-
-    @media (min-width: 992px) {
-        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-    }
-
-    &__text {
-        max-width: 78ch;
-    }
-
-    &__points {
-        display: grid;
-        gap: 0.875rem;
-        margin: 1.5rem 0 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    &__point {
-        position: relative;
-        padding-left: 1.25rem;
-
-        &::before {
-            content: "";
-            position: absolute;
-            top: 0.7em;
-            left: 0;
-            width: 0.45rem;
-            height: 0.45rem;
-            border-radius: 50%;
-            background: var(--inlife-accent);
-            transform: translateY(-50%);
+        .section-title,
+        .c-section-header__title {
+            max-width: none;
         }
     }
 
-    &__actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.875rem;
-        margin-top: 1.75rem;
-    }
-
-    &__form-surface {
-        padding: clamp(1.25rem, 2vw, 1.75rem);
-    }
-}
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.society-cta {
-    display: grid;
-    gap: 1.25rem;
-    padding: clamp(1.5rem, 3vw, 2.5rem);
-
-    @media (min-width: 992px) {
-        grid-template-columns: minmax(0, 1fr) auto;
-        align-items: center;
-        column-gap: 2rem;
-    }
-
-    &__title {
-        margin-bottom: 0;
-    }
-
-    &__text {
-        margin-top: 0.875rem;
-        max-width: 68ch;
-    }
-
-    &__actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.875rem;
+    .society-feature__video,
+    .society-feature__image-wrapper {
+        min-height: auto;
     }
 }
 
@@ -290,15 +212,8 @@
 }
 
 /* =========================================================
-   SOCIETY — EDITORIAL LINK LIST
+   SOCIETY — EDITORIAL LINK LIST / BASE
 ========================================================= */
-
-.society-section--initiatives {
-    position: relative;
-    padding-block: clamp(3.5rem, 7vw, 5.5rem);
-    background: rgba(255, 255, 255, 0.42);
-    border-block: 1px solid rgba(219, 228, 238, 0.75);
-}
 
 .society-link-list {
     display: grid;
@@ -375,13 +290,192 @@
     }
 }
 
+.society-link-item__link--static {
+    cursor: default;
+}
+
+/* =========================================================
+   SOCIETY — PROJECTS
+   Unified with Projects Archive / horizontal tiles
+========================================================= */
+
+.society-section--initiatives {
+    position: relative;
+    padding-block: clamp(4rem, 7vw, 6rem);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(248, 250, 252, 0));
+}
+
+.society-section--initiatives .society-section-header {
+    margin-bottom: clamp(2.25rem, 4vw, 3rem);
+}
+
+.society-projects-grid {
+    --inlife-grid-min: 320px;
+}
+
+.society-projects-grid .society-link-item {
+    height: 100%;
+    border: 0;
+}
+
+.society-projects-grid .society-link-item__link {
+    position: relative;
+    display: flex;
+    min-height: clamp(9rem, 11vw, 11rem);
+    height: 100%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(1.5rem, 2.4vw, 2rem);
+    border-radius: 14px;
+    background: linear-gradient(135deg, #dde7f0 0%, #cad9e6 100%);
+    color: var(--inlife-primary);
+    text-decoration: none;
+    isolation: isolate;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+        z-index: -1;
+        transition:
+            transform 0.35s ease,
+            opacity 0.35s ease;
+    }
+
+    &::before {
+        inset: 0;
+        background:
+            radial-gradient(circle at 88% 8%, rgba(41, 52, 88, 0.12), transparent 24%),
+            linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
+        opacity: 1;
+    }
+
+    &::after {
+        right: -5.5rem;
+        bottom: -6.75rem;
+        width: 17rem;
+        height: 17rem;
+        background-image: url("../assets/images/inlife-hero-hex-outline-white.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0.2;
+    }
+
+    &:hover,
+    &:focus,
+    &:visited {
+        color: var(--inlife-primary);
+        text-decoration: none;
+    }
+
+    &:focus-visible {
+        outline: 3px solid var(--inlife-accent);
+        outline-offset: 4px;
+    }
+
+    &:hover,
+    &:focus {
+        transform: translateY(-5px);
+        box-shadow: 0 24px 56px rgba(18, 38, 63, 0.13);
+    }
+
+    &:hover::after,
+    &:focus::after {
+        transform: translate3d(-0.35rem, -0.35rem, 0) scale(1.04);
+        opacity: 0.28;
+    }
+}
+
+.society-projects-grid .society-link-item__content {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+}
+
+.society-projects-grid .society-link-item__eyebrow,
+.society-projects-grid .society-link-item__text {
+    display: none;
+}
+
+.society-projects-grid .society-link-item__title {
+    margin: 0;
+    max-width: 14ch;
+    font-size: clamp(1.6rem, 2vw, 2.15rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    color: var(--inlife-primary);
+}
+
+.society-projects-grid .society-link-item__readmore {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    flex-shrink: 0;
+    margin-top: 0;
+    color: var(--inlife-primary);
+    font-size: 1.25rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.society-projects-grid .society-link-item__arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.society-projects-grid .society-link-item__link:hover .society-link-item__arrow,
+.society-projects-grid .society-link-item__link:focus .society-link-item__arrow {
+    transform: translateX(5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .society-projects-grid .society-link-item__link,
+    .society-projects-grid .society-link-item__link::after,
+    .society-projects-grid .society-link-item__arrow {
+        transition: none;
+    }
+
+    .society-projects-grid .society-link-item__link:hover,
+    .society-projects-grid .society-link-item__link:focus,
+    .society-projects-grid .society-link-item__link:hover::after,
+    .society-projects-grid .society-link-item__link:focus::after,
+    .society-projects-grid .society-link-item__link:hover .society-link-item__arrow,
+    .society-projects-grid .society-link-item__link:focus .society-link-item__arrow {
+        transform: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .society-projects-grid .society-link-item__link {
+        min-height: 7rem;
+    }
+
+    .society-projects-grid .society-link-item__title {
+        max-width: 16ch;
+    }
+}
 
 /* =========================================================
    SOCIETY — MEET US
 ========================================================= */
 
 .society-section--meet {
-    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+    padding-block: clamp(4rem, 7vw, 6rem);
+    position: relative;
+    padding-block: clamp(4rem, 7vw, 6rem);
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.5),
+            rgba(255, 255, 255, 0));
 }
 
 .society-meet-layout {
@@ -408,17 +502,14 @@
     }
 }
 
-.society-link-item__link--static {
-    cursor: default;
-}
-
 /* =========================================================
    SOCIETY — SCHOOLS / DARK CTA
-   Full-width block, unified with ABOUT intro
+   Layout only — form appearance lives in _forms.scss
 ========================================================= */
 
 .society-section--schools {
-    padding-block: clamp(3.5rem, 7vw, 5.5rem);
+    padding-top: clamp(2rem, 4vw, 3rem);
+    padding-bottom: 0;
 }
 
 .society-schools {
@@ -428,22 +519,23 @@
     width: 100%;
     background: linear-gradient(135deg, #293458 0%, #314067 54%, #212944 100%);
     color: #fff;
-}
 
-.society-schools::after {
-    content: "";
-    position: absolute;
-    right: -7rem;
-    bottom: -5rem;
-    width: clamp(20rem, 32vw, 32rem);
-    height: clamp(20rem, 32vw, 32rem);
-    background-image: url("../assets/images/inlife-hero-hex-outline-white.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    opacity: 0.16;
-    pointer-events: none;
-    z-index: 0;
+    &::after {
+        content: "";
+        position: absolute;
+        right: clamp(-17rem, -10vw, -8rem);
+        bottom: 20%;
+        width: clamp(22rem, 34vw, 38rem);
+        height: clamp(22rem, 34vw, 38rem);
+        background-image: url("../assets/images/inlife-hero-hex-outline-white.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0.12;
+        transform: translateY(50%);
+        pointer-events: none;
+        z-index: 0;
+    }
 }
 
 .society-schools__inner {
@@ -456,7 +548,7 @@
     padding-block: clamp(3rem, 6vw, 5rem);
 
     @media (min-width: 992px) {
-        grid-template-columns: minmax(0, 0.72fr) minmax(460px, 1fr);
+        grid-template-columns: minmax(0, 0.68fr) minmax(420px, 0.82fr);
     }
 }
 
@@ -490,8 +582,8 @@
 
 .society-schools__form {
     width: 100%;
-    max-width: 46rem;
-    justify-self: end;
+    max-width: 560px;
+    justify-self: start;
     min-width: 0;
     padding: 0;
     border: 0;
@@ -500,82 +592,9 @@
 }
 
 .society-schools__form-title {
-    margin: 0 0 1.25rem;
+    margin: 0 0 1.35rem;
     font-size: 0.95rem;
     font-weight: 800;
     line-height: 1.35;
     color: #fff;
-}
-
-.society-schools__form-body {
-    color: #fff;
-
-    .forminator-ui,
-    .forminator-custom-form,
-    .forminator-row,
-    .forminator-field {
-        background: transparent !important;
-        box-shadow: none !important;
-    }
-
-    .forminator-row {
-        margin-bottom: 1rem !important;
-    }
-
-    .forminator-label {
-        color: rgba(255, 255, 255, 0.88) !important;
-        font-size: 0.78rem !important;
-        font-weight: 700 !important;
-    }
-
-    .forminator-input,
-    .forminator-textarea,
-    input,
-    textarea,
-    select {
-        min-height: 2.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.72) !important;
-        border-radius: 0 !important;
-        background: transparent !important;
-        color: #fff !important;
-        box-shadow: none !important;
-    }
-
-    .forminator-textarea,
-    textarea {
-        min-height: 5rem !important;
-    }
-
-    .forminator-button-submit,
-    button,
-    input[type="submit"] {
-        display: inline-flex !important;
-        align-items: center;
-        gap: 0.35rem;
-        padding: 0 !important;
-        border: 0 !important;
-        background: transparent !important;
-        color: #fff !important;
-        box-shadow: none !important;
-        font-size: 0.95rem !important;
-        font-weight: 700 !important;
-        line-height: 1.4 !important;
-
-        &::after {
-            content: "→";
-            display: inline-block;
-            opacity: 0.85;
-            transition: transform var(--inlife-transition), opacity var(--inlife-transition);
-        }
-
-        &:hover::after,
-        &:focus::after {
-            transform: translateX(4px);
-            opacity: 1;
-        }
-    }
-
-    a {
-        color: #fff;
-    }
 }
