@@ -103,10 +103,9 @@ $phone_href = $contact_phone ? preg_replace( '/[^0-9+]/', '', $contact_phone ) :
 		</div>
 
 		<div class="business-contact__form">
-			<div class="business-contact__card c-surface c-surface--panel">
-
+			<div class="business-contact__form-shell">
 				<?php if ( $form_shortcode ) : ?>
-					<div class="business-contact__form-inner">
+					<div class="business-contact__form-inner inlife-form inlife-form--line">
 						<?php echo do_shortcode( $form_shortcode ); ?>
 					</div>
 				<?php else : ?>
@@ -114,7 +113,6 @@ $phone_href = $contact_phone ? preg_replace( '/[^0-9+]/', '', $contact_phone ) :
 						<?php echo esc_html( inlife_t( 'Formularz kontaktowy w przygotowaniu.' ) ); ?>
 					</p>
 				<?php endif; ?>
-
 			</div>
 		</div>
 

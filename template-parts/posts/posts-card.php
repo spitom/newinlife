@@ -59,6 +59,7 @@ $card_classes = [
 
 if ( $format_slug ) {
 	$card_classes[] = 'post-card--' . sanitize_html_class( $format_slug );
+	$card_classes[] = 'post-card--society-format';
 }
 
 if ( $variant ) {

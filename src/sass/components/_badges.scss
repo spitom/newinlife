@@ -3,6 +3,11 @@
    Global editorial metadata system
 ========================================================= */
 
+/*
+   c-pill  = interactive filter / selector
+   c-badge = metadata / status / role / content type
+*/
+
 .c-badge-group {
     display: flex;
     flex-wrap: wrap;
@@ -18,19 +23,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     min-height: 2rem;
     padding: 0.35rem 0.75rem;
-
+    border: 1px solid transparent;
     border-radius: 999px;
-
     font-size: 0.82rem;
     font-weight: 700;
     line-height: 1;
-
     text-decoration: none;
     white-space: nowrap;
-
     transition:
         background-color 0.2s ease,
         border-color 0.2s ease,
@@ -38,12 +39,17 @@
         box-shadow 0.2s ease;
 }
 
+.c-badge:focus-visible {
+    outline: 3px solid rgba(213, 219, 62, 0.4);
+    outline-offset: 3px;
+}
+
 /* =========================================================
-   OUTLINE
+   NEUTRAL VARIANTS
 ========================================================= */
 
 .c-badge--outline {
-    border: 1px solid #dbe4ee;
+    border-color: #dbe4ee;
     background: transparent;
     color: #50607c;
 }
@@ -56,12 +62,8 @@ a.c-badge--outline:focus-visible {
     text-decoration: none;
 }
 
-/* =========================================================
-   SOFT
-========================================================= */
-
 .c-badge--soft {
-    border: 1px solid transparent;
+    border-color: transparent;
     background: #f4f7fb;
     color: #50607c;
 }
@@ -73,34 +75,26 @@ a.c-badge--soft:focus-visible {
     text-decoration: none;
 }
 
+.c-badge--muted {
+    border-color: #edf2f7;
+    background: #f8fafc;
+    color: #72809b;
+}
+
 /* =========================================================
-   PRIMARY
+   EMPHASIS VARIANTS
 ========================================================= */
 
 .c-badge--primary {
-    border: 1px solid #293458;
+    border-color: #293458;
     background: #293458;
-    color: #ffffff;
+    color: #fff;
 }
-
-/* =========================================================
-   ACCENT
-========================================================= */
 
 .c-badge--accent {
-    border: 1px solid #d5db3e;
+    border-color: #d5db3e;
     background: #d5db3e;
     color: #1d2748;
-}
-
-/* =========================================================
-   MUTED
-========================================================= */
-
-.c-badge--muted {
-    border: 1px solid #edf2f7;
-    background: #f8fafc;
-    color: #72809b;
 }
 
 /* =========================================================
@@ -110,41 +104,23 @@ a.c-badge--soft:focus-visible {
 .c-badge--role {
     min-height: 1.7rem;
     padding: 0.25rem 0.6rem;
-
-    border: 1px solid #dbe4ee;
+    border-color: #dbe4ee;
     background: #eef3f9;
-
     color: #50607c;
-
     font-size: 0.72rem;
     font-weight: 800;
-
     letter-spacing: 0.03em;
     text-transform: uppercase;
 }
 
-/* =========================================================
-   COMPACT
-========================================================= */
-
 .c-badge--compact {
     min-height: 1.5rem;
     padding: 0.2rem 0.5rem;
-
     font-size: 0.7rem;
 }
 
 /* =========================================================
-   FOCUS
-========================================================= */
-
-.c-badge:focus-visible {
-    outline: 3px solid rgba(213, 219, 62, 0.4);
-    outline-offset: 3px;
-}
-
-/* =========================================================
-   BADGE COLORS — CONTENT TYPES
+   CONTENT TYPE BADGES
 ========================================================= */
 
 .c-badge--news {
@@ -165,15 +141,19 @@ a.c-badge--soft:focus-visible {
     color: #293458;
 }
 
-.c-badge--career-competition {
-    border-color: rgba(41, 52, 88, 0.18);
-    background: rgba(41, 52, 88, 0.08);
-    color: #293458;
-}
+/* =========================================================
+   CAREER STATUS BADGES
+========================================================= */
 
 .c-badge--career-job {
     border-color: rgba(213, 219, 62, 0.44);
     background: rgba(213, 219, 62, 0.24);
+    color: #293458;
+}
+
+.c-badge--career-competition {
+    border-color: rgba(41, 52, 88, 0.18);
+    background: rgba(41, 52, 88, 0.08);
     color: #293458;
 }
 
@@ -187,28 +167,6 @@ a.c-badge--soft:focus-visible {
     border-color: #dbe4ee;
     background: #f4f7fb;
     color: #50607c;
-}
-
-/* =========================================================
-   BADGE COLORS — POST FORMATS / EDITORIAL TYPES
-========================================================= */
-
-.c-badge--read {
-    border-color: rgba(41, 52, 88, 0.16);
-    background: rgba(41, 52, 88, 0.08);
-    color: #293458;
-}
-
-.c-badge--watch {
-    border-color: rgba(0, 171, 142, 0.24);
-    background: rgba(0, 171, 142, 0.1);
-    color: #007c6a;
-}
-
-.c-badge--listen {
-    border-color: rgba(213, 219, 62, 0.44);
-    background: rgba(213, 219, 62, 0.26);
-    color: #293458;
 }
 
 /* =========================================================
@@ -241,13 +199,11 @@ a.c-badge--soft:focus-visible {
     .c-badge {
         min-height: 1.9rem;
         padding: 0.32rem 0.68rem;
-
         font-size: 0.78rem;
     }
 
     .c-badge--role {
         min-height: 1.6rem;
-
         font-size: 0.68rem;
     }
 }

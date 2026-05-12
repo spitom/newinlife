@@ -11,9 +11,8 @@ $post_id   = $args['post_id'] ?? get_the_ID();
 $container = $args['container'] ?? ( function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container' );
 
 $kicker = inlife_get_acf_field( 'initiatives_kicker', $post_id, '' );
-$title  = inlife_get_acf_field( 'initiatives_title', $post_id, '' );
 $intro  = inlife_get_acf_field( 'initiatives_intro', $post_id, '' );
-$items = inlife_get_acf_field( 'initiatives_items', $post_id, [] );
+$items  = inlife_get_acf_field( 'initiatives_items', $post_id, [] );
 $cta    = inlife_get_acf_field( 'initiatives_cta', $post_id, null );
 
 $title = inlife_get_acf_field(
@@ -22,7 +21,7 @@ $title = inlife_get_acf_field(
 	inlife_t( 'Projekty i inicjatywy' )
 );
 
-if ( empty( $pages ) || ! is_array( $pages ) ) {
+if ( empty( $items ) || ! is_array( $items ) ) {
 	return;
 }
 
@@ -60,11 +59,12 @@ $section_action = trim( (string) ob_get_clean() );
 		?>
 
 		<div class="society-projects-grid c-card-grid c-card-grid">
-			<?php foreach ( $pages as $page_item ) : ?>
+			<?php foreach ( $items as $item ) : ?>
 				<?php
-				$page_id = $page_item instanceof WP_Post ? $page_item->ID : (int) $page_item;
+				$item_title = $item['title'] ?? '';
+				$item_link  = $item['link'] ?? null;
 
-				if ( ! $page_id ) {
+				if ( empty( $item_title ) || empty( $item_link['url'] ) ) {
 					continue;
 				}
 

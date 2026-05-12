@@ -260,20 +260,12 @@
 }
 
 /* =========================================================
-   POST CARD VARIANTS — SOCIETY / EDITORIAL FORMATS
+   POST CARD VARIANTS — SOCIETY
 ========================================================= */
 
-/* Przeczytaj */
-.post-card--przeczytaj {
+.post-card--society-format {
     .post-card__format-badge {
-        color: var(--inlife-primary);
-    }
-}
-
-/* Zobacz */
-.post-card--zobacz {
-    .post-card__format-badge {
-        color: #007c6a;
+        color: var(--inlife-popielno);
     }
 
     .post-card__media-badge {
@@ -282,13 +274,8 @@
     }
 }
 
-/* Posłuchaj */
+/* Posłuchaj — media image treatment */
 .post-card--posluchaj {
-    .post-card__format-badge {
-        color: rgba(41, 52, 88, .72);
-        background: transparent;
-    }
-
     .post-card__media {
         display: flex;
         align-items: center;
@@ -310,10 +297,5 @@
         max-height: 82%;
         object-fit: contain;
         margin-inline: auto;
-    }
-
-    .post-card__media-badge {
-        background: rgba(255, 255, 255, 0.92);
-        color: var(--inlife-primary);
     }
 }
