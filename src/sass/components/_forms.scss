@@ -6,13 +6,17 @@
 
     .forminator-ui,
     .forminator-custom-form {
+        width: 100%;
+        max-width: none;
+        margin: 0;
         font-family: inherit;
         background: transparent !important;
         box-shadow: none !important;
     }
 
     .forminator-row {
-        margin-bottom: 1.15rem !important;
+
+        margin-bottom: 0 !important;
     }
 
     .forminator-label {
@@ -26,7 +30,7 @@
     .forminator-input,
     .forminator-textarea,
     .forminator-select2+.select2,
-    input,
+    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
     textarea,
     select {
         width: 100%;
@@ -57,7 +61,7 @@
 }
 
 /* =========================================================
-   FORMINATOR — LIGHT
+   FORMINATOR — LIGHT / BOXED
 ========================================================= */
 
 .inlife-form--light {
@@ -75,7 +79,7 @@
 
     .forminator-input,
     .forminator-textarea,
-    input,
+    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
     textarea,
     select {
         padding: 0.7rem 0.85rem !important;
@@ -86,7 +90,7 @@
 
     .forminator-input:focus,
     .forminator-textarea:focus,
-    input:focus,
+    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):focus,
     textarea:focus,
     select:focus {
         outline: 3px solid rgba(213, 219, 62, 0.35);
@@ -100,6 +104,9 @@
         display: inline-flex !important;
         align-items: center;
         gap: 0.35rem;
+        width: auto !important;
+        min-height: 0 !important;
+        height: auto !important;
         padding: 0.8rem 1.25rem !important;
         border: 1px solid var(--inlife-primary) !important;
         border-radius: 999px !important;
@@ -111,7 +118,7 @@
 }
 
 /* =========================================================
-   FORMINATOR — DARK
+   FORMINATOR — DARK / LINE
 ========================================================= */
 
 .inlife-form--dark {
@@ -136,7 +143,7 @@
     }
 
     .forminator-input,
-    input,
+    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
     select {
         min-height: 3rem;
         padding: 0.45rem 0 !important;
@@ -152,7 +159,7 @@
     }
 
     .forminator-input:focus,
-    input:focus,
+    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):focus,
     select:focus {
         outline: 0;
         border-bottom-color: #fff !important;
@@ -189,6 +196,9 @@
         display: inline-flex !important;
         align-items: center;
         gap: 0.35rem;
+        width: auto !important;
+        min-height: 0 !important;
+        height: auto !important;
         padding: 0 !important;
         border: 0 !important;
         border-radius: 0 !important;
@@ -237,24 +247,63 @@
 
 .inlife-form--line {
 
+    .forminator-ui.forminator-custom-form[data-grid="open"] {
+        .forminator-row {
+            gap: 0 !important;
+            column-gap: 0 !important;
+            row-gap: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+        .forminator-col {
+            min-width: 0 !important;
+            margin: 0 !important;
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+        }
+    }
+
+    @media (min-width: 783px) {
+        .forminator-ui.forminator-custom-form:not(.forminator-size--small)[data-grid="open"] {
+            .forminator-col {
+                min-width: 0 !important;
+                margin: 0 !important;
+                padding-right: 0 !important;
+                padding-left: 0 !important;
+            }
+
+            .forminator-row .forminator-col:first-child .forminator-field {
+                padding-right: 1.5rem !important;
+            }
+
+            .forminator-row .forminator-col:last-child .forminator-field {
+                padding-left: 0 !important;
+            }
+        }
+    }
+
     .forminator-ui,
     .forminator-custom-form {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
         background: transparent !important;
         box-shadow: none !important;
     }
 
-    .forminator-row {
-        margin: 0 0 1rem !important;
+    .forminator-ui.forminator-custom-form .forminator-row {
+        margin: 0 !important;
         padding: 0 !important;
     }
 
-    .forminator-col {
+    .forminator-ui.forminator-custom-form .forminator-col {
         min-width: 0;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
     }
 
-    .forminator-field {
+    .forminator-ui.forminator-custom-form .forminator-field {
         display: flex !important;
         flex-direction: column;
         min-width: 0;
@@ -278,9 +327,17 @@
         color: #9f1d1d !important;
     }
 
+    .forminator-field {
+        margin-bottom: clamp(1rem, 2vw, 1.35rem) !important;
+    }
+
+    .forminator-row:last-child .forminator-field {
+        margin-bottom: 0 !important;
+    }
+
     .forminator-input,
     .forminator-textarea,
-    input,
+    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
     textarea,
     select {
         order: 1;
@@ -305,22 +362,22 @@
     }
 
     .forminator-input,
-    input,
+    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
     select {
         height: 2.15rem !important;
     }
 
     .forminator-textarea,
     textarea {
-        height: 5rem !important;
-        min-height: 5rem !important;
+        height: 4rem !important;
+        min-height: 4rem !important;
         max-height: 9rem;
         resize: vertical;
     }
 
     .forminator-input:focus,
     .forminator-textarea:focus,
-    input:focus,
+    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):focus,
     textarea:focus,
     select:focus {
         outline: 0 !important;
@@ -368,22 +425,16 @@
         width: auto !important;
         min-height: 0 !important;
         height: auto !important;
-        margin: 0.25rem 0 0 !important;
+        margin: 0.75rem 0 0 !important;
         padding: 0 !important;
         border: 0 !important;
         border-radius: 0 !important;
         background: transparent !important;
         color: var(--inlife-primary) !important;
         box-shadow: none !important;
-        font-size: 0.95rem !important;
+        font-size: 1rem !important;
         font-weight: 800 !important;
         line-height: 1.4 !important;
-    }
-
-    .forminator-button-submit,
-    button[type="submit"] {
-        margin-top: 0.75rem !important;
-        font-size: 1rem !important;
     }
 
     .forminator-button-submit::after,
