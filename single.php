@@ -33,33 +33,8 @@ $primary_category = function_exists( 'inlife_get_primary_post_category' )
 
 $hero_image_id = has_post_thumbnail( $post_id ) ? get_post_thumbnail_id( $post_id ) : 0;
 
-$hero_variant = ( 'posluchaj' === $format_slug ) ? 'audio' : '';
-
-$hero_image_fit = 'cover';
-
-if ( function_exists( 'get_field' ) ) {
-	$hero_image_fit_field = get_field( 'post_hero_image_fit', $post_id );
-
-	if ( is_array( $hero_image_fit_field ) && ! empty( $hero_image_fit_field['value'] ) ) {
-		$hero_image_fit = $hero_image_fit_field['value'];
-	} elseif ( is_string( $hero_image_fit_field ) && '' !== trim( $hero_image_fit_field ) ) {
-		$hero_image_fit = $hero_image_fit_field;
-	}
-}
-
-$hero_image_fit = in_array( $hero_image_fit, [ 'cover', 'contain' ], true )
-	? $hero_image_fit
-	: 'cover';
-
-$hero_media_shape = [];
-
-if ( 'posluchaj' !== $format_slug ) {
-	$hero_media_shape[] = 'cut-tl';
-}
-
-if ( 'contain' === $hero_image_fit ) {
-	$hero_media_shape[] = 'contain';
-}
+$hero_variant     = ( 'posluchaj' === $format_slug ) ? 'audio' : '';
+$hero_media_shape = ( 'posluchaj' === $format_slug ) ? '' : 'contain';
 
 if ( function_exists( 'get_field' ) ) {
 	$hero_override = get_field( 'post_hero_image_override', $post_id );

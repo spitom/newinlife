@@ -169,16 +169,24 @@
 ========================================================= */
 
 .p-media-hero__media--contain {
-    aspect-ratio: auto;
+    overflow: visible;
+    border-radius: 0;
     background: transparent;
+    box-shadow: none;
+}
+
+.p-media-hero__media--contain picture {
+    display: block;
 }
 
 .p-media-hero__media--contain .p-media-hero__image {
-    position: static;
     display: block;
     width: 100%;
     height: auto;
+    border-radius: 18px;
     object-fit: contain;
+    object-position: center;
+    box-shadow: 0 24px 64px rgba(18, 38, 63, 0.12);
 }
 
 /* =========================================================

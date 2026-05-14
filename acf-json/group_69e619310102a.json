@@ -3,35 +3,6 @@
     "title": "InLife — Post visibility",
     "fields": [
         {
-            "key": "field_6a05730603f82",
-            "label": "Dopasowanie obrazka wyróżniającego",
-            "name": "post_hero_image_fit",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "cover": "Kadrowanie \/ wypełnij",
-                "contain": "Pełny obrazek \/ bez przycinania"
-            },
-            "default_value": "cover",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "allow_in_bindings": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": "",
-            "create_options": 0,
-            "save_options": 0
-        },
-        {
             "key": "field_69e717fa54fff",
             "label": "Obrazek karty \/ archiwum",
             "name": "post_card_image",
@@ -244,5 +215,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1778742511
+    "modified": 1778744256
 }
