@@ -146,20 +146,6 @@
     display: none;
 }
 
-// .p-media-hero__media--hex::after {
-// 	content: "";
-// 	position: absolute;
-// 	right: -1.5rem;
-// 	bottom: 1.5rem;
-// 	z-index: -1;
-// 	width: clamp(3.5rem, 6vw, 5rem);
-// 	aspect-ratio: 1 / 1;
-// 	background: rgba(213, 219, 62, 0.14);
-// 	mask: url("../assets/images/inlife-hero-hex-mask.svg") center / contain no-repeat;
-// 	-webkit-mask: url("../assets/images/inlife-hero-hex-mask.svg") center / contain no-repeat;
-// 	pointer-events: none;
-// }
-
 .p-media-hero__media--hex picture {
     display: block;
     width: 100%;
@@ -176,6 +162,23 @@
     object-position: center;
     mask: url("../assets/images/inlife-hero-hex-mask.svg") center / contain no-repeat;
     -webkit-mask: url("../assets/images/inlife-hero-hex-mask.svg") center / contain no-repeat;
+}
+
+/* =========================================================
+   MEDIA HERO — CONTAIN IMAGE MODE
+========================================================= */
+
+.p-media-hero__media--contain {
+    aspect-ratio: auto;
+    background: transparent;
+}
+
+.p-media-hero__media--contain .p-media-hero__image {
+    position: static;
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 /* =========================================================
@@ -213,16 +216,6 @@
         object-position: center;
         border-radius: 0;
     }
-
-    // .p-media-hero__media--cut-tl .p-media-hero__image {
-    //     width: auto;
-    //     max-width: 100%;
-    //     height: auto;
-    //     max-height: 360px;
-    //     object-fit: contain;
-    //     object-position: center;
-    //     margin-inline: auto;
-    // }
 }
 
 /* =========================================================

@@ -26,15 +26,26 @@ $deadline = function_exists( 'inlife_format_career_date' )
 
 $type_class = '';
 
+$hide_deadline = false;
+
 $terms = get_the_terms( $post_id, 'career_entry_type' );
 
 if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_get_career_type_key_from_slug' ) ) {
 	foreach ( $terms as $term ) {
 		$resolved_key = inlife_get_career_type_key_from_slug( $term->slug );
 
-		if ( in_array( $resolved_key, [ 'scientific', 'jobs' ], true ) ) {
-			$type_class = 'career-archive-card--' . $resolved_key;
-			break;
+		if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_get_career_type_key_from_slug' ) ) {
+			foreach ( $terms as $term ) {
+				$resolved_key = inlife_get_career_type_key_from_slug( $term->slug );
+
+				if ( in_array( $resolved_key, [ 'results', 'archive' ], true ) ) {
+					$hide_deadline = true;
+				}
+
+				if ( in_array( $resolved_key, [ 'scientific', 'jobs' ], true ) ) {
+					$type_class = 'career-archive-card--' . $resolved_key;
+				}
+			}
 		}
 	}
 }
@@ -59,7 +70,7 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_ge
 			</p>
 		<?php endif; ?>
 
-		<?php if ( $unit || $deadline ) : ?>
+		<?php if ( $unit || ( $deadline && ! $hide_deadline ) ) : ?>
 			<div class="career-archive-card__meta">
 				<?php if ( $unit ) : ?>
 					<p class="career-archive-card__meta-item">
@@ -67,7 +78,7 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_ge
 					</p>
 				<?php endif; ?>
 
-				<?php if ( $deadline ) : ?>
+				<?php if ( $deadline && ! $hide_deadline ) : ?>
 					<p class="career-archive-card__meta-item career-archive-card__meta-item--deadline">
 						<span><?php echo esc_html( inlife_t( 'Termin składania' ) ); ?></span>
 						<strong><?php echo esc_html( $deadline ); ?></strong>

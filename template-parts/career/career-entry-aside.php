@@ -13,6 +13,21 @@ $type_label = function_exists( 'inlife_get_career_entry_type_label' )
 	? inlife_get_career_entry_type_label( $post_id )
 	: '';
 
+$hide_deadline = false;
+
+$terms = get_the_terms( $post_id, 'career_entry_type' );
+
+if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_get_career_type_key_from_slug' ) ) {
+	foreach ( $terms as $term ) {
+		$type_key = inlife_get_career_type_key_from_slug( $term->slug );
+
+		if ( in_array( $type_key, [ 'results', 'archive' ], true ) ) {
+			$hide_deadline = true;
+			break;
+		}
+	}
+}
+
 $published_date = get_the_date( '', $post_id );
 
 $deadline_raw = function_exists( 'get_field' ) ? get_field( 'career_deadline', $post_id ) : '';
@@ -44,7 +59,7 @@ $deadline = function_exists( 'inlife_format_career_date' )
 				</li>
 			<?php endif; ?>
 
-			<?php if ( $deadline ) : ?>
+			<?php if ( $deadline && ! $hide_deadline ) : ?>
 				<li>
 					<span class="career-entry-aside__label">
 						<?php echo esc_html( inlife_t( 'Termin składania ofert' ) ); ?>

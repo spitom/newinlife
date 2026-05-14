@@ -7,6 +7,20 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$post_id = get_the_ID();
+
+$terms = get_the_terms( $post_id, 'career_entry_type' );
+
+if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_get_career_type_key_from_slug' ) ) {
+	foreach ( $terms as $term ) {
+		$type_key = inlife_get_career_type_key_from_slug( $term->slug );
+
+		if ( in_array( $type_key, [ 'results', 'archive' ], true ) ) {
+			return;
+		}
+	}
+}
+
 $rodo_page_id = 0;
 
 $pages = get_posts(

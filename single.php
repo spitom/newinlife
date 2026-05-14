@@ -33,11 +33,33 @@ $primary_category = function_exists( 'inlife_get_primary_post_category' )
 
 $hero_image_id = has_post_thumbnail( $post_id ) ? get_post_thumbnail_id( $post_id ) : 0;
 
-/**
- * Audio materials should not use the default photo-like cut corner treatment.
- */
-$hero_variant     = ( 'posluchaj' === $format_slug ) ? 'audio' : '';
-$hero_media_shape = ( 'posluchaj' === $format_slug ) ? '' : 'cut-tl';
+$hero_variant = ( 'posluchaj' === $format_slug ) ? 'audio' : '';
+
+$hero_image_fit = 'cover';
+
+if ( function_exists( 'get_field' ) ) {
+	$hero_image_fit_field = get_field( 'post_hero_image_fit', $post_id );
+
+	if ( is_array( $hero_image_fit_field ) && ! empty( $hero_image_fit_field['value'] ) ) {
+		$hero_image_fit = $hero_image_fit_field['value'];
+	} elseif ( is_string( $hero_image_fit_field ) && '' !== trim( $hero_image_fit_field ) ) {
+		$hero_image_fit = $hero_image_fit_field;
+	}
+}
+
+$hero_image_fit = in_array( $hero_image_fit, [ 'cover', 'contain' ], true )
+	? $hero_image_fit
+	: 'cover';
+
+$hero_media_shape = [];
+
+if ( 'posluchaj' !== $format_slug ) {
+	$hero_media_shape[] = 'cut-tl';
+}
+
+if ( 'contain' === $hero_image_fit ) {
+	$hero_media_shape[] = 'contain';
+}
 
 if ( function_exists( 'get_field' ) ) {
 	$hero_override = get_field( 'post_hero_image_override', $post_id );
@@ -61,10 +83,10 @@ $entry_context = function_exists( 'inlife_get_entry_context' )
 	? inlife_get_entry_context()
 	: '';
 
-$category_ids         = wp_get_post_categories( $post_id );
-$default_category_id  = (int) get_option( 'default_category' );
-$valid_category_ids   = [];
-$related              = null;
+$category_ids        = wp_get_post_categories( $post_id );
+$default_category_id = (int) get_option( 'default_category' );
+$valid_category_ids  = [];
+$related             = null;
 
 if ( ! empty( $category_ids ) ) {
 	foreach ( $category_ids as $category_id ) {
@@ -77,21 +99,11 @@ if ( ! empty( $category_ids ) ) {
 }
 
 /**
- * Build related posts query with layered logic:
- *
- * Standard post:
- * 1. same category
- * 2. fallback to latest posts
- *
- * Society post:
- * 1. same society_format + same category (if category exists)
- * 2. fallback to same society_format
- * 3. fallback to latest posts
+ * Build related posts query.
  */
 if ( $is_society ) {
 	$format_term_ids = wp_list_pluck( $format_terms, 'term_id' );
 
-	// 1. Society: same format + same category.
 	if ( ! empty( $format_term_ids ) && ! empty( $valid_category_ids ) ) {
 		$related = new WP_Query(
 			[
@@ -114,7 +126,6 @@ if ( $is_society ) {
 		);
 	}
 
-	// 2. Society fallback: same format only.
 	if ( ! $related instanceof WP_Query || ! $related->have_posts() ) {
 		$related = new WP_Query(
 			[
@@ -136,7 +147,6 @@ if ( $is_society ) {
 		);
 	}
 } else {
-	// 1. Standard news: same category.
 	if ( ! empty( $valid_category_ids ) ) {
 		$related = new WP_Query(
 			[
@@ -160,7 +170,6 @@ if ( $is_society ) {
 	}
 }
 
-// 3. Final fallback: latest posts.
 if ( ! $related instanceof WP_Query || ! $related->have_posts() ) {
 	$related = new WP_Query(
 		[
@@ -228,9 +237,7 @@ if ( 'society' === $entry_context ) {
 			$post_badge_label = $primary_category->name;
 		}
 
-		$post_badge_class = function_exists( 'inlife_get_post_badge_class' )
-			? inlife_get_post_badge_class( $post_id )
-			: 'c-badge--news';
+		$post_badge_class = $is_society ? 'c-badge--society' : 'c-badge--news';
 
 		ob_start();
 		?>
@@ -369,9 +376,10 @@ if ( 'society' === $entry_context ) {
 									$related_format_badge = function_exists( 'inlife_get_society_format_badge' )
 										? inlife_get_society_format_badge( $related_id )
 										: '';
-									$related_category     = function_exists( 'inlife_get_primary_post_category' )
+									$related_category = function_exists( 'inlife_get_primary_post_category' )
 										? inlife_get_primary_post_category( $related_id )
 										: null;
+
 									$related_badge_label = '';
 
 									if ( $related_format_badge ) {
@@ -380,30 +388,13 @@ if ( 'society' === $entry_context ) {
 										$related_badge_label = $related_category->name;
 									}
 
-									$related_badge_class = function_exists( 'inlife_get_post_badge_class' )
-										? inlife_get_post_badge_class( $related_id )
-										: 'c-badge--news';
+									$related_format_terms = get_the_terms( $related_id, 'society_format' );
+									$related_is_society   = ! empty( $related_format_terms ) && ! is_wp_error( $related_format_terms );
+
+									$related_badge_class = $related_is_society ? 'c-badge--society' : 'c-badge--news';
 									?>
+
 									<article class="post-related-item">
-										<?php
-										$related_badge_label = '';
-										$related_badge_class = has_category( 'spoleczenstwo', $related_id ) ? 'c-badge--society' : 'c-badge--news';
-
-										if ( $related_format_badge ) {
-											$related_badge_label = $related_format_badge;
-
-											if ( 'Posłuchaj' === $related_format_badge ) {
-												$related_badge_class = 'c-badge--listen';
-											} elseif ( 'Zobacz' === $related_format_badge ) {
-												$related_badge_class = 'c-badge--watch';
-											} elseif ( 'Przeczytaj' === $related_format_badge ) {
-												$related_badge_class = 'c-badge--read';
-											}
-										} elseif ( $related_category ) {
-											$related_badge_label = $related_category->name;
-										}
-										?>
-
 										<div class="post-related-item__meta c-meta-row">
 											<?php if ( $related_badge_label ) : ?>
 												<span class="post-related-item__badge c-badge <?php echo esc_attr( $related_badge_class ); ?>">
