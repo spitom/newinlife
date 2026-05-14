@@ -57,22 +57,25 @@ if ( function_exists( 'have_rows' ) && have_rows( 'about_media_assets', $post_id
 if ( empty( $items ) ) {
 	$items = [
 		[
-			'label'       => inlife_t( 'Informacje o Instytucie' ),
+			'title'       => inlife_t( 'Informacje o Instytucie' ),
 			'description' => inlife_t( 'Krótki opis Instytutu do wykorzystania w materiałach prasowych i informacyjnych.' ),
-			'file_url'    => '',
+			'url'         => '',
 			'type'        => 'PDF',
+			'link_label'  => inlife_t( 'Pobierz' ),
 		],
 		[
-			'label'       => inlife_t( 'Logotypy i identyfikacja' ),
+			'title'       => inlife_t( 'Logotypy i identyfikacja' ),
 			'description' => inlife_t( 'Podstawowe materiały identyfikacji wizualnej Instytutu.' ),
-			'file_url'    => '',
+			'url'         => '',
 			'type'        => 'ZIP',
+			'link_label'  => inlife_t( 'Pobierz' ),
 		],
 		[
-			'label'       => inlife_t( 'Zdjęcia prasowe' ),
+			'title'       => inlife_t( 'Zdjęcia prasowe' ),
 			'description' => inlife_t( 'Wybrane zdjęcia do wykorzystania w komunikacji medialnej.' ),
-			'file_url'    => '',
+			'url'         => '',
 			'type'        => 'ZIP',
+			'link_label'  => inlife_t( 'Pobierz' ),
 		],
 	];
 }

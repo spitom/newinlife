@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+$container = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
+
 $business_page = get_page_by_path( 'biznes' );
 
 if ( $business_page ) {
@@ -30,7 +32,7 @@ $business_links = [
 ?>
 
 <section class="page-section page-section--front-business" aria-labelledby="front-business-heading">
-	<div class="inlife-container">
+	<div class="<?php echo esc_attr( $container ); ?>">
 
 		<div class="front-business">
 
@@ -53,10 +55,11 @@ $business_links = [
 				</a>
 			</div>
 
-			<div class="front-business__grid c-link-grid c-link-grid--front-business">
+			<div class="front-business__links">
 				<?php foreach ( $business_links as $link ) : ?>
-					<a class="front-business__panel c-link-grid__item" href="<?php echo esc_url( $link['url'] ); ?>">
-						<span><?php echo esc_html( $link['label'] ); ?></span>
+					<a class="front-business-link" href="<?php echo esc_url( $link['url'] ); ?>">
+						<span class="front-business-link__label"><?php echo esc_html( $link['label'] ); ?></span>
+						<span class="front-business-link__icon" aria-hidden="true">→</span>
 					</a>
 				<?php endforeach; ?>
 			</div>

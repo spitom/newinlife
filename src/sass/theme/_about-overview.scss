@@ -15,7 +15,8 @@
     }
 
     .page-section--about-directorate,
-    .page-section--about-structure .page-section--about-media {
+    .page-section--about-structure,
+    .page-section--about-media {
         padding-block: clamp(3rem, 6vw, 5.5rem);
     }
 
@@ -563,8 +564,8 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-.about-history:hover .c-readmore__icon,
-.about-history:focus-within .c-readmore__icon {
+.about-history__readmore:hover .c-readmore__icon,
+.about-history__readmore:focus-visible .c-readmore__icon {
     transform: translateX(4px);
 }
 
@@ -658,6 +659,7 @@
     padding: clamp(1.5rem, 2.4vw, 1.85rem);
     padding-left: clamp(1.75rem, 2.6vw, 2.05rem);
     border: 1px solid var(--inlife-border);
+    border-radius: 8px;
     background: var(--inlife-surface);
     color: inherit;
     text-decoration: none;

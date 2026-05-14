@@ -89,6 +89,16 @@ $has_photo = has_post_thumbnail( $post_id );
 				</?php echo esc_html( $type_label ); ?>
 			</p>
 		</?php endif; ?> -->
+		
+		<?php if ( ! empty( $relations ) ) : ?>
+			<div class="people-profile-hero__relations">
+				<?php foreach ( $relations as $relation ) : ?>
+					<a href="<?php echo esc_url( $relation['url'] ); ?>" class="people-profile-hero__ c-badge c-badge--outline">
+						<?php echo esc_html( $relation['label'] ); ?>
+					</a>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 
 		<h1 class="people-profile-hero__title">
 			<?php echo esc_html( $display_name ); ?>
@@ -98,16 +108,6 @@ $has_photo = has_post_thumbnail( $post_id );
 			<p class="people-profile-hero__position">
 				<?php echo esc_html( $position ); ?>
 			</p>
-		<?php endif; ?>
-
-		<?php if ( ! empty( $relations ) ) : ?>
-			<div class="people-profile-hero__relations">
-				<?php foreach ( $relations as $relation ) : ?>
-					<a href="<?php echo esc_url( $relation['url'] ); ?>" class="people-profile-hero__ c-badge c-badge--outline">
-						<?php echo esc_html( $relation['label'] ); ?>
-					</a>
-				<?php endforeach; ?>
-			</div>
 		<?php endif; ?>
 
 		<?php if ( $short_bio ) : ?>
