@@ -46,7 +46,7 @@ if ( empty( $text ) && empty( $form_shortcode ) ) {
 					?>
 
 					<?php if ( $text ) : ?>
-						<div class="entry-content society-schools__text">
+						<div class="society-schools__text">
 							<?php echo wp_kses_post( $text ); ?>
 						</div>
 					<?php endif; ?>
@@ -54,11 +54,7 @@ if ( empty( $text ) && empty( $form_shortcode ) ) {
 
 				<?php if ( $form_shortcode ) : ?>
 					<div class="society-schools__form inlife-form inlife-form--dark">
-
-						<div class="inlife-form inlife-form--light">
-							<?php echo do_shortcode( wp_kses_post( $form_shortcode ) ); ?>
-						</div>
-						
+						<?php echo do_shortcode( wp_kses_post( $form_shortcode ) ); ?>
 					</div>
 				<?php endif; ?>
 

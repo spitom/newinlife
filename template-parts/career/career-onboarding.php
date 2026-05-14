@@ -77,14 +77,15 @@ if ( function_exists( 'have_rows' ) && have_rows( 'career_onboarding_links', $po
 			'title'    => $section_title,
 			'lead'     => $section_text,
 			'title_id' => 'career-onboarding-heading',
+			'class'    => 'career-onboarding__header',
 		]
 	);
 	?>
 
 	<?php if ( ! empty( $items ) ) : ?>
-		<div class="career-onboarding__grid c-card-grid c-card-grid--3">
+		<div class="career-onboarding__list">
 			<?php foreach ( $items as $item ) : ?>
-				<article class="career-onboarding__item c-surface c-surface--panel">
+				<article class="career-onboarding__item">
 
 					<a class="career-onboarding__link" href="<?php echo esc_url( $item['url'] ); ?>">
 

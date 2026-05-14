@@ -14,6 +14,12 @@ $type_label = function_exists( 'inlife_get_career_entry_type_label' )
 	: '';
 
 $published_date = get_the_date( '', $post_id );
+
+$deadline_raw = function_exists( 'get_field' ) ? get_field( 'career_deadline', $post_id ) : '';
+
+$deadline = function_exists( 'inlife_format_career_date' )
+	? inlife_format_career_date( $deadline_raw )
+	: '';
 ?>
 
 <div class="career-entry-aside__stack">
@@ -37,17 +43,18 @@ $published_date = get_the_date( '', $post_id );
 					<span class="career-entry-aside__value"><?php echo esc_html( $published_date ); ?></span>
 				</li>
 			<?php endif; ?>
+
+			<?php if ( $deadline ) : ?>
+				<li>
+					<span class="career-entry-aside__label">
+						<?php echo esc_html( inlife_t( 'Termin składania ofert' ) ); ?>
+					</span>
+					<span class="career-entry-aside__value career-entry-aside__value--deadline">
+						<?php echo esc_html( $deadline ); ?>
+					</span>
+				</li>
+			<?php endif; ?>
 		</ul>
-	</section>
-
-	<section class="career-entry-aside__panel c-surface c-surface--panel" aria-labelledby="career-entry-note-heading">
-		<h2 id="career-entry-note-heading" class="career-entry-aside__heading">
-			<?php echo esc_html( inlife_t( 'Szczegóły' ) ); ?>
-		</h2>
-
-		<p class="career-entry-aside__note">
-			<?php echo esc_html( inlife_t( 'Szczegółowe informacje, wymagania oraz sposób składania dokumentów znajdują się w treści ogłoszenia.' ) ); ?>
-		</p>
 	</section>
 
 </div>

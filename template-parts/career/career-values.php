@@ -71,8 +71,12 @@ $highlights = array_slice( $highlights, 0, 3 );
 
 	<?php if ( ! empty( $highlights ) ) : ?>
 		<div class="career-values__grid c-card-grid c-card-grid--3">
-			<?php foreach ( $highlights as $item ) : ?>
-				<article class="career-values__item c-surface c-surface--panel">
+			<?php foreach ( $highlights as $index => $item ) : ?>
+				<article class="career-values__item">
+					<span class="career-values__item-index" aria-hidden="true">
+						<?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?>
+					</span>
+
 					<?php if ( ! empty( $item['title'] ) ) : ?>
 						<h3 class="career-values__item-title">
 							<?php echo esc_html( $item['title'] ); ?>

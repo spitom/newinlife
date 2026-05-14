@@ -39,15 +39,19 @@ $cta_url        = $cta_url ?: 'https://sd.pan.olsztyn.pl/';
 		<?php endif; ?>
 	</div>
 
-	<div class="career-doctoral-school__action">
-		<a
-			class="btn btn-outline-primary career-doctoral-school__button"
-			href="<?php echo esc_url( $cta_url ); ?>"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			<span><?php echo esc_html( $cta_label ); ?></span>
-			<span class="career-doctoral-school__button-icon" aria-hidden="true">→</span>
-		</a>
-	</div>
+	<?php if ( $cta_label && $cta_url ) : ?>
+		<div class="career-doctoral-school__action">
+			<a
+				class="c-readmore career-doctoral-school__readmore"
+				href="<?php echo esc_url( $cta_url ); ?>"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<span class="c-readmore__label">
+					<?php echo esc_html( $cta_label ); ?>
+				</span>
+				<span class="c-readmore__icon" aria-hidden="true">→</span>
+			</a>
+		</div>
+	<?php endif; ?>
 </div>

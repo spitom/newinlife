@@ -118,75 +118,183 @@
 }
 
 /* =========================================================
-   FORMINATOR — DARK / LINE
+   FORMINATOR — DARK / EDITORIAL LINE
 ========================================================= */
 
 .inlife-form--dark {
-    .forminator-label {
-        position: absolute !important;
-        width: 1px !important;
-        height: 1px !important;
+    .forminator-ui.forminator-custom-form[data-grid="open"] {
+        .forminator-row {
+            gap: 0 !important;
+            column-gap: 0 !important;
+            row-gap: 0 !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+        .forminator-col {
+            min-width: 0 !important;
+            margin: 0 !important;
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+        }
+    }
+
+    @media (min-width: 783px) {
+        .forminator-ui.forminator-custom-form:not(.forminator-size--small)[data-grid="open"] {
+            .forminator-col {
+                min-width: 0 !important;
+                margin: 0 !important;
+                padding-right: 0 !important;
+                padding-left: 0 !important;
+            }
+
+            .forminator-row .forminator-col:first-child .forminator-field {
+                padding-right: 1.5rem !important;
+            }
+
+            .forminator-row .forminator-col:last-child .forminator-field {
+                padding-left: 0 !important;
+            }
+        }
+    }
+
+    .forminator-ui,
+    .forminator-custom-form {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .forminator-ui.forminator-custom-form .forminator-row {
+        margin: 0 !important;
         padding: 0 !important;
-        margin: -1px !important;
-        overflow: hidden !important;
-        clip: rect(0, 0, 0, 0) !important;
-        white-space: nowrap !important;
+    }
+
+    .forminator-ui.forminator-custom-form .forminator-col {
+        min-width: 0;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .forminator-ui.forminator-custom-form .forminator-field {
+        display: flex !important;
+        flex-direction: column;
+        min-width: 0;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .forminator-label {
+        display: block !important;
+        position: static !important;
+        order: 2;
+        width: auto !important;
+        height: auto !important;
+        margin: 0.35rem 0 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        clip: auto !important;
+        white-space: normal !important;
         border: 0 !important;
+        color: rgba(255, 255, 255, 0.72) !important;
+        font-size: 0.8rem !important;
+        font-weight: 700 !important;
+        line-height: 1.3 !important;
+        letter-spacing: 0.01em;
     }
 
     .forminator-required {
         color: var(--inlife-accent) !important;
     }
 
-    .forminator-error-message {
-        color: rgba(255, 255, 255, 0.86) !important;
+    .forminator-field {
+        margin-bottom: clamp(1rem, 2vw, 1.35rem) !important;
+    }
+
+    .forminator-row:last-child .forminator-field {
+        margin-bottom: 0 !important;
+    }
+
+    .forminator-input,
+    .forminator-textarea,
+    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
+    textarea,
+    select {
+        order: 1;
+        width: 100%;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 0 0.45rem !important;
+        border: 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.62) !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        color: #fff !important;
+        box-shadow: none !important;
+        font-family: inherit;
+        font-size: 0.95rem !important;
+        line-height: 1.45 !important;
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.72) !important;
+            opacity: 1;
+        }
     }
 
     .forminator-input,
     input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
     select {
-        min-height: 3rem;
-        padding: 0.45rem 0 !important;
-        border: 0 !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.62) !important;
-        background: transparent !important;
-        color: #fff !important;
-
-        &::placeholder {
-            color: rgba(255, 255, 255, 0.76);
-            opacity: 1;
-        }
-    }
-
-    .forminator-input:focus,
-    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):focus,
-    select:focus {
-        outline: 0;
-        border-bottom-color: #fff !important;
-        box-shadow: none !important;
+        height: 2.15rem !important;
     }
 
     .forminator-textarea,
     textarea {
-        height: 6rem !important;
-        min-height: 6rem !important;
-        max-height: 6rem !important;
-        padding: 0.45rem 0 !important;
-        border: 0 !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.62) !important;
-        background: transparent !important;
-        color: #fff !important;
-
-        &::placeholder {
-            color: rgba(255, 255, 255, 0.76);
-            opacity: 1;
-        }
+        height: 4rem !important;
+        min-height: 4rem !important;
+        max-height: 9rem;
+        resize: vertical;
     }
 
+    .forminator-input:focus,
     .forminator-textarea:focus,
-    textarea:focus {
-        outline: 0;
+    input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]):focus,
+    textarea:focus,
+    select:focus {
+        outline: 0 !important;
         border-bottom-color: #fff !important;
+        box-shadow: none !important;
+    }
+
+    .forminator-error-message {
+        display: block !important;
+        order: 3;
+        margin: 0.4rem 0 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 0.82rem !important;
+        font-weight: 700 !important;
+        line-height: 1.45 !important;
+    }
+
+    .forminator-description,
+    .forminator-field--helper,
+    .forminator-field-description {
+        order: 3;
+        margin-top: 0.35rem !important;
+        color: rgba(255, 255, 255, 0.66) !important;
+        font-size: 0.78rem !important;
+        line-height: 1.45 !important;
+    }
+
+    .forminator-response-message {
+        margin: 0 0 1.25rem !important;
+        padding: 1rem 1.15rem !important;
+        border: 1px solid rgba(255, 255, 255, 0.22) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        color: #fff !important;
         box-shadow: none !important;
     }
 
@@ -199,13 +307,14 @@
         width: auto !important;
         min-height: 0 !important;
         height: auto !important;
+        margin: 0.75rem 0 0 !important;
         padding: 0 !important;
         border: 0 !important;
         border-radius: 0 !important;
         background: transparent !important;
         color: #fff !important;
         box-shadow: none !important;
-        font-size: 0.95rem !important;
+        font-size: 1rem !important;
         font-weight: 800 !important;
         line-height: 1.4 !important;
     }
@@ -238,6 +347,7 @@
 
     a {
         color: #fff;
+        font-weight: 700;
     }
 }
 

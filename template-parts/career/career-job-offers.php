@@ -61,9 +61,14 @@ $career_query = new WP_Query( $query_args );
 
 ob_start();
 ?>
-<a class="btn btn-outline-primary" href="<?php echo esc_url( $cta_url ); ?>">
-	<?php echo esc_html( $cta_label ); ?>
+
+<a class="c-readmore career-job-offers__all-link" href="<?php echo esc_url( $cta_url ); ?>">
+	<span class="c-readmore__label">
+		<?php echo esc_html( $cta_label ); ?>
+	</span>
+	<span class="c-readmore__icon" aria-hidden="true">→</span>
 </a>
+
 <?php
 $action_html = (string) ob_get_clean();
 ?>

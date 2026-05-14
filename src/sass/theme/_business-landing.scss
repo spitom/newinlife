@@ -414,29 +414,16 @@
 }
 
 .business-tech-panel__badge {
-    display: inline-flex;
     align-self: flex-start;
     margin-bottom: clamp(0.75rem, 1.8vw, 1.1rem);
-    padding: 0.38rem 0.72rem;
-    border-radius: 999px;
-    font-size: 0.72rem;
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.business-tech-panel--main .business-tech-panel__badge {
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    background: rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.94);
 }
 
 .business-tech-panel--side .business-tech-panel__badge {
-    border: 1px solid #e4ebf2;
-    background: #f4f7fb;
-    color: var(--inlife-primary);
     font-size: 0.65rem;
+}
+
+.business-tech-panel--main .business-tech-panel__badge {
+    margin-top: auto;
 }
 
 .business-tech-panel__title {
@@ -676,19 +663,6 @@
     display: flex;
     flex-direction: column;
     gap: clamp(1.75rem, 3vw, 2.5rem);
-}
-
-.business-success__grid {
-    display: grid;
-    gap: clamp(1rem, 2vw, 1.5rem);
-
-    @media (min-width: 768px) {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    @media (min-width: 1200px) {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
 }
 
 .business-success-card {

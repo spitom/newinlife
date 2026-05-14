@@ -36,6 +36,11 @@
     margin-top: 1rem;
 }
 
+.career-opportunities-current__empty-text {
+    margin: 0;
+    color: var(--inlife-text-muted);
+}
+
 /* =========================================================
    SECONDARY BLOCKS — RESULTS / ARCHIVE
 ========================================================= */
@@ -84,77 +89,71 @@
 }
 
 /* =========================================================
-   MOBILITY
+   CAREER — MOBILITY LINKS
 ========================================================= */
 
-.career-opportunities-mobility {
-    .career-op-list {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
+.career-mobility-link {
+    min-width: 0;
+}
+
+.career-mobility-link__anchor {
+    position: relative;
+    display: block;
+    height: 100%;
+    padding-left: 1.35rem;
+    padding-right: 1.5rem;
+    color: inherit;
+    text-decoration: none;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.15rem;
+        bottom: 0.15rem;
+        width: 3px;
+        border-radius: 999px;
+        background: var(--inlife-accent);
+        opacity: 0.75;
     }
 
-    .career-op-card {
-        height: 100%;
-    }
-
-    .career-op-card__link {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        padding: 1.25rem;
-        border: 1px solid #e4ebf2;
-        border-radius: 8px;
-        background: #fcfcfc;
-        box-shadow: 0 10px 24px rgba(18, 38, 63, 0.04);
+    &:hover,
+    &:focus {
         color: inherit;
         text-decoration: none;
-        transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease,
-            border-color 0.2s ease;
     }
 
-    .career-op-card__link:hover,
-    .career-op-card__link:focus-visible {
-        transform: translateY(-2px);
-        text-decoration: none;
-        box-shadow: 0 18px 38px rgba(18, 38, 63, 0.08);
-    }
-
-    .career-op-card__title {
-        margin: 0 0 0.65rem;
-        font-size: 1.02rem;
-        font-weight: 700;
-        line-height: 1.35;
-        color: var(--inlife-primary);
-    }
-
-    .career-op-card__meta {
-        margin: 0;
-        font-size: 0.95rem;
-        line-height: 1.65;
-        color: var(--inlife-text-muted);
-    }
-
-    .career-op-card__readmore {
-	margin-top: auto;
-	padding-top: 0.9rem;
+    &:focus-visible {
+        outline: 3px solid var(--inlife-accent);
+        outline-offset: 4px;
     }
 }
 
-@media (min-width: 768px) {
-    .career-opportunities-mobility {
-        .career-op-list {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-    }
+.career-mobility-link__title {
+    margin: 0;
+    color: var(--inlife-primary);
+    font-size: 1.02rem;
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
 }
 
-@media (min-width: 1200px) {
-    .career-opportunities-mobility {
-        .career-op-list {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-    }
+.career-mobility-link__text {
+    margin: 0.45rem 0 0;
+    color: var(--inlife-text-muted);
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+
+.career-mobility-link__icon {
+    display: inline-flex;
+    margin-top: 0.8rem;
+    color: var(--inlife-primary);
+    font-weight: 700;
+    transition: transform 0.18s ease;
+}
+
+.career-mobility-link__anchor:hover .career-mobility-link__icon,
+.career-mobility-link__anchor:focus-visible .career-mobility-link__icon {
+    transform: translateX(4px);
 }

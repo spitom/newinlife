@@ -92,29 +92,26 @@ get_template_part(
 
 <div class="career-opportunities-mobility">
 	<?php if ( ! empty( $items ) ) : ?>
-		<div class="career-op-list">
+		<div class="c-card-grid c-card-grid--3 career-mobility-grid">
 			<?php foreach ( $items as $item ) : ?>
-				<article class="career-op-card career-op-card--mobility">
+				<article class="career-mobility-link">
 					<a
-						class="career-op-card__link"
+						class="career-mobility-link__anchor"
 						href="<?php echo esc_url( $item['url'] ); ?>"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						<h3 class="career-op-card__title"><?php echo esc_html( $item['title'] ); ?></h3>
+						<h3 class="career-mobility-link__title">
+							<?php echo esc_html( $item['title'] ); ?>
+						</h3>
 
 						<?php if ( ! empty( $item['text'] ) ) : ?>
-							<p class="career-op-card__meta">
+							<p class="career-mobility-link__text">
 								<?php echo esc_html( $item['text'] ); ?>
 							</p>
 						<?php endif; ?>
 
-						<span class="c-readmore career-op-card__readmore">
-							<span class="c-readmore__label">
-								<?php echo esc_html( inlife_t( 'Przejdź do serwisu' ) ); ?>
-							</span>
-							<span class="c-readmore__icon" aria-hidden="true">→</span>
-						</span>
+						<span class="career-mobility-link__icon" aria-hidden="true">→</span>
 					</a>
 				</article>
 			<?php endforeach; ?>

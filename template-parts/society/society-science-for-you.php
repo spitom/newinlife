@@ -84,7 +84,7 @@ $allowed_video_html = [
 				?>
 
 				<?php if ( ! empty( $section_text ) ) : ?>
-					<div class="entry-content society-feature__text">
+					<div class="society-feature__text">
 						<?php echo wp_kses_post( $section_text ); ?>
 					</div>
 				<?php endif; ?>

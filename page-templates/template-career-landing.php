@@ -24,7 +24,6 @@ $secondary_url   = function_exists( 'get_field' ) ? get_field( 'career_hero_cta_
 $hero_kicker = $hero_kicker ?: inlife_t( 'Kariera' );
 $hero_title  = $hero_title ?: inlife_t( 'Dołącz do zespołu InLife' );
 $hero_lead   = $hero_lead ?: inlife_t( 'Tworzymy środowisko pracy oparte na nauce, współpracy i rozwoju. Sprawdź aktualne możliwości dołączenia do Instytutu, poznaj nasze wartości oraz ścieżki rozwoju zawodowego.' );
-$hero_image = get_field('career_hero_image');
 $hero_image = function_exists( 'get_field' ) ? get_field( 'career_hero_image', $post_id ) : null;
 $hero_image_id = 0;
 
@@ -37,8 +36,8 @@ if ( is_array( $hero_image ) && ! empty( $hero_image['ID'] ) ) {
 $primary_label = $primary_label ?: inlife_t( 'Zobacz aktualne oferty' );
 $primary_url   = $primary_url ?: '#career-job-offers-heading';
 
-$secondary_label = $secondary_label ?: inlife_t( 'Poznaj nasze wartości' );
-$secondary_url   = $secondary_url ?: '#career-values-heading';
+$secondary_label = $secondary_label ?: inlife_t( 'HR Excellence' );
+$secondary_url   = $secondary_url ?: '#career-hr-documents-heading';
 
 ob_start();
 ?>
@@ -57,7 +56,7 @@ $hero_actions = (string) ob_get_clean();
 	<section class="page-section page-section--career-hero" aria-labelledby="career-hero-heading">
 		<?php
 		get_template_part(
-			'template-parts/patterns/pattern-media-hero',
+			'template-parts/patterns/pattern-page-hero',
 			null,
 			[
 				'kicker'       => $hero_kicker,
@@ -66,7 +65,6 @@ $hero_actions = (string) ob_get_clean();
 				'image_id'     => $hero_image_id,
 				'breadcrumbs'  => true,
 				'actions_html' => $hero_actions,
-				'media_shape'  => 'hex',
 				'title_id'     => 'career-hero-heading',
 			]
 		);

@@ -38,30 +38,30 @@ if ( ! $enabled ) {
 	return;
 }
 
-$kicker  = '';
+// $kicker  = '';
 $title   = '';
 $content = '';
 
 if ( $rodo_page_id && function_exists( 'get_field' ) ) {
-	$kicker  = get_field( 'career_rodo_kicker', $rodo_page_id );
+	// $kicker  = get_field( 'career_rodo_kicker', $rodo_page_id );
 	$title   = get_field( 'career_rodo_title', $rodo_page_id );
 	$content = get_field( 'career_rodo_content', $rodo_page_id );
 }
 
-$kicker = $kicker ?: inlife_t( 'Klauzula informacyjna' );
-$title  = $title ?: inlife_t( 'Informacja o przetwarzaniu danych osobowych' );
+// $kicker = $kicker ?: inlife_t( 'Klauzula informacyjna' );
+$title  = $title ?: inlife_t( 'Klauzula informacyjna' );
 
 if ( ! $content ) {
 	$content = inlife_t( 'Treść klauzuli RODO i zgody rekrutacyjnej będzie renderowana automatycznie na podstawie wybranego wariantu.' );
 }
 ?>
 
-<section class="career-entry-rodo c-surface c-surface--panel" aria-labelledby="career-entry-rodo-heading">
-	<?php if ( $kicker ) : ?>
+<section class="career-entry-rodo entry-content c-surface c-surface--panel" aria-labelledby="career-entry-rodo-heading">
+	<!-- </?php if ( $kicker ) : ?>
 		<p class="career-entry-rodo__kicker">
-			<?php echo esc_html( $kicker ); ?>
+			</?php echo esc_html( $kicker ); ?>
 		</p>
-	<?php endif; ?>
+	</?php endif; ?> -->
 
 	<h2 id="career-entry-rodo-heading" class="career-entry-rodo__title">
 		<?php echo esc_html( $title ); ?>

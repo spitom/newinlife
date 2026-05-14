@@ -158,7 +158,7 @@ if ( function_exists( 'have_rows' ) && have_rows( 'business_technology_tiles', $
 								<?php echo ! empty( $tile['target'] ) ? 'target="' . esc_attr( $tile['target'] ) . '"' : ''; ?>
 							>
 								<?php if ( ! empty( $tile['badge'] ) ) : ?>
-									<span class="business-tech-panel__badge">
+									<span class="business-tech-panel__badge c-badge c-badge--role c-badge--compact">
 										<?php echo esc_html( $tile['badge'] ); ?>
 									</span>
 								<?php endif; ?>

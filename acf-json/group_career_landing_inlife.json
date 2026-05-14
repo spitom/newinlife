@@ -259,23 +259,6 @@
             "new_lines": "wpautop"
         },
         {
-            "key": "field_cbee3772a077",
-            "label": "URL wideo",
-            "name": "career_values_video_url",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
             "key": "field_e131ca3766e4",
             "label": "Wyróżniki",
             "name": "career_values_highlights",
@@ -650,109 +633,6 @@
             "new_lines": "wpautop"
         },
         {
-            "key": "field_c59c0996daee",
-            "label": "CTA — etykieta",
-            "name": "career_trainings_cta_label",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_e6f529a27976",
-            "label": "CTA — URL",
-            "name": "career_trainings_cta_url",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
-            "key": "field_4eaede5fe878",
-            "label": "Karty szkoleń",
-            "name": "career_trainings_items",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Dodaj kartę",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_4017f2ed6cfc",
-                    "label": "Tytuł",
-                    "name": "title",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_4eaede5fe878"
-                },
-                {
-                    "key": "field_7403d75e173e",
-                    "label": "Tekst",
-                    "name": "text",
-                    "aria-label": "",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "rows": 3,
-                    "placeholder": "",
-                    "new_lines": "wpautop",
-                    "parent_repeater": "field_4eaede5fe878"
-                }
-            ]
-        },
-        {
             "key": "field_f78e2978aa24",
             "label": "Różnorodność",
             "name": "",
@@ -1041,27 +921,6 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_e898736a3566"
-                },
-                {
-                    "key": "field_80627df7ffe0",
-                    "label": "Tekst",
-                    "name": "text",
-                    "aria-label": "",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "rows": 3,
-                    "placeholder": "",
-                    "new_lines": "wpautop",
                     "parent_repeater": "field_e898736a3566"
                 },
                 {
@@ -1456,5 +1315,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1777037856
+    "modified": 1778671695
 }

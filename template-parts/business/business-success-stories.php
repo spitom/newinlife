@@ -51,7 +51,6 @@ if ( function_exists( 'have_rows' ) && have_rows( 'business_success_cases', $pos
 		$image = get_sub_field( 'image' );
 		$video = get_sub_field( 'video_embed' );
 		$link  = get_sub_field( 'link' );
-		$tone  = get_sub_field( 'tone' );
 
 		$image_id = 0;
 
@@ -85,17 +84,12 @@ if ( function_exists( 'have_rows' ) && have_rows( 'business_success_cases', $pos
 			$url = $link;
 		}
 
-		if ( is_array( $tone ) && ! empty( $tone['value'] ) ) {
-			$tone = $tone['value'];
-		}
-
 		$cases[] = [
 			'title'      => $title ?: '',
 			'image_id'   => $image_id,
 			'video_html' => $video_html,
 			'url'        => $url,
 			'target'     => $target,
-			'tone'       => $tone ?: '',
 		];
 	}
 }
@@ -120,28 +114,15 @@ if ( empty( $cases ) ) {
 	);
 	?>
 
-	<div class="business-success__grid">
+	<div class="business-success__grid c-card-grid c-card-grid--3">
 		<?php foreach ( $cases as $index => $case ) : ?>
 			<?php
 			if ( empty( $case['title'] ) ) {
 				continue;
 			}
-
-			$tone = $case['tone'];
-
-			if ( ! $tone ) {
-				$tones = [ 'primary', 'green', 'orange', 'light' ];
-				$tone  = $tones[ $index % count( $tones ) ];
-			}
-
-			$allowed_tones = [ 'primary', 'green', 'orange', 'light' ];
-
-			if ( ! in_array( $tone, $allowed_tones, true ) ) {
-				$tone = 'primary';
-			}
 			?>
 
-			<article class="business-success-card business-success-card--<?php echo esc_attr( $tone ); ?>">
+			<article class="business-success-card">
 				<a
 					class="business-success-card__link"
 					href="<?php echo esc_url( $case['url'] ); ?>"

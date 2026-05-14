@@ -57,6 +57,11 @@ $hero_lead   = $hero_lead ?: inlife_t( 'W tej sekcji znajdują się aktualne kon
 			<?php get_template_part( 'template-parts/career/career-opportunities', 'mobility' ); ?>
 		</div>
 	</section>
+	<section class="page-section page-section--career-opportunities-rodo" aria-labelledby="career-rodo-heading">
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<?php get_template_part( 'template-parts/career/career-opportunities', 'rodo' ); ?>
+		</div>
+	</section>
 
 </main>
 

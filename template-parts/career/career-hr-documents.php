@@ -77,19 +77,19 @@ if ( function_exists( 'have_rows' ) && have_rows( 'career_hr_documents', $post_i
 
 	<div class="career-hr-documents__intro">
 		<div class="career-hr-documents__intro-content">
-			<p class="career-hr-documents__kicker">
-				<?php echo esc_html( $section_kicker ); ?>
-			</p>
-
-			<h2 id="career-hr-documents-heading" class="career-hr-documents__heading">
-				<?php echo esc_html( $section_title ); ?>
-			</h2>
-
-			<?php if ( $section_text ) : ?>
-				<div class="career-hr-documents__lead">
-					<?php echo wp_kses_post( wpautop( $section_text ) ); ?>
-				</div>
-			<?php endif; ?>
+			<?php
+			get_template_part(
+				'template-parts/components/section-header',
+				null,
+				[
+					'kicker'   => $section_kicker,
+					'title'    => $section_title,
+					'lead'     => $section_text,
+					'title_id' => 'career-hr-documents-heading',
+					'class'    => 'career-hr-documents__header',
+				]
+			);
+			?>
 		</div>
 
 		<?php if ( $logo_url ) : ?>

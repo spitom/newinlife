@@ -30,6 +30,22 @@ $query_args = [
 	'posts_per_page'      => 10,
 	'ignore_sticky_posts' => true,
 	'no_found_rows'       => true,
+	'meta_key'            => 'career_deadline',
+	'orderby'             => 'meta_value_num',
+	'order'               => 'ASC',
+	'meta_query'          => [
+		'relation' => 'OR',
+		[
+			'key'     => 'career_deadline',
+			'value'   => current_time( 'Ymd' ),
+			'compare' => '>=',
+			'type'    => 'NUMERIC',
+		],
+		[
+			'key'     => 'career_deadline',
+			'compare' => 'NOT EXISTS',
+		],
+	],
 ];
 
 if ( ! empty( $type_slugs ) ) {
@@ -112,13 +128,13 @@ get_template_part(
 		<?php wp_reset_postdata(); ?>
 
 		<div class="c-surface c-surface--panel career-opportunities-current__empty" data-career-empty hidden>
-			<p class="mb-0">
+			<p class="career-opportunities-current__empty-text">
 				<?php echo esc_html( inlife_t( 'Brak aktualnych ogłoszeń w wybranej kategorii.' ) ); ?>
 			</p>
 		</div>
 	<?php else : ?>
 		<div class="c-surface c-surface--panel career-opportunities-current__empty">
-			<p class="mb-0">
+			<p class="career-opportunities-current__empty-text">
 				<?php echo esc_html( inlife_t( 'Obecnie nie ma opublikowanych aktywnych ofert.' ) ); ?>
 			</p>
 		</div>

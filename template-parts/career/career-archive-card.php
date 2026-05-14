@@ -44,7 +44,7 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_ge
 	<a class="career-archive-card__link c-surface c-surface--record" href="<?php the_permalink(); ?>">
 
 		<?php if ( $type_label ) : ?>
-			<p class="career-archive-card__type">
+			<p class="career-archive-card__type c-badge c-badge--soft c-badge--compact">
 				<?php echo esc_html( $type_label ); ?>
 			</p>
 		<?php endif; ?>
@@ -69,8 +69,8 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_ge
 
 				<?php if ( $deadline ) : ?>
 					<p class="career-archive-card__meta-item career-archive-card__meta-item--deadline">
-						<?php echo esc_html( inlife_t( 'Termin składania' ) ); ?>:
-						<?php echo esc_html( $deadline ); ?>
+						<span><?php echo esc_html( inlife_t( 'Termin składania' ) ); ?></span>
+						<strong><?php echo esc_html( $deadline ); ?></strong>
 					</p>
 				<?php endif; ?>
 			</div>
