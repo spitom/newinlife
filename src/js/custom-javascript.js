@@ -1128,4 +1128,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Front Stats animation
 
+document.addEventListener('DOMContentLoaded', () => {
+  const stats = document.querySelector('.about-intro__stats');
+
+  if (!stats || !('IntersectionObserver' in window)) {
+    if (stats) stats.classList.add('is-visible');
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.25,
+      rootMargin: '0px 0px -8% 0px',
+    }
+  );
+
+  observer.observe(stats);
+});

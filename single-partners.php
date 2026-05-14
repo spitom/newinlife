@@ -12,21 +12,28 @@ if ( have_posts() ) :
 		$partner = inlife_get_partner_single_data( get_the_ID() );
 		?>
 		<main id="main-content" class="site-main site-main--partner-single">
-			<?php
-			get_template_part(
-				'template-parts/network/network-partner-header',
-				null,
-				[
-					'container' => $container,
-					'partner'   => $partner,
-				]
-			);
-			?>
+			<section class="page-section page-section--partner-hero">
+				<?php
+				$city     = $partner['city'] ?? '';
+				$country  = $partner['country'] ?? '';
+				$location = trim( implode( ', ', array_filter( [ $city, $country ] ) ) );
 
+				get_template_part(
+					'template-parts/patterns/pattern-page-hero',
+					null,
+					[
+						'kicker'      => inlife_t( 'Partner sieci' ),
+						'title'       => $partner['title'] ?? get_the_title(),
+						'lead'        => $location,
+						'breadcrumbs' => true,
+					]
+				);
+				?>
+			</section>
 			<section class="network-partner section-spacing">
 				<div class="<?php echo esc_attr( $container ); ?>">
-					<div class="row g-4 g-xl-5">
-						<div class="col-lg-7 col-xl-8">
+					<div class="network-partner__layout">
+						<div class="network-partner__main">
 							<?php
 							get_template_part(
 								'template-parts/network/network-partner-content',
@@ -38,7 +45,7 @@ if ( have_posts() ) :
 							?>
 						</div>
 
-						<div class="col-lg-5 col-xl-4">
+						<div class="network-partner__side">
 							<?php
 							get_template_part(
 								'template-parts/network/network-partner-aside',

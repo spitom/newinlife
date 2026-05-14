@@ -210,7 +210,7 @@ foreach ( $shapes as $shape ) {
 						<?php
 						echo wp_get_attachment_image(
 							$image_id,
-							'large',
+							'full',
 							false,
 							[
 								'class'   => 'p-media-hero__image',

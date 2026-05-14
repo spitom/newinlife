@@ -11,52 +11,34 @@ $term_description = $term instanceof WP_Term ? term_description( $term, 'partner
 ?>
 
 <main id="main-content" class="site-main site-main--partner-region">
+	<section class="page-section page-section--partners-archive-hero">
+		<?php
+		$lead = $term_description
+			? wp_strip_all_tags( $term_description )
+			: sprintf(
+				/* translators: %s region name */
+				inlife_t( 'Zobacz partnerów współpracujących z Instytutem w regionie: %s.' ),
+				$term_name
+			);
+
+		get_template_part(
+			'template-parts/patterns/pattern-page-hero',
+			null,
+			[
+				'kicker'      => inlife_t( 'Sieć współpracy' ),
+				'title'       => sprintf(
+					/* translators: %s region name */
+					inlife_t( 'Partnerzy: %s' ),
+					$term_name
+				),
+				'lead'        => $lead,
+				'breadcrumbs' => true,
+			]
+		);
+		?>
+	</section>
 	<section class="network-archive section-spacing">
 		<div class="<?php echo esc_attr( $container ); ?>">
-			<header class="network-archive__header">
-				<p class="section-kicker">
-					<?php echo esc_html( inlife_t( 'Sieć współpracy' ) ); ?>
-				</p>
-
-				<h1 class="network-archive__title">
-					<?php
-					echo esc_html(
-						sprintf(
-							/* translators: %s region name */
-							inlife_t( 'Partnerzy: %s' ),
-							$term_name
-						)
-					);
-					?>
-				</h1>
-
-				<?php if ( $term_description ) : ?>
-					<div class="network-archive__lead entry-content">
-						<?php echo wp_kses_post( wpautop( $term_description ) ); ?>
-					</div>
-				<?php else : ?>
-					<div class="network-archive__lead">
-						<p>
-							<?php
-							echo esc_html(
-								sprintf(
-									/* translators: %s region name */
-									inlife_t( 'Zobacz partnerów współpracujących z Instytutem w regionie: %s.' ),
-									$term_name
-								)
-							);
-							?>
-						</p>
-					</div>
-				<?php endif; ?>
-
-				<div class="network-archive__actions">
-					<a class="btn btn-outline-primary" href="<?php echo esc_url( get_post_type_archive_link( 'partners' ) ); ?>">
-						<?php echo esc_html( inlife_t( 'Zobacz wszystkich partnerów' ) ); ?>
-					</a>
-				</div>
-			</header>
-
 			<?php
 			global $wp_query;
 

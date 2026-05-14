@@ -18,7 +18,7 @@ $cooperation_label = $partner['cooperation_label'] ?? '';
 ?>
 
 <article class="network-partner-content network-partner-content--light">
-	<div class="network-partner-content__section">
+	<div class="network-partner-content__section c-surface c-surface--panel">
 		<h2 class="network-partner-content__heading">
 			<?php echo esc_html( inlife_t( 'Informacje o partnerze' ) ); ?>
 		</h2>
@@ -47,23 +47,25 @@ $cooperation_label = $partner['cooperation_label'] ?? '';
 			<div class="network-partner-content__actions">
 				<?php if ( $website ) : ?>
 					<a
-						class="btn btn-primary"
+						class="c-readmore network-partner-content__link"
 						href="<?php echo esc_url( $website ); ?>"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						<?php echo esc_html( inlife_t( 'Odwiedź stronę partnera' ) ); ?>
+						<span class="c-readmore__label"><?php echo esc_html( inlife_t( 'Odwiedź stronę partnera' ) ); ?></span>
+						<span class="c-readmore__icon" aria-hidden="true">→</span>
 					</a>
 				<?php endif; ?>
 
 				<?php if ( $cooperation_link ) : ?>
 					<a
-						class="btn btn-outline-primary"
+						class="c-readmore network-partner-content__link"
 						href="<?php echo esc_url( $cooperation_link ); ?>"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						<?php echo esc_html( $cooperation_label ?: inlife_t( 'Zobacz współpracę' ) ); ?>
+						<span class="c-readmore__label"><?php echo esc_html( $cooperation_label ?: inlife_t( 'Zobacz współpracę' ) ); ?></span>
+						<span class="c-readmore__icon" aria-hidden="true">→</span>
 					</a>
 				<?php endif; ?>
 			</div>

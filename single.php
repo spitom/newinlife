@@ -34,7 +34,6 @@ $primary_category = function_exists( 'inlife_get_primary_post_category' )
 $hero_image_id = has_post_thumbnail( $post_id ) ? get_post_thumbnail_id( $post_id ) : 0;
 
 $hero_variant     = ( 'posluchaj' === $format_slug ) ? 'audio' : '';
-$hero_media_shape = ( 'posluchaj' === $format_slug ) ? '' : 'contain';
 
 if ( function_exists( 'get_field' ) ) {
 	$hero_override = get_field( 'post_hero_image_override', $post_id );
@@ -234,6 +233,20 @@ if ( 'society' === $entry_context ) {
 		<?php
 		$before_lead = trim( (string) ob_get_clean() );
 
+		$hero_media_html = '';
+
+		if ( $hero_image_id ) {
+			$hero_media_html = wp_get_attachment_image(
+				$hero_image_id,
+				'full',
+				false,
+				[
+					'class'   => 'post-hero-poster__image',
+					'loading' => 'eager',
+				]
+			);
+		}
+
 		get_template_part(
 			'template-parts/patterns/pattern-media-hero',
 			null,
@@ -244,8 +257,9 @@ if ( 'society' === $entry_context ) {
 				'breadcrumbs'            => true,
 				'breadcrumbs_full_width' => true,
 				'before_lead'            => $before_lead,
-				'image_id'               => $hero_image_id,
-				'media_shape'            => $hero_media_shape,
+				'image_id'         		 => 0,
+				'custom_media_html'      => $hero_media_html,
+				'media_shape'            => 'poster',
 				'variant'                => $hero_variant,
 			]
 		);

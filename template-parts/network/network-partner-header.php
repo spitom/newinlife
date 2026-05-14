@@ -57,7 +57,7 @@ $region_names = $partner['region_names'] ?? [];
 							'large',
 							false,
 							[
-								'class' => 'img-fluid',
+								'class' => 'network-partner-header__image',
 								'alt'   => '',
 							]
 						);

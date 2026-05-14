@@ -16,17 +16,21 @@ $map_id    = 'network-map-canvas';
 
 <section class="network-map section-spacing-sm" aria-labelledby="network-map-heading">
 	<div class="<?php echo esc_attr( $container ); ?>">
-		<div class="network-map__header">
-			<h2 id="network-map-heading" class="section-title">
-				<?php echo esc_html( inlife_t( 'Partnerzy na świecie' ) ); ?>
-			</h2>
+		
+		<?php
+		get_template_part(
+			'template-parts/components/section-header',
+			null,
+			[
+				'title'    => inlife_t( 'Partnerzy na świecie' ),
+				'lead'     => inlife_t( 'Mapa pokazuje lokalizacje naszych partnerów. Pełna lista partnerów znajduje się poniżej i pozostaje podstawową, w pełni dostępną formą nawigacji.' ),
+				'title_id' => 'network-map-heading',
+				'class'    => 'network-map__header',
+			]
+		);
+		?>
 
-			<p class="network-map__intro">
-				<?php echo esc_html( inlife_t( 'Mapa pokazuje lokalizacje naszych partnerów. Pełna lista partnerów znajduje się poniżej i pozostaje podstawową, w pełni dostępną formą nawigacji.' ) ); ?>
-			</p>
-		</div>
-
-		<div class="network-map__frame">
+		<div class="network-map__frame c-surface c-surface--panel">
 			<div
 				id="<?php echo esc_attr( $map_id ); ?>"
 				class="network-map__canvas"

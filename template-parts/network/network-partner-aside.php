@@ -21,7 +21,23 @@ $cooperation_label = $partner['cooperation_label'] ?? '';
 ?>
 
 <aside class="network-partner-aside">
-	<div class="network-partner-aside__card">
+	<div class="network-partner-aside__card c-surface c-surface--panel">
+		<?php if ( ! empty( $partner['logo']['ID'] ) ) : ?>
+			<div class="network-partner-aside__logo">
+				<?php
+				echo wp_get_attachment_image(
+					$partner['logo']['ID'],
+					'medium_large',
+					false,
+					[
+						'class' => 'network-partner-aside__logo-image',
+						'alt'   => '',
+					]
+				);
+				?>
+			</div>
+		<?php endif; ?>
+
 		<h2 class="network-partner-aside__title">
 			<?php echo esc_html( inlife_t( 'Dane partnera' ) ); ?>
 		</h2>
@@ -77,12 +93,13 @@ $cooperation_label = $partner['cooperation_label'] ?? '';
 		<?php if ( $cooperation_link ) : ?>
 			<div class="network-partner-aside__actions">
 				<a
-					class="btn btn-outline-primary w-100"
+					class="c-readmore network-partner-aside__link"
 					href="<?php echo esc_url( $cooperation_link ); ?>"
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<?php echo esc_html( $cooperation_label ?: inlife_t( 'Zobacz współpracę' ) ); ?>
+					<span class="c-readmore__label"><?php echo esc_html( $cooperation_label ?: inlife_t( 'Zobacz współpracę' ) ); ?></span>
+					<span class="c-readmore__icon" aria-hidden="true">→</span>
 				</a>
 			</div>
 		<?php endif; ?>

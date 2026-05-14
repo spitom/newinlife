@@ -20,10 +20,10 @@ $region_terms = is_array( $args['region_terms'] ) ? $args['region_terms'] : [];
 				<?php echo esc_html( inlife_t( 'Filtry partnerów' ) ); ?>
 			</h2>
 
-			<div class="network-filters__list" role="toolbar" aria-label="<?php echo esc_attr( inlife_t( 'Filtruj partnerów według regionu' ) ); ?>">
+			<div class="c-pills network-filters__list" role="toolbar" aria-label="<?php echo esc_attr( inlife_t( 'Filtruj partnerów według regionu' ) ); ?>">
 				<button
 					type="button"
-					class="network-filter is-active"
+					class="c-pill network-filter is-active"
 					data-network-filter="all"
 					aria-pressed="true"
 				>
@@ -33,7 +33,7 @@ $region_terms = is_array( $args['region_terms'] ) ? $args['region_terms'] : [];
 				<?php foreach ( $region_terms as $term ) : ?>
 					<button
 						type="button"
-						class="network-filter"
+						class="c-pill network-filter"
 						data-network-filter="<?php echo esc_attr( $term->slug ); ?>"
 						aria-pressed="false"
 					>
