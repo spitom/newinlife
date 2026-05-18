@@ -64,16 +64,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!siteHeader) return;
 
+  let isScrolled = false;
+  let ticking = false;
+
+  const addThreshold = 36;
+  const removeThreshold = 8;
+
+  function setScrolledState(nextState) {
+    if (isScrolled === nextState) return;
+
+    isScrolled = nextState;
+    siteHeader.classList.toggle('is-scrolled', isScrolled);
+  }
+
   function updateStickyHeader() {
-    if (window.scrollY > 24) {
-      siteHeader.classList.add('is-scrolled');
-    } else {
-      siteHeader.classList.remove('is-scrolled');
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+
+    if (!isScrolled && scrollY > addThreshold) {
+      setScrolledState(true);
     }
+
+    if (isScrolled && scrollY < removeThreshold) {
+      setScrolledState(false);
+    }
+
+    ticking = false;
+  }
+
+  function requestStickyUpdate() {
+    if (ticking) return;
+
+    ticking = true;
+    window.requestAnimationFrame(updateStickyHeader);
   }
 
   updateStickyHeader();
-  window.addEventListener('scroll', updateStickyHeader, { passive: true });
+
+  window.addEventListener('scroll', requestStickyUpdate, { passive: true });
+  window.addEventListener('resize', requestStickyUpdate);
 });
 
 
