@@ -89,3 +89,23 @@
     outline: 3px solid rgba(41, 52, 88, 0.08);
     box-shadow: none;
 }
+
+.archive-filters__select--category {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    .posts-filters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .posts-filters .archive-filters__group {
+        display: none;
+    }
+
+    .archive-filters__select--category {
+        display: block;
+    }
+}

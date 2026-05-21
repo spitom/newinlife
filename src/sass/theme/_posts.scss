@@ -93,7 +93,39 @@
 ========================================================= */
 
 .posts-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.posts-filters__desktop {
+    flex: 1 1 auto;
+}
+
+.posts-filters__year {
+    flex: 0 0 auto;
+}
+
+.posts-filters__mobile {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+
+    .posts-filters__desktop,
+    .posts-filters__year {
+        display: none;
+    }
+
+    .posts-filters__mobile {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        width: 100%;
+    }
 }
 
 

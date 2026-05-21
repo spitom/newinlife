@@ -49,40 +49,76 @@ $container = $args['container'] ?? 'container';
 		);
 		?>
 
-		<form class="archive-filters posts-filters" method="get" action="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) . '#posts-listing' ); ?>">
-			<div class="archive-filters__group" aria-label="<?php echo esc_attr( inlife_t( 'Kategorie aktualności' ) ); ?>">
-				<button class="c-pill<?php echo '' === $current_cat ? ' is-active' : ''; ?>" type="submit" name="news_cat" value="">
-					<?php echo esc_html( inlife_t( 'Wszystkie' ) ); ?>
-				</button>
+		<div class="archive-filters posts-filters">
 
-				<?php foreach ( $categories as $category ) : ?>
-					<button
-						class="c-pill<?php echo $current_cat === $category->slug ? ' is-active' : ''; ?>"
-						type="submit"
-						name="news_cat"
-						value="<?php echo esc_attr( $category->slug ); ?>"
-					>
-						<?php echo esc_html( $category->name ); ?>
+			<form class="posts-filters__desktop" method="get" action="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) . '#posts-listing' ); ?>">
+				<?php if ( $current_year ) : ?>
+					<input type="hidden" name="news_year" value="<?php echo esc_attr( $current_year ); ?>">
+				<?php endif; ?>
+
+				<div class="archive-filters__group" aria-label="<?php echo esc_attr( inlife_t( 'Kategorie aktualności' ) ); ?>">
+					<button class="c-pill<?php echo '' === $current_cat ? ' is-active' : ''; ?>" type="submit" name="news_cat" value="">
+						<?php echo esc_html( inlife_t( 'Wszystkie' ) ); ?>
 					</button>
-				<?php endforeach; ?>
-			</div>
 
-			<label class="archive-filters__select">
-				<span class="screen-reader-text"><?php echo esc_html( inlife_t( 'Rok' ) ); ?></span>
-				<select name="news_year" onchange="this.form.submit()">
-					<option value="0"><?php echo esc_html( inlife_t( 'Wszystkie lata' ) ); ?></option>
-					<?php foreach ( $years as $year ) : ?>
-						<option value="<?php echo esc_attr( $year ); ?>" <?php selected( $current_year, (int) $year ); ?>>
-							<?php echo esc_html( $year ); ?>
-						</option>
+					<?php foreach ( $categories as $category ) : ?>
+						<button
+							class="c-pill<?php echo $current_cat === $category->slug ? ' is-active' : ''; ?>"
+							type="submit"
+							name="news_cat"
+							value="<?php echo esc_attr( $category->slug ); ?>"
+						>
+							<?php echo esc_html( $category->name ); ?>
+						</button>
 					<?php endforeach; ?>
-				</select>
-			</label>
+				</div>
+			</form>
 
-			<?php if ( $current_year ) : ?>
-				<input type="hidden" name="news_year" value="<?php echo esc_attr( $current_year ); ?>">
-			<?php endif; ?>
-		</form>
+			<form class="posts-filters__year" method="get" action="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) . '#posts-listing' ); ?>">
+				<?php if ( $current_cat ) : ?>
+					<input type="hidden" name="news_cat" value="<?php echo esc_attr( $current_cat ); ?>">
+				<?php endif; ?>
+
+				<label class="archive-filters__select">
+					<span class="screen-reader-text"><?php echo esc_html( inlife_t( 'Rok' ) ); ?></span>
+					<select name="news_year" onchange="this.form.submit()">
+						<option value="0"><?php echo esc_html( inlife_t( 'Wszystkie lata' ) ); ?></option>
+						<?php foreach ( $years as $year ) : ?>
+							<option value="<?php echo esc_attr( $year ); ?>" <?php selected( $current_year, (int) $year ); ?>>
+								<?php echo esc_html( $year ); ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</label>
+			</form>
+
+			<form class="posts-filters__mobile" method="get" action="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) . '#posts-listing' ); ?>">
+				<label class="archive-filters__select archive-filters__select--category">
+					<span class="screen-reader-text"><?php echo esc_html( inlife_t( 'Kategoria' ) ); ?></span>
+					<select name="news_cat" onchange="this.form.submit()">
+						<option value=""><?php echo esc_html( inlife_t( 'Wszystkie kategorie' ) ); ?></option>
+						<?php foreach ( $categories as $category ) : ?>
+							<option value="<?php echo esc_attr( $category->slug ); ?>" <?php selected( $current_cat, $category->slug ); ?>>
+								<?php echo esc_html( $category->name ); ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</label>
+
+				<label class="archive-filters__select">
+					<span class="screen-reader-text"><?php echo esc_html( inlife_t( 'Rok' ) ); ?></span>
+					<select name="news_year" onchange="this.form.submit()">
+						<option value="0"><?php echo esc_html( inlife_t( 'Wszystkie lata' ) ); ?></option>
+						<?php foreach ( $years as $year ) : ?>
+							<option value="<?php echo esc_attr( $year ); ?>" <?php selected( $current_year, (int) $year ); ?>>
+								<?php echo esc_html( $year ); ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</label>
+			</form>
+
+		</div>
 
 		<?php if ( have_posts() ) : ?>
 
