@@ -1,0 +1,75 @@
+/* =========================================================
+   GLOBAL PAGINATION
+========================================================= */
+
+.navigation.pagination,
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+}
+
+.page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.45rem;
+    min-height: 2.45rem;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--inlife-border);
+    background: transparent;
+    color: var(--inlife-primary);
+    font-size: 0.92rem;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
+
+    &:hover,
+    &:focus-visible {
+        border-color: rgba(41, 52, 88, 0.28);
+        background: rgba(41, 52, 88, 0.055);
+        color: var(--inlife-primary);
+        text-decoration: none;
+    }
+
+    &.current {
+        border-color: var(--inlife-primary);
+        background: var(--inlife-primary);
+        color: #fff;
+    }
+
+    &.dots {
+        border-color: transparent;
+        background: transparent;
+        color: var(--inlife-text-muted);
+        pointer-events: none;
+    }
+
+    &.prev,
+    &.next {
+        padding-inline: 0.9rem;
+    }
+}
+
+a.page-numbers.next:hover,
+a.page-numbers.next:focus-visible {
+    transform: translateX(3px);
+}
+
+a.page-numbers.prev:hover,
+a.page-numbers.prev:focus-visible {
+    transform: translateX(-3px);
+}

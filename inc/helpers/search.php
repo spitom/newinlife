@@ -33,6 +33,7 @@ function inlife_filter_main_search_query( WP_Query $query ): void {
 	}
 
 	$query->set( 'post_type', inlife_get_search_post_types() );
+	$query->set( 'post_status', 'publish' );
 	$query->set( 'posts_per_page', 12 );
 }
 add_action( 'pre_get_posts', 'inlife_filter_main_search_query' );

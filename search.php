@@ -12,6 +12,7 @@ get_header();
 $container    = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
 $search_query = get_search_query();
 $result_count = (int) $wp_query->found_posts;
+
 ?>
 
 <main id="main" class="site-main site-main--search">
@@ -23,14 +24,15 @@ $result_count = (int) $wp_query->found_posts;
 				'template-parts/patterns/pattern-page-hero',
 				null,
 				[
-					'kicker' => inlife_t( 'Wyszukiwarka' ),
-					'title'  => $search_query
+					'kicker'       => inlife_t( 'Wyszukiwarka' ),
+					'title'        => $search_query
 						? sprintf( inlife_t( 'Wyniki wyszukiwania dla: %s' ), $search_query )
 						: inlife_t( 'Wyniki wyszukiwania' ),
-					'lead'   => sprintf(
+					'lead'         => sprintf(
 						inlife_t( 'Znaleziono %d wyników w serwisie InLife.' ),
 						$result_count
 					),
+					'modifier'    => 'flush',
 				]
 			);
 			?>
@@ -39,11 +41,7 @@ $result_count = (int) $wp_query->found_posts;
 
 	<section class="page-section page-section--search-results">
 		<div class="<?php echo esc_attr( $container ); ?>">
-			<div class="search-page">
-
-				<div class="search-page__form">
-					<?php get_search_form(); ?>
-				</div>
+			<div class="p-page-hero__inner search-page">
 
 				<?php if ( have_posts() ) : ?>
 					<div class="search-results-list" aria-label="<?php echo esc_attr( inlife_t( 'Lista wyników wyszukiwania' ) ); ?>">
@@ -62,7 +60,16 @@ $result_count = (int) $wp_query->found_posts;
 						?>
 					</div>
 
-					<?php the_posts_pagination(); ?>
+					<?php
+					the_posts_pagination(
+						[
+							'mid_size'           => 1,
+							'prev_text'          => '←',
+							'next_text'          => '→',
+							'screen_reader_text' => inlife_t( 'Nawigacja po wynikach' ),
+						]
+					);					
+					?>
 
 				<?php else : ?>
 

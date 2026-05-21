@@ -36,8 +36,6 @@ $classes = array( 'publication-item' );
 
 if ( in_array( $context, array( 'year', 'team' ), true ) ) {
 	$classes[] = 'publication-item--card';
-	$classes[] = 'c-surface';
-	$classes[] = 'c-surface--record';
 }
 
 $fallback_parts = array_filter(
@@ -60,7 +58,7 @@ if ( ! empty( $citation ) ) {
 <article class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<div class="publication-item__main">
 		<?php if ( $display_citation ) : ?>
-			<p class="publication-item__citation mb-0">
+			<p class="publication-item__citation">
 				<?php echo esc_html( $display_citation ); ?>
 			</p>
 		<?php endif; ?>

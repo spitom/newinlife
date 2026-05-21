@@ -106,20 +106,15 @@ $container = $args['container'] ?? 'container';
 			</div>
 
 			<?php
-			$pagination = paginate_links(
+			the_posts_pagination(
 				[
-					'type'      => 'list',
-					'prev_text' => '←',
-					'next_text' => '→',
+					'mid_size'           => 1,
+					'prev_text'          => '←',
+					'next_text'          => '→',
+					'screen_reader_text' => inlife_t( 'Paginacja' ),
 				]
 			);
-
-			if ( $pagination ) :
-				?>
-				<nav class="posts-archive__pagination" aria-label="<?php echo esc_attr( inlife_t( 'Paginacja' ) ); ?>">
-					<?php echo wp_kses_post( $pagination ); ?>
-				</nav>
-			<?php endif; ?>
+			?>
 
 		<?php else : ?>
 
