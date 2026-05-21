@@ -130,9 +130,9 @@ a.c-badge--soft:focus-visible {
 }
 
 .c-badge--society {
-    border-color: rgba(0, 171, 142, 0.24);
-    background: rgba(0, 171, 142, 0.1);
-    color: #007c6a;
+    background: rgba(213, 219, 62, 0.22);
+    border-color: rgba(213, 219, 62, 0.4);
+    color: var(--inlife-primary);
 }
 
 .c-badge--career {

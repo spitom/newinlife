@@ -43,6 +43,7 @@
 @import "components/badges";
 @import "components/forms";
 @import "components/research-area-nav";
+@import "components/language-switcher";
 
 @import "theme/header";
 @import "theme/_navigation";
@@ -69,6 +70,4 @@
 @import "theme/publications";
 @import "theme/network";
 @import "theme/society";
-
-
-@import "components/language-switcher";
+@import "theme/search";

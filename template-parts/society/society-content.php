@@ -16,7 +16,7 @@ $intro  = inlife_get_acf_field( 'articles_intro', $post_id, '' );
 $cta    = inlife_get_acf_field( 'articles_cta', $post_id, null );
 
 $posts = function_exists( 'inlife_get_society_posts' )
-	? inlife_get_society_posts( 4 )
+	? inlife_get_society_posts( 3 )
 	: [];
 
 $title = inlife_get_acf_field(
@@ -63,7 +63,7 @@ $section_action = trim( (string) ob_get_clean() );
 		);
 		?>
 
-		<div class="society-cards c-card-grid c-card-grid--4">
+		<div class="society-cards c-card-grid c-card-grid--3">
 			<?php foreach ( $posts as $post_item ) : ?>
 				<?php
 				if ( ! $post_item instanceof WP_Post ) {
