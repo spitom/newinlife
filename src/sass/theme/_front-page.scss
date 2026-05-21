@@ -10,6 +10,10 @@
     }
 }
 
+.site-main--front .funding-strip+.page-section--front-areas {
+    padding-top: clamp(2.75rem, 5vw, 4rem);
+}
+
 .front-section.front-hero {
     padding: 0;
 }

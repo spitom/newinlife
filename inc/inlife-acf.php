@@ -44,3 +44,21 @@ add_filter('acf/settings/load_json', function ($paths) {
 	$paths[] = get_stylesheet_directory() . '/acf-json';
 	return $paths;
 });
+
+add_action( 'acf/init', 'inlife_register_options_pages' );
+
+function inlife_register_options_pages() {
+	if ( ! function_exists( 'acf_add_options_page' ) ) {
+		return;
+	}
+
+	acf_add_options_page(
+		[
+			'page_title' => 'Ustawienia InLife',
+			'menu_title' => 'Ustawienia InLife',
+			'menu_slug'  => 'inlife-settings',
+			'capability' => 'edit_posts',
+			'redirect'   => false,
+		]
+	);
+}
