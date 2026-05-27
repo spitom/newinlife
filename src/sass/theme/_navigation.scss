@@ -85,6 +85,7 @@
             color: var(--inlife-primary);
             opacity: 1;
             text-decoration-color: rgba(41, 52, 88, 0.55);
+            text-decoration-color: var(--inlife-accent);
         }
     }
 
@@ -93,7 +94,8 @@
     .current_page_item>.nav-link {
         color: var(--inlife-primary);
         opacity: 1;
-        text-decoration-color: rgba(41, 52, 88, 0.55);
+        // text-decoration-color: rgba(41, 52, 88, 0.55);
+        text-decoration-color: var(--inlife-accent);
     }
 
     .submenu-toggle {

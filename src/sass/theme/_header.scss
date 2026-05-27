@@ -40,9 +40,7 @@
     display: block;
     width: 100%;
     height: auto;
-    transition:
-        width 0.18s ease,
-        max-width 0.18s ease;
+    transition: none;
 }
 
 /* =========================================================
@@ -831,10 +829,10 @@ button:focus-visible,
 
     .navbar-brand-wrap {
         display: flex;
-        flex: 0 0 320px;
+        flex: 0 0 290px;
         align-items: center;
-        min-width: 260px;
-        max-width: 320px;
+        min-width: 250px;
+        max-width: 290px;
     }
 
     .main-nav-desktop {
@@ -851,18 +849,8 @@ button:focus-visible,
     .site-header .site-branding .navbar-brand img {
         display: block;
         width: 100%;
-        max-width: 320px;
+        max-width: 290px;
         height: auto;
-    }
-
-    .site-header.is-scrolled .navbar-inlife {
-        padding-top: 0.6rem;
-        padding-bottom: 0.6rem;
-    }
-
-    .site-header.is-scrolled .navbar-main-wrap {
-        min-height: 80px;
-        gap: 1rem;
     }
 }
 
@@ -878,23 +866,83 @@ button:focus-visible,
     }
 
     .navbar-brand-wrap {
-        flex: 0 0 340px;
-        max-width: 340px;
+        flex: 0 0 310px;
+        max-width: 310px;
     }
 
     .site-header .site-branding .navbar-brand img.custom-logo,
     .site-header .site-branding .navbar-brand img.img-fluid,
     .site-header .site-branding .navbar-brand img {
-        max-width: 340px;
+        max-width: 310px;
     }
 
-    .site-header.is-scrolled .site-branding .navbar-brand img.custom-logo,
-    .site-header.is-scrolled .site-branding .navbar-brand img.img-fluid,
-    .site-header.is-scrolled .site-branding .navbar-brand img {
-        max-width: 320px;
+}
+
+/* =========================================================
+   DESKTOP HEADER OPTICAL CENTERING
+   Logo visually centered against topbar + primary nav.
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .site-header {
+        --inlife-desktop-topbar-height: 2.6rem;
+    }
+
+    .header-topbar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 3;
+        background: transparent;
+        pointer-events: none;
+    }
+
+    .header-topbar__inner {
+        min-height: var(--inlife-desktop-topbar-height);
+        pointer-events: auto;
+    }
+
+    .navbar-inlife {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .navbar-main-wrap {
+        min-height: 124px;
+        align-items: center;
+    }
+
+    .navbar-brand-wrap {
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+    }
+
+    .main-nav-desktop {
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        padding-top: var(--inlife-desktop-topbar-height);
+    }
+
+    .site-header.is-scrolled {
+        --inlife-desktop-topbar-height: 2.35rem;
     }
 
     .site-header.is-scrolled .navbar-main-wrap {
-        min-height: 88px;
+        min-height: 112px;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .navbar-main-wrap {
+        min-height: 128px;
+    }
+
+    .site-header.is-scrolled .navbar-main-wrap {
+        min-height: 116px;
     }
 }

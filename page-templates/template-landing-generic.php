@@ -1,42 +1,59 @@
 <?php
 /**
- * Template Name: Landing – Generic
+ * Template Name: Landing – uniwersalny
  *
- * @package UnderStrap
+ * @package newinlife-child
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-$container = inlife_container_class();
+$container = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
+$post_id   = get_the_ID();
+
+$hero_kicker = function_exists( 'get_field' ) ? get_field( 'generic_hero_kicker', $post_id ) : '';
+$hero_title  = function_exists( 'get_field' ) ? get_field( 'generic_hero_title', $post_id ) : '';
+$hero_lead   = function_exists( 'get_field' ) ? get_field( 'generic_hero_lead', $post_id ) : '';
+
+if ( ! $hero_title ) {
+	$hero_title = get_the_title();
+}
 ?>
 
-<main id="main-content" class="site-main site-main--landing">
+<main id="main-content" class="site-main site-main--landing-generic">
 
-	<?php get_template_part('template-parts/page/page', 'hero-inner'); ?>
-
-	<section class="page-section page-section--intro">
-		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/page/page', 'intro'); ?>
-		</div>
+	<section class="page-section page-section--landing-generic-hero">
+		<?php
+		get_template_part(
+			'template-parts/patterns/pattern-page-hero',
+			null,
+			[
+				'kicker'      => $hero_kicker,
+				'title'       => $hero_title,
+				'lead'        => $hero_lead,
+				'breadcrumbs' => true,
+			]
+		);
+		?>
 	</section>
 
-	<section class="page-section page-section--content">
-		<div class="<?php echo esc_attr($container); ?>">
-			<div class="row g-4">
-				<div class="col-12">
-					<p>Placeholder content – tutaj będą sekcje właściwe.</p>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php if ( function_exists( 'have_rows' ) && have_rows( 'generic_sections', $post_id ) ) : ?>
+		<?php while ( have_rows( 'generic_sections', $post_id ) ) : the_row(); ?>
+			<?php
+			$layout = get_row_layout();
 
-	<section class="page-section page-section--cta">
-		<div class="<?php echo esc_attr($container); ?>">
-			<?php get_template_part('template-parts/page/page', 'cta'); ?>
-		</div>
-	</section>
+			get_template_part(
+				'template-parts/generic/section',
+				$layout,
+				[
+					'post_id' => $post_id,
+					'layout'  => $layout,
+				]
+			);
+			?>
+		<?php endwhile; ?>
+	<?php endif; ?>
 
 </main>
 
