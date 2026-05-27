@@ -38,21 +38,21 @@ if ( ! $hero_title ) {
 		?>
 	</section>
 
-	<?php if ( function_exists( 'have_rows' ) && have_rows( 'generic_sections', $post_id ) ) : ?>
-		<?php while ( have_rows( 'generic_sections', $post_id ) ) : the_row(); ?>
+	<?php if (have_rows('generic_sections')) : ?>
+
+		<?php while (have_rows('generic_sections')) : the_row(); ?>
+
 			<?php
 			$layout = get_row_layout();
 
 			get_template_part(
 				'template-parts/generic/section',
-				$layout,
-				[
-					'post_id' => $post_id,
-					'layout'  => $layout,
-				]
+				$layout
 			);
 			?>
+
 		<?php endwhile; ?>
+
 	<?php endif; ?>
 
 </main>

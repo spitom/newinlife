@@ -181,3 +181,64 @@
 .generic-link-card__anchor:focus-visible .generic-link-card__icon {
     transform: translateX(4px);
 }
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.generic-cta {
+    padding: clamp(2rem, 4vw, 4rem);
+    text-align: center;
+}
+
+.generic-cta--narrow {
+    max-width: 860px;
+    margin-inline: auto;
+}
+
+.generic-cta__content {
+    margin-top: 1.25rem;
+
+    >*:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.generic-cta__actions {
+    margin-top: 2rem;
+}
+
+.generic-cta--default {
+    background: #f8fafc;
+}
+
+.generic-cta--accent {
+    background: var(--inlife-accent);
+}
+
+.generic-cta--dark {
+    .btn-outline-primary {
+        border-color: rgba(255, 255, 255, 0.42);
+        color: #fff;
+
+        &:hover,
+        &:focus-visible {
+            border-color: #fff;
+            background: #fff;
+            color: var(--inlife-primary);
+        }
+    }
+
+    .btn-primary {
+        border-color: #fff;
+        background: #fff;
+        color: var(--inlife-primary);
+
+        &:hover,
+        &:focus-visible {
+            border-color: var(--inlife-accent);
+            background: var(--inlife-accent);
+            color: var(--inlife-primary);
+        }
+    }
+}

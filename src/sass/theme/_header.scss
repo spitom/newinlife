@@ -34,15 +34,6 @@
     box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.055);
 }
 
-.site-branding .navbar-brand img.custom-logo,
-.site-branding .navbar-brand img.img-fluid,
-.site-branding .navbar-brand img {
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: none;
-}
-
 /* =========================================================
    TOPBAR
 ========================================================= */
@@ -104,6 +95,10 @@
     }
 }
 
+/* =========================================================
+   BIP LINK
+========================================================= */
+
 .inlife-bip-link {
     display: inline-flex;
     align-items: center;
@@ -157,6 +152,10 @@
     }
 }
 
+/* =========================================================
+   LANGUAGE SWITCHERS
+========================================================= */
+
 .topbar-lang {
     .language-switcher__list {
         display: flex;
@@ -197,8 +196,38 @@
     }
 }
 
+.mobile-lang-switcher {
+    .language-switcher--mobile-single {
+        display: flex;
+        align-items: center;
+    }
+
+    .language-switcher__link--single {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.5rem;
+        min-height: 2.5rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        background: rgba(41, 52, 88, 0.14);
+        color: var(--inlife-primary);
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.06em;
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible {
+            background: rgba(41, 52, 88, 0.14);
+            text-decoration: none;
+        }
+    }
+}
+
 /* =========================================================
-   SEARCH TOGGLE + SEARCH PANEL
+   SEARCH TOGGLE + DESKTOP SEARCH PANEL
 ========================================================= */
 
 .topbar-search-toggle {
@@ -322,7 +351,7 @@
 }
 
 /* =========================================================
-   MAIN NAVBAR / DESKTOP LAYOUT
+   MAIN NAVBAR / HEADER LAYOUT
 ========================================================= */
 
 .navbar-inlife {
@@ -358,24 +387,16 @@
         margin: 0;
         text-decoration: none;
     }
-}
 
-.site-header .site-branding .navbar-brand img.custom-logo,
-.site-header .site-branding .navbar-brand img.img-fluid,
-.site-header .site-branding .navbar-brand img {
-    display: block;
-    width: clamp(220px, 22vw, 300px);
-    max-width: 100%;
-    height: auto;
+    .navbar-brand img.custom-logo,
+    .navbar-brand img.img-fluid,
+    .navbar-brand img {
+        display: block;
+        width: clamp(220px, 22vw, 300px);
+        max-width: 100%;
+        height: auto;
+    }
 }
-
-.site-header.is-scrolled .language-switcher__link {
-    transform: scale(0.96);
-}
-
-/* =========================================================
-   DESKTOP PRIMARY NAV WRAPPER
-========================================================= */
 
 .main-nav-desktop {
     display: flex;
@@ -393,36 +414,6 @@
     align-items: center;
     margin-left: auto;
     gap: 0.75rem;
-}
-
-.mobile-lang-switcher {
-    .language-switcher--mobile-single {
-        display: flex;
-        align-items: center;
-    }
-
-    .language-switcher__link--single {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 2.5rem;
-        min-height: 2.5rem;
-        padding: 0.25rem 0.6rem;
-        border-radius: 999px;
-        background: rgba(41, 52, 88, 0.14);
-        color: var(--inlife-primary);
-        font-size: 0.82rem;
-        font-weight: 700;
-        line-height: 1;
-        letter-spacing: 0.06em;
-        text-decoration: none;
-
-        &:hover,
-        &:focus-visible {
-            background: rgba(41, 52, 88, 0.14);
-            text-decoration: none;
-        }
-    }
 }
 
 .mobile-header-tools .inlife-bip-link {
@@ -504,7 +495,7 @@
 }
 
 /* =========================================================
-   OFFCANVAS
+   OFFCANVAS SHELL
 ========================================================= */
 
 .offcanvas-inlife {
@@ -544,77 +535,6 @@
     .offcanvas-divider {
         margin: 1.35rem 0;
         border-color: rgba(255, 255, 255, 0.14);
-    }
-
-    .offcanvas-utility-menu,
-    .offcanvas-primary-menu {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-
-    .offcanvas-primary-menu {
-        gap: 0;
-    }
-
-    .offcanvas-primary-menu>li {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-    }
-
-    .offcanvas-utility-menu {
-        gap: 0.25rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    a,
-    .nav-link,
-    .dropdown-item,
-    .submenu-link {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    .offcanvas-primary-menu>li>a,
-    .offcanvas-primary-menu>li>.nav-link,
-    .offcanvas-primary-menu>li>.nav-link-group>a {
-        display: block;
-        padding: 1rem 0;
-        color: #fff;
-        font-size: 1.15rem;
-        font-weight: 750;
-        line-height: 1.25;
-        letter-spacing: -0.02em;
-        text-decoration: none;
-    }
-
-    .offcanvas-utility-menu a {
-        display: block;
-        padding: 0.4rem 0;
-        color: rgba(255, 255, 255, 0.78);
-        font-size: 0.98rem;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-    .nav-link:hover,
-    .nav-link:focus-visible,
-    .offcanvas-utility-menu a:hover,
-    .offcanvas-utility-menu a:focus-visible,
-    a:hover,
-    a:focus-visible {
-        color: var(--inlife-accent);
-        text-decoration: none;
-    }
-
-    .current-menu-item>.nav-link,
-    .current-menu-ancestor>.nav-link,
-    .current_page_item>.nav-link,
-    .current-menu-item>.nav-link-group>.nav-link,
-    .current-menu-ancestor>.nav-link-group>.nav-link {
-        color: var(--inlife-accent);
     }
 
     .language-switcher__list {
@@ -814,77 +734,6 @@ button:focus-visible,
 }
 
 @media (min-width: 1200px) {
-    .navbar-inlife {
-        padding-top: 0.75rem;
-        padding-bottom: 0.75rem;
-    }
-
-    .navbar-main-wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 88px;
-        gap: 1.25rem;
-    }
-
-    .navbar-brand-wrap {
-        display: flex;
-        flex: 0 0 290px;
-        align-items: center;
-        min-width: 250px;
-        max-width: 290px;
-    }
-
-    .main-nav-desktop {
-        display: flex;
-        flex: 1 1 auto;
-        align-items: center;
-        justify-content: flex-end;
-        min-width: 0;
-        max-width: none;
-    }
-
-    .site-header .site-branding .navbar-brand img.custom-logo,
-    .site-header .site-branding .navbar-brand img.img-fluid,
-    .site-header .site-branding .navbar-brand img {
-        display: block;
-        width: 100%;
-        max-width: 290px;
-        height: auto;
-    }
-}
-
-@media (min-width: 1400px) {
-    .navbar-inlife {
-        padding-top: 0.85rem;
-        padding-bottom: 0.85rem;
-    }
-
-    .navbar-main-wrap {
-        min-height: 84px;
-        gap: 2rem;
-    }
-
-    .navbar-brand-wrap {
-        flex: 0 0 310px;
-        max-width: 310px;
-    }
-
-    .site-header .site-branding .navbar-brand img.custom-logo,
-    .site-header .site-branding .navbar-brand img.img-fluid,
-    .site-header .site-branding .navbar-brand img {
-        max-width: 310px;
-    }
-
-}
-
-/* =========================================================
-   DESKTOP HEADER OPTICAL CENTERING
-   Logo visually centered against topbar + primary nav.
-========================================================= */
-
-@media (min-width: 1200px) {
-
     .site-header {
         --inlife-desktop-topbar-height: 2.6rem;
     }
@@ -912,19 +761,37 @@ button:focus-visible,
     .navbar-main-wrap {
         min-height: 124px;
         align-items: center;
+        gap: 1.25rem;
     }
 
     .navbar-brand-wrap {
         align-self: stretch;
         display: flex;
+        flex: 0 0 290px;
         align-items: center;
+        min-width: 250px;
+        max-width: 290px;
     }
 
     .main-nav-desktop {
         align-self: stretch;
         display: flex;
+        flex: 1 1 auto;
         align-items: center;
+        justify-content: flex-end;
+        min-width: 0;
+        max-width: none;
         padding-top: var(--inlife-desktop-topbar-height);
+    }
+
+    .site-branding {
+
+        .navbar-brand img.custom-logo,
+        .navbar-brand img.img-fluid,
+        .navbar-brand img {
+            width: 100%;
+            max-width: 290px;
+        }
     }
 
     .site-header.is-scrolled {
@@ -937,9 +804,23 @@ button:focus-visible,
 }
 
 @media (min-width: 1400px) {
-
     .navbar-main-wrap {
         min-height: 128px;
+        gap: 2rem;
+    }
+
+    .navbar-brand-wrap {
+        flex: 0 0 310px;
+        max-width: 310px;
+    }
+
+    .site-branding {
+
+        .navbar-brand img.custom-logo,
+        .navbar-brand img.img-fluid,
+        .navbar-brand img {
+            max-width: 310px;
+        }
     }
 
     .site-header.is-scrolled .navbar-main-wrap {

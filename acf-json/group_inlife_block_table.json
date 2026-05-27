@@ -1,0 +1,65 @@
+{
+    "key": "group_e31205f5eebdb",
+    "title": "Block – InLife Table",
+    "fields": [
+        {
+            "key": "field_d130a7cd6f85e",
+            "label": "Podpis tabeli",
+            "name": "block_table_caption",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_a9b5165416bd5",
+            "label": "Wiersze tabeli HTML",
+            "name": "block_table_html",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Wpisz tylko zawartość tabeli, np. <thead>...</thead><tbody>...</tbody>. Nie dodawaj znacznika <table>.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 8,
+            "placeholder": "",
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/inlife-table"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1779871832
+}
