@@ -15,6 +15,14 @@ $container = $args['container'] ?? 'container';
 		$current_cat  = isset( $_GET['news_cat'] ) ? sanitize_key( wp_unslash( $_GET['news_cat'] ) ) : '';
 		$current_year = isset( $_GET['news_year'] ) ? absint( $_GET['news_year'] ) : 0;
 
+		if ( is_category() && ! $current_cat ) {
+			$queried_category = get_queried_object();
+
+			if ( $queried_category instanceof WP_Term ) {
+				$current_cat = $queried_category->slug;
+			}
+		}
+
 		$categories = get_categories(
 			[
 				'hide_empty' => true,

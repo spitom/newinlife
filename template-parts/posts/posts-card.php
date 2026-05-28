@@ -26,8 +26,13 @@ $primary_category = function_exists( 'inlife_get_primary_post_category' )
  * Format (society)
  */
 $format_terms = get_the_terms( $post_id, 'society_format' );
-$format_slug  = ( ! empty( $format_terms ) && ! is_wp_error( $format_terms ) )
-	? $format_terms[0]->slug
+
+$format_term = ( ! empty( $format_terms ) && ! is_wp_error( $format_terms ) )
+	? $format_terms[0]
+	: null;
+
+$format_slug = $format_term instanceof WP_Term
+	? $format_term->slug
 	: '';
 
 $format_badge = function_exists( 'inlife_get_society_format_badge' )
@@ -132,19 +137,65 @@ if ( $variant ) {
 			<div class="post-card__body c-card__body">
 
 				<?php if ( $show_category && $primary_category ) : ?>
-					<div class="post-card__categories" aria-label="<?php echo esc_attr( inlife_t( 'Kategoria wpisu' ) ); ?>">
-						<span class="post-card__category">
-							<?php echo esc_html( $primary_category->name ); ?>
-						</span>
-					</div>
+
+					<?php
+					$category_link = get_term_link( $primary_category );
+					?>
+
+					<?php if ( ! is_wp_error( $category_link ) ) : ?>
+
+						<div class="post-card__categories" aria-label="<?php echo esc_attr( inlife_t( 'Kategoria wpisu' ) ); ?>">
+
+							<a
+								class="post-card__category"
+								href="<?php echo esc_url( $category_link ); ?>"
+							>
+								<?php echo esc_html( $primary_category->name ); ?>
+							</a>
+
+						</div>
+
+					<?php endif; ?>
+
 				<?php endif; ?>
 
 				<?php if ( $show_format && $format_badge ) : ?>
+
 					<div class="post-card__formats">
-						<span class="post-card__format-badge">
-							<?php echo esc_html( $format_badge ); ?>
-						</span>
+
+						<?php if ( $format_term instanceof WP_Term ) : ?>
+
+							<?php
+							$society_page = function_exists( 'inlife_get_society_archive_page' )
+								? inlife_get_society_archive_page()
+								: null;
+
+							$format_link = $society_page
+								? add_query_arg( 'format', $format_term->slug, get_permalink( $society_page ) )
+								: get_term_link( $format_term );
+							?>
+
+							<?php if ( ! is_wp_error( $format_link ) ) : ?>
+
+								<a
+									class="post-card__format-badge<?php echo ( isset( $_GET['format'] ) && sanitize_title( wp_unslash( $_GET['format'] ) ) === $format_term->slug ) ? ' is-active' : ''; ?>"
+									href="<?php echo esc_url( $format_link ); ?>"
+								>
+									<?php echo esc_html( $format_badge ); ?>
+								</a>
+
+							<?php endif; ?>
+
+						<?php else : ?>
+
+							<span class="post-card__format-badge">
+								<?php echo esc_html( $format_badge ); ?>
+							</span>
+
+						<?php endif; ?>
+
 					</div>
+
 				<?php endif; ?>
 
 				<?php if ( $date ) : ?>

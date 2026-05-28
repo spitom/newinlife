@@ -24,7 +24,11 @@ if (
 }
 
 $title   = get_the_title( $post_id );
-$url     = get_permalink( $post_id );
+
+$url = function_exists( 'inlife_get_search_result_url' )
+	? inlife_get_search_result_url( $post_id )
+	: get_permalink( $post_id );
+
 $type    = function_exists( 'inlife_get_search_type_label' ) ? inlife_get_search_type_label( $post_id ) : get_post_type( $post_id );
 $summary = function_exists( 'inlife_get_search_result_summary' ) ? inlife_get_search_result_summary( $post_id ) : get_the_excerpt( $post_id );
 $meta    = function_exists( 'inlife_get_search_result_meta' ) ? inlife_get_search_result_meta( $post_id ) : '';

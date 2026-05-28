@@ -235,9 +235,24 @@
     }
 
     .post-card__title {
-        font-size: clamp(1.08rem, 1.25vw, 1.25rem);
-        font-weight: 800;
-        line-height: 1.22;
+        max-width: 95%;
+        margin-top: 0.1rem;
+        font-size: clamp(1.08rem, 1.2vw, 1.2rem);
+        font-weight: 850;
+        line-height: 1.28;
+        letter-spacing: -0.025em;
+    }
+
+    .post-card__title-link {
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible {
+            color: var(--inlife-primary);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.18em;
+        }
     }
 
     .post-card__text {
@@ -269,9 +284,6 @@
 
 .post-card--society-format {
     .post-card__format-badge {
-        // border-color: rgba(0, 171, 142, 0.24);
-        // background: rgba(0, 171, 142, 0.1);
-        // color: var(--inlife-popielno);
         background: rgba(213, 219, 62, 0.22);
         border-color: rgba(213, 219, 62, 0.4);
         color: var(--inlife-primary);

@@ -118,6 +118,32 @@ function inlife_get_search_result_meta( int $post_id ): string {
 }
 
 /**
+ * Links to publication pages.
+ */
+function inlife_get_search_result_url( int $post_id ): string {
+	$post_type = get_post_type( $post_id );
+
+	if ( 'publications' === $post_type ) {
+		$archive_url = home_url( '/badania/publikacje/' );
+
+		$search_query = get_search_query();
+
+		if ( $search_query ) {
+			$archive_url = add_query_arg(
+				[
+					'publication_search' => rawurlencode( $search_query ),
+				],
+				$archive_url
+			);
+		}
+
+		return $archive_url;
+	}
+
+	return get_permalink( $post_id );
+}
+
+/**
  * Extend search into selected ACF/meta fields.
  */
 function inlife_search_join_postmeta( $join, WP_Query $query ) {
