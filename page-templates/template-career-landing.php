@@ -56,7 +56,7 @@ $hero_actions = (string) ob_get_clean();
 	<section class="page-section page-section--career-hero" aria-labelledby="career-hero-heading">
 		<?php
 		get_template_part(
-			'template-parts/patterns/pattern-page-hero',
+			'template-parts/patterns/pattern-media-hero',
 			null,
 			[
 				'kicker'       => $hero_kicker,
@@ -66,6 +66,7 @@ $hero_actions = (string) ob_get_clean();
 				'breadcrumbs'  => true,
 				'actions_html' => $hero_actions,
 				'title_id'     => 'career-hero-heading',
+				'variant'      => 'graphic',
 			]
 		);
 		?>

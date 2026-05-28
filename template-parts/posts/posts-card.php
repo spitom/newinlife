@@ -147,7 +147,7 @@ if ( $variant ) {
 						<div class="post-card__categories" aria-label="<?php echo esc_attr( inlife_t( 'Kategoria wpisu' ) ); ?>">
 
 							<a
-								class="post-card__category"
+								class="post-card__category c-badge c-badge--news"
 								href="<?php echo esc_url( $category_link ); ?>"
 							>
 								<?php echo esc_html( $primary_category->name ); ?>
@@ -178,7 +178,7 @@ if ( $variant ) {
 							<?php if ( ! is_wp_error( $format_link ) ) : ?>
 
 								<a
-									class="post-card__format-badge<?php echo ( isset( $_GET['format'] ) && sanitize_title( wp_unslash( $_GET['format'] ) ) === $format_term->slug ) ? ' is-active' : ''; ?>"
+									class="post-card__format-badge c-badge c-badge--society"
 									href="<?php echo esc_url( $format_link ); ?>"
 								>
 									<?php echo esc_html( $format_badge ); ?>

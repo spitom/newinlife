@@ -33,8 +33,6 @@ $primary_category = function_exists( 'inlife_get_primary_post_category' )
 
 $hero_image_id = has_post_thumbnail( $post_id ) ? get_post_thumbnail_id( $post_id ) : 0;
 
-$hero_variant     = ( 'posluchaj' === $format_slug ) ? 'audio' : '';
-
 if ( function_exists( 'get_field' ) ) {
 	$hero_override = get_field( 'post_hero_image_override', $post_id );
 
@@ -233,12 +231,36 @@ if ( 'society' === $entry_context ) {
 		<?php
 		$before_lead = trim( (string) ob_get_clean() );
 
+		$hero_image_meta = $hero_image_id ? wp_get_attachment_metadata( $hero_image_id ) : [];
+		$hero_image_mime = $hero_image_id ? get_post_mime_type( $hero_image_id ) : '';
+
+		$hero_image_width  = ! empty( $hero_image_meta['width'] ) ? (int) $hero_image_meta['width'] : 0;
+		$hero_image_height = ! empty( $hero_image_meta['height'] ) ? (int) $hero_image_meta['height'] : 0;
+
+		$is_logo_like_hero = $hero_image_id && (
+			$hero_image_width < 900 ||
+			$hero_image_height < 520 ||
+			in_array( $hero_image_mime, [ 'image/png', 'image/svg+xml' ], true )
+		);
+
+		$hero_variants = [];
+
+		if ( 'posluchaj' === $format_slug ) {
+			$hero_variants[] = 'audio';
+		}
+
+		if ( $is_logo_like_hero ) {
+			$hero_variants[] = 'graphic';
+		}
+
+		$hero_variant = implode( ' ', $hero_variants );
+
 		$hero_media_html = '';
 
 		if ( $hero_image_id ) {
 			$hero_media_html = wp_get_attachment_image(
 				$hero_image_id,
-				'full',
+				$is_logo_like_hero ? 'large' : 'full',
 				false,
 				[
 					'class'   => 'post-hero-poster__image',

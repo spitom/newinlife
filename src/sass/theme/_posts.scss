@@ -179,6 +179,71 @@
 }
 
 /* =========================================================
+   Single post hero media handling
+========================================================= */
+
+.site-main--single-post {
+    .p-media-hero__media {
+        background: transparent;
+    }
+
+    .p-media-hero__media--poster {
+        overflow: visible;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .post-hero-poster__image {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 18px;
+        box-shadow: none;
+    }
+
+    .p-media-hero--graphic {
+        .p-media-hero__media {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: clamp(260px, 34vw, 520px);
+            padding: clamp(1rem, 2vw, 2rem);
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .post-hero-poster__image {
+            width: auto;
+            max-width: min(100%, 560px);
+            max-height: clamp(220px, 28vw, 420px);
+            margin-inline: auto;
+            object-fit: contain;
+            border-radius: 0;
+            box-shadow: none;
+        }
+    }
+
+    .p-media-hero--audio {
+        .p-media-hero__media {
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .post-hero-poster__image {
+            width: auto;
+            max-width: min(100%, 520px);
+            max-height: clamp(220px, 28vw, 380px);
+            margin-inline: auto;
+            object-fit: contain;
+            border-radius: 0;
+            box-shadow: none;
+        }
+    }
+}
+
+/* =========================================================
    Single post layout
 ========================================================= */
 

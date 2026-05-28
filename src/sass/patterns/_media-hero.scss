@@ -196,9 +196,9 @@
         align-items: center;
         justify-content: center;
         padding: 1.5rem;
-        background:
-            radial-gradient(circle at top left, rgba(213, 219, 62, 0.16), transparent 42%),
-            linear-gradient(180deg, #f7f9fc 0%, #eef3f8 100%);
+        background: transparent;
+        box-shadow: none;
+
     }
 
     .p-media-hero__media picture {
@@ -219,6 +219,44 @@
         object-fit: contain;
         object-position: center;
         border-radius: 0;
+    }
+}
+
+/* =========================================================
+   MEDIA HERO — GRAPHIC / LOGO VARIANT
+   For PNG, logos, key visuals and non-photographic assets.
+========================================================= */
+
+.p-media-hero--graphic {
+    .p-media-hero__media {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: visible;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .p-media-hero__media picture {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .p-media-hero__image,
+    .p-media-hero__media img {
+        display: block;
+        width: auto;
+        max-width: min(100%, 560px);
+        height: auto;
+        max-height: clamp(240px, 32vw, 460px);
+        margin-inline: auto;
+        border-radius: 0;
+        object-fit: contain;
+        object-position: center;
+        box-shadow: none;
     }
 }
 

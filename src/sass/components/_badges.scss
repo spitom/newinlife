@@ -3,11 +3,6 @@
    Global editorial metadata system
 ========================================================= */
 
-/*
-   c-pill  = interactive filter / selector
-   c-badge = metadata / status / role / content type
-*/
-
 .c-badge-group {
     display: flex;
     flex-wrap: wrap;
@@ -20,23 +15,46 @@
 ========================================================= */
 
 .c-badge {
+    --badge-bg: #f4f7fb;
+    --badge-border: #dbe4ee;
+    --badge-color: #293458;
+    --badge-hover-bg: #293458;
+    --badge-hover-border: #293458;
+    --badge-hover-color: #fff;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 2rem;
-    padding: 0.35rem 0.75rem;
-    border: 1px solid transparent;
+    min-height: 1.75rem;
+    padding: 0.32rem 0.68rem;
+    border: 1px solid var(--badge-border);
     border-radius: 999px;
-    font-size: 0.82rem;
-    font-weight: 700;
+    background: var(--badge-bg);
+    color: var(--badge-color);
+    font-size: 0.74rem;
+    font-weight: 800;
     line-height: 1;
+    letter-spacing: 0.015em;
     text-decoration: none;
     white-space: nowrap;
+    vertical-align: middle;
     transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease,
-        box-shadow 0.2s ease;
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+a.c-badge:hover,
+a.c-badge:focus-visible,
+button.c-badge:hover,
+button.c-badge:focus-visible,
+.c-badge.is-active,
+.c-badge[aria-current="page"] {
+    background: var(--badge-hover-bg);
+    border-color: var(--badge-hover-border);
+    color: var(--badge-hover-color);
+    text-decoration: none;
 }
 
 .c-badge:focus-visible {
@@ -45,128 +63,205 @@
 }
 
 /* =========================================================
-   NEUTRAL VARIANTS
+   SIZES
 ========================================================= */
-
-.c-badge--outline {
-    border-color: #dbe4ee;
-    background: transparent;
-    color: #50607c;
-}
-
-a.c-badge--outline:hover,
-a.c-badge--outline:focus-visible {
-    border-color: #c7d4e3;
-    background: #f4f7fb;
-    color: #293458;
-    text-decoration: none;
-}
-
-.c-badge--soft {
-    border-color: transparent;
-    background: #f4f7fb;
-    color: #50607c;
-}
-
-a.c-badge--soft:hover,
-a.c-badge--soft:focus-visible {
-    background: #eaf0f7;
-    color: #293458;
-    text-decoration: none;
-}
-
-.c-badge--muted {
-    border-color: #edf2f7;
-    background: #f8fafc;
-    color: #72809b;
-}
-
-/* =========================================================
-   EMPHASIS VARIANTS
-========================================================= */
-
-.c-badge--primary {
-    border-color: #293458;
-    background: #293458;
-    color: #fff;
-}
-
-.c-badge--accent {
-    border-color: #d5db3e;
-    background: #d5db3e;
-    color: #1d2748;
-}
-
-/* =========================================================
-   ROLE / STATUS
-========================================================= */
-
-.c-badge--role {
-    min-height: 1.7rem;
-    padding: 0.25rem 0.6rem;
-    border-color: #dbe4ee;
-    background: #eef3f9;
-    color: #50607c;
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-}
 
 .c-badge--compact {
     min-height: 1.5rem;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.7rem;
+    padding: 0.22rem 0.52rem;
+    font-size: 0.68rem;
+}
+
+.c-badge--sm {
+    min-height: 1.65rem;
+    padding: 0.28rem 0.62rem;
+    font-size: 0.72rem;
+}
+
+.c-badge--lg {
+    min-height: 2rem;
+    padding: 0.42rem 0.82rem;
+    font-size: 0.8rem;
 }
 
 /* =========================================================
-   CONTENT TYPE BADGES
+   NEUTRAL VARIANTS
+========================================================= */
+
+.c-badge--soft {
+    --badge-bg: #f4f7fb;
+    --badge-border: #dbe4ee;
+    --badge-color: #50607c;
+    --badge-hover-bg: #293458;
+    --badge-hover-border: #293458;
+    --badge-hover-color: #fff;
+}
+
+.c-badge--muted {
+    --badge-bg: #f8fafc;
+    --badge-border: #edf2f7;
+    --badge-color: #72809b;
+    --badge-hover-bg: #293458;
+    --badge-hover-border: #293458;
+    --badge-hover-color: #fff;
+}
+
+.c-badge--outline {
+    --badge-bg: transparent;
+    --badge-border: #dbe4ee;
+    --badge-color: #50607c;
+    --badge-hover-bg: #f4f7fb;
+    --badge-hover-border: #c7d4e3;
+    --badge-hover-color: #293458;
+}
+
+/* =========================================================
+   CORE COLORS
+========================================================= */
+
+.c-badge--primary {
+    --badge-bg: #293458;
+    --badge-border: #293458;
+    --badge-color: #fff;
+    --badge-hover-bg: #202944;
+    --badge-hover-border: #202944;
+    --badge-hover-color: #fff;
+}
+
+.c-badge--accent {
+    --badge-bg: #d5db3e;
+    --badge-border: #d5db3e;
+    --badge-color: #1d2748;
+    --badge-hover-bg: #293458;
+    --badge-hover-border: #293458;
+    --badge-hover-color: #fff;
+}
+
+/* =========================================================
+   CONTENT / MODULE COLORS
 ========================================================= */
 
 .c-badge--news {
-    border-color: rgba(41, 52, 88, 0.16);
-    background: rgba(41, 52, 88, 0.08);
-    color: #293458;
+    --badge-bg: rgba(41, 52, 88, 0.06);
+    --badge-border: rgba(41, 52, 88, 0.12);
+    --badge-color: #293458;
+    --badge-hover-bg: #293458;
+    --badge-hover-border: #293458;
+    --badge-hover-color: #fff;
 }
 
 .c-badge--society {
-    background: rgba(213, 219, 62, 0.22);
-    border-color: rgba(213, 219, 62, 0.4);
-    color: var(--inlife-primary);
+    --badge-bg: rgba(213, 219, 62, 0.34);
+    --badge-border: rgba(213, 219, 62, 0.58);
+    --badge-color: #243055;
+
+    --badge-hover-bg: #d5db3e;
+    --badge-hover-border: #d5db3e;
+    --badge-hover-color: #1d2748;
 }
 
 .c-badge--career {
-    border-color: rgba(213, 219, 62, 0.42);
-    background: rgba(213, 219, 62, 0.22);
-    color: #293458;
+    --badge-bg: rgba(213, 219, 62, 0.24);
+    --badge-border: rgba(213, 219, 62, 0.48);
+    --badge-color: #293458;
+    --badge-hover-bg: #293458;
+    --badge-hover-border: #293458;
+    --badge-hover-color: #fff;
+}
+
+.c-badge--people {
+    --badge-bg: #eef3f9;
+    --badge-border: #dbe4ee;
+    --badge-color: #50607c;
+    --badge-hover-bg: #293458;
+    --badge-hover-border: #293458;
+    --badge-hover-color: #fff;
+}
+
+.c-badge--business {
+    --badge-bg: rgba(41, 52, 88, 0.08);
+    --badge-border: rgba(41, 52, 88, 0.16);
+    --badge-color: #293458;
+    --badge-hover-bg: #293458;
+    --badge-hover-border: #293458;
+    --badge-hover-color: #fff;
+}
+
+.c-badge--search {
+    --badge-bg: #f4f7fb;
+    --badge-border: #dbe4ee;
+    --badge-color: #50607c;
+    --badge-hover-bg: #293458;
+    --badge-hover-border: #293458;
+    --badge-hover-color: #fff;
 }
 
 /* =========================================================
-   CAREER STATUS BADGES
+   CAREER STATUS COLORS
 ========================================================= */
 
 .c-badge--career-job {
-    border-color: rgba(213, 219, 62, 0.44);
-    background: rgba(213, 219, 62, 0.24);
-    color: #293458;
+    --badge-bg: rgba(213, 219, 62, 0.24);
+    --badge-border: rgba(213, 219, 62, 0.48);
+    --badge-color: #293458;
 }
 
 .c-badge--career-competition {
-    border-color: rgba(41, 52, 88, 0.18);
-    background: rgba(41, 52, 88, 0.08);
-    color: #293458;
+    --badge-bg: rgba(41, 52, 88, 0.07);
+    --badge-border: rgba(41, 52, 88, 0.14);
+    --badge-color: #293458;
 }
 
 .c-badge--career-result {
-    border-color: rgba(0, 171, 142, 0.24);
-    background: rgba(0, 171, 142, 0.1);
-    color: #007c6a;
+    --badge-bg: rgba(0, 171, 142, 0.1);
+    --badge-border: rgba(0, 171, 142, 0.24);
+    --badge-color: #007c6a;
 }
 
 .c-badge--career-archive {
-    border-color: #dbe4ee;
-    background: #f4f7fb;
-    color: #50607c;
+    --badge-bg: #f4f7fb;
+    --badge-border: #dbe4ee;
+    --badge-color: #50607c;
+}
+
+/* =========================================================
+   LEGACY COMPATIBILITY
+   Keep older markup visually aligned.
+========================================================= */
+
+.post-card__category,
+.post-card__format-badge,
+.career-archive-card__type,
+.search-result__type,
+.people-type-label,
+.person-type-label,
+.business-badge {
+    @extend .c-badge;
+}
+
+.post-card__category {
+    @extend .c-badge--news;
+}
+
+.post-card__format-badge {
+    @extend .c-badge--society;
+}
+
+.career-archive-card__type {
+    @extend .c-badge--career;
+}
+
+.search-result__type {
+    @extend .c-badge--search;
+}
+
+.people-type-label,
+.person-type-label {
+    @extend .c-badge--people;
+}
+
+.business-badge {
+    @extend .c-badge--business;
 }
 
 /* =========================================================
@@ -197,13 +292,14 @@ a.c-badge--soft:focus-visible {
 
 @media (max-width: 767.98px) {
     .c-badge {
-        min-height: 1.9rem;
-        padding: 0.32rem 0.68rem;
-        font-size: 0.78rem;
+        min-height: 1.7rem;
+        padding: 0.3rem 0.62rem;
+        font-size: 0.72rem;
     }
 
-    .c-badge--role {
-        min-height: 1.6rem;
-        font-size: 0.68rem;
+    .c-badge--compact {
+        min-height: 1.45rem;
+        padding: 0.2rem 0.48rem;
+        font-size: 0.66rem;
     }
 }

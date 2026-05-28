@@ -84,34 +84,7 @@
         padding-bottom: 0.95rem;
     }
 
-    /* Archive/listing metadata labels.
-       Important: archive labels are text-only, no pill background. */
-    &__category,
-    &__format-badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 2rem;
-        padding: 0.35rem 0.75rem;
-        border: 1px solid transparent;
-        border-radius: 999px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        line-height: 1;
-        text-decoration: none;
-        white-space: nowrap;
-        transition:
-            background-color 0.2s ease,
-            border-color 0.2s ease,
-            color 0.2s ease,
-            box-shadow 0.2s ease;
-    }
 
-    &__category {
-        border-color: rgba(41, 52, 88, 0.16);
-        background: rgba(41, 52, 88, 0.08);
-        color: var(--inlife-primary)
-    }
 
     &__date {
         display: inline-block;
