@@ -54,6 +54,12 @@ $secondary_url = inlife_get_acf_field(
 	'#business-services-industries-heading'
 );
 
+$hero_image_id = has_post_thumbnail( $post_id )
+	? get_post_thumbnail_id( $post_id )
+	: 0;
+
+$hero_variant = $hero_image_id ? 'graphic' : '';
+
 ob_start();
 ?>
 <a class="btn btn-primary" href="<?php echo esc_url( $primary_url ); ?>">
@@ -78,10 +84,11 @@ $hero_actions = trim( (string) ob_get_clean() );
 				'kicker'       => $hero_kicker,
 				'title'        => $hero_title,
 				'lead'         => $hero_lead,
+				'image_id'     => $hero_image_id,
 				'breadcrumbs'  => true,
 				'actions_html' => $hero_actions,
 				'title_id'     => 'business-hero-heading',
-				'variant'      => 'graphic',
+				'variant'      => $hero_variant,
 			]
 		);
 		?>
