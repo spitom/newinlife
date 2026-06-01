@@ -72,7 +72,7 @@ $hero_actions = trim( (string) ob_get_clean() );
 	<section class="page-section page-section--business-hero" aria-labelledby="business-hero-heading">
 		<?php
 		get_template_part(
-			'template-parts/patterns/pattern-page-hero',
+			'template-parts/patterns/pattern-media-hero',
 			null,
 			[
 				'kicker'       => $hero_kicker,
@@ -81,6 +81,7 @@ $hero_actions = trim( (string) ob_get_clean() );
 				'breadcrumbs'  => true,
 				'actions_html' => $hero_actions,
 				'title_id'     => 'business-hero-heading',
+				'variant'      => 'graphic',
 			]
 		);
 		?>
