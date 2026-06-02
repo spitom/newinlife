@@ -1,0 +1,488 @@
+{
+    "key": "group_inlife_about_structure",
+    "title": "InLife – O nas: Struktura",
+    "fields": [
+        {
+            "key": "field_structure_hero_kicker",
+            "label": "Hero – etykieta",
+            "name": "structure_hero_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Poznaj Instytut",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_structure_hero_title",
+            "label": "Hero – tytuł",
+            "name": "structure_hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "67",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Struktura organizacyjna",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_structure_hero_lead",
+            "label": "Hero – lead",
+            "name": "structure_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Poznaj strukturę organizacyjną Instytutu, najważniejsze obszary działalności oraz jednostki wspierające pracę naukową i administracyjną.",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_structure_tab_intro",
+            "label": "Wprowadzenie",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_structure_intro_kicker",
+            "label": "Intro – etykieta",
+            "name": "structure_intro_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Struktura organizacyjna",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_structure_intro_title",
+            "label": "Intro – tytuł",
+            "name": "structure_intro_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "67",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Jak zorganizowany jest Instytut",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_structure_intro_text",
+            "label": "Intro – tekst",
+            "name": "structure_intro_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "60",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Struktura Instytutu łączy działalność naukową, zarządczą, administracyjną oraz wsparcie badań. Dzięki temu zespoły badawcze, laboratoria i jednostki organizacyjne mogą skutecznie realizować projekty naukowe, wdrożeniowe i edukacyjne.",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_structure_intro_image",
+            "label": "Intro – zdjęcie ogólne",
+            "name": "structure_intro_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Zdjęcie wyświetlane w górnej części landing page Struktura.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg,jpeg,png,webp",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_structure_tab_sections",
+            "label": "Sekcje landing page",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_structure_sections",
+            "label": "Sekcje struktury",
+            "name": "structure_sections",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Dodaj główne obszary, np. Zarządzanie i nadzór, Pion naukowy, Administracja i wsparcie, Biuro Wspierania Badań.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_structure_section_title",
+            "button_label": "Dodaj sekcję",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_structure_section_kicker",
+                    "label": "Sekcja – etykieta",
+                    "name": "section_kicker",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_structure_sections"
+                },
+                {
+                    "key": "field_structure_section_title",
+                    "label": "Sekcja – tytuł",
+                    "name": "section_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "67",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_structure_sections"
+                },
+                {
+                    "key": "field_structure_section_text",
+                    "label": "Sekcja – opis",
+                    "name": "section_text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_structure_sections"
+                },
+                {
+                    "key": "field_structure_section_items",
+                    "label": "Elementy w sekcji",
+                    "name": "section_items",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Dodaj działy, jednostki, osoby kierujące albo najważniejsze elementy tej sekcji.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "field_structure_item_title",
+                    "button_label": "Dodaj element",
+                    "rows_per_page": 20,
+                    "parent_repeater": "field_structure_sections",
+                    "sub_fields": [
+                        {
+                            "key": "field_structure_item_title",
+                            "label": "Element – tytuł",
+                            "name": "item_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_structure_section_items"
+                        },
+                        {
+                            "key": "field_structure_item_name",
+                            "label": "Osoba \/ kierownik",
+                            "name": "item_name",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Opcjonalnie: imię i nazwisko osoby kierującej.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_structure_section_items"
+                        },
+                        {
+                            "key": "field_6a1e754d5f8a6",
+                            "label": "E-mail 1",
+                            "name": "item_email",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_structure_section_items"
+                        },
+                        {
+                            "key": "field_6a1e7bd19150c",
+                            "label": "E-mail 2",
+                            "name": "item_email_2",
+                            "aria-label": "",
+                            "type": "email",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_structure_section_items"
+                        },
+                        {
+                            "key": "field_6a1e75685f8a7",
+                            "label": "Telefon 1",
+                            "name": "item_phone",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_structure_section_items"
+                        },
+                        {
+                            "key": "field_6a1e7bf79150d",
+                            "label": "Telefon 2",
+                            "name": "item_phone_2",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_structure_section_items"
+                        },
+                        {
+                            "key": "field_structure_item_description",
+                            "label": "Stanowisko",
+                            "name": "item_position",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_structure_section_items"
+                        },
+                        {
+                            "key": "field_structure_item_link",
+                            "label": "Link",
+                            "name": "item_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "Opcjonalny link do pełnej informacji, kontaktu, BIP albo strony jednostki.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "parent_repeater": "field_structure_section_items"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/template-about-structure.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Pola dla landing page Struktura w sekcji O nas.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1780382739
+}

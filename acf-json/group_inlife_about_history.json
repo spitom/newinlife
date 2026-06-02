@@ -1,0 +1,366 @@
+{
+    "key": "group_inlife_about_history",
+    "title": "InLife – O nas: Historia",
+    "fields": [
+        {
+            "key": "field_history_hero_kicker",
+            "label": "Hero – etykieta",
+            "name": "history_hero_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Dziedzictwo i rozwój",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_history_hero_title",
+            "label": "Hero – tytuł",
+            "name": "history_hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "67",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Historia Instytutu",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_history_hero_lead",
+            "label": "Hero – lead",
+            "name": "history_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Poznaj najważniejsze etapy rozwoju Instytutu – od początków działalności po współczesną, interdyscyplinarną jednostkę badawczą.",
+            "rows": 3,
+            "new_lines": "wpautop",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_history_tab_intro",
+            "label": "Wprowadzenie",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_history_intro_title",
+            "label": "Intro – tytuł",
+            "name": "history_intro_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Od Centrum Agrotechnologii i Weterynarii PAN do InLife",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_history_intro_text",
+            "label": "Intro – tekst",
+            "name": "history_intro_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Historia Instytutu to rozwój badań nad żywnością, zdrowiem, rozrodem i biologią zwierząt oraz stopniowe budowanie interdyscyplinarnego środowiska naukowego.",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_6a1eae5f56918",
+            "label": "Kamienie milowe",
+            "name": "history_intro_milestones",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Dodaj wiersz",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6a1eae8a56919",
+                    "label": "Rok",
+                    "name": "milestone_year",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a1eae5f56918"
+                },
+                {
+                    "key": "field_6a1eae9d5691a",
+                    "label": "Etap",
+                    "name": "milestone_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a1eae5f56918"
+                }
+            ]
+        },
+        {
+            "key": "field_history_tab_timeline",
+            "label": "Timeline",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_history_timeline",
+            "label": "Wydarzenia timeline",
+            "name": "history_timeline",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Dodaj kolejne daty i wydarzenia w historii Instytutu.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_history_event_year",
+            "button_label": "Dodaj wydarzenie",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_history_event_year",
+                    "label": "Rok \/ data",
+                    "name": "event_year",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Np. 1988, 1992, 2025 albo pełniejsza data.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "parent_repeater": "field_history_timeline",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_history_event_title",
+                    "label": "Tytuł wydarzenia",
+                    "name": "event_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "55",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "parent_repeater": "field_history_timeline",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_history_event_featured",
+                    "label": "Wyróżnione wydarzenie",
+                    "name": "event_featured",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Wyróżnij kluczowe momenty, np. 1988, 1995, 2025.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "Pokaż większy układ",
+                    "default_value": 0,
+                    "ui": 1,
+                    "ui_on_text": "Tak",
+                    "ui_off_text": "Nie",
+                    "parent_repeater": "field_history_timeline"
+                },
+                {
+                    "key": "field_history_event_text",
+                    "label": "Opis wydarzenia",
+                    "name": "event_text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "65",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_history_timeline"
+                },
+                {
+                    "key": "field_history_event_image",
+                    "label": "Zdjęcie wydarzenia",
+                    "name": "event_image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Opcjonalne zdjęcie dla wydarzenia, szczególnie przy wydarzeniach wyróżnionych.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "mime_types": "jpg,jpeg,png,webp",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_history_timeline",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/template-about-history.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Pola dla landing page Historia w sekcji O nas.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1780396178
+}

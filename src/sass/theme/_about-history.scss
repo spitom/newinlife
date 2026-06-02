@@ -1,0 +1,238 @@
+/* =========================================================
+   ABOUT — HISTORY LANDING
+========================================================= */
+
+.site-main--about-history-landing {
+    background: var(--inlife-surface-soft);
+
+    .page-section--about-history-hero {
+        padding: 0;
+    }
+
+    .page-section--about-history-landing {
+        padding-block: clamp(3rem, 6vw, 6rem);
+    }
+}
+
+.about-history-landing {
+    display: grid;
+    gap: clamp(4.5rem, 8vw, 7rem);
+}
+
+
+/* Intro
+========================================================= */
+
+.about-history-landing__intro {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: start;
+    margin-bottom: clamp(1rem, 3vw, 2.5rem);
+    color: var(--inlife-primary);
+
+    @media (min-width: 992px) {
+        grid-template-columns:
+            minmax(0, 1fr) minmax(280px, 360px);
+    }
+
+    @media (min-width: 1200px) {
+        grid-template-columns:
+            minmax(0, 1fr) minmax(340px, 420px);
+
+        column-gap: clamp(4rem, 8vw, 7rem);
+    }
+}
+
+.about-history-landing__intro-content {
+    position: relative;
+    max-width: 880px;
+    padding-left: clamp(1.25rem, 3vw, 2rem);
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.35rem;
+        width: 2px;
+        height: 3rem;
+        background: var(--inlife-accent);
+        opacity: 0.75;
+    }
+}
+
+.about-history-landing__intro .section-kicker {
+    color: var(--inlife-primary);
+}
+
+.about-history-landing__intro .section-title {
+    max-width: 18ch;
+    color: var(--inlife-primary);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+}
+
+.about-history-landing__intro-text {
+    max-width: 76ch;
+    margin-top: 1.35rem;
+    color: var(--inlife-text-muted);
+
+    p {
+        line-height: 1.8;
+    }
+
+    p:first-child {
+        color: var(--inlife-primary);
+        font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+        line-height: 1.65;
+    }
+}
+
+.about-history-intro-timeline {
+    position: relative;
+    display: grid;
+    gap: 1.4rem;
+    margin-top: clamp(3rem, 5vw, 5rem);
+    padding-left: 1.35rem;
+    border-left: 1px solid rgba(41, 52, 88, 0.16);
+}
+
+.about-history-intro-timeline__item {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: calc(-1.35rem - 3px);
+        top: 0.35rem;
+        width: 5px;
+        height: 5px;
+        background: var(--inlife-accent);
+    }
+}
+
+.about-history-intro-timeline__year {
+    margin: 0;
+    color: var(--inlife-primary);
+    font-size: clamp(1.6rem, 2.2vw, 2rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.about-history-intro-timeline__label {
+    margin: 0.45rem 0 0;
+    color: var(--inlife-text-muted);
+    font-size: 0.94rem;
+    line-height: 1.55;
+}
+
+/* Timeline
+========================================================= */
+
+.about-history-timeline {
+    position: relative;
+    display: grid;
+    gap: clamp(3rem, 6vw, 4.5rem);
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-left: 2.5rem;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0.45rem;
+        top: 0.35rem;
+        bottom: 0.35rem;
+        width: 1px;
+        background: rgba(41, 52, 88, 0.16);
+    }
+
+    @media (min-width: 992px) {
+        padding-left: 2.75rem;
+    }
+}
+
+.about-history-timeline__item {
+    position: relative;
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+}
+
+.about-history-timeline__item:not(.is-visible)[data-history-timeline-item] {
+    opacity: 1;
+    transform: translateY(18px);
+}
+
+.about-history-timeline__content {
+    max-width: 820px;
+}
+
+.about-history-timeline__year {
+    position: relative;
+    margin: 0 0 0.75rem;
+    padding-left: 0.75rem;
+    color: var(--inlife-primary);
+    font-size: clamp(1.75rem, 3vw, 2.55rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.05em;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.14em;
+        width: 2px;
+        height: 0.85em;
+        background: var(--inlife-accent);
+        opacity: 0.85;
+    }
+}
+
+.about-history-timeline__title {
+    max-width: 46ch;
+    margin: 0;
+    color: var(--inlife-primary);
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.about-history-timeline__text {
+    max-width: 68ch;
+    margin-top: 1rem;
+    color: var(--inlife-text-muted);
+}
+
+.about-history-timeline__media {
+    display: inline-block;
+    max-width: 520px;
+    margin-top: 1.35rem;
+    background: transparent;
+}
+
+.about-history-timeline__image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Motion accessibility
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .about-history-timeline__item,
+    .about-history-timeline__item:not(.is-visible)[data-history-timeline-item] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
