@@ -108,17 +108,28 @@ if ( $interval <= 0 ) {
                 <?php endif; ?>
 
 				<?php if ( $title || $text || ( is_array( $link ) && ! empty( $link['url'] ) ) ) : ?>
+					<?php
+					$hero_title_allowed_html = [
+						'br'     => [],
+						'em'     => [],
+						'strong' => [],
+						'span'   => [
+							'class' => [],
+						],
+					];
+					?>
+
 					<div class="hero-slide__content">
 						<div class="inlife-container">
 							<div class="hero-slide__inner">
 								<?php if ( $title ) : ?>
 									<?php if ( 0 === $index ) : ?>
 										<h1 class="hero-slide__title">
-											<?php echo esc_html( $title ); ?>
+											<?php echo wp_kses( $title, $hero_title_allowed_html ); ?>
 										</h1>
 									<?php else : ?>
 										<h2 class="hero-slide__title">
-											<?php echo esc_html( $title ); ?>
+											<?php echo wp_kses( $title, $hero_title_allowed_html ); ?>
 										</h2>
 									<?php endif; ?>
 								<?php endif; ?>

@@ -1,13 +1,18 @@
 <?php
-defined( 'ABSPATH' ) || exit;
-
 /**
- * Return Polylang languages raw array.
+ * Internationalization helpers.
  *
- * @return array
+ * @package newinlife-child
  */
 
+defined( 'ABSPATH' ) || exit;
+
 if ( ! function_exists( 'inlife_get_languages' ) ) {
+	/**
+	 * Return Polylang languages as a raw array.
+	 *
+	 * @return array
+	 */
 	function inlife_get_languages(): array {
 		if ( ! function_exists( 'pll_the_languages' ) ) {
 			return array();
@@ -26,7 +31,18 @@ if ( ! function_exists( 'inlife_get_languages' ) ) {
 }
 
 if ( ! function_exists( 'inlife_t' ) ) {
+	/**
+	 * Translate a registered Polylang string with fallback.
+	 *
+	 * @param string $fallback Fallback/source string.
+	 *
+	 * @return string
+	 */
 	function inlife_t( string $fallback ): string {
+		if ( '' === $fallback ) {
+			return '';
+		}
+
 		if ( function_exists( 'pll__' ) ) {
 			return pll__( $fallback );
 		}

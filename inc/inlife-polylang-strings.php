@@ -434,21 +434,16 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 
 		pll_register_string( 'projects_related_projects', 'Powiązane projekty', $group );
 
-		pll_register_string('projects_go_to_project', 'Przejdź do projektu', 'Projects');
-		pll_register_string('projects_choose_program', 'Wybierz program', 'Projects');
 
 		pll_register_string('projects_hub_menu', 'Menu projektu', $group);
 		pll_register_string('projects_hub_label', 'Projekt', $group);
 		pll_register_string('projects_empty_types', 'Brak typów projektów.', $group);
 		pll_register_string('projects_choose_area_or_list', 'Wybierz odpowiedni obszar lub przejdź do listy projektów przypisanych do tej kategorii.', $group);
-		pll_register_string('projects_choose_area_or_list', 'Wybierz odpowiedni obszar lub przejdź do listy projektów przypisanych do tej kategorii.', $group);
 		pll_register_string('projects_subcategories', 'Podkategorie', $group);
 		pll_register_string('projects_choose_program', 'Wybierz program', $group);
 		pll_register_string('projects_projects_label', 'Projekty', $group);
 		pll_register_string('projects_list_title', 'Lista projektów', $group);
-		pll_register_string('projects_card_link', 'Zobacz projekty', $group);
 		pll_register_string('projects_go_to_project', 'Przejdź do projektu', $group);
-		pll_register_string('projects_empty', 'Brak projektów w tej kategorii.', $group);
 		pll_register_string('projects_logo_placeholder', 'Logo projektu', $group);
 
 		pll_register_string('projects_breadcrumbs', 'Okruszki', $group);
@@ -577,6 +572,48 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 
 		pll_register_string( 'people_pagination_prev', 'Poprzednia', $group );
 		pll_register_string( 'people_pagination_next', 'Następna', $group );
+
+		/*
+		* ------------------------------------------------------------
+		* About Structure
+		* ------------------------------------------------------------
+		*/
+		$group = 'About Structure';
+
+		pll_register_string( 'about_structure_kicker', 'Struktura organizacyjna', $group );
+		pll_register_string( 'about_structure_title', 'Jak zorganizowany jest Instytut', $group );
+		pll_register_string(
+			'about_structure_intro_text',
+			'Struktura Instytutu łączy działalność naukową, zarządczą, administracyjną oraz wsparcie badań. Dzięki temu zespoły badawcze, laboratoria i jednostki organizacyjne mogą skutecznie realizować projekty naukowe, wdrożeniowe i edukacyjne.',
+			$group
+		);
+		pll_register_string( 'about_structure_zoom_label', 'Powiększ schemat organizacyjny', $group );
+		pll_register_string( 'about_structure_zoom_text', 'Powiększ schemat', $group );
+		pll_register_string( 'about_structure_dialog_label', 'Schemat organizacyjny', $group );
+		pll_register_string( 'about_structure_close_label', 'Zamknij powiększenie', $group );
+		pll_register_string( 'about_structure_readmore', 'Zobacz więcej', $group );
+
+		/*
+		* ------------------------------------------------------------
+		* About History
+		* ------------------------------------------------------------
+		*/
+		$group = 'About History';
+
+		pll_register_string( 'about_history_hero_kicker', 'Dziedzictwo i rozwój', $group );
+		pll_register_string( 'about_history_hero_title', 'Historia Instytutu', $group );
+		pll_register_string(
+			'about_history_hero_lead',
+			'Poznaj najważniejsze etapy rozwoju Instytutu – od początków działalności po współczesną, interdyscyplinarną jednostkę badawczą.',
+			$group
+		);
+		pll_register_string( 'about_history_intro_title', 'Od Centrum Agrotechnologii i Weterynarii PAN do InLife', $group );
+		pll_register_string(
+			'about_history_intro_text',
+			'Historia Instytutu to rozwój badań nad żywnością, zdrowiem, rozrodem i biologią zwierząt oraz stopniowe budowanie interdyscyplinarnego środowiska naukowego.',
+			$group
+		);
+		pll_register_string( 'about_history_milestones_aria', 'Najważniejsze daty w historii Instytutu', $group );
 	}
 
 	add_action( 'init', 'inlife_register_polylang_strings' );

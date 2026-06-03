@@ -154,10 +154,10 @@
                     "label": "Tytuł",
                     "name": "slide_title",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "textarea",
                     "instructions": "",
-                    "required": false,
-                    "conditional_logic": false,
+                    "required": 0,
+                    "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -165,9 +165,10 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
+                    "new_lines": "",
                     "parent_repeater": "field_front_hero_slides"
                 },
                 {
@@ -177,18 +178,19 @@
                     "aria-label": "",
                     "type": "textarea",
                     "instructions": "",
-                    "required": false,
-                    "conditional_logic": false,
+                    "required": 0,
+                    "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
                         "class": "",
                         "id": ""
                     },
                     "default_value": "",
-                    "new_lines": "",
                     "maxlength": "",
-                    "placeholder": "",
+                    "allow_in_bindings": 0,
                     "rows": "",
+                    "placeholder": "",
+                    "new_lines": "",
                     "parent_repeater": "field_front_hero_slides"
                 },
                 {
@@ -352,5 +354,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1777963977
+    "modified": 1780479216
 }

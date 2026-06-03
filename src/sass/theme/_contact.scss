@@ -1,0 +1,297 @@
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.site-main--contact {
+    background: var(--inlife-surface-soft);
+
+    .page-section--contact-hero {
+        padding: 0;
+    }
+
+    .page-section--contact-main {
+        padding-top: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .page-section--contact-formal,
+    .page-section--contact-key-contacts {
+        padding-block: 0 clamp(3.5rem, 7vw, 7rem);
+    }
+}
+
+/* Main contact
+========================================================= */
+
+.contact-main {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: stretch;
+
+    @media (min-width: 992px) {
+        grid-template-columns: minmax(0, 0.75fr) minmax(560px, 1.25fr);
+        column-gap: clamp(4rem, 8vw, 7rem);
+    }
+
+    @media (min-width: 1200px) {
+        grid-template-columns: minmax(0, 0.7fr) minmax(660px, 1.3fr);
+    }
+}
+
+.contact-main__content {
+    color: var(--inlife-primary);
+
+    .section-heading {
+        margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .section-title {
+        max-width: 12ch;
+        font-size: clamp(1.75rem, 2.4vw, 2.4rem);
+        color: var(--inlife-primary);
+        font-weight: 800;
+        line-height: 1.08;
+        letter-spacing: -0.035em;
+    }
+}
+
+.contact-main__details {
+    position: relative;
+    padding-left: 1.15rem;
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.15rem;
+        width: 2px;
+        height: 3rem;
+        background: var(--inlife-accent);
+        opacity: 0.72;
+    }
+}
+
+.contact-main__name {
+    max-width: 34ch;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(41, 52, 88, .08);
+    color: var(--inlife-primary);
+    font-size: clamp(1.15rem, 1.55vw, 1.55rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+}
+
+.contact-main__address {
+    margin: 1.15rem 0 0;
+    color: var(--inlife-text-muted);
+    font-style: normal;
+    line-height: 1.7;
+}
+
+.contact-main__links {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 1.2rem;
+}
+
+.contact-main__link {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    margin: 0;
+    color: var(--inlife-primary);
+    font-size: 0.94rem;
+    line-height: 1.45;
+
+    a {
+        color: var(--inlife-primary);
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: 0.18em;
+    }
+}
+
+.contact-main__icon {
+    flex: 0 0 auto;
+    width: 1rem;
+    margin-top: 0.1rem;
+    color: var(--inlife-primary);
+    opacity: 0.48;
+}
+
+/* Map
+========================================================= */
+
+.contact-main__map-wrap {
+    min-height: clamp(420px, 38vw, 560px);
+}
+
+.contact-map {
+    width: 100%;
+    min-height: clamp(340px, 34vw, 520px);
+    height: 100%;
+    overflow: hidden;
+    background: #f5f8fc;
+    border: 1px solid rgba(41, 52, 88, 0.08);
+    box-shadow: 0 24px 60px rgba(41, 52, 88, 0.08);
+}
+
+.contact-map--placeholder {
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    color: var(--inlife-text-muted);
+    text-align: center;
+}
+
+/* Formal information
+========================================================= */
+
+.contact-formal {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3rem);
+
+    .section-heading {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .section-title {
+        position: relative;
+        padding-left: 1.15rem;
+        color: var(--inlife-primary);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.2em;
+            width: 2px;
+            height: 1.05em;
+            background: var(--inlife-accent);
+            opacity: 0.7;
+        }
+    }
+}
+
+.contact-formal__grid {
+    display: grid;
+    gap: 1px;
+    background: rgba(41, 52, 88, 0.08);
+
+    @media (min-width: 640px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.contact-formal__card {
+    min-height: 110px;
+    padding: clamp(1.25rem, 2vw, 1.75rem);
+    background: #f5f8fc;
+    color: var(--inlife-primary);
+}
+
+.contact-formal__label {
+    color: var(--inlife-text-muted);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: .65;
+}
+
+.contact-formal__value {
+    margin-top: 0.5rem;
+    color: var(--inlife-primary);
+    font-size: 1.125rem;
+    font-weight: 800;
+    line-height: 1.25;
+    word-break: break-word;
+}
+
+/* Key contacts
+========================================================= */
+
+.contact-key-contacts {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3rem);
+
+    .section-heading {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .section-title {
+        position: relative;
+        padding-left: 1.15rem;
+        color: var(--inlife-primary);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.2em;
+            width: 2px;
+            height: 1.05em;
+            background: var(--inlife-accent);
+            opacity: 0.7;
+        }
+    }
+}
+
+.contact-key-contacts__list {
+    display: grid;
+    border-top: 1px solid rgba(41, 52, 88, 0.12);
+}
+
+.contact-key-contacts__item {
+    display: grid;
+    gap: 0.75rem;
+    min-height: 80px;
+    padding-block: clamp(1.25rem, 2.2vw, 1.75rem);
+    border-bottom: 1px solid rgba(41, 52, 88, 0.12);
+    color: var(--inlife-primary);
+
+    @media (min-width: 992px) {
+        grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr) auto;
+        gap: clamp(1.5rem, 4vw, 3rem);
+        align-items: center;
+    }
+}
+
+.contact-key-contacts__title {
+    margin: 0;
+    color: var(--inlife-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.contact-key-contacts__text {
+    max-width: 58ch;
+    margin: 0;
+    color: var(--inlife-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.65;
+    opacity: .85;
+}
+
+.contact-key-contacts__link {
+    margin: 0;
+    white-space: nowrap;
+    font-weight: 600;
+}

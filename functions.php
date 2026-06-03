@@ -129,6 +129,7 @@ require_once get_stylesheet_directory() . '/inc/inlife-assets.php';
  */
 require_once get_stylesheet_directory() . '/inc/enqueue/about-assets.php';
 require_once get_stylesheet_directory() . '/inc/enqueue/network-assets.php';
+require_once get_stylesheet_directory() . '/inc/enqueue/contact-assets.php';
 
 /**
  * Career.

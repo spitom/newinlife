@@ -48,16 +48,6 @@ if ( ! function_exists( 'inlife_get_breadcrumb_items' ) ) {
 			return inlife_normalize_breadcrumb_items( $args['items'] );
 		}
 
-		$rank_math_items = inlife_get_rank_math_breadcrumb_items();
-		if ( ! empty( $rank_math_items ) ) {
-			return $rank_math_items;
-		}
-
-		$yoast_items = inlife_get_yoast_breadcrumb_items();
-		if ( ! empty( $yoast_items ) ) {
-			return $yoast_items;
-		}
-
 		return inlife_get_custom_breadcrumb_items(
 			[
 				'show_home' => (bool) $args['show_home'],

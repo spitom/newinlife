@@ -70,7 +70,7 @@
 }
 
 .hero-slide__inner {
-    max-width: 760px;
+    max-width: 780px;
 }
 
 .hero-slide__title {
@@ -101,6 +101,19 @@
     &:focus-visible {
         color: #fff;
     }
+}
+
+.hero-text-accent {
+    color: var(--inlife-accent);
+}
+
+.hero-text-lg {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.hero-text-soft {
+    opacity: 0.82;
 }
 
 .hero-slide__cta:hover .c-readmore__icon,
