@@ -43,9 +43,6 @@ if ( is_array( $intro_image ) && ! empty( $intro_image['ID'] ) ) {
 		</div>
 
 		<?php if ( $image_id ) : ?>
-			<?php
-			$full_image_url = wp_get_attachment_image_url( $image_id, 'full' );
-			?>
 
 			<div class="about-structure-landing__media">
 				<button

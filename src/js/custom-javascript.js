@@ -1183,28 +1183,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   observer.observe(stats);
 });
-
-
-// About structure lightbox
-
-const openBtn = document.querySelector('[data-structure-lightbox-open]');
-const dialog = document.querySelector('[data-structure-lightbox]');
-const closeBtn = document.querySelector('[data-structure-lightbox-close]');
-
-if (openBtn && dialog) {
-
-	openBtn.addEventListener('click', (e) => {
-		e.preventDefault();
-		dialog.showModal();
-	});
-
-	closeBtn?.addEventListener('click', () => {
-		dialog.close();
-	});
-
-	dialog.addEventListener('click', (e) => {
-		if (e.target === dialog) {
-			dialog.close();
-		}
-	});
-}

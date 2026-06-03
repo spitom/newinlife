@@ -14,9 +14,6 @@ $intro_text = inlife_get_acf_field(
 	$post_id,
 	inlife_t( 'Historia Instytutu to rozwój badań nad żywnością, zdrowiem, rozrodem i biologią zwierząt oraz stopniowe budowanie interdyscyplinarnego środowiska naukowego.' )
 );
-
-$intro_image = inlife_get_acf_field( 'history_intro_image', $post_id, 0 );
-$image_id    = is_numeric( $intro_image ) ? (int) $intro_image : 0;
 ?>
 
 <div class="about-history-landing">

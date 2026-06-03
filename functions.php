@@ -123,6 +123,7 @@ require_once get_stylesheet_directory() . '/inc/helpers/publications.php';
 require_once get_stylesheet_directory() . '/inc/helpers/admin.php';
 require_once get_stylesheet_directory() . '/inc/helpers/partners.php';
 require_once get_stylesheet_directory() . '/inc/enqueue/network-assets.php';
+require_once get_stylesheet_directory() . '/inc/enqueue/about-assets.php';
 require_once get_stylesheet_directory() . '/inc/post-types/partners.php';
 require_once get_stylesheet_directory() . '/inc/taxonomies/partner-region.php';
 require_once get_stylesheet_directory() . '/inc/helpers/society.php';
