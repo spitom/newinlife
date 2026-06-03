@@ -93,41 +93,80 @@ function understrap_child_customize_controls_js() {
 }
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
 
+/**
+ * Theme setup / core.
+ */
 require_once get_stylesheet_directory() . '/inc/inlife-theme-setup.php';
 require_once get_stylesheet_directory() . '/inc/inlife-template-tags.php';
 require_once get_stylesheet_directory() . '/inc/class-inlife-accessible-navwalker.php';
+
+/**
+ * Core helpers.
+ */
 require_once get_stylesheet_directory() . '/inc/helpers/i18n.php';
 require_once get_stylesheet_directory() . '/inc/helpers/acf-fields.php';
+require_once get_stylesheet_directory() . '/inc/helpers/breadcrumbs.php';
+require_once get_stylesheet_directory() . '/inc/helpers/excerpts.php';
+require_once get_stylesheet_directory() . '/inc/helpers/search.php';
+require_once get_stylesheet_directory() . '/inc/helpers/admin.php';
+
+/**
+ * Global integrations.
+ */
 require_once get_stylesheet_directory() . '/inc/inlife-polylang-strings.php';
+require_once get_stylesheet_directory() . '/inc/inlife-acf.php';
+require_once get_stylesheet_directory() . '/inc/inlife-acf-blocks.php';
+
+/**
+ * Global theme parts / assets.
+ */
 require_once get_stylesheet_directory() . '/inc/inlife-nav-filters.php';
 require_once get_stylesheet_directory() . '/inc/inlife-footer.php';
 require_once get_stylesheet_directory() . '/inc/inlife-assets.php';
-require_once get_stylesheet_directory() . '/inc/inlife-acf.php';
-require_once get_stylesheet_directory() . '/inc/inlife-acf-blocks.php';
+
+/**
+ * Conditional assets.
+ */
+require_once get_stylesheet_directory() . '/inc/enqueue/about-assets.php';
+require_once get_stylesheet_directory() . '/inc/enqueue/network-assets.php';
+
+/**
+ * Career.
+ */
 require_once get_stylesheet_directory() . '/inc/post-types/career-entry.php';
 require_once get_stylesheet_directory() . '/inc/helpers/career.php';
 require_once get_stylesheet_directory() . '/inc/helpers/career-types.php';
 require_once get_stylesheet_directory() . '/inc/helpers/career-pages.php';
+
+/**
+ * People / research units.
+ */
 require_once get_stylesheet_directory() . '/inc/post-types/people.php';
 require_once get_stylesheet_directory() . '/inc/post-types/research.php';
 require_once get_stylesheet_directory() . '/inc/helpers/people-query.php';
 require_once get_stylesheet_directory() . '/inc/helpers/people-relations.php';
 require_once get_stylesheet_directory() . '/inc/helpers/teams.php';
-require_once get_stylesheet_directory() . '/inc/helpers/breadcrumbs.php';
 require_once get_stylesheet_directory() . '/inc/helpers/laboratories.php';
+
+/**
+ * Projects / publications.
+ */
 require_once get_stylesheet_directory() . '/inc/post-types/projects.php';
 require_once get_stylesheet_directory() . '/inc/helpers/projects.php';
 require_once get_stylesheet_directory() . '/inc/post-types/publications.php';
-require_once get_stylesheet_directory() . '/inc/admin/inlife-publications-admin.php';
 require_once get_stylesheet_directory() . '/inc/helpers/publications.php';
-require_once get_stylesheet_directory() . '/inc/helpers/admin.php';
-require_once get_stylesheet_directory() . '/inc/helpers/partners.php';
-require_once get_stylesheet_directory() . '/inc/enqueue/network-assets.php';
-require_once get_stylesheet_directory() . '/inc/enqueue/about-assets.php';
+require_once get_stylesheet_directory() . '/inc/admin/inlife-publications-admin.php';
+
+/**
+ * Network / partners.
+ */
 require_once get_stylesheet_directory() . '/inc/post-types/partners.php';
 require_once get_stylesheet_directory() . '/inc/taxonomies/partner-region.php';
+require_once get_stylesheet_directory() . '/inc/helpers/partners.php';
+
+/**
+ * Society / posts.
+ */
 require_once get_stylesheet_directory() . '/inc/helpers/society.php';
-require_once get_stylesheet_directory() . '/inc/helpers/posts.php';
 require_once get_stylesheet_directory() . '/inc/taxonomies/society.php';
-require_once get_stylesheet_directory() . '/inc/helpers/excerpts.php';
-require_once get_stylesheet_directory() . '/inc/helpers/search.php';
+require_once get_stylesheet_directory() . '/inc/helpers/posts.php';

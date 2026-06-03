@@ -22,4 +22,16 @@ function inlife_enqueue_network_assets() {
 		'1.9.4',
 		true
 	);
+
+	$network_map_script = get_stylesheet_directory() . '/js/network-map.js';
+
+	if ( file_exists( $network_map_script ) ) {
+		wp_enqueue_script(
+			'inlife-network-map',
+			get_stylesheet_directory_uri() . '/js/network-map.js',
+			[ 'leaflet' ],
+			filemtime( $network_map_script ),
+			true
+		);
+	}
 }

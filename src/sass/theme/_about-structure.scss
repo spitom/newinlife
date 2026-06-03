@@ -22,14 +22,6 @@
 /* Intro + organizational chart
 ========================================================= */
 
-.about-structure-landing .section-title {
-    color: var(--inlife-primary);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.08;
-    max-width: 14ch;
-}
-
 .about-structure-landing__intro {
     display: grid;
     gap: clamp(2rem, 5vw, 5rem);
@@ -39,6 +31,10 @@
     .section-title {
         padding-left: 0;
         color: var(--inlife-primary);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.08;
+        max-width: 14ch;
 
         &::before {
             display: none;
