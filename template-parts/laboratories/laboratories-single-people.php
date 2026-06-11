@@ -114,18 +114,40 @@ if ( ! empty( $members ) ) {
 					? inlife_get_person_display_name( $member_id )
 					: get_the_title( $member_id );
 
-				$link     = get_permalink( $member_id );
+
 				$position = function_exists( 'get_field' ) ? get_field( 'person_position', $member_id ) : '';
 				$email    = function_exists( 'get_field' ) ? get_field( 'person_email', $member_id ) : '';
+				$orcid        = function_exists( 'get_field' ) ? get_field( 'person_orcid', $member_id ) : '';
+				$researchgate = function_exists( 'get_field' ) ? get_field( 'person_researchgate', $member_id ) : '';
+				$linkedin     = function_exists( 'get_field' ) ? get_field( 'person_linkedin', $member_id ) : '';
+				$has_image    = has_post_thumbnail( $member_id );
 
 				$is_manager = ( $manager_id > 0 && $member_id === $manager_id );
 				?>
 
 				<article class="lab-member-tile<?php echo $is_manager ? ' lab-member-tile--manager' : ''; ?>">
+					
+					<div class="lab-member-tile__media">
+						<?php if ( $has_image ) : ?>
+							<?php
+							echo get_the_post_thumbnail(
+								$member_id,
+								'thumbnail',
+								array(
+									'class'   => 'lab-member-tile__image',
+									'loading' => 'lazy',
+								)
+							);
+							?>
+						<?php else : ?>
+							<span class="lab-member-tile__placeholder" aria-hidden="true">
+								<i class="bi bi-person-fill"></i>
+							</span>
+						<?php endif; ?>
+					</div>				
+				
 					<h3 class="lab-member-tile__name">
-						<a href="<?php echo esc_url( $link ); ?>">
-							<?php echo esc_html( $name ); ?>
-						</a>
+						<span><?php echo esc_html( $name ); ?></span>
 
 						<?php if ( $is_manager ) : ?>
 							<span class="lab-member-tile__badge">
@@ -151,12 +173,39 @@ if ( ! empty( $members ) ) {
 						</p>
 					<?php endif; ?>
 
-					<a href="<?php echo esc_url( $link ); ?>" class="lab-member-tile__cta c-readmore">
+					<?php if ( $orcid || $researchgate || $linkedin ) : ?>
+						<div class="team-person-socials team-person-socials--member" aria-label="<?php echo esc_attr__( 'Profile naukowe i społecznościowe', 'newinlife-child' ); ?>">
+							<?php if ( $orcid ) : ?>
+								<a class="team-person-socials__link team-person-socials__link--orcid" href="<?php echo esc_url( $orcid ); ?>" target="_blank" rel="noopener noreferrer" aria-label="ORCID">
+									<span class="team-person-socials__icon" aria-hidden="true">iD</span>
+									<span class="visually-hidden">ORCID</span>
+								</a>
+							<?php endif; ?>
+
+							<?php if ( $researchgate ) : ?>
+								<a class="team-person-socials__link team-person-socials__link--researchgate" href="<?php echo esc_url( $researchgate ); ?>" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">
+									<span class="team-person-socials__icon" aria-hidden="true">R<sup>G</sup></span>
+									<span class="visually-hidden">ResearchGate</span>
+								</a>
+							<?php endif; ?>
+
+							<?php if ( $linkedin ) : ?>
+								<a class="team-person-socials__link team-person-socials__link--linkedin" href="<?php echo esc_url( $linkedin ); ?>" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+									<span class="team-person-socials__icon" aria-hidden="true">
+										<i class="bi bi-linkedin"></i>
+									</span>
+									<span class="visually-hidden">LinkedIn</span>
+								</a>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+
+					<!-- <a href="<?php echo esc_url( $link ); ?>" class="lab-member-tile__cta c-readmore">
 						<span class="c-readmore__label">
 							<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?>
 						</span>
 						<span class="c-readmore__icon" aria-hidden="true">→</span>
-					</a>
+					</a> -->
 				</article>
 			<?php endforeach; ?>
 		</div>

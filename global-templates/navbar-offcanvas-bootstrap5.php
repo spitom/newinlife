@@ -113,7 +113,7 @@ $container = inlife_container_class('page');
 		);
 		?>
 		
-		<hr class="offcanvas-divider">
+		<!-- <hr class="offcanvas-divider"> -->
 		
 		<?php
 		wp_nav_menu(

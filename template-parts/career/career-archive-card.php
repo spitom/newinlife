@@ -9,9 +9,9 @@ defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-$excerpt = function_exists( 'inlife_get_card_excerpt' )
-	? inlife_get_card_excerpt( $post_id, 26 )
-	: '';
+// $excerpt = function_exists( 'inlife_get_card_excerpt' )
+// 	? inlife_get_card_excerpt( $post_id, 26 )
+// 	: '';
 
 $type_label = function_exists( 'inlife_get_career_entry_type_label' )
 	? inlife_get_career_entry_type_label( $post_id )
@@ -64,11 +64,11 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_ge
 			<?php the_title(); ?>
 		</h2>
 
-		<?php if ( $excerpt ) : ?>
+		<!-- <?php if ( $excerpt ) : ?>
 			<p class="career-archive-card__excerpt">
 				<?php echo esc_html( $excerpt ); ?>
 			</p>
-		<?php endif; ?>
+		<?php endif; ?> -->
 
 		<?php if ( $unit || ( $deadline && ! $hide_deadline ) ) : ?>
 			<div class="career-archive-card__meta">
@@ -89,7 +89,7 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_ge
 
 		<span class="c-readmore career-archive-card__readmore">
 			<span class="c-readmore__label">
-				<?php echo esc_html( inlife_t( 'Przejdź do wpisu' ) ); ?>
+				<?php echo esc_html( inlife_t( 'Przejdź do oferty' ) ); ?>
 			</span>
 			<span class="c-readmore__icon" aria-hidden="true">→</span>
 		</span>

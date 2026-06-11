@@ -165,7 +165,7 @@ $relations     = array_values(
 			<?php endif; ?>
 
 			<?php if ( $room ) : ?>
-				<span class="people-directory-row__contact-item">
+				<span class="people-directory-row__contact-item people-directory-row__contact-item--room">
 					<span class="people-directory-row__room-label">
 						<?php echo esc_html( inlife_t( 'Pokój' ) ); ?>:
 					</span>

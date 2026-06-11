@@ -1118,7 +1118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const revealCards = document.querySelectorAll(
-        '.front-area-card, .research-nav-card, .team-card, .laboratory-card'
+        '.front-area-card, .research-nav-card, .team-card, .laboratory-card, .business-service-card'
     );
 
     if (!revealCards.length) return;

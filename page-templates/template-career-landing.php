@@ -90,11 +90,11 @@ $hero_actions = (string) ob_get_clean();
 		</div>
 	</section>
 
-	<section class="page-section page-section--career-trainings" aria-labelledby="career-trainings-heading">
+	<!-- <section class="page-section page-section--career-trainings" aria-labelledby="career-trainings-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<?php get_template_part( 'template-parts/career/career', 'trainings' ); ?>
 		</div>
-	</section>
+	</section> -->
 
 	<section class="page-section page-section--career-diversity" aria-labelledby="career-diversity-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
@@ -114,11 +114,11 @@ $hero_actions = (string) ob_get_clean();
 		</div>
 	</section>
 
-	<section class="page-section page-section--career-onboarding" aria-labelledby="career-onboarding-heading">
+	<!-- <section class="page-section page-section--career-onboarding" aria-labelledby="career-onboarding-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<?php get_template_part( 'template-parts/career/career', 'onboarding' ); ?>
 		</div>
-	</section>
+	</section> -->
 
 </main>
 

@@ -185,6 +185,17 @@
             transform: translateX(4px);
         }
     }
+
+}
+
+.business-service-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.business-service-card.is-visible:hover,
+.business-service-card.is-visible:focus-within {
+    transform: translateY(-4px);
 }
 
 /* =========================================================
@@ -770,6 +781,15 @@
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
+    .business-service-card,
+    .business-service-card.is-visible,
+    .business-service-card.is-visible:hover,
+    .business-service-card.is-visible:focus-within {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 
     .business-service-card--industry .business-service-card__link--nav,
     .business-service-card--industry .business-service-card__link--nav::after,

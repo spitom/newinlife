@@ -461,17 +461,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     background: linear-gradient(135deg, #eef3f8 0%, #dfe9f3 100%);
 }
 
 .team-member-tile__placeholder i {
     font-size: 3.6rem;
     color: rgba(41, 52, 88, 0.18);
-}
-
-.team-member-tile__placeholder-head,
-.team-member-tile__placeholder-body {
-    display: none;
 }
 
 /* =========================================================
@@ -483,7 +479,6 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 0.5rem;
 }
 
 .team-person-socials__link {
@@ -1041,6 +1036,10 @@
         width: 72px;
         height: 72px;
         border-radius: 12px;
+    }
+
+    .team-member-tile__placeholder i {
+        font-size: 2.8rem;
     }
 
     .team-member-tile__placeholder::before {

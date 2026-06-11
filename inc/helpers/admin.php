@@ -22,6 +22,7 @@ function inlife_admin_get_controlled_page_templates(): array {
 		'page-templates/template-career-landing.php',
 		'page-templates/template-network.php',
 		'page-templates/template-society-landing.php',
+		'page-templates/template-contact.php',
 	];
 }
 

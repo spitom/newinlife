@@ -238,15 +238,22 @@
             display: block;
         }
 
-        .people-directory-row__contact-item {
-            display: inline;
-            white-space: normal;
+        .people-directory-row__contact {
+            display: grid;
+            gap: 0.25rem;
+        }
 
-            &+.people-directory-row__contact-item::before {
-                content: "·";
-                margin-inline: 0.45rem;
-                color: #9aa6ba;
-            }
+        .people-directory-row__contact-item {
+            display: block;
+            white-space: normal;
+        }
+
+        .people-directory-row__contact-item--room {
+            display: none;
+        }
+
+        .people-directory-row__contact-item+.people-directory-row__contact-item::before {
+            content: none;
         }
     }
 }

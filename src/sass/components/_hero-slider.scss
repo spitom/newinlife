@@ -126,36 +126,43 @@
 .hero-slider__toggle {
     position: absolute;
     z-index: 6;
+    top: auto;
+    bottom: clamp(1rem, 3vw, 2rem);
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: clamp(3rem, 4vw, 3.5rem);
+    height: clamp(3rem, 4vw, 3.5rem);
     border: 1px solid rgba(255, 255, 255, 0.42);
     background: rgba(20, 28, 52, 0.58);
     color: #fff;
     line-height: 1;
     cursor: pointer;
+    transform: none;
     transition:
         opacity 0.2s ease,
-        transform 0.2s ease,
         background-color 0.2s ease,
         border-color 0.2s ease;
 }
 
 .hero-slider__nav {
-    top: 50%;
-    width: clamp(2.75rem, 4vw, 3.5rem);
-    height: clamp(2.75rem, 4vw, 3.5rem);
-    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-size: clamp(1.75rem, 2.4vw, 2.2rem);
     opacity: 0;
-    transform: translateY(-50%);
 }
 
-.hero-slider__nav--prev {
-    left: clamp(1rem, 3vw, 2rem);
+.hero-slider__toggle {
+    right: clamp(1rem, 3vw, 2rem);
+    font-size: clamp(1.35rem, 2vw, 2rem);
 }
 
 .hero-slider__nav--next {
-    right: clamp(1rem, 3vw, 2rem);
+    right: calc(clamp(1rem, 3vw, 2rem) + clamp(3rem, 4vw, 3.5rem) + 0.75rem);
+    left: auto;
+}
+
+.hero-slider__nav--prev {
+    right: calc(clamp(1rem, 3vw, 2rem) + (clamp(3rem, 4vw, 3.5rem) * 2) + 1.5rem);
+    left: auto;
 }
 
 .hero-slider:hover .hero-slider__nav,
@@ -163,14 +170,7 @@
     opacity: 1;
 }
 
-.hero-slider__toggle {
-    right: clamp(1rem, 3vw, 2rem);
-    bottom: clamp(1rem, 3vw, 2rem);
-    width: 3.5rem;
-    height: 3.5rem;
-    font-size: 2rem;
-    color: #fff;
-}
+
 
 .hero-slider__icon {
     display: inline-flex;
@@ -219,36 +219,40 @@
 
 @media (max-width: 767.98px) {
     .hero-slider {
-        min-height: 64vh;
+        min-height: calc(100dvh - var(--inlife-mobile-header-height, 104px));
     }
 
     .hero-slide__content {
-        min-height: 64vh;
-        padding-block: clamp(2rem, 12vw, 4rem);
+        min-height: calc(100dvh - var(--inlife-mobile-header-height, 104px));
+        padding-block: clamp(2rem, 10vw, 3.5rem);
     }
 
     .hero-slide__title {
         font-size: clamp(2rem, 12vw, 3.25rem);
     }
 
-    .hero-slider__nav {
+    .hero-slider__nav,
+    .hero-slider__toggle {
+        bottom: 1rem;
+        width: 3rem;
+        height: 3rem;
         opacity: 1;
-        width: 2.75rem;
-        height: 2.75rem;
-        font-size: 2rem;
     }
 
-    .hero-slider__nav--prev {
-        left: 0.75rem;
-    }
-
-    .hero-slider__nav--next {
-        right: 0.75rem;
+    .hero-slider__nav {
+        font-size: 1.7rem;
     }
 
     .hero-slider__toggle {
-        width: 3rem;
-        height: 3rem;
+        right: 0.75rem;
         font-size: 1.35rem;
+    }
+
+    .hero-slider__nav--next {
+        right: 4.25rem;
+    }
+
+    .hero-slider__nav--prev {
+        right: 7.75rem;
     }
 }
