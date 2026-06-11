@@ -14,9 +14,9 @@ $permalink      = $custom_url ?: get_permalink( $post_id );
 $title          = get_the_title( $post_id );
 $date           = get_the_date( '', $post_id );
 
-$excerpt = function_exists( 'inlife_get_card_excerpt' )
-	? inlife_get_card_excerpt( $post_id, 14 )
-	: '';
+// $excerpt = function_exists( 'inlife_get_card_excerpt' )
+// 	? inlife_get_card_excerpt( $post_id, 14 )
+// 	: '';
 
 $primary_category = function_exists( 'inlife_get_primary_post_category' )
 	? inlife_get_primary_post_category( $post_id )
@@ -212,11 +212,11 @@ if ( $variant ) {
 					</a>
 				</h3>
 
-				<?php if ( $excerpt ) : ?>
+				<!-- <?php if ( $excerpt ) : ?>
 					<div class="post-card__text">
 						<?php echo wp_kses_post( wpautop( $excerpt ) ); ?>
 					</div>
-				<?php endif; ?>
+				<?php endif; ?> -->
 
 				<?php
 				$tags = get_the_tags( $post_id );

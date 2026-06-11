@@ -74,6 +74,12 @@ $hero_lead = inlife_get_acf_field(
 		</div>
 	</section>
 
+	<section class="page-section page-section--about-science-council" aria-labelledby="about-science-council-heading">
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<?php get_template_part( 'template-parts/about/about-science-council' ); ?>
+		</div>
+	</section>
+
 	<!-- HISTORIA -->
 	<section class="page-section page-section--about-history" aria-labelledby="about-history-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">

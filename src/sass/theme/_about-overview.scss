@@ -15,6 +15,7 @@
     }
 
     .page-section--about-directorate,
+    .page-section--about-science-council,
     .page-section--about-structure,
     .page-section--about-media {
         padding-block: clamp(3rem, 6vw, 5.5rem);
@@ -404,6 +405,77 @@
 }
 
 /* =========================================================
+   ABOUT — RADA NAUKOWA
+========================================================= */
+
+.about-science-council {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+    border-top: 1px solid var(--inlife-border);
+
+    @media (min-width: 992px) {
+        grid-template-columns: minmax(0, 0.72fr) minmax(360px, 0.68fr);
+    }
+}
+
+.about-science-council__kicker {
+    margin: 0 0 0.75rem;
+    color: var(--inlife-primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.about-science-council__title {
+    max-width: 12ch;
+    margin: 0 0 1.25rem;
+    color: var(--inlife-primary);
+    font-size: clamp(1.9rem, 3vw, 3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+}
+
+.about-science-council__text {
+    max-width: 58ch;
+    margin: 0;
+    color: var(--inlife-text-muted);
+    font-size: clamp(1rem, 1.1vw, 1.06rem);
+    line-height: 1.8;
+}
+
+.about-science-council__readmore {
+    margin-top: 1.25rem;
+}
+
+.about-science-council__list {
+    display: grid;
+    border-top: 1px solid var(--inlife-border);
+}
+
+.about-science-council__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+    padding-block: 1.05rem;
+    border-bottom: 1px solid var(--inlife-border);
+    color: var(--inlife-primary);
+    font-size: 0.98rem;
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+.about-science-council__item span:last-child {
+    color: var(--inlife-primary);
+    opacity: 0.72;
+}
+
+/* =========================================================
    ABOUT — STRUKTURA
 ========================================================= */
 
@@ -478,6 +550,389 @@
         font-size: clamp(1.75rem, 4vw, 3.75rem);
         font-weight: 800;
         color: rgba(41, 52, 88, 0.18);
+    }
+}
+
+/* =========================================================
+   ABOUT — RADA NAUKOWA / LANDING
+========================================================= */
+
+.page-section--about-science-council-hero {
+    padding: 0;
+}
+
+.page-section--about-science-council-landing {
+    padding-block: clamp(3rem, 6vw, 5.5rem);
+}
+
+.science-council-landing {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+    border-top: 1px solid var(--inlife-border);
+
+    @media (min-width: 992px) {
+        grid-template-columns: minmax(260px, 0.48fr) minmax(0, 1fr);
+    }
+}
+
+.science-council-landing__sidebar {
+    min-width: 0;
+
+    @media (min-width: 992px) {
+        position: sticky;
+        top: 7rem;
+    }
+}
+
+.science-council-landing__kicker {
+    margin: 0 0 0.75rem;
+    color: var(--inlife-primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.science-council-landing__title {
+    max-width: 12ch;
+    margin: 0 0 1.25rem;
+    color: var(--inlife-primary);
+    font-size: clamp(1.9rem, 3vw, 3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+}
+
+.science-council-landing__term {
+    display: inline-flex;
+    margin: 0 0 1.25rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(41, 52, 88, 0.08);
+    color: var(--inlife-primary);
+    font-size: 0.82rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.science-council-landing__intro {
+    max-width: 46ch;
+    color: var(--inlife-text-muted);
+    font-size: clamp(1rem, 1.1vw, 1.06rem);
+    line-height: 1.8;
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* =========================================================
+   SCIENCE COUNCIL — ROLES
+========================================================= */
+
+.science-council-roles {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.science-council-role {
+    padding: 1rem 0 0.2rem;
+    border-top: 1px solid var(--inlife-border);
+}
+
+.science-council-role--chair {
+    padding-top: 0.25rem;
+    border-top: 0;
+}
+
+.science-council-role h3 {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 0.9rem;
+    color: var(--inlife-primary);
+    font-size: clamp(1.3rem, 1.5vw, 1.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+}
+
+.science-council-role h3::before {
+    content: "";
+    width: 3px;
+    height: 1.15em;
+    border-radius: 999px;
+    background: var(--inlife-accent);
+    opacity: 0.95;
+}
+
+.science-council-role ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.science-council-role li {
+    margin: 0 0 0.7rem;
+    color: rgba(41, 52, 88, 0.86);
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.science-council-role li:last-child {
+    margin-bottom: 0;
+}
+
+.science-council-role li strong,
+.science-council-role li b {
+    color: var(--inlife-primary);
+    font-weight: 700;
+}
+
+.science-council-role li span {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--inlife-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.science-council-role--chair li {
+    color: var(--inlife-primary);
+    font-size: 1.02rem;
+    font-weight: 700;
+}
+
+.science-council-landing__nav {
+    display: grid;
+    gap: 0;
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+    border-top: 1px solid var(--inlife-border);
+
+    a {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-block: 0.9rem;
+        border-bottom: 1px solid var(--inlife-border);
+        color: var(--inlife-primary);
+        font-size: 0.92rem;
+        font-weight: 800;
+        line-height: 1.35;
+        text-decoration: none;
+
+        &::after {
+            content: "→";
+            opacity: 0.65;
+            transition: transform 0.18s ease, opacity 0.18s ease;
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: var(--inlife-primary);
+            text-decoration: none;
+
+            &::after {
+                opacity: 1;
+                transform: translateX(4px);
+            }
+        }
+    }
+}
+
+.science-council-landing__content {
+    min-width: 0;
+    max-width: 980px;
+    color: rgba(41, 52, 88, 0.76);
+    font-size: clamp(1rem, 1.05vw, 1.06rem);
+    line-height: 1.78;
+
+    >*:first-child {
+        margin-top: 0;
+    }
+
+    >*:last-child {
+        margin-bottom: 0;
+    }
+
+    h2 {
+        margin-top: clamp(2.5rem, 5vw, 4rem);
+        margin-bottom: 1rem;
+        color: var(--inlife-primary);
+        font-size: clamp(1.45rem, 2vw, 1.9rem);
+        font-weight: 800;
+        line-height: 1.12;
+        letter-spacing: -0.035em;
+    }
+
+    h2:first-child {
+        margin-top: 0;
+    }
+
+    h3 {
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        color: var(--inlife-primary);
+        font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+        font-weight: 800;
+        line-height: 1.25;
+        letter-spacing: -0.025em;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    ul,
+    ol {
+        margin-bottom: 1.25rem;
+        padding-left: 1.25rem;
+    }
+
+    li+li {
+        margin-top: 0.35rem;
+    }
+
+    a {
+        color: var(--inlife-primary);
+        font-weight: 700;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.16em;
+    }
+
+    table {
+        width: 100%;
+        margin: 1.25rem 0 2rem;
+        border-collapse: collapse;
+        border-top: 1px solid var(--inlife-border);
+        font-size: 0.94rem;
+        line-height: 1.5;
+    }
+
+    th,
+    td {
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid var(--inlife-border);
+        text-align: left;
+        vertical-align: top;
+    }
+
+    th {
+        background: rgba(41, 52, 88, 0.045);
+        color: var(--inlife-primary);
+        font-weight: 800;
+    }
+
+    td {
+        color: rgba(41, 52, 88, 0.76);
+    }
+
+    tr:hover td {
+        background: rgba(255, 255, 255, 0.45);
+    }
+
+    .wp-block-table {
+        width: 100%;
+        margin: 1.25rem 0 2.25rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: 0;
+    }
+
+    .wp-block-table table,
+    >table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        margin: 0;
+        border-top: 1px solid rgba(41, 52, 88, 0.18);
+        font-size: 0.94rem;
+        line-height: 1.5;
+    }
+
+    .wp-block-table thead,
+    >table thead {
+        border-bottom: 2px solid rgba(41, 52, 88, 0.28);
+    }
+
+    .wp-block-table th,
+    .wp-block-table td,
+    >table th,
+    >table td {
+        padding: 0.85rem 1rem;
+        border: 1px solid rgba(41, 52, 88, 0.14);
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .wp-block-table th,
+    >table th {
+        background: rgba(41, 52, 88, 0.045);
+        color: var(--inlife-primary);
+        font-weight: 800;
+    }
+
+    .wp-block-table td,
+    >table td {
+        color: rgba(41, 52, 88, 0.76);
+    }
+
+    .wp-block-table th:first-child,
+    .wp-block-table td:first-child,
+    >table th:first-child,
+    >table td:first-child {
+        width: 4.5rem;
+    }
+
+    .wp-block-table th:last-child,
+    .wp-block-table td:last-child,
+    >table th:last-child,
+    >table td:last-child {
+        width: 38%;
+    }
+
+    .wp-block-table figcaption {
+        margin-top: 0.65rem;
+        color: var(--inlife-text-muted);
+        font-size: 0.86rem;
+        line-height: 1.5;
+    }
+
+    .wp-block-table.is-style-stripes {
+        border-bottom: 0;
+    }
+
+    .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+        background: rgba(41, 52, 88, 0.035);
+    }
+
+    .wp-block-table.is-style-stripes tbody tr:nth-child(even) {
+        background: rgba(255, 255, 255, 0.38);
+    }
+
+    .wp-block-table.is-style-stripes tbody tr:hover {
+        background: rgba(213, 219, 62, 0.12);
+    }
+
+    .wp-block-table.is-style-stripes td {
+        border-color: rgba(41, 52, 88, 0.12);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .science-council-landing__content {
+        .wp-block-table {
+            overflow-x: auto;
+        }
+
+        .wp-block-table table,
+        >table {
+            min-width: 720px;
+        }
     }
 }
 

@@ -106,12 +106,12 @@ if ( empty( $people ) ) {
 						</p>
 					<?php endif; ?>
 
-					<?php if ( $person_item['url'] ) : ?>
+					<!-- <?php if ( $person_item['url'] ) : ?>
 						<a class="c-readmore about-leader__readmore" href="<?php echo esc_url( $person_item['url'] ); ?>">
 							<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?>
 							<span class="c-readmore__icon" aria-hidden="true">→</span>
 						</a>
-					<?php endif; ?>
+					<?php endif; ?> -->
 				</div>
 
 			</article>
