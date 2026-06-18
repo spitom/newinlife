@@ -95,7 +95,7 @@ if ( ! empty( $members ) ) {
 					? inlife_get_person_display_name( $member_id )
 					: get_the_title( $member_id );
 
-				// $link     = get_permalink( $member_id );
+
 				$position = function_exists( 'get_field' ) ? get_field( 'person_position', $member_id ) : '';
 				$email    = function_exists( 'get_field' ) ? get_field( 'person_email', $member_id ) : '';
 				$orcid        = function_exists( 'get_field' ) ? get_field( 'person_orcid', $member_id ) : '';
@@ -170,12 +170,6 @@ if ( ! empty( $members ) ) {
 						</div>
 					<?php endif; ?>
 
-					<!-- <a href="<?php echo esc_url( $link ); ?>" class="team-member-tile__cta c-readmore">
-						<span class="c-readmore__label">
-							<?php echo esc_html( inlife_t( 'Zobacz profil' ) ); ?>
-						</span>
-						<span class="c-readmore__icon" aria-hidden="true">→</span>
-					</a> -->
 				</article>
 			<?php endforeach; ?>
 		</div>

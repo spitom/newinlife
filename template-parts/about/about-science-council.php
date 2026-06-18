@@ -15,17 +15,58 @@ $text = inlife_get_acf_field(
 	inlife_t( 'Rada Naukowa opiniuje i wspiera kierunki rozwoju naukowego Instytutu. Na stronie znajdują się informacje o kadencji, prezydium, komisjach oraz składzie Rady.' )
 );
 
-$link = inlife_get_acf_field( 'about_science_council_link', $post_id, null );
+$url   = '';
+$label = inlife_t( 'Zobacz skład Rady Naukowej' );
 
-$url   = is_array( $link ) && ! empty( $link['url'] ) ? $link['url'] : '';
-$label = is_array( $link ) && ! empty( $link['title'] ) ? $link['title'] : inlife_t( 'Zobacz skład Rady Naukowej' );
+/**
+ * Find Science Council page by assigned page template.
+ */
+$science_council_pages = get_pages(
+	[
+		'post_status'  => 'publish',
+		'number'       => 1,
+		'meta_key'     => '_wp_page_template',
+		'meta_value'   => 'page-templates/template-about-science-council.php',
+		'hierarchical' => false,
+	]
+);
+
+if ( ! empty( $science_council_pages ) && $science_council_pages[0] instanceof WP_Post ) {
+	$url = get_permalink( $science_council_pages[0] );
+}
+
+/**
+ * Fallback by expected page path.
+ */
+if ( ! $url ) {
+	$science_council_page = get_page_by_path( 'o-nas/rada-naukowa' );
+
+	if ( $science_council_page instanceof WP_Post ) {
+		$url = get_permalink( $science_council_page );
+	}
+}
+
+$base_url = $url ? strtok( $url, '#' ) : '';
 
 $items = [
-	inlife_t( 'Kadencja 2023–2026' ),
-	inlife_t( 'Prezydium Rady' ),
-	inlife_t( 'Komisje Rady' ),
-	inlife_t( 'Skład Rady Naukowej' ),
+	[
+		'label'  => inlife_t( 'Kadencja 2023–2026' ),
+		'anchor' => 'kadencja',
+	],
+	[
+		'label'  => inlife_t( 'Prezydium Rady' ),
+		'anchor' => 'prezydium',
+	],
+	[
+		'label'  => inlife_t( 'Komisje Rady' ),
+		'anchor' => 'komisje',
+	],
+	[
+		'label'  => inlife_t( 'Skład Rady Naukowej' ),
+		'anchor' => 'sklad-rady',
+	],
 ];
+
 ?>
 
 <div class="about-science-council">
@@ -55,10 +96,23 @@ $items = [
 
 	<div class="about-science-council__list" aria-label="<?php echo esc_attr( inlife_t( 'Zakres informacji' ) ); ?>">
 		<?php foreach ( $items as $item ) : ?>
-			<div class="about-science-council__item">
-				<span><?php echo esc_html( $item ); ?></span>
-				<span aria-hidden="true">→</span>
-			</div>
+			<?php
+			$item_url = $base_url && ! empty( $item['anchor'] )
+				? trailingslashit( $base_url ) . '#' . $item['anchor']
+				: $base_url;
+			?>
+
+			<?php if ( $item_url ) : ?>
+				<a class="about-science-council__item" href="<?php echo esc_url( $item_url ); ?>">
+					<span><?php echo esc_html( $item['label'] ); ?></span>
+					<span aria-hidden="true">→</span>
+				</a>
+			<?php else : ?>
+				<div class="about-science-council__item">
+					<span><?php echo esc_html( $item['label'] ); ?></span>
+					<span aria-hidden="true">→</span>
+				</div>
+			<?php endif; ?>
 		<?php endforeach; ?>
 	</div>
 

@@ -271,7 +271,7 @@
 .about-directorate__intro {
     @media (min-width: 992px) {
         position: sticky;
-        top: 7rem;
+        top: clamp(7.5rem, 9vw, 9rem);
     }
 }
 
@@ -468,11 +468,25 @@
     font-size: 0.98rem;
     font-weight: 800;
     line-height: 1.35;
-}
+    text-decoration: none;
 
-.about-science-council__item span:last-child {
-    color: var(--inlife-primary);
-    opacity: 0.72;
+    &:hover,
+    &:focus-visible {
+        color: var(--inlife-primary);
+        text-decoration: none;
+    }
+
+    span:last-child {
+        color: var(--inlife-primary);
+        opacity: 0.72;
+        transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    &:hover span:last-child,
+    &:focus-visible span:last-child {
+        opacity: 1;
+        transform: translateX(4px);
+    }
 }
 
 /* =========================================================

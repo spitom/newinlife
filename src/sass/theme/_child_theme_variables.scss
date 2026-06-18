@@ -30,14 +30,14 @@
     --inlife-card-cut-x: 36px;
     --inlife-card-cut-y: 26px;
 
-    --success-tone-primary: #293458;
-    --success-tone-green: #145c3a;
-    --success-tone-orange: #ef7a00;
-    --success-tone-light: #dfe3ea;
+    --inlife-sticky-header-height: 140px;
+    --inlife-anchor-offset: calc(var(--inlife-sticky-header-height) + 1.5rem);
 }
 
 @media (max-width: 767.98px) {
     :root {
         --inlife-gutter: 1rem;
+        --inlife-sticky-header-height: var(--inlife-mobile-header-height, 104px);
+        --inlife-anchor-offset: calc(var(--inlife-sticky-header-height) + 1rem);
     }
 }

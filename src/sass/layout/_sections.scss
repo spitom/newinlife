@@ -1,3 +1,31 @@
+html {
+    scroll-padding-top: calc(var(--inlife-mobile-header-height, 104px) + 1.5rem);
+}
+
+.site-main [id],
+.page-section[id],
+.front-section[id],
+.entry-content [id],
+.post-content__entry [id],
+.c-editorial-content [id] {
+    scroll-margin-top: calc(var(--inlife-mobile-header-height, 104px) + 1.5rem);
+}
+
+@media (min-width: 768px) {
+    html {
+        scroll-padding-top: 132px;
+    }
+
+    .site-main [id],
+    .page-section[id],
+    .front-section[id],
+    .entry-content [id],
+    .post-content__entry [id],
+    .c-editorial-content [id] {
+        scroll-margin-top: 132px;
+    }
+}
+
 .site-main {
     display: block;
 }

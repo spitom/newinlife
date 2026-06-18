@@ -23,10 +23,23 @@
     will-change: transform;
 }
 
+.c-readmore,
 .c-readmore:hover,
-.c-readmore:focus {
+.c-readmore:focus,
+.c-readmore:active,
+.c-readmore:visited {
     color: var(--inlife-primary);
     text-decoration: none;
+    box-shadow: none;
+}
+
+.c-readmore:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+}
+
+.c-readmore:active {
+    transform: none;
 }
 
 .c-readmore:hover .c-readmore__icon,

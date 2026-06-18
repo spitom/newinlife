@@ -62,3 +62,72 @@
         color: var(--inlife-primary);
     }
 }
+
+/* =========================================================
+   BUTTON STATES — override Bootstrap active/click states
+========================================================= */
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.show,
+.btn-primary:first-child:active,
+:not(.btn-check)+.btn-primary:active {
+    border-color: var(--inlife-primary);
+    background-color: var(--inlife-primary);
+    color: #fff;
+    box-shadow: none;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    border-color: #1f2744;
+    background-color: #1f2744;
+    color: #fff;
+    box-shadow: 0 0.5rem 1.25rem rgba(41, 52, 88, 0.14);
+}
+
+.btn-primary:focus:not(:focus-visible),
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.show,
+.btn-primary:first-child:active,
+:not(.btn-check)+.btn-primary:active {
+    outline: none;
+    box-shadow: none;
+    transform: none;
+}
+
+.btn-outline-primary,
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary.active,
+.btn-outline-primary.show,
+.btn-outline-primary:first-child:active,
+:not(.btn-check)+.btn-outline-primary:active {
+    border-color: #dbe4ee;
+    background-color: #f4f7fb;
+    color: var(--inlife-primary);
+    box-shadow: none;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus-visible {
+    border-color: #cfd9e5;
+    background-color: #eaf0f7;
+    color: var(--inlife-primary);
+}
+
+.btn-outline-primary:focus:not(:focus-visible),
+.btn-outline-primary:active,
+.btn-outline-primary.active,
+.btn-outline-primary.show,
+.btn-outline-primary:first-child:active,
+:not(.btn-check)+.btn-outline-primary:active {
+    outline: none;
+    box-shadow: none;
+    transform: none;
+}

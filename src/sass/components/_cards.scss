@@ -57,8 +57,8 @@
     transition: transform 0.35s ease;
 }
 
-.c-card:hover .c-card__image,
-.c-card:focus-within .c-card__image {
+.c-card:not(.post-card--story):hover .c-card__image,
+.c-card:not(.post-card--story):focus-within .c-card__image {
     transform: scale(1.03);
 }
 

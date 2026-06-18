@@ -9,10 +9,6 @@ defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-// $excerpt = function_exists( 'inlife_get_card_excerpt' )
-// 	? inlife_get_card_excerpt( $post_id, 26 )
-// 	: '';
-
 $type_label = function_exists( 'inlife_get_career_entry_type_label' )
 	? inlife_get_career_entry_type_label( $post_id )
 	: '';
@@ -31,23 +27,17 @@ $hide_deadline = false;
 $terms = get_the_terms( $post_id, 'career_entry_type' );
 
 if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_get_career_type_key_from_slug' ) ) {
-	foreach ( $terms as $term ) {
-		$resolved_key = inlife_get_career_type_key_from_slug( $term->slug );
+    foreach ( $terms as $term ) {
+        $resolved_key = inlife_get_career_type_key_from_slug( $term->slug );
 
-		if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_get_career_type_key_from_slug' ) ) {
-			foreach ( $terms as $term ) {
-				$resolved_key = inlife_get_career_type_key_from_slug( $term->slug );
+        if ( in_array( $resolved_key, [ 'results', 'archive' ], true ) ) {
+            $hide_deadline = true;
+        }
 
-				if ( in_array( $resolved_key, [ 'results', 'archive' ], true ) ) {
-					$hide_deadline = true;
-				}
-
-				if ( in_array( $resolved_key, [ 'scientific', 'jobs' ], true ) ) {
-					$type_class = 'career-archive-card--' . $resolved_key;
-				}
-			}
-		}
-	}
+        if ( in_array( $resolved_key, [ 'scientific', 'jobs' ], true ) ) {
+            $type_class = 'career-archive-card--' . $resolved_key;
+        }
+    }
 }
 ?>
 
@@ -63,12 +53,6 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_ge
 		<h2 class="career-archive-card__title">
 			<?php the_title(); ?>
 		</h2>
-
-		<!-- <?php if ( $excerpt ) : ?>
-			<p class="career-archive-card__excerpt">
-				<?php echo esc_html( $excerpt ); ?>
-			</p>
-		<?php endif; ?> -->
 
 		<?php if ( $unit || ( $deadline && ! $hide_deadline ) ) : ?>
 			<div class="career-archive-card__meta">

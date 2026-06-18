@@ -33,6 +33,7 @@
 @import "helpers/mixins";
 
 @import "components/editorial-content";
+@import "theme/editor-blocks";
 @import "components/cards";
 @import "components/post-card";
 @import "components/cards-grid";
@@ -50,7 +51,6 @@
 @import "theme/navigation";
 @import "theme/footer";
 @import "theme/front-page";
-@import "theme/acf-blocks";
 @import "theme/posts";
 @import "theme/research-overview";
 @import "theme/business-landing";

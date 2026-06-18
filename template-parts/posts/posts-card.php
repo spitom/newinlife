@@ -6,17 +6,35 @@
 defined( 'ABSPATH' ) || exit;
 
 $post_id        = $args['post_id'] ?? get_the_ID();
-$custom_url     = isset( $args['custom_url'] ) ? (string) $args['custom_url'] : '';
+$post_id        = (int) $post_id;
+$custom_url     = isset( $args['custom_url'] ) ? trim( (string) $args['custom_url'] ) : '';
 $show_category  = isset( $args['show_category'] ) ? (bool) $args['show_category'] : true;
 $show_format    = isset( $args['show_format'] ) ? (bool) $args['show_format'] : true;
-$variant		= isset( $args['variant'] ) ? sanitize_html_class( $args['variant'] ) : '';
-$permalink      = $custom_url ?: get_permalink( $post_id );
-$title          = get_the_title( $post_id );
-$date           = get_the_date( '', $post_id );
+$variant        = isset( $args['variant'] ) ? sanitize_html_class( $args['variant'] ) : '';
 
-// $excerpt = function_exists( 'inlife_get_card_excerpt' )
-// 	? inlife_get_card_excerpt( $post_id, 14 )
-// 	: '';
+if ( '' !== $custom_url ) {
+	$post_link = [
+		'url'    => $custom_url,
+		'target' => '',
+		'rel'    => '',
+	];
+} elseif ( function_exists( 'inlife_get_post_target_link' ) ) {
+	$post_link = inlife_get_post_target_link( $post_id );
+} else {
+	$post_link = [
+		'url'    => get_permalink( $post_id ),
+		'target' => '',
+		'rel'    => '',
+	];
+}
+
+$permalink = ! empty( $post_link['url'] ) ? $post_link['url'] : get_permalink( $post_id );
+$title     = get_the_title( $post_id );
+$date      = get_the_date( '', $post_id );
+
+$excerpt = function_exists( 'inlife_get_card_excerpt' )
+	? inlife_get_card_excerpt( $post_id, 14 )
+	: '';
 
 $primary_category = function_exists( 'inlife_get_primary_post_category' )
 	? inlife_get_primary_post_category( $post_id )
@@ -82,6 +100,12 @@ if ( $variant ) {
 				<a
 					class="post-card__media-link c-card__media-link"
 					href="<?php echo esc_url( $permalink ); ?>"
+					<?php if ( ! empty( $post_link['target'] ) ) : ?>
+						target="<?php echo esc_attr( $post_link['target'] ); ?>"
+					<?php endif; ?>
+					<?php if ( ! empty( $post_link['rel'] ) ) : ?>
+						rel="<?php echo esc_attr( $post_link['rel'] ); ?>"
+					<?php endif; ?>
 					aria-hidden="true"
 					tabindex="-1"
 				>
@@ -207,16 +231,25 @@ if ( $variant ) {
 				<?php endif; ?>
 
 				<h3 class="post-card__title c-card__title">
-					<a class="post-card__title-link c-card__title-link" href="<?php echo esc_url( $permalink ); ?>">
+					<a
+						class="post-card__title-link c-card__title-link"
+						href="<?php echo esc_url( $permalink ); ?>"
+						<?php if ( ! empty( $post_link['target'] ) ) : ?>
+							target="<?php echo esc_attr( $post_link['target'] ); ?>"
+						<?php endif; ?>
+						<?php if ( ! empty( $post_link['rel'] ) ) : ?>
+							rel="<?php echo esc_attr( $post_link['rel'] ); ?>"
+						<?php endif; ?>
+					>
 						<?php echo esc_html( $title ); ?>
 					</a>
 				</h3>
 
-				<!-- <?php if ( $excerpt ) : ?>
+				<?php if ( $excerpt ) : ?>
 					<div class="post-card__text">
 						<?php echo wp_kses_post( wpautop( $excerpt ) ); ?>
 					</div>
-				<?php endif; ?> -->
+				<?php endif; ?>
 
 				<?php
 				$tags = get_the_tags( $post_id );
@@ -232,7 +265,16 @@ if ( $variant ) {
 					</div>
 				<?php endif; ?>
 
-				<a class="post-card__link c-readmore" href="<?php echo esc_url( $permalink ); ?>">
+				<a
+					class="post-card__link c-readmore"
+					href="<?php echo esc_url( $permalink ); ?>"
+					<?php if ( ! empty( $post_link['target'] ) ) : ?>
+						target="<?php echo esc_attr( $post_link['target'] ); ?>"
+					<?php endif; ?>
+					<?php if ( ! empty( $post_link['rel'] ) ) : ?>
+						rel="<?php echo esc_attr( $post_link['rel'] ); ?>"
+					<?php endif; ?>
+				>
 					<?php echo esc_html( inlife_t( 'Czytaj więcej' ) ); ?>
 					<span class="c-readmore__icon" aria-hidden="true">→</span>
 				</a>

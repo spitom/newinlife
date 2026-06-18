@@ -115,7 +115,7 @@ require_once get_stylesheet_directory() . '/inc/helpers/admin.php';
  */
 require_once get_stylesheet_directory() . '/inc/inlife-polylang-strings.php';
 require_once get_stylesheet_directory() . '/inc/inlife-acf.php';
-require_once get_stylesheet_directory() . '/inc/inlife-acf-blocks.php';
+require_once get_stylesheet_directory() . '/inc/inlife-block-styles.php';
 
 /**
  * Global theme parts / assets.

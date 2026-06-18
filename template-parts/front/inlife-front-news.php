@@ -60,9 +60,17 @@ $main  = array_shift( $posts );
 
 				<?php if ( $main instanceof WP_Post ) : ?>
 					<?php
-					$main_id       = $main->ID;
-					$main_url      = get_permalink( $main_id );
-					$main_title    = get_the_title( $main_id );
+					$main_id    = $main->ID;
+					$main_link  = function_exists( 'inlife_get_post_target_link' )
+						? inlife_get_post_target_link( $main_id )
+						: [
+							'url'    => get_permalink( $main_id ),
+							'target' => '',
+							'rel'    => '',
+						];
+
+					$main_url   = $main_link['url'];
+					$main_title = get_the_title( $main_id );
 					$main_date     = get_the_date( '', $main_id );
 					$main_image_id = function_exists( 'inlife_get_post_card_image_id' )
 						? inlife_get_post_card_image_id( $main_id )
@@ -73,7 +81,16 @@ $main  = array_shift( $posts );
 						: null;
 					?>
 
-					<a class="front-news-feature" href="<?php echo esc_url( $main_url ); ?>">
+					<a
+						class="front-news-feature"
+						href="<?php echo esc_url( $main_url ); ?>"
+						<?php if ( ! empty( $main_link['target'] ) ) : ?>
+							target="<?php echo esc_attr( $main_link['target'] ); ?>"
+						<?php endif; ?>
+						<?php if ( ! empty( $main_link['rel'] ) ) : ?>
+							rel="<?php echo esc_attr( $main_link['rel'] ); ?>"
+						<?php endif; ?>
+					>
 						<div class="front-news-feature__media">
 							<?php if ( $main_image_id ) : ?>
 								<?php
@@ -121,8 +138,16 @@ $main  = array_shift( $posts );
 					<div class="front-news-list" aria-label="<?php echo esc_attr( inlife_t( 'Pozostałe aktualności' ) ); ?>">
 						<?php foreach ( $posts as $post_item ) : ?>
 							<?php
-							$item_id    = $post_item->ID;
-							$item_url   = get_permalink( $item_id );
+							$item_id   = $post_item->ID;
+							$item_link = function_exists( 'inlife_get_post_target_link' )
+								? inlife_get_post_target_link( $item_id )
+								: [
+									'url'    => get_permalink( $item_id ),
+									'target' => '',
+									'rel'    => '',
+								];
+
+							$item_url   = $item_link['url'];
 							$item_title = get_the_title( $item_id );
 							$item_date  = get_the_date( '', $item_id );
 
@@ -131,7 +156,16 @@ $main  = array_shift( $posts );
 								: null;
 							?>
 
-							<a class="front-news-row" href="<?php echo esc_url( $item_url ); ?>">
+							<a
+								class="front-news-row"
+								href="<?php echo esc_url( $item_url ); ?>"
+								<?php if ( ! empty( $item_link['target'] ) ) : ?>
+									target="<?php echo esc_attr( $item_link['target'] ); ?>"
+								<?php endif; ?>
+								<?php if ( ! empty( $item_link['rel'] ) ) : ?>
+									rel="<?php echo esc_attr( $item_link['rel'] ); ?>"
+								<?php endif; ?>
+							>
 								<div class="front-news-row__meta">
 									<?php if ( $item_category ) : ?>
 										<span><?php echo esc_html( $item_category->name ); ?></span>

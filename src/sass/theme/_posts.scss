@@ -241,6 +241,25 @@
             box-shadow: none;
         }
     }
+
+    .post-hero-poster {
+        margin: 0;
+    }
+
+    .post-hero-poster__caption {
+        max-width: 100%;
+        margin-top: 0.65rem;
+        color: rgba(41, 52, 88, 0.62);
+        font-size: 0.85rem;
+        line-height: 1.45;
+        text-align: right;
+    }
+
+    @media (max-width: 767.98px) {
+        .post-hero-poster__caption {
+            text-align: left;
+        }
+    }
 }
 
 /* =========================================================
@@ -271,7 +290,7 @@
 .post-layout__aside {
     @media (min-width: 1200px) {
         position: sticky;
-        top: 7rem;
+        top: clamp(7.5rem, 9vw, 9rem);
     }
 }
 
@@ -429,6 +448,25 @@
 
 .post-content__entry>*:first-child {
     margin-top: 0;
+}
+
+/* Kadence gallery —  Siatka */
+.post-content__entry,
+.entry-content {
+
+    .kb-gallery-ul {
+        gap: 0;
+        column-gap: 0;
+        row-gap: 0;
+    }
+
+    .kb-gallery-ul>.kadence-blocks-gallery-item {
+        list-style: none;
+    }
+
+    .kb-gallery-ul>.kadence-blocks-gallery-item::marker {
+        content: "";
+    }
 }
 
 .post-content__tags {
