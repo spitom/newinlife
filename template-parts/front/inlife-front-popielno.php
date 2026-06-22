@@ -38,7 +38,7 @@ $image_id = function_exists( 'get_field' )
 					<?php echo esc_html( inlife_t( 'Unikalne miejsce badań terenowych, ochrony zasobów przyrodniczych i pracy naukowej prowadzonej blisko natury.' ) ); ?>
 				</p>
 
-				<a class="c-readmore front-popielno__readmore" href="<?php echo esc_url( $popielno_url ); ?>">
+				<a class="c-readmore c-readmore--light front-popielno__readmore" href="<?php echo esc_url( $popielno_url ); ?>">
 					<?php echo esc_html( inlife_t( 'Poznaj Popielno' ) ); ?>
 					<span class="c-readmore__icon" aria-hidden="true">→</span>
 				</a>

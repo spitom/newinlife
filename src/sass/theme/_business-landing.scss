@@ -494,25 +494,12 @@
     line-height: 1.35;
     color: inherit;
 
-    &::after {
-        content: "→";
-        font-size: 1rem;
-        line-height: 1;
-        transition: transform 0.2s ease;
-    }
 }
 
-.business-tech-panel__link:hover .business-tech-panel__meta::after,
-.business-tech-panel__link:focus-visible .business-tech-panel__meta::after {
+.business-tech-panel__link:hover .business-tech-panel__meta .c-readmore__icon,
+.business-tech-panel__link:focus-visible .business-tech-panel__meta .c-readmore__icon {
+    opacity: 1;
     transform: translateX(4px);
-}
-
-.business-tech-panel--main .business-tech-panel__meta {
-    color: rgba(255, 255, 255, 0.96);
-}
-
-.business-tech-panel--side .business-tech-panel__meta {
-    color: var(--inlife-primary);
 }
 
 .business-tech-panel__section {

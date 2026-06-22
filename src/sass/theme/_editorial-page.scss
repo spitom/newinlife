@@ -1,0 +1,64 @@
+/* =========================================================
+   EDITORIAL PAGE
+   Generic editable pages: privacy policy, accessibility statement,
+   cookies policy, regulations, legal pages.
+========================================================= */
+
+.site-main--editorial-page {
+    background: var(--inlife-surface-soft);
+}
+
+.page-section--editorial-page-hero {
+    padding: 0;
+}
+
+.page-section--editorial-page-content {
+    padding-top: clamp(2.25rem, 4vw, 3.5rem);
+    padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.editorial-page {
+    max-width: 980px;
+    margin-inline: auto;
+}
+
+.editorial-page__content {
+    max-width: 860px;
+    margin-inline: auto;
+}
+
+/* dokumentowy rytm treści */
+.editorial-page__content.c-editorial-content {
+    color: var(--inlife-text-muted);
+    font-size: clamp(1rem, 1.05vw, 1.06rem);
+    line-height: 1.78;
+}
+
+.editorial-page__content.c-editorial-content p,
+.editorial-page__content.c-editorial-content li {
+    max-width: 76ch;
+}
+
+.editorial-page__content.c-editorial-content ul,
+.editorial-page__content.c-editorial-content ol {
+    max-width: 76ch;
+}
+
+/* tabele w politykach / deklaracjach */
+.editorial-page__content .wp-block-table {
+    max-width: 100%;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* mobile */
+@media (max-width: 767.98px) {
+    .page-section--editorial-page-content {
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+    }
+
+    .editorial-page__content {
+        max-width: none;
+    }
+}

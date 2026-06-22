@@ -74,7 +74,7 @@ if ( empty( $items ) ) {
 		<?php endif; ?>
 
 		<?php if ( $url ) : ?>
-			<a class="c-readmore about-history__readmore" href="<?php echo esc_url( $url ); ?>">
+			<a class="c-readmore c-readmore--light" href="<?php echo esc_url( $url ); ?>">
 				<?php echo esc_html( $label ); ?>
 				<span class="c-readmore__icon" aria-hidden="true">→</span>
 			</a>

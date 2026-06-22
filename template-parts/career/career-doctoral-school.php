@@ -42,7 +42,7 @@ $cta_url        = $cta_url ?: 'https://sd.pan.olsztyn.pl/';
 	<?php if ( $cta_label && $cta_url ) : ?>
 		<div class="career-doctoral-school__action">
 			<a
-				class="c-readmore career-doctoral-school__readmore"
+				class="c-readmore c-readmore--light"
 				href="<?php echo esc_url( $cta_url ); ?>"
 				target="_blank"
 				rel="noopener noreferrer"

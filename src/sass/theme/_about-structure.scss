@@ -29,12 +29,13 @@
     color: var(--inlife-primary);
 
     .section-title {
-        padding-left: 0;
-        color: var(--inlife-primary);
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        line-height: 1.08;
         max-width: 14ch;
+        margin: 0 0 1.25rem;
+        font-size: clamp(1.9rem, 3vw, 3rem);
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -.045em;
+        color: var(--inlife-primary);
 
         &::before {
             display: none;
@@ -42,6 +43,11 @@
     }
 
     .section-kicker {
+        margin: 0 0 .75rem;
+        font-size: .8rem;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
         color: var(--inlife-primary);
     }
 

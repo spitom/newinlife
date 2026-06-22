@@ -991,14 +991,6 @@
     color: rgba(255, 255, 255, 0.82);
 }
 
-.about-history__readmore {
-    color: #fff;
-}
-
-.about-history__readmore:hover,
-.about-history__readmore:focus-visible {
-    color: #fff;
-}
 
 .about-history__timeline {
     display: grid;
@@ -1033,10 +1025,10 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
-.about-history__readmore:hover .c-readmore__icon,
-.about-history__readmore:focus-visible .c-readmore__icon {
-    transform: translateX(4px);
-}
+// .about-history__readmore:hover .c-readmore__icon,
+// .about-history__readmore:focus-visible .c-readmore__icon {
+//     transform: translateX(4px);
+// }
 
 /* =========================================================
    ABOUT — MEDIA

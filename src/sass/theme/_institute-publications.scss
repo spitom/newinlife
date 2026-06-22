@@ -1,0 +1,378 @@
+/* =========================================================
+   INSTITUTE PUBLICATIONS LANDING
+========================================================= */
+
+.site-main--institute-publications {
+    background: var(--inlife-surface-soft);
+}
+
+.page-section--institute-publications-hero {
+    padding: 0;
+}
+
+.page-section--institute-journals,
+.page-section--institute-publications-topics,
+.page-section--institute-publications-cta {
+    padding-top: clamp(3rem, 6vw, 5rem);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.page-section--institute-journals+.page-section--institute-publications-topics,
+.page-section--institute-publications-topics+.page-section--institute-publications-cta {
+    padding-top: 0;
+}
+
+/* =========================================================
+   JOURNAL CARDS — cover layout
+========================================================= */
+
+.institute-journals-grid {
+    display: grid;
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+@media (min-width: 992px) {
+    .institute-journals-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.institute-journal-card {
+    --journal-accent: var(--inlife-accent);
+    --journal-accent-soft: rgba(213, 219, 62, 0.16);
+    --journal-line: rgba(213, 219, 62, 0.32);
+    min-width: 0;
+}
+
+.institute-journal-card--food {
+    --journal-accent: #d96f18;
+    --journal-accent-soft: rgba(217, 111, 24, 0.12);
+    --journal-line: rgba(217, 111, 24, 0.26);
+}
+
+.institute-journal-card--reproduction {
+    --journal-accent: #0f7a3b;
+    --journal-accent-soft: rgba(15, 122, 59, 0.10);
+    --journal-line: rgba(15, 122, 59, 0.24);
+}
+
+.institute-journal-card__anchor {
+    position: relative;
+    display: grid;
+    min-height: clamp(22rem, 28vw, 26rem);
+    height: 100%;
+    overflow: hidden;
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    border: 1px solid rgba(41, 52, 88, 0.06);
+    border-radius: 18px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)),
+        radial-gradient(circle at 92% 16%, var(--journal-accent-soft), transparent 34%);
+    box-shadow: 0 18px 48px rgba(18, 38, 63, 0.08);
+    color: inherit;
+    text-decoration: none;
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
+}
+
+@media (min-width: 768px) {
+    .institute-journal-card__anchor {
+        grid-template-columns: minmax(0, 0.56fr) minmax(12rem, 0.44fr);
+        align-items: stretch;
+        column-gap: clamp(1.25rem, 2.5vw, 2rem);
+    }
+}
+
+.institute-journal-card__anchor::before {
+    content: "";
+    position: absolute;
+    right: -10%;
+    bottom: -42%;
+    z-index: 0;
+    width: 74%;
+    aspect-ratio: 1.8 / 1;
+    border-radius: 50%;
+    background: repeating-radial-gradient(ellipse at center,
+            transparent 0,
+            transparent 11px,
+            var(--journal-line) 11.5px,
+            var(--journal-line) 12.5px,
+            transparent 13px);
+    opacity: 0.78;
+    pointer-events: none;
+    transform: rotate(-4deg);
+}
+
+.institute-journal-card__anchor:hover,
+.institute-journal-card__anchor:focus-visible {
+    color: inherit;
+    text-decoration: none;
+    border-color: rgba(41, 52, 88, 0.12);
+    box-shadow: 0 26px 70px rgba(18, 38, 63, 0.13);
+    transform: translateY(-3px);
+}
+
+.institute-journal-card__content,
+.institute-journal-card__media {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+}
+
+.institute-journal-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 25rem;
+}
+
+.institute-journal-card__eyebrow {
+    margin: 0 0 1.05rem;
+    color: var(--inlife-primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+.institute-journal-card__title {
+    max-width: 18.5rem;
+    margin: 0;
+    color: var(--inlife-primary);
+    font-size: clamp(1.5rem, 2.35vw, 2.15rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.16;
+}
+
+.institute-journal-card__meta {
+    max-width: 20rem;
+    margin: 1.15rem 0 0;
+    color: rgba(41, 52, 88, 0.64);
+    font-size: clamp(0.94rem, 1vw, 1rem);
+    font-weight: 700;
+    line-height: 1.58;
+}
+
+.institute-journal-card__text {
+    max-width: 22rem;
+    margin: 1.35rem 0 0;
+    color: rgba(41, 52, 88, 0.76);
+    font-size: clamp(0.93rem, 1vw, 1rem);
+    line-height: 1.78;
+}
+
+.institute-journal-card__link {
+    margin-top: auto;
+    padding-top: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.institute-journal-card__media {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+.institute-journal-card__image {
+    display: block;
+    width: min(100%, clamp(13rem, 20vw, 20rem));
+    max-height: clamp(17rem, 23vw, 22.5rem);
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 18px 42px rgba(18, 38, 63, 0.18);
+}
+
+@media (max-width: 767.98px) {
+    .institute-journal-card__anchor {
+        gap: 1.5rem;
+        min-height: 0;
+    }
+
+    .institute-journal-card__content {
+        max-width: none;
+    }
+
+    .institute-journal-card__media {
+        justify-content: flex-start;
+    }
+
+    .institute-journal-card__image {
+        width: min(68vw, 18rem);
+        max-height: none;
+    }
+}
+
+/* =========================================================
+   TOPICS — open layout, aligned with About / Structure style
+========================================================= */
+
+.page-section--institute-publications-topics {
+    padding-top: clamp(4rem, 7vw, 6.5rem);
+    padding-bottom: clamp(4rem, 7vw, 6.5rem);
+}
+
+.page-section--institute-journals+.page-section--institute-publications-topics {
+    padding-top: clamp(3.5rem, 6vw, 5rem);
+}
+
+.institute-publications-topics {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+@media (min-width: 992px) {
+    .institute-publications-topics {
+        grid-template-columns: minmax(220px, 0.36fr) minmax(0, 0.64fr);
+    }
+}
+
+.institute-publications-topics__content {
+    position: relative;
+    min-width: 0;
+}
+
+@media (min-width: 992px) {
+    .institute-publications-topics__content {
+        padding-right: clamp(2.25rem, 4vw, 4.5rem);
+    }
+
+    .institute-publications-topics__content::after {
+        content: "";
+        position: absolute;
+        top: 0.25rem;
+        right: 0;
+        bottom: 0.25rem;
+        width: 1px;
+        background: rgba(41, 52, 88, 0.16);
+    }
+}
+
+.institute-publications-topics__content .section-kicker {
+    margin: 0 0 .75rem;
+    color: var(--inlife-primary);
+    font-size: .8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.institute-publications-topics__content .section-title {
+    max-width: 11ch;
+    margin: 0 0 1.25rem;
+    font-size: clamp(1.9rem, 3vw, 3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -.045em;
+    color: var(--inlife-primary);
+}
+
+.institute-publications-topics__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.85rem, 1.4vw, 1.15rem) clamp(0.9rem, 1.6vw, 1.35rem);
+    align-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (min-width: 992px) {
+    .institute-publications-topics__list {
+        padding-left: clamp(2.25rem, 4vw, 4.5rem);
+    }
+}
+
+.institute-publications-topics__list li {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.65rem;
+    padding: 0.58rem 1.35rem;
+    border: 1px solid rgba(41, 52, 88, 0.36);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--inlife-primary);
+    font-size: clamp(0.95rem, 1vw, 1.05rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+}
+
+@media (max-width: 991.98px) {
+    .institute-publications-topics {
+        gap: 1.75rem;
+    }
+
+    .institute-publications-topics__list {
+        padding-top: 1.75rem;
+        border-top: 1px solid rgba(41, 52, 88, 0.14);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .institute-publications-topics__content .section-title {
+        max-width: 100%;
+    }
+
+    .institute-publications-topics__list li {
+        min-height: 2.45rem;
+        padding-inline: 1rem;
+        font-size: 0.92rem;
+    }
+}
+
+/* =========================================================
+   CTA — simple publications link
+   Inspired by About / Mission surface, but reduced to one action.
+========================================================= */
+
+.page-section--institute-publications-cta {
+    padding-top: 0;
+    padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.institute-publications-cta-simple {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding: clamp(3rem, 4.5vw, 4rem);
+    border-radius: 14px;
+    background: linear-gradient(135deg, #293458 0%, #314067 54%, #212944 100%);
+    box-shadow: 0 20px 48px rgba(18, 38, 63, 0.14);
+}
+
+.institute-publications-cta-simple::after {
+    content: "";
+    position: absolute;
+    right: -4.5rem;
+    bottom: -10rem;
+    width: 22rem;
+    height: 22rem;
+    background-image: url("../assets/images/inlife-hero-hex-outline-white.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.14;
+    pointer-events: none;
+}
+
+.institute-publications-cta-simple__readmore {
+    color: #fff;
+
+    &:hover,
+    &:focus-visible {
+        color: #fff;
+    }
+}

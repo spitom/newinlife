@@ -141,7 +141,7 @@ if ( $interval <= 0 ) {
 								<?php endif; ?>
 
 								<?php if ( 'whole_slide' !== $link_mode && is_array( $link ) && ! empty( $link['url'] ) ) : ?>
-									<a class="c-readmore hero-slide__cta" href="<?php echo esc_url( $link['url'] ); ?>">
+									<a class="c-readmore c-readmore--light" href="<?php echo esc_url( $link['url'] ); ?>">
 										<?php echo esc_html( $link['title'] ?: inlife_t( 'Zobacz więcej' ) ); ?>
 										<span class="c-readmore__icon" aria-hidden="true">→</span>
 									</a>
