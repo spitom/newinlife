@@ -1,0 +1,312 @@
+{
+  "key": "group_institute_publications",
+  "title": "Badania — Wydawnictwa",
+  "fields": [
+    {
+      "key": "field_institute_publications_tab_hero",
+      "label": "Hero",
+      "name": "",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0
+    },
+    {
+      "key": "field_institute_publications_hero_lead",
+      "label": "Lead hero",
+      "name": "institute_publications_hero_lead",
+      "aria-label": "",
+      "type": "textarea",
+      "instructions": "Krótki opis pod tytułem strony.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "default_value": "",
+      "maxlength": "",
+      "rows": 4,
+      "placeholder": "",
+      "new_lines": ""
+    },
+    {
+      "key": "field_institute_publications_tab_journals",
+      "label": "Czasopisma",
+      "name": "",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0
+    },
+    {
+      "key": "field_institute_publications_journals",
+      "label": "Karty czasopism",
+      "name": "institute_publications_journals",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "Dodaj maksymalnie dwa czasopisma. Wariant decyduje wyłącznie o kolorze karty.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "block",
+      "pagination": 0,
+      "min": 0,
+      "max": 2,
+      "collapsed": "field_institute_publications_journal_title",
+      "button_label": "Dodaj czasopismo",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_institute_publications_journal_variant",
+          "label": "Wariant wizualny",
+          "name": "journal_variant",
+          "aria-label": "",
+          "type": "select",
+          "instructions": "Dla Polish Journal wybierz Food, dla Reproductive Biology — Reproduction.",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "25",
+            "class": "",
+            "id": ""
+          },
+          "choices": {
+            "food": "Food",
+            "reproduction": "Reproduction"
+          },
+          "default_value": "food",
+          "return_format": "value",
+          "multiple": 0,
+          "allow_null": 0,
+          "ui": 0,
+          "ajax": 0,
+          "placeholder": ""
+        },
+        {
+          "key": "field_institute_publications_journal_title",
+          "label": "Tytuł czasopisma",
+          "name": "journal_title",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "Oficjalna nazwa czasopisma.",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "75",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_institute_publications_journal_eyebrow",
+          "label": "Nadtytuł",
+          "name": "journal_eyebrow",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "Np. „Kwartalnik naukowy”.",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_institute_publications_journal_meta",
+          "label": "Informacja dodatkowa",
+          "name": "journal_meta",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "Np. „Wydawany w Instytucie od 1991 roku”.",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        },
+        {
+          "key": "field_institute_publications_journal_description",
+          "label": "Opis",
+          "name": "journal_description",
+          "aria-label": "",
+          "type": "textarea",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "rows": 5,
+          "placeholder": "",
+          "new_lines": ""
+        },
+        {
+          "key": "field_institute_publications_journal_url",
+          "label": "Adres czasopisma",
+          "name": "journal_url",
+          "aria-label": "",
+          "type": "url",
+          "instructions": "Pełny adres z https://",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "placeholder": "https://"
+        },
+        {
+          "key": "field_institute_publications_journal_cover",
+          "label": "Okładka",
+          "name": "journal_cover",
+          "aria-label": "",
+          "type": "image",
+          "instructions": "Wgraj lub wybierz okładkę czasopisma.",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "50",
+            "class": "",
+            "id": ""
+          },
+          "return_format": "id",
+          "library": "all",
+          "min_width": "",
+          "min_height": "",
+          "min_size": "",
+          "max_width": "",
+          "max_height": "",
+          "max_size": "",
+          "mime_types": "",
+          "preview_size": "medium"
+        }
+      ]
+    },
+    {
+      "key": "field_institute_publications_tab_topics",
+      "label": "Zakres tematyczny",
+      "name": "",
+      "aria-label": "",
+      "type": "tab",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "placement": "top",
+      "endpoint": 0
+    },
+    {
+      "key": "field_institute_publications_topics",
+      "label": "Tematy",
+      "name": "institute_publications_topics",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "Każdy wpis będzie wyświetlany jako osobny tag.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layout": "table",
+      "pagination": 0,
+      "min": 0,
+      "max": 0,
+      "collapsed": "",
+      "button_label": "Dodaj temat",
+      "rows_per_page": 20,
+      "sub_fields": [
+        {
+          "key": "field_institute_publications_topic",
+          "label": "Temat",
+          "name": "topic",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 1,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": ""
+        }
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "page_template",
+        "operator": "==",
+        "value": "page-templates/template-institute-publications.php"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": [],
+  "active": true,
+  "description": "",
+  "show_in_rest": 0,
+  "modified": 1719219600
+}

@@ -9,16 +9,26 @@ defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-$terms = get_the_terms( $post_id, 'career_entry_type' );
+$primary_type = function_exists( 'inlife_get_career_entry_primary_type' )
+	? inlife_get_career_entry_primary_type( (int) $post_id )
+	: null;
 
-if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_get_career_type_key_from_slug' ) ) {
-	foreach ( $terms as $term ) {
-		$type_key = inlife_get_career_type_key_from_slug( $term->slug );
+$type_behavior = array(
+	'show_rodo' => true,
+);
 
-		if ( in_array( $type_key, [ 'results', 'archive' ], true ) ) {
-			return;
-		}
-	}
+if (
+	$primary_type instanceof WP_Term &&
+	function_exists( 'inlife_get_career_type_behavior' )
+) {
+	$type_behavior = array_merge(
+		$type_behavior,
+		inlife_get_career_type_behavior( $primary_type )
+	);
+}
+
+if ( empty( $type_behavior['show_rodo'] ) ) {
+	return;
 }
 
 $rodo_page_id = 0;

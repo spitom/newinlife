@@ -19,7 +19,7 @@ get_header();
 			null,
 			[
 				'kicker'      => inlife_t( 'Badania' ),
-				'title'       => inlife_t( 'Laboratoria' ),
+				'title'       => inlife_get_archive_title( 'laboratories' ),
 				'lead'        => inlife_t( 'Poznaj laboratoria wspierające działalność badawczą instytutu, oferujące specjalistyczne metody, analizy oraz zaplecze aparaturowe.' ),
 				'breadcrumbs' => true,
 				'modifier'    => 'flush',

@@ -13,6 +13,89 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		}
 
 		/*
+		* ------------------------------------------------------------
+		* Front Page – Areas
+		* ------------------------------------------------------------
+		*/
+		$group = 'Front Page – Areas';
+
+		// Section header.
+		pll_register_string(
+			'front_areas_kicker',
+			'Obszary działania',
+			$group
+		);
+
+		pll_register_string(
+			'front_areas_title',
+			'Nauka dla ludzi, zwierząt i środowiska',
+			$group
+		);
+
+		pll_register_string(
+			'front_areas_lead',
+			'Łączymy badania nad żywnością, zdrowiem i rozrodem z praktycznymi rozwiązaniami dla nauki, społeczeństwa i gospodarki.',
+			$group
+		);
+
+		// Food area.
+		pll_register_string(
+			'front_areas_food_kicker',
+			'Żywność',
+			$group
+		);
+
+		pll_register_string(
+			'front_areas_food_title',
+			'Bezpieczeństwo, jakość i wpływ żywności',
+			$group
+		);
+
+		pll_register_string(
+			'front_areas_food_text',
+			'Badamy żywność, jej składniki i procesy, które wpływają na zdrowie oraz jakość życia.',
+			$group
+		);
+
+		// Animals area.
+		pll_register_string(
+			'front_areas_animals_kicker',
+			'Zwierzęta',
+			$group
+		);
+
+		pll_register_string(
+			'front_areas_animals_title',
+			'Rozród, biologia i dobrostan',
+			$group
+		);
+
+		pll_register_string(
+			'front_areas_animals_text',
+			'Rozwijamy wiedzę o mechanizmach rozrodu, zdrowiu i funkcjonowaniu organizmów zwierzęcych.',
+			$group
+		);
+
+		// Health area.
+		pll_register_string(
+			'front_areas_health_kicker',
+			'Zdrowie',
+			$group
+		);
+
+		pll_register_string(
+			'front_areas_health_title',
+			'Mechanizmy zdrowia ludzi i zwierząt',
+			$group
+		);
+
+		pll_register_string(
+			'front_areas_health_text',
+			'Łączymy badania podstawowe i aplikacyjne, aby lepiej rozumieć procesy wpływające na zdrowie.',
+			$group
+		);
+
+		/*
 		 * ------------------------------------------------------------
 		 * Footer
 		 * ------------------------------------------------------------
@@ -70,7 +153,7 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 
 		// Single / nagłówki / meta.
 		pll_register_string( 'career_back_to_offers', 'Wróć do ofert', $group );
-		pll_register_string( 'career_deadline', 'Termin składania', $group );
+		pll_register_string( 'career_deadline', 'Termin składania ofert', $group );
 		pll_register_string( 'career_announcements', 'Komunikaty', $group );
 
 		// CTA.
@@ -138,6 +221,101 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		// Dodatkowe.
 		pll_register_string( 'career_listing_count', 'Liczba wpisów', $group );
 		pll_register_string( 'career_type_label', 'Typ komunikatu', $group );
+
+		// Dynamiczne sekcje ofert.
+		pll_register_string( 'career_current_kicker', 'Aktualne nabory', $group );
+
+		pll_register_string(
+			'career_current_title',
+			'Aktualne oferty i konkursy',
+			$group
+		);
+
+		pll_register_string(
+			'career_current_lead',
+			'Poniżej znajdziesz bieżące konkursy na stanowiska naukowe oraz aktualne ogłoszenia o pracę.',
+			$group
+		);
+
+		pll_register_string(
+			'career_current_filters_aria',
+			'Filtrowanie aktualnych ofert',
+			$group
+		);
+
+		pll_register_string(
+			'career_current_filter_empty',
+			'Brak aktualnych ogłoszeń w wybranej kategorii.',
+			$group
+		);
+
+		pll_register_string(
+			'career_current_empty',
+			'Obecnie nie ma opublikowanych aktywnych ofert.',
+			$group
+		);
+
+		// Preview ofert na landing page Career.
+		pll_register_string( 'career_landing_jobs_kicker', 'Praca', $group );
+
+		pll_register_string(
+			'career_landing_jobs_lead',
+			'Sprawdź najnowsze konkursy na stanowiska naukowe oraz aktualne ogłoszenia o pracę. Możesz od razu przejść do konkretnej oferty albo zobaczyć pełną sekcję ofert, wyników i archiwum.',
+			$group
+		);
+
+		pll_register_string(
+			'career_landing_jobs_cta',
+			'Zobacz wszystkie oferty i konkursy',
+			$group
+		);
+
+		pll_register_string(
+			'career_landing_jobs_empty',
+			'Obecnie nie ma opublikowanych aktywnych ofert w tej sekcji.',
+			$group
+		);
+
+		// Wyniki i archiwum.
+		pll_register_string( 'career_secondary_kicker', 'Informacje', $group );
+
+		pll_register_string(
+			'career_secondary_title',
+			'Wyniki i archiwum ogłoszeń',
+			$group
+		);
+
+		pll_register_string(
+			'career_secondary_lead',
+			'Sprawdź wyniki zakończonych naborów oraz archiwalne ogłoszenia o pracę i konkursy na stanowiska naukowe.',
+			$group
+		);
+
+		pll_register_string(
+			'career_secondary_open',
+			'Zobacz komunikaty',
+			$group
+		);
+
+		// Archiwum typu komunikatu.
+		pll_register_string(
+			'career_taxonomy_default_lead',
+			'Przeglądaj ogłoszenia i komunikaty przypisane do wybranej kategorii.',
+			$group
+		);
+
+		pll_register_string(
+			'career_opportunities_breadcrumb',
+			'Konkursy i oferty pracy',
+			$group
+		);
+
+		// Karta i udostępnianie.
+		pll_register_string( 'career_card_open_offer', 'Przejdź do oferty', $group );
+		pll_register_string( 'career_share_copy', 'Kopiuj link do ogłoszenia', $group );
+		pll_register_string( 'career_share_facebook', 'Udostępnij ogłoszenie na Facebooku', $group );
+		pll_register_string( 'career_share_linkedin', 'Udostępnij ogłoszenie na LinkedIn', $group );
+		pll_register_string( 'career_share_email', 'Wyślij ogłoszenie e-mailem', $group );
 
 		/*
 		* ------------------------------------------------------------
@@ -225,9 +403,8 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'teams_single_tab_news', 'Aktualności', $group );
 
 		// Single - research section.
-		pll_register_string( 'teams_single_section_research_1', 'Obszar badawczy 1', $group );
-		pll_register_string( 'teams_single_section_research_2', 'Obszar badawczy 2', $group );
-		pll_register_string( 'teams_single_section_research_3', 'Obszar badawczy 3', $group );
+		pll_register_string( 'team-overview-title', 'O zespole', $group );
+
 		pll_register_string(
 			'teams_single_section_research_text_1',
 			'Miejsce na opis głównych linii badawczych zespołu.',
@@ -370,7 +547,7 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 			'Informacje zostaną uzupełnione na kolejnym etapie wdrożenia.',
 			$group
 		);
-		pll_register_string( 'labs_single_cooperation_title', 'Współpraca', $group );
+		pll_register_string( 'labs_single_cooperation_title', 'Współpraca i usługi', $group );
 		pll_register_string(
 			'labs_single_cooperation_text',
 			'Dane dotyczące współpracy i zastosowań zostaną rozwinięte wraz z modułem biznesowym.',
@@ -378,7 +555,7 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		);
 
 		pll_register_string( 'labs_single_people_title', 'Skład osobowy', $group );
-		pll_register_string( 'labs_single_manager_badge', 'Kierownik laboratorium', $group );
+		pll_register_string( 'labs_single_manager_badge', 'Kierownik', $group );
 		pll_register_string(
 			'labs_single_people_empty',
 			'Skład osobowy nie został jeszcze uzupełniony.',
@@ -394,11 +571,6 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 			'Opis metody, analizy lub zakresu usług laboratoryjnych.',
 			$group
 		);
-
-		pll_register_string( 'labs_single_equipment_item_1', 'Spektrometr masowy', $group );
-		pll_register_string( 'labs_single_equipment_item_2', 'Chromatograf cieczowy', $group );
-		pll_register_string( 'labs_single_equipment_item_3', 'System PCR', $group );
-		pll_register_string( 'labs_single_equipment_item_4', 'Mikroskop konfokalny', $group );
 
 		pll_register_string( 'labs_single_view_profile', 'Zobacz profil', $group );
 
@@ -526,6 +698,244 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'network_region_lead', 'Zobacz partnerów współpracujących z Instytutem w regionie: %s.', $group );
 		pll_register_string( 'network_region_all_cta', 'Zobacz wszystkich partnerów', $group );
 		pll_register_string( 'network_region_empty', 'Brak partnerów w tym regionie.', $group );
+
+
+		/*
+		* ------------------------------------------------------------
+		* News
+		* ------------------------------------------------------------
+		*/
+		$group = 'News';
+
+		// Archive hero.
+		pll_register_string( 'news_title', 'Aktualności', $group );
+
+		pll_register_string(
+			'news_archive_lead',
+			'Bieżące informacje, artykuły i materiały dotyczące działalności Instytutu.',
+			$group
+		);
+
+		// Category and tag archives.
+		pll_register_string(
+			'news_category_archive_lead',
+			'Wpisy przypisane do wybranej kategorii.',
+			$group
+		);
+
+		pll_register_string( 'news_tag_kicker', 'Tag', $group );
+
+		pll_register_string(
+			'news_tag_archive_lead',
+			'Wpisy oznaczone wybranym tagiem.',
+			$group
+		);
+
+		// Archive filters.
+		pll_register_string(
+			'news_filters_categories_aria',
+			'Kategorie aktualności',
+			$group
+		);
+
+		pll_register_string( 'news_filter_all', 'Wszystkie', $group );
+		pll_register_string( 'news_filter_year', 'Rok', $group );
+		pll_register_string( 'news_filter_all_years', 'Wszystkie lata', $group );
+		pll_register_string( 'news_filter_category', 'Kategoria', $group );
+		pll_register_string( 'news_filter_all_categories', 'Wszystkie kategorie', $group );
+		pll_register_string( 'news_pagination', 'Paginacja', $group );
+
+		pll_register_string(
+			'news_archive_empty',
+			'Brak aktualności do wyświetlenia.',
+			$group
+		);
+
+		// Post cards.
+		pll_register_string( 'news_card_audio', 'Materiał audio', $group );
+		pll_register_string( 'news_card_video', 'Materiał wideo', $group );
+		pll_register_string( 'news_card_placeholder', 'Aktualność', $group );
+		pll_register_string( 'news_card_category_aria', 'Kategoria wpisu', $group );
+		pll_register_string( 'news_card_read_more', 'Czytaj więcej', $group );
+
+		// Single post.
+		pll_register_string( 'news_post_tags_aria', 'Tagi wpisu', $group );
+		pll_register_string( 'news_share_copy', 'Kopiuj link do artykułu', $group );
+		pll_register_string( 'news_share_email', 'Wyślij artykuł e-mailem', $group );
+		pll_register_string(
+			'news_share_facebook',
+			'Udostępnij artykuł na Facebooku',
+			$group
+		);
+
+		pll_register_string(
+			'news_share_linkedin',
+			'Udostępnij artykuł na LinkedIn',
+			$group
+		);
+
+		pll_register_string( 'news_related_articles', 'Powiązane artykuły', $group );
+		pll_register_string( 'news_view_all_news', 'Zobacz wszystkie aktualności', $group );
+		pll_register_string( 'news_latest', 'Ostatnio dodane aktualności', $group );
+		pll_register_string( 'news_view_all', 'Zobacz wszystkie', $group );
+		
+		
+		/*
+		* ------------------------------------------------------------
+		* Institute Publications
+		* ------------------------------------------------------------
+		*/
+		$group = 'Institute Publications';
+
+		pll_register_string(
+			'institute_publications_hero_lead',
+			'Czasopisma naukowe współtworzone przez Instytut, prezentujące wyniki badań z zakresu nauki o żywności, żywienia oraz biologii rozrodu.',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_journals_aria',
+			'Czasopisma wydawane i współwydawane przez Instytut',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_journal_eyebrow',
+			'Kwartalnik naukowy',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_food_meta',
+			'Wydawany w Instytucie od 1991 roku',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_food_description',
+			'Międzynarodowe czasopismo publikujące w języku angielskim oryginalne prace z zakresu nauki o żywności i żywieniu. Promuje osiągnięcia polskich ośrodków naukowych oraz wspiera współpracę międzynarodową.',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_reproduction_meta',
+			'Współwydawane z Towarzystwem Biologii Rozrodu',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_reproduction_description',
+			'Kwartalnik poświęcony badaniom z zakresu rozrodu zwierząt. Obejmuje m.in. fizjologię, endokrynologię, immunologię, biologię molekularną, embriologię, andrologię oraz rozród wspomagany.',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_journal_cta',
+			'Przejdź do czasopisma',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_cover_food',
+			'Okładka czasopisma Polish Journal of Food and Nutrition Sciences',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_cover_reproduction',
+			'Okładka czasopisma Reproductive Biology',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_cover_generic',
+			'Okładka czasopisma %s',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topics_kicker',
+			'Zakres tematyczny',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topics_title',
+			'Obszary publikowanych badań',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topics_aria',
+			'Obszary tematyczne czasopism',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_cta_aria',
+			'Publikacje naukowe Instytutu',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_cta_label',
+			'Przejdź do publikacji naukowych InLife',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topic_food_science',
+			'nauka o żywności',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topic_human_nutrition',
+			'żywienie człowieka',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topic_reproductive_physiology',
+			'fizjologia rozrodu',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topic_endocrinology',
+			'endokrynologia',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topic_immunology',
+			'immunologia',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topic_molecular_biology',
+			'biologia molekularna',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topic_embryology',
+			'embriologia',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topic_andrology',
+			'andrologia',
+			$group
+		);
+
+		pll_register_string(
+			'institute_publications_topic_assisted_reproduction',
+			'rozród wspomagany',
+			$group
+		);
 
 		/*
 		* ------------------------------------------------------------

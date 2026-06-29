@@ -23,6 +23,7 @@ function inlife_admin_get_controlled_page_templates(): array {
 		'page-templates/template-network.php',
 		'page-templates/template-society-landing.php',
 		'page-templates/template-contact.php',
+		'page-templates/template-institute-publications.php',
 	];
 }
 
@@ -87,4 +88,63 @@ add_action(
 			remove_post_type_support( 'page', 'editor' );
 		}
 	}
+);
+
+/**
+ * Add a Polylang language filter to the People list in wp-admin.
+ */
+add_action(
+	'restrict_manage_posts',
+	function( $post_type, $which ) {
+		if (
+			'people' !== $post_type ||
+			'top' !== $which ||
+			! function_exists( 'pll_languages_list' )
+		) {
+			return;
+		}
+
+		$current_language = isset( $_GET['lang'] )
+			? sanitize_key( wp_unslash( $_GET['lang'] ) )
+			: '';
+
+		$available_languages = pll_languages_list(
+			array(
+				'fields' => 'slug',
+			)
+		);
+
+		if ( ! is_array( $available_languages ) || empty( $available_languages ) ) {
+			return;
+		}
+
+		$language_options = array(
+			'pl' => 'Polski',
+			'en' => 'English',
+		);
+		?>
+		<label class="screen-reader-text" for="filter-by-people-language">
+			Język
+		</label>
+
+		<select name="lang" id="filter-by-people-language">
+			<option value="">Wszystkie języki</option>
+
+			<?php foreach ( $language_options as $language_slug => $language_label ) : ?>
+				<?php if ( ! in_array( $language_slug, $available_languages, true ) ) : ?>
+					<?php continue; ?>
+				<?php endif; ?>
+
+				<option
+					value="<?php echo esc_attr( $language_slug ); ?>"
+					<?php selected( $current_language, $language_slug ); ?>
+				>
+					<?php echo esc_html( $language_label ); ?>
+				</option>
+			<?php endforeach; ?>
+		</select>
+		<?php
+	},
+	10,
+	2
 );

@@ -1,6 +1,6 @@
 <?php
 /**
- * Career opportunities - current offers and competitions
+ * Career opportunities – current offers and competitions.
  *
  * @package UnderStrap
  */
@@ -9,22 +9,43 @@ defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-$section_kicker = function_exists( 'get_field' ) ? get_field( 'career_opportunities_current_kicker', $post_id ) : '';
-$section_title  = function_exists( 'get_field' ) ? get_field( 'career_opportunities_current_title', $post_id ) : '';
-$section_text   = function_exists( 'get_field' ) ? get_field( 'career_opportunities_current_text', $post_id ) : '';
+$section_kicker = function_exists( 'get_field' )
+	? get_field( 'career_opportunities_current_kicker', $post_id )
+	: '';
+
+$section_title = function_exists( 'get_field' )
+	? get_field( 'career_opportunities_current_title', $post_id )
+	: '';
+
+$section_text = function_exists( 'get_field' )
+	? get_field( 'career_opportunities_current_text', $post_id )
+	: '';
 
 $section_kicker = $section_kicker ?: inlife_t( 'Aktualne nabory' );
 $section_title  = $section_title ?: inlife_t( 'Aktualne oferty i konkursy' );
 $section_text   = $section_text ?: inlife_t( 'Poniżej znajdziesz bieżące konkursy na stanowiska naukowe oraz aktualne ogłoszenia o pracę.' );
 
-$type_map = [
-	'scientific' => function_exists( 'inlife_get_career_type_slug' ) ? inlife_get_career_type_slug( 'scientific' ) : '',
-	'jobs'       => function_exists( 'inlife_get_career_type_slug' ) ? inlife_get_career_type_slug( 'jobs' ) : '',
-];
+$current_types = function_exists( 'inlife_get_career_current_types' )
+	? inlife_get_career_current_types()
+	: array();
 
-$type_slugs = array_values( array_filter( $type_map ) );
+$current_type_ids = array();
 
-$query_args = [
+foreach ( $current_types as $current_type ) {
+	$term = $current_type['term'] ?? null;
+
+	if ( $term instanceof WP_Term ) {
+		$current_type_ids[] = (int) $term->term_id;
+	}
+}
+
+$current_type_ids = array_values(
+	array_unique(
+		array_filter( $current_type_ids )
+	)
+);
+
+$query_args = array(
 	'post_type'           => 'career_entry',
 	'post_status'         => 'publish',
 	'posts_per_page'      => 10,
@@ -33,67 +54,106 @@ $query_args = [
 	'meta_key'            => 'career_deadline',
 	'orderby'             => 'meta_value_num',
 	'order'               => 'ASC',
-	'meta_query'          => [
+	'meta_query'          => array(
 		'relation' => 'OR',
-		[
+		array(
 			'key'     => 'career_deadline',
 			'value'   => current_time( 'Ymd' ),
 			'compare' => '>=',
 			'type'    => 'NUMERIC',
-		],
-		[
+		),
+		array(
 			'key'     => 'career_deadline',
 			'compare' => 'NOT EXISTS',
-		],
-	],
-];
+		),
+	),
+);
 
-if ( ! empty( $type_slugs ) ) {
-	$query_args['tax_query'] = [
-		[
-			'taxonomy' => 'career_entry_type',
-			'field'    => 'slug',
-			'terms'    => $type_slugs,
-		],
-	];
+if ( ! empty( $current_type_ids ) ) {
+	$query_args['tax_query'] = array(
+		array(
+			'taxonomy'         => 'career_entry_type',
+			'field'            => 'term_id',
+			'terms'            => $current_type_ids,
+			'include_children' => false,
+		),
+	);
+} else {
+	/*
+	 * Nie pokazuj przypadkowo wszystkich komunikatów, gdy żaden typ
+	 * nie jest skonfigurowany jako „Aktualne oferty”.
+	 */
+	$query_args['post__in'] = array( 0 );
+}
+
+if ( function_exists( 'inlife_add_career_language_to_query_args' ) ) {
+	$query_args = inlife_add_career_language_to_query_args( $query_args );
 }
 
 $current_query = new WP_Query( $query_args );
 
-ob_start();
-?>
-<div
-	class="c-pills"
-	data-career-filters
-	role="group"
-	aria-label="<?php echo esc_attr( inlife_t( 'Filtrowanie aktualnych ofert' ) ); ?>"
->
-	<button type="button" class="c-pill is-active" data-career-filter="all" aria-pressed="true">
-		<?php echo esc_html( inlife_t( 'Wszystkie' ) ); ?>
-	</button>
+$action_html = '';
 
-	<button type="button" class="c-pill" data-career-filter="scientific" aria-pressed="false">
-		<?php echo esc_html( inlife_get_career_type_label( 'scientific' ) ); ?>
-	</button>
+if ( ! empty( $current_types ) ) {
+	ob_start();
+	?>
+	<div
+		class="c-pills"
+		data-career-filters
+		role="group"
+		aria-label="<?php echo esc_attr( inlife_t( 'Filtrowanie aktualnych ofert' ) ); ?>"
+	>
+		<button
+			type="button"
+			class="c-pill is-active"
+			data-career-filter="all"
+			aria-pressed="true"
+		>
+			<?php echo esc_html( inlife_t( 'Wszystkie' ) ); ?>
+		</button>
 
-	<button type="button" class="c-pill" data-career-filter="jobs" aria-pressed="false">
-		<?php echo esc_html( inlife_get_career_type_label( 'jobs' ) ); ?>
-	</button>
-</div>
-<?php
-$action_html = (string) ob_get_clean();
+		<?php foreach ( $current_types as $current_type ) : ?>
+			<?php
+			$term = $current_type['term'] ?? null;
+
+			if ( ! $term instanceof WP_Term ) {
+				continue;
+			}
+
+			$filter_key = function_exists( 'inlife_get_career_type_filter_key' )
+				? inlife_get_career_type_filter_key( $term )
+				: '';
+			?>
+
+			<?php if ( '' === $filter_key ) : ?>
+				<?php continue; ?>
+			<?php endif; ?>
+
+			<button
+				type="button"
+				class="c-pill"
+				data-career-filter="<?php echo esc_attr( $filter_key ); ?>"
+				aria-pressed="false"
+			>
+				<?php echo esc_html( $term->name ); ?>
+			</button>
+		<?php endforeach; ?>
+	</div>
+	<?php
+	$action_html = (string) ob_get_clean();
+}
 
 get_template_part(
 	'template-parts/components/section-header',
 	null,
-	[
+	array(
 		'kicker'      => $section_kicker,
 		'title'       => $section_title,
 		'lead'        => $section_text,
 		'action_html' => $action_html,
 		'title_id'    => 'career-current-heading',
 		'class'       => 'career-opportunities-current__header',
-	]
+	)
 );
 ?>
 
@@ -104,30 +164,37 @@ get_template_part(
 			while ( $current_query->have_posts() ) :
 				$current_query->the_post();
 
-				$type_key = '';
-				$terms    = get_the_terms( get_the_ID(), 'career_entry_type' );
+				$entry_type = function_exists( 'inlife_get_career_entry_type_for_placement' )
+					? inlife_get_career_entry_type_for_placement(
+						(int) get_the_ID(),
+						'current'
+					)
+					: null;
 
-				if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-					foreach ( $terms as $term ) {
-						$resolved_key = function_exists( 'inlife_get_career_type_key_from_slug' )
-							? inlife_get_career_type_key_from_slug( $term->slug )
-							: '';
-
-						if ( in_array( $resolved_key, [ 'scientific', 'jobs' ], true ) ) {
-							$type_key = $resolved_key;
-							break;
-						}
-					}
-				}
+				$filter_key = (
+					$entry_type instanceof WP_Term &&
+					function_exists( 'inlife_get_career_type_filter_key' )
+				)
+					? inlife_get_career_type_filter_key( $entry_type )
+					: 'other';
 				?>
-				<div class="career-archive-list__item" data-career-item data-career-type="<?php echo esc_attr( $type_key ?: 'other' ); ?>">
+				<div
+					class="career-archive-list__item"
+					data-career-item
+					data-career-type="<?php echo esc_attr( $filter_key ); ?>"
+				>
 					<?php get_template_part( 'template-parts/career/career-archive', 'card' ); ?>
 				</div>
 			<?php endwhile; ?>
 		</div>
+
 		<?php wp_reset_postdata(); ?>
 
-		<div class="c-surface c-surface--panel career-opportunities-current__empty" data-career-empty hidden>
+		<div
+			class="c-surface c-surface--panel career-opportunities-current__empty"
+			data-career-empty
+			hidden
+		>
 			<p class="career-opportunities-current__empty-text">
 				<?php echo esc_html( inlife_t( 'Brak aktualnych ogłoszeń w wybranej kategorii.' ) ); ?>
 			</p>

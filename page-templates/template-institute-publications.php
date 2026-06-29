@@ -28,8 +28,13 @@ $hero_lead = function_exists( 'inlife_get_acf_field' )
 
 $assets_uri = trailingslashit( get_stylesheet_directory_uri() ) . 'assets/images/';
 
-$journal_cards = [
-	[
+/**
+ * Fallback data.
+ *
+ * It remains visible until editorial ACF content is entered.
+ */
+$fallback_journal_cards = array(
+	array(
 		'slug'        => 'food',
 		'title'       => 'Polish Journal of Food and Nutrition Sciences',
 		'eyebrow'     => inlife_t( 'Kwartalnik naukowy' ),
@@ -39,8 +44,8 @@ $journal_cards = [
 		'label'       => inlife_t( 'Przejdź do czasopisma' ),
 		'image'       => $assets_uri . 'polish-journal.webp',
 		'image_alt'   => inlife_t( 'Okładka czasopisma Polish Journal of Food and Nutrition Sciences' ),
-	],
-	[
+	),
+	array(
 		'slug'        => 'reproduction',
 		'title'       => 'Reproductive Biology',
 		'eyebrow'     => inlife_t( 'Kwartalnik naukowy' ),
@@ -50,10 +55,10 @@ $journal_cards = [
 		'label'       => inlife_t( 'Przejdź do czasopisma' ),
 		'image'       => $assets_uri . 'reproductive-biology.webp',
 		'image_alt'   => inlife_t( 'Okładka czasopisma Reproductive Biology' ),
-	],
-];
+	),
+);
 
-$topics = [
+$fallback_topics = array(
 	inlife_t( 'nauka o żywności' ),
 	inlife_t( 'żywienie człowieka' ),
 	inlife_t( 'fizjologia rozrodu' ),
@@ -63,7 +68,122 @@ $topics = [
 	inlife_t( 'embriologia' ),
 	inlife_t( 'andrologia' ),
 	inlife_t( 'rozród wspomagany' ),
-];
+);
+
+/**
+ * Journal cards from ACF.
+ */
+$journal_cards = array();
+
+if (
+	function_exists( 'have_rows' ) &&
+	have_rows( 'institute_publications_journals', $post_id )
+) {
+	while ( have_rows( 'institute_publications_journals', $post_id ) ) {
+		the_row();
+
+		$variant = sanitize_key(
+			(string) get_sub_field( 'journal_variant' )
+		);
+
+		if ( ! in_array( $variant, array( 'food', 'reproduction' ), true ) ) {
+			$variant = 'food';
+		}
+
+		$title = trim(
+			(string) get_sub_field( 'journal_title' )
+		);
+
+		$url = esc_url_raw(
+			(string) get_sub_field( 'journal_url' )
+		);
+
+		if ( '' === $title || '' === $url ) {
+			continue;
+		}
+
+		$cover = get_sub_field( 'journal_cover' );
+
+		$cover_id = is_array( $cover )
+			? (int) ( $cover['ID'] ?? 0 )
+			: (int) $cover;
+
+		$image = $cover_id
+			? wp_get_attachment_image_url( $cover_id, 'large' )
+			: '';
+
+		$image_alt = $cover_id
+			? trim(
+				(string) get_post_meta(
+					$cover_id,
+					'_wp_attachment_image_alt',
+					true
+				)
+			)
+			: '';
+
+		if ( '' === $image ) {
+			$image = 'food' === $variant
+				? $assets_uri . 'polish-journal.webp'
+				: $assets_uri . 'reproductive-biology.webp';
+		}
+
+		if ( '' === $image_alt ) {
+			$image_alt = sprintf(
+				inlife_t( 'Okładka czasopisma %s' ),
+				$title
+			);
+		}
+
+		$journal_cards[] = array(
+			'slug'        => $variant,
+			'title'       => $title,
+			'eyebrow'     => trim(
+				(string) get_sub_field( 'journal_eyebrow' )
+			),
+			'meta'        => trim(
+				(string) get_sub_field( 'journal_meta' )
+			),
+			'description' => trim(
+				(string) get_sub_field( 'journal_description' )
+			),
+			'url'         => $url,
+			'label'       => inlife_t( 'Przejdź do czasopisma' ),
+			'image'       => $image,
+			'image_alt'   => $image_alt,
+		);
+	}
+}
+
+if ( empty( $journal_cards ) ) {
+	$journal_cards = $fallback_journal_cards;
+}
+
+/**
+ * Topic tags from ACF.
+ */
+$topics = array();
+
+if (
+	function_exists( 'have_rows' ) &&
+	have_rows( 'institute_publications_topics', $post_id )
+) {
+	while ( have_rows( 'institute_publications_topics', $post_id ) ) {
+		the_row();
+
+		$topic = trim(
+			(string) get_sub_field( 'topic' )
+		);
+
+		if ( '' !== $topic ) {
+			$topics[] = $topic;
+		}
+	}
+}
+
+if ( empty( $topics ) ) {
+	$topics = $fallback_topics;
+}
 
 $scientific_publications_url = home_url( '/badania/publikacje/' );
 ?>

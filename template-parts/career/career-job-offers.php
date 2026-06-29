@@ -1,8 +1,8 @@
 <?php
 /**
- * Career job offers section
+ * Career job offers section.
  *
- * Landing preview of current opportunities based on real career entries.
+ * Landing preview of current Career opportunities.
  *
  * @package UnderStrap
  */
@@ -11,64 +11,114 @@ defined( 'ABSPATH' ) || exit;
 
 $post_id = get_the_ID();
 
-$section_kicker = function_exists( 'get_field' ) ? get_field( 'career_job_offers_kicker', $post_id ) : '';
-$section_title  = function_exists( 'get_field' ) ? get_field( 'career_job_offers_title', $post_id ) : '';
-$section_text   = function_exists( 'get_field' ) ? get_field( 'career_job_offers_text', $post_id ) : '';
-$cta_label      = function_exists( 'get_field' ) ? get_field( 'career_job_offers_cta_label', $post_id ) : '';
-$cta_url        = function_exists( 'get_field' ) ? get_field( 'career_job_offers_cta_url', $post_id ) : '';
+$section_kicker = function_exists( 'get_field' )
+	? get_field( 'career_job_offers_kicker', $post_id )
+	: '';
+
+$section_title = function_exists( 'get_field' )
+	? get_field( 'career_job_offers_title', $post_id )
+	: '';
+
+$section_text = function_exists( 'get_field' )
+	? get_field( 'career_job_offers_text', $post_id )
+	: '';
+
+$cta_label = function_exists( 'get_field' )
+	? get_field( 'career_job_offers_cta_label', $post_id )
+	: '';
+
+$cta_url = function_exists( 'get_field' )
+	? get_field( 'career_job_offers_cta_url', $post_id )
+	: '';
 
 $section_kicker = $section_kicker ?: inlife_t( 'Praca' );
 $section_title  = $section_title ?: inlife_t( 'Aktualne oferty i konkursy' );
 $section_text   = $section_text ?: inlife_t( 'Sprawdź najnowsze konkursy na stanowiska naukowe oraz aktualne ogłoszenia o pracę. Możesz od razu przejść do konkretnej oferty albo zobaczyć pełną sekcję ofert, wyników i archiwum.' );
 $cta_label      = $cta_label ?: inlife_t( 'Zobacz wszystkie oferty i konkursy' );
-$cta_url        = $cta_url ?: home_url( '/kariera/konkursy-i-oferty-pracy/' );
+
+$cta_url = $cta_url ?: (
+	function_exists( 'inlife_get_career_opportunities_url' )
+		? inlife_get_career_opportunities_url()
+		: home_url( '/kariera/konkursy-i-oferty-pracy/' )
+);
 
 $preview_limit = 6;
 
-/**
- * Na tym etapie landing pokazuje wpisy z typów:
- * - scientific
- * - jobs
- *
- * To najbezpieczniejszy pierwszy krok bez przebudowy modelu danych.
- */
-$type_slugs = array_filter(
-	[
-		function_exists( 'inlife_get_career_type_slug' ) ? inlife_get_career_type_slug( 'scientific' ) : '',
-		function_exists( 'inlife_get_career_type_slug' ) ? inlife_get_career_type_slug( 'jobs' ) : '',
-	]
+$landing_types = function_exists( 'inlife_get_career_current_types' )
+	? inlife_get_career_current_types( true )
+	: array();
+
+$landing_type_ids = array();
+
+foreach ( $landing_types as $landing_type ) {
+	$term = $landing_type['term'] ?? null;
+
+	if ( $term instanceof WP_Term ) {
+		$landing_type_ids[] = (int) $term->term_id;
+	}
+}
+
+$landing_type_ids = array_values(
+	array_unique(
+		array_filter( $landing_type_ids )
+	)
 );
 
-$query_args = [
+$query_args = array(
 	'post_type'           => 'career_entry',
 	'post_status'         => 'publish',
 	'posts_per_page'      => $preview_limit,
 	'ignore_sticky_posts' => true,
 	'no_found_rows'       => true,
-];
+	'meta_key'            => 'career_deadline',
+	'orderby'             => 'meta_value_num',
+	'order'               => 'ASC',
+	'meta_query'          => array(
+		'relation' => 'OR',
+		array(
+			'key'     => 'career_deadline',
+			'value'   => current_time( 'Ymd' ),
+			'compare' => '>=',
+			'type'    => 'NUMERIC',
+		),
+		array(
+			'key'     => 'career_deadline',
+			'compare' => 'NOT EXISTS',
+		),
+	),
+);
 
-if ( ! empty( $type_slugs ) ) {
-	$query_args['tax_query'] = [
-		[
-			'taxonomy' => 'career_entry_type',
-			'field'    => 'slug',
-			'terms'    => $type_slugs,
-		],
-	];
+if ( ! empty( $landing_type_ids ) ) {
+	$query_args['tax_query'] = array(
+		array(
+			'taxonomy'         => 'career_entry_type',
+			'field'            => 'term_id',
+			'terms'            => $landing_type_ids,
+			'include_children' => false,
+		),
+	);
+} else {
+	/*
+	 * Do not accidentally show all Career entries when no type
+	 * is configured for the Career landing preview.
+	 */
+	$query_args['post__in'] = array( 0 );
+}
+
+if ( function_exists( 'inlife_add_career_language_to_query_args' ) ) {
+	$query_args = inlife_add_career_language_to_query_args( $query_args );
 }
 
 $career_query = new WP_Query( $query_args );
 
 ob_start();
 ?>
-
 <a class="c-readmore career-job-offers__all-link" href="<?php echo esc_url( $cta_url ); ?>">
 	<span class="c-readmore__label">
 		<?php echo esc_html( $cta_label ); ?>
 	</span>
 	<span class="c-readmore__icon" aria-hidden="true">→</span>
 </a>
-
 <?php
 $action_html = (string) ob_get_clean();
 ?>
@@ -78,14 +128,14 @@ $action_html = (string) ob_get_clean();
 	get_template_part(
 		'template-parts/components/section-header',
 		null,
-		[
+		array(
 			'kicker'      => $section_kicker,
 			'title'       => $section_title,
 			'lead'        => $section_text,
 			'action_html' => $action_html,
 			'title_id'    => 'career-job-offers-heading',
 			'class'       => 'career-job-offers__header',
-		]
+		)
 	);
 	?>
 
@@ -95,15 +145,25 @@ $action_html = (string) ob_get_clean();
 			while ( $career_query->have_posts() ) :
 				$career_query->the_post();
 
-				get_template_part( 'template-parts/career/career-archive', 'card' );
+				get_template_part(
+					'template-parts/career/career-archive',
+					'card'
+				);
 			endwhile;
 			?>
 		</div>
+
 		<?php wp_reset_postdata(); ?>
 	<?php else : ?>
 		<div class="career-job-offers__empty c-surface c-surface--panel">
 			<p class="career-job-offers__empty-text mb-0">
-				<?php echo esc_html( inlife_t( 'Obecnie nie ma opublikowanych aktywnych ofert w tej sekcji.' ) ); ?>
+				<?php
+				echo esc_html(
+					inlife_t(
+						'Obecnie nie ma opublikowanych aktywnych ofert w tej sekcji.'
+					)
+				);
+				?>
 			</p>
 		</div>
 	<?php endif; ?>

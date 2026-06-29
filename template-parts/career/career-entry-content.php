@@ -14,25 +14,28 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 
 	<?php
-	$hide_share = false;
+	$primary_type = function_exists( 'inlife_get_career_entry_primary_type' )
+		? inlife_get_career_entry_primary_type( (int) get_the_ID() )
+		: null;
 
-	$terms = get_the_terms( get_the_ID(), 'career_entry_type' );
+	$type_behavior = array(
+		'show_share' => true,
+	);
 
-	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
-		foreach ( $terms as $term ) {
-			$type_key = function_exists( 'inlife_get_career_type_key_from_slug' )
-				? inlife_get_career_type_key_from_slug( $term->slug )
-				: $term->slug;
-
-			if ( in_array( $type_key, [ 'archive', 'archiwum' ], true ) || in_array( $term->slug, [ 'archive', 'archiwum' ], true ) ) {
-				$hide_share = true;
-				break;
-			}
-		}
+	if (
+		$primary_type instanceof WP_Term &&
+		function_exists( 'inlife_get_career_type_behavior' )
+	) {
+		$type_behavior = array_merge(
+			$type_behavior,
+			inlife_get_career_type_behavior( $primary_type )
+		);
 	}
+
+	$show_share = ! empty( $type_behavior['show_share'] );
 	?>
 
-	<?php if ( ! $hide_share ) : ?>
+	<?php if ( $show_share ) : ?>
 		<footer class="career-entry-content__footer">
 			<?php if ( function_exists( 'inlife_get_share_links' ) ) : ?>
 				<?php $share = inlife_get_share_links(); ?>
@@ -45,20 +48,37 @@ defined( 'ABSPATH' ) || exit;
 							class="post-share__item js-copy-link"
 							data-url="<?php echo esc_url( $share['copy'] ); ?>"
 							type="button"
+							aria-label="<?php echo esc_attr( inlife_t( 'Kopiuj link do ogłoszenia' ) ); ?>"
 						>
-							<span class="bi bi-link-45deg"></span>
+							<span class="bi bi-link-45deg" aria-hidden="true"></span>
 						</button>
 
-						<a class="post-share__item" href="<?php echo esc_url( $share['facebook'] ); ?>" target="_blank" rel="noopener">
-							<span class="bi bi-facebook"></span>
+						<a
+							class="post-share__item"
+							href="<?php echo esc_url( $share['facebook'] ); ?>"
+							target="_blank"
+							rel="noopener"
+							aria-label="<?php echo esc_attr( inlife_t( 'Udostępnij ogłoszenie na Facebooku' ) ); ?>"
+						>
+							<span class="bi bi-facebook" aria-hidden="true"></span>
 						</a>
 
-						<a class="post-share__item" href="<?php echo esc_url( $share['linkedin'] ); ?>" target="_blank" rel="noopener">
-							<span class="bi bi-linkedin"></span>
+						<a
+							class="post-share__item"
+							href="<?php echo esc_url( $share['linkedin'] ); ?>"
+							target="_blank"
+							rel="noopener"
+							aria-label="<?php echo esc_attr( inlife_t( 'Udostępnij ogłoszenie na LinkedIn' ) ); ?>"
+						>
+							<span class="bi bi-linkedin" aria-hidden="true"></span>
 						</a>
 
-						<a class="post-share__item" href="<?php echo esc_url( $share['mail'] ); ?>">
-							<span class="bi bi-envelope"></span>
+						<a
+							class="post-share__item"
+							href="<?php echo esc_url( $share['mail'] ); ?>"
+							aria-label="<?php echo esc_attr( inlife_t( 'Wyślij ogłoszenie e-mailem' ) ); ?>"
+						>
+							<span class="bi bi-envelope" aria-hidden="true"></span>
 						</a>
 					</div>
 				</div>

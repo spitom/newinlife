@@ -84,6 +84,104 @@ if ( ! function_exists( 'inlife_get_society_format_badge' ) ) {
     }
 }
 
+if ( ! function_exists( 'inlife_is_default_post_category' ) ) {
+	/**
+	 * Check whether a category is the WordPress default category
+	 * or any of its Polylang translations.
+	 *
+	 * @param WP_Term $category Category term.
+	 *
+	 * @return bool
+	 */
+	function inlife_is_default_post_category( $category ): bool {
+		if (
+			! $category instanceof WP_Term ||
+			'category' !== $category->taxonomy
+		) {
+			return false;
+		}
+
+		$default_category_id = (int) get_option( 'default_category' );
+
+		if ( $default_category_id <= 0 ) {
+			return false;
+		}
+
+		if ( (int) $category->term_id === $default_category_id ) {
+			return true;
+		}
+
+		if (
+			! function_exists( 'pll_get_term' ) ||
+			! function_exists( 'pll_get_term_language' )
+		) {
+			return false;
+		}
+
+		$category_language = (string) pll_get_term_language(
+			$category->term_id,
+			'slug'
+		);
+
+		if ( '' === $category_language ) {
+			return false;
+		}
+
+		$translated_default_category_id = (int) pll_get_term(
+			$default_category_id,
+			$category_language
+		);
+
+		return (
+			$translated_default_category_id > 0 &&
+			(int) $category->term_id === $translated_default_category_id
+		);
+	}
+}
+
+if ( ! function_exists( 'inlife_is_hidden_news_category' ) ) {
+	/**
+	 * Hide generic default categories from News archive filters.
+	 *
+	 * Works with default-category translations and independently
+	 * of translated term IDs or suffixed slugs such as -2.
+	 *
+	 * @param WP_Term $category Category term.
+	 *
+	 * @return bool
+	 */
+	function inlife_is_hidden_news_category( $category ): bool {
+		if (
+			! $category instanceof WP_Term ||
+			'category' !== $category->taxonomy
+		) {
+			return false;
+		}
+
+		if ( inlife_is_default_post_category( $category ) ) {
+			return true;
+		}
+
+		$base_slug = preg_replace(
+			'/-\d+$/',
+			'',
+			(string) $category->slug
+		);
+
+		$normalized_name = sanitize_title(
+			(string) $category->name
+		);
+
+		$hidden_values = array(
+			'bez-kategorii',
+			'uncategorized',
+		);
+
+		return in_array( $base_slug, $hidden_values, true ) ||
+			in_array( $normalized_name, $hidden_values, true );
+	}
+}
+
 if ( ! function_exists( 'inlife_get_primary_post_category' ) ) {
     /**
      * Returns the first valid category for a post, excluding the WP default category.
@@ -93,7 +191,6 @@ if ( ! function_exists( 'inlife_get_primary_post_category' ) ) {
      */
     function inlife_get_primary_post_category( $post_id ) {
         $categories          = get_the_category( $post_id );
-        $default_category_id = (int) get_option( 'default_category' );
 
         if ( empty( $categories ) || is_wp_error( $categories ) ) {
             return null;
@@ -104,7 +201,7 @@ if ( ! function_exists( 'inlife_get_primary_post_category' ) ) {
                 continue;
             }
 
-            if ( (int) $category->term_id === $default_category_id ) {
+            if ( inlife_is_hidden_news_category( $category ) ) {
                 continue;
             }
 
@@ -113,6 +210,131 @@ if ( ! function_exists( 'inlife_get_primary_post_category' ) ) {
 
         return null;
     }
+}
+
+if ( ! function_exists( 'inlife_get_news_archive_url' ) ) {
+	/**
+	 * Return the News archive URL for the current Polylang language.
+	 *
+	 * @return string
+	 */
+	function inlife_get_news_archive_url(): string {
+		$posts_page_id = (int) get_option( 'page_for_posts' );
+
+		if (
+			$posts_page_id > 0 &&
+			function_exists( 'pll_current_language' ) &&
+			function_exists( 'pll_get_post' )
+		) {
+			$current_language = (string) pll_current_language( 'slug' );
+
+			if ( '' !== $current_language ) {
+				$translated_page_id = (int) pll_get_post(
+					$posts_page_id,
+					$current_language
+				);
+
+				if ( $translated_page_id > 0 ) {
+					$posts_page_id = $translated_page_id;
+				}
+			}
+		}
+
+		if ( $posts_page_id > 0 ) {
+			return (string) get_permalink( $posts_page_id );
+		}
+
+		return function_exists( 'pll_home_url' )
+			? (string) pll_home_url()
+			: home_url( '/' );
+	}
+}
+
+if ( ! function_exists( 'inlife_get_news_archive_categories' ) ) {
+	/**
+	 * Return visible News categories for the current language.
+	 *
+	 * @return WP_Term[]
+	 */
+	function inlife_get_news_archive_categories(): array {
+		$args = array(
+			'hide_empty' => true,
+		);
+
+		if ( function_exists( 'pll_current_language' ) ) {
+			$current_language = (string) pll_current_language( 'slug' );
+
+			if ( '' !== $current_language ) {
+				$args['lang'] = $current_language;
+			}
+		}
+
+		$categories = get_categories( $args );
+
+		if ( empty( $categories ) || is_wp_error( $categories ) ) {
+			return array();
+		}
+
+		return array_values(
+			array_filter(
+				$categories,
+				static function ( $category ): bool {
+					return $category instanceof WP_Term &&
+						! inlife_is_hidden_news_category( $category );
+				}
+			)
+		);
+	}
+}
+
+if ( ! function_exists( 'inlife_get_news_archive_years' ) ) {
+	/**
+	 * Return publication years for News posts in the current language.
+	 *
+	 * @return int[]
+	 */
+	function inlife_get_news_archive_years(): array {
+		$query_args = array(
+			'post_type'        => 'post',
+			'post_status'      => 'publish',
+			'posts_per_page'   => -1,
+			'fields'           => 'ids',
+			'orderby'          => 'date',
+			'order'            => 'DESC',
+			'no_found_rows'    => true,
+			'suppress_filters' => false,
+			'meta_query'       => array(
+				array(
+					'key'     => 'show_in_main_news_archive',
+					'value'   => '1',
+					'compare' => '=',
+				),
+			),
+		);
+
+		if ( function_exists( 'pll_current_language' ) ) {
+			$current_language = (string) pll_current_language( 'slug' );
+
+			if ( '' !== $current_language ) {
+				$query_args['lang'] = $current_language;
+			}
+		}
+
+		$query = new WP_Query( $query_args );
+		$years = array();
+
+		foreach ( (array) $query->posts as $post_id ) {
+			$year = (int) get_the_date( 'Y', (int) $post_id );
+
+			if ( $year > 0 ) {
+				$years[ $year ] = $year;
+			}
+		}
+
+		krsort( $years, SORT_NUMERIC );
+
+		return array_values( $years );
+	}
 }
 
 if ( ! function_exists( 'inlife_filter_main_posts_archive_query' ) ) {
@@ -133,6 +355,15 @@ if ( ! function_exists( 'inlife_filter_main_posts_archive_query' ) ) {
 
         $query->set( 'post_type', 'post' );
         $query->set( 'post_status', 'publish' );
+
+            if ( function_exists( 'pll_current_language' ) ) {
+                $current_language = (string) pll_current_language( 'slug' );
+
+                if ( '' !== $current_language ) {
+                    $query->set( 'lang', $current_language );
+                }
+            }
+            
         $query->set(
             'meta_query',
             [

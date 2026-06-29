@@ -66,7 +66,7 @@ if ( ! $card_image_id && has_post_thumbnail( $laboratory_id ) ) {
 				</h2>
 
 				<a class="laboratory-card__link c-readmore" href="<?php the_permalink(); ?>">
-					<?php echo esc_html( inlife_t( 'Poznaj laboratorium' ) ); ?>
+					<?php echo esc_html( inlife_t( 'Zobacz laboratorium' ) ); ?>
 					<span class="c-readmore__icon" aria-hidden="true">→</span>
 				</a>
 

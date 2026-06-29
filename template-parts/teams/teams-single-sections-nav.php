@@ -18,7 +18,6 @@ $tabs = array(
 
 <div id="team-activity" class="team-sections-nav-wrap">
 	<header class="section-heading">
-		<p class="section-kicker"><?php echo esc_html( inlife_t( 'Dorobek i aktywność zespołu' ) ); ?></p>
 		<h2 class="section-title"><?php echo esc_html( inlife_t( 'Szczegóły działalności' ) ); ?></h2>
 	</header>
 

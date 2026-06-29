@@ -20,23 +20,34 @@ while ( have_posts() ) :
 		? inlife_get_career_entry_type_label( $post_id )
 		: inlife_t( 'Kariera' );
 
+	$home_url = function_exists( 'pll_home_url' )
+		? pll_home_url()
+		: home_url( '/' );
+
+	$career_landing_url = function_exists( 'inlife_get_career_landing_url' )
+		? inlife_get_career_landing_url()
+		: home_url( '/kariera/' );
+
+	$career_opportunities_url = function_exists( 'inlife_get_career_opportunities_url' )
+		? inlife_get_career_opportunities_url()
+		: home_url( '/kariera/konkursy-i-oferty-pracy/' );
 
 	ob_start();
 	?>
 	<nav class="c-breadcrumbs" aria-label="<?php echo esc_attr( inlife_t( 'Okruszki' ) ); ?>">
 		<ol class="c-breadcrumbs__list">
 			<li class="c-breadcrumbs__item">
-				<a class="c-breadcrumbs__link" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<a class="c-breadcrumbs__link" href="<?php echo esc_url( $home_url ); ?>">
 					<?php echo esc_html( inlife_t( 'Strona główna' ) ); ?>
 				</a>
 			</li>
 			<li class="c-breadcrumbs__item">
-				<a class="c-breadcrumbs__link" href="<?php echo esc_url( home_url( '/kariera/' ) ); ?>">
+				<a class="c-breadcrumbs__link" href="<?php echo esc_url( $career_landing_url ); ?>">
 					<?php echo esc_html( inlife_t( 'Kariera' ) ); ?>
 				</a>
 			</li>
 			<li class="c-breadcrumbs__item">
-				<a class="c-breadcrumbs__link" href="<?php echo esc_url( home_url( '/kariera/konkursy-i-oferty-pracy/' ) ); ?>">
+				<a class="c-breadcrumbs__link" href="<?php echo esc_url( $career_opportunities_url ); ?>">
 					<?php echo esc_html( inlife_t( 'Konkursy i oferty pracy' ) ); ?>
 				</a>
 			</li>

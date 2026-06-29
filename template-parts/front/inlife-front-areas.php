@@ -3,16 +3,14 @@ defined( 'ABSPATH' ) || exit;
 
 $container = function_exists( 'inlife_container_class' ) ? inlife_container_class() : 'container';
 
-$teams_page = get_page_by_path( 'zespoly' );
+$teams_url = get_post_type_archive_link( 'teams' );
 
-if ( $teams_page ) {
-	$teams_page_id = function_exists( 'pll_get_post' )
-		? pll_get_post( $teams_page->ID )
-		: $teams_page->ID;
+if ( ! $teams_url ) {
+	$language_home = function_exists( 'pll_home_url' )
+		? pll_home_url()
+		: home_url( '/' );
 
-	$teams_url = get_permalink( $teams_page_id );
-} else {
-	$teams_url = home_url( '/zespoly/' );
+	$teams_url = trailingslashit( $language_home ) . 'zespoly/';
 }
 
 $business_page = get_page_by_path( 'biznes' );
@@ -29,21 +27,21 @@ if ( $business_page ) {
 
 $area_cards = [
 	[
-		'url'     => add_query_arg( 'area', 'zywnosc', $teams_url ),
+		'url'     => inlife_get_team_area_archive_url( 'zywnosc', $teams_url ),
 		'kicker'  => inlife_t( 'Żywność' ),
 		'title'   => inlife_t( 'Bezpieczeństwo, jakość i wpływ żywności' ),
 		'text'    => inlife_t( 'Badamy żywność, jej składniki i procesy, które wpływają na zdrowie oraz jakość życia.' ),
 		'variant' => 'food',
 	],
 	[
-		'url'     => add_query_arg( 'area', 'zwierzeta', $teams_url ),
+		'url'	  => inlife_get_team_area_archive_url( 'zwierzeta', $teams_url ),
 		'kicker'  => inlife_t( 'Zwierzęta' ),
 		'title'   => inlife_t( 'Rozród, biologia i dobrostan' ),
 		'text'    => inlife_t( 'Rozwijamy wiedzę o mechanizmach rozrodu, zdrowiu i funkcjonowaniu organizmów zwierzęcych.' ),
 		'variant' => 'animals',
 	],
 	[
-		'url'     => add_query_arg( 'area', 'zdrowie', $teams_url ),
+		'url'     => inlife_get_team_area_archive_url( 'zdrowie', $teams_url ),
 		'kicker'  => inlife_t( 'Zdrowie' ),
 		'title'   => inlife_t( 'Mechanizmy zdrowia ludzi i zwierząt' ),
 		'text'    => inlife_t( 'Łączymy badania podstawowe i aplikacyjne, aby lepiej rozumieć procesy wpływające na zdrowie.' ),

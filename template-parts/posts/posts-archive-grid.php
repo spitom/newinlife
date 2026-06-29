@@ -6,6 +6,10 @@
 defined( 'ABSPATH' ) || exit;
 
 $container = $args['container'] ?? 'container';
+
+$archive_url = function_exists( 'inlife_get_news_archive_url' )
+	? inlife_get_news_archive_url()
+	: (string) get_permalink( get_option( 'page_for_posts' ) );
 ?>
 
 <section class="posts-archive">
@@ -23,43 +27,18 @@ $container = $args['container'] ?? 'container';
 			}
 		}
 
-		$categories = get_categories(
-			[
-				'hide_empty' => true,
-			]
-		);
+		$categories = function_exists( 'inlife_get_news_archive_categories' )
+			? inlife_get_news_archive_categories()
+			: array();
 
-		$exclude_ids = [];
-
-		foreach ( [ 'bez-kategorii', 'uncategorized' ] as $slug ) {
-			$term = get_category_by_slug( $slug );
-
-			if ( $term ) {
-				$exclude_ids[] = (int) $term->term_id;
-			}
-		}
-
-		$categories = get_categories(
-			[
-				'hide_empty' => true,
-				'exclude'   => $exclude_ids,
-			]
-		);
-
-		$years = $GLOBALS['wpdb']->get_col(
-			"
-			SELECT DISTINCT YEAR(post_date)
-			FROM {$GLOBALS['wpdb']->posts}
-			WHERE post_type = 'post'
-			AND post_status = 'publish'
-			ORDER BY post_date DESC
-			"
-		);
+		$years = function_exists( 'inlife_get_news_archive_years' )
+			? inlife_get_news_archive_years()
+			: array();
 		?>
 
 		<div class="archive-filters posts-filters">
 
-			<form class="posts-filters__desktop" method="get" action="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) . '#posts-listing' ); ?>">
+			<form class="posts-filters__desktop" method="get" action="<?php echo esc_url( $archive_url . '#posts-listing' ); ?>">
 				<?php if ( $current_year ) : ?>
 					<input type="hidden" name="news_year" value="<?php echo esc_attr( $current_year ); ?>">
 				<?php endif; ?>
@@ -82,7 +61,7 @@ $container = $args['container'] ?? 'container';
 				</div>
 			</form>
 
-			<form class="posts-filters__year" method="get" action="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) . '#posts-listing' ); ?>">
+			<form class="posts-filters__year" method="get" action="<?php echo esc_url( $archive_url . '#posts-listing' ); ?>">
 				<?php if ( $current_cat ) : ?>
 					<input type="hidden" name="news_cat" value="<?php echo esc_attr( $current_cat ); ?>">
 				<?php endif; ?>
@@ -100,7 +79,7 @@ $container = $args['container'] ?? 'container';
 				</label>
 			</form>
 
-			<form class="posts-filters__mobile" method="get" action="<?php echo esc_url( get_permalink( get_option( 'page_for_posts' ) ) . '#posts-listing' ); ?>">
+			<form class="posts-filters__mobile" method="get" action="<?php echo esc_url( $archive_url . '#posts-listing' ); ?>">
 				<label class="archive-filters__select archive-filters__select--category">
 					<span class="screen-reader-text"><?php echo esc_html( inlife_t( 'Kategoria' ) ); ?></span>
 					<select name="news_cat" onchange="this.form.submit()">

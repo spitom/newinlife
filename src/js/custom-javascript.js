@@ -456,12 +456,34 @@ document.addEventListener('DOMContentLoaded', () => {
 		window.history.replaceState({}, '', url);
 	};
 
+	const updateLanguageSwitcherUrls = (filterValue) => {
+		const languageLinks = document.querySelectorAll(
+			'.language-switcher__link[href][hreflang]'
+		);
+
+		languageLinks.forEach((link) => {
+			const targetUrl = new URL(
+				link.href,
+				window.location.origin
+			);
+
+			if (filterValue === 'all') {
+				targetUrl.searchParams.delete('area');
+			} else {
+				targetUrl.searchParams.set('area', filterValue);
+			}
+
+			link.href = targetUrl.toString();
+		});
+	};
+
 	const applyFilter = (filterValue, updateHistory = true) => {
 		const normalizedValue = filterValue || 'all';
 
 		updateButtons(normalizedValue);
 		updateHero(normalizedValue);
 		updateListing(normalizedValue);
+		updateLanguageSwitcherUrls(normalizedValue);
 
 		if (updateHistory) {
 			updateUrl(normalizedValue);
@@ -476,10 +498,42 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	const url = new URL(window.location.href);
-	const initialArea = url.searchParams.get('area') || 'all';
-	const allowedFilters = Array.from(buttons).map((button) => button.getAttribute('data-team-filter'));
 
-	applyFilter(allowedFilters.includes(initialArea) ? initialArea : 'all', false);
+	const legacyAreaAliases = {
+		zywnosc: 'food',
+		zwierzeta: 'animals',
+		zdrowie: 'health',
+	};
+
+	const requestedArea = url.searchParams.get('area') || 'all';
+
+	const initialArea = Object.prototype.hasOwnProperty.call(
+		legacyAreaAliases,
+		requestedArea
+	)
+		? legacyAreaAliases[requestedArea]
+		: requestedArea;
+
+	const allowedFilters = Array.from(buttons).map((button) =>
+		button.getAttribute('data-team-filter')
+	);
+
+	const validInitialArea = allowedFilters.includes(initialArea)
+		? initialArea
+		: 'all';
+
+	/*
+	* Old URLs such as ?area=zwierzeta remain usable,
+	* then normalize in the browser to ?area=animals.
+	*/
+	if (
+		validInitialArea !== 'all' &&
+		validInitialArea !== requestedArea
+	) {
+		updateUrl(validInitialArea);
+	}
+
+	applyFilter(validInitialArea, false);
 });
 
 

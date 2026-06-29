@@ -13,20 +13,25 @@ $type_label = function_exists( 'inlife_get_career_entry_type_label' )
 	? inlife_get_career_entry_type_label( $post_id )
 	: '';
 
-$hide_deadline = false;
+$primary_type = function_exists( 'inlife_get_career_entry_primary_type' )
+	? inlife_get_career_entry_primary_type( (int) $post_id )
+	: null;
 
-$terms = get_the_terms( $post_id, 'career_entry_type' );
+$type_behavior = array(
+	'show_deadline' => true,
+);
 
-if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_get_career_type_key_from_slug' ) ) {
-	foreach ( $terms as $term ) {
-		$type_key = inlife_get_career_type_key_from_slug( $term->slug );
-
-		if ( in_array( $type_key, [ 'results', 'archive' ], true ) ) {
-			$hide_deadline = true;
-			break;
-		}
-	}
+if (
+	$primary_type instanceof WP_Term &&
+	function_exists( 'inlife_get_career_type_behavior' )
+) {
+	$type_behavior = array_merge(
+		$type_behavior,
+		inlife_get_career_type_behavior( $primary_type )
+	);
 }
+
+$show_deadline = ! empty( $type_behavior['show_deadline'] );
 
 $published_date = get_the_date( '', $post_id );
 
@@ -59,7 +64,7 @@ $deadline = function_exists( 'inlife_format_career_date' )
 				</li>
 			<?php endif; ?>
 
-			<?php if ( $deadline && ! $hide_deadline ) : ?>
+			<?php if ( $deadline && $show_deadline ) : ?>
 				<li>
 					<span class="career-entry-aside__label">
 						<?php echo esc_html( inlife_t( 'Termin składania ofert' ) ); ?>

@@ -7,16 +7,33 @@
 
 defined('ABSPATH') || exit;
 
-if (!function_exists('inlife_get_career_entry_type_label')) {
-	function inlife_get_career_entry_type_label($post_id = 0) {
+if ( ! function_exists( 'inlife_get_career_entry_type_label' ) ) {
+	/**
+	 * Return the visible label of the primary Career type.
+	 *
+	 * @param int $post_id Career entry ID.
+	 * @return string
+	 */
+	function inlife_get_career_entry_type_label( $post_id = 0 ): string {
 		$post_id = $post_id ?: get_the_ID();
-		$terms = get_the_terms($post_id, 'career_entry_type');
 
-		if (empty($terms) || is_wp_error($terms)) {
+		if ( function_exists( 'inlife_get_career_entry_primary_type' ) ) {
+			$primary_type = inlife_get_career_entry_primary_type( (int) $post_id );
+
+			if ( $primary_type instanceof WP_Term ) {
+				return (string) $primary_type->name;
+			}
+		}
+
+		$terms = get_the_terms( $post_id, 'career_entry_type' );
+
+		if ( empty( $terms ) || is_wp_error( $terms ) ) {
 			return '';
 		}
 
-		return $terms[0]->name;
+		return isset( $terms[0] ) && $terms[0] instanceof WP_Term
+			? (string) $terms[0]->name
+			: '';
 	}
 }
 

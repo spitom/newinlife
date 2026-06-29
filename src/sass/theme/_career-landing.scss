@@ -192,13 +192,12 @@
 }
 
 .career-job-offers__empty {
-    padding: clamp(1.25rem, 2vw, 1.75rem);
-    border: 1px solid var(--inlife-border);
-    background: #fff;
+    margin-top: 1rem;
 }
 
 .career-job-offers__empty-text {
-    color: var(--inlife-text);
+    margin: 0;
+    color: var(--inlife-text-muted);
 }
 
 /* =========================================================

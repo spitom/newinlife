@@ -295,7 +295,6 @@ if ( ! function_exists( 'inlife_get_singular_breadcrumb_items' ) ) {
 
 		if ( 'post' === $post_type ) {
 			$context             = function_exists( 'inlife_get_entry_context' ) ? inlife_get_entry_context() : '';
-			$default_category_id = (int) get_option( 'default_category' );
 
 			/* =========================================
 			   CONTEXT: SOCIETY
@@ -350,7 +349,7 @@ if ( ! function_exists( 'inlife_get_singular_breadcrumb_items' ) ) {
 						continue;
 					}
 
-					if ( (int) $category->term_id === $default_category_id ) {
+					if ( inlife_is_default_post_category( $category ) ) {
 						continue;
 					}
 

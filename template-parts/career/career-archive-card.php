@@ -20,25 +20,38 @@ $deadline = function_exists( 'inlife_format_career_date' )
 	? inlife_format_career_date( $deadline_raw )
 	: '';
 
-$type_class = '';
+$primary_type = function_exists( 'inlife_get_career_entry_primary_type' )
+	? inlife_get_career_entry_primary_type( (int) $post_id )
+	: null;
 
-$hide_deadline = false;
+$type_behavior = array(
+	'card_style'    => 'standard',
+	'show_deadline' => true,
+);
 
-$terms = get_the_terms( $post_id, 'career_entry_type' );
-
-if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_get_career_type_key_from_slug' ) ) {
-    foreach ( $terms as $term ) {
-        $resolved_key = inlife_get_career_type_key_from_slug( $term->slug );
-
-        if ( in_array( $resolved_key, [ 'results', 'archive' ], true ) ) {
-            $hide_deadline = true;
-        }
-
-        if ( in_array( $resolved_key, [ 'scientific', 'jobs' ], true ) ) {
-            $type_class = 'career-archive-card--' . $resolved_key;
-        }
-    }
+if (
+	$primary_type instanceof WP_Term &&
+	function_exists( 'inlife_get_career_type_behavior' )
+) {
+	$type_behavior = array_merge(
+		$type_behavior,
+		inlife_get_career_type_behavior( $primary_type )
+	);
 }
+
+$card_style = isset( $type_behavior['card_style'] )
+	? (string) $type_behavior['card_style']
+	: 'standard';
+
+$type_class = in_array(
+	$card_style,
+	array( 'scientific', 'jobs' ),
+	true
+)
+	? 'career-archive-card--' . $card_style
+	: '';
+
+$show_deadline = ! empty( $type_behavior['show_deadline'] );
 ?>
 
 <article class="career-archive-card <?php echo esc_attr( $type_class ); ?>">
@@ -54,7 +67,7 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_ge
 			<?php the_title(); ?>
 		</h2>
 
-		<?php if ( $unit || ( $deadline && ! $hide_deadline ) ) : ?>
+		<?php if ( $unit || ( $deadline && $show_deadline ) ) : ?>
 			<div class="career-archive-card__meta">
 				<?php if ( $unit ) : ?>
 					<p class="career-archive-card__meta-item">
@@ -62,7 +75,7 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) && function_exists( 'inlife_ge
 					</p>
 				<?php endif; ?>
 
-				<?php if ( $deadline && ! $hide_deadline ) : ?>
+				<?php if ( $deadline && $show_deadline ) : ?>
 					<p class="career-archive-card__meta-item career-archive-card__meta-item--deadline">
 						<span><?php echo esc_html( inlife_t( 'Termin składania' ) ); ?></span>
 						<strong><?php echo esc_html( $deadline ); ?></strong>

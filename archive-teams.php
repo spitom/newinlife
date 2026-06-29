@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 
-$hero_content = [
+$hero_content_source = [
 	'all' => [
 		'kicker'      => inlife_t( 'Badania' ),
 		'title'       => inlife_t( 'Zespoły badawcze' ),
@@ -31,6 +31,23 @@ $hero_content = [
 		'description' => inlife_t( 'Nauki o zdrowiu – badania nad mechanizmami warunkującymi zdrowie i chorobę oraz nad biologicznymi podstawami profilaktyki, diagnostyki i terapii.' ),
 	],
 ];
+
+/*
+ * JavaScript uses the current-language term slug, e.g.:
+ * PL: zwierzeta / zdrowie / zywnosc
+ * EN: animals / health / food
+ */
+$hero_content = array(
+	'all' => $hero_content_source['all'],
+);
+
+foreach ( inlife_get_team_area_filter_map() as $source_slug => $filter_key ) {
+	if ( ! isset( $hero_content_source[ $source_slug ] ) ) {
+		continue;
+	}
+
+	$hero_content[ $filter_key ] = $hero_content_source[ $source_slug ];
+}
 ?>
 
 <main id="main-content" class="site-main site-main--teams">

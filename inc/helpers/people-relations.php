@@ -1,6 +1,53 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+if ( ! function_exists( 'inlife_filter_people_ids_by_current_language' ) ) {
+	/**
+	 * Keep only People posts assigned to the current Polylang language.
+	 *
+	 * When Polylang is inactive, returns the original IDs unchanged.
+	 *
+	 * @param int[] $people_ids People post IDs.
+	 *
+	 * @return int[]
+	 */
+	function inlife_filter_people_ids_by_current_language( array $people_ids ): array {
+		$people_ids = array_values(
+			array_unique(
+				array_filter(
+					array_map( 'intval', $people_ids )
+				)
+			)
+		);
+
+		if (
+			empty( $people_ids ) ||
+			! function_exists( 'pll_current_language' ) ||
+			! function_exists( 'pll_get_post_language' )
+		) {
+			return $people_ids;
+		}
+
+		$current_language = (string) pll_current_language( 'slug' );
+
+		if ( '' === $current_language ) {
+			return $people_ids;
+		}
+
+		return array_values(
+			array_filter(
+				$people_ids,
+				static function ( int $person_id ) use ( $current_language ): bool {
+					return $current_language === (string) pll_get_post_language(
+						$person_id,
+						'slug'
+					);
+				}
+			)
+		);
+	}
+}
+
 function inlife_get_people_by_team( int $team_id ): array {
 	global $wpdb;
 
@@ -20,7 +67,9 @@ function inlife_get_people_by_team( int $team_id ): array {
 		(string) $team_id
 	);
 
-	return array_map( 'intval', $wpdb->get_col( $sql ) );
+	$people_ids = array_map( 'intval', $wpdb->get_col( $sql ) );
+
+	return inlife_filter_people_ids_by_current_language( $people_ids );
 }
 
 function inlife_get_team_leader( int $team_id ): ?int {
@@ -54,15 +103,36 @@ function inlife_get_team_members( int $team_id ): array {
 }
 
 if ( ! function_exists( 'inlife_get_person_display_name' ) ) {
+	/**
+	 * Return a person's display name with language-appropriate
+	 * academic-title placement.
+	 *
+	 * PL: dr hab. Kowalik Magdalena
+	 * EN: Magdalena Kowalik, Ph.D., D.Sc.
+	 *
+	 * @param int $person_id Person post ID.
+	 *
+	 * @return string
+	 */
 	function inlife_get_person_display_name( int $person_id ): string {
 		$name  = get_the_title( $person_id );
-		$title = function_exists( 'get_field' ) ? get_field( 'person_academic_title', $person_id ) : '';
+		$title = function_exists( 'get_field' )
+			? get_field( 'person_academic_title', $person_id )
+			: '';
 
-		$title = is_string( $title ) ? trim( $title ) : '';
 		$name  = is_string( $name ) ? trim( $name ) : '';
+		$title = is_string( $title ) ? trim( $title ) : '';
 
 		if ( '' === $title ) {
 			return $name;
+		}
+
+		$language = function_exists( 'pll_get_post_language' )
+			? (string) pll_get_post_language( $person_id, 'slug' )
+			: '';
+
+		if ( 'en' === $language ) {
+			return trim( $name . ', ' . $title );
 		}
 
 		return trim( $title . ' ' . $name );

@@ -52,7 +52,11 @@ if ( ! function_exists( 'inlife_get_people_ids_by_team' ) ) {
 			return array();
 		}
 
-		return array_map( 'intval', $results );
+		$people_ids = array_map( 'intval', $results );
+
+		return function_exists( 'inlife_filter_people_ids_by_current_language' )
+			? inlife_filter_people_ids_by_current_language( $people_ids )
+			: $people_ids;
 	}
 }
 
