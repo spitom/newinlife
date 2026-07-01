@@ -145,6 +145,43 @@
         font-weight: 800;
     }
 
+    li>ul,
+    li>ol {
+        gap: 0.3rem;
+        margin-top: 0.45rem;
+        margin-bottom: 0.35rem;
+        padding-left: 1.25rem;
+    }
+
+    li>ul {
+        list-style: none;
+
+        >li {
+            position: relative;
+            padding-left: 0.8rem;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0.82em;
+                left: 0;
+                width: 0.38rem;
+                height: 2px;
+                border-radius: 999px;
+                background: rgba(41, 52, 88, 0.48);
+            }
+        }
+    }
+
+    li>ol {
+        list-style-type: lower-alpha;
+
+        >li::marker {
+            color: rgba(41, 52, 88, 0.48);
+            font-weight: 800;
+        }
+    }
+
     ul.is-style-inlife-checklist,
     .wp-block-list.is-style-inlife-checklist {
         gap: 0.65rem;
@@ -344,7 +381,7 @@
         p {
             color: var(--inlife-primary);
             font-size: clamp(1.05rem, 1.25vw, 1.2rem);
-            font-weight: 650;
+            font-weight: 500;
             line-height: 1.65;
         }
 

@@ -33,7 +33,7 @@ if (
 
 $show_deadline = ! empty( $type_behavior['show_deadline'] );
 
-$published_date = get_the_date( '', $post_id );
+$published_date = get_the_date( 'd.m.Y', $post_id );
 
 $deadline_raw = function_exists( 'get_field' ) ? get_field( 'career_deadline', $post_id ) : '';
 

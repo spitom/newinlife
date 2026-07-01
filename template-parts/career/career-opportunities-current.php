@@ -45,50 +45,13 @@ $current_type_ids = array_values(
 	)
 );
 
-$query_args = array(
-	'post_type'           => 'career_entry',
-	'post_status'         => 'publish',
-	'posts_per_page'      => 10,
-	'ignore_sticky_posts' => true,
-	'no_found_rows'       => true,
-	'meta_key'            => 'career_deadline',
-	'orderby'             => 'meta_value_num',
-	'order'               => 'ASC',
-	'meta_query'          => array(
-		'relation' => 'OR',
-		array(
-			'key'     => 'career_deadline',
-			'value'   => current_time( 'Ymd' ),
-			'compare' => '>=',
-			'type'    => 'NUMERIC',
-		),
-		array(
-			'key'     => 'career_deadline',
-			'compare' => 'NOT EXISTS',
-		),
-	),
-);
-
-if ( ! empty( $current_type_ids ) ) {
-	$query_args['tax_query'] = array(
-		array(
-			'taxonomy'         => 'career_entry_type',
-			'field'            => 'term_id',
-			'terms'            => $current_type_ids,
-			'include_children' => false,
-		),
+$query_args = function_exists( 'inlife_get_career_active_entries_query_args' )
+	? inlife_get_career_active_entries_query_args( $current_type_ids, 10 )
+	: array(
+		'post_type'      => 'career_entry',
+		'post__in'       => array( 0 ),
+		'no_found_rows'  => true,
 	);
-} else {
-	/*
-	 * Nie pokazuj przypadkowo wszystkich komunikatów, gdy żaden typ
-	 * nie jest skonfigurowany jako „Aktualne oferty”.
-	 */
-	$query_args['post__in'] = array( 0 );
-}
-
-if ( function_exists( 'inlife_add_career_language_to_query_args' ) ) {
-	$query_args = inlife_add_career_language_to_query_args( $query_args );
-}
 
 $current_query = new WP_Query( $query_args );
 

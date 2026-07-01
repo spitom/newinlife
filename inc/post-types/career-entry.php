@@ -82,3 +82,30 @@ if (!function_exists('inlife_register_career_entry_type_taxonomy')) {
 	}
 	add_action('init', 'inlife_register_career_entry_type_taxonomy', 5);
 }
+
+if ( ! function_exists( 'inlife_enable_career_entry_block_editor' ) ) {
+	/**
+	 * Use Gutenberg only for Career entries.
+	 *
+	 * @param bool   $use_block_editor Whether to use Gutenberg.
+	 * @param string $post_type        Current post type.
+	 * @return bool
+	 */
+	function inlife_enable_career_entry_block_editor(
+		bool $use_block_editor,
+		string $post_type
+	): bool {
+		if ( 'career_entry' === $post_type ) {
+			return true;
+		}
+
+		return $use_block_editor;
+	}
+
+	add_filter(
+		'use_block_editor_for_post_type',
+		'inlife_enable_career_entry_block_editor',
+		100,
+		2
+	);
+}

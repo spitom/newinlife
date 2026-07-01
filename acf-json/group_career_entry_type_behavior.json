@@ -1,217 +1,247 @@
 {
-  "key": "group_career_entry_type_behavior",
-  "title": "Kariera — ustawienia typu komunikatu",
-  "fields": [
-    {
-      "key": "field_career_type_behavior_notice",
-      "label": "Zasada konfiguracji",
-      "name": "",
-      "type": "message",
-      "instructions": "",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "message": "<p><strong>Ustawienia funkcjonalne konfiguruj wyłącznie na polskim terminie źródłowym.</strong> Angielskie tłumaczenie dziedziczy: miejsce prezentacji, kolejność, deadline, RODO, udostępnianie i wariant karty. Na terminie EN uzupełnij nazwę, slug oraz — tylko gdy jest potrzebny — opis karty w sekcji „Wyniki i archiwum”.</p>",
-      "new_lines": "wpautop",
-      "esc_html": 0
-    },
-    {
-      "key": "field_career_type_placement",
-      "label": "Miejsce prezentacji",
-      "name": "career_type_placement",
-      "type": "select",
-      "instructions": "Określa, gdzie system ma pokazywać komunikaty tego typu. „Aktualne oferty” generuje filtr i listę na stronie ofert. „Wyniki i archiwum” generuje kartę wejściową prowadzącą do archiwum terminu. „Tylko klasyfikacja” nie tworzy automatycznej sekcji.",
-      "required": 1,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "50",
-        "class": "",
-        "id": ""
-      },
-      "choices": {
-        "current": "Aktualne oferty",
-        "secondary": "Wyniki i archiwum",
-        "hidden": "Tylko klasyfikacja"
-      },
-      "default_value": "hidden",
-      "return_format": "value",
-      "multiple": 0,
-      "allow_null": 0,
-      "ui": 0,
-      "ajax": 0,
-      "placeholder": ""
-    },
-    {
-      "key": "field_career_type_order",
-      "label": "Kolejność",
-      "name": "career_type_order",
-      "type": "number",
-      "instructions": "Mniejsza liczba = wcześniej. Przykład: 10, 20, 30.",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "25",
-        "class": "",
-        "id": ""
-      },
-      "default_value": 100,
-      "min": 0,
-      "max": "",
-      "step": 1,
-      "prepend": "",
-      "append": ""
-    },
-    {
-      "key": "field_career_type_card_style",
-      "label": "Wariant karty",
-      "name": "career_type_card_style",
-      "type": "select",
-      "instructions": "Wybierz standard dla nowych typów. Pozostałe warianty zachowują obecne wyróżnienia wizualne.",
-      "required": 1,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "25",
-        "class": "",
-        "id": ""
-      },
-      "choices": {
-        "standard": "Standardowy",
-        "scientific": "Naukowy",
-        "jobs": "Oferty pracy"
-      },
-      "default_value": "standard",
-      "return_format": "value",
-      "multiple": 0,
-      "allow_null": 0,
-      "ui": 0,
-      "ajax": 0,
-      "placeholder": ""
-    },
-    {
-      "key": "field_career_type_show_on_landing",
-      "label": "Pokazuj na landing page „Kariera”",
-      "name": "career_type_show_on_landing",
-      "type": "true_false",
-      "instructions": "Dotyczy podglądu ofert na głównej stronie Career.",
-      "required": 0,
-      "conditional_logic": [
+    "key": "group_career_entry_type_behavior",
+    "title": "Kariera — ustawienia typu komunikatu",
+    "fields": [
+        {
+            "key": "field_career_type_behavior_notice",
+            "label": "Zasada konfiguracji",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<p><strong>Ustawienia funkcjonalne konfiguruj wyłącznie na polskim terminie źródłowym.<\/strong> Angielskie tłumaczenie dziedziczy: miejsce prezentacji, kolejność, deadline, RODO, udostępnianie i wariant karty. Na terminie EN uzupełnij nazwę, slug oraz — tylko gdy jest potrzebny — opis karty w sekcji „Wyniki i archiwum”.<\/p>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_career_type_placement",
+            "label": "Miejsce prezentacji",
+            "name": "career_type_placement",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Określa, gdzie system ma pokazywać komunikaty tego typu. „Aktualne oferty” generuje filtr i listę na stronie ofert. „Wyniki i archiwum” generuje kartę wejściową prowadzącą do archiwum terminu. „Tylko klasyfikacja” nie tworzy automatycznej sekcji.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "current": "Aktualne oferty",
+                "secondary": "Wyniki i archiwum",
+                "hidden": "Tylko klasyfikacja"
+            },
+            "default_value": "hidden",
+            "return_format": "value",
+            "multiple": 0,
+            "translations": "copy_once",
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "pll_default_value": "hidden"
+        },
+        {
+            "key": "field_career_type_order",
+            "label": "Kolejność",
+            "name": "career_type_order",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Mniejsza liczba = wcześniej. Przykład: 10, 20, 30.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 100,
+            "min": 0,
+            "max": "",
+            "step": 1,
+            "prepend": "",
+            "append": "",
+            "placeholder": "",
+            "pll_default_value": 100
+        },
+        {
+            "key": "field_career_type_card_style",
+            "label": "Wariant karty",
+            "name": "career_type_card_style",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Wybierz standard dla nowych typów. Pozostałe warianty zachowują obecne wyróżnienia wizualne.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "standard": "Standardowy",
+                "scientific": "Naukowy",
+                "jobs": "Oferty pracy"
+            },
+            "default_value": "standard",
+            "return_format": "value",
+            "multiple": 0,
+            "translations": "copy_once",
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "pll_default_value": "standard"
+        },
+        {
+            "key": "field_career_type_show_on_landing",
+            "label": "Pokazuj na landing page „Kariera”",
+            "name": "career_type_show_on_landing",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Dotyczy podglądu ofert na głównej stronie Career.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_career_type_placement",
+                        "operator": "==",
+                        "value": "current"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "Tak",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Tak",
+            "ui_off_text": "Nie",
+            "pll_default_value": 0
+        },
+        {
+            "key": "field_career_type_show_deadline",
+            "label": "Pokazuj termin składania",
+            "name": "career_type_show_deadline",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Ukryj dla wyników, archiwum lub typów bez terminu.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "message": "Tak",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Tak",
+            "ui_off_text": "Nie",
+            "pll_default_value": 1
+        },
+        {
+            "key": "field_career_type_show_rodo",
+            "label": "Pokazuj klauzulę RODO",
+            "name": "career_type_show_rodo",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Wyłącz dla wyników, archiwum i innych typów nierekrutacyjnych.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "message": "Tak",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Tak",
+            "ui_off_text": "Nie",
+            "pll_default_value": 1
+        },
+        {
+            "key": "field_career_type_show_share",
+            "label": "Pokazuj udostępnianie",
+            "name": "career_type_show_share",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Wyłącz dla archiwów lub komunikatów, których nie chcesz promować jako pojedynczych ofert.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "message": "Tak",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Tak",
+            "ui_off_text": "Nie",
+            "pll_default_value": 1
+        },
+        {
+            "key": "field_career_type_secondary_description",
+            "label": "Opis karty w sekcji „Wyniki i archiwum”",
+            "name": "career_type_secondary_description",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Uzupełnij wyłącznie dla typu umieszczonego w „Wyniki i archiwum”. To pole jest redakcyjne i wpisujesz je oddzielnie na polskim oraz angielskim terminie.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "new_lines": "wpautop",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "",
+            "pll_default_value": ""
+        }
+    ],
+    "location": [
         [
-          {
-            "field": "field_career_type_placement",
-            "operator": "==",
-            "value": "current"
-          }
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "career_entry_type"
+            }
         ]
-      ],
-      "wrapper": {
-        "width": "50",
-        "class": "",
-        "id": ""
-      },
-      "message": "Tak",
-      "default_value": 0,
-      "ui": 1,
-      "ui_on_text": "Tak",
-      "ui_off_text": "Nie"
-    },
-    {
-      "key": "field_career_type_show_deadline",
-      "label": "Pokazuj termin składania",
-      "name": "career_type_show_deadline",
-      "type": "true_false",
-      "instructions": "Ukryj dla wyników, archiwum lub typów bez terminu.",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "25",
-        "class": "",
-        "id": ""
-      },
-      "message": "Tak",
-      "default_value": 1,
-      "ui": 1,
-      "ui_on_text": "Tak",
-      "ui_off_text": "Nie"
-    },
-    {
-      "key": "field_career_type_show_rodo",
-      "label": "Pokazuj klauzulę RODO",
-      "name": "career_type_show_rodo",
-      "type": "true_false",
-      "instructions": "Wyłącz dla wyników, archiwum i innych typów nierekrutacyjnych.",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "25",
-        "class": "",
-        "id": ""
-      },
-      "message": "Tak",
-      "default_value": 1,
-      "ui": 1,
-      "ui_on_text": "Tak",
-      "ui_off_text": "Nie"
-    },
-    {
-      "key": "field_career_type_show_share",
-      "label": "Pokazuj udostępnianie",
-      "name": "career_type_show_share",
-      "type": "true_false",
-      "instructions": "Wyłącz dla archiwów lub komunikatów, których nie chcesz promować jako pojedynczych ofert.",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "25",
-        "class": "",
-        "id": ""
-      },
-      "message": "Tak",
-      "default_value": 1,
-      "ui": 1,
-      "ui_on_text": "Tak",
-      "ui_off_text": "Nie"
-    },
-    {
-      "key": "field_career_type_secondary_description",
-      "label": "Opis karty w sekcji „Wyniki i archiwum”",
-      "name": "career_type_secondary_description",
-      "type": "textarea",
-      "instructions": "Uzupełnij wyłącznie dla typu umieszczonego w „Wyniki i archiwum”. To pole jest redakcyjne i wpisujesz je oddzielnie na polskim oraz angielskim terminie.",
-      "required": 0,
-      "conditional_logic": 0,
-      "wrapper": {
-        "width": "",
-        "class": "",
-        "id": ""
-      },
-      "default_value": "",
-      "new_lines": "wpautop",
-      "maxlength": "",
-      "rows": 3,
-      "placeholder": ""
-    }
-  ],
-  "location": [
-    [
-      {
-        "param": "taxonomy",
-        "operator": "==",
-        "value": "career_entry_type"
-      }
-    ]
-  ],
-  "menu_order": 0,
-  "position": "normal",
-  "style": "default",
-  "label_placement": "top",
-  "instruction_placement": "label",
-  "hide_on_screen": "",
-  "active": true,
-  "description": "",
-  "show_in_rest": 0,
-  "modified": 1770000000
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "pll_display_field_instructions": 1,
+    "modified": 1782734780
 }

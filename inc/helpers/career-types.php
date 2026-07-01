@@ -938,3 +938,78 @@ if ( ! function_exists( 'inlife_get_career_type_secondary_description' ) ) {
 			: '';
 	}
 }
+
+if ( ! function_exists( 'inlife_get_career_active_entries_query_args' ) ) {
+	/**
+	 * Build a query for active Career entries in selected type terms.
+	 *
+	 * Current behavior:
+	 * - published Career entries only;
+	 * - deadline today or later;
+	 * - entries without a deadline remain eligible;
+	 * - active Polylang language is enforced;
+	 * - no types means no accidental fallback to all Career entries.
+	 *
+	 * @param array<int, int> $term_ids       Career type term IDs.
+	 * @param int             $posts_per_page Number of entries to return.
+	 * @return array
+	 */
+	function inlife_get_career_active_entries_query_args(
+		array $term_ids,
+		int $posts_per_page = 10
+	): array {
+		$term_ids = array_values(
+			array_unique(
+				array_filter(
+					array_map( 'absint', $term_ids )
+				)
+			)
+		);
+
+	$query_args = array(
+		'post_type'           => 'career_entry',
+		'post_status'         => 'publish',
+		'posts_per_page'      => max( 1, $posts_per_page ),
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true,
+		'orderby'             => array(
+			'deadline' => 'ASC',
+			'date'     => 'DESC',
+		),
+		'meta_query'          => array(
+			'relation' => 'OR',
+			'deadline' => array(
+				'key'     => 'career_deadline',
+				'value'   => current_time( 'Ymd' ),
+				'compare' => '>=',
+				'type'    => 'NUMERIC',
+			),
+			'without_deadline' => array(
+				'key'     => 'career_deadline',
+				'compare' => 'NOT EXISTS',
+			),
+		),
+	);
+
+		if ( ! empty( $term_ids ) ) {
+			$query_args['tax_query'] = array(
+				array(
+					'taxonomy'         => 'career_entry_type',
+					'field'            => 'term_id',
+					'terms'            => $term_ids,
+					'include_children' => false,
+				),
+			);
+		} else {
+			/*
+			 * Never fall back to all Career entries when no relevant
+			 * Career type is configured for a given section.
+			 */
+			$query_args['post__in'] = array( 0 );
+		}
+
+		return function_exists( 'inlife_add_career_language_to_query_args' )
+			? inlife_add_career_language_to_query_args( $query_args )
+			: $query_args;
+	}
+}
