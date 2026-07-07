@@ -96,6 +96,31 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		);
 
 		/*
+		* ------------------------------------------------------------
+		* Header / Search
+		* ------------------------------------------------------------
+		*/
+		$group = 'Header / Search';
+
+		pll_register_string(
+			'header_search_label',
+			'Szukaj w serwisie',
+			$group
+		);
+
+		pll_register_string(
+			'header_search_placeholder',
+			'Wpisz szukaną frazę',
+			$group
+		);
+
+		pll_register_string(
+			'header_search_submit',
+			'Szukaj',
+			$group
+		);
+
+		/*
 		 * ------------------------------------------------------------
 		 * Footer
 		 * ------------------------------------------------------------
@@ -136,6 +161,19 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 			'Poznaj Instytut, jego misję, strukturę, historię oraz najważniejsze informacje wspierające zrozumienie naszej działalności naukowej i organizacyjnej.',
 			$group
 		);
+
+		// About landing – static section UI.
+		pll_register_string( 'about_directorate_kicker', 'Zarządzanie', $group );
+		pll_register_string( 'about_directorate_title', 'Dyrekcja Instytutu', $group );
+		pll_register_string(
+			'about_directorate_lead',
+			'Za strategiczny rozwój InLife odpowiada zespół łączący doświadczenie naukowe, organizacyjne i międzynarodową perspektywę badawczą.',
+			$group
+		);
+
+		pll_register_string( 'about_structure_kicker', 'Poznaj Instytut', $group );
+		pll_register_string( 'about_history_kicker', 'Dziedzictwo i rozwój', $group );
+
 
 		/*
 		 * ------------------------------------------------------------

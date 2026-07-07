@@ -33,9 +33,9 @@ $cta_url        = $cta_url ?: 'https://sd.pan.olsztyn.pl/';
 		</h2>
 
 		<?php if ( $section_text ) : ?>
-			<p class="career-doctoral-school__text">
-				<?php echo esc_html( $section_text ); ?>
-			</p>
+			<div class="career-doctoral-school__text">
+				<?php echo wp_kses_post( wpautop( $section_text ) ); ?>
+			</div>
 		<?php endif; ?>
 	</div>
 

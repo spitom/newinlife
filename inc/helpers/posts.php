@@ -410,137 +410,242 @@ if ( ! function_exists( 'inlife_get_share_links' ) ) {
 }
 
 if ( ! function_exists( 'inlife_get_society_posts' ) ) {
-    function inlife_get_society_posts( $limit = 4 ) {
-        return get_posts( [
-            'post_type'      => 'post',
-            'post_status'    => 'publish',
-            'posts_per_page' => $limit,
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-            'tax_query' => [
-                [
-                    'taxonomy' => 'society_format',
-                    'field'    => 'slug',
-                    'operator' => 'EXISTS',
-                ],
-            ],
-        ] );
-    }
+	/**
+	 * Return Society posts in the active Polylang language.
+	 *
+	 * @param int $limit Number of posts to return.
+	 * @return WP_Post[]
+	 */
+	function inlife_get_society_posts( $limit = 4 ): array {
+		$query_args = array(
+			'post_type'        => 'post',
+			'post_status'      => 'publish',
+			'posts_per_page'   => max( 1, (int) $limit ),
+			'orderby'          => 'date',
+			'order'            => 'DESC',
+			'suppress_filters' => false,
+			'tax_query'        => array(
+				array(
+					'taxonomy' => 'society_format',
+					'field'    => 'slug',
+					'operator' => 'EXISTS',
+				),
+			),
+		);
+
+		if ( function_exists( 'pll_current_language' ) ) {
+			$current_language = (string) pll_current_language( 'slug' );
+
+			if ( '' !== $current_language ) {
+				$query_args['lang'] = $current_language;
+			}
+		}
+
+		return get_posts( $query_args );
+	}
 }
 
 if ( ! function_exists( 'inlife_get_society_archive_query_args' ) ) {
-    /**
-     * Returns query args for Society archive.
-     *
-     * @param string $format_slug Optional society_format slug.
-     * @return array
-     */
-    function inlife_get_society_archive_query_args( $format_slug = '' ) {
-        $args = [
-            'post_type'      => 'post',
-            'post_status'    => 'publish',
-            'posts_per_page' => 12,
-            'paged'          => max( 1, get_query_var( 'paged' ), get_query_var( 'page' ) ),
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-            'tax_query'      => [
-                [
-                    'taxonomy' => 'society_format',
-                    'field'    => 'slug',
-                    'operator' => 'EXISTS',
-                ],
-            ],
-        ];
+	/**
+	 * Return query arguments for the Society archive
+	 * in the active Polylang language.
+	 *
+	 * @param string $format_slug Optional society_format term slug.
+	 * @return array
+	 */
+	function inlife_get_society_archive_query_args(
+		$format_slug = ''
+	): array {
+		$query_args = array(
+			'post_type'        => 'post',
+			'post_status'      => 'publish',
+			'posts_per_page'   => 12,
+			'paged'            => max(
+				1,
+				get_query_var( 'paged' ),
+				get_query_var( 'page' )
+			),
+			'orderby'          => 'date',
+			'order'            => 'DESC',
+			'suppress_filters' => false,
+			'tax_query'        => array(
+				array(
+					'taxonomy' => 'society_format',
+					'field'    => 'slug',
+					'operator' => 'EXISTS',
+				),
+			),
+		);
 
-        if ( '' !== $format_slug ) {
-            $args['tax_query'] = [
-                [
-                    'taxonomy' => 'society_format',
-                    'field'    => 'slug',
-                    'terms'    => $format_slug,
-                ],
-            ];
-        }
+		if ( '' !== $format_slug ) {
+			$query_args['tax_query'] = array(
+				array(
+					'taxonomy' => 'society_format',
+					'field'    => 'slug',
+					'terms'    => $format_slug,
+				),
+			);
+		}
 
-        return $args;
-    }
+		if ( function_exists( 'pll_current_language' ) ) {
+			$current_language = (string) pll_current_language( 'slug' );
+
+			if ( '' !== $current_language ) {
+				$query_args['lang'] = $current_language;
+			}
+		}
+
+		return $query_args;
+	}
 }
 
 if ( ! function_exists( 'inlife_get_society_format_terms' ) ) {
-    /**
-     * Returns public society format terms.
-     *
-     * @return WP_Term[]
-     */
-    function inlife_get_society_format_terms() {
-        $terms = get_terms(
-            [
-                'taxonomy'   => 'society_format',
-                'hide_empty' => true,
-            ]
-        );
+	/**
+	 * Return public Society format terms in the active language.
+	 *
+	 * @return WP_Term[]
+	 */
+	function inlife_get_society_format_terms(): array {
+		$args = array(
+			'taxonomy'   => 'society_format',
+			'hide_empty' => true,
+		);
 
-        if ( is_wp_error( $terms ) || empty( $terms ) ) {
-            return [];
-        }
+		if ( function_exists( 'pll_current_language' ) ) {
+			$current_language = (string) pll_current_language( 'slug' );
 
-        return $terms;
-    }
+			if ( '' !== $current_language ) {
+				$args['lang'] = $current_language;
+			}
+		}
+
+		$terms = get_terms( $args );
+
+		if ( is_wp_error( $terms ) || empty( $terms ) ) {
+			return array();
+		}
+
+		return $terms;
+	}
 }
 
 if ( ! function_exists( 'inlife_get_post_feature_media_html' ) ) {
-    /**
-     * Returns embedded media HTML for a post.
-     *
-     * @param int $post_id Post ID.
-     * @return string
-     */
-    function inlife_get_post_feature_media_html( $post_id ) {
-        if ( ! function_exists( 'get_field' ) ) {
-            return '';
-        }
+	/**
+	 * Return embedded audio or video attached to a post.
+	 *
+	 * The selected media type has priority. When it is missing or uses
+	 * an older ACF value, the function falls back to available media fields.
+	 *
+	 * @param int $post_id Post ID.
+	 * @return string
+	 */
+	function inlife_get_post_feature_media_html( $post_id ) {
+		$post_id = (int) $post_id;
 
-        $media_type  = (string) get_field( 'media_type', $post_id );
-        $audio_file  = get_field( 'audio_file', $post_id );
-        $video_file  = get_field( 'video_file', $post_id );
-        $youtube_url = trim( (string) get_field( 'youtube_url', $post_id ) );
+		if ( ! $post_id || ! function_exists( 'get_field' ) ) {
+			return '';
+		}
 
-        if ( 'audio_file' === $media_type && ! empty( $audio_file ) ) {
-            $audio_url = is_array( $audio_file ) && ! empty( $audio_file['url'] ) ? $audio_file['url'] : (string) $audio_file;
+		$media_type  = sanitize_key( (string) get_field( 'media_type', $post_id ) );
+		$audio_file  = get_field( 'audio_file', $post_id );
+		$video_file  = get_field( 'video_file', $post_id );
+		$youtube_url = trim( (string) get_field( 'youtube_url', $post_id ) );
 
-            if ( $audio_url ) {
-                return sprintf(
-                    '<div class="post-feature-media post-feature-media--audio"><audio controls preload="none" src="%s"></audio></div>',
-                    esc_url( $audio_url )
-                );
-            }
-        }
+		$get_media_url = static function ( $value ): string {
+			if ( is_array( $value ) ) {
+				if ( ! empty( $value['url'] ) ) {
+					return trim( (string) $value['url'] );
+				}
 
-        if ( 'video_file' === $media_type && ! empty( $video_file ) ) {
-            $video_url = is_array( $video_file ) && ! empty( $video_file['url'] ) ? $video_file['url'] : (string) $video_file;
+				if ( ! empty( $value['ID'] ) ) {
+					$url = wp_get_attachment_url( (int) $value['ID'] );
 
-            if ( $video_url ) {
-                return sprintf(
-                    '<div class="post-feature-media post-feature-media--video"><video controls preload="metadata" src="%s"></video></div>',
-                    esc_url( $video_url )
-                );
-            }
-        }
+					return $url ? (string) $url : '';
+				}
+			}
 
-        if ( 'youtube' === $media_type && $youtube_url ) {
-            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $youtube_url, $match);
-            $youtube_id = ! empty( $match[1] ) ? $match[1] : '';
+			if ( is_numeric( $value ) ) {
+				$url = wp_get_attachment_url( (int) $value );
 
-            if ( $youtube_id ) {
-                return sprintf(
-                    '<div class="post-feature-media post-feature-media--youtube"><iframe width="1280" height="720" src="https://www.youtube.com/embed/%s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>',
-                    esc_attr( $youtube_id )
-                );
-            }
-        }
+				return $url ? (string) $url : '';
+			}
 
-        return '';
-    }
+			return is_string( $value ) ? trim( $value ) : '';
+		};
+
+		$audio_url = $get_media_url( $audio_file );
+		$video_url = $get_media_url( $video_file );
+
+		$youtube_id = '';
+
+		if ( $youtube_url ) {
+			preg_match(
+				'%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i',
+				$youtube_url,
+				$match
+			);
+
+			$youtube_id = ! empty( $match[1] ) ? (string) $match[1] : '';
+		}
+
+		$render_audio = static function ( string $url ): string {
+			return sprintf(
+				'<div class="post-feature-media post-feature-media--audio"><audio controls preload="none" src="%s"></audio></div>',
+				esc_url( $url )
+			);
+		};
+
+		$render_video = static function ( string $url ): string {
+			return sprintf(
+				'<div class="post-feature-media post-feature-media--video"><video controls preload="metadata" src="%s"></video></div>',
+				esc_url( $url )
+			);
+		};
+
+		$render_youtube = static function ( string $video_id ): string {
+			return sprintf(
+				'<div class="post-feature-media post-feature-media--youtube"><iframe width="1280" height="720" src="https://www.youtube.com/embed/%s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>',
+				esc_attr( $video_id )
+			);
+		};
+
+		$preferred_media = array();
+
+		if ( in_array( $media_type, array( 'audio', 'audio_file', 'add_audio' ), true ) ) {
+			$preferred_media[] = 'audio';
+		}
+
+		if ( in_array( $media_type, array( 'video', 'video_file', 'add_video', 'film' ), true ) ) {
+			$preferred_media[] = 'video';
+		}
+
+		if ( in_array( $media_type, array( 'youtube', 'youtube_url' ), true ) ) {
+			$preferred_media[] = 'youtube';
+		}
+
+		$media_order = array_unique(
+			array_merge(
+				$preferred_media,
+				array( 'audio', 'video', 'youtube' )
+			)
+		);
+
+		foreach ( $media_order as $media ) {
+			if ( 'audio' === $media && $audio_url ) {
+				return $render_audio( $audio_url );
+			}
+
+			if ( 'video' === $media && $video_url ) {
+				return $render_video( $video_url );
+			}
+
+			if ( 'youtube' === $media && $youtube_id ) {
+				return $render_youtube( $youtube_id );
+			}
+		}
+
+		return '';
+	}
 }
 
 if ( ! function_exists( 'inlife_get_post_card_image_id' ) ) {
@@ -572,28 +677,74 @@ if ( ! function_exists( 'inlife_get_post_card_image_id' ) ) {
 }
 
 if ( ! function_exists( 'inlife_get_post_badge_class' ) ) {
-    function inlife_get_post_badge_class( int $post_id ): string {
-        $format_terms = get_the_terms( $post_id, 'society_format' );
+	/**
+	 * Return the visual badge variant for a post.
+	 *
+	 * The format is normalized to the default Polylang language first,
+	 * so translated Society formats keep the same visual badge style.
+	 *
+	 * @param int $post_id Post ID.
+	 * @return string
+	 */
+	function inlife_get_post_badge_class( int $post_id ): string {
+		$format_terms = get_the_terms( $post_id, 'society_format' );
 
-        if ( ! empty( $format_terms ) && ! is_wp_error( $format_terms ) ) {
-            $format_term = reset( $format_terms );
-            $format_slug = $format_term instanceof WP_Term ? $format_term->slug : '';
+		if ( empty( $format_terms ) || is_wp_error( $format_terms ) ) {
+			return 'c-badge--news';
+		}
 
-            if ( 'posluchaj' === $format_slug ) {
-                return 'c-badge--listen';
-            }
-            if ( 'zobacz' === $format_slug ) {
-                return 'c-badge--watch';
-            }
-            if ( 'przeczytaj' === $format_slug ) {
-                return 'c-badge--read';
-            }
+		$format_term = reset( $format_terms );
 
-            return 'c-badge--society';
-        }
+		if ( ! $format_term instanceof WP_Term ) {
+			return 'c-badge--news';
+		}
 
-        return 'c-badge--news';
-    }
+		$source_term = $format_term;
+
+		if (
+			function_exists( 'pll_get_term' ) &&
+			function_exists( 'pll_default_language' )
+		) {
+			$default_language = (string) pll_default_language( 'slug' );
+
+			if ( '' !== $default_language ) {
+				$source_term_id = (int) pll_get_term(
+					$format_term->term_id,
+					$default_language
+				);
+
+				if ( $source_term_id > 0 ) {
+					$translated_source_term = get_term(
+						$source_term_id,
+						'society_format'
+					);
+
+					if (
+						$translated_source_term instanceof WP_Term &&
+						! is_wp_error( $translated_source_term )
+					) {
+						$source_term = $translated_source_term;
+					}
+				}
+			}
+		}
+
+		$format_slug = (string) $source_term->slug;
+
+		if ( 'posluchaj' === $format_slug ) {
+			return 'c-badge--listen';
+		}
+
+		if ( 'zobacz' === $format_slug ) {
+			return 'c-badge--watch';
+		}
+
+		if ( 'przeczytaj' === $format_slug ) {
+			return 'c-badge--read';
+		}
+
+		return 'c-badge--society';
+	}
 }
 
 if ( ! function_exists( 'inlife_get_post_target_link' ) ) {

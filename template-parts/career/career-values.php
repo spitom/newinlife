@@ -84,9 +84,9 @@ $highlights = array_slice( $highlights, 0, 3 );
 					<?php endif; ?>
 
 					<?php if ( ! empty( $item['text'] ) ) : ?>
-						<p class="career-values__item-text">
-							<?php echo esc_html( $item['text'] ); ?>
-						</p>
+						<div class="career-values__item-text">
+							<?php echo wp_kses_post( wpautop( $item['text'] ) ); ?>
+						</div>
 					<?php endif; ?>
 				</article>
 			<?php endforeach; ?>

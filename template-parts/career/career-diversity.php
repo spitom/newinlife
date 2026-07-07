@@ -87,9 +87,9 @@ if ( function_exists( 'have_rows' ) && have_rows( 'career_diversity_points', $po
 						<?php endif; ?>
 
 						<?php if ( ! empty( $point['text'] ) ) : ?>
-							<p class="career-diversity__point-text">
-								<?php echo esc_html( $point['text'] ); ?>
-							</p>
+							<div class="career-diversity__point-text">
+								<?php echo wp_kses_post( wpautop( $point['text'] ) ); ?>
+							</div>
 						<?php endif; ?>
 					</article>
 				<?php endforeach; ?>

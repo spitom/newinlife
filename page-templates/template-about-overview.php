@@ -13,6 +13,12 @@ $container = function_exists( 'inlife_container_class' ) ? inlife_container_clas
 
 $post_id = get_the_ID();
 
+$is_polish_language = ! function_exists( 'pll_current_language' ) ||
+	'pl' === (string) pll_current_language( 'slug' );
+
+$show_science_council = $is_polish_language;
+$show_media           = $is_polish_language;
+
 /**
  * HERO
  */
@@ -74,11 +80,13 @@ $hero_lead = inlife_get_acf_field(
 		</div>
 	</section>
 
-	<section class="page-section page-section--about-science-council" aria-labelledby="about-science-council-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/about/about-science-council' ); ?>
-		</div>
-	</section>
+	<?php if ( $show_science_council ) : ?>
+		<section class="page-section page-section--about-science-council" aria-labelledby="about-science-council-heading">
+			<div class="<?php echo esc_attr( $container ); ?>">
+				<?php get_template_part( 'template-parts/about/about-science-council' ); ?>
+			</div>
+		</section>
+	<?php endif; ?>
 
 	<!-- HISTORIA -->
 	<section class="page-section page-section--about-history" aria-labelledby="about-history-heading">
@@ -87,12 +95,14 @@ $hero_lead = inlife_get_acf_field(
 		</div>
 	</section>
 
-	<!-- DLA MEDIÓW -->
-	<section class="page-section page-section--about-media" aria-labelledby="about-media-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/about/about', 'media' ); ?>
-		</div>
-	</section>
+	<!-- DLA MEDIÓW ($show_media = true) -->
+	 <?php if ( $show_media ) : ?>
+		<section class="page-section page-section--about-media" aria-labelledby="about-media-heading">
+			<div class="<?php echo esc_attr( $container ); ?>">
+				<?php get_template_part( 'template-parts/about/about', 'media' ); ?>
+			</div>
+		</section>
+	<?php endif; ?>
 
 </main>
 

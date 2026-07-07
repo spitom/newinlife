@@ -53,16 +53,51 @@ $format_slug = $format_term instanceof WP_Term
 	? $format_term->slug
 	: '';
 
-$format_badge = function_exists( 'inlife_get_society_format_badge' )
+$format_source_slug = $format_slug;
+
+if (
+	$format_term instanceof WP_Term &&
+	function_exists( 'pll_get_term' ) &&
+	function_exists( 'pll_default_language' )
+) {
+	$default_language = (string) pll_default_language( 'slug' );
+
+	if ( '' !== $default_language ) {
+		$source_term_id = (int) pll_get_term(
+			$format_term->term_id,
+			$default_language
+		);
+
+		if ( $source_term_id > 0 ) {
+			$source_term = get_term(
+				$source_term_id,
+				'society_format'
+			);
+
+			if (
+				$source_term instanceof WP_Term &&
+				! is_wp_error( $source_term )
+			) {
+				$format_source_slug = (string) $source_term->slug;
+			}
+		}
+	}
+}
+
+	$format_badge = function_exists( 'inlife_get_society_format_badge' )
 	? inlife_get_society_format_badge( $post_id )
 	: '';
 
 /**
  * Placeholder logic
  */
-$audio_placeholder = ( 'posluchaj' === $format_slug );
-$video_placeholder = ( 'zobacz' === $format_slug );
-$show_media_icon   = in_array( $format_slug, [ 'posluchaj', 'zobacz' ], true );
+$audio_placeholder = ( 'posluchaj' === $format_source_slug );
+$video_placeholder = ( 'zobacz' === $format_source_slug );
+$show_media_icon   = in_array(
+	$format_source_slug,
+	[ 'posluchaj', 'zobacz' ],
+	true
+);
 
 /**
  * Image
@@ -82,6 +117,16 @@ $card_classes = [
 
 if ( $format_slug ) {
 	$card_classes[] = 'post-card--' . sanitize_html_class( $format_slug );
+}
+
+if (
+	$format_source_slug &&
+	$format_source_slug !== $format_slug
+) {
+	$card_classes[] = 'post-card--' . sanitize_html_class( $format_source_slug );
+}
+
+if ( $format_slug || $format_source_slug ) {
 	$card_classes[] = 'post-card--society-format';
 }
 
@@ -150,7 +195,7 @@ if ( $variant ) {
 
 					<?php if ( $show_media_icon ) : ?>
 						<span class="post-card__media-badge" aria-hidden="true">
-							<span class="bi <?php echo esc_attr( 'posluchaj' === $format_slug ? 'bi-headphones' : 'bi-play-fill' ); ?>"></span>
+							<span class="bi <?php echo esc_attr( 'posluchaj' === $format_source_slug ? 'bi-headphones' : 'bi-play-fill' ); ?>"></span>
 						</span>
 					<?php endif; ?>
 
