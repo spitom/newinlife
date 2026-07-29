@@ -1,60 +1,125 @@
 // Search panel
 
 document.addEventListener('DOMContentLoaded', function () {
-  const toggle = document.querySelector('[data-inlife-search-toggle]');
-  const panel = document.querySelector('#inlife-search-panel');
-  const closeBtn = document.querySelector('[data-inlife-search-close]');
-  const input = document.querySelector('#inlife-search-field');
+	const toggle = document.querySelector('[data-inlife-search-toggle]');
+	const panel = document.querySelector('#inlife-search-panel');
+	const closeBtn = document.querySelector('[data-inlife-search-close]');
+	const input = document.querySelector('#inlife-search-field');
 
-  if (!toggle || !panel) return;
+	if (!toggle || !panel) return;
 
-  function openSearchPanel() {
-    panel.hidden = false;
-    toggle.setAttribute('aria-expanded', 'true');
+	const reducedMotionQuery = window.matchMedia(
+		'(prefers-reduced-motion: reduce)'
+	);
 
-    window.requestAnimationFrame(() => {
-      panel.classList.add('is-open');
-      if (input) input.focus();
-    });
-  }
+	const closeTransitionDuration = 220;
+	let hideTimer = null;
 
-  function closeSearchPanel(returnFocus = true) {
-    panel.classList.remove('is-open');
-    panel.hidden = true;
-    toggle.setAttribute('aria-expanded', 'false');
+	function clearHideTimer() {
+		if (!hideTimer) return;
 
-    if (returnFocus) {
-      toggle.focus();
-    }
-  }
+		window.clearTimeout(hideTimer);
+		hideTimer = null;
+	}
 
-  toggle.addEventListener('click', function () {
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
-    expanded ? closeSearchPanel(false) : openSearchPanel();
-  });
+	function finishClosing() {
+		if (panel.classList.contains('is-open')) return;
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function () {
-      closeSearchPanel(true);
-    });
-  }
+		panel.hidden = true;
+	}
 
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && !panel.hidden) {
-      closeSearchPanel(true);
-    }
-  });
+	function openSearchPanel() {
+		clearHideTimer();
 
-  document.addEventListener('click', function (event) {
-    if (panel.hidden) return;
+		panel.hidden = false;
+		toggle.setAttribute('aria-expanded', 'true');
 
-    const clickedInsidePanel = panel.contains(event.target);
-    const clickedToggle = toggle.contains(event.target);
+		window.requestAnimationFrame(() => {
+			panel.classList.add('is-open');
 
-    if (!clickedInsidePanel && !clickedToggle) {
-      closeSearchPanel(false);
-    }
-  });
+			if (input) {
+				input.focus();
+			}
+		});
+	}
+
+	function closeSearchPanel(returnFocus = true) {
+		clearHideTimer();
+
+		panel.classList.remove('is-open');
+		toggle.setAttribute('aria-expanded', 'false');
+
+		if (returnFocus) {
+			toggle.focus();
+		}
+
+		if (reducedMotionQuery.matches) {
+			finishClosing();
+			return;
+		}
+
+		hideTimer = window.setTimeout(
+			finishClosing,
+			closeTransitionDuration
+		);
+	}
+
+	panel.addEventListener('transitionend', function (event) {
+		if (
+			event.target !== panel ||
+			panel.classList.contains('is-open')
+		) {
+			return;
+		}
+
+		clearHideTimer();
+		finishClosing();
+	});
+
+	toggle.addEventListener('click', function () {
+		const expanded =
+			toggle.getAttribute('aria-expanded') === 'true';
+
+		if (expanded) {
+			closeSearchPanel(false);
+		} else {
+			openSearchPanel();
+		}
+	});
+
+	if (closeBtn) {
+		closeBtn.addEventListener('click', function () {
+			closeSearchPanel(true);
+		});
+	}
+
+	document.addEventListener('keydown', function (event) {
+		if (event.key === 'Escape' && !panel.hidden) {
+			closeSearchPanel(true);
+		}
+	});
+
+	document.addEventListener('click', function (event) {
+		if (panel.hidden) return;
+
+		const clickedInsidePanel = panel.contains(event.target);
+		const clickedToggle = toggle.contains(event.target);
+
+		if (clickedInsidePanel || clickedToggle) {
+			return;
+		}
+
+		/*
+		 * Zwracamy focus do przycisku tylko wtedy, gdy po kliknięciu
+		 * poza panelem focus nadal znajduje się w jego wnętrzu.
+		 * Nie przejmujemy focusu od zewnętrznego linku lub przycisku.
+		 */
+		const focusIsInsidePanel = panel.contains(
+			document.activeElement
+		);
+
+		closeSearchPanel(focusIsInsidePanel);
+	});
 });
 
 // Sticky header
