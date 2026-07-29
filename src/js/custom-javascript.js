@@ -809,6 +809,66 @@ document.addEventListener('DOMContentLoaded', () => {
 	const gridItems = document.querySelectorAll('[data-network-item]');
 	const statusElement = document.querySelector('[data-network-status]');
 
+	const announceResultCount = (count) => {
+		if (!statusElement) return;
+
+		const label =
+			statusElement.dataset.networkStatusLabel ||
+			'Liczba widocznych partnerów: %d.';
+
+		statusElement.textContent = label.replace('%d', String(count));
+	};
+
+	const filterGrid = (filterValue) => {
+		let visibleCount = 0;
+
+		gridItems.forEach((item) => {
+			const itemRegions = (item.dataset.networkRegions || '')
+				.split(' ')
+				.filter(Boolean);
+
+			const matches =
+				filterValue === 'all' ||
+				itemRegions.includes(filterValue);
+
+			item.hidden = !matches;
+
+			if (matches) {
+				visibleCount += 1;
+			}
+		});
+
+		return visibleCount;
+	};
+
+	const setActiveFilter = (activeButton) => {
+		filterButtons.forEach((button) => {
+			const isActive = button === activeButton;
+
+			button.classList.toggle('is-active', isActive);
+			button.setAttribute(
+				'aria-pressed',
+				isActive ? 'true' : 'false'
+			);
+		});
+	};
+
+	let filterMap = () => {};
+
+	filterButtons.forEach((button) => {
+		button.addEventListener('click', () => {
+			const filterValue =
+				button.dataset.networkFilter || 'all';
+
+			setActiveFilter(button);
+
+			const visibleCount = filterGrid(filterValue);
+
+			filterMap(filterValue);
+			announceResultCount(visibleCount);
+		});
+	});
+
 	if (!mapElement) return;
 
 	const renderMapMessage = (message) => {
@@ -831,16 +891,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	const rawData = mapElement.dataset.networkMapData || '[]';
 	const emptyLabel = mapElement.dataset.networkMapEmptyLabel || '';
 	const linkLabel = mapElement.dataset.networkMapLinkLabel || 'Zobacz partnera';
-
-	const announceResultCount = (count) => {
-		if (!statusElement) return;
-
-		const label =
-			statusElement.dataset.networkStatusLabel ||
-			'Liczba widocznych partnerów: %d.';
-
-		statusElement.textContent = label.replace('%d', String(count));
-	};
 
 	let partners = [];
 
@@ -974,29 +1024,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	};
 
-	const filterGrid = (filterValue) => {
-		let visibleCount = 0;
-
-		gridItems.forEach((item) => {
-			const itemRegions = (item.dataset.networkRegions || '')
-				.split(' ')
-				.filter(Boolean);
-
-			const matches =
-				filterValue === 'all' ||
-				itemRegions.includes(filterValue);
-
-			item.hidden = !matches;
-
-			if (matches) {
-				visibleCount += 1;
-			}
-		});
-
-		return visibleCount;
-	};
-
-	const filterMap = (filterValue) => {
+	filterMap = (filterValue) => {
 		markers.forEach((marker) => {
 			const matches = filterValue === 'all' || marker.partnerRegions.includes(filterValue);
 
@@ -1011,27 +1039,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		fitMapToVisibleMarkers();
 	};
-
-	const setActiveFilter = (activeButton) => {
-		filterButtons.forEach((button) => {
-			const isActive = button === activeButton;
-			button.classList.toggle('is-active', isActive);
-			button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-		});
-	};
-
-	filterButtons.forEach((button) => {
-		button.addEventListener('click', () => {
-			const filterValue = button.dataset.networkFilter || 'all';
-			setActiveFilter(button);
-
-			const visibleCount = filterGrid(filterValue);
-
-			filterMap(filterValue);
-			announceResultCount(visibleCount);
-		});
-	});
-
+	
 	fitMapToVisibleMarkers();
 
 	mapElement.addEventListener('focusin', () => {
