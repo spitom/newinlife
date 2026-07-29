@@ -859,9 +859,20 @@ document.addEventListener('DOMContentLoaded', () => {
 			.replace(/'/g, '&#039;');
 	};
 
-	const escapeAttribute = (value) => {
-		if (!value) return '';
-		return String(value).replace(/"/g, '&quot;');
+	const sanitizeUrl = (value, fallback = '') => {
+		if (!value) return fallback;
+
+		try {
+			const url = new URL(String(value), window.location.origin);
+
+			if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+				return fallback;
+			}
+
+			return escapeHtml(url.href);
+		} catch {
+			return fallback;
+		}
 	};
 
 	partners.forEach((partner) => {
@@ -876,8 +887,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		const title = escapeHtml(partner.title || '');
 		const location = escapeHtml(partner.location || '');
 		const short = escapeHtml(partner.short || '');
-		const permalink = partner.permalink || '#';
-		const logo = partner.logo ? escapeAttribute(partner.logo) : '';
+		const permalink = sanitizeUrl(partner.permalink, '#');
+		const logo = sanitizeUrl(partner.logo);
 
 		const popupHtml = `
 			<div class="network-map-popup">
