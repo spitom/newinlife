@@ -162,6 +162,15 @@ get_template_part(
 				<?php echo esc_html( inlife_t( 'Brak aktualnych ogłoszeń w wybranej kategorii.' ) ); ?>
 			</p>
 		</div>
+		
+		<p
+			class="visually-hidden"
+			role="status"
+			aria-live="polite"
+			aria-atomic="true"
+			data-career-status
+			data-career-status-label="<?php echo esc_attr( inlife_t( 'Liczba widocznych ofert i konkursów: %d.' ) ); ?>"
+		></p>
 	<?php else : ?>
 		<div class="c-surface c-surface--panel career-opportunities-current__empty">
 			<p class="career-opportunities-current__empty-text">

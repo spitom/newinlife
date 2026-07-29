@@ -1147,11 +1147,22 @@ document.addEventListener('DOMContentLoaded', () => {
 	const filterWrap = document.querySelector('[data-career-filters]');
 	const items = document.querySelectorAll('[data-career-item]');
 	const emptyState = document.querySelector('[data-career-empty]');
+	const statusElement = document.querySelector('[data-career-status]');
 
 	if (!filterWrap || !items.length) return;
 
 	const buttons = filterWrap.querySelectorAll('[data-career-filter]');
 	if (!buttons.length) return;
+
+	const announceResultCount = (count) => {
+		if (!statusElement) return;
+
+		const label =
+			statusElement.dataset.careerStatusLabel ||
+			'Liczba widocznych ofert i konkursów: %d.';
+
+		statusElement.textContent = label.replace('%d', String(count));
+	};
 
 	const updateButtons = (filterValue) => {
 		buttons.forEach((button) => {
@@ -1179,6 +1190,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (emptyState) {
 			emptyState.hidden = visibleCount !== 0;
 		}
+
+		return visibleCount;
 	};
 
 	const updateUrl = (filterValue) => {
@@ -1197,9 +1210,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		const normalizedValue = filterValue || 'all';
 
 		updateButtons(normalizedValue);
-		updateListing(normalizedValue);
+
+		const visibleCount = updateListing(normalizedValue);
 
 		if (updateHistory) {
+			announceResultCount(visibleCount);
 			updateUrl(normalizedValue);
 		}
 	};

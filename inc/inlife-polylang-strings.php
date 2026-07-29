@@ -461,6 +461,8 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'career_share_linkedin', 'Udostępnij ogłoszenie na LinkedIn', $group );
 		pll_register_string( 'career_share_email', 'Wyślij ogłoszenie e-mailem', $group );
 
+		pll_register_string( 'career_visible_results_count', 'Liczba widocznych ofert i konkursów: %d.', $group );
+
 		/*
 		* ------------------------------------------------------------
 		* Research Overview
