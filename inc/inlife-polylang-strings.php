@@ -122,6 +122,50 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 
 		/*
 		* ------------------------------------------------------------
+		* Front Page – Hero
+		* ------------------------------------------------------------
+		*/
+
+		$group = 'Front Page – Hero';
+
+		pll_register_string(
+			'front_hero_featured_content',
+			'Wyróżnione treści',
+			$group
+		);
+
+		pll_register_string(
+			'front_hero_previous_slide',
+			'Poprzedni slajd',
+			$group
+		);
+
+		pll_register_string(
+			'front_hero_next_slide',
+			'Następny slajd',
+			$group
+		);
+
+		pll_register_string(
+			'front_hero_pause',
+			'Zatrzymaj slider',
+			$group
+		);
+
+		pll_register_string(
+			'front_hero_play',
+			'Odtwórz slider',
+			$group
+		);
+
+		pll_register_string(
+			'front_hero_open_featured',
+			'Przejdź do wyróżnionej treści',
+			$group
+		);
+
+		/*
+		* ------------------------------------------------------------
 		* Inlife Search
 		* ------------------------------------------------------------
 		*/

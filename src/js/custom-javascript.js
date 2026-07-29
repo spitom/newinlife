@@ -1029,143 +1029,370 @@ document.addEventListener('DOMContentLoaded', () => {
 // Slider
 
 document.addEventListener('DOMContentLoaded', () => {
-    const sliders = document.querySelectorAll('.js-hero-slider');
+	const sliders = document.querySelectorAll('.js-hero-slider');
 
-    sliders.forEach((slider) => {
-        const slides = Array.from(slider.querySelectorAll('[data-slide]'));
-        const nextBtn = slider.querySelector('.js-next');
-        const prevBtn = slider.querySelector('.js-prev');
-        const toggleBtn = slider.querySelector('.js-toggle');
+	if (!sliders.length) return;
 
-        if (!slides.length) return;
+	sliders.forEach((slider) => {
+		const track = slider.querySelector('.js-hero-track');
+		const slides = Array.from(slider.querySelectorAll('[data-slide]'));
+		const nextBtn = slider.querySelector('.js-next');
+		const prevBtn = slider.querySelector('.js-prev');
+		const toggleBtn = slider.querySelector('.js-toggle');
 
-        let index = 0;
-        let timer = null;
+		if (!slides.length) return;
 
-        const interval = parseInt(slider.dataset.interval || '7000', 10);
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const hasMultipleSlides = slides.length > 1;
+		const parsedInterval = Number.parseInt(
+			slider.dataset.interval || '7000',
+			10
+		);
 
-        let autoplay = slider.dataset.autoplay === 'true' && hasMultipleSlides && !prefersReducedMotion;
+		const interval =
+			Number.isFinite(parsedInterval) && parsedInterval > 0
+				? parsedInterval
+				: 7000;
 
-        function pauseAllVideos() {
-            slides.forEach((slide) => {
-                const video = slide.querySelector('video');
+		const reducedMotionQuery = window.matchMedia(
+			'(prefers-reduced-motion: reduce)'
+		);
 
-                if (video) {
-                    video.pause();
-                    video.currentTime = 0;
-                }
-            });
-        }
+		const hasMultipleSlides = slides.length > 1;
+		const hasVideo = slides.some((slide) => slide.querySelector('video'));
 
-        function playActiveVideo(slide) {
-            const video = slide.querySelector('video');
+		const autoplayRequested =
+			slider.dataset.autoplay === 'true' &&
+			hasMultipleSlides;
 
-            if (!video) return;
+		const pauseLabel =
+			toggleBtn?.dataset.labelPause ||
+			toggleBtn?.getAttribute('aria-label') ||
+			'Zatrzymaj slider';
 
-            video.muted = true;
-            video.playsInline = true;
+		const playLabel =
+			toggleBtn?.dataset.labelPlay ||
+			'Odtwórz slider';
 
-            const playPromise = video.play();
+		const focusableSelector = [
+			'a[href]',
+			'button:not([disabled])',
+			'input:not([disabled])',
+			'select:not([disabled])',
+			'textarea:not([disabled])',
+			'[tabindex]',
+		].join(',');
 
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {});
-            }
-        }
+		let index = slides.findIndex((slide) =>
+			slide.classList.contains('is-active')
+		);
 
-        function setSlide(newIndex) {
-            pauseAllVideos();
+		if (index < 0) {
+			index = 0;
+		}
 
-            slides.forEach((slide, i) => {
-                const isActive = i === newIndex;
+		let timer = null;
+		let pointerInside = false;
+		let focusInside = false;
+		let pageHidden = document.hidden;
 
-                slide.classList.toggle('is-active', isActive);
-                slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+		let autoplayEnabled =
+			autoplayRequested && !reducedMotionQuery.matches;
 
-                if (isActive) {
-                    playActiveVideo(slide);
-                }
-            });
+		let userPaused = !autoplayEnabled;
 
-            index = newIndex;
-        }
+		const normalizeIndex = (newIndex) => {
+			return (newIndex + slides.length) % slides.length;
+		};
 
-        function next() {
-            setSlide((index + 1) % slides.length);
-        }
+		const pauseAllVideos = (reset = false) => {
+			slides.forEach((slide) => {
+				const video = slide.querySelector('video');
 
-        function prev() {
-            setSlide((index - 1 + slides.length) % slides.length);
-        }
+				if (!video) return;
 
-        function start() {
-            if (!autoplay) return;
+				video.pause();
 
-            clearInterval(timer);
+				if (reset) {
+					try {
+						video.currentTime = 0;
+					} catch (error) {
+						// Metadane filmu mogą nie być jeszcze załadowane.
+					}
+				}
+			});
+		};
 
-            timer = setInterval(() => {
-                next();
-            }, interval);
+		const playActiveVideo = () => {
+			const activeSlide = slides[index];
+			const video = activeSlide?.querySelector('video');
 
-            playActiveVideo(slides[index]);
+			if (!video) return;
 
-            if (toggleBtn) {
-                toggleBtn.classList.remove('is-paused');
-                toggleBtn.setAttribute('aria-pressed', 'false');
-                toggleBtn.setAttribute('aria-label', 'Zatrzymaj slider');
-            }
-        }
+			video.muted = true;
+			video.playsInline = true;
 
-        function stop() {
-            clearInterval(timer);
-            timer = null;
+			const playPromise = video.play();
 
-            pauseAllVideos();
+			if (
+				playPromise &&
+				typeof playPromise.catch === 'function'
+			) {
+				playPromise.catch(() => {
+					// Przeglądarka może zablokować autoplay.
+				});
+			}
+		};
 
-            if (toggleBtn) {
-                toggleBtn.classList.add('is-paused');
-                toggleBtn.setAttribute('aria-pressed', 'true');
-                toggleBtn.setAttribute('aria-label', 'Odtwórz slider');
-            }
-        }
+		const setSlideInteractivity = (slide, isActive) => {
+			if ('inert' in slide) {
+				slide.inert = !isActive;
+			}
 
-        if (nextBtn) {
-            nextBtn.addEventListener('click', () => {
-                stop();
-                next();
-            });
-        }
+			slide
+				.querySelectorAll(focusableSelector)
+				.forEach((element) => {
+					if (!isActive) {
+						if (
+							!element.hasAttribute(
+								'data-inlife-original-tabindex'
+							)
+						) {
+							const originalTabindex =
+								element.getAttribute('tabindex');
 
-        if (prevBtn) {
-            prevBtn.addEventListener('click', () => {
-                stop();
-                prev();
-            });
-        }
+							element.setAttribute(
+								'data-inlife-original-tabindex',
+								originalTabindex === null
+									? ''
+									: originalTabindex
+							);
+						}
 
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', () => {
-                if (timer) {
-                    stop();
-                } else {
-                    autoplay = true;
-                    start();
-                }
-            });
-        }
+						element.setAttribute('tabindex', '-1');
+						return;
+					}
 
-        slider.addEventListener('mouseenter', () => {
-            if (timer) stop();
-        });
+					if (
+						!element.hasAttribute(
+							'data-inlife-original-tabindex'
+						)
+					) {
+						return;
+					}
 
-        slider.addEventListener('focusin', () => {
-            if (timer) stop();
-        });
+					const originalTabindex = element.getAttribute(
+						'data-inlife-original-tabindex'
+					);
 
-        playActiveVideo(slides[index]);
-        start();
-    });
+					element.removeAttribute(
+						'data-inlife-original-tabindex'
+					);
+
+					if (originalTabindex === '') {
+						element.removeAttribute('tabindex');
+					} else {
+						element.setAttribute(
+							'tabindex',
+							originalTabindex
+						);
+					}
+				});
+		};
+
+		const stopTimer = () => {
+			if (!timer) return;
+
+			window.clearInterval(timer);
+			timer = null;
+		};
+
+		const isTemporarilyPaused = () => {
+			return pointerInside || focusInside || pageHidden;
+		};
+
+		const shouldPlay = () => {
+			return !userPaused && !isTemporarilyPaused();
+		};
+
+		const updateControls = () => {
+			if (toggleBtn) {
+				toggleBtn.classList.toggle(
+					'is-paused',
+					userPaused
+				);
+
+				toggleBtn.setAttribute(
+					'aria-pressed',
+					userPaused ? 'true' : 'false'
+				);
+
+				toggleBtn.setAttribute(
+					'aria-label',
+					userPaused ? playLabel : pauseLabel
+				);
+			}
+
+			if (track) {
+				track.setAttribute(
+					'aria-live',
+					shouldPlay() ? 'off' : 'polite'
+				);
+			}
+		};
+
+		const startTimer = () => {
+			stopTimer();
+
+			if (
+				!autoplayEnabled ||
+				!hasMultipleSlides ||
+				!shouldPlay()
+			) {
+				return;
+			}
+
+			timer = window.setInterval(() => {
+				setSlide(index + 1);
+			}, interval);
+		};
+
+		const syncPlayback = () => {
+			stopTimer();
+			updateControls();
+
+			if (!shouldPlay()) {
+				pauseAllVideos(false);
+				return;
+			}
+
+			playActiveVideo();
+			startTimer();
+		};
+
+		function setSlide(newIndex) {
+			const normalizedIndex = normalizeIndex(newIndex);
+
+			pauseAllVideos(true);
+
+			slides.forEach((slide, slideIndex) => {
+				const isActive = slideIndex === normalizedIndex;
+
+				slide.classList.toggle('is-active', isActive);
+
+				slide.setAttribute(
+					'aria-hidden',
+					isActive ? 'false' : 'true'
+				);
+
+				setSlideInteractivity(slide, isActive);
+			});
+
+			index = normalizedIndex;
+
+			syncPlayback();
+		}
+
+		const pauseByUser = () => {
+			userPaused = true;
+			autoplayEnabled = false;
+
+			syncPlayback();
+		};
+
+		const playByUser = () => {
+			userPaused = false;
+			autoplayEnabled = true;
+
+			syncPlayback();
+		};
+
+		if (nextBtn) {
+			nextBtn.addEventListener('click', () => {
+				pauseByUser();
+				setSlide(index + 1);
+			});
+		}
+
+		if (prevBtn) {
+			prevBtn.addEventListener('click', () => {
+				pauseByUser();
+				setSlide(index - 1);
+			});
+		}
+
+		if (toggleBtn) {
+			if (!hasMultipleSlides && !hasVideo) {
+				toggleBtn.hidden = true;
+			}
+
+			toggleBtn.addEventListener('click', () => {
+				if (userPaused) {
+					playByUser();
+				} else {
+					pauseByUser();
+				}
+			});
+		}
+
+		slider.addEventListener('mouseenter', () => {
+			pointerInside = true;
+			syncPlayback();
+		});
+
+		slider.addEventListener('mouseleave', () => {
+			pointerInside = false;
+			syncPlayback();
+		});
+
+		slider.addEventListener('focusin', () => {
+			focusInside = true;
+			syncPlayback();
+		});
+
+		slider.addEventListener('focusout', (event) => {
+			const nextFocusedElement = event.relatedTarget;
+
+			if (
+				nextFocusedElement &&
+				slider.contains(nextFocusedElement)
+			) {
+				return;
+			}
+
+			focusInside = false;
+			syncPlayback();
+		});
+
+		document.addEventListener('visibilitychange', () => {
+			pageHidden = document.hidden;
+			syncPlayback();
+		});
+
+		const handleReducedMotionChange = (event) => {
+			if (event.matches) {
+				userPaused = true;
+				autoplayEnabled = false;
+			}
+
+			syncPlayback();
+		};
+
+		if (
+			typeof reducedMotionQuery.addEventListener === 'function'
+		) {
+			reducedMotionQuery.addEventListener(
+				'change',
+				handleReducedMotionChange
+			);
+		} else if (
+			typeof reducedMotionQuery.addListener === 'function'
+		) {
+			reducedMotionQuery.addListener(
+				handleReducedMotionChange
+			);
+		}
+
+		setSlide(index);
+	});
 });
 
 // Reveal cards on viewport

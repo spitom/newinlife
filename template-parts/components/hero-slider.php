@@ -165,12 +165,21 @@ if ( $interval <= 0 ) {
 	<?php endif; ?>
 
 	<button
-        type="button"
-        class="hero-slider__toggle js-toggle"
-        aria-label="<?php echo esc_attr( inlife_t( 'Zatrzymaj slider' ) ); ?>"
-        aria-pressed="false"
-    >
-        <i class="bi bi-pause-fill hero-slider__icon hero-slider__icon--pause" aria-hidden="true"></i>
-        <i class="bi bi-play-fill hero-slider__icon hero-slider__icon--play" aria-hidden="true"></i>
-    </button>
+		type="button"
+		class="hero-slider__toggle js-toggle"
+		aria-label="<?php echo esc_attr( inlife_t( 'Zatrzymaj slider' ) ); ?>"
+		aria-pressed="false"
+		data-label-pause="<?php echo esc_attr( inlife_t( 'Zatrzymaj slider' ) ); ?>"
+		data-label-play="<?php echo esc_attr( inlife_t( 'Odtwórz slider' ) ); ?>"
+	>
+		<i
+			class="bi bi-pause-fill hero-slider__icon hero-slider__icon--pause"
+			aria-hidden="true"
+		></i>
+
+		<i
+			class="bi bi-play-fill hero-slider__icon hero-slider__icon--play"
+			aria-hidden="true"
+		></i>
+	</button>
 </div>
