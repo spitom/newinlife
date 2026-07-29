@@ -15,9 +15,17 @@ if ( ! $post_id ) {
 }
 
 $partner = inlife_get_partner_card_data( $post_id );
+
+$region_slugs = array_map(
+	'sanitize_key',
+	(array) ( $partner['region_slugs'] ?? [] )
+);
 ?>
 
-<article class="network-card c-surface c-surface--record c-surface--interactive">
+<article class="network-card c-surface c-surface--record c-surface--interactive" 
+	data-network-item
+	data-network-regions="<?php echo esc_attr( implode( ' ', $region_slugs ) ); ?>"
+>
 	<div class="network-card__inner">
 
 		<div class="network-card__logo">
