@@ -999,18 +999,92 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Kopiowanie linku (post share)
 
-document.addEventListener('click', function (e) {
-	const btn = e.target.closest('.js-copy-link');
-	if (!btn) return;
+document.addEventListener('DOMContentLoaded', () => {
+	const resetTimers = new WeakMap();
 
-	const url = btn.dataset.url;
+	const copyWithFallback = (text) => {
+		const textarea = document.createElement('textarea');
 
-	navigator.clipboard.writeText(url).then(() => {
-		btn.classList.add('is-copied');
+		textarea.value = text;
+		textarea.setAttribute('readonly', '');
+		textarea.style.position = 'fixed';
+		textarea.style.top = '0';
+		textarea.style.left = '-9999px';
+		textarea.style.opacity = '0';
 
-		setTimeout(() => {
-			btn.classList.remove('is-copied');
+		document.body.appendChild(textarea);
+
+		textarea.focus();
+		textarea.select();
+		textarea.setSelectionRange(0, textarea.value.length);
+
+		let copied = false;
+
+		try {
+			copied = document.execCommand('copy');
+		} catch (error) {
+			copied = false;
+		}
+
+		textarea.remove();
+
+		return copied;
+	};
+
+	const copyText = async (text) => {
+		if (
+			navigator.clipboard &&
+			typeof navigator.clipboard.writeText === 'function' &&
+			window.isSecureContext
+		) {
+			await navigator.clipboard.writeText(text);
+			return;
+		}
+
+		if (!copyWithFallback(text)) {
+			throw new Error('Clipboard API and fallback copy failed.');
+		}
+	};
+
+	document.addEventListener('click', async (event) => {
+		const button = event.target.closest('.js-copy-link');
+
+		if (!button) return;
+
+		event.preventDefault();
+
+		const url = (button.dataset.url || '').trim();
+
+		if (!url) return;
+
+		const previousTimer = resetTimers.get(button);
+
+		if (previousTimer) {
+			window.clearTimeout(previousTimer);
+		}
+
+		button.classList.remove('is-copied', 'is-copy-error');
+
+		try {
+			await copyText(url);
+
+			button.classList.add('is-copied');
+		} catch (error) {
+			button.classList.add('is-copy-error');
+
+			console.error('Copy link failed.', error);
+		}
+
+		const resetTimer = window.setTimeout(() => {
+			button.classList.remove(
+				'is-copied',
+				'is-copy-error'
+			);
+
+			resetTimers.delete(button);
 		}, 2000);
+
+		resetTimers.set(button, resetTimer);
 	});
 });
 
