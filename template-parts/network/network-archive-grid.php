@@ -29,6 +29,14 @@ $empty_msg = $args['empty_msg'];
 		endwhile;
 		?>
 	</div>
+	<p
+		class="visually-hidden"
+		role="status"
+		aria-live="polite"
+		aria-atomic="true"
+		data-network-status
+		data-network-status-label="<?php echo esc_attr( inlife_t( 'Liczba widocznych partnerów: %d.' ) ); ?>"
+	></p>
 <?php else : ?>
 	<p class="network-empty">
 		<?php echo esc_html( $empty_msg ); ?>

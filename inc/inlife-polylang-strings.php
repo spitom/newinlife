@@ -812,6 +812,8 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'network_map_error', 'Mapa jest obecnie niedostępna. Skorzystaj z listy partnerów poniżej.', $group );
 		pll_register_string( 'network_map_noscript', 'Mapa wymaga obsługi JavaScript. Skorzystaj z listy partnerów poniżej.', $group );
 		pll_register_string( 'network_map_popup_link', 'Zobacz partnera', $group );
+		pll_register_string( 'network_map_empty', 'Brak partnerów z przypisanymi współrzędnymi.', $group );
+
 
 		// Listing / cards.
 		pll_register_string( 'network_listing_heading', 'Lista partnerów', $group );
@@ -843,6 +845,8 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'network_region_lead', 'Zobacz partnerów współpracujących z Instytutem w regionie: %s.', $group );
 		pll_register_string( 'network_region_all_cta', 'Zobacz wszystkich partnerów', $group );
 		pll_register_string( 'network_region_empty', 'Brak partnerów w tym regionie.', $group );
+
+		pll_register_string( 'network_visible_partners_count', 'Liczba widocznych partnerów: %d.', $group );
 
 
 		/*

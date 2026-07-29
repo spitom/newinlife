@@ -807,6 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const mapElement = document.querySelector('[data-network-map]');
 	const filterButtons = document.querySelectorAll('[data-network-filter]');
 	const gridItems = document.querySelectorAll('[data-network-item]');
+	const statusElement = document.querySelector('[data-network-status]');
 
 	if (!mapElement) return;
 
@@ -830,6 +831,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	const rawData = mapElement.dataset.networkMapData || '[]';
 	const emptyLabel = mapElement.dataset.networkMapEmptyLabel || '';
 	const linkLabel = mapElement.dataset.networkMapLinkLabel || 'Zobacz partnera';
+
+	const announceResultCount = (count) => {
+		if (!statusElement) return;
+
+		const label =
+			statusElement.dataset.networkStatusLabel ||
+			'Liczba widocznych partnerów: %d.';
+
+		statusElement.textContent = label.replace('%d', String(count));
+	};
 
 	let partners = [];
 
@@ -964,11 +975,25 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	const filterGrid = (filterValue) => {
+		let visibleCount = 0;
+
 		gridItems.forEach((item) => {
-			const itemRegions = (item.dataset.networkRegions || '').split(' ').filter(Boolean);
-			const matches = filterValue === 'all' || itemRegions.includes(filterValue);
+			const itemRegions = (item.dataset.networkRegions || '')
+				.split(' ')
+				.filter(Boolean);
+
+			const matches =
+				filterValue === 'all' ||
+				itemRegions.includes(filterValue);
+
 			item.hidden = !matches;
+
+			if (matches) {
+				visibleCount += 1;
+			}
 		});
+
+		return visibleCount;
 	};
 
 	const filterMap = (filterValue) => {
@@ -999,8 +1024,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		button.addEventListener('click', () => {
 			const filterValue = button.dataset.networkFilter || 'all';
 			setActiveFilter(button);
-			filterGrid(filterValue);
+
+			const visibleCount = filterGrid(filterValue);
+
 			filterMap(filterValue);
+			announceResultCount(visibleCount);
 		});
 	});
 
