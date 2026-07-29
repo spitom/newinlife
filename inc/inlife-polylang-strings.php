@@ -809,6 +809,7 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'network_map_intro', 'Mapa pokazuje lokalizacje naszych partnerów. Pełna lista partnerów znajduje się poniżej i pozostaje podstawową, w pełni dostępną formą nawigacji.', $group );
 		pll_register_string( 'network_map_aria_label', 'Interaktywna mapa partnerów', $group );
 		pll_register_string( 'network_map_empty', 'Brak partnerów z przypisanymi współrzędnymi.', $group );
+		pll_register_string( 'network_map_error', 'Mapa jest obecnie niedostępna. Skorzystaj z listy partnerów poniżej.', $group );
 		pll_register_string( 'network_map_noscript', 'Mapa wymaga obsługi JavaScript. Skorzystaj z listy partnerów poniżej.', $group );
 		pll_register_string( 'network_map_popup_link', 'Zobacz partnera', $group );
 

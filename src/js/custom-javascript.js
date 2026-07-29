@@ -809,7 +809,23 @@ document.addEventListener('DOMContentLoaded', () => {
 	const gridItems = document.querySelectorAll('[data-network-item]');
 
 	if (!mapElement) return;
-	if (typeof L === 'undefined') return;
+
+	const renderMapMessage = (message) => {
+		const paragraph = document.createElement('p');
+		paragraph.className = 'network-map__empty';
+		paragraph.textContent = message;
+
+		mapElement.replaceChildren(paragraph);
+	};
+
+	const errorLabel =
+		mapElement.dataset.networkMapErrorLabel ||
+		'Mapa jest obecnie niedostępna. Skorzystaj z listy partnerów poniżej.';
+
+	if (typeof L === 'undefined') {
+		renderMapMessage(errorLabel);
+		return;
+	}
 
 	const rawData = mapElement.dataset.networkMapData || '[]';
 	const emptyLabel = mapElement.dataset.networkMapEmptyLabel || '';
@@ -825,7 +841,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	if (!Array.isArray(partners) || !partners.length) {
-		mapElement.innerHTML = `<p class="network-map__empty">${emptyLabel}</p>`;
+		renderMapMessage(emptyLabel);
 		return;
 	}
 

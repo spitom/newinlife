@@ -38,6 +38,7 @@ $map_id    = 'network-map-canvas';
 				data-network-map-id="<?php echo esc_attr( $map_id ); ?>"
 				data-network-map-data="<?php echo esc_attr( wp_json_encode( $map_data ) ); ?>"
 				data-network-map-empty-label="<?php echo esc_attr( inlife_t( 'Brak partnerów z przypisanymi współrzędnymi.' ) ); ?>"
+				data-network-map-error-label="<?php echo esc_attr( inlife_t( 'Mapa jest obecnie niedostępna. Skorzystaj z listy partnerów poniżej.' ) ); ?>"
 				data-network-map-link-label="<?php echo esc_attr( inlife_t( 'Zobacz partnera' ) ); ?>"
 				aria-label="<?php echo esc_attr( inlife_t( 'Interaktywna mapa partnerów' ) ); ?>"
 			></div>
