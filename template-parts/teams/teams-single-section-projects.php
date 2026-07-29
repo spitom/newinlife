@@ -43,13 +43,7 @@ defined( 'ABSPATH' ) || exit;
 
 							<?php if ( $name ) : ?>
 								<span class="team-project-item__person">
-									<?php if ( $link ) : ?>
-										<a href="<?php echo esc_url( $link ); ?>">
-											<?php echo esc_html( $name ); ?>
-										</a>
-									<?php else : ?>
-										<?php echo esc_html( $name ); ?>
-									<?php endif; ?>
+									<?php echo esc_html( $name ); ?>
 								</span>
 							<?php endif; ?>
 

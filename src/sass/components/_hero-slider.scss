@@ -210,40 +210,144 @@
 
 @media (max-width: 767.98px) {
     .hero-slider {
-        min-height: calc(100dvh - var(--inlife-mobile-header-height, 104px));
+        --inlife-hero-mobile-overscan: 16px;
+
+        min-height: calc(100svh - var(--inlife-mobile-header-height, 88px) + var(--inlife-hero-mobile-overscan));
+    }
+
+    @supports not (height: 100svh) {
+        .hero-slider {
+            min-height: calc(100vh - var(--inlife-mobile-header-height, 88px));
+        }
     }
 
     .hero-slide__content {
-        min-height: calc(100dvh - var(--inlife-mobile-header-height, 104px));
-        padding-block: clamp(2rem, 10vw, 3.5rem);
+        min-height: calc(100svh - var(--inlife-mobile-header-height, 88px) + var(--inlife-hero-mobile-overscan));
+        align-items: flex-end;
+        padding-block: clamp(1.75rem, 7vw, 2.75rem) 5.6rem;
+    }
+
+    @supports not (height: 100svh) {
+
+        .hero-slider,
+        .hero-slide__content {
+            min-height: calc(100vh - var(--inlife-mobile-header-height, 88px) + var(--inlife-hero-mobile-overscan));
+        }
+    }
+
+    .hero-slide__inner {
+        max-width: min(100%, 23rem);
+    }
+
+    .hero-slide__media {
+        &::after {
+            background:
+                linear-gradient(90deg,
+                    rgba(20, 28, 52, 0.9) 0%,
+                    rgba(20, 28, 52, 0.72) 52%,
+                    rgba(20, 28, 52, 0.34) 100%),
+                linear-gradient(0deg,
+                    rgba(20, 28, 52, 0.68) 0%,
+                    rgba(20, 28, 52, 0) 46%);
+        }
+    }
+
+    .hero-slide__image,
+    .hero-slide__video {
+        transform: none;
+        object-position: 58% center;
     }
 
     .hero-slide__title {
-        font-size: clamp(2rem, 12vw, 3.25rem);
+        margin-bottom: 0.85rem;
+        font-size: clamp(2.65rem, 11.5vw, 4rem);
+        line-height: 1.06;
+        letter-spacing: -0.055em;
+    }
+
+    .hero-slide__text {
+        max-width: 22rem;
+        margin-bottom: 0;
+        font-size: clamp(1rem, 4.2vw, 1.16rem);
+        line-height: 1.5;
+    }
+
+    .hero-slide__text p+p {
+        margin-top: 0.45rem;
+    }
+
+    .hero-text-lg {
+        font-size: clamp(1.35rem, 5.5vw, 1.8rem);
+        line-height: 1.25;
     }
 
     .hero-slider__nav,
     .hero-slider__toggle {
-        bottom: 1rem;
-        width: 3rem;
-        height: 3rem;
+        bottom: max(0.9rem, env(safe-area-inset-bottom));
+        width: 2.65rem;
+        height: 2.65rem;
+        border-radius: 0.75rem;
+        border-color: rgba(255, 255, 255, 0.32);
+        background: rgba(20, 28, 52, 0.52);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         opacity: 1;
     }
 
     .hero-slider__nav {
-        font-size: 1.7rem;
+        font-size: 1.45rem;
     }
 
     .hero-slider__toggle {
-        right: 0.75rem;
+        right: 1rem;
         font-size: 1.35rem;
     }
 
+    .hero-slider__nav>span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1em;
+        height: 1em;
+        line-height: 1;
+        transform: translateY(-0.04em);
+    }
+
+    .hero-slider__toggle {
+        .hero-slider__icon {
+            align-items: center;
+            justify-content: center;
+            width: 1em;
+            height: 1em;
+            line-height: 1;
+        }
+
+        .hero-slider__icon--pause {
+            display: inline-flex;
+            transform: translateY(0.01em);
+        }
+
+        .hero-slider__icon--play {
+            display: none;
+            transform: translate(0.04em, 0.01em);
+        }
+
+        &.is-paused {
+            .hero-slider__icon--pause {
+                display: none;
+            }
+
+            .hero-slider__icon--play {
+                display: inline-flex;
+            }
+        }
+    }
+
     .hero-slider__nav--next {
-        right: 4.25rem;
+        right: calc(1rem + 2.65rem + 0.45rem);
     }
 
     .hero-slider__nav--prev {
-        right: 7.75rem;
+        right: calc(1rem + (2.65rem * 2) + 0.9rem);
     }
 }

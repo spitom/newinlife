@@ -8,13 +8,35 @@ $container = inlife_container_class();
 	<div class="<?php echo esc_attr( $container ); ?>">
 		<div class="inlife-search-panel__inner">
 
+			<?php
+			$site_url = trailingslashit( (string) get_option( 'home' ) );
+
+			$current_language = function_exists( 'pll_current_language' )
+				? (string) pll_current_language( 'slug' )
+				: '';
+
+			$default_language = function_exists( 'pll_default_language' )
+				? (string) pll_default_language( 'slug' )
+				: '';
+
+			$search_action = $site_url;
+
+			if (
+				'' !== $current_language &&
+				$current_language !== $default_language
+			) {
+				$search_action = trailingslashit(
+					$site_url . $current_language
+				);
+			}
+			?>
+				
 			<form
 				role="search"
 				method="get"
 				class="inlife-search-form c-search"
-				action="<?php echo esc_url( function_exists( 'pll_home_url' ) ? pll_home_url() : home_url( '/' ) ); ?>"
-			>
-				
+				action="<?php echo esc_url( $search_action ); ?>"
+			>				
 
 				<label class="visually-hidden" for="inlife-search-field">
 					<?php echo esc_html( inlife_t( 'Szukaj w serwisie' ) ); ?>

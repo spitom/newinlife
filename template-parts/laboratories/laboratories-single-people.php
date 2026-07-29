@@ -42,15 +42,21 @@ foreach ( $members as $m_id ) {
         $position = remove_accents( mb_strtolower( $position ) );
 
         $map = array(
-            'profesor'   => 10,
-            'adiunkt'    => 20,
-            'asystent'   => 30,
-            'specjalist' => 40,
-            'technolog'  => 50,
-            'doktorant'  => 60,
+
+            'profesor instytutu'  => 15,
+            'profesor'            => 10,
+            'adiunkt'             => 20,
+            'asystent'            => 30,
+            'st. specjalist'      => 35,
+            'st specjalist'       => 35,
+            'starszy specjalist'  => 35,
+            'specjalist'          => 40,
+            'technolog'           => 50,
+            'doktorant'           => 60,
         );
 
         $weight = 999;
+
         foreach ( $map as $needle => $w ) {
             if ( false !== strpos( $position, $needle ) ) {
                 $weight = $w;

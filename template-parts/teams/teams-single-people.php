@@ -39,12 +39,20 @@ if ( ! empty( $members ) ) {
 				$position = remove_accents( mb_strtolower( $position ) );
 
 				$map = array(
-					'profesor'   => 10,
-					'adiunkt'    => 20,
-					'asystent'   => 30,
-					'specjalist' => 40,
-					'technolog'  => 50,
-					'doktorant'  => 60,
+
+					'profesor instytutu'  => 15,
+					'institute professor' => 15,
+					'profesor'            => 10,
+					'professor'           => 10,
+					'adiunkt'             => 20,
+					'asystent'            => 30,
+					'st. specjalist'      => 35,
+					'st specjalist'       => 35,
+					'starszy specjalist'  => 35,
+					'senior specialist'   => 35,
+					'specjalist'          => 40,
+					'technolog'           => 50,
+					'doktorant'           => 60,
 				);
 
 				foreach ( $map as $needle => $weight ) {

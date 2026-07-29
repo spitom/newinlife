@@ -43,6 +43,7 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
+                    "pll_default_value": "",
                     "parent_repeater": "field_735a668b0ead"
                 },
                 {
@@ -50,7 +51,7 @@
                     "label": "Opis",
                     "name": "description",
                     "aria-label": "",
-                    "type": "textarea",
+                    "type": "wysiwyg",
                     "instructions": "Krótki opis obszaru badawczego.",
                     "required": 0,
                     "conditional_logic": 0,
@@ -59,11 +60,14 @@
                         "class": "",
                         "id": ""
                     },
-                    "rows": 4,
-                    "new_lines": "wpautop",
                     "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
+                    "translations": "copy_once",
+                    "allow_in_bindings": 0,
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "pll_default_value": "",
                     "parent_repeater": "field_735a668b0ead"
                 }
             ]
@@ -90,5 +94,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1775553623
+    "pll_display_field_instructions": 1,
+    "modified": 1784116667
 }

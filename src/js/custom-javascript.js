@@ -1199,13 +1199,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         },
         {
-            threshold: 0.16,
+            threshold: 0.08,
             rootMargin: '0px 0px -8% 0px',
         }
     );
 
     revealCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 70}ms`;
+        card.style.transitionDelay = `${index * 40}ms`;
         observer.observe(card);
     });
 });

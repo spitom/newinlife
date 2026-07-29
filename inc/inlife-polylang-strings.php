@@ -121,6 +121,68 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		);
 
 		/*
+		* ------------------------------------------------------------
+		* Inlife Search
+		* ------------------------------------------------------------
+		*/
+
+		$group = 'InLife Search';
+
+		pll_register_string(
+			'search_breadcrumb_results',
+			'Wyniki wyszukiwania: %s',
+			$group
+		);
+
+		pll_register_string(
+			'search_kicker',
+			'Wyszukiwarka',
+			$group
+		);
+
+		pll_register_string(
+			'search_results_for',
+			'Wyniki wyszukiwania dla: %s',
+			$group
+		);
+
+		pll_register_string(
+			'search_results_title',
+			'Wyniki wyszukiwania',
+			$group
+		);
+
+		pll_register_string(
+			'search_results_count',
+			'Znaleziono %d wyników w serwisie InLife.',
+			$group
+		);
+
+		pll_register_string(
+			'search_results_list_aria',
+			'Lista wyników wyszukiwania',
+			$group
+		);
+
+		pll_register_string(
+			'search_results_pagination_aria',
+			'Nawigacja po wynikach',
+			$group
+		);
+
+		pll_register_string(
+			'search_no_results_title',
+			'Brak wyników',
+			$group
+		);
+
+		pll_register_string(
+			'search_no_results_text',
+			'Spróbuj wpisać inną frazę lub użyć krótszego zapytania.',
+			$group
+		);
+
+		/*
 		 * ------------------------------------------------------------
 		 * Footer
 		 * ------------------------------------------------------------
@@ -134,7 +196,7 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		// Opis.
 		pll_register_string(
 			'footer_description',
-			'InLife rozwija wiedzę i tworzy innowacje w obszarach żywności, zdrowia i rozrodu dla dobra ludzi, zwierząt i środowiska.',
+			'InLife wspiera rozwój naukowców i wysokie standardy pracy badawczej, rozwijając kulturę współpracy, mobilności i rozwoju kariery.',
 			$group
 		);
 

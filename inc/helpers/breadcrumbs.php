@@ -188,8 +188,18 @@ if ( ! function_exists( 'inlife_get_custom_breadcrumb_items' ) ) {
 		}
 
 		if ( is_post_type_archive() ) {
+			$post_type = get_query_var( 'post_type' );
+
+			if ( is_array( $post_type ) ) {
+				$post_type = reset( $post_type );
+			}
+
+			$post_type = is_string( $post_type ) ? $post_type : '';
+
 			$items[] = [
-				'label'   => post_type_archive_title( '', false ),
+				'label'   => $post_type
+					? inlife_get_breadcrumb_post_type_archive_label( $post_type )
+					: post_type_archive_title( '', false ),
 				'url'     => '',
 				'current' => true,
 			];
@@ -255,6 +265,37 @@ if ( ! function_exists( 'inlife_get_custom_breadcrumb_items' ) ) {
 		];
 
 		return inlife_normalize_breadcrumb_items( $items );
+	}
+}
+
+if ( ! function_exists( 'inlife_get_breadcrumb_post_type_archive_label' ) ) {
+	/**
+	 * Return a front-facing, Polylang-aware label
+	 * for post type archive breadcrumb items.
+	 *
+	 * @param string $post_type Post type key.
+	 * @return string
+	 */
+	function inlife_get_breadcrumb_post_type_archive_label( string $post_type ): string {
+		$labels = array(
+			'teams'        => 'Zespoły badawcze',
+			'laboratories' => 'Laboratoria',
+		);
+
+		if ( isset( $labels[ $post_type ] ) ) {
+			return inlife_t( $labels[ $post_type ] );
+		}
+
+		$post_type_object = get_post_type_object( $post_type );
+
+		if (
+			$post_type_object &&
+			! empty( $post_type_object->labels->name )
+		) {
+			return inlife_t( (string) $post_type_object->labels->name );
+		}
+
+		return $post_type;
 	}
 }
 
@@ -384,7 +425,7 @@ if ( ! function_exists( 'inlife_get_singular_breadcrumb_items' ) ) {
 
 		if ( $post_type_object && $post_type_object->has_archive ) {
 			$items[] = [
-				'label'   => $post_type_object->labels->name,
+				'label'   => inlife_get_breadcrumb_post_type_archive_label( $post_type ),
 				'url'     => get_post_type_archive_link( $post_type ),
 				'current' => false,
 			];
@@ -474,7 +515,7 @@ if ( ! function_exists( 'inlife_get_taxonomy_breadcrumb_items' ) ) {
 
 			if ( $post_type_object && $post_type_object->has_archive ) {
 				$items[] = [
-					'label'   => $post_type_object->labels->name,
+					'label'   => inlife_get_breadcrumb_post_type_archive_label( $post_type ),
 					'url'     => get_post_type_archive_link( $post_type ),
 					'current' => false,
 				];

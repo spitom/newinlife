@@ -1,0 +1,339 @@
+/* =========================================================
+   BIZNES — OBSZAR USŁUG
+========================================================= */
+
+.site-main--business-service-area {
+    background: var(--inlife-surface-soft);
+
+    .page-section--business-service-area-hero {
+        padding: 0;
+    }
+
+    .page-section--business-service-area-content {
+        padding-block: clamp(3rem, 6vw, 5.5rem);
+    }
+}
+
+.business-service-area {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3.25rem);
+}
+
+/* =========================================================
+   LOCAL NAV — uses global c-card-grid + business service cards
+========================================================= */
+
+.business-service-area__nav {
+    --inlife-grid-min: 250px;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.business-service-area__main {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* =========================================================
+   GROUP PANEL
+========================================================= */
+
+.business-service-group {
+    position: relative;
+    padding: clamp(1.35rem, 2.8vw, 2.25rem);
+    border: 1px solid rgba(41, 52, 88, 0.1);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 18px 46px rgba(18, 38, 63, 0.055);
+    overflow: hidden;
+}
+
+.business-service-group__header {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+    border-bottom: 1px solid rgba(41, 52, 88, 0.1);
+}
+
+.business-service-group__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: var(--inlife-primary);
+    color: var(--inlife-accent);
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.08em;
+}
+
+.business-service-group__title {
+    margin: 0;
+    font-size: clamp(1.65rem, 2.8vw, 2.55rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+    color: var(--inlife-primary);
+}
+
+.business-service-group__lead {
+    max-width: 780px;
+    margin: 0.7rem 0 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--inlife-text-muted);
+}
+
+/* =========================================================
+   SERVICE ROWS
+========================================================= */
+
+.business-service-group__list {
+    display: flex;
+    flex-direction: column;
+}
+
+.business-service-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: clamp(1.25rem, 2.4vw, 1.85rem);
+    border-bottom: 1px solid rgba(41, 52, 88, 0.1);
+
+    &:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    @media (min-width: 1100px) {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 330px);
+        align-items: start;
+        column-gap: clamp(2rem, 4vw, 3rem);
+    }
+}
+
+.business-service-row__content {
+    min-width: 0;
+}
+
+.business-service-row__heading {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.75rem;
+    align-items: baseline;
+    margin-bottom: 0.65rem;
+}
+
+.business-service-row__number {
+    min-width: 2.3rem;
+    color: var(--inlife-accent);
+    font-size: 0.88rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.04em;
+}
+
+.business-service-row__title {
+    margin: 0;
+    font-size: clamp(1.18rem, 1.7vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: var(--inlife-primary);
+}
+
+.business-service-row__text {
+    max-width: 860px;
+    color: var(--inlife-text-muted);
+    font-size: 0.98rem;
+    line-height: 1.75;
+
+    p {
+        margin: 0;
+    }
+}
+
+/* =========================================================
+   LAB LINKS PER SERVICE
+========================================================= */
+
+.business-service-row__labs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+
+    @media (min-width: 1100px) {
+        padding-top: 0.1rem;
+    }
+}
+
+.business-service-row__labs-label {
+    display: block;
+    color: var(--inlife-text-muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.business-service-lab-action {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.business-service-lab-link {
+    position: relative;
+    display: block;
+    padding: 0.95rem 2.75rem 0.95rem 1rem;
+    border: 1px solid rgba(41, 52, 88, 0.14);
+    border-radius: 14px;
+    background:
+        linear-gradient(180deg, #fff 0%, #f7f9fc 100%);
+    color: var(--inlife-primary);
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(18, 38, 63, 0.045);
+    overflow: hidden;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease,
+        background-color 0.2s ease;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.75rem;
+        bottom: 0.75rem;
+        width: 3px;
+        border-radius: 999px;
+        background: var(--inlife-accent);
+        opacity: 0.9;
+    }
+
+    &:hover,
+    &:focus,
+    &:visited {
+        color: var(--inlife-primary);
+        text-decoration: none;
+    }
+
+    &:hover,
+    &:focus-visible {
+        transform: translateY(-2px);
+        border-color: rgba(41, 52, 88, 0.26);
+        background: #fff;
+        box-shadow: 0 16px 34px rgba(18, 38, 63, 0.08);
+    }
+
+    &:focus-visible {
+        outline: 3px solid var(--inlife-accent);
+        outline-offset: 3px;
+    }
+}
+
+.business-service-lab-link__name {
+    display: block;
+    font-size: 0.94rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.business-service-lab-link__unit {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--inlife-text-muted);
+    font-size: 0.84rem;
+    line-height: 1.4;
+}
+
+.business-service-lab-link__icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    color: var(--inlife-primary);
+    font-weight: 800;
+    line-height: 1;
+    opacity: 0.75;
+    transform: translateY(-50%);
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.business-service-lab-link:hover .business-service-lab-link__icon,
+.business-service-lab-link:focus-visible .business-service-lab-link__icon {
+    opacity: 1;
+    transform: translateY(-50%) translateX(4px);
+}
+
+.business-service-price-link {
+    width: 100%;
+    min-height: 40px;
+    padding: 0.58rem 0.95rem;
+    border-color: rgba(213, 219, 62, 0.7);
+    background: rgba(213, 219, 62, 0.13);
+    color: var(--inlife-primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+
+    &:hover,
+    &:focus-visible {
+        border-color: rgba(213, 219, 62, 0.95);
+        background: rgba(213, 219, 62, 0.24);
+        color: var(--inlife-primary);
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767.98px) {
+    .business-service-area {
+        gap: 1.5rem;
+    }
+
+    .business-service-area__nav {
+        --inlife-grid-min: 100%;
+    }
+
+    .business-service-group {
+        padding: 1rem;
+        border-radius: 16px;
+    }
+
+    .business-service-group__header {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .business-service-group__number {
+        width: 2.6rem;
+        height: 2.6rem;
+    }
+
+    .business-service-row {
+        padding-block: 1.2rem;
+    }
+
+    .business-service-row__heading {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+    }
+
+    .business-service-row__number {
+        min-width: 0;
+    }
+}
