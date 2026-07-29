@@ -737,45 +737,115 @@ document.addEventListener('DOMContentLoaded', () => {
 // Team publications year filter — no page reload
 
 document.addEventListener('DOMContentLoaded', () => {
-    const links = document.querySelectorAll('[data-team-publication-year]');
-    const groups = document.querySelectorAll('[data-team-publication-group]');
+	const links = Array.from(
+		document.querySelectorAll('[data-team-publication-year]')
+	);
 
-    if (!links.length || !groups.length) return;
+	const groups = Array.from(
+		document.querySelectorAll('[data-team-publication-group]')
+	);
 
-    const setActiveYear = (year) => {
-        links.forEach((link) => {
-            const isActive = link.getAttribute('data-team-publication-year') === year;
+	if (!links.length || !groups.length) return;
 
-            link.classList.toggle('is-active', isActive);
+	const availableYears = links
+		.map((link) =>
+			link.getAttribute('data-team-publication-year')
+		)
+		.filter(Boolean);
 
-            if (isActive) {
-                link.setAttribute('aria-current', 'page');
-            } else {
-                link.removeAttribute('aria-current');
-            }
-        });
+	const activeLink = links.find((link) =>
+		link.classList.contains('is-active')
+	);
 
-        groups.forEach((group) => {
-            const isActive = group.getAttribute('data-team-publication-group') === year;
+	const defaultYear =
+		activeLink?.getAttribute('data-team-publication-year') ||
+		availableYears[0];
 
-            group.hidden = !isActive;
-            group.classList.toggle('is-hidden', !isActive);
-        });
-    };
+	const firstLinkUrl = new URL(
+		links[0].href,
+		window.location.origin
+	);
 
-    links.forEach((link) => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
+	const firstLinkYear = links[0].getAttribute(
+		'data-team-publication-year'
+	);
 
-            const year = link.getAttribute('data-team-publication-year');
-            if (!year) return;
+	const yearParamName =
+		Array.from(firstLinkUrl.searchParams.entries()).find(
+			([, value]) => value === firstLinkYear
+		)?.[0] || 'publication_year';
 
-            setActiveYear(year);
+	const setActiveYear = (year) => {
+		const normalizedYear = availableYears.includes(year)
+			? year
+			: defaultYear;
 
-            const url = new URL(link.href);
-            window.history.pushState({}, '', url);
-        });
-    });
+		links.forEach((link) => {
+			const isActive =
+				link.getAttribute(
+					'data-team-publication-year'
+				) === normalizedYear;
+
+			link.classList.toggle('is-active', isActive);
+
+			if (isActive) {
+				link.setAttribute('aria-current', 'page');
+			} else {
+				link.removeAttribute('aria-current');
+			}
+		});
+
+		groups.forEach((group) => {
+			const isActive =
+				group.getAttribute(
+					'data-team-publication-group'
+				) === normalizedYear;
+
+			group.hidden = !isActive;
+			group.classList.toggle('is-hidden', !isActive);
+		});
+	};
+
+	const getYearFromUrl = () => {
+		const url = new URL(window.location.href);
+		const requestedYear =
+			url.searchParams.get(yearParamName);
+
+		return availableYears.includes(requestedYear)
+			? requestedYear
+			: defaultYear;
+	};
+
+	links.forEach((link) => {
+		link.addEventListener('click', (event) => {
+			event.preventDefault();
+
+			const year = link.getAttribute(
+				'data-team-publication-year'
+			);
+
+			if (!year) return;
+
+			setActiveYear(year);
+
+			const url = new URL(
+				link.href,
+				window.location.origin
+			);
+
+			window.history.pushState(
+				{ publicationYear: year },
+				'',
+				url
+			);
+		});
+	});
+
+	window.addEventListener('popstate', () => {
+		setActiveYear(getYearFromUrl());
+	});
+
+	setActiveYear(getYearFromUrl());
 });
 
 // Single Laboratory - Pokaż więcej / mniej
