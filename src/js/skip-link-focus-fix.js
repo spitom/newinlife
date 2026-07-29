@@ -1,33 +1,83 @@
 /**
- * File skip-link-focus-fix.js.
+ * Focus fix for the site skip link.
  *
- * Helps with accessibility for keyboard only users.
- *
- * Learn more: https://git.io/vWdr2
+ * Obsługuje wyłącznie główne cele skip-linka.
+ * Nie przechwytuje zwykłych kotwic sekcji.
  */
-( function() {
-	var isWebkit = navigator.userAgent.toLowerCase().indexOf( 'webkit' ) > -1,
-	    isOpera  = navigator.userAgent.toLowerCase().indexOf( 'opera' )  > -1,
-	    isIe     = navigator.userAgent.toLowerCase().indexOf( 'msie' )   > -1;
+(function () {
+	'use strict';
 
-	if ( ( isWebkit || isOpera || isIe ) && document.getElementById && window.addEventListener ) {
-		window.addEventListener( 'hashchange', function() {
-			var id = location.hash.substring( 1 ),
-				element;
+	if (!window.addEventListener || !document.getElementById) {
+		return;
+	}
 
-			if ( ! ( /^[A-z0-9_-]+$/.test( id ) ) ) {
-				return;
-			}
+	/**
+	 * Zwraca dozwolony cel skip-linka.
+	 *
+	 * `content` pozostaje dla zgodności z aktualnym header.php.
+	 * `main-content` jest używany w customowych template'ach InLife.
+	 *
+	 * @param {string} targetId ID odczytane z URL.
+	 * @returns {HTMLElement|null}
+	 */
+	function getSkipTarget(targetId) {
+		if (targetId !== 'content' && targetId !== 'main-content') {
+			return null;
+		}
 
-			element = document.getElementById( id );
+		const directTarget = document.getElementById(targetId);
 
-			if ( element ) {
-				if ( ! ( /^(?:a|select|input|button|textarea)$/i.test( element.tagName ) ) ) {
-					element.tabIndex = -1;
-				}
+		if (directTarget) {
+			return directTarget;
+		}
 
-				element.focus();
-			}
-		}, false );
+		/*
+		 * Fallback dla aktualnego header.php:
+		 * link prowadzi do #content, natomiast customowe template'y
+		 * używają najczęściej #main-content.
+		 */
+		if (targetId === 'content') {
+			return document.getElementById('main-content');
+		}
+
+		return document.getElementById('content');
+	}
+
+	/**
+	 * Ustawia focus na celu skip-linka.
+	 */
+	function focusSkipTarget() {
+		const targetId = window.location.hash.substring(1);
+		const target = getSkipTarget(targetId);
+
+		if (!target) {
+			return;
+		}
+
+		const isNativelyFocusable = /^(?:a|button|input|select|textarea)$/i.test(
+			target.tagName
+		);
+
+		if (!isNativelyFocusable && !target.hasAttribute('tabindex')) {
+			target.setAttribute('tabindex', '-1');
+		}
+
+		window.requestAnimationFrame(() => {
+			target.focus();
+		});
+	}
+
+	window.addEventListener('hashchange', focusSkipTarget, false);
+
+	/*
+	 * Obsługa wejścia bezpośrednio na URL zakończony
+	 * #content albo #main-content.
+	 */
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', focusSkipTarget, {
+			once: true,
+		});
+	} else {
+		focusSkipTarget();
 	}
 })();
