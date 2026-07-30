@@ -13,7 +13,7 @@ $container = inlife_container_class('page');
 <header id="wrapper-navbar" class="site-header">
 
 	<a class="skip-link visually-hidden-focusable" href="#main-content">
-		<?php esc_html_e( 'Przejdź do treści', 'newinlife-child' ); ?>
+		<?php echo esc_html( inlife_t( 'Przejdź do treści' ) ); ?>
 	</a>
 
 	<?php get_template_part( 'template-parts/header/inlife', 'topbar' ); ?>
