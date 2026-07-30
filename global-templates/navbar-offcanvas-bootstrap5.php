@@ -18,10 +18,7 @@ $container = inlife_container_class('page');
 
 	<?php get_template_part( 'template-parts/header/inlife', 'topbar' ); ?>
 
-	<nav id="main-nav" class="navbar navbar-inlife" aria-labelledby="main-nav-label">
-		<h2 id="main-nav-label" class="visually-hidden">
-			<?php esc_html_e( 'Główna nawigacja', 'newinlife-child' ); ?>
-		</h2>
+	<div id="main-nav" class="navbar navbar-inlife">
 
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<div class="navbar-main-wrap">
@@ -71,7 +68,7 @@ $container = inlife_container_class('page');
 
 			</div>
 		</div>
-	</nav>
+	</div>
 
 </header>
 
