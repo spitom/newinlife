@@ -6,6 +6,14 @@ document.addEventListener('DOMContentLoaded', function () {
 	const closeBtn = document.querySelector('[data-inlife-search-close]');
 	const input = document.querySelector('#inlife-search-field');
 
+	const openLabel =
+		toggle?.dataset.searchOpenLabel ||
+		'Otwórz wyszukiwarkę';
+
+	const closeLabel =
+		toggle?.dataset.searchCloseLabel ||
+		'Zamknij wyszukiwarkę';
+
 	if (!toggle || !panel) return;
 
 	const reducedMotionQuery = window.matchMedia(
@@ -33,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		panel.hidden = false;
 		toggle.setAttribute('aria-expanded', 'true');
+		toggle.setAttribute('aria-label', closeLabel);
 
 		window.requestAnimationFrame(() => {
 			panel.classList.add('is-open');
@@ -48,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		panel.classList.remove('is-open');
 		toggle.setAttribute('aria-expanded', 'false');
+		toggle.setAttribute('aria-label', openLabel);
 
 		if (returnFocus) {
 			toggle.focus();

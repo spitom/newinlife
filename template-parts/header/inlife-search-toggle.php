@@ -6,6 +6,8 @@ defined( 'ABSPATH' ) || exit;
 	type="button"
 	class="topbar-search-toggle"
 	data-inlife-search-toggle
+	data-search-open-label="<?php esc_attr_e( 'Otwórz wyszukiwarkę', 'newinlife-child' ); ?>"
+	data-search-close-label="<?php esc_attr_e( 'Zamknij wyszukiwarkę', 'newinlife-child' ); ?>"
 	aria-expanded="false"
 	aria-controls="inlife-search-panel"
 	aria-label="<?php esc_attr_e( 'Otwórz wyszukiwarkę', 'newinlife-child' ); ?>"
