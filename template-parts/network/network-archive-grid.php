@@ -14,7 +14,10 @@ $empty_msg = $args['empty_msg'];
 ?>
 
 <?php if ( $query instanceof WP_Query && $query->have_posts() ) : ?>
-	<div class="c-card-grid c-card-grid--4 network-grid">
+	<div
+		class="c-card-grid c-card-grid--4 network-grid"
+		id="network-partners-list"
+	>
 		<?php
 		while ( $query->have_posts() ) :
 			$query->the_post();

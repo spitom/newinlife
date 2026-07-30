@@ -26,6 +26,7 @@ $region_terms = is_array( $args['region_terms'] ) ? $args['region_terms'] : [];
 					class="c-pill network-filter is-active"
 					data-network-filter="all"
 					aria-pressed="true"
+					aria-controls="network-partners-list"
 				>
 					<?php echo esc_html( inlife_t( 'Wszyscy partnerzy' ) ); ?>
 				</button>
@@ -36,6 +37,7 @@ $region_terms = is_array( $args['region_terms'] ) ? $args['region_terms'] : [];
 						class="c-pill network-filter"
 						data-network-filter="<?php echo esc_attr( $term->slug ); ?>"
 						aria-pressed="false"
+						aria-controls="network-partners-list"
 					>
 						<?php echo esc_html( $term->name ); ?>
 					</button>
