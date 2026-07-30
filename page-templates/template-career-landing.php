@@ -102,7 +102,7 @@ $hero_actions = (string) ob_get_clean();
 		</div>
 	</section>
 
-	<section class="page-section page-section--career-location-promo" aria-labelledby="career-location-promo-heading">
+	<section class="page-section page-section--career-location-promo" aria-labelledby="career-location-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<?php get_template_part( 'template-parts/career/career', 'location-promo' ); ?>
 		</div>

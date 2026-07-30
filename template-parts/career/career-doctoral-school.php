@@ -50,6 +50,9 @@ $cta_url        = $cta_url ?: 'https://sd.pan.olsztyn.pl/';
 				<span class="c-readmore__label">
 					<?php echo esc_html( $cta_label ); ?>
 				</span>
+				<span class="visually-hidden">
+					<?php echo esc_html( inlife_t( '(otwiera w nowej karcie)' ) ); ?>
+				</span>
 				<span class="c-readmore__icon" aria-hidden="true">→</span>
 			</a>
 		</div>
