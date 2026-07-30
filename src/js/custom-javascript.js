@@ -1202,15 +1202,18 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	const updateUrl = (filterValue) => {
-		const url = new URL(window.location.href);
+		const currentUrl = new URL(window.location.href);
+		const nextUrl = new URL(currentUrl);
 
 		if (filterValue === 'all') {
-			url.searchParams.delete('career_type');
+			nextUrl.searchParams.delete('career_type');
 		} else {
-			url.searchParams.set('career_type', filterValue);
+			nextUrl.searchParams.set('career_type', filterValue);
 		}
 
-		window.history.pushState({}, '', url);
+		if (nextUrl.href === currentUrl.href) return;
+
+		window.history.pushState({}, '', nextUrl);
 	};
 
 	const applyFilter = (
