@@ -285,6 +285,9 @@ if ( $sections_count >= 2 ) {
 													rel="noopener"
 												>
 													<?php echo esc_html( $lab['price_label'] ?? inlife_t( 'Pobierz cennik' ) ); ?>
+													<span class="visually-hidden">
+														<?php echo esc_html( inlife_t( '(otwiera w nowej karcie)' ) ); ?>
+													</span>
 													<span aria-hidden="true">↓</span>
 												</a>
 											<?php endif; ?>
