@@ -142,18 +142,7 @@ if ( $variant ) {
 
 			<!-- MEDIA -->
 			<div class="post-card__media c-card__media">
-				<a
-					class="post-card__media-link c-card__media-link"
-					href="<?php echo esc_url( $permalink ); ?>"
-					<?php if ( ! empty( $post_link['target'] ) ) : ?>
-						target="<?php echo esc_attr( $post_link['target'] ); ?>"
-					<?php endif; ?>
-					<?php if ( ! empty( $post_link['rel'] ) ) : ?>
-						rel="<?php echo esc_attr( $post_link['rel'] ); ?>"
-					<?php endif; ?>
-					aria-hidden="true"
-					tabindex="-1"
-				>
+				<div class="post-card__media-link c-card__media-link">
 
 					<?php if ( $card_image_id ) : ?>
 
@@ -199,7 +188,7 @@ if ( $variant ) {
 						</span>
 					<?php endif; ?>
 
-				</a>
+				</div>
 			</div>
 
 			<!-- BODY -->
@@ -319,6 +308,12 @@ if ( $variant ) {
 					<?php if ( ! empty( $post_link['rel'] ) ) : ?>
 						rel="<?php echo esc_attr( $post_link['rel'] ); ?>"
 					<?php endif; ?>
+					aria-label="<?php echo esc_attr(
+						sprintf(
+							inlife_t( 'Czytaj więcej: %s' ),
+							$title
+						)
+					); ?>"
 				>
 					<?php echo esc_html( inlife_t( 'Czytaj więcej' ) ); ?>
 					<span class="c-readmore__icon" aria-hidden="true">→</span>

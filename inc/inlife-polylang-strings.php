@@ -909,6 +909,7 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'news_card_placeholder', 'Aktualność', $group );
 		pll_register_string( 'news_card_category_aria', 'Kategoria wpisu', $group );
 		pll_register_string( 'news_card_read_more', 'Czytaj więcej', $group );
+		pll_register_string( 'news_card_read_more_label', 'Czytaj więcej: %s', $group );
 
 		// Single post.
 		pll_register_string( 'news_post_tags_aria', 'Tagi wpisu', $group );
