@@ -234,6 +234,11 @@ $scientific_publications_url = home_url( '/badania/publikacje/' );
 
 								<span class="c-readmore institute-journal-card__link">
 									<?php echo esc_html( $journal['label'] ); ?>
+
+									<span class="visually-hidden">
+										<?php echo esc_html( inlife_t( '(otwiera w nowej karcie)' ) ); ?>
+									</span>
+
 									<span class="c-readmore__icon" aria-hidden="true">→</span>
 								</span>
 							</div>
