@@ -20,7 +20,11 @@ $region_terms = is_array( $args['region_terms'] ) ? $args['region_terms'] : [];
 				<?php echo esc_html( inlife_t( 'Filtry partnerów' ) ); ?>
 			</h2>
 
-			<div class="c-pills network-filters__list" role="toolbar" aria-label="<?php echo esc_attr( inlife_t( 'Filtruj partnerów według regionu' ) ); ?>">
+			<div
+				class="c-pills network-filters__list"
+				role="group"
+				aria-label="<?php echo esc_attr( inlife_t( 'Filtruj partnerów według regionu' ) ); ?>"
+			>
 				<button
 					type="button"
 					class="c-pill network-filter is-active"
