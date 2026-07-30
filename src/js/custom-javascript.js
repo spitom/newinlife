@@ -1036,7 +1036,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				map.removeLayer(marker);
 			}
 		});
-
 		fitMapToVisibleMarkers();
 	};
 	
@@ -1211,36 +1210,58 @@ document.addEventListener('DOMContentLoaded', () => {
 			url.searchParams.set('career_type', filterValue);
 		}
 
-		window.history.replaceState({}, '', url);
+		window.history.pushState({}, '', url);
 	};
 
-	const applyFilter = (filterValue, updateHistory = true) => {
+	const applyFilter = (
+		filterValue,
+		updateHistory = true,
+		announceResults = true
+	) => {
 		const normalizedValue = filterValue || 'all';
 
 		updateButtons(normalizedValue);
 
 		const visibleCount = updateListing(normalizedValue);
 
-		if (updateHistory) {
+		if (announceResults) {
 			announceResultCount(visibleCount);
+		}
+
+		if (updateHistory) {
 			updateUrl(normalizedValue);
 		}
 	};
 
 	buttons.forEach((button) => {
 		button.addEventListener('click', () => {
-			const filterValue = button.getAttribute('data-career-filter') || 'all';
-			applyFilter(filterValue, true);
+			const filterValue =
+				button.getAttribute('data-career-filter') || 'all';
+
+			applyFilter(filterValue, true, true);
 		});
 	});
 
-	const url = new URL(window.location.href);
-	const initialType = url.searchParams.get('career_type') || 'all';
-	const allowedFilters = Array.from(buttons).map((button) => button.getAttribute('data-career-filter'));
+	const allowedFilters = Array.from(buttons).map((button) =>
+		button.getAttribute('data-career-filter')
+	);
 
-	applyFilter(allowedFilters.includes(initialType) ? initialType : 'all', false);
+	const getFilterFromUrl = () => {
+		const url = new URL(window.location.href);
+		const filterValue =
+			url.searchParams.get('career_type') || 'all';
+
+		return allowedFilters.includes(filterValue)
+			? filterValue
+			: 'all';
+	};
+
+	applyFilter(getFilterFromUrl(), false, false);
+
+	window.addEventListener('popstate', () => {
+		applyFilter(getFilterFromUrl(), false, true);
+	});
 });
-
 
 // Slider
 
