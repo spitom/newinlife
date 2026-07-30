@@ -362,7 +362,7 @@ if ( 'society' === $entry_context ) {
                                         href="<?php echo esc_url( $share['facebook'] ); ?>"
                                         target="_blank"
                                         rel="noopener"
-                                        aria-label="<?php echo esc_attr( inlife_t( 'Udostępnij artykuł na Facebooku' ) ); ?>"
+                                        aria-label="<?php echo esc_attr( inlife_t( 'Udostępnij artykuł na Facebooku (otwiera w nowej karcie)' ) ); ?>"
                                     >
                                         <span class="bi bi-facebook" aria-hidden="true"></span>
                                     </a>
@@ -372,7 +372,7 @@ if ( 'society' === $entry_context ) {
                                         href="<?php echo esc_url( $share['linkedin'] ); ?>"
                                         target="_blank"
                                         rel="noopener"
-                                        aria-label="<?php echo esc_attr( inlife_t( 'Udostępnij artykuł na LinkedIn' ) ); ?>"
+                                        aria-label="<?php echo esc_attr( inlife_t( 'Udostępnij artykuł na LinkedIn (otwiera w nowej karcie)' ) ); ?>"
                                     >
                                         <span class="bi bi-linkedin" aria-hidden="true"></span>
                                     </a>

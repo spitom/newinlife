@@ -917,13 +917,13 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'news_share_email', 'Wyślij artykuł e-mailem', $group );
 		pll_register_string(
 			'news_share_facebook',
-			'Udostępnij artykuł na Facebooku',
+			'Udostępnij artykuł na Facebooku (otwiera w nowej karcie)',
 			$group
 		);
 
 		pll_register_string(
 			'news_share_linkedin',
-			'Udostępnij artykuł na LinkedIn',
+			'Udostępnij artykuł na LinkedIn (otwiera w nowej karcie)',
 			$group
 		);
 
