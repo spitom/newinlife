@@ -808,6 +808,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const filterButtons = document.querySelectorAll('[data-network-filter]');
 	const gridItems = document.querySelectorAll('[data-network-item]');
 	const statusElement = document.querySelector('[data-network-status]');
+	const emptyState = document.querySelector('[data-network-empty]');
 
 	const announceResultCount = (count) => {
 		if (!statusElement) return;
@@ -837,6 +838,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				visibleCount += 1;
 			}
 		});
+
+		if (emptyState) {
+			emptyState.hidden = visibleCount !== 0;
+		}
 
 		return visibleCount;
 	};

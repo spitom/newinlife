@@ -32,6 +32,13 @@ $empty_msg = $args['empty_msg'];
 		endwhile;
 		?>
 	</div>
+		<p
+		class="network-empty"
+		data-network-empty
+		hidden
+	>
+		<?php echo esc_html( inlife_t( 'Brak partnerów w wybranym regionie.' ) ); ?>
+	</p>
 	<p
 		class="visually-hidden"
 		role="status"

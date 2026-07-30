@@ -815,6 +815,7 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'network_map_noscript', 'Mapa wymaga obsługi JavaScript. Skorzystaj z listy partnerów poniżej.', $group );
 		pll_register_string( 'network_map_popup_link', 'Zobacz partnera', $group );
 		pll_register_string( 'network_map_empty', 'Brak partnerów z przypisanymi współrzędnymi.', $group );
+		pll_register_string( 'network_no_results_for_region', 'Brak partnerów w wybranym regionie.', $group );
 
 
 		// Listing / cards.
