@@ -71,6 +71,7 @@ if ( ! empty( $current_types ) ) {
 			class="c-pill is-active"
 			data-career-filter="all"
 			aria-pressed="true"
+			aria-controls="career-current-list"
 		>
 			<?php echo esc_html( inlife_t( 'Wszystkie' ) ); ?>
 		</button>
@@ -97,6 +98,7 @@ if ( ! empty( $current_types ) ) {
 				class="c-pill"
 				data-career-filter="<?php echo esc_attr( $filter_key ); ?>"
 				aria-pressed="false"
+				aria-controls="career-current-list"
 			>
 				<?php echo esc_html( $term->name ); ?>
 			</button>
@@ -122,7 +124,11 @@ get_template_part(
 
 <div class="career-opportunities-current">
 	<?php if ( $current_query->have_posts() ) : ?>
-		<div class="career-archive-list" data-career-list>
+		<div
+			class="career-archive-list"
+			id="career-current-list"
+			data-career-list
+		>
 			<?php
 			while ( $current_query->have_posts() ) :
 				$current_query->the_post();
