@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 $container = inlife_container_class('page');
 ?>
 
-<header id="wrapper-navbar" class="site-header">
+<header class="site-header">
 
 	<a class="skip-link visually-hidden-focusable" href="#main-content">
 		<?php echo esc_html( inlife_t( 'Przejdź do treści' ) ); ?>

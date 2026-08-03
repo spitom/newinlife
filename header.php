@@ -27,8 +27,8 @@ $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 <div class="site" id="page">
 
 	<!-- ******************* The Navbar Area ******************* -->
-	<header id="wrapper-navbar">
+	<div id="wrapper-navbar">
 
 		<?php get_template_part( 'global-templates/navbar', $navbar_type . '-' . $bootstrap_version ); ?>
 
-	</header><!-- #wrapper-navbar -->
+	</div><!-- #wrapper-navbar -->
