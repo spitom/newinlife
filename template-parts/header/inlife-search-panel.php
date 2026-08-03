@@ -33,6 +33,7 @@ $container = inlife_container_class();
 				
 			<form
 				role="search"
+				aria-label="<?php echo esc_attr( inlife_t( 'Wyszukiwanie w serwisie' ) ); ?>"
 				method="get"
 				class="inlife-search-form c-search"
 				action="<?php echo esc_url( $search_action ); ?>"

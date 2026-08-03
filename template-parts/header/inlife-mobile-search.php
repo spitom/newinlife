@@ -28,6 +28,7 @@ defined( 'ABSPATH' ) || exit;
 	?>
 
 	<form role="search"
+		  aria-label="<?php echo esc_attr( inlife_t( 'Wyszukiwanie w menu' ) ); ?>"
 	      method="get"
 		  class="offcanvas-search__form c-search"
 		  action="<?php echo esc_url( $search_action ); ?>"
