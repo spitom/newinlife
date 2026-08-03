@@ -112,8 +112,16 @@ $documents  = function_exists('get_field') ? get_field('project_documents', $pos
 					<?php foreach ($documents as $doc) : ?>
 						<?php if (!empty($doc['document_file']['url'])) : ?>
 							<li>
-								<a href="<?php echo esc_url($doc['document_file']['url']); ?>" target="_blank" rel="noopener noreferrer">
-									<?php echo esc_html($doc['document_title'] ?: inlife_t('Pobierz dokument')); ?>
+								<a
+									href="<?php echo esc_url( $doc['document_file']['url'] ); ?>"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<?php echo esc_html( $doc['document_title'] ?: inlife_t( 'Pobierz dokument' ) ); ?>
+
+									<span class="visually-hidden">
+										<?php echo esc_html( inlife_t( '(otwiera w nowej karcie)' ) ); ?>
+									</span>
 								</a>
 							</li>
 						<?php endif; ?>
