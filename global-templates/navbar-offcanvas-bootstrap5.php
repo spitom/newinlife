@@ -79,9 +79,9 @@ $container = inlife_container_class('page');
 	aria-labelledby="navbarNavOffcanvasLabel"
 >
 	<div class="offcanvas-header">
-		<h2 id="navbarNavOffcanvasLabel" class="offcanvas-title h5 mb-0">
+		<div id="navbarNavOffcanvasLabel" class="offcanvas-title h5 mb-0">
 			<?php esc_html_e( 'Menu', 'newinlife-child' ); ?>
-		</h2>
+		</div>
 
 		<button
 			class="btn-close btn-close-white"
