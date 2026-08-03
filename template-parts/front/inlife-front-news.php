@@ -129,6 +129,12 @@ $main  = array_shift( $posts );
 								<?php echo esc_html( $main_title ); ?>
 							</h3>
 
+							<?php if ( '_blank' === ( $main_link['target'] ?? '' ) ) : ?>
+								<span class="visually-hidden">
+									<?php echo esc_html( inlife_t( '(otwiera w nowej karcie)' ) ); ?>
+								</span>
+							<?php endif; ?>
+
 							<span class="front-news-feature__arrow" aria-hidden="true">→</span>
 						</div>
 					</a>
@@ -181,6 +187,12 @@ $main  = array_shift( $posts );
 								<h3 class="front-news-row__title">
 									<?php echo esc_html( $item_title ); ?>
 								</h3>
+
+								<?php if ( '_blank' === ( $item_link['target'] ?? '' ) ) : ?>
+									<span class="visually-hidden">
+										<?php echo esc_html( inlife_t( '(otwiera w nowej karcie)' ) ); ?>
+									</span>
+								<?php endif; ?>
 
 								<span class="front-news-row__arrow" aria-hidden="true">→</span>
 							</a>
