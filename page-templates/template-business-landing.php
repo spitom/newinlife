@@ -118,7 +118,7 @@ $hero_actions = trim( (string) ob_get_clean() );
 		</div>
 	</section>
 
-	<section class="page-section page-section--business-success-stories" aria-labelledby="business-success-stories-heading">
+	<section class="page-section page-section--business-success-stories" aria-labelledby="business-success-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<?php get_template_part( 'template-parts/business/business', 'success-stories' ); ?>
 		</div>

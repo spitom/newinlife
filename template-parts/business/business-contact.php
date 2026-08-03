@@ -69,9 +69,9 @@ $phone_href = $contact_phone ? preg_replace( '/[^0-9+]/', '', $contact_phone ) :
 					<?php echo esc_html( inlife_t( 'Kontakt dla biznesu' ) ); ?>
 				</p>
 
-				<p class="business-contact__name">
+				<h3 class="business-contact__name">
 					<?php echo esc_html( $contact_name ?: inlife_t( 'Zespół współpracy z biznesem' ) ); ?>
-				</p>
+</h3>
 
 				<p class="business-contact__role">
 					<?php echo esc_html( $contact_role ?: inlife_t( 'Koordynacja usług, analiz i projektów B+R' ) ); ?>

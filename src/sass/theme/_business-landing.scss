@@ -693,17 +693,12 @@
     }
 }
 
-.business-success-card__link {
+.business-success-card__inner {
     display: flex;
     flex-direction: column;
     height: 100%;
     color: inherit;
     text-decoration: none;
-
-    &:focus-visible {
-        outline: 3px solid var(--inlife-accent);
-        outline-offset: 4px;
-    }
 }
 
 .business-success-card__media {
@@ -745,17 +740,31 @@
 }
 
 .business-success-card__title {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 0.75rem;
-    align-items: start;
-    width: 100%;
     margin: 0;
     color: inherit;
     font-size: 1.02rem;
     font-weight: 800;
     line-height: 1.45;
     letter-spacing: -0.01em;
+}
+
+.business-success-card__title-link {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+    align-items: start;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        color: inherit;
+    }
+
+    &:focus-visible {
+        outline: 3px solid var(--inlife-accent);
+        outline-offset: 4px;
+    }
 }
 
 .business-success-card__title-text {

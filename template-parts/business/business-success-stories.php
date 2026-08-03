@@ -74,7 +74,7 @@ if ( function_exists( 'have_rows' ) && have_rows( 'business_success_cases', $pos
 			}
 		}
 
-		$url    = '#';
+		$url    = '';
 		$target = '';
 
 		if ( is_array( $link ) && ! empty( $link['url'] ) ) {
@@ -122,12 +122,14 @@ if ( empty( $cases ) ) {
 			}
 			?>
 
+			<?php
+			$has_link      = '' !== trim( (string) $case['url'] );
+			$opens_new_tab = $has_link && '_blank' === (string) $case['target'];
+			?>
+
 			<article class="business-success-card">
-				<a
-					class="business-success-card__link"
-					href="<?php echo esc_url( $case['url'] ); ?>"
-					<?php echo ! empty( $case['target'] ) ? 'target="' . esc_attr( $case['target'] ) . '"' : ''; ?>
-				>
+				<div class="business-success-card__inner">
+
 					<div class="business-success-card__media">
 						<?php if ( ! empty( $case['video_html'] ) ) : ?>
 							<div class="business-success-card__video">
@@ -151,13 +153,46 @@ if ( empty( $cases ) ) {
 
 					<div class="business-success-card__footer">
 						<h3 class="business-success-card__title">
-							<span class="business-success-card__title-text">
-								<?php echo esc_html( $case['title'] ); ?>
-							</span>
-							<span class="business-success-card__arrow" aria-hidden="true">→</span>
+
+							<?php if ( $has_link ) : ?>
+								<a
+									class="business-success-card__title-link"
+									href="<?php echo esc_url( $case['url'] ); ?>"
+									<?php if ( ! empty( $case['target'] ) ) : ?>
+										target="<?php echo esc_attr( $case['target'] ); ?>"
+									<?php endif; ?>
+									<?php if ( $opens_new_tab ) : ?>
+										rel="noopener noreferrer"
+									<?php endif; ?>
+								>
+							<?php else : ?>
+								<span class="business-success-card__title-link">
+							<?php endif; ?>
+
+								<span class="business-success-card__title-text">
+									<?php echo esc_html( $case['title'] ); ?>
+								</span>
+
+								<?php if ( $has_link ) : ?>
+									<span class="business-success-card__arrow" aria-hidden="true">→</span>
+								<?php endif; ?>
+
+								<?php if ( $opens_new_tab ) : ?>
+									<span class="visually-hidden">
+										<?php echo esc_html( inlife_t( '(otwiera w nowej karcie)' ) ); ?>
+									</span>
+								<?php endif; ?>
+
+							<?php if ( $has_link ) : ?>
+								</a>
+							<?php else : ?>
+								</span>
+							<?php endif; ?>
+
 						</h3>
 					</div>
-				</a>
+
+				</div>
 			</article>
 		<?php endforeach; ?>
 	</div>
