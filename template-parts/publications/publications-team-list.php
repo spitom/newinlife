@@ -37,6 +37,20 @@ if ( empty( $grouped_publications ) || ! is_array( $grouped_publications ) ) {
 			aria-labelledby="team-publications-year-<?php echo esc_attr( sanitize_title( $year ) ); ?>"
 			<?php echo ( $current_year && (string) $year !== (string) $current_year ) ? 'hidden' : ''; ?>
 		>
+			<h3
+				id="team-publications-year-<?php echo esc_attr( sanitize_title( $year ) ); ?>"
+				class="visually-hidden"
+			>
+				<?php
+				echo esc_html(
+					sprintf(
+						/* translators: %s: publication year. */
+						__( 'Publikacje — %s', 'newinlife-child' ),
+						$year
+					)
+				);
+				?>
+			</h3>
 			<div class="team-publications-year__body">
 				<ol class="publications-list list-unstyled mb-0">
 					<?php foreach ( $items as $publication_post ) : ?>
