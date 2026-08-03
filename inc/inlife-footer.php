@@ -31,9 +31,15 @@ function inlife_footer_social_menu_icons( $item_output, $item, $depth, $args ) {
 	$title       = ! empty( $item->title ) ? $item->title : '';
 	$is_external = 0 === strpos( $url, 'http' );
 
+	$accessible_label = $title;
+
+	if ( $is_external ) {
+		$accessible_label .= ' ' . inlife_t( '(otwiera w nowej karcie)' );
+	}
+
 	$attributes  = ' href="' . esc_url( $url ) . '"';
 	$attributes .= ' class="inlife-footer__social-link"';
-	$attributes .= ' aria-label="' . esc_attr( $title ) . '"';
+	$attributes .= ' aria-label="' . esc_attr( $accessible_label ) . '"';
 
 	if ( $is_external ) {
 		$attributes .= ' target="_blank" rel="noopener noreferrer"';
@@ -41,7 +47,6 @@ function inlife_footer_social_menu_icons( $item_output, $item, $depth, $args ) {
 
 	$item_output  = '<a' . $attributes . '>';
 	$item_output .= '<i class="bi ' . esc_attr( $icon_class ) . '" aria-hidden="true"></i>';
-	$item_output .= '<span class="visually-hidden">' . esc_html( $title ) . '</span>';
 	$item_output .= '</a>';
 
 	return $item_output;
