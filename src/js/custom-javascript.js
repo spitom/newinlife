@@ -907,6 +907,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	const emptyLabel = mapElement.dataset.networkMapEmptyLabel || '';
 	const linkLabel = mapElement.dataset.networkMapLinkLabel || 'Zobacz partnera';
 
+	const popupCloseLabel =
+		mapElement.dataset.networkMapPopupCloseLabel || 'Zamknij okno partnera';
+
 	let partners = [];
 
 	try {
@@ -937,6 +940,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		zoomInTitle: zoomInLabel,
 		zoomOutTitle: zoomOutLabel,
 	}).addTo(map);
+
+	map.on('popupopen', (event) => {
+		const popupElement = event.popup.getElement();
+		const closeButton = popupElement?.querySelector(
+			'.leaflet-popup-close-button'
+		);
+
+		if (!closeButton) {
+			return;
+		}
+
+		closeButton.setAttribute('aria-label', popupCloseLabel);
+		closeButton.setAttribute('title', popupCloseLabel);
+	});
 
 	L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 		maxZoom: 18,

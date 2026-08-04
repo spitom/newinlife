@@ -42,6 +42,7 @@ $map_id    = 'network-map-canvas';
 				data-network-map-link-label="<?php echo esc_attr( inlife_t( 'Zobacz partnera' ) ); ?>"
 				data-network-map-zoom-in-label="<?php echo esc_attr( inlife_t( 'Powiększ mapę' ) ); ?>"
 				data-network-map-zoom-out-label="<?php echo esc_attr( inlife_t( 'Pomniejsz mapę' ) ); ?>"
+				data-network-map-popup-close-label="<?php echo esc_attr( inlife_t( 'Zamknij okno partnera' ) ); ?>"
 				role="region"
 				aria-label="<?php echo esc_attr( inlife_t( 'Interaktywna mapa partnerów' ) ); ?>"
 			></div>
