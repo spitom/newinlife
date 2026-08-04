@@ -12,6 +12,12 @@ $show_category  = isset( $args['show_category'] ) ? (bool) $args['show_category'
 $show_format    = isset( $args['show_format'] ) ? (bool) $args['show_format'] : true;
 $variant        = isset( $args['variant'] ) ? sanitize_html_class( $args['variant'] ) : '';
 
+$heading_level = isset( $args['heading_level'] )
+	? (int) $args['heading_level']
+	: 2;
+
+$heading_tag = 3 === $heading_level ? 'h3' : 'h2';
+
 if ( '' !== $custom_url ) {
 	$post_link = [
 		'url'    => $custom_url,
@@ -264,7 +270,7 @@ if ( $variant ) {
 					</div>
 				<?php endif; ?>
 
-				<h3 class="post-card__title c-card__title">
+				<<?php echo esc_html( $heading_tag ); ?> class="post-card__title c-card__title">
 					<a
 						class="post-card__title-link c-card__title-link"
 						href="<?php echo esc_url( $permalink ); ?>"
@@ -277,7 +283,7 @@ if ( $variant ) {
 					>
 						<?php echo esc_html( $title ); ?>
 					</a>
-				</h3>
+				</<?php echo esc_html( $heading_tag ); ?>>
 
 				<?php if ( $excerpt ) : ?>
 					<div class="post-card__text">

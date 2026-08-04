@@ -81,6 +81,7 @@ $section_action = trim( (string) ob_get_clean() );
 						'show_format'   => true,
 						'custom_url'    => $post_url,
 						'variant' => 'story',
+						'heading_level' => 3,
 					]
 				);
 				?>
