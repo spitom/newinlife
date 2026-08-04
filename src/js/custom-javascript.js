@@ -921,10 +921,22 @@ document.addEventListener('DOMContentLoaded', () => {
 		return;
 	}
 
+	const zoomInLabel =
+		mapElement.dataset.networkMapZoomInLabel || 'Powiększ mapę';
+
+	const zoomOutLabel =
+		mapElement.dataset.networkMapZoomOutLabel || 'Pomniejsz mapę';
+
 	const map = L.map(mapElement, {
 		scrollWheelZoom: false,
 		worldCopyJump: true,
+		zoomControl: false,
 	}).setView([20, 10], 2);
+
+	L.control.zoom({
+		zoomInTitle: zoomInLabel,
+		zoomOutTitle: zoomOutLabel,
+	}).addTo(map);
 
 	L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 		maxZoom: 18,

@@ -40,6 +40,9 @@ $map_id    = 'network-map-canvas';
 				data-network-map-empty-label="<?php echo esc_attr( inlife_t( 'Brak partnerów z przypisanymi współrzędnymi.' ) ); ?>"
 				data-network-map-error-label="<?php echo esc_attr( inlife_t( 'Mapa jest obecnie niedostępna. Skorzystaj z listy partnerów poniżej.' ) ); ?>"
 				data-network-map-link-label="<?php echo esc_attr( inlife_t( 'Zobacz partnera' ) ); ?>"
+				data-network-map-zoom-in-label="<?php echo esc_attr( inlife_t( 'Powiększ mapę' ) ); ?>"
+				data-network-map-zoom-out-label="<?php echo esc_attr( inlife_t( 'Pomniejsz mapę' ) ); ?>"
+				role="region"
 				aria-label="<?php echo esc_attr( inlife_t( 'Interaktywna mapa partnerów' ) ); ?>"
 			></div>
 
