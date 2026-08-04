@@ -56,7 +56,7 @@ if ( empty( $items ) ) {
 }
 ?>
 
-<section id="<?php echo esc_attr( $args['section_id'] ); ?>" class="research-navigation-grid" aria-labelledby="<?php echo esc_attr( $args['title_id'] ); ?>">
+<div id="<?php echo esc_attr( $args['section_id'] ); ?>" class="research-navigation-grid">
 
 	<div class="research-navigation-grid__list c-card-grid c-card-grid--4">
 
@@ -79,9 +79,9 @@ if ( empty( $items ) ) {
 							<?php echo esc_html( $badge ); ?>
 						</span>
 
-						<h3 class="research-nav-card__title">
+						<h2 class="research-nav-card__title">
 							<?php echo esc_html( $item['title'] ); ?>
-						</h3>
+						</h2>
 
 						<?php if ( ! empty( $item['description'] ) ) : ?>
 							<p class="research-nav-card__text">
@@ -100,4 +100,4 @@ if ( empty( $items ) ) {
 
 	</div>
 
-</section>
+</div>
