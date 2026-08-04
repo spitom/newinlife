@@ -7,6 +7,19 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$args = wp_parse_args(
+	$args ?? array(),
+	array(
+		'heading_level' => 2,
+	)
+);
+
+$heading_level = (int) $args['heading_level'];
+
+if ( ! in_array( $heading_level, array( 2, 3, 4 ), true ) ) {
+	$heading_level = 2;
+}
+
 $post_id = get_the_ID();
 
 $type_label = function_exists( 'inlife_get_career_entry_type_label' )
@@ -63,9 +76,9 @@ $show_deadline = ! empty( $type_behavior['show_deadline'] );
 			</p>
 		<?php endif; ?>
 
-		<h2 class="career-archive-card__title">
+		<h<?php echo $heading_level; ?> class="career-archive-card__title">
 			<?php the_title(); ?>
-		</h2>
+		</h<?php echo $heading_level; ?>>
 
 		<?php if ( $unit || ( $deadline && $show_deadline ) ) : ?>
 			<div class="career-archive-card__meta">

@@ -113,7 +113,10 @@ $action_html = (string) ob_get_clean();
 
 				get_template_part(
 					'template-parts/career/career-archive',
-					'card'
+					'card',
+					array(
+						'heading_level' => 3,
+					)
 				);
 			endwhile;
 			?>
