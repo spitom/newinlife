@@ -982,10 +982,22 @@ document.addEventListener('DOMContentLoaded', () => {
 	partners.forEach((partner) => {
 		if (typeof partner.lat !== 'number' || typeof partner.lng !== 'number') return;
 
+		const markerLabel = String(partner.title || '').trim();
+
 		const marker = L.marker([partner.lat, partner.lng], {
 			icon: defaultIcon,
 			keyboard: true,
-			title: partner.title || '',
+			title: markerLabel,
+		});
+
+		marker.on('add', () => {
+			const markerElement = marker.getElement();
+
+			if (!markerElement || !markerLabel) {
+				return;
+			}
+
+			markerElement.setAttribute('aria-label', markerLabel);
 		});
 
 		const title = escapeHtml(partner.title || '');
