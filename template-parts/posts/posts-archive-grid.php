@@ -66,10 +66,16 @@ $archive_url = function_exists( 'inlife_get_news_archive_url' )
 					<input type="hidden" name="news_cat" value="<?php echo esc_attr( $current_cat ); ?>">
 				<?php endif; ?>
 
-				<label class="archive-filters__select">
-					<span class="screen-reader-text"><?php echo esc_html( inlife_t( 'Rok' ) ); ?></span>
-					<select name="news_year" onchange="this.form.submit()">
-						<option value="0"><?php echo esc_html( inlife_t( 'Wszystkie lata' ) ); ?></option>
+				<label class="archive-filters__select" for="posts-filter-year-desktop">
+					<span class="screen-reader-text">
+						<?php echo esc_html( inlife_t( 'Rok' ) ); ?>
+					</span>
+
+					<select id="posts-filter-year-desktop" name="news_year">
+						<option value="0">
+							<?php echo esc_html( inlife_t( 'Wszystkie lata' ) ); ?>
+						</option>
+
 						<?php foreach ( $years as $year ) : ?>
 							<option value="<?php echo esc_attr( $year ); ?>" <?php selected( $current_year, (int) $year ); ?>>
 								<?php echo esc_html( $year ); ?>
@@ -77,25 +83,47 @@ $archive_url = function_exists( 'inlife_get_news_archive_url' )
 						<?php endforeach; ?>
 					</select>
 				</label>
+
+				<button class="posts-filters__submit" type="submit">
+					<?php echo esc_html( inlife_t( 'Filtruj' ) ); ?>
+				</button>
 			</form>
 
 			<form class="posts-filters__mobile" method="get" action="<?php echo esc_url( $archive_url . '#posts-listing' ); ?>">
-				<label class="archive-filters__select archive-filters__select--category">
-					<span class="screen-reader-text"><?php echo esc_html( inlife_t( 'Kategoria' ) ); ?></span>
-					<select name="news_cat" onchange="this.form.submit()">
-						<option value=""><?php echo esc_html( inlife_t( 'Wszystkie kategorie' ) ); ?></option>
+				<label
+					class="archive-filters__select archive-filters__select--category"
+					for="posts-filter-category-mobile"
+				>
+					<span class="screen-reader-text">
+						<?php echo esc_html( inlife_t( 'Kategoria' ) ); ?>
+					</span>
+
+					<select id="posts-filter-category-mobile" name="news_cat">
+						<option value="">
+							<?php echo esc_html( inlife_t( 'Wszystkie kategorie' ) ); ?>
+						</option>
+
 						<?php foreach ( $categories as $category ) : ?>
-							<option value="<?php echo esc_attr( $category->slug ); ?>" <?php selected( $current_cat, $category->slug ); ?>>
+							<option
+								value="<?php echo esc_attr( $category->slug ); ?>"
+								<?php selected( $current_cat, $category->slug ); ?>
+							>
 								<?php echo esc_html( $category->name ); ?>
 							</option>
 						<?php endforeach; ?>
 					</select>
 				</label>
 
-				<label class="archive-filters__select">
-					<span class="screen-reader-text"><?php echo esc_html( inlife_t( 'Rok' ) ); ?></span>
-					<select name="news_year" onchange="this.form.submit()">
-						<option value="0"><?php echo esc_html( inlife_t( 'Wszystkie lata' ) ); ?></option>
+				<label class="archive-filters__select" for="posts-filter-year-mobile">
+					<span class="screen-reader-text">
+						<?php echo esc_html( inlife_t( 'Rok' ) ); ?>
+					</span>
+
+					<select id="posts-filter-year-mobile" name="news_year">
+						<option value="0">
+							<?php echo esc_html( inlife_t( 'Wszystkie lata' ) ); ?>
+						</option>
+
 						<?php foreach ( $years as $year ) : ?>
 							<option value="<?php echo esc_attr( $year ); ?>" <?php selected( $current_year, (int) $year ); ?>>
 								<?php echo esc_html( $year ); ?>
@@ -103,6 +131,10 @@ $archive_url = function_exists( 'inlife_get_news_archive_url' )
 						<?php endforeach; ?>
 					</select>
 				</label>
+
+				<button class="posts-filters__submit" type="submit">
+					<?php echo esc_html( inlife_t( 'Filtruj' ) ); ?>
+				</button>
 			</form>
 
 		</div>
