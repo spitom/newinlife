@@ -417,7 +417,7 @@
     margin-bottom: 0;
     font-size: 0.88rem;
     line-height: 1.4;
-    color: rgba(41, 52, 88, 0.66);
+    color: rgba(41, 52, 88, 0.72);
 }
 
 .team-member-tile__meta {
@@ -426,7 +426,7 @@
     margin-bottom: 0;
     font-size: 0.84rem;
     line-height: 1.45;
-    color: rgba(41, 52, 88, 0.58);
+    color: rgba(41, 52, 88, 0.72);
     overflow-wrap: anywhere;
 
     a {
@@ -483,6 +483,8 @@
 }
 
 .team-person-socials__link {
+    --team-social-color: #fff;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -493,18 +495,21 @@
 }
 
 .team-person-socials__link--orcid {
+    --team-social-color: var(--inlife-primary);
+
     background: #a6ce39;
-    color: #fff;
 }
 
 .team-person-socials__link--researchgate {
+    --team-social-color: var(--inlife-primary);
+
     background: #00d0b7;
-    color: #fff;
 }
 
 .team-person-socials__link--linkedin {
+    --team-social-color: #fff;
+
     background: #0a66c2;
-    color: #fff;
 }
 
 .team-person-socials__icon {
@@ -517,7 +522,7 @@
 .team-person-socials__link:hover,
 .team-person-socials__link:focus,
 .team-person-socials__link:focus-visible {
-    color: #fff;
+    color: var(--team-social-color);
     text-decoration: none;
 }
 
@@ -569,7 +574,7 @@
     padding: 0 1.15rem 0.85rem 0;
     border: 0;
     background: transparent;
-    color: rgba(41, 52, 88, 0.62);
+    color: rgba(41, 52, 88, 0.72);
     font-size: 0.92rem;
     font-weight: 800;
     line-height: 1.2;
