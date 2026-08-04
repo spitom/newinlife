@@ -83,6 +83,10 @@
     text-transform: uppercase;
 }
 
+.career-archive-card__type.c-badge--compact {
+    font-size: 0.75rem;
+}
+
 .career-archive-card--scientific .career-archive-card__type {
     background: rgba(41, 52, 88, 0.1);
     border-color: rgba(41, 52, 88, 0.16);
