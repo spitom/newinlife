@@ -134,6 +134,10 @@ if ( function_exists( 'have_rows' ) && have_rows( 'career_hr_documents', $post_i
 						>
 							<span class="c-readmore__label">
 								<?php echo esc_html( inlife_t( 'Pobierz dokument' ) ); ?>
+
+								<span class="visually-hidden">
+									<?php echo esc_html( inlife_t( '(otwiera w nowej karcie)' ) ); ?>
+								</span>
 							</span>
 							<span class="c-readmore__icon" aria-hidden="true">→</span>
 						</a>
