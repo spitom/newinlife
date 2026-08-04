@@ -70,7 +70,14 @@ $hero_actions = trim( (string) ob_get_clean() );
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<div class="publications-year-list-wrap">
 				<h2 id="publications-list-heading" class="visually-hidden">
-					<?php echo esc_html( $hero_title ); ?>
+					<?php
+					echo esc_html(
+						sprintf(
+							inlife_t( 'Publikacje z %s roku' ),
+							$hero_title
+						)
+					);
+					?>
 				</h2>
 
 				<?php if ( ! empty( $items ) ) : ?>
