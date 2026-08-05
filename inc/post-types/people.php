@@ -48,7 +48,7 @@ if ( ! function_exists( 'inlife_register_people_cpt' ) ) {
 				'thumbnail',
 				'revisions',
 			],
-			'exclude_from_search' => false,
+			'exclude_from_search' => true,
 			'capability_type'     => 'post',
 			'map_meta_cap'        => true,
 		];

@@ -14,7 +14,6 @@ function inlife_get_search_post_types(): array {
 	return [
 		'post',
 		'page',
-		'people',
 		'teams',
 		'laboratories',
 		'projects',
@@ -22,6 +21,171 @@ function inlife_get_search_post_types(): array {
 		'career_entry',
 		'partners',
 	];
+}
+
+/**
+ * Find teams and laboratories related to people matching the search term.
+ *
+ * People remain excluded from public search results. Their records are used
+ * only as an internal relation index for teams and laboratories.
+ *
+ * @param string $search_term Search phrase.
+ * @return int[]
+ */
+function inlife_get_search_related_unit_ids( string $search_term ): array {
+	global $wpdb;
+
+	$search_term = trim( wp_strip_all_tags( $search_term ) );
+
+	if ( '' === $search_term ) {
+		return [];
+	}
+
+	$search_tokens = preg_split(
+		'/\s+/u',
+		$search_term,
+		-1,
+		PREG_SPLIT_NO_EMPTY
+	);
+
+	$search_tokens = array_values(
+		array_unique(
+			array_filter(
+				array_map( 'trim', (array) $search_tokens )
+			)
+		)
+	);
+
+	if ( empty( $search_tokens ) ) {
+		return [];
+	}
+
+	/*
+	 * Search every language version of People.
+	 *
+	 * Each entered word must occur in the post title, but the order of words
+	 * does not matter. This handles both "Jan Kowalski" and "Kowalski Jan".
+	 */
+	$title_conditions = [];
+	$title_values     = [];
+
+	foreach ( $search_tokens as $token ) {
+		$title_conditions[] = "{$wpdb->posts}.post_title LIKE %s";
+		$title_values[]     = '%' . $wpdb->esc_like( $token ) . '%';
+	}
+
+	$people_sql = "
+		SELECT DISTINCT {$wpdb->posts}.ID
+		FROM {$wpdb->posts}
+		WHERE {$wpdb->posts}.post_type = 'people'
+		AND {$wpdb->posts}.post_status = 'publish'
+		AND " . implode( ' AND ', $title_conditions );
+
+	$person_ids = array_map(
+		'intval',
+		$wpdb->get_col(
+			$wpdb->prepare(
+				$people_sql,
+				...$title_values
+			)
+		)
+	);
+
+	if ( empty( $person_ids ) ) {
+		return [];
+	}
+
+	$person_ids_sql = implode(
+		',',
+		array_map( 'intval', $person_ids )
+	);
+
+	$team_meta_key_like =
+		$wpdb->esc_like( 'team_memberships' ) . '\\_%\\_team';
+
+	$laboratory_meta_key_like =
+		$wpdb->esc_like( 'laboratory_memberships' ) . '\\_%\\_laboratory';
+
+	$unit_ids = array_map(
+		'intval',
+		$wpdb->get_col(
+			$wpdb->prepare(
+				"
+				SELECT DISTINCT unit.ID
+				FROM {$wpdb->postmeta} membership
+				INNER JOIN {$wpdb->posts} unit
+					ON unit.ID = CAST(membership.meta_value AS UNSIGNED)
+				WHERE membership.post_id IN ($person_ids_sql)
+				AND unit.post_status = 'publish'
+				AND (
+					(
+						membership.meta_key LIKE %s
+						AND unit.post_type = 'teams'
+					)
+					OR (
+						membership.meta_key LIKE %s
+						AND unit.post_type = 'laboratories'
+					)
+				)
+				",
+				$team_meta_key_like,
+				$laboratory_meta_key_like
+			)
+		)
+	);
+
+	/*
+	 * Relations may point to the Polish unit. Convert every related unit
+	 * to its translation in the language of the current search page.
+	 */
+	if (
+		! empty( $unit_ids ) &&
+		function_exists( 'pll_current_language' ) &&
+		function_exists( 'pll_get_post' )
+	) {
+		$current_language = (string) pll_current_language( 'slug' );
+
+		if ( '' !== $current_language ) {
+			$translated_unit_ids = [];
+
+			foreach ( $unit_ids as $unit_id ) {
+				$translated_id = (int) pll_get_post(
+					$unit_id,
+					$current_language
+				);
+
+				if ( $translated_id <= 0 ) {
+					continue;
+				}
+
+				if ( 'publish' !== get_post_status( $translated_id ) ) {
+					continue;
+				}
+
+				if (
+					! in_array(
+						get_post_type( $translated_id ),
+						[ 'teams', 'laboratories' ],
+						true
+					)
+				) {
+					continue;
+				}
+
+				$translated_unit_ids[] = $translated_id;
+			}
+
+			$unit_ids = $translated_unit_ids;
+		}
+	}
+
+	return array_values(
+		array_unique(
+			array_filter(
+				array_map( 'intval', $unit_ids )
+			)
+		)
+	);
 }
 
 /**
@@ -47,7 +211,6 @@ function inlife_get_search_type_label( int $post_id ): string {
 	$labels = [
 		'post'         => inlife_t( 'Aktualność' ),
 		'page'         => inlife_t( 'Strona' ),
-		'people'       => inlife_t( 'Osoba' ),
 		'teams'        => inlife_t( 'Zespół badawczy' ),
 		'laboratories' => inlife_t( 'Laboratorium' ),
 		'projects'     => inlife_t( 'Projekt' ),
@@ -71,11 +234,6 @@ function inlife_get_search_result_summary( int $post_id ): string {
 		$source   = function_exists( 'get_field' ) ? get_field( 'publication_source', $post_id ) : '';
 
 		return wp_strip_all_tags( $citation ?: trim( $authors . ' ' . $source ) );
-	}
-
-	if ( 'people' === $post_type ) {
-		$position = function_exists( 'get_field' ) ? get_field( 'person_position', $post_id ) : '';
-		return wp_strip_all_tags( $position );
 	}
 
 	if ( 'partners' === $post_type ) {
@@ -108,10 +266,6 @@ function inlife_get_search_result_meta( int $post_id ): string {
 		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 			return $terms[0]->name;
 		}
-	}
-
-	if ( 'people' === $post_type && function_exists( 'inlife_get_people_type_label' ) ) {
-		return inlife_get_people_type_label( $post_id );
 	}
 
 	return '';
@@ -162,52 +316,217 @@ function inlife_search_join_postmeta( $join, WP_Query $query ) {
 add_filter( 'posts_join', 'inlife_search_join_postmeta', 10, 2 );
 
 /**
- * Extend search WHERE clause for selected meta fields.
+ * Extend search WHERE clause for selected ACF/meta fields.
  */
 function inlife_search_meta_where( $where, WP_Query $query ) {
 	global $wpdb;
 
-	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+	if (
+		is_admin() ||
+		! $query->is_main_query() ||
+		! $query->is_search()
+	) {
 		return $where;
 	}
 
-	$search_term = $query->get( 's' );
+	$search_term = trim( (string) $query->get( 's' ) );
 
-	if ( ! $search_term ) {
+	if ( '' === $search_term ) {
 		return $where;
 	}
 
-	$like = '%' . $wpdb->esc_like( $search_term ) . '%';
+	$post_types = array_map(
+		'esc_sql',
+		inlife_get_search_post_types()
+	);
 
-	$post_types = array_map( 'esc_sql', inlife_get_search_post_types() );
-	$post_types_sql = "'" . implode( "','", $post_types ) . "'";
+	$post_types_sql = "'" . implode(
+		"','",
+		$post_types
+	) . "'";
 
+	/*
+	 * Ordinary, non-repeater ACF fields.
+	 */
 	$meta_keys = [
 		'publication_citation',
 		'publication_authors',
 		'publication_title_full',
 		'publication_source',
 		'publication_doi',
-		'person_position',
-		'person_specialization',
 		'partner_location',
 		'project_subtitle',
 	];
 
-	$meta_keys_sql = "'" . implode( "','", array_map( 'esc_sql', $meta_keys ) ) . "'";
+	$meta_keys_sql = "'" . implode(
+		"','",
+		array_map( 'esc_sql', $meta_keys )
+	) . "'";
 
-	$where .= $wpdb->prepare(
-		" OR (
-			{$wpdb->posts}.post_type IN ($post_types_sql)
-			AND {$wpdb->posts}.post_status = 'publish'
-			AND inlife_search_meta.meta_key IN ($meta_keys_sql)
-			AND inlife_search_meta.meta_value LIKE %s
-		)",
-		$like
+	/*
+	 * Dynamic ACF repeater keys.
+	 *
+	 * Examples:
+	 * about_directorate_0_name
+	 * structure_sections_0_section_items_2_item_name
+	 */
+	$meta_key_patterns = [
+		$wpdb->esc_like( 'about_directorate_' )
+			. '%'
+			. $wpdb->esc_like( '_name' ),
+
+		$wpdb->esc_like( 'about_directorate_' )
+			. '%'
+			. $wpdb->esc_like( '_role' ),
+
+		$wpdb->esc_like( 'structure_sections_' )
+			. '%'
+			. $wpdb->esc_like( '_section_title' ),
+
+		$wpdb->esc_like( 'structure_sections_' )
+			. '%'
+			. $wpdb->esc_like( '_section_items_' )
+			. '%'
+			. $wpdb->esc_like( '_item_title' ),
+
+		$wpdb->esc_like( 'structure_sections_' )
+			. '%'
+			. $wpdb->esc_like( '_section_items_' )
+			. '%'
+			. $wpdb->esc_like( '_item_name' ),
+
+		$wpdb->esc_like( 'structure_sections_' )
+			. '%'
+			. $wpdb->esc_like( '_section_items_' )
+			. '%'
+			. $wpdb->esc_like( '_item_position' ),
+	];
+
+	$meta_key_conditions = [
+		"inlife_search_meta.meta_key IN ($meta_keys_sql)",
+	];
+
+	$prepare_values = [];
+
+	foreach ( $meta_key_patterns as $meta_key_pattern ) {
+		$meta_key_conditions[] = 'inlife_search_meta.meta_key LIKE %s';
+		$prepare_values[]      = $meta_key_pattern;
+	}
+
+	/*
+	 * Require every entered word, but do not require the same word order.
+	 */
+	$search_tokens = preg_split(
+		'/\s+/u',
+		$search_term,
+		-1,
+		PREG_SPLIT_NO_EMPTY
 	);
+
+	$search_tokens = array_values(
+		array_unique(
+			array_filter(
+				array_map( 'trim', (array) $search_tokens )
+			)
+		)
+	);
+
+	$meta_value_conditions = [];
+
+	foreach ( $search_tokens as $token ) {
+		$meta_value_conditions[] =
+			'inlife_search_meta.meta_value LIKE %s';
+
+		$prepare_values[] =
+			'%' . $wpdb->esc_like( $token ) . '%';
+	}
+
+	$language_condition = '';
+	$current_language    = '';
+
+	if ( function_exists( 'pll_current_language' ) ) {
+		$current_language = (string) pll_current_language( 'slug' );
+
+		if ( '' !== $current_language ) {
+			$language_condition = "
+				AND EXISTS (
+					SELECT 1
+					FROM {$wpdb->term_relationships} inlife_search_language_rel
+					INNER JOIN {$wpdb->term_taxonomy} inlife_search_language_tax
+						ON inlife_search_language_tax.term_taxonomy_id =
+							inlife_search_language_rel.term_taxonomy_id
+					INNER JOIN {$wpdb->terms} inlife_search_language_term
+						ON inlife_search_language_term.term_id =
+							inlife_search_language_tax.term_id
+					WHERE inlife_search_language_rel.object_id =
+						{$wpdb->posts}.ID
+					AND inlife_search_language_tax.taxonomy = 'language'
+					AND inlife_search_language_term.slug = %s
+				)
+			";
+		}
+	}
+
+	if ( ! empty( $meta_value_conditions ) ) {
+		$meta_prepare_values = $prepare_values;
+
+		if ( '' !== $language_condition ) {
+			$meta_prepare_values[] = $current_language;
+		}
+
+		$where .= $wpdb->prepare(
+			"
+			OR (
+				{$wpdb->posts}.post_type IN ($post_types_sql)
+				AND {$wpdb->posts}.post_status = 'publish'
+				AND (
+					" . implode( ' OR ', $meta_key_conditions ) . "
+				)
+				AND (
+					" . implode( ' AND ', $meta_value_conditions ) . "
+				)
+				{$language_condition}
+			)
+			",
+			...$meta_prepare_values
+		);
+	}
+
+	/*
+	 * Add teams and laboratories indirectly matched through People.
+	 */
+	$related_unit_ids = inlife_get_search_related_unit_ids(
+		$search_term
+	);
+
+	if ( ! empty( $related_unit_ids ) ) {
+		$related_unit_ids_sql = implode(
+			',',
+			array_map( 'intval', $related_unit_ids )
+		);
+
+		$related_units_where = "
+			OR (
+				{$wpdb->posts}.ID IN ($related_unit_ids_sql)
+				AND {$wpdb->posts}.post_type IN ('teams', 'laboratories')
+				AND {$wpdb->posts}.post_status = 'publish'
+				{$language_condition}
+			)
+		";
+
+		if ( '' !== $language_condition ) {
+			$where .= $wpdb->prepare(
+				$related_units_where,
+				$current_language
+			);
+		} else {
+			$where .= $related_units_where;
+		}
+	}
 
 	return $where;
 }
+
 add_filter( 'posts_where', 'inlife_search_meta_where', 10, 2 );
 
 /**
@@ -235,14 +554,13 @@ function inlife_search_orderby( $orderby, WP_Query $query ) {
 	return "
 		CASE {$wpdb->posts}.post_type
 			WHEN 'page' THEN 1
-			WHEN 'people' THEN 2
-			WHEN 'teams' THEN 3
-			WHEN 'laboratories' THEN 4
-			WHEN 'projects' THEN 5
-			WHEN 'post' THEN 6
-			WHEN 'career_entry' THEN 7
-			WHEN 'partners' THEN 8
-			WHEN 'publications' THEN 9
+			WHEN 'teams' THEN 2
+			WHEN 'laboratories' THEN 3
+			WHEN 'projects' THEN 4
+			WHEN 'post' THEN 5
+			WHEN 'career_entry' THEN 6
+			WHEN 'partners' THEN 7
+			WHEN 'publications' THEN 8
 			ELSE 99
 		END,
 		{$wpdb->posts}.post_date DESC
