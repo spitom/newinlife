@@ -280,6 +280,8 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'footer_contact_phone', 'Telefon', $group );
 		pll_register_string( 'footer_copyright', '© InLife – Polska Akademia Nauk', $group );
 
+		pll_register_string( 'footer_heading_site',	'Stopka serwisu', $group );
+
 		/*
 		* ------------------------------------------------------------
 		* About Overview

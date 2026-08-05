@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) || exit;
 $container = inlife_container_class('page');
 ?>
 
-<div class="header-topbar d-none d-xl-block" aria-label="<?php esc_attr_e( 'Górne menu użytkowe', 'newinlife-child' ); ?>">
+<div class="header-topbar d-none d-xl-block">
 	<div class="<?php echo esc_attr( $container ); ?>">
 		<div class="header-topbar__inner">
 

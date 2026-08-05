@@ -15,7 +15,7 @@ $result_count = (int) $wp_query->found_posts;
 
 ?>
 
-<main id="main" class="site-main site-main--search">
+<main id="main-content" class="site-main site-main--search">
 
 	<section class="page-section page-section--search-hero">
 		<div class="<?php echo esc_attr( $container ); ?>">
