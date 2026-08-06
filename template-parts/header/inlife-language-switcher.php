@@ -8,7 +8,7 @@ if ( empty( $languages ) ) {
 }
 ?>
 
-<nav class="language-switcher" aria-label="<?php esc_attr_e( 'Wybór języka', 'understrap-child' ); ?>">
+<nav class="language-switcher" aria-label="<?php echo esc_attr( inlife_t( 'Wybór języka' ) ); ?>">
 	<ul class="language-switcher__list list-unstyled d-flex align-items-center gap-2 mb-0">
 		<?php foreach ( $languages as $lang ) : ?>
 			<?php

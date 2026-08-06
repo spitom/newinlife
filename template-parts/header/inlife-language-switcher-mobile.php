@@ -25,7 +25,7 @@ $url    = ! empty( $target_language['url'] ) ? $target_language['url'] : '#';
 $locale = ! empty( $target_language['locale'] ) ? $target_language['locale'] : strtolower( $target_language['slug'] );
 ?>
 
-<nav class="language-switcher language-switcher--mobile-single" aria-label="<?php esc_attr_e( 'Zmień język', 'newinlife-child' ); ?>">
+<nav class="language-switcher language-switcher--mobile-single" aria-label="<?php echo esc_attr( inlife_t( 'Zmień język' ) ); ?>">
 	<a
 		class="language-switcher__link language-switcher__link--single"
 		href="<?php echo esc_url( $url ); ?>"
@@ -33,7 +33,7 @@ $locale = ! empty( $target_language['locale'] ) ? $target_language['locale'] : s
 		lang="<?php echo esc_attr( $locale ); ?>"
 	>
 		<span class="visually-hidden">
-			<?php esc_html_e( 'Przełącz na język', 'newinlife-child' ); ?>
+			<?php echo esc_html( inlife_t( 'Przełącz na język' ) ); ?>
 		</span>
 		<?php echo esc_html( $slug ); ?>
 	</a>

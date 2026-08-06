@@ -13,7 +13,7 @@ $formal_items = [
 		'value' => inlife_get_acf_field( 'contact_regon', $post_id ),
 	],
 	[
-		'label' => 'Rejestr Instytutów Naukowych (RIN)',
+		'label' => inlife_t( 'Rejestr Instytutów Naukowych (RIN)' ),
 		'value' => inlife_get_acf_field( 'contact_rin', $post_id ),
 	],
 	[
@@ -21,7 +21,7 @@ $formal_items = [
 		'value' => inlife_get_acf_field( 'contact_pic', $post_id ),
 	],
 	[
-		'label' => 'Identyfikator w ePUAP',
+		'label' => inlife_t( 'Identyfikator w ePUAP' ),
 		'value' => inlife_get_acf_field( 'contact_epuap', $post_id ),
 	],
 	[

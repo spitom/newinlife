@@ -9,6 +9,7 @@ function inlife_admin_get_block_editor_disabled_post_types(): array {
 		'projects',
 		'partners',
 		'career_entry',
+		'career-opportunities'
 	];
 }
 
@@ -20,6 +21,7 @@ function inlife_admin_get_controlled_page_templates(): array {
 		'page-templates/template-research-overview.php',
 		'page-templates/template-business-landing.php',
 		'page-templates/template-career-landing.php',
+		'page-templates/template-career-opportunities.php',
 		'page-templates/template-network.php',
 		'page-templates/template-society.php',
 		'page-templates/template-contact.php',

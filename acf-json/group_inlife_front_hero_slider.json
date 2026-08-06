@@ -50,6 +50,7 @@
                     "return_format": "value",
                     "create_options": 0,
                     "save_options": 0,
+                    "pll_default_value": "image",
                     "parent_repeater": "field_front_hero_slides"
                 },
                 {
@@ -169,6 +170,7 @@
                     "rows": "",
                     "placeholder": "",
                     "new_lines": "",
+                    "pll_default_value": "",
                     "parent_repeater": "field_front_hero_slides"
                 },
                 {
@@ -191,6 +193,7 @@
                     "rows": "",
                     "placeholder": "",
                     "new_lines": "",
+                    "pll_default_value": "",
                     "parent_repeater": "field_front_hero_slides"
                 },
                 {
@@ -238,6 +241,7 @@
                     "placeholder": "",
                     "create_options": 0,
                     "save_options": 0,
+                    "pll_default_value": "content_cta",
                     "parent_repeater": "field_front_hero_slides"
                 },
                 {
@@ -260,6 +264,7 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
+                    "pll_default_value": "",
                     "parent_repeater": "field_front_hero_slides"
                 }
             ]
@@ -282,7 +287,8 @@
             "ui": 1,
             "message": "",
             "ui_on_text": "",
-            "ui_off_text": ""
+            "ui_off_text": "",
+            "pll_default_value": 1
         },
         {
             "key": "field_front_hero_interval",
@@ -304,33 +310,8 @@
             "step": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_69f993ab7254a",
-            "label": "Zdjęcie Popielno",
-            "name": "front_popielno_image",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "id",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "allow_in_bindings": 0,
-            "preview_size": "medium"
+            "append": "",
+            "pll_default_value": 7000
         }
     ],
     "location": [

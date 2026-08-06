@@ -27,7 +27,7 @@ $container = inlife_container_class('page');
 					<?php get_template_part( 'template-parts/header/inlife', 'branding' ); ?>
 				</div>
 
-				<nav class="main-nav-desktop d-none d-xl-flex" aria-label="<?php esc_attr_e( 'Główna nawigacja', 'newinlife-child' ); ?>">
+				<nav class="main-nav-desktop d-none d-xl-flex" aria-label="<?php echo esc_attr( inlife_t( 'Główna nawigacja' ) ); ?>">
 					<?php
 					wp_nav_menu([
 						'theme_location' => 'primary',
@@ -56,7 +56,7 @@ $container = inlife_container_class('page');
 						data-bs-target="#navbarNavOffcanvas"
 						aria-controls="navbarNavOffcanvas"
 						aria-expanded="false"
-						aria-label="<?php esc_attr_e( 'Otwórz menu', 'newinlife-child' ); ?>"
+						aria-label="<?php echo esc_attr( inlife_t( 'Otwórz menu' ) ); ?>"
 					>
 						<span class="inlife-burger" aria-hidden="true">
 							<span></span>
@@ -80,14 +80,14 @@ $container = inlife_container_class('page');
 >
 	<div class="offcanvas-header">
 		<div id="navbarNavOffcanvasLabel" class="offcanvas-title h5 mb-0">
-			<?php esc_html_e( 'Menu', 'newinlife-child' ); ?>
+			<?php echo esc_html( inlife_t( 'Menu' ) ); ?>
 		</div>
 
 		<button
 			class="btn-close btn-close-white"
 			type="button"
 			data-bs-dismiss="offcanvas"
-			aria-label="<?php esc_attr_e( 'Zamknij menu', 'newinlife-child' ); ?>"
+			aria-label="<?php echo esc_attr( inlife_t( 'Zamknij menu' ) ); ?>"
 		></button>
 	</div>
 
@@ -100,7 +100,7 @@ $container = inlife_container_class('page');
 				'theme_location'       => 'primary',
 				'container'            => 'nav',
 				'container_class'      => 'offcanvas-primary-nav',
-				'container_aria_label' => esc_attr__( 'Główna nawigacja', 'newinlife-child' ),
+				'container_aria_label' => esc_attr( inlife_t( 'Główna nawigacja' ) ),
 				'menu_class'           => 'navbar-nav offcanvas-primary-menu',
 				'fallback_cb'          => false,
 				'menu_id'              => 'offcanvas-main-menu',
@@ -118,7 +118,7 @@ $container = inlife_container_class('page');
 				'theme_location'       => 'top',
 				'container'            => 'nav',
 				'container_class'      => 'offcanvas-utility-nav',
-				'container_aria_label' => esc_attr__( 'Menu użytkowe', 'newinlife-child' ),
+				'container_aria_label' => esc_attr(	inlife_t( 'Menu użytkowe' ) ),
 				'menu_class'           => 'navbar-nav offcanvas-utility-menu',
 				'fallback_cb'          => false,
 				'menu_id'              => 'offcanvas-top-menu',

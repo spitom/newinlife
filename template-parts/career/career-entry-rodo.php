@@ -73,7 +73,7 @@ if ( $rodo_page_id && function_exists( 'get_field' ) ) {
 }
 
 // $kicker = $kicker ?: inlife_t( 'Klauzula informacyjna' );
-$title  = $title ?: inlife_t( 'Klauzula informacyjna' );
+$title  = $title ?: inlife_t( 'Informacje o przetwarzaniu danych osobowych' );
 
 if ( ! $content ) {
 	$content = inlife_t( 'Treść klauzuli RODO i zgody rekrutacyjnej będzie renderowana automatycznie na podstawie wybranego wariantu.' );

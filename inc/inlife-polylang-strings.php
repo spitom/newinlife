@@ -123,6 +123,49 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 
 		/*
 		* ------------------------------------------------------------
+		* Front Page – News
+		* ------------------------------------------------------------
+		*/
+		$group = 'Front Page – News';
+
+		pll_register_string(
+			'front_news_kicker',
+			'Aktualności',
+			$group
+		);
+
+		pll_register_string(
+			'front_news_title',
+			'Najnowsze informacje z życia InLife',
+			$group
+		);
+
+		pll_register_string(
+			'front_news_lead',
+			'Wiadomości, wydarzenia, projekty i inicjatywy realizowane przez InLife.',
+			$group
+		);
+
+		pll_register_string(
+			'front_news_view_all',
+			'Zobacz wszystkie aktualności',
+			$group
+		);
+
+		pll_register_string(
+			'front_news_item',
+			'Aktualność',
+			$group
+		);
+
+		pll_register_string(
+			'front_news_other',
+			'Pozostałe aktualności',
+			$group
+		);
+
+		/*
+		* ------------------------------------------------------------
 		* Header / Search
 		* ------------------------------------------------------------
 		*/
@@ -143,6 +186,84 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string(
 			'header_search_submit',
 			'Szukaj',
+			$group
+		);
+
+		pll_register_string(
+			'header_skip_link',
+			'Przejdź do treści',
+			$group
+		);
+
+		pll_register_string(
+			'header_main_navigation',
+			'Główna nawigacja',
+			$group
+		);
+
+		pll_register_string(
+			'header_utility_navigation',
+			'Menu użytkowe',
+			$group
+		);
+
+		pll_register_string(
+			'header_language_selection',
+			'Wybór języka',
+			$group
+		);
+
+		pll_register_string(
+			'header_change_language',
+			'Zmień język',
+			$group
+		);
+
+		pll_register_string(
+			'header_switch_language',
+			'Przełącz na język',
+			$group
+		);
+
+		pll_register_string(
+			'header_menu',
+			'Menu',
+			$group
+		);
+
+		pll_register_string(
+			'header_open_menu',
+			'Otwórz menu',
+			$group
+		);
+
+		pll_register_string(
+			'header_close_menu',
+			'Zamknij menu',
+			$group
+		);
+
+		pll_register_string(
+			'header_open_search',
+			'Otwórz wyszukiwarkę',
+			$group
+		);
+
+		pll_register_string(
+			'header_close_search',
+			'Zamknij wyszukiwarkę',
+			$group
+		);
+
+		pll_register_string(
+			'header_search_landmark',
+			'Wyszukiwanie w serwisie',
+			$group
+		);
+
+		pll_register_string(
+			'header_mobile_search_landmark',
+			'Wyszukiwanie w menu',
 			$group
 		);
 
@@ -274,6 +395,9 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'footer_heading_contact', 'Kontakt', $group );
 		pll_register_string( 'footer_heading_employee', 'Strefa pracownika', $group );
 		pll_register_string( 'footer_heading_information', 'Informacje', $group );
+
+		// Media społecznościowe.
+		pll_register_string( 'footer_social_navigation', 'Media społecznościowe', $group );
 
 		// Dodatkowe.
 		pll_register_string( 'footer_contact_email', 'E-mail', $group );
@@ -1205,6 +1329,104 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 			$group
 		);
 		pll_register_string( 'about_history_milestones_aria', 'Najważniejsze daty w historii Instytutu', $group );
+
+		/*
+		* ------------------------------------------------------------
+		* InLife Contact
+		* ------------------------------------------------------------
+		*/
+		$group = 'InLife Contact';
+
+		pll_register_string(
+			'contact_hero_kicker',
+			'Kontakt',
+			$group
+		);
+
+		pll_register_string(
+			'contact_hero_lead',
+			'Dane kontaktowe, lokalizacja oraz informacje formalne Instytutu.',
+			$group
+		);
+
+		pll_register_string(
+			'contact_institute_name',
+			'InLife Instytut Rozrodu Zwierząt i Badań Żywności Polskiej Akademii Nauk',
+			$group
+		);
+
+		pll_register_string(
+			'contact_details_heading',
+			'Dane kontaktowe',
+			$group
+		);
+
+		pll_register_string(
+			'contact_map_placeholder',
+			'Mapa zostanie uzupełniona po dodaniu współrzędnych.',
+			$group
+		);
+
+		pll_register_string(
+			'contact_map_region_label',
+			'Mapa lokalizacji Instytutu',
+			$group
+		);
+
+		pll_register_string(
+			'contact_map_zoom_in',
+			'Powiększ mapę',
+			$group
+		);
+
+		pll_register_string(
+			'contact_map_zoom_out',
+			'Pomniejsz mapę',
+			$group
+		);
+
+		pll_register_string(
+			'contact_map_marker_label',
+			'Pokaż lokalizację Instytutu na mapie',
+			$group
+		);
+
+		pll_register_string(
+			'contact_formal_heading',
+			'Dane instytucjonalne',
+			$group
+		);
+
+		pll_register_string(
+			'contact_formal_rin',
+			'Rejestr Instytutów Naukowych (RIN)',
+			$group
+		);
+
+		pll_register_string(
+			'contact_formal_epuap',
+			'Identyfikator w ePUAP',
+			$group
+		);
+
+		pll_register_string(
+			'contact_formal_edelivery',
+			'e-Doręczenia',
+			$group
+		);
+
+		pll_register_string(
+			'contact_related_heading',
+			'Powiązane informacje',
+			$group
+		);
+
+		pll_register_string(
+			'contact_related_cta',
+			'Przejdź dalej',
+			$group
+		);
+
 	}
 
 	add_action( 'init', 'inlife_register_polylang_strings' );

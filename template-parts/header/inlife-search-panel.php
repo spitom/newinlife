@@ -63,7 +63,7 @@ $container = inlife_container_class();
 						type="button"
 						class="inlife-search-form__close"
 						data-inlife-search-close
-						aria-label="<?php esc_attr_e( 'Zamknij wyszukiwarkę', 'newinlife-child' ); ?>"
+						aria-label="<?php echo esc_attr( inlife_t( 'Zamknij wyszukiwarkę' ) ); ?>"
 					>
 						<span aria-hidden="true">&times;</span>
 					</button>

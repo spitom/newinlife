@@ -19,6 +19,37 @@ $hero_lead   = inlife_get_acf_field(
 	$post_id,
 	inlife_t( 'Dane kontaktowe, lokalizacja oraz informacje formalne Instytutu.' )
 );
+
+$formal_field_names = [
+	'contact_nip',
+	'contact_regon',
+	'contact_rin',
+	'contact_pic',
+	'contact_epuap',
+	'contact_edoreczenia',
+];
+
+$has_formal_items = false;
+
+foreach ( $formal_field_names as $formal_field_name ) {
+	$formal_value = inlife_get_acf_field(
+		$formal_field_name,
+		$post_id
+	);
+
+	if ( '' !== trim( (string) $formal_value ) ) {
+		$has_formal_items = true;
+		break;
+	}
+}
+
+$related_items = inlife_get_acf_field(
+	'contact_related_items',
+	$post_id,
+	[]
+);
+
+$has_related_items = is_array( $related_items ) && ! empty( $related_items );
 ?>
 
 <main id="main-content" class="site-main site-main--contact">
@@ -45,17 +76,27 @@ $hero_lead   = inlife_get_acf_field(
 		</div>
 	</section>
 
-	<section class="page-section page-section--contact-formal" aria-labelledby="contact-formal-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/contact/contact', 'formal' ); ?>
-		</div>
-	</section>
+	<?php if ( $has_formal_items ) : ?>
+		<section
+			class="page-section page-section--contact-formal"
+			aria-labelledby="contact-formal-heading"
+		>
+			<div class="<?php echo esc_attr( $container ); ?>">
+				<?php get_template_part( 'template-parts/contact/contact', 'formal' ); ?>
+			</div>
+		</section>
+	<?php endif; ?>
 
-	<section class="page-section page-section--contact-key-contacts" aria-labelledby="contact-key-contacts-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/contact/contact', 'key-contacts' ); ?>
-		</div>
-	</section>
+	<?php if ( $has_related_items ) : ?>
+		<section
+			class="page-section page-section--contact-key-contacts"
+			aria-labelledby="contact-key-contacts-heading"
+		>
+			<div class="<?php echo esc_attr( $container ); ?>">
+				<?php get_template_part( 'template-parts/contact/contact', 'key-contacts' ); ?>
+			</div>
+		</section>
+	<?php endif; ?>
 
 </main>
 

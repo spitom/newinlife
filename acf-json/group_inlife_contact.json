@@ -38,7 +38,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": "Kontakt"
         },
         {
             "key": "field_contact_hero_title",
@@ -58,7 +59,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": "Kontakt"
         },
         {
             "key": "field_contact_hero_lead",
@@ -80,7 +82,8 @@
             "prepend": "",
             "append": "",
             "rows": 3,
-            "new_lines": "wpautop"
+            "new_lines": "wpautop",
+            "pll_default_value": "Dane kontaktowe, lokalizacja oraz informacje formalne Instytutu."
         },
         {
             "key": "field_contact_tab_main",
@@ -118,7 +121,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": "InLife Instytut Rozrodu Zwierząt i Badań Żywności Polskiej Akademii Nauk"
         },
         {
             "key": "field_contact_address",
@@ -138,7 +142,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": "ul. Trylińskiego 18"
         },
         {
             "key": "field_contact_city",
@@ -158,7 +163,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": "10-683 Olsztyn"
         },
         {
             "key": "field_contact_phones",
@@ -202,7 +208,8 @@
                     "prepend": "",
                     "append": "",
                     "allow_in_bindings": 0,
-                    "parent_repeater": "field_contact_phones"
+                    "parent_repeater": "field_contact_phones",
+                    "pll_default_value": ""
                 },
                 {
                     "key": "field_contact_phone_number",
@@ -224,7 +231,8 @@
                     "prepend": "",
                     "append": "",
                     "allow_in_bindings": 0,
-                    "parent_repeater": "field_contact_phones"
+                    "parent_repeater": "field_contact_phones",
+                    "pll_default_value": ""
                 }
             ]
         },
@@ -270,7 +278,8 @@
                     "prepend": "",
                     "append": "",
                     "allow_in_bindings": 0,
-                    "parent_repeater": "field_contact_emails"
+                    "parent_repeater": "field_contact_emails",
+                    "pll_default_value": ""
                 },
                 {
                     "key": "field_contact_email_address",
@@ -292,7 +301,8 @@
                     "prepend": "",
                     "append": "",
                     "allow_in_bindings": 0,
-                    "parent_repeater": "field_contact_emails"
+                    "parent_repeater": "field_contact_emails",
+                    "pll_default_value": ""
                 }
             ]
         },
@@ -332,7 +342,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": ""
         },
         {
             "key": "field_contact_regon",
@@ -352,7 +363,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": ""
         },
         {
             "key": "field_contact_rin",
@@ -373,7 +385,8 @@
             "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": ""
         },
         {
             "key": "field_contact_pic",
@@ -393,7 +406,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": ""
         },
         {
             "key": "field_contact_epuap",
@@ -413,7 +427,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": ""
         },
         {
             "key": "field_contact_edoreczenia",
@@ -433,7 +448,8 @@
             "maxlength": "",
             "placeholder": "",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": ""
         },
         {
             "key": "field_contact_tab_map",
@@ -474,7 +490,8 @@
             "placeholder": "",
             "step": "0.000001",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": ""
         },
         {
             "key": "field_contact_longitude",
@@ -497,7 +514,140 @@
             "placeholder": "",
             "step": "0.000001",
             "prepend": "",
-            "append": ""
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_6a744b0cefa88",
+            "label": "Powiązane informacje",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6a744b2defa89",
+            "label": "Nagłówek sekcji",
+            "name": "contact_related_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Powiązane informacje",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": "Powiązane informacje"
+        },
+        {
+            "key": "field_6a744b55efa8a",
+            "label": "Powiązane informacje",
+            "name": "contact_related_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 3,
+            "collapsed": "",
+            "button_label": "Dodaj pozycję",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6a744bfaefa8b",
+                    "label": "Tytuł",
+                    "name": "related_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "translate",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_6a744b55efa8a"
+                },
+                {
+                    "key": "field_6a744c22efa8c",
+                    "label": "Opis",
+                    "name": "related_text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "translate",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_6a744b55efa8a"
+                },
+                {
+                    "key": "field_6a744c78efa8d",
+                    "label": "Link",
+                    "name": "related_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "translations": "copy_once",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6a744b55efa8a"
+                }
+            ]
         }
     ],
     "location": [
@@ -521,5 +671,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1780485954
+    "pll_display_field_instructions": 1,
+    "modified": 1786006705
 }

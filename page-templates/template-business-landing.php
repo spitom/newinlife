@@ -94,7 +94,7 @@ $hero_actions = trim( (string) ob_get_clean() );
 		?>
 	</section>
 
-	<section class="page-section page-section--business-services-industries" aria-labelledby="business-services-industries-heading">
+	<section id="business-services-industries" class="page-section page-section--business-services-industries" aria-labelledby="business-services-industries-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<?php get_template_part( 'template-parts/business/business', 'services-industries' ); ?>
 		</div>
@@ -106,7 +106,7 @@ $hero_actions = trim( (string) ob_get_clean() );
 		</div>
 	</section>
 
-	<section class="page-section page-section--business-technologies" aria-labelledby="business-technologies-heading">
+	<section id="business-technologies" class="page-section page-section--business-technologies" aria-labelledby="business-technologies-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<?php get_template_part( 'template-parts/business/business', 'technologies' ); ?>
 		</div>

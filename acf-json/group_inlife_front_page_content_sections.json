@@ -1,0 +1,350 @@
+{
+    "key": "group_inlife_front_page_content_sections",
+    "title": "Front Page — Content Sections",
+    "fields": [
+        {
+            "key": "field_inlife_front_business_tab",
+            "label": "Business",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_inlife_front_business_kicker",
+            "label": "Kicker",
+            "name": "front_business_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Krótka etykieta nad tytułem sekcji, np. „Współpraca”.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Współpraca",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_inlife_front_business_title",
+            "label": "Tytuł",
+            "name": "front_business_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Główny nagłówek sekcji.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "Nauka blisko praktyki",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_inlife_front_business_text",
+            "label": "Opis",
+            "name": "front_business_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Krótki opis sekcji. Zalecane 1–2 zdania.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 4,
+            "placeholder": "Wspieramy partnerów w projektach badawczych, usługach laboratoryjnych i wdrażaniu innowacji.",
+            "new_lines": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_inlife_front_business_cta",
+            "label": "Główny odnośnik",
+            "name": "front_business_cta",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Odnośnik pod opisem sekcji.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "translations": "copy_once",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_inlife_front_business_links",
+            "label": "Karty",
+            "name": "front_business_links",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Maksymalnie trzy karty prowadzące do najważniejszych obszarów współpracy.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 3,
+            "collapsed": "field_inlife_front_business_link_title",
+            "button_label": "Dodaj kartę",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_inlife_front_business_link_title",
+                    "label": "Tytuł",
+                    "name": "front_business_link_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "Katalog usług i współpracy",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_inlife_front_business_links",
+                    "pll_default_value": ""
+                },
+                {
+                    "key": "field_inlife_front_business_link_text",
+                    "label": "Opis",
+                    "name": "front_business_link_text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Opcjonalny krótki opis karty.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_inlife_front_business_links",
+                    "pll_default_value": ""
+                },
+                {
+                    "key": "field_inlife_front_business_link",
+                    "label": "Odnośnik",
+                    "name": "front_business_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_inlife_front_business_links"
+                }
+            ]
+        },
+        {
+            "key": "field_6a72f7f4a9d1d",
+            "label": "Popielno",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6a732627f8d19",
+            "label": "Kicker",
+            "name": "front_popielno_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "copy_once",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_6a732646f8d1a",
+            "label": "Tytuł",
+            "name": "front_popielno_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "copy_once",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_6a732659f8d1b",
+            "label": "Opis",
+            "name": "front_popielno_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_6a73268ff8d1c",
+            "label": "Główny odnośnik",
+            "name": "front_popielno_cta",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "translations": "copy_once",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_69f993ab7254a",
+            "label": "Zdjęcie Popielno",
+            "name": "front_popielno_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Pola ACF dla edytowalnych sekcji treści na stronie głównej.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "pll_display_field_instructions": 1,
+    "modified": 1785931607
+}
