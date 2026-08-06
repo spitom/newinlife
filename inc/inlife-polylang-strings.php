@@ -855,8 +855,14 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string( 'labs_single_people_title', 'Skład osobowy', $group );
 		pll_register_string( 'labs_single_manager_badge', 'Kierownik', $group );
 		pll_register_string(
-			'labs_single_people_empty',
+			'laboratory_empty_staff',
 			'Skład osobowy nie został jeszcze uzupełniony.',
+			$group
+		);
+
+		pll_register_string(
+			'laboratory_social_profiles',
+			'Profile naukowe i społecznościowe',
 			$group
 		);
 
@@ -1424,6 +1430,37 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		pll_register_string(
 			'contact_related_cta',
 			'Przejdź dalej',
+			$group
+		);
+
+		/*
+		* ------------------------------------------------------------
+		* InLife 404
+		* ------------------------------------------------------------
+		*/
+		$group = 'InLife 404';
+
+		pll_register_string(
+			'error_404_kicker',
+			'Błąd 404',
+			$group
+		);
+
+		pll_register_string(
+			'error_404_title',
+			'Nie znaleźliśmy tej strony',
+			$group
+		);
+
+		pll_register_string(
+			'error_404_lead',
+			'Adres może być nieprawidłowy albo strona została przeniesiona. Skorzystaj z wyszukiwarki lub wróć do strony głównej.',
+			$group
+		);
+
+		pll_register_string(
+			'error_404_home_cta',
+			'Wróć do strony głównej',
 			$group
 		);
 

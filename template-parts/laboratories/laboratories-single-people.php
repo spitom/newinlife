@@ -185,7 +185,7 @@ if ( ! empty( $members ) ) {
                     <?php endif; ?>
 
                     <?php if ( $orcid || $researchgate || $linkedin ) : ?>
-                        <div class="team-person-socials team-person-socials--member" aria-label="<?php echo esc_attr__( 'Profile naukowe i społecznościowe', 'newinlife-child' ); ?>">
+                        <div class="team-person-socials team-person-socials--member" aria-label="<?php echo esc_attr( inlife_t( 'Profile naukowe i społecznościowe' ) ); ?>">
                             <?php if ( $orcid ) : ?>
                                 <a class="team-person-socials__link team-person-socials__link--orcid" href="<?php echo esc_url( $orcid ); ?>" target="_blank" rel="noopener noreferrer" aria-label="ORCID">
                                     <span class="team-person-socials__icon" aria-hidden="true">iD</span>
