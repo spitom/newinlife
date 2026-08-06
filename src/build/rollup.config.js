@@ -19,12 +19,6 @@ const banner = require( './banner.js' );
 let bsVersion = 5;
 let bsSrcFile = 'bootstrap.js';
 let fileDest = 'child-theme';
-let globals = {
-	jquery: 'jQuery', // Ensure we use jQuery which is always available even in noConflict mode
-	'@popperjs/core': 'Popper',
-};
-
-const external = [ 'jquery' ];
 
 const plugins = [
 	babel( {
@@ -52,17 +46,14 @@ module.exports = {
 			banner: banner(''),
 			file: path.resolve( __dirname, `../../js/${ fileDest }.js` ),
 			format: 'umd',
-			globals,
 			name: 'understrap',
 		},
 		{
 			banner: banner(''),
 			file: path.resolve( __dirname, `../../js/${ fileDest }.min.js` ),
 			format: 'umd',
-			globals,
 			name: 'understrap',
 		},
 	],
-	external,
 	plugins,
 };
