@@ -78,7 +78,7 @@ $classes = [
                             target="<?php echo esc_attr($link['target']); ?>"
                         <?php endif; ?>
                     >
-                        <?php echo esc_html($link['title'] ?: __('Zobacz więcej', 'understrap-child')); ?>
+                        <?php echo esc_html( $link['title'] ?: __( 'Zobacz więcej', 'newinlife-child' ) ); ?>
                     </a>
 
                 </div>
