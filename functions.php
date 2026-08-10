@@ -24,29 +24,64 @@ function understrap_remove_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'understrap_remove_scripts', 20 );
 
+/**
+ * Resolve a compiled theme asset with a fallback between minified
+ * and unminified variants.
+ *
+ * @param string $directory Asset directory, e.g. 'css' or 'js'.
+ * @param string $filename  Asset filename without .min and extension.
+ * @param string $extension File extension without dot.
+ *
+ * @return array|null
+ */
+function inlife_resolve_theme_asset( string $directory, string $filename, string $extension ): ?array {
+	$use_unminified = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
 
+	$variants = $use_unminified
+		? [ "{$filename}.{$extension}", "{$filename}.min.{$extension}" ]
+		: [ "{$filename}.min.{$extension}", "{$filename}.{$extension}" ];
+
+	foreach ( $variants as $variant ) {
+		$relative_path = "/{$directory}/{$variant}";
+		$absolute_path = get_stylesheet_directory() . $relative_path;
+
+		if ( file_exists( $absolute_path ) ) {
+			return [
+				'uri'     => get_stylesheet_directory_uri() . $relative_path,
+				'version' => filemtime( $absolute_path ),
+			];
+		}
+	}
+
+	return null;
+}
 
 /**
  * Enqueue our stylesheet and javascript file
  */
 function theme_enqueue_styles() {
+	$css_asset = inlife_resolve_theme_asset( 'css', 'child-theme', 'css' );
+	$js_asset  = inlife_resolve_theme_asset( 'js', 'child-theme', 'js' );
 
-	// Get the theme data.
-	$the_theme     = wp_get_theme();
-	$theme_version = $the_theme->get( 'Version' );
+	if ( $css_asset ) {
+		wp_enqueue_style(
+			'child-understrap-styles',
+			$css_asset['uri'],
+			array(),
+			(string) $css_asset['version']
+		);
+	}
 
-	$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-	// Grab asset urls.
-	$theme_styles  = "/css/child-theme{$suffix}.css";
-	$theme_scripts = "/js/child-theme{$suffix}.js";
+	if ( $js_asset ) {
+		wp_enqueue_script(
+			'child-understrap-scripts',
+			$js_asset['uri'],
+			array(),
+			(string) $js_asset['version'],
+			true
+		);
+	}
 
-	$css_version = $theme_version . '.' . filemtime( get_stylesheet_directory() . $theme_styles );
-
-	wp_enqueue_style( 'child-understrap-styles', get_stylesheet_directory_uri() . $theme_styles, array(), $css_version );
-
-	$js_version = $theme_version . '.' . filemtime( get_stylesheet_directory() . $theme_scripts );
-
-	wp_enqueue_script( 'child-understrap-scripts', get_stylesheet_directory_uri() . $theme_scripts, array(), $js_version, true );
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
