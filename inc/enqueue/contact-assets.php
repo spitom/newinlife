@@ -29,15 +29,9 @@ function inlife_enqueue_contact_assets(): void {
 		true
 	);
 
-	$contact_map_script = get_stylesheet_directory() . '/js/inlife-contact-map.js';
-
-	if ( file_exists( $contact_map_script ) ) {
-		wp_enqueue_script(
-			'inlife-contact-map',
-			get_stylesheet_directory_uri() . '/js/inlife-contact-map.js',
-			[ 'leaflet' ],
-			filemtime( $contact_map_script ),
-			true
-		);
-	}
+	inlife_enqueue_theme_script(
+		'inlife-contact-map',
+		'/js/inlife-contact-map.js',
+		[ 'leaflet' ]
+	);
 }

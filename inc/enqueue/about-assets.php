@@ -18,19 +18,3 @@ function inlife_enqueue_about_assets() {
 		);
 	}
 }
-
-function inlife_enqueue_theme_script( string $handle, string $relative_path, array $deps = [] ): void {
-	$path = get_stylesheet_directory() . $relative_path;
-
-	if ( ! file_exists( $path ) ) {
-		return;
-	}
-
-	wp_enqueue_script(
-		$handle,
-		get_stylesheet_directory_uri() . $relative_path,
-		$deps,
-		filemtime( $path ),
-		true
-	);
-}
