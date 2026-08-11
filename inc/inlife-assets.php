@@ -35,10 +35,17 @@ add_action( 'wp_enqueue_scripts', 'inlife_enqueue_bootstrap_icons', 20 );
  * Enqueue Bootstrap Icons.
  */
 function inlife_enqueue_bootstrap_icons(): void {
+	$relative_path = '/assets/icons/bootstrap-icons/bootstrap-icons.min.css';
+	$path          = get_stylesheet_directory() . $relative_path;
+
+	if ( ! file_exists( $path ) ) {
+		return;
+	}
+
 	wp_enqueue_style(
 		'bootstrap-icons',
-		'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',
+		get_stylesheet_directory_uri() . $relative_path,
 		[],
-		'1.11.3'
+		filemtime( $path )
 	);
 }
