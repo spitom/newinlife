@@ -30,19 +30,6 @@ function inlife_enqueue_theme_script( string $handle, string $relative_path, arr
 	);
 }
 
-add_action( 'wp_enqueue_scripts', 'inlife_enqueue_google_fonts', 20 );
-/**
- * Enqueue Google Fonts.
- */
-function inlife_enqueue_google_fonts(): void {
-	wp_enqueue_style(
-		'inlife-google-fonts',
-		'https://fonts.googleapis.com/css2?family=SUSE:wght@400;500;600;700&display=swap',
-		[],
-		null
-	);
-}
-
 add_action( 'wp_enqueue_scripts', 'inlife_enqueue_bootstrap_icons', 20 );
 /**
  * Enqueue Bootstrap Icons.
