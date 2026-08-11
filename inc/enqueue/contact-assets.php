@@ -14,19 +14,14 @@ function inlife_enqueue_contact_assets(): void {
 		return;
 	}
 
-	wp_enqueue_style(
+	inlife_enqueue_theme_style(
 		'leaflet',
-		'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
-		[],
-		'1.9.4'
+		'/assets/vendor/leaflet/leaflet.css'
 	);
 
-	wp_enqueue_script(
+	inlife_enqueue_theme_script(
 		'leaflet',
-		'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
-		[],
-		'1.9.4',
-		true
+		'/assets/vendor/leaflet/leaflet.js'
 	);
 
 	inlife_enqueue_theme_script(

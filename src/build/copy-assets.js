@@ -39,3 +39,18 @@ copyFile(
     './node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2',
     './assets/icons/bootstrap-icons/fonts/bootstrap-icons.woff2'
 );
+// Copy Leaflet runtime assets.
+copyFile(
+    './node_modules/leaflet/dist/leaflet.css',
+    './assets/vendor/leaflet/leaflet.css'
+);
+
+copyFile(
+    './node_modules/leaflet/dist/leaflet.js',
+    './assets/vendor/leaflet/leaflet.js'
+);
+
+copyDir(
+    './node_modules/leaflet/dist/images',
+    './assets/vendor/leaflet/images'
+);

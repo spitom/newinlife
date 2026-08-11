@@ -8,6 +8,28 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Enqueue a local theme stylesheet if the file exists.
+ *
+ * @param string $handle        Stylesheet handle.
+ * @param string $relative_path Path relative to the child theme directory.
+ * @param array  $deps          Stylesheet dependencies.
+ */
+function inlife_enqueue_theme_style( string $handle, string $relative_path, array $deps = [] ): void {
+	$path = get_stylesheet_directory() . $relative_path;
+
+	if ( ! file_exists( $path ) ) {
+		return;
+	}
+
+	wp_enqueue_style(
+		$handle,
+		get_stylesheet_directory_uri() . $relative_path,
+		$deps,
+		filemtime( $path )
+	);
+}
+
+/**
  * Enqueue a local theme script if the file exists.
  *
  * @param string $handle        Script handle.
