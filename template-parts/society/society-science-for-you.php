@@ -44,6 +44,10 @@ if ( ! empty( $video_embed ) ) {
 	}
 }
 
+if ( $video_html ) {
+	$video_html = inlife_normalize_youtube_embed_html( $video_html );
+}
+
 $has_media = ! empty( $video_html ) || ! empty( $image_id );
 
 if ( empty( $section_text ) && ! $has_media ) {

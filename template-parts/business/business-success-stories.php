@@ -74,6 +74,10 @@ if ( function_exists( 'have_rows' ) && have_rows( 'business_success_cases', $pos
 			}
 		}
 
+		if ( $video_html ) {
+			$video_html = inlife_normalize_youtube_embed_html( $video_html );
+		}
+
 		$url    = '';
 		$target = '';
 

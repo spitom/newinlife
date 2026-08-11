@@ -529,6 +529,73 @@ if ( ! function_exists( 'inlife_get_society_format_terms' ) ) {
 	}
 }
 
+if ( ! function_exists( 'inlife_normalize_youtube_embed_html' ) ) {
+	/**
+	 * Normalize YouTube iframe HTML for privacy and performance.
+	 *
+	 * @param string $html Embed HTML.
+	 * @return string
+	 */
+	function inlife_normalize_youtube_embed_html( string $html ): string {
+		$html = trim( $html );
+
+		if ( '' === $html ) {
+			return '';
+		}
+
+		$normalized = preg_replace(
+			[
+				'#https?://(?:www\.)?youtube\.com/embed/#i',
+				'#https?://(?:www\.)?youtube-nocookie\.com/embed/#i',
+			],
+			'https://www.youtube-nocookie.com/embed/',
+			$html
+		);
+
+		if ( null !== $normalized ) {
+			$html = $normalized;
+		}
+
+		if ( false === stripos( $html, 'youtube-nocookie.com/embed/' ) ) {
+			return $html;
+		}
+
+		if ( false === stripos( $html, ' loading=' ) ) {
+			$normalized = preg_replace(
+				'/<iframe\b/i',
+				'<iframe loading="lazy"',
+				$html,
+				1
+			);
+
+			if ( null !== $normalized ) {
+				$html = $normalized;
+			}
+		}
+
+		if ( false === stripos( $html, ' referrerpolicy=' ) ) {
+			$normalized = preg_replace(
+				'/<iframe\b/i',
+				'<iframe referrerpolicy="strict-origin-when-cross-origin"',
+				$html,
+				1
+			);
+
+			if ( null !== $normalized ) {
+				$html = $normalized;
+			}
+		}
+
+		$normalized = preg_replace(
+			'/\sframeborder=(["\'])0\1/i',
+			'',
+			$html
+		);
+
+		return null !== $normalized ? $normalized : $html;
+	}
+}
+
 if ( ! function_exists( 'inlife_get_post_feature_media_html' ) ) {
 	/**
 	 * Return embedded audio or video attached to a post.
@@ -604,7 +671,7 @@ if ( ! function_exists( 'inlife_get_post_feature_media_html' ) ) {
 
 		$render_youtube = static function ( string $video_id ): string {
 			return sprintf(
-				'<div class="post-feature-media post-feature-media--youtube"><iframe width="1280" height="720" src="https://www.youtube.com/embed/%s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>',
+				'<div class="post-feature-media post-feature-media--youtube"><iframe width="1280" height="720" src="https://www.youtube-nocookie.com/embed/%s" title="YouTube video player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>',
 				esc_attr( $video_id )
 			);
 		};
