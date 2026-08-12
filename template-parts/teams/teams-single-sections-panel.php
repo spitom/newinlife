@@ -22,7 +22,7 @@ $panel_templates = array(
 		<section
 			id="team-panel-<?php echo esc_attr( $panel_key ); ?>"
 			class="team-sections-panel__item<?php echo $is_active ? ' is-active' : ''; ?>"
-			data-team-panel-content="<?php echo esc_attr( $panel_key ); ?>"
+			data-inlife-tab-panel="<?php echo esc_attr( $panel_key ); ?>"
 			role="tabpanel"
 			aria-labelledby="team-tab-<?php echo esc_attr( $panel_key ); ?>"
 			tabindex="0"

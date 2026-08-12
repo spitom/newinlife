@@ -39,7 +39,12 @@ $container = function_exists( 'inlife_container_class' ) ? inlife_container_clas
 		</section>
 
 		<section class="page-section page-section--team-single-sections">
-			<div class="<?php echo esc_attr( $container ); ?>">
+			<div
+				class="<?php echo esc_attr( $container ); ?>"
+				data-inlife-tabs
+				data-inlife-tabs-param="team_section"
+				data-inlife-tabs-default="badania"
+			>
 
 				<?php get_template_part( 'template-parts/teams/teams-single-sections', 'nav' ); ?>
 				<?php get_template_part( 'template-parts/teams/teams-single-sections', 'panel' ); ?>

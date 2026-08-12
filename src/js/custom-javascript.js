@@ -563,113 +563,190 @@ document.addEventListener('DOMContentLoaded', () => {
 	setExpanded(false);
 });
 
-// Single Team menu - przełączanie sekcji / tabs WCAG / automatic activation
+// Accessible tabs — shared component
 
 document.addEventListener('DOMContentLoaded', () => {
-	const triggers = Array.from(document.querySelectorAll('[data-team-panel-trigger]'));
-	const panels = Array.from(document.querySelectorAll('[data-team-panel-content]'));
+	const tabSets = Array.from(
+		document.querySelectorAll('[data-inlife-tabs]')
+	);
 
-	if (!triggers.length || !panels.length) return;
+	if (!tabSets.length) return;
 
-	const validPanels = ['badania', 'projekty', 'publikacje', 'aktualnosci'];
-	const url = new URL(window.location.href);
+	tabSets.forEach((tabSet) => {
+		const triggers = Array.from(
+			tabSet.querySelectorAll('[data-inlife-tab-trigger]')
+		);
 
-	const activatePanel = (panelName, updateUrl = true, moveFocus = false) => {
-		if (!validPanels.includes(panelName)) return;
+		const panels = Array.from(
+			tabSet.querySelectorAll('[data-inlife-tab-panel]')
+		);
+
+		if (!triggers.length || !panels.length) return;
+
+		const validPanels = triggers
+			.map((trigger) =>
+				trigger.getAttribute('data-inlife-tab-trigger')
+			)
+			.filter((panelName) =>
+				panelName &&
+				panels.some(
+					(panel) =>
+						panel.getAttribute('data-inlife-tab-panel') ===
+						panelName
+				)
+			);
+
+		if (!validPanels.length) return;
+
+		const urlParam =
+			tabSet.getAttribute('data-inlife-tabs-param') || '';
+
+		const configuredDefault =
+			tabSet.getAttribute('data-inlife-tabs-default') || '';
+
+		const defaultPanel = validPanels.includes(configuredDefault)
+			? configuredDefault
+			: validPanels[0];
+
+		const activatePanel = (
+			panelName,
+			updateUrl = true,
+			moveFocus = false
+		) => {
+			if (!validPanels.includes(panelName)) return;
+
+			triggers.forEach((trigger) => {
+				const isActive =
+					trigger.getAttribute('data-inlife-tab-trigger') ===
+					panelName;
+
+				trigger.classList.toggle('is-active', isActive);
+				trigger.setAttribute(
+					'aria-selected',
+					isActive ? 'true' : 'false'
+				);
+				trigger.setAttribute(
+					'tabindex',
+					isActive ? '0' : '-1'
+				);
+
+				if (isActive && moveFocus) {
+					trigger.focus();
+				}
+			});
+
+			panels.forEach((panel) => {
+				const isActive =
+					panel.getAttribute('data-inlife-tab-panel') ===
+					panelName;
+
+				panel.classList.toggle('is-active', isActive);
+				panel.hidden = !isActive;
+			});
+
+			if (updateUrl && urlParam) {
+				const nextUrl = new URL(window.location.href);
+
+				nextUrl.searchParams.set(urlParam, panelName);
+				nextUrl.hash = '';
+
+				window.history.replaceState(
+					null,
+					'',
+					nextUrl.toString()
+				);
+			}
+		};
+
+		const getTriggerIndex = (trigger) =>
+			triggers.indexOf(trigger);
+
+		const focusAndActivateByIndex = (index) => {
+			const normalizedIndex =
+				(index + triggers.length) % triggers.length;
+
+			const trigger = triggers[normalizedIndex];
+
+			const panelName = trigger.getAttribute(
+				'data-inlife-tab-trigger'
+			);
+
+			activatePanel(panelName, true, true);
+		};
 
 		triggers.forEach((trigger) => {
-			const isActive = trigger.getAttribute('data-team-panel-trigger') === panelName;
+			trigger.addEventListener('click', () => {
+				const panelName = trigger.getAttribute(
+					'data-inlife-tab-trigger'
+				);
 
-			trigger.classList.toggle('is-active', isActive);
-			trigger.setAttribute('aria-selected', isActive ? 'true' : 'false');
-			trigger.setAttribute('tabindex', isActive ? '0' : '-1');
+				activatePanel(panelName, true, false);
+			});
 
-			if (isActive && moveFocus) {
-				trigger.focus();
-			}
+			trigger.addEventListener('keydown', (event) => {
+				const currentIndex = getTriggerIndex(trigger);
+
+				switch (event.key) {
+					case 'ArrowRight':
+					case 'Right':
+						event.preventDefault();
+						focusAndActivateByIndex(currentIndex + 1);
+						break;
+
+					case 'ArrowLeft':
+					case 'Left':
+						event.preventDefault();
+						focusAndActivateByIndex(currentIndex - 1);
+						break;
+
+					case 'Home':
+						event.preventDefault();
+						focusAndActivateByIndex(0);
+						break;
+
+					case 'End':
+						event.preventDefault();
+						focusAndActivateByIndex(
+							triggers.length - 1
+						);
+						break;
+
+					default:
+						break;
+				}
+			});
 		});
 
-		panels.forEach((panel) => {
-			const isActive = panel.getAttribute('data-team-panel-content') === panelName;
+		const url = new URL(window.location.href);
 
-			panel.classList.toggle('is-active', isActive);
-			panel.hidden = !isActive;
-		});
+		const initialSectionFromQuery = urlParam
+			? url.searchParams.get(urlParam)
+			: '';
 
-		if (updateUrl) {
-			const nextUrl = new URL(window.location.href);
-			nextUrl.searchParams.set('team_section', panelName);
-			nextUrl.hash = '';
-			window.history.replaceState(null, '', nextUrl.toString());
+		const initialHash = window.location.hash.replace(
+			'#',
+			''
+		);
+
+		if (
+			initialSectionFromQuery &&
+			validPanels.includes(initialSectionFromQuery)
+		) {
+			activatePanel(
+				initialSectionFromQuery,
+				false,
+				false
+			);
+			return;
 		}
-	};
 
-	const getTriggerIndex = (trigger) => triggers.indexOf(trigger);
+		if (validPanels.includes(initialHash)) {
+			activatePanel(initialHash, false, false);
+			return;
+		}
 
-	const focusAndActivateByIndex = (index) => {
-		const normalizedIndex = (index + triggers.length) % triggers.length;
-		const trigger = triggers[normalizedIndex];
-		const panelName = trigger.getAttribute('data-team-panel-trigger');
-
-		activatePanel(panelName, true, true);
-	};
-
-	triggers.forEach((trigger) => {
-		trigger.addEventListener('click', () => {
-			const panelName = trigger.getAttribute('data-team-panel-trigger');
-			activatePanel(panelName, true, false);
-		});
-
-		trigger.addEventListener('keydown', (event) => {
-			const currentIndex = getTriggerIndex(trigger);
-
-			switch (event.key) {
-				case 'ArrowRight':
-				case 'Right': {
-					event.preventDefault();
-					focusAndActivateByIndex(currentIndex + 1);
-					break;
-				}
-
-				case 'ArrowLeft':
-				case 'Left': {
-					event.preventDefault();
-					focusAndActivateByIndex(currentIndex - 1);
-					break;
-				}
-
-				case 'Home': {
-					event.preventDefault();
-					focusAndActivateByIndex(0);
-					break;
-				}
-
-				case 'End': {
-					event.preventDefault();
-					focusAndActivateByIndex(triggers.length - 1);
-					break;
-				}
-
-				default:
-					break;
-			}
-		});
+		activatePanel(defaultPanel, false, false);
 	});
-
-	const initialSectionFromQuery = url.searchParams.get('team_section');
-	const initialHash = window.location.hash.replace('#', '');
-
-	if (validPanels.includes(initialSectionFromQuery)) {
-		activatePanel(initialSectionFromQuery, false, false);
-		return;
-	}
-
-	if (validPanels.includes(initialHash)) {
-		activatePanel(initialHash, false, false);
-		return;
-	}
-
-	activatePanel('badania', false, false);
 });
 
 

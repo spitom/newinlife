@@ -47,3 +47,129 @@ foreach ( $units as $unit ) {
 if ( empty( $prepared_units ) ) {
 	return;
 }
+
+$tabs_id = 'laboratory-units-' . get_the_ID();
+?>
+
+<div class="lab-units" data-inlife-tabs>
+	<header class="section-heading">
+		<h2 class="section-title">
+			<?php echo esc_html( inlife_t( 'Pracownie' ) ); ?>
+		</h2>
+	</header>
+
+	<nav
+		class="lab-units-nav"
+		role="tablist"
+		aria-label="<?php echo esc_attr( inlife_t( 'Nawigacja pracowni laboratorium' ) ); ?>"
+	>
+		<?php foreach ( $prepared_units as $index => $unit ) : ?>
+			<?php
+			$tab_id   = $tabs_id . '-tab-' . ( $index + 1 );
+			$panel_id = $tabs_id . '-panel-' . ( $index + 1 );
+			$is_active = 0 === $index;
+			?>
+			<button
+				type="button"
+				id="<?php echo esc_attr( $tab_id ); ?>"
+				class="lab-units-nav__btn<?php echo $is_active ? ' is-active' : ''; ?>"
+				role="tab"
+				aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+				aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>"
+				tabindex="<?php echo $is_active ? '0' : '-1'; ?>"
+				data-inlife-tab-trigger="<?php echo esc_attr( (string) $index ); ?>"
+			>
+				<?php echo esc_html( $unit['tab_label'] ); ?>
+			</button>
+		<?php endforeach; ?>
+	</nav>
+
+    <div class="lab-units-panels">
+        <?php foreach ( $prepared_units as $index => $unit ) : ?>
+            <?php
+            $tab_id    = $tabs_id . '-tab-' . ( $index + 1 );
+            $panel_id  = $tabs_id . '-panel-' . ( $index + 1 );
+            $is_active = 0 === $index;
+            ?>
+            <section
+                id="<?php echo esc_attr( $panel_id ); ?>"
+                class="lab-units-panel<?php echo $is_active ? ' is-active' : ''; ?>"
+                role="tabpanel"
+                aria-labelledby="<?php echo esc_attr( $tab_id ); ?>"
+                tabindex="0"
+                data-inlife-tab-panel="<?php echo esc_attr( (string) $index ); ?>"
+                <?php echo $is_active ? '' : 'hidden'; ?>
+            >
+                <h3 class="lab-units-panel__title">
+                    <?php echo esc_html( $unit['title'] ); ?>
+                </h3>
+
+                <?php if ( '' !== trim( wp_strip_all_tags( $unit['intro'] ) ) ) : ?>
+                    <div class="lab-units-panel__intro">
+                        <?php echo wp_kses_post( $unit['intro'] ); ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ( ! empty( $unit['sections'] ) ) : ?>
+                    <div class="lab-units-panel__sections">
+                        <?php foreach ( $unit['sections'] as $section ) : ?>
+                            <?php
+                            if ( ! is_array( $section ) ) {
+                                continue;
+                            }
+
+                            $section_title = isset( $section['section_title'] )
+                                ? trim( (string) $section['section_title'] )
+                                : '';
+
+                            $section_description = isset( $section['section_description'] )
+                                ? (string) $section['section_description']
+                                : '';
+
+                            $section_offer = isset( $section['section_offer'] )
+                                ? (string) $section['section_offer']
+                                : '';
+
+                            if (
+                                '' === $section_title &&
+                                '' === trim( wp_strip_all_tags( $section_description ) ) &&
+                                '' === trim( wp_strip_all_tags( $section_offer ) )
+                            ) {
+                                continue;
+                            }
+                            ?>
+
+                            <div class="lab-unit-section">
+                                <?php if ( '' !== $section_title ) : ?>
+                                    <h4 class="lab-unit-section__title">
+                                        <?php echo esc_html( $section_title ); ?>
+                                    </h4>
+                                <?php endif; ?>
+
+                                <div class="lab-unit-section__grid">
+                                    <?php if ( '' !== trim( wp_strip_all_tags( $section_description ) ) ) : ?>
+                                        <div class="lab-unit-section__description">
+                                            <?php echo wp_kses_post( $section_description ); ?>
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <?php if ( '' !== trim( wp_strip_all_tags( $section_offer ) ) ) : ?>
+                                        <div class="lab-unit-section__offer">
+                                            <h5 class="lab-unit-section__offer-title">
+                                                <?php echo esc_html( inlife_t( 'Oferta pracowni' ) ); ?>
+                                            </h5>
+
+                                            <div class="lab-unit-section__offer-content">
+                                                <?php echo wp_kses_post( $section_offer ); ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </section>
+        <?php endforeach; ?>
+    </div>
+</div>
