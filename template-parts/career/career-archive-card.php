@@ -90,7 +90,7 @@ $show_deadline = ! empty( $type_behavior['show_deadline'] );
 
 				<?php if ( $deadline && $show_deadline ) : ?>
 					<p class="career-archive-card__meta-item career-archive-card__meta-item--deadline">
-						<span><?php echo esc_html( inlife_t( 'Termin składania' ) ); ?></span>
+						<span><?php echo esc_html( inlife_t( 'Termin składania ofert' ) ); ?></span>
 						<strong><?php echo esc_html( $deadline ); ?></strong>
 					</p>
 				<?php endif; ?>

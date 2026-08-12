@@ -21,6 +21,12 @@ $equipment_content = function_exists( 'get_field' )
 	? get_field( 'laboratory_equipment_content', $laboratory_id )
 	: '';
 
+$laboratory_units = function_exists( 'get_field' )
+	? get_field( 'laboratory_units', $laboratory_id )
+	: array();
+
+$has_units = is_array( $laboratory_units ) && ! empty( $laboratory_units );
+
 $has_methods = '' !== trim(
 	wp_strip_all_tags( (string) $methods_content )
 );
@@ -62,6 +68,22 @@ $has_equipment = '' !== trim(
 			<section class="page-section page-section--lab-single-equipment">
 				<div class="<?php echo esc_attr( $container ); ?>">
 					<?php get_template_part( 'template-parts/laboratories/laboratories-single', 'equipment' ); ?>
+				</div>
+			</section>
+		<?php endif; ?>
+
+		<?php if ( $has_units ) : ?>
+			<section class="page-section page-section--lab-single-units">
+				<div class="<?php echo esc_attr( $container ); ?>">
+					<?php
+					get_template_part(
+						'template-parts/laboratories/laboratories-single',
+						'units',
+						array(
+							'units' => $laboratory_units,
+						)
+					);
+					?>
 				</div>
 			</section>
 		<?php endif; ?>
