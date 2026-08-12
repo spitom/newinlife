@@ -1,0 +1,221 @@
+{
+    "key": "group_6a7b17240350d",
+    "title": "Laboratories – Pracownie",
+    "fields": [
+        {
+            "key": "field_6a7b17246edff",
+            "label": "Pracownie",
+            "name": "laboratory_units",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_6a7b18bf13890",
+            "button_label": "Dodaj pracownię",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6a7b18bf13890",
+                    "label": "Pełna nazwa pracowni",
+                    "name": "unit_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "67",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "translate",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_6a7b17246edff"
+                },
+                {
+                    "key": "field_6a7b18fd13891",
+                    "label": "Krótka nazwa",
+                    "name": "unit_tab_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Krótka nazwa używana w nawigacji pracowni. Jeśli pole pozostanie puste, zostanie użyta pełna nazwa.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "translate",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_6a7b17246edff"
+                },
+                {
+                    "key": "field_6a7c0bf62fad2",
+                    "label": "Opis pracowni",
+                    "name": "unit_intro",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Krótki opis zakresu działalności pracowni, wyświetlany pod jej pełną nazwą.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "translate",
+                    "allow_in_bindings": 0,
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "pll_default_value": "",
+                    "parent_repeater": "field_6a7b17246edff"
+                },
+                {
+                    "key": "field_6a7c19a5aa6a7",
+                    "label": "Sekcje pracowni",
+                    "name": "unit_sections",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Dodaj obszary działalności lub grupy usług tej pracowni.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "field_6a7c1a4a3e5c8",
+                    "button_label": "Dodaj sekcję",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_6a7c1a4a3e5c8",
+                            "label": "Tytuł sekcji",
+                            "name": "section_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "translations": "translate",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "pll_default_value": "",
+                            "parent_repeater": "field_6a7c19a5aa6a7"
+                        },
+                        {
+                            "key": "field_6a7c1c2d66f01",
+                            "label": "Opis sekcji",
+                            "name": "section_description",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Opis zakresu działalności, metody lub rodzaju analiz w tej sekcji.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "translations": "translate",
+                            "allow_in_bindings": 0,
+                            "tabs": "all",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0,
+                            "pll_default_value": "",
+                            "parent_repeater": "field_6a7c19a5aa6a7"
+                        },
+                        {
+                            "key": "field_6a7c1fbe1b8d4",
+                            "label": "Oferta pracowni",
+                            "name": "section_offer",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Lista oferowanych usług, analiz, metod lub zakresów wykonywanych w ramach tej sekcji.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "translations": "translate",
+                            "allow_in_bindings": 0,
+                            "tabs": "all",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0,
+                            "pll_default_value": "",
+                            "parent_repeater": "field_6a7c19a5aa6a7"
+                        }
+                    ],
+                    "parent_repeater": "field_6a7b17246edff"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "laboratories"
+            }
+        ]
+    ],
+    "menu_order": 30,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "pll_display_field_instructions": 1,
+    "modified": 1786519776
+}
