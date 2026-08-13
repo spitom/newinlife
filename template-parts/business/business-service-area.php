@@ -24,7 +24,7 @@ $area_sections = [
 					[
 						'name'        => 'Laboratorium Analizy Komórek',
 						'unit'        => 'pracownia histologii',
-						'url'         => 'http://localhost/newinlife/laboratoria/laboratorium-analizy-komorek/#pracownia-histologii',
+						'url'         => home_url( '/laboratoria/laboratorium-analizy-komorek/' ) . '#pracownia-histologii',
 						'price_url'   => home_url( '/wp-content/uploads/cennik-test.pdf' ),
 						'price_label' => inlife_t( 'Pobierz cennik' ),
 					],
@@ -38,7 +38,7 @@ $area_sections = [
 					[
 						'name'        => 'Laboratorium Analizy Komórek',
 						'unit'        => 'pracownia histologii',
-						'url'         => 'http://localhost/newinlife/laboratoria/laboratorium-analizy-komorek/#pracownia-histologii',
+						'url'         => home_url( '/laboratoria/laboratorium-analizy-komorek/' ) . '#pracownia-histologii',
 						'price_url'   => '',
 						'price_label' => inlife_t( 'Pobierz cennik' ),
 					],
@@ -52,7 +52,7 @@ $area_sections = [
 					[
 						'name'        => 'Laboratorium Analizy Komórek',
 						'unit'        => 'pracownia histologii',
-						'url'         => 'http://localhost/newinlife/laboratoria/laboratorium-analizy-komorek/#pracownia-histologii',
+						'url'         => home_url( '/laboratoria/laboratorium-analizy-komorek/' ) . '#pracownia-histologii',
 						'price_url'   => '',
 						'price_label' => inlife_t( 'Pobierz cennik' ),
 					],
@@ -66,7 +66,7 @@ $area_sections = [
 					[
 						'name'        => 'Laboratorium Analizy Komórek',
 						'unit'        => 'pracownia histologii',
-						'url'         => '#',
+						'url'         => home_url( '/laboratoria/laboratorium-analizy-komorek/' ) . '#pracownia-histologii',
 						'price_url'   => '',
 						'price_label' => inlife_t( 'Pobierz cennik' ),
 					],
@@ -80,7 +80,7 @@ $area_sections = [
 					[
 						'name'        => 'Laboratorium Analizy Komórek',
 						'unit'        => 'pracownia histologii',
-						'url'         => '#',
+						'url'         => home_url( '/laboratoria/laboratorium-analizy-komorek/' ) . '#pracownia-histologii',
 						'price_url'   => '',
 						'price_label' => inlife_t( 'Pobierz cennik' ),
 					],
@@ -101,7 +101,7 @@ $area_sections = [
 					[
 						'name'        => 'Laboratorium Analizy Komórek',
 						'unit'        => 'pracownia obrazowania',
-						'url'         => '#pracownia-obrazowania-i-analiz-komorek-i-tkanek',
+						'url'         => home_url( '/laboratoria/laboratorium-analizy-komorek/' ) . '#pracownia-obrazowania-i-analiz-komorek-i-tkanek',
 						'price_url'   => '',
 						'price_label' => inlife_t( 'Pobierz cennik' ),
 					],
@@ -122,7 +122,7 @@ $area_sections = [
 					[
 						'name'        => 'Laboratorium Analizy Komórek',
 						'unit'        => 'pracownia obrazowania',
-						'url'         => 'http://localhost/newinlife/laboratoria/laboratorium-analizy-komorek/#pracownia-obrazowania-i-analiz-komorek-i-tkanek',
+						'url'         => home_url( '/laboratoria/laboratorium-analizy-komorek/' ) . '#pracownia-obrazowania-i-analiz-komorek-i-tkanek',
 						'price_url'   => '',
 						'price_label' => inlife_t( 'Pobierz cennik' ),
 					],
@@ -143,7 +143,7 @@ $area_sections = [
 					[
 						'name'        => 'Laboratorium Analizy Komórek',
 						'unit'        => 'pracownia obrazowania',
-						'url'         => '#',
+						'url'         => home_url( '/laboratoria/laboratorium-analizy-komorek/' ) . '#pracownia-obrazowania-i-analiz-komorek-i-tkanek',
 						'price_url'   => '',
 						'price_label' => inlife_t( 'Pobierz cennik' ),
 					],

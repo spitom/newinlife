@@ -32,7 +32,7 @@ foreach ( $units as $unit ) {
 		continue;
 	}
 
-    $unit_key      = sanitize_title( $title );
+    $unit_key = sanitize_title( wp_strip_all_tags( $title ) );
     $base_unit_key = $unit_key;
     $suffix        = 2;
 
@@ -50,7 +50,7 @@ foreach ( $units as $unit ) {
 	$prepared_units[] = array(
         'key'       => $unit_key,
         'title'     => $title,
-        'tab_label' => '' !== $tab_label ? $tab_label : $title,
+        'tab_label' => '' !== $tab_label ? $tab_label : wp_strip_all_tags( $title ),
         'intro'     => isset( $unit['unit_intro'] ) ? (string) $unit['unit_intro'] : '',
         'sections'  => isset( $unit['unit_sections'] ) && is_array( $unit['unit_sections'] )
             ? $unit['unit_sections']
@@ -122,7 +122,14 @@ $tabs_id = 'laboratory-units-' . get_the_ID();
                 <?php echo $is_active ? '' : 'hidden'; ?>
             >
                 <h3 class="lab-units-panel__title">
-                    <?php echo esc_html( $unit['title'] ); ?>
+                    <?php
+                    echo wp_kses(
+                        $unit['title'],
+                        array(
+                            'em' => array(),
+                        )
+                    );
+                    ?>
                 </h3>
 
                 <?php if ( '' !== trim( wp_strip_all_tags( $unit['intro'] ) ) ) : ?>
@@ -163,7 +170,14 @@ $tabs_id = 'laboratory-units-' . get_the_ID();
                             <div class="lab-unit-section">
                                 <?php if ( '' !== $section_title ) : ?>
                                     <h4 class="lab-unit-section__title">
-                                        <?php echo esc_html( $section_title ); ?>
+                                        <?php
+                                        echo wp_kses(
+                                            $section_title,
+                                            array(
+                                                'em' => array(),
+                                            )
+                                        );
+                                        ?>
                                     </h4>
                                 <?php endif; ?>
 
