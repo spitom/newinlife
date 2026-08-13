@@ -17,6 +17,8 @@ if ( empty( $units ) ) {
 
 $prepared_units = array();
 
+$used_unit_keys = array();
+
 foreach ( $units as $unit ) {
 	if ( ! is_array( $unit ) ) {
 		continue;
@@ -30,18 +32,30 @@ foreach ( $units as $unit ) {
 		continue;
 	}
 
+    $unit_key      = sanitize_title( $title );
+    $base_unit_key = $unit_key;
+    $suffix        = 2;
+
+    while ( in_array( $unit_key, $used_unit_keys, true ) ) {
+        $unit_key = $base_unit_key . '-' . $suffix;
+        $suffix++;
+    }
+
+    $used_unit_keys[] = $unit_key;
+
 	$tab_label = isset( $unit['unit_tab_label'] )
 		? trim( (string) $unit['unit_tab_label'] )
 		: '';
 
 	$prepared_units[] = array(
-		'title'     => $title,
-		'tab_label' => '' !== $tab_label ? $tab_label : $title,
-		'intro'     => isset( $unit['unit_intro'] ) ? (string) $unit['unit_intro'] : '',
-		'sections'  => isset( $unit['unit_sections'] ) && is_array( $unit['unit_sections'] )
-			? $unit['unit_sections']
-			: array(),
-	);
+        'key'       => $unit_key,
+        'title'     => $title,
+        'tab_label' => '' !== $tab_label ? $tab_label : $title,
+        'intro'     => isset( $unit['unit_intro'] ) ? (string) $unit['unit_intro'] : '',
+        'sections'  => isset( $unit['unit_sections'] ) && is_array( $unit['unit_sections'] )
+            ? $unit['unit_sections']
+            : array(),
+    );
 }
 
 if ( empty( $prepared_units ) ) {
@@ -65,10 +79,11 @@ $tabs_id = 'laboratory-units-' . get_the_ID();
 	>
 		<?php foreach ( $prepared_units as $index => $unit ) : ?>
 			<?php
-			$tab_id   = $tabs_id . '-tab-' . ( $index + 1 );
-			$panel_id = $tabs_id . '-panel-' . ( $index + 1 );
-			$is_active = 0 === $index;
-			?>
+            $unit_key  = $unit['key'];
+            $tab_id    = $tabs_id . '-tab-' . $unit_key;
+            $panel_id = $tabs_id . '-panel-' . $unit_key;
+            $is_active = 0 === $index;
+            ?>
 			<button
 				type="button"
 				id="<?php echo esc_attr( $tab_id ); ?>"
@@ -77,7 +92,7 @@ $tabs_id = 'laboratory-units-' . get_the_ID();
 				aria-controls="<?php echo esc_attr( $panel_id ); ?>"
 				aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>"
 				tabindex="<?php echo $is_active ? '0' : '-1'; ?>"
-				data-inlife-tab-trigger="<?php echo esc_attr( (string) $index ); ?>"
+				data-inlife-tab-trigger="<?php echo esc_attr( $unit_key ); ?>"
 			>
 				<?php echo esc_html( $unit['tab_label'] ); ?>
 			</button>
@@ -87,17 +102,23 @@ $tabs_id = 'laboratory-units-' . get_the_ID();
     <div class="lab-units-panels">
         <?php foreach ( $prepared_units as $index => $unit ) : ?>
             <?php
-            $tab_id    = $tabs_id . '-tab-' . ( $index + 1 );
-            $panel_id  = $tabs_id . '-panel-' . ( $index + 1 );
+            $unit_key  = $unit['key'];
+            $tab_id    = $tabs_id . '-tab-' . $unit_key;
+            $panel_id = $tabs_id . '-panel-' . $unit_key;
             $is_active = 0 === $index;
             ?>
+            <span
+                id="<?php echo esc_attr( $unit_key ); ?>"
+                class="lab-units-panel-anchor"
+                aria-hidden="true"
+            ></span>
             <section
                 id="<?php echo esc_attr( $panel_id ); ?>"
                 class="lab-units-panel<?php echo $is_active ? ' is-active' : ''; ?>"
                 role="tabpanel"
                 aria-labelledby="<?php echo esc_attr( $tab_id ); ?>"
                 tabindex="0"
-                data-inlife-tab-panel="<?php echo esc_attr( (string) $index ); ?>"
+                data-inlife-tab-panel="<?php echo esc_attr( $unit_key ); ?>"
                 <?php echo $is_active ? '' : 'hidden'; ?>
             >
                 <h3 class="lab-units-panel__title">
