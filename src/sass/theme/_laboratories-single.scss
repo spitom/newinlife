@@ -635,3 +635,314 @@
         }
     }
 }
+
+/* =========================================================
+   PRACOWNIE
+========================================================= */
+
+.lab-units {
+    padding-top: clamp(1.75rem, 3vw, 2.5rem);
+    border-top: 1px solid var(--inlife-border);
+
+    .section-heading {
+        margin-bottom: clamp(1.25rem, 2vw, 1.75rem);
+    }
+
+    .section-title {
+        max-width: 100%;
+        margin-bottom: 0;
+        color: var(--inlife-primary);
+        font-size: clamp(1.45rem, 2vw, 1.85rem);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+    }
+}
+
+.lab-units-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+    border-bottom: 1px solid var(--inlife-border);
+}
+
+.lab-units-nav__btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    padding: 0 1.15rem 0.85rem 0;
+    border: 0;
+    background: transparent;
+    color: rgba(41, 52, 88, 0.72);
+    font-size: 0.92rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: left;
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 1.15rem;
+        bottom: -1px;
+        left: 0;
+        height: 3px;
+        background: var(--inlife-accent);
+        opacity: 0;
+        transform: scaleX(0.5);
+        transform-origin: left center;
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &.is-active,
+    &[aria-selected="true"] {
+        color: var(--inlife-primary);
+    }
+
+    &.is-active::after,
+    &[aria-selected="true"]::after {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+.lab-units-panel {
+    min-width: 0;
+    padding: clamp(1.35rem, 2.8vw, 2.25rem);
+    border: 1px solid rgba(41, 52, 88, 0.1);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 18px 46px rgba(18, 38, 63, 0.055);
+
+    &__title {
+        max-width: 1050px;
+        margin: 0 0 0.85rem;
+        color: var(--inlife-primary);
+        font-size: clamp(1.65rem, 2.8vw, 2.4rem);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.045em;
+    }
+
+    &__intro {
+        max-width: 850px;
+        color: var(--inlife-text-muted);
+        font-size: 1rem;
+        line-height: 1.7;
+
+        >*:first-child {
+            margin-top: 0;
+        }
+
+        >*:last-child {
+            margin-bottom: 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.lab-units-panel__sections {
+    display: flex;
+    flex-direction: column;
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+    border-top: 1px solid rgba(41, 52, 88, 0.1);
+}
+
+.lab-unit-section {
+    padding-block: clamp(1.25rem, 2.4vw, 1.85rem);
+    border-bottom: 1px solid rgba(41, 52, 88, 0.1);
+
+    &:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
+
+    &__heading {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 0.8rem;
+        align-items: start;
+        margin-bottom: 0.7rem;
+    }
+
+    &__number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.35rem;
+        height: 2.35rem;
+        margin-top: -0.15rem;
+        border-radius: 999px;
+        background: var(--inlife-primary);
+        color: var(--inlife-accent);
+        font-size: 0.76rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: 0.04em;
+    }
+
+    &__title {
+        margin: 0;
+        color: var(--inlife-primary);
+        font-size: clamp(1.18rem, 1.7vw, 1.55rem);
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+
+        @media (min-width: 1100px) {
+            grid-template-columns: minmax(0, 1fr) minmax(260px, 330px);
+            column-gap: clamp(2rem, 4vw, 3rem);
+            align-items: start;
+        }
+    }
+
+    &__description {
+        max-width: 860px;
+        color: var(--inlife-text-muted);
+        font-size: 0.98rem;
+        line-height: 1.75;
+
+        >*:first-child {
+            margin-top: 0;
+        }
+
+        >*:last-child {
+            margin-bottom: 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        ul,
+        ol {
+            margin: 0 0 1rem;
+            padding-left: 1.25rem;
+        }
+
+        li+li {
+            margin-top: 0.35rem;
+        }
+
+        strong {
+            color: var(--inlife-primary);
+            font-weight: 800;
+        }
+    }
+}
+
+.lab-unit-section__offer {
+    position: relative;
+    min-width: 0;
+    padding: 0.85rem 1rem 0.85rem 1.2rem;
+    border: 1px solid rgba(41, 52, 88, 0.1);
+    border-radius: 14px;
+    background: var(--inlife-surface-soft);
+    box-shadow: none;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0.85rem;
+        bottom: 0.85rem;
+        left: 0;
+        width: 3px;
+        border-radius: 999px;
+        background: var(--inlife-accent);
+    }
+}
+
+.lab-unit-section__offer-title {
+    margin: 0 0 0.65rem;
+    color: var(--inlife-primary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.lab-unit-section__offer-content {
+    color: var(--inlife-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.55;
+
+    >*:first-child {
+        margin-top: 0;
+    }
+
+    >*:last-child {
+        margin-bottom: 0;
+    }
+
+    p {
+        margin-bottom: 0.8rem;
+    }
+
+    ul,
+    ol {
+        margin: 0 0 0.8rem;
+        padding-left: 1.15rem;
+    }
+
+    ul:last-child,
+    ol:last-child {
+        margin-bottom: 0;
+    }
+
+    li+li {
+        margin-top: 0.25rem;
+    }
+
+    strong {
+        color: var(--inlife-primary);
+        font-weight: 800;
+    }
+
+    a {
+        color: var(--inlife-primary);
+        font-weight: 700;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.14em;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .lab-units-nav {
+        flex-wrap: nowrap;
+        gap: 1rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .lab-units-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .lab-units-nav__btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .lab-units-panel {
+        padding: 1rem;
+        border-radius: 16px;
+    }
+}

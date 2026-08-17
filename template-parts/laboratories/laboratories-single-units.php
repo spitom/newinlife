@@ -140,6 +140,7 @@ $tabs_id = 'laboratory-units-' . get_the_ID();
 
                 <?php if ( ! empty( $unit['sections'] ) ) : ?>
                     <div class="lab-units-panel__sections">
+                        <?php $section_number = 0; ?>
                         <?php foreach ( $unit['sections'] as $section ) : ?>
                             <?php
                             if ( ! is_array( $section ) ) {
@@ -165,20 +166,27 @@ $tabs_id = 'laboratory-units-' . get_the_ID();
                             ) {
                                 continue;
                             }
+                            $section_number++;
                             ?>
 
                             <div class="lab-unit-section">
                                 <?php if ( '' !== $section_title ) : ?>
-                                    <h4 class="lab-unit-section__title">
-                                        <?php
-                                        echo wp_kses(
-                                            $section_title,
-                                            array(
-                                                'em' => array(),
-                                            )
-                                        );
-                                        ?>
-                                    </h4>
+                                    <div class="lab-unit-section__heading">
+                                        <span class="lab-unit-section__number" aria-hidden="true">
+                                            <?php echo esc_html( str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ) ); ?>
+                                        </span>
+
+                                        <h4 class="lab-unit-section__title">
+                                            <?php
+                                            echo wp_kses(
+                                                $section_title,
+                                                array(
+                                                    'em' => array(),
+                                                )
+                                            );
+                                            ?>
+                                        </h4>
+                                    </div>
                                 <?php endif; ?>
 
                                 <div class="lab-unit-section__grid">
