@@ -153,6 +153,118 @@ $area_sections = [
 	],
 ];
 
+$acf_area_sections = function_exists( 'get_field' )
+	? get_field( 'business_area_sections' )
+	: array();
+
+if ( is_array( $acf_area_sections ) && ! empty( $acf_area_sections ) ) {
+	$prepared_area_sections = array();
+	$section_number = 0;
+
+	foreach ( $acf_area_sections as $section ) {
+		if ( ! is_array( $section ) ) {
+			continue;
+		}
+
+		$section_title = isset( $section['section_title'] )
+			? trim( (string) $section['section_title'] )
+			: '';
+
+		if ( '' === $section_title ) {
+			continue;
+		}
+
+		$section_number++;
+		$service_number = 0;
+
+		$prepared_services = array();
+		$services          = isset( $section['section_services'] ) && is_array( $section['section_services'] )
+			? $section['section_services']
+			: array();
+
+		foreach ( $services as $service ) {
+			if ( ! is_array( $service ) ) {
+				continue;
+			}
+
+			$service_title = isset( $service['service_title'] )
+				? trim( (string) $service['service_title'] )
+				: '';
+
+			$service_text = isset( $service['service_text'] )
+				? (string) $service['service_text']
+				: '';
+
+			if ( '' === $service_title ) {
+				continue;
+			}
+
+			$service_number++;
+
+			$prepared_labs = array();
+			$labs          = isset( $service['service_labs'] ) && is_array( $service['service_labs'] )
+				? $service['service_labs']
+				: array();
+
+			foreach ( $labs as $lab ) {
+				if ( ! is_array( $lab ) ) {
+					continue;
+				}
+
+				$laboratory = $lab['laboratory'] ?? null;
+
+				if ( ! $laboratory instanceof WP_Post ) {
+					continue;
+				}
+
+				$unit_anchor = isset( $lab['unit_anchor'] )
+					? sanitize_title( ltrim( (string) $lab['unit_anchor'], '#' ) )
+					: '';
+
+				$lab_url = get_permalink( $laboratory );
+
+				if ( ! $lab_url ) {
+					continue;
+				}
+
+				if ( $unit_anchor ) {
+					$lab_url .= '#' . $unit_anchor;
+				}
+
+				$price_file = isset( $lab['price_file'] ) && is_array( $lab['price_file'] )
+					? $lab['price_file']
+					: array();
+
+				$prepared_labs[] = array(
+					'name'        => get_the_title( $laboratory ),
+					'unit'        => isset( $lab['unit_label'] ) ? trim( (string) $lab['unit_label'] ) : '',
+					'url'         => $lab_url,
+					'price_url'   => isset( $price_file['url'] ) ? (string) $price_file['url'] : '',
+					'price_label' => inlife_t( 'Pobierz cennik' ),
+				);
+			}
+
+			$prepared_services[] = array(
+				'number' => $section_number . '.' . $service_number,
+				'title'  => $service_title,
+				'text'   => $service_text,
+				'labs'   => $prepared_labs,
+			);
+		}
+
+		$prepared_area_sections[] = array(
+			'number'   => str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ),
+			'title'    => $section_title,
+			'lead'     => isset( $section['section_lead'] ) ? trim( (string) $section['section_lead'] ) : '',
+			'services' => $prepared_services,
+		);
+	}
+
+	if ( ! empty( $prepared_area_sections ) ) {
+		$area_sections = $prepared_area_sections;
+	}
+}
+
 $sections_count      = count( $area_sections );
 $sections_grid_class = '';
 
@@ -161,9 +273,17 @@ if ( $sections_count >= 2 ) {
 }
 ?>
 
-<div class="business-service-area" id="business-service-area-content-heading">
+<div class="business-service-area">
+
+	<h2
+		id="business-service-area-content-heading"
+		class="visually-hidden"
+	>
+		<?php echo esc_html( inlife_t( 'Zakres usług' ) ); ?>
+	</h2>
 
 	<nav
+		id="business-service-area-nav"
 		class="business-service-area__nav c-card-grid<?php echo esc_attr( $sections_grid_class ); ?>"
 		aria-label="<?php echo esc_attr( inlife_t( 'Nawigacja po usługach' ) ); ?>"
 	>
@@ -183,9 +303,9 @@ if ( $sections_count >= 2 ) {
 									</span>
 								</div>
 
-								<h3 class="business-service-card__title c-card__title">
+								<span class="business-service-card__title c-card__title">
 									<?php echo esc_html( $section['title'] ); ?>
-								</h3>
+								</span>
 
 								<span class="c-readmore c-readmore--light">
 									<?php echo esc_html( inlife_t( 'Przejdź do sekcji' ) ); ?>
@@ -216,12 +336,12 @@ if ( $sections_count >= 2 ) {
 					</span>
 
 					<div class="business-service-group__heading">
-						<h2
+						<h3
 							id="service-section-title-<?php echo esc_attr( $section['number'] ); ?>"
 							class="business-service-group__title"
 						>
 							<?php echo esc_html( $section['title'] ); ?>
-						</h2>
+						</h3>
 
 						<?php if ( ! empty( $section['lead'] ) ) : ?>
 							<p class="business-service-group__lead">
@@ -240,15 +360,13 @@ if ( $sections_count >= 2 ) {
 										<?php echo esc_html( $service['number'] ); ?>
 									</span>
 
-									<h3 class="business-service-row__title">
+									<h4 class="business-service-row__title">
 										<?php echo esc_html( $service['title'] ); ?>
-									</h3>
+									</h4>
 								</div>
 
 								<div class="business-service-row__text">
-									<p>
-										<?php echo esc_html( $service['text'] ); ?>
-									</p>
+									<?php echo wp_kses_post( $service['text'] ); ?>
 								</div>
 							</div>
 
@@ -279,7 +397,7 @@ if ( $sections_count >= 2 ) {
 
 											<?php if ( ! empty( $lab['price_url'] ) ) : ?>
 												<a
-													class="business-service-price-link btn btn-outline-primary"
+													class="business-service-price-link"
 													href="<?php echo esc_url( $lab['price_url'] ); ?>"
 													target="_blank"
 													rel="noopener"
@@ -297,6 +415,15 @@ if ( $sections_count >= 2 ) {
 							<?php endif; ?>
 						</article>
 					<?php endforeach; ?>
+				</div>
+				<div class="business-service-group__back">
+					<a
+						class="business-service-group__back-link"
+						href="#business-service-area-nav"
+					>
+						<?php echo esc_html( inlife_t( 'Wróć do listy usług' ) ); ?>
+						<span aria-hidden="true">↑</span>
+					</a>
 				</div>
 			</section>
 		<?php endforeach; ?>

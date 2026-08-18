@@ -26,6 +26,7 @@ function inlife_admin_get_controlled_page_templates(): array {
 		'page-templates/template-society.php',
 		'page-templates/template-contact.php',
 		'page-templates/template-institute-publications.php',
+		'page-templates/template-business-service-area.php',
 	];
 }
 

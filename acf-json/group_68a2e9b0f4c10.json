@@ -1,0 +1,363 @@
+{
+    "key": "group_68a2e9b0f4c10",
+    "title": "Business – Obszar usług",
+    "fields": [
+        {
+            "key": "field_68a2e9b11a001",
+            "label": "Kicker hero",
+            "name": "business_area_hero_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_68a2e9b11a002",
+            "label": "Tytuł hero",
+            "name": "business_area_hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_68a2e9b11a003",
+            "label": "Lead hero",
+            "name": "business_area_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_68a2e9b11a010",
+            "label": "Sekcje usług",
+            "name": "business_area_sections",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Każdy wiersz tworzy jedną główną sekcję oferty oraz kartę nawigacyjną. Numeracja sekcji jest generowana automatycznie.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_68a2e9b11a011",
+            "button_label": "Dodaj sekcję usług",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_68a2e9b11a011",
+                    "label": "Tytuł sekcji",
+                    "name": "section_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "translate",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_68a2e9b11a010"
+                },
+                {
+                    "key": "field_68a2e9b11a012",
+                    "label": "Lead sekcji",
+                    "name": "section_lead",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Krótki opis wyświetlany pod tytułem głównej sekcji oferty.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "translate",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_68a2e9b11a010"
+                },
+                {
+                    "key": "field_68a2e9b11a020",
+                    "label": "Usługi",
+                    "name": "section_services",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "Usługi należące do tej sekcji. Numeracja typu 1.1, 1.2 itd. jest generowana automatycznie.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "field_68a2e9b11a021",
+                    "button_label": "Dodaj usługę",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_68a2e9b11a021",
+                            "label": "Tytuł usługi",
+                            "name": "service_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "translations": "translate",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "pll_default_value": "",
+                            "parent_repeater": "field_68a2e9b11a020"
+                        },
+                        {
+                            "key": "field_68a2e9b11a022",
+                            "label": "Opis usługi",
+                            "name": "service_text",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "Opis usługi. Edytor podstawowy bez możliwości dodawania mediów.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "translations": "translate",
+                            "allow_in_bindings": 0,
+                            "tabs": "all",
+                            "toolbar": "basic",
+                            "media_upload": 0,
+                            "delay": 0,
+                            "pll_default_value": "",
+                            "parent_repeater": "field_68a2e9b11a020"
+                        },
+                        {
+                            "key": "field_68a2e9b11a030",
+                            "label": "Jednostki realizujące usługę",
+                            "name": "service_labs",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "Powiąż usługę z laboratorium i opcjonalnie z konkretną pracownią oraz cennikiem.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "row",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "field_68a2e9b11a031",
+                            "button_label": "Dodaj jednostkę",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_68a2e9b11a031",
+                                    "label": "Laboratorium",
+                                    "name": "laboratory",
+                                    "aria-label": "",
+                                    "type": "post_object",
+                                    "instructions": "Wybierz laboratorium realizujące usługę. Nazwa i adres strony zostaną pobrane automatycznie.",
+                                    "required": 1,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "laboratories"
+                                    ],
+                                    "post_status": "",
+                                    "taxonomy": "",
+                                    "return_format": "object",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 1,
+                                    "bidirectional": 0,
+                                    "parent_repeater": "field_68a2e9b11a030"
+                                },
+                                {
+                                    "key": "field_68a2e9b11a032",
+                                    "label": "Nazwa pracowni",
+                                    "name": "unit_label",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Opcjonalna nazwa pracowni wyświetlana pod nazwą laboratorium.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "translations": "translate",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "np. Pracownia Histologii",
+                                    "prepend": "",
+                                    "append": "",
+                                    "pll_default_value": "",
+                                    "parent_repeater": "field_68a2e9b11a030"
+                                },
+                                {
+                                    "key": "field_68a2e9b11a033",
+                                    "label": "Kotwica pracowni",
+                                    "name": "unit_anchor",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "Opcjonalny fragment adresu bez znaku #, np. pracownia-histologii. Musi odpowiadać kotwicy pracowni na stronie laboratorium.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "pracownia-histologii",
+                                    "prepend": "#",
+                                    "append": "",
+                                    "parent_repeater": "field_68a2e9b11a030"
+                                },
+                                {
+                                    "key": "field_68a2e9b11a034",
+                                    "label": "Cennik",
+                                    "name": "price_file",
+                                    "aria-label": "",
+                                    "type": "file",
+                                    "instructions": "Opcjonalny plik cennika, najlepiej PDF.",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "min_size": "",
+                                    "max_size": "",
+                                    "mime_types": "pdf",
+                                    "allow_in_bindings": 0,
+                                    "parent_repeater": "field_68a2e9b11a030"
+                                }
+                            ],
+                            "parent_repeater": "field_68a2e9b11a020"
+                        }
+                    ],
+                    "parent_repeater": "field_68a2e9b11a010"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates/template-business-service-area.php"
+            }
+        ]
+    ],
+    "menu_order": 20,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "pll_display_field_instructions": 1,
+    "modified": 1786948159
+}

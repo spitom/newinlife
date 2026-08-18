@@ -1463,7 +1463,66 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 			'Wróć do strony głównej',
 			$group
 		);
+		/*
+		* ------------------------------------------------------------
+		* Business – Obszar usług
+		* ------------------------------------------------------------
+		*/
+		$group = 'Business – Obszar usług';
 
+		pll_register_string(
+			'business_service_area_kicker',
+			'Usługi dla biznesu',
+			$group
+		);
+
+		pll_register_string(
+			'business_service_area_hero_lead',
+			'Poznaj zakres usług realizowanych przez laboratoria InLife dla partnerów zewnętrznych, firm i instytucji.',
+			$group
+		);
+
+		pll_register_string(
+			'business_service_area_navigation',
+			'Nawigacja po usługach',
+			$group
+		);
+
+		pll_register_string(
+			'business_service_area_go_to_section',
+			'Przejdź do sekcji',
+			$group
+		);
+
+		pll_register_string(
+			'business_service_area_scope',
+			'Zakres usług',
+			$group
+		);
+
+		pll_register_string(
+			'business_service_area_units',
+			'Jednostki realizujące usługę',
+			$group
+		);
+
+		pll_register_string(
+			'business_service_area_realized_by',
+			'Realizuje',
+			$group
+		);
+
+		pll_register_string(
+			'business_service_area_price_list',
+			'Pobierz cennik',
+			$group
+		);
+
+		pll_register_string(
+			'business_service_area_back_to_services',
+			'Wróć do listy usług',
+			$group
+		);
 	}
 
 	add_action( 'init', 'inlife_register_polylang_strings' );
