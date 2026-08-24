@@ -9,7 +9,8 @@ function inlife_admin_get_block_editor_disabled_post_types(): array {
 		'projects',
 		'partners',
 		'career_entry',
-		'career-opportunities'
+		'career-opportunities',
+		'events',
 	];
 }
 
@@ -27,6 +28,7 @@ function inlife_admin_get_controlled_page_templates(): array {
 		'page-templates/template-contact.php',
 		'page-templates/template-institute-publications.php',
 		'page-templates/template-business-service-area.php',
+		'page-templates/template-seminar-system.php',
 	];
 }
 

@@ -90,6 +90,12 @@ $hero_actions = (string) ob_get_clean();
 		</div>
 	</section>
 
+	<section class="page-section page-section--career-hr-documents" aria-labelledby="career-hr-documents-heading">
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<?php get_template_part( 'template-parts/career/career', 'hr-documents' ); ?>
+		</div>
+	</section>
+
 	<!-- <section class="page-section page-section--career-trainings" aria-labelledby="career-trainings-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<?php get_template_part( 'template-parts/career/career', 'trainings' ); ?>
@@ -105,12 +111,6 @@ $hero_actions = (string) ob_get_clean();
 	<section class="page-section page-section--career-location-promo" aria-labelledby="career-location-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<?php get_template_part( 'template-parts/career/career', 'location-promo' ); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--career-hr-documents" aria-labelledby="career-hr-documents-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/career/career', 'hr-documents' ); ?>
 		</div>
 	</section>
 

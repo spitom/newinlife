@@ -277,6 +277,7 @@ if ( ! function_exists( 'inlife_get_archive_title' ) ) {
 			'projects'     => 'Projekty',
 			'publications' => 'Publikacje',
 			'partners'     => 'Partnerzy',
+			'events'       => 'Wydarzenia',
 			'career_entry' => 'Komunikaty',
 		);
 

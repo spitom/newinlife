@@ -174,8 +174,8 @@ if ( is_array( $acf_area_sections ) && ! empty( $acf_area_sections ) ) {
 			continue;
 		}
 
-		$section_number++;
-		$service_number = 0;
+		$current_section_number = $section_number + 1;
+		$service_number         = 0;
 
 		$prepared_services = array();
 		$services          = isset( $section['section_services'] ) && is_array( $section['section_services'] )
@@ -245,12 +245,18 @@ if ( is_array( $acf_area_sections ) && ! empty( $acf_area_sections ) ) {
 			}
 
 			$prepared_services[] = array(
-				'number' => $section_number . '.' . $service_number,
+				'number' => $current_section_number . '.' . $service_number,
 				'title'  => $service_title,
 				'text'   => $service_text,
 				'labs'   => $prepared_labs,
 			);
 		}
+
+		if ( empty( $prepared_services ) ) {
+				continue;
+		}
+
+		$section_number = $current_section_number;
 
 		$prepared_area_sections[] = array(
 			'number'   => str_pad( (string) $section_number, 2, '0', STR_PAD_LEFT ),
@@ -288,7 +294,7 @@ if ( $sections_count >= 2 ) {
 		aria-label="<?php echo esc_attr( inlife_t( 'Nawigacja po usługach' ) ); ?>"
 	>
 		<?php foreach ( $area_sections as $index => $section ) : ?>
-			<article class="business-service-card business-service-card--industry c-card c-card--nav">
+			<div class="business-service-card business-service-card--industry c-card c-card--nav">
 				<div class="business-service-card__frame c-card__frame">
 					<a
 						class="business-service-card__link business-service-card__link--nav"
@@ -319,7 +325,7 @@ if ( $sections_count >= 2 ) {
 						</div>
 					</a>
 				</div>
-			</article>
+		</div>
 		<?php endforeach; ?>
 	</nav>
 
@@ -365,15 +371,18 @@ if ( $sections_count >= 2 ) {
 									</h4>
 								</div>
 
-								<div class="business-service-row__text">
-									<?php echo wp_kses_post( $service['text'] ); ?>
-								</div>
+								<?php if ( '' !== trim( wp_strip_all_tags( $service['text'] ) ) ) : ?>
+										<div class="business-service-row__text">
+												<?php echo wp_kses_post( $service['text'] ); ?>
+										</div>
+								<?php endif; ?>
 							</div>
 
 							<?php if ( ! empty( $service['labs'] ) ) : ?>
 								<div
 									class="business-service-row__labs"
-									aria-label="<?php echo esc_attr( inlife_t( 'Jednostki realizujące usługę' ) ); ?>"
+									role="group"
+        							aria-label="<?php echo esc_attr( inlife_t( 'Jednostki realizujące usługę' ) ); ?>"
 								>
 									<span class="business-service-row__labs-label">
 										<?php echo esc_html( inlife_t( 'Realizuje' ) ); ?>

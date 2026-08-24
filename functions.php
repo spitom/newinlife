@@ -189,6 +189,8 @@ require_once get_stylesheet_directory() . '/inc/helpers/laboratories.php';
  * Projects / publications.
  */
 require_once get_stylesheet_directory() . '/inc/post-types/projects.php';
+require_once get_stylesheet_directory() . '/inc/post-types/events.php';
+require_once get_stylesheet_directory() . '/inc/helpers/events.php';
 require_once get_stylesheet_directory() . '/inc/helpers/projects.php';
 require_once get_stylesheet_directory() . '/inc/post-types/publications.php';
 require_once get_stylesheet_directory() . '/inc/helpers/publications.php';

@@ -1,0 +1,224 @@
+{
+    "key": "group_68a31b1d7f4c2",
+    "title": "Wydarzenie – dane",
+    "fields": [
+        {
+            "key": "field_68a31b1d_event_start_date",
+            "label": "Data rozpoczęcia",
+            "name": "event_start_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d.m.Y",
+            "return_format": "Ymd",
+            "first_day": 1,
+            "default_to_current_date": 0
+        },
+        {
+            "key": "field_68a31b1d_event_end_date",
+            "label": "Data zakończenia",
+            "name": "event_end_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "Wypełnij tylko, jeśli wydarzenie trwa dłużej niż jeden dzień.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d.m.Y",
+            "return_format": "Ymd",
+            "first_day": 1,
+            "default_to_current_date": 0
+        },
+        {
+            "key": "field_68a31b1d_event_time",
+            "label": "Godzina",
+            "name": "event_time",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i",
+            "return_format": "H:i"
+        },
+        {
+            "key": "field_6a869632d9efa",
+            "label": "Rodzaj seminarium",
+            "name": "event_seminar_type",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_68a31b1d_event_location",
+            "label": "Miejsce",
+            "name": "event_location",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Np. Olsztyn, Aula Instytutu lub wydarzenie online.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_68a31b1d_event_lead",
+            "label": "Krótki opis",
+            "name": "event_lead",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Krótki opis używany na listach wydarzeń i w nagłówku strony wydarzenia.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "copy_once",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0,
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_68a31b1d_event_external_url",
+            "label": "Link do wydarzenia",
+            "name": "event_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Opcjonalny link do strony konferencji, seminarium lub wydarzenia.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "translations": "copy_once",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6a8596d554873",
+            "label": "Prelegent \/ prelegenci",
+            "name": "event_speaker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_6a859720b8ae7",
+            "label": "Status wydarzenia",
+            "name": "event_status",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "scheduled": "Zaplanowane",
+                "cancelled": "Odwołane",
+                "postponed": "Przełożone"
+            },
+            "default_value": "scheduled",
+            "return_format": "value",
+            "multiple": 0,
+            "translations": "copy_once",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0,
+            "pll_default_value": "scheduled"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "events"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "pll_display_field_instructions": 1,
+    "modified": 1787205223
+}

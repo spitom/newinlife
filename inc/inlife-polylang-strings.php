@@ -1523,6 +1523,138 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 			'Wróć do listy usług',
 			$group
 		);
+
+		/*
+		 * ------------------------------------------------------------
+		 * InLife Events
+		 * ------------------------------------------------------------
+		 */
+		$group = 'InLife Events';
+
+		// Archive / hero.
+		pll_register_string(
+			'events_title',
+			'Wydarzenia',
+			$group
+		);
+
+		pll_register_string(
+			'events_archive_lead',
+			'Konferencje, seminaria naukowe i najważniejsze wydarzenia organizowane przez InLife.',
+			$group
+		);
+
+		pll_register_string(
+			'events_calendar',
+			'Kalendarz',
+			$group
+		);
+
+		pll_register_string(
+			'events_types_navigation',
+			'Typy wydarzeń',
+			$group
+		);
+
+		// Period tabs.
+		pll_register_string(
+			'events_period_navigation',
+			'Wybierz okres wydarzeń',
+			$group
+		);
+
+		pll_register_string(
+			'events_upcoming',
+			'Nadchodzące',
+			$group
+		);
+
+		// Statuses.
+		pll_register_string(
+			'events_status_scheduled',
+			'Zaplanowane',
+			$group
+		);
+
+		pll_register_string(
+			'events_status_cancelled',
+			'Odwołane',
+			$group
+		);
+
+		pll_register_string(
+			'events_status_postponed',
+			'Przełożone',
+			$group
+		);
+
+		// Links.
+		pll_register_string(
+			'events_details',
+			'Szczegóły',
+			$group
+		);
+
+		pll_register_string(
+			'events_seminar_system',
+			'System seminariów instytutowych',
+			$group
+		);
+
+		// Empty states.
+		pll_register_string(
+			'events_empty_upcoming',
+			'Obecnie nie ma zaplanowanych nadchodzących wydarzeń.',
+			$group
+		);
+
+		pll_register_string(
+			'events_empty_type',
+			'Brak wydarzeń w tej kategorii.',
+			$group
+		);
+
+		pll_register_string(
+			'events_seminar_system_info',
+			'Informacje o systemie seminariów instytutowych',
+			$group
+		);
+
+		pll_register_string(
+			'events_seminar_system_types',
+			'Rodzaje seminariów instytutowych',
+			$group
+		);
+
+		pll_register_string(
+			'events_seminar_system_type',
+			'Typ seminarium',
+			$group
+		);
+
+		pll_register_string(
+			'events_seminar_system_frequency',
+			'Częstotliwość',
+			$group
+		);
+
+		pll_register_string(
+			'events_seminar_system_format',
+			'Forma spotkania',
+			$group
+		);
+
+		pll_register_string(
+			'events_seminar_system_speaker',
+			'Prelegent',
+			$group
+		);
+
+		pll_register_string(
+			'events_seminar_system_organizer',
+			'Organizator',
+			$group
+		);
 	}
 
 	add_action( 'init', 'inlife_register_polylang_strings' );
