@@ -842,6 +842,7 @@ button:focus-visible,
     .header-topbar__inner {
         position: relative;
         min-height: var(--inlife-desktop-topbar-height);
+        padding-top: 0.3rem;
         pointer-events: auto;
     }
 
@@ -851,7 +852,7 @@ button:focus-visible,
     }
 
     .navbar-main-wrap {
-        min-height: 124px;
+        min-height: 114px;
         align-items: center;
         gap: 1.25rem;
     }
@@ -859,10 +860,10 @@ button:focus-visible,
     .navbar-brand-wrap {
         align-self: stretch;
         display: flex;
-        flex: 0 0 290px;
+        flex: 0 0 240px;
         align-items: center;
-        min-width: 250px;
-        max-width: 290px;
+        min-width: 220px;
+        max-width: 240px;
     }
 
     .main-nav-desktop {
@@ -881,13 +882,11 @@ button:focus-visible,
         .navbar-brand img.custom-logo,
         .navbar-brand img.img-fluid,
         .navbar-brand img {
-            width: 100%;
-            max-width: 290px;
+            width: auto;
+            max-width: 250px;
+            max-height: 92px;
+            height: auto;
         }
-    }
-
-    .site-header.is-scrolled {
-        --inlife-desktop-topbar-height: 2.35rem;
     }
 
     .site-header.is-scrolled .navbar-main-wrap {
@@ -895,15 +894,11 @@ button:focus-visible,
     }
 }
 
-@media (min-width: 1400px) {
-    .navbar-main-wrap {
-        min-height: 128px;
-        gap: 2rem;
-    }
-
+@media (min-width: 1200px) and (max-width: 1399.98px) {
     .navbar-brand-wrap {
-        flex: 0 0 310px;
-        max-width: 310px;
+        flex-basis: 230px;
+        min-width: 210px;
+        max-width: 230px;
     }
 
     .site-branding {
@@ -911,11 +906,34 @@ button:focus-visible,
         .navbar-brand img.custom-logo,
         .navbar-brand img.img-fluid,
         .navbar-brand img {
-            max-width: 310px;
+            max-width: 230px;
+            max-height: 86px;
+        }
+    }
+}
+
+@media (min-width: 1400px) {
+    .navbar-main-wrap {
+        min-height: 124px;
+        gap: 1.75rem;
+    }
+
+    .navbar-brand-wrap {
+        flex: 0 0 275px;
+        max-width: 275px;
+    }
+
+    .site-branding {
+
+        .navbar-brand img.custom-logo,
+        .navbar-brand img.img-fluid,
+        .navbar-brand img {
+            max-width: 285px;
+            max-height: 102px;
         }
     }
 
     .site-header.is-scrolled .navbar-main-wrap {
-        min-height: 116px;
+        min-height: 120px;
     }
 }

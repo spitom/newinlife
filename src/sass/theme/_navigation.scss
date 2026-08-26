@@ -488,3 +488,21 @@
         pointer-events: auto;
     }
 }
+
+/* =========================================================
+   BREAKPOINTS
+========================================================= */
+
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .inlife-primary-nav {
+        gap: 0.95rem;
+
+        .nav-link {
+            font-size: 0.94rem;
+        }
+
+        .nav-link-group {
+            gap: 0.25rem;
+        }
+    }
+}
