@@ -5,7 +5,7 @@ $post_id = get_the_ID();
 
 $formal_items = [
 	[
-		'label' => 'NIP',
+		'label' => inlife_t( 'NIP' ),
 		'value' => inlife_get_acf_field( 'contact_nip', $post_id ),
 	],
 	[

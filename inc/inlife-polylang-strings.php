@@ -1404,6 +1404,12 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		);
 
 		pll_register_string(
+			'contact_formal_nip',
+			'NIP',
+			$group
+		);
+		
+		pll_register_string(
 			'contact_formal_rin',
 			'Rejestr Instytutów Naukowych (RIN)',
 			$group
