@@ -4,8 +4,8 @@ defined( 'ABSPATH' ) || exit;
 $home_url = home_url( '/' );
 $site_name = get_bloginfo( 'name' );
 
-$logo_pl = get_stylesheet_directory_uri() . '/assets/images/InLife-logo-PL.png';
-$logo_en = get_stylesheet_directory_uri() . '/assets/images/InLife-logo-EN.png';
+$logo_pl = get_stylesheet_directory_uri() . '/assets/images/logo-InLife-PL.png';
+$logo_en = get_stylesheet_directory_uri() . '/assets/images/logo-InLife-EN.png';
 
 $current_lang = function_exists( 'pll_current_language' ) ? pll_current_language( 'slug' ) : 'pl';
 $logo_src = ( 'en' === $current_lang ) ? $logo_en : $logo_pl;

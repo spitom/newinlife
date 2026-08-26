@@ -1,0 +1,314 @@
+{
+    "key": "group_6a86c7e4b219f",
+    "title": "Landing wydarzenia – ustawienia",
+    "fields": [
+        {
+            "key": "field_6a86c83e5412a",
+            "label": "Lead hero",
+            "name": "event_landing_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Opcjonalny krótki tekst w hero. Jeśli pole pozostanie puste, template może użyć zajawki strony.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_6a86c8c4d6d7b",
+            "label": "Obraz hero",
+            "name": "event_landing_hero_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Opcjonalny obraz hero. Jeśli pole pozostanie puste, template może użyć obrazka wyróżniającego.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium",
+            "translations": "copy_once",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6a86c94d11ca8",
+            "label": "Nawigacja po stronie",
+            "name": "event_landing_navigation",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Dodaj tylko sekcje, które mają pojawić się w lokalnej nawigacji. Kotwicę wpisuj bez znaku # i ustaw identyczną wartość jako HTML Anchor odpowiedniego Row Layoutu w Kadence.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Dodaj pozycję",
+            "rows_per_page": 20,
+            "translations": "translate",
+            "sub_fields": [
+                {
+                    "key": "field_6a86c9b2af131",
+                    "label": "Etykieta",
+                    "name": "event_landing_nav_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Np. Program, Organizatorzy, Kontakt.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "translate",
+                    "maxlength": 80,
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_6a86c94d11ca8"
+                },
+                {
+                    "key": "field_6a86ca0a7c5ea",
+                    "label": "Kotwica",
+                    "name": "event_landing_nav_anchor",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Bez znaku #. Np. program, wazne-informacje, organizatorzy.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "translate",
+                    "maxlength": 100,
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_6a86c94d11ca8"
+                }
+            ]
+        },
+        {
+            "key": "field_6a87e2d51a4c1",
+            "label": "Materiały z poprzednich edycji",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6a8ec9c863cbb",
+            "label": "Tytuł sekcji",
+            "name": "event_landing_editions_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_6a87e30a4bc92",
+            "label": "Lead sekcji",
+            "name": "event_landing_editions_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Opcjonalny krótki tekst wyświetlany pod nagłówkiem sekcji materiałów archiwalnych.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_6a87e376d38a7",
+            "label": "Poprzednie edycje",
+            "name": "event_landing_editions",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Dodawaj kolejne edycje konferencji. Na stronie posortujemy je automatycznie według roku malejąco.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_6a87e3e2a7f16",
+            "button_label": "Dodaj edycję",
+            "rows_per_page": 20,
+            "translations": "translate",
+            "sub_fields": [
+                {
+                    "key": "field_6a87e3e2a7f16",
+                    "label": "Rok",
+                    "name": "event_landing_edition_year",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Np. 2025.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "15",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "copy",
+                    "min": 1900,
+                    "max": 2100,
+                    "placeholder": "",
+                    "step": 1,
+                    "prepend": "",
+                    "append": "",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6a87e376d38a7",
+                    "pll_default_value": ""
+                },
+                {
+                    "key": "field_6a87e4458f3b0",
+                    "label": "Okładka",
+                    "name": "event_landing_edition_cover",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Okładka materiałów lub grafika identyfikująca daną edycję.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "thumbnail",
+                    "translations": "copy_once",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6a87e376d38a7"
+                },
+                {
+                    "key": "field_6a87e4bdc25d1",
+                    "label": "Materiały",
+                    "name": "event_landing_edition_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Link do PDF, strony archiwalnej lub innych materiałów z danej edycji.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "translations": "translate",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6a87e376d38a7"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/template-event-landing.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "pll_display_field_instructions": 1,
+    "modified": 1787742691
+}
