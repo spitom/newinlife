@@ -59,7 +59,19 @@ if ( ! empty( $citation ) ) {
 	<div class="publication-item__main">
 		<?php if ( $display_citation ) : ?>
 			<p class="publication-item__citation">
-				<?php echo esc_html( $display_citation ); ?>
+				<?php
+				echo wp_kses(
+					$display_citation,
+					array(
+						'strong' => array(),
+						'a'      => array(
+							'href'   => array(),
+							'target' => array(),
+							'rel'    => array(),
+						),
+					)
+				);
+				?>
 			</p>
 		<?php endif; ?>
 	</div>

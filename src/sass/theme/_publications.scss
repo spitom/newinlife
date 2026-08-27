@@ -249,6 +249,19 @@
         font-size: 1rem;
         line-height: 1.85;
         letter-spacing: -0.01em;
+
+        a {
+            color: var(--inlife-primary);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.15em;
+        }
+
+        a:hover,
+        a:focus-visible {
+            color: var(--inlife-primary);
+            text-decoration-thickness: 2px;
+        }
     }
 
     &__meta {
