@@ -47,7 +47,7 @@ if ( empty( $navigation_items ) ) {
 	class="event-landing-nav"
 	aria-label="<?php echo esc_attr( inlife_t( 'Sekcje wydarzenia' ) ); ?>"
 >
-	<div class="event-landing-nav__inner">
+	<div class="event-landing-nav__inner <?php echo esc_attr( inlife_container_class( 'content' ) ); ?>">
 		<div class="event-landing-nav__scroll">
 			<ul class="event-landing-nav__list">
 				<?php foreach ( $navigation_items as $item ) : ?>

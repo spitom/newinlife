@@ -58,7 +58,7 @@ if ( ! $title ) {
 	id="materialy-konferencyjne"
 	class="page-section event-landing-editions"
 >
-	<div class="inlife-container">
+	<div class="<?php echo esc_attr( inlife_container_class( 'content' ) ); ?>">
 
 		<header class="event-landing-editions__header">
 			<h2 class="event-landing-editions__title">

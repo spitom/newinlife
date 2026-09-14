@@ -4,6 +4,10 @@
 
 .site-main--event-landing {
     background: #fff;
+
+    .event-landing__content>.wp-block-kadence-rowlayout>.kt-row-column-wrap {
+        @extend .inlife-content;
+    }
 }
 
 .page-section--event-landing-hero {
@@ -25,8 +29,9 @@
     }
 }
 
+
 /* =========================================================
-   EVENT LANDING HERO
+   EVENT LANDING — HERO
 ========================================================= */
 
 .p-media-hero--event-landing {
@@ -55,6 +60,7 @@
     }
 }
 
+
 /* =========================================================
    EVENT LANDING — LOCAL NAVIGATION
 ========================================================= */
@@ -65,12 +71,6 @@
     margin-top: 0;
     padding-top: 1.25rem;
     background: #fff;
-}
-
-.event-landing-nav__inner {
-    width: min(calc(100% - (2 * clamp(1.25rem, 2vw, 2rem))),
-            var(--inlife-max-content));
-    margin-inline: auto;
 }
 
 .event-landing-nav__scroll {
@@ -131,6 +131,7 @@
         outline-offset: 3px;
     }
 }
+
 
 /* =========================================================
    EVENT LANDING — COMMITTEES
@@ -219,6 +220,7 @@
     }
 }
 
+
 /* =========================================================
    EVENT LANDING — ORGANIZER LOGOS
 ========================================================= */
@@ -241,9 +243,7 @@
         border: 1px solid var(--inlife-border);
         border-radius: 14px;
         background: #fff;
-    }
 
-    .event-organizer-logo-card {
         img {
             display: block;
             width: auto;
@@ -257,8 +257,9 @@
     }
 }
 
+
 /* =========================================================
-   EVENT LANDING — EDITIONS
+   EVENT LANDING — PREVIOUS EDITIONS
 ========================================================= */
 
 .event-landing-editions {
@@ -272,8 +273,24 @@
 }
 
 .event-landing-editions__title {
+    position: relative;
     margin: 0;
+    padding-left: 1rem;
     color: var(--inlife-primary);
+    font-size: clamp(1.45rem, 2vw, 2rem);
+    font-weight: 800;
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0.08em;
+        bottom: 0.08em;
+        left: 0;
+        width: 3px;
+        background: var(--inlife-accent);
+    }
 }
 
 .event-landing-editions__lead {
@@ -347,6 +364,11 @@
     }
 }
 
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
 @media (max-width: 991.98px) {
     .event-landing-editions__grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -354,35 +376,13 @@
 }
 
 @media (max-width: 767.98px) {
-    .event-landing-editions__grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .event-edition-card__media {
-        padding: 0.75rem;
-    }
-
-    .event-edition-card__body {
-        padding: 0.85rem;
-    }
-}
-
-@media (max-width: 767.98px) {
-
     .site-main--event-landing {
-        .event-landing__content {
-            .wp-block-kadence-rowlayout>.kt-row-column-wrap {
-                padding-left: 1.25rem;
-                padding-right: 1.25rem;
-            }
+        .event-organizer-logo-card {
+            min-height: 140px;
 
-            .event-organizer-logo-card {
-                min-height: 140px;
-
-                img {
-                    max-width: 75%;
-                    max-height: 75px;
-                }
+            img {
+                max-width: 75%;
+                max-height: 75px;
             }
         }
     }
@@ -402,7 +402,24 @@
         width: max-content;
         min-width: max-content;
     }
+
+    .event-landing-editions__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .event-edition-card__media {
+        padding: 0.75rem;
+    }
+
+    .event-edition-card__body {
+        padding: 0.85rem;
+    }
 }
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
     .event-landing-nav__link {
