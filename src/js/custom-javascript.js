@@ -1032,10 +1032,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		closeButton.setAttribute('title', popupCloseLabel);
 	});
 
-	L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-		maxZoom: 18,
-		attribution: '&copy; OpenStreetMap &copy; CARTO',
-	}).addTo(map);
+	const cartoApiKey =
+	window.inlifeNetworkMapConfig?.cartoApiKey || '';
+
+	L.tileLayer(
+		`https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png?key=${encodeURIComponent(cartoApiKey)}`,
+		{
+			maxZoom: 18,
+			attribution: '&copy; OpenStreetMap &copy; CARTO',
+		}
+	).addTo(map);
 
 	const defaultIcon = L.divIcon({
 		className: 'network-map-marker',
