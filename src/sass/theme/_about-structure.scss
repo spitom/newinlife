@@ -123,53 +123,6 @@
     }
 }
 
-/* Lightbox
-========================================================= */
-
-.about-structure-lightbox {
-    max-width: min(95vw, 1400px);
-    padding: 0;
-    border: 0;
-    background: transparent;
-}
-
-.about-structure-lightbox::backdrop {
-    background: rgba(27, 29, 32, 0.88);
-}
-
-.about-structure-lightbox__image {
-    display: block;
-    width: 100%;
-    height: auto;
-}
-
-.about-structure-lightbox__close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    display: grid;
-    place-items: center;
-    width: 3rem;
-    height: 3rem;
-    border: 0;
-    background: rgba(255, 255, 255, 0.92);
-    color: var(--inlife-primary);
-    font-size: 2rem;
-    line-height: 1;
-    cursor: pointer;
-
-    &:hover,
-    &:focus-visible {
-        background: #fff;
-        color: var(--inlife-primary);
-    }
-
-    &:focus-visible {
-        outline: 2px solid var(--inlife-accent);
-        outline-offset: 0.2rem;
-    }
-}
-
 /* Sections
 ========================================================= */
 

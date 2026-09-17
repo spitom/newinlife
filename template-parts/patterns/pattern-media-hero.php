@@ -19,6 +19,7 @@
  * - title_id (string)
  * - kicker_id (string)
  * - lead_id (string)
+ * - before_title (string HTML)
  *
  * @package UnderStrap
  */
@@ -34,6 +35,7 @@ $args = wp_parse_args(
 		'image_id'               => 0,
 		'breadcrumbs'            => true,
 		'breadcrumbs_full_width' => false,
+		'before_title'           => '',
 		'before_lead'            => '',
 		'actions_html'           => '',
 		'custom_media_html'      => '',
@@ -58,6 +60,7 @@ $lead                   = (string) $args['lead'];
 $image_id               = (int) $args['image_id'];
 $breadcrumbs            = $args['breadcrumbs'];
 $breadcrumbs_full_width = ! empty( $args['breadcrumbs_full_width'] );
+$before_title           = (string) $args['before_title'];
 $before_lead            = (string) $args['before_lead'];
 $actions_html           = (string) $args['actions_html'];
 $custom_media_html      = (string) $args['custom_media_html'];
@@ -154,6 +157,12 @@ foreach ( $shapes as $shape ) {
 							echo wp_kses_post( $breadcrumbs );
 						}
 						?>
+					</div>
+				<?php endif; ?>
+
+				<?php if ( '' !== trim( $before_title ) ) : ?>
+					<div class="p-media-hero__before-title">
+						<?php echo wp_kses_post( $before_title ); ?>
 					</div>
 				<?php endif; ?>
 
