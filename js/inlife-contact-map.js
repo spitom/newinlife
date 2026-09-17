@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const title = mapEl.dataset.title || '';
 
+	const zoom = Number.parseInt(mapEl.dataset.zoom || '16', 10);
+
 	const zoomInLabel =
 		mapEl.dataset.zoomInLabel || 'Powiększ mapę';
 
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const map = L.map(mapEl, {
 		scrollWheelZoom: false,
 		zoomControl: false,
-	}).setView([lat, lng], 16);
+	}).setView([lat, lng], zoom);
 
 	L.control.zoom({
 		zoomInTitle: zoomInLabel,

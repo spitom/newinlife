@@ -65,4 +65,4 @@ js/*.min.js.map
 # Runtime scripts maintained manually.
 !js/inlife-contact-map.js
 !js/inlife-history-timeline.js
-!js/inlife-structure-lightbox.js
+!js/inlife-lightbox.js

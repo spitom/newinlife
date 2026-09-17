@@ -13,8 +13,8 @@ function inlife_enqueue_about_assets() {
 
 	if ( is_page_template( 'page-templates/template-about-structure.php' ) ) {
 		inlife_enqueue_theme_script(
-			'inlife-structure-lightbox',
-			'/js/inlife-structure-lightbox.js'
+			'inlife-lightbox',
+			'/js/inlife-lightbox.js'
 		);
 	}
 }

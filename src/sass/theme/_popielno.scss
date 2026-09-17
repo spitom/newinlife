@@ -1,0 +1,470 @@
+/* =========================================================
+   POPIELNO
+========================================================= */
+
+.p-media-hero--popielno {
+    .p-media-hero__before-title {
+        margin-bottom: clamp(1.5rem, 2vw, 2rem);
+    }
+
+    .popielno-hero__logo {
+        display: block;
+        width: clamp(10rem, 14vw, 13.5rem);
+        max-width: 100%;
+        height: auto;
+    }
+
+    .p-media-hero__media {
+        aspect-ratio: 16 / 9;
+    }
+
+    .p-media-hero__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.page-section--popielno-hero {
+    padding: 0;
+}
+
+.popielno-nav {
+    padding-block: 1rem;
+    background: #fff;
+}
+
+.popielno-about {
+    background: #fff;
+}
+
+.popielno-about__body {
+    position: relative;
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding-left: clamp(1.25rem, 2vw, 2rem);
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0.2rem;
+        bottom: 0.2rem;
+        left: 0;
+        width: 4px;
+        border-radius: 999px;
+        background: var(--inlife-popielno);
+    }
+}
+
+.site-main--popielno {
+    .c-section-header__kicker {
+        color: var(--inlife-popielno);
+    }
+
+    .c-pills a {
+        padding: 0.45rem 0.9rem;
+        font-weight: 650;
+        transition:
+            border-color var(--inlife-transition),
+            background-color var(--inlife-transition),
+            color var(--inlife-transition);
+    }
+
+    .c-pills a:hover {
+        border-color: var(--inlife-popielno);
+        background: rgba(0, 171, 142, 0.08);
+        color: var(--inlife-primary);
+    }
+
+    .c-pills a:focus-visible {
+        outline: 3px solid var(--inlife-primary);
+        outline-offset: 3px;
+    }
+}
+
+.popielno-highlights {
+    background: var(--inlife-surface-soft);
+}
+
+.popielno-highlights__list {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.popielno-highlight {
+    align-items: center;
+}
+
+.popielno-highlight__media {
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    border-radius: 18px;
+    background: #e9eff3;
+}
+
+.popielno-highlight__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 992px) {
+
+    .popielno-highlight {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .popielno-highlight__media {
+        width: 84%;
+        justify-self: start;
+    }
+
+    .popielno-highlight--reverse {
+        .popielno-highlight__content {
+            order: 2;
+        }
+
+        .popielno-highlight__media {
+            order: 1;
+            justify-self: end;
+        }
+    }
+}
+
+.popielno-highlight__kicker {
+    margin: 0 0 0.65rem;
+    color: var(--inlife-popielno);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.popielno-highlight__title {
+    margin: 0 0 0.85rem;
+    color: var(--inlife-primary);
+    font-size: clamp(1.35rem, 2vw, 1.8rem);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.popielno-highlight__text {
+    max-width: 46rem;
+    margin: 0;
+    color: var(--inlife-text-muted);
+    line-height: 1.75;
+}
+
+/* =========================================================
+   POPIELNO — NEWS LIST
+========================================================= */
+
+.popielno-news__list {
+    margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid rgba(41, 52, 88, 0.1);
+}
+
+.popielno-news__item {
+    margin: 0;
+    border-bottom: 1px solid rgba(41, 52, 88, 0.1);
+}
+
+.popielno-news__link {
+    display: grid;
+    grid-template-columns: minmax(110px, 140px) minmax(0, 1fr) auto;
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    align-items: center;
+    padding-block: clamp(1.35rem, 2.5vw, 1.8rem);
+    color: var(--inlife-primary);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+        color: var(--inlife-primary);
+
+        .popielno-news__title {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.18em;
+        }
+
+        .popielno-news__arrow {
+            transform: translateX(4px);
+        }
+    }
+}
+
+.popielno-news__date {
+    color: var(--inlife-text-muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.popielno-news__title {
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    font-weight: 750;
+    line-height: 1.3;
+}
+
+.popielno-news__arrow {
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: transform var(--inlife-transition);
+}
+
+@media (max-width: 767.98px) {
+    .popielno-news__link {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0.55rem 1rem;
+    }
+
+    .popielno-news__date {
+        grid-column: 1 / -1;
+    }
+
+    .popielno-news__title {
+        grid-column: 1;
+    }
+
+    .popielno-news__arrow {
+        grid-column: 2;
+    }
+}
+
+/* =========================================================
+   POPIELNO — GALLERY
+========================================================= */
+
+.popielno-gallery {
+    background: #fff;
+}
+
+.popielno-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: clamp(130px, 12vw, 190px);
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.popielno-gallery__item {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    background: var(--inlife-surface-soft);
+}
+
+.popielno-gallery__item--1 {
+    grid-column: 1 / 8;
+    grid-row: span 2;
+}
+
+.popielno-gallery__item--2,
+.popielno-gallery__item--3 {
+    grid-column: 8 / 13;
+}
+
+.popielno-gallery__item--4 {
+    grid-column: 1 / 5;
+}
+
+.popielno-gallery__item--5 {
+    grid-column: 5 / 9;
+}
+
+.popielno-gallery__item--6 {
+    grid-column: 9 / 13;
+}
+
+.popielno-gallery__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.popielno-gallery__button {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+
+    &:focus-visible {
+        outline: 3px solid var(--inlife-accent);
+        outline-offset: -3px;
+    }
+}
+
+.popielno-gallery__more {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: rgba(20, 27, 43, 0.58);
+    color: #fff;
+    text-align: center;
+    pointer-events: none;
+}
+
+.popielno-gallery__more-label {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+@media (max-width: 991.98px) {
+    .popielno-gallery__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: auto;
+    }
+
+    .popielno-gallery__item,
+    .popielno-gallery__item--1,
+    .popielno-gallery__item--2,
+    .popielno-gallery__item--3,
+    .popielno-gallery__item--4,
+    .popielno-gallery__item--5,
+    .popielno-gallery__item--6 {
+        grid-column: auto;
+        grid-row: auto;
+        aspect-ratio: 3 / 2;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .popielno-gallery__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   POPIELNO — CONTACT
+========================================================= */
+
+.popielno-contact {
+    background: var(--inlife-surface-soft);
+}
+
+.popielno-contact__layout {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: stretch;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+
+    @media (min-width: 992px) {
+        grid-template-columns: minmax(0, 0.75fr) minmax(560px, 1.25fr);
+    }
+}
+
+.popielno-contact__details {
+    position: relative;
+    padding-left: clamp(1.25rem, 2vw, 2rem);
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0.15rem;
+        left: 0;
+        width: 4px;
+        height: 2.5rem;
+        border-radius: 999px;
+        background: var(--inlife-popielno);
+    }
+}
+
+.popielno-contact__name {
+    max-width: 32ch;
+    margin: 0;
+    color: var(--inlife-primary);
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.popielno-contact__address {
+    margin: 1.25rem 0 0;
+    color: var(--inlife-text-muted);
+    font-style: normal;
+    line-height: 1.7;
+}
+
+.popielno-contact__links {
+    display: grid;
+    gap: 0.65rem;
+    margin-top: 1.25rem;
+}
+
+.popielno-contact__link {
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    margin: 0;
+    color: var(--inlife-primary);
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: 0.18em;
+    }
+}
+
+.popielno-contact__icon {
+    flex: 0 0 auto;
+    width: 1rem;
+    color: var(--inlife-popielno);
+}
+
+.popielno-contact__map-wrap {
+    min-height: clamp(380px, 36vw, 520px);
+}
+
+.popielno-contact__map {
+    height: 100%;
+    min-height: clamp(380px, 36vw, 520px);
+}
+
+.popielno-contact__form {
+    margin-top: clamp(4rem, 7vw, 6rem);
+    padding-top: clamp(3rem, 5vw, 4rem);
+    border-top: 1px solid rgba(41, 52, 88, 0.1);
+}
+
+.popielno-contact__form-header {
+    max-width: 720px;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.popielno-contact__form-title {
+    margin: 0;
+    color: var(--inlife-primary);
+    font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.popielno-contact__form-lead {
+    margin: 1rem 0 0;
+    color: var(--inlife-text-muted);
+    font-size: 1.05rem;
+    line-height: 1.65;
+}
+
+.popielno-contact__form-body {
+    max-width: 1100px;
+}

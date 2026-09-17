@@ -48,7 +48,7 @@ if ( is_array( $intro_image ) && ! empty( $intro_image['ID'] ) ) {
 				<button
 					type="button"
 					class="about-structure-landing__image-button"
-					data-structure-lightbox-open
+					data-inlife-lightbox-open="about-structure"
 					aria-label="<?php echo esc_attr( inlife_t( 'Powiększ schemat organizacyjny' ) ); ?>"
 				>
 					<?php
@@ -72,30 +72,48 @@ if ( is_array( $intro_image ) && ! empty( $intro_image['ID'] ) ) {
 			</div>
 
 			<dialog
-				class="about-structure-lightbox"
-				data-structure-lightbox
+				class="inlife-lightbox inlife-lightbox--document"
+				data-inlife-lightbox="about-structure"
 				aria-label="<?php echo esc_attr( inlife_t( 'Schemat organizacyjny' ) ); ?>"
 			>
 				<button
 					type="button"
-					class="about-structure-lightbox__close"
-					data-structure-lightbox-close
+					class="inlife-lightbox__close"
+					data-inlife-lightbox-close
 					aria-label="<?php echo esc_attr( inlife_t( 'Zamknij powiększenie' ) ); ?>"
 				>
 					<span aria-hidden="true">×</span>
 				</button>
 
 				<?php
-				echo wp_get_attachment_image(
-					$image_id,
-					'full',
-					false,
-					[
-						'class' => 'about-structure-lightbox__image',
-						'alt'   => '',
-					]
-				);
+				$lightbox_src    = wp_get_attachment_image_url( $image_id, 'full' );
+				$lightbox_srcset = wp_get_attachment_image_srcset( $image_id, 'full' );
+				$lightbox_sizes  = wp_get_attachment_image_sizes( $image_id, 'full' );
 				?>
+
+				<span
+					hidden
+					data-inlife-lightbox-source
+					data-src="<?php echo esc_url( $lightbox_src ?: '' ); ?>"
+					data-srcset="<?php echo esc_attr( $lightbox_srcset ?: '' ); ?>"
+					data-sizes="<?php echo esc_attr( $lightbox_sizes ?: '' ); ?>"
+					data-alt=""
+				></span>
+
+				<div class="inlife-lightbox__stage">
+					<?php
+					echo wp_get_attachment_image(
+						$image_id,
+						'full',
+						false,
+						[
+							'class'                       => 'inlife-lightbox__image',
+							'alt'                         => '',
+							'data-inlife-lightbox-image' => '',
+						]
+					);
+					?>
+				</div>
 			</dialog>
 		<?php endif; ?>
 	</div>

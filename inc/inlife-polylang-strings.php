@@ -1661,6 +1661,37 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 			'Organizator',
 			$group
 		);
+
+				/*
+		* ------------------------------------------------------------
+		* Popielno
+		* ------------------------------------------------------------
+		*/
+		$group = 'Popielno';
+
+		pll_register_string(
+			'popielno_nav_about',
+			'O stacji',
+			$group
+		);
+
+		pll_register_string(
+			'popielno_nav_research_nature',
+			'Badania i przyroda',
+			$group
+		);
+
+		pll_register_string(
+			'popielno_nav_gallery',
+			'Galeria',
+			$group
+		);
+
+		pll_register_string(
+			'popielno_nav_aria',
+			'Sekcje Stacji Badawczej w Popielnie',
+			$group
+		);
 	}
 
 	add_action( 'init', 'inlife_register_polylang_strings' );

@@ -190,26 +190,37 @@ if ( ! function_exists( 'inlife_get_primary_post_category' ) ) {
      * @return WP_Term|null
      */
     function inlife_get_primary_post_category( $post_id ) {
-        $categories          = get_the_category( $post_id );
+		$categories = get_the_category( $post_id );
 
-        if ( empty( $categories ) || is_wp_error( $categories ) ) {
-            return null;
-        }
+		if ( empty( $categories ) || is_wp_error( $categories ) ) {
+			return null;
+		}
 
-        foreach ( $categories as $category ) {
-            if ( ! $category instanceof WP_Term ) {
-                continue;
-            }
+		$research_station_category = function_exists( 'inlife_get_research_station_category' )
+			? inlife_get_research_station_category()
+			: null;
 
-            if ( inlife_is_hidden_news_category( $category ) ) {
-                continue;
-            }
+		foreach ( $categories as $category ) {
+			if ( ! $category instanceof WP_Term ) {
+				continue;
+			}
 
-            return $category;
-        }
+			if ( inlife_is_hidden_news_category( $category ) ) {
+				continue;
+			}
 
-        return null;
-    }
+			if (
+				$research_station_category instanceof WP_Term &&
+				(int) $category->term_id === (int) $research_station_category->term_id
+			) {
+				continue;
+			}
+
+			return $category;
+		}
+
+		return null;
+	}
 }
 
 if ( ! function_exists( 'inlife_get_news_archive_url' ) ) {
@@ -250,6 +261,55 @@ if ( ! function_exists( 'inlife_get_news_archive_url' ) ) {
 	}
 }
 
+if ( ! function_exists( 'inlife_get_research_station_category' ) ) {
+	/**
+	 * Return the Research Station category for the current language.
+	 *
+	 * @return WP_Term|null
+	 */
+	function inlife_get_research_station_category(): ?WP_Term {
+		$category = get_term_by(
+			'slug',
+			'stacja-badawcza',
+			'category'
+		);
+
+		if ( ! $category instanceof WP_Term ) {
+			return null;
+		}
+
+		if (
+			function_exists( 'pll_current_language' ) &&
+			function_exists( 'pll_get_term' )
+		) {
+			$current_language = (string) pll_current_language( 'slug' );
+
+			if ( '' !== $current_language ) {
+				$translated_category_id = (int) pll_get_term(
+					$category->term_id,
+					$current_language
+				);
+
+				if ( $translated_category_id > 0 ) {
+					$translated_category = get_term(
+						$translated_category_id,
+						'category'
+					);
+
+					if (
+						$translated_category instanceof WP_Term &&
+						! is_wp_error( $translated_category )
+					) {
+						$category = $translated_category;
+					}
+				}
+			}
+		}
+
+		return $category;
+	}
+}
+
 if ( ! function_exists( 'inlife_get_news_archive_categories' ) ) {
 	/**
 	 * Return visible News categories for the current language.
@@ -275,12 +335,27 @@ if ( ! function_exists( 'inlife_get_news_archive_categories' ) ) {
 			return array();
 		}
 
+		$research_station_category = inlife_get_research_station_category();
+
 		return array_values(
 			array_filter(
 				$categories,
-				static function ( $category ): bool {
-					return $category instanceof WP_Term &&
-						! inlife_is_hidden_news_category( $category );
+				static function ( $category ) use ( $research_station_category ): bool {
+					if (
+						! $category instanceof WP_Term ||
+						inlife_is_hidden_news_category( $category )
+					) {
+						return false;
+					}
+
+					if (
+						$research_station_category instanceof WP_Term &&
+						(int) $category->term_id === (int) $research_station_category->term_id
+					) {
+						return false;
+					}
+
+					return true;
 				}
 			)
 		);
