@@ -17,6 +17,16 @@ $section_kicker = $section_kicker ?: inlife_t( 'Różnorodność' );
 $section_title  = $section_title ?: inlife_t( 'Deklaracja poszanowania różnorodności' );
 $section_text   = $section_text ?: inlife_t( 'Tworzymy środowisko pracy i rozwoju, w którym szacunek, równe traktowanie i otwartość są podstawą współpracy. Wierzymy, że różnorodność doświadczeń, perspektyw i kompetencji wzmacnia jakość pracy zespołowej oraz wspiera rozwój całej organizacji.' );
 
+$plan_file = function_exists( 'get_field' )
+	? get_field( 'career_diversity_plan_file', $post_id )
+	: null;
+
+$plan_label = function_exists( 'get_field' )
+	? get_field( 'career_diversity_plan_label', $post_id )
+	: '';
+
+$plan_label = $plan_label ?: inlife_t( 'Poznaj Plan Równości Płci InLife' );
+
 $points = [
 	[
 		'title' => inlife_t( 'Szacunek' ),
@@ -95,6 +105,28 @@ if ( function_exists( 'have_rows' ) && have_rows( 'career_diversity_points', $po
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
+
+		<?php if ( ! empty( $plan_file['url'] ) ) : ?>
+			<div class="career-diversity__action">
+				<a
+					class="c-readmore"
+					href="<?php echo esc_url( $plan_file['url'] ); ?>"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<span class="c-readmore__label">
+						<?php echo esc_html( $plan_label ); ?>
+					</span>
+
+					<span class="visually-hidden">
+						<?php echo esc_html( inlife_t( '(otwiera w nowej karcie)' ) ); ?>
+					</span>
+
+					<span class="c-readmore__icon" aria-hidden="true">→</span>
+				</a>
+			</div>
+		<?php endif; ?>
+
 	</div>
 
 </div>

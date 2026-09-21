@@ -29,6 +29,28 @@ $term_lead  = ! empty( $current_term->description )
 	? $current_term->description
 	: inlife_t( 'Przeglądaj ogłoszenia i komunikaty przypisane do wybranej kategorii.' );
 
+$entry_cta_label = inlife_t( 'Przejdź do oferty' );
+
+if (
+	$current_term instanceof WP_Term
+	&& in_array(
+		$current_term->slug,
+		[ 'wyniki-konkursow', 'competition-results' ],
+		true
+	)
+) {
+	$entry_cta_label = inlife_t( 'Zobacz wynik' );
+} elseif (
+	$current_term instanceof WP_Term
+	&& in_array(
+		$current_term->slug,
+		[ 'archiwum', 'archive' ],
+		true
+	)
+) {
+	$entry_cta_label = inlife_t( 'Zobacz ogłoszenie' );
+}
+
 ob_start();
 ?>
 <nav class="c-breadcrumbs" aria-label="<?php echo esc_attr( inlife_t( 'Okruszki' ) ); ?>">
@@ -44,7 +66,7 @@ ob_start();
 			</a>
 		</li>
 		<li class="c-breadcrumbs__item">
-			<a class="c-breadcrumbs__link" href="<?php echo esc_url( $career_landing_url ); ?>">
+			<a class="c-breadcrumbs__link" href="<?php echo esc_url( $career_opportunities_url ); ?>">
 				<?php echo esc_html( inlife_t( 'Konkursy i oferty pracy' ) ); ?>
 			</a>
 		</li>
@@ -78,7 +100,15 @@ $custom_breadcrumbs = (string) ob_get_clean();
 
 	<section class="page-section page-section--career-taxonomy-loop">
 		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/career/career-archive', 'loop' ); ?>
+			<?php
+			get_template_part(
+				'template-parts/career/career-archive',
+				'loop',
+				[
+					'readmore_label' => $entry_cta_label,
+				]
+			);
+			?>
 		</div>
 	</section>
 

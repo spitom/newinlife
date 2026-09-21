@@ -42,11 +42,11 @@
     grid-template-columns: auto minmax(0, 1fr);
     gap: 1rem;
     padding-block: 1.25rem;
-    border-top: 1px solid rgba(41, 52, 88, 0.12);
+    border-top: 1px solid rgba(41, 52, 88, 0.08);
 }
 
 .career-values__item:last-child {
-    border-bottom: 1px solid rgba(41, 52, 88, 0.12);
+    border-bottom: 1px solid rgba(41, 52, 88, 0.08);
 }
 
 .career-values__item-index {
@@ -339,7 +339,7 @@
 
 .career-doctoral-school__title {
     max-width: 15ch;
-    margin: 0;
+    margin: 0.15rem 0 0.2rem;
     color: #fff;
     font-size: clamp(1.85rem, 3vw, 3rem);
     font-weight: 600;
@@ -353,6 +353,14 @@
     color: rgba(255, 255, 255, 0.82);
     font-size: 1rem;
     line-height: 1.75;
+
+    >p {
+        margin: 0;
+    }
+
+    >p+p {
+        margin-top: 0.65rem;
+    }
 }
 
 .career-doctoral-school__action {
@@ -449,6 +457,93 @@
     line-height: 1.75;
     max-width: 46rem;
     color: var(--inlife-text-muted);
+}
+
+.career-diversity__action {
+    margin-top: 1.55rem;
+    margin-left: 1.5rem;
+}
+
+/* =========================================================
+   CAREER — WHY INLIFE
+========================================================= */
+
+.career-why-inlife__header {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.career-why-inlife__grid {
+    gap: 0;
+}
+
+.career-why-inlife__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: clamp(1.5rem, 2.5vw, 2rem) 0;
+    border-top: 1px solid rgba(41, 52, 88, 0.08);
+}
+
+@media (min-width: 992px) {
+    .career-why-inlife__card {
+        padding: clamp(1.75rem, 2.5vw, 2.25rem);
+        border-top: 0;
+    }
+
+    .career-why-inlife__card:nth-child(n + 4) {
+        border-top: 1px solid rgba(41, 52, 88, 0.08);
+    }
+
+    .career-why-inlife__card:not(:nth-child(3n + 1)) {
+        border-left: 1px solid rgba(41, 52, 88, 0.08);
+    }
+
+    .career-why-inlife__card:nth-child(3n + 1) {
+        padding-left: 0;
+    }
+
+    .career-why-inlife__card:nth-child(3n) {
+        padding-right: 0;
+    }
+}
+
+.career-why-inlife__card::before {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 3px;
+    margin-bottom: 1.15rem;
+    border-radius: 999px;
+    background: var(--inlife-accent);
+}
+
+.career-why-inlife__title {
+    margin: 0;
+    color: var(--inlife-primary);
+    font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+}
+
+.career-why-inlife__highlight {
+    margin: 0.9rem 0 0;
+    color: var(--inlife-primary);
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+.career-why-inlife__text {
+    margin-top: 0.9rem;
+    color: var(--inlife-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
 }
 
 /* =========================================================
@@ -641,6 +736,20 @@
         grid-template-columns: minmax(0, 1fr) auto;
         align-items: center;
     }
+}
+
+.career-hr-documents__item:last-child {
+    padding-top: 1.75rem;
+}
+
+.career-hr-documents__item:last-child .career-hr-documents__item-title {
+    color: rgba(41, 52, 88, 0.72);
+    font-size: 0.98rem;
+    font-weight: 650;
+}
+
+.career-hr-documents__item:last-child .career-hr-documents__download {
+    opacity: 0.72;
 }
 
 .career-hr-documents__item-title {

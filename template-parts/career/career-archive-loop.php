@@ -6,13 +6,28 @@
  */
 
 defined( 'ABSPATH' ) || exit;
+
+$args = wp_parse_args(
+	$args ?? [],
+	[
+		'readmore_label' => inlife_t( 'Przejdź do oferty' ),
+	]
+);
 ?>
 
 <?php if ( have_posts() ) : ?>
 	<div class="career-archive-list">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<div class="career-archive-list__item">
-				<?php get_template_part( 'template-parts/career/career-archive', 'card' ); ?>
+				<?php
+				get_template_part(
+					'template-parts/career/career-archive',
+					'card',
+					[
+						'readmore_label' => $args['readmore_label'],
+					]
+				);
+				?>
 			</div>
 		<?php endwhile; ?>
 	</div>

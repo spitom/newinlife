@@ -82,7 +82,15 @@ while ( have_posts() ) :
 			<div class="<?php echo esc_attr( $container ); ?>">
 				<div class="career-entry-layout">
 					<div class="career-entry-main">
-						<?php get_template_part( 'template-parts/career/career-entry', 'content' ); ?>
+						<?php
+						get_template_part(
+							'template-parts/career/career-entry',
+							'content',
+							[
+								'back_url' => $career_opportunities_url,
+							]
+						);
+						?>
 					</div>
 
 					<aside class="career-entry-aside">

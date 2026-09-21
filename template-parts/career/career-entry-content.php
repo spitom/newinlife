@@ -14,6 +14,26 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 
 	<?php
+	$back_url = ! empty( $args['back_url'] )
+		? $args['back_url']
+		: '';
+	?>
+
+	<?php if ( $back_url ) : ?>
+		<div class="career-entry-content__back">
+			<a
+				class="c-readmore"
+				href="<?php echo esc_url( $back_url ); ?>"
+			>
+				<span class="c-readmore__icon" aria-hidden="true">←</span>
+				<span class="c-readmore__label">
+					<?php echo esc_html( inlife_t( 'Wróć do ofert' ) ); ?>
+				</span>
+			</a>
+		</div>
+	<?php endif; ?>
+
+	<?php
 	$primary_type = function_exists( 'inlife_get_career_entry_primary_type' )
 		? inlife_get_career_entry_primary_type( (int) get_the_ID() )
 		: null;
