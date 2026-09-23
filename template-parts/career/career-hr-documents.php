@@ -60,14 +60,18 @@ if ( function_exists( 'have_rows' ) && have_rows( 'career_hr_documents', $post_i
 		$title = get_sub_field( 'document_title' );
 		$desc  = get_sub_field( 'short_description' );
 
+		$cta_label = get_sub_field( 'document_cta_label' );
+		$cta_label = $cta_label ?: inlife_t( 'Pobierz dokument' );
+
 		if ( ! $title || ! $url ) {
 			continue;
 		}
 
 		$documents[] = [
-			'title' => $title,
-			'desc'  => $desc,
-			'url'   => $url,
+			'title'     => $title,
+			'desc'      => $desc,
+			'url'       => $url,
+			'cta_label' => $cta_label,
 		];
 	}
 }
@@ -133,7 +137,7 @@ if ( function_exists( 'have_rows' ) && have_rows( 'career_hr_documents', $post_i
 							rel="noopener noreferrer"
 						>
 							<span class="c-readmore__label">
-								<?php echo esc_html( inlife_t( 'Pobierz dokument' ) ); ?>
+								<?php echo esc_html( $document['cta_label'] ); ?>
 
 								<span class="visually-hidden">
 									<?php echo esc_html( inlife_t( '(otwiera w nowej karcie)' ) ); ?>

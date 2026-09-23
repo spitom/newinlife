@@ -608,6 +608,10 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 
 		// Karta i udostępnianie.
 		pll_register_string( 'career_card_open_offer', 'Przejdź do oferty', $group );
+		pll_register_string( 'career_card_view_result', 'Zobacz wynik', $group );
+		pll_register_string( 'career_card_view_announcement', 'Zobacz ogłoszenie', $group );
+		pll_register_string( 'career_secondary_results_cta', 'Zobacz wyniki', $group );
+		pll_register_string( 'career_secondary_archive_cta', 'Przejdź do archiwum', $group );
 		pll_register_string( 'career_share_copy', 'Kopiuj link do ogłoszenia', $group );
 		pll_register_string( 'career_share_facebook', 'Udostępnij ogłoszenie na Facebooku', $group );
 		pll_register_string( 'career_share_linkedin', 'Udostępnij ogłoszenie na LinkedIn', $group );

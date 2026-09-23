@@ -188,6 +188,177 @@
             "pll_default_value": ""
         },
         {
+            "key": "field_career_why_tab",
+            "label": "Dlaczego InLife?",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_career_why_kicker",
+            "label": "Kicker",
+            "name": "career_why_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_career_why_title",
+            "label": "Tytuł",
+            "name": "career_why_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_career_why_lead",
+            "label": "Lead",
+            "name": "career_why_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": "wpautop",
+            "pll_default_value": ""
+        },
+        {
+            "key": "field_career_why_items",
+            "label": "Kafle",
+            "name": "career_why_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 6,
+            "collapsed": "field_career_why_item_title",
+            "button_label": "Dodaj kafel",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_career_why_item_title",
+                    "label": "Tytuł",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_career_why_items",
+                    "pll_default_value": ""
+                },
+                {
+                    "key": "field_career_why_item_text",
+                    "label": "Tekst",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 5,
+                    "placeholder": "",
+                    "new_lines": "wpautop",
+                    "parent_repeater": "field_career_why_items",
+                    "pll_default_value": ""
+                },
+                {
+                    "key": "field_career_why_item_highlight",
+                    "label": "Wyróżnienie",
+                    "name": "highlight",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Opcjonalne. Krótkie wyróżnione zdanie nad opisem.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_career_why_items",
+                    "pll_default_value": ""
+                }
+            ]
+        },
+        {
             "key": "field_5d2cce8038a3",
             "label": "Wartości",
             "name": "",
@@ -809,6 +980,51 @@
             ]
         },
         {
+            "key": "field_6aacf1cb483c9",
+            "label": "Plan Równości Płci",
+            "name": "career_diversity_plan_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "translations": "copy_once",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_6aacf5ccc7980",
+            "label": "Tekst CTA",
+            "name": "career_diversity_plan_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "translations": "translate",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "pll_default_value": ""
+        },
+        {
             "key": "field_36e8b5359309",
             "label": "Lokalizacja",
             "name": "",
@@ -1170,6 +1386,30 @@
                     "max_size": "",
                     "mime_types": "",
                     "parent_repeater": "field_a80270815fe8"
+                },
+                {
+                    "key": "field_6aad03ff295c8",
+                    "label": "Tekst CTA",
+                    "name": "document_cta_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "translations": "translate",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "pll_default_value": "",
+                    "parent_repeater": "field_a80270815fe8"
                 }
             ]
         },
@@ -1362,5 +1602,5 @@
     "allow_ai_access": false,
     "ai_description": "",
     "pll_display_field_instructions": 1,
-    "modified": 1782995754
+    "modified": 1789723663
 }

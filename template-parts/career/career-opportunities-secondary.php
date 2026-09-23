@@ -65,6 +65,30 @@ get_template_part(
 			)
 				? inlife_get_career_type_secondary_description( $term )
 				: '';
+
+			$cta_label = inlife_t( 'Zobacz komunikaty' );
+
+			if ( in_array( $term->slug, [ 'wyniki-konkursow', 'competition-results' ], true ) ) {
+				$description = function_exists( 'get_field' )
+					? get_field( 'career_opportunities_results_text', $post_id )
+					: '';
+
+				$cta_label = function_exists( 'get_field' )
+					? get_field( 'career_opportunities_results_cta_label', $post_id )
+					: '';
+
+				$cta_label = $cta_label ?: inlife_t( 'Zobacz wyniki' );
+			} elseif ( in_array( $term->slug, [ 'archiwum', 'archive' ], true ) ) {
+				$description = function_exists( 'get_field' )
+					? get_field( 'career_opportunities_archive_text', $post_id )
+					: '';
+
+				$cta_label = function_exists( 'get_field' )
+					? get_field( 'career_opportunities_archive_cta_label', $post_id )
+					: '';
+
+				$cta_label = $cta_label ?: inlife_t( 'Przejdź do archiwum' );
+			}
 			?>
 
 			<a
@@ -83,7 +107,7 @@ get_template_part(
 
 				<span class="c-readmore career-opportunities-entry-card__readmore">
 					<span class="c-readmore__label">
-						<?php echo esc_html( inlife_t( 'Zobacz komunikaty' ) ); ?>
+						<?php echo esc_html( $cta_label ); ?>
 					</span>
 					<span class="c-readmore__icon" aria-hidden="true">→</span>
 				</span>
