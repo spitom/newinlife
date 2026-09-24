@@ -23,12 +23,26 @@ if ( $leader_id ) {
 }
 
 if ( ! empty( $members ) ) {
+	$get_sort_person_id = static function ( int $person_id ): int {
+		if ( function_exists( 'pll_get_post' ) ) {
+			$polish_person_id = (int) pll_get_post( $person_id, 'pl' );
+
+			if ( $polish_person_id > 0 ) {
+				return $polish_person_id;
+			}
+		}
+
+		return $person_id;
+	};
+
 	usort(
 		$members,
-		static function ( $a, $b ) {
-			$get_weight = static function ( $person_id ): int {
+		static function ( $a, $b ) use ( $get_sort_person_id ) {
+			$get_weight = static function ( $person_id ) use ( $get_sort_person_id ): int {
+				$sort_person_id = $get_sort_person_id( (int) $person_id );
+
 				$position = function_exists( 'get_field' )
-					? (string) get_field( 'person_position', (int) $person_id )
+					? (string) get_field( 'person_position', $sort_person_id )
 					: '';
 
 				if ( '' === $position ) {
@@ -39,20 +53,16 @@ if ( ! empty( $members ) ) {
 				$position = remove_accents( mb_strtolower( $position ) );
 
 				$map = array(
-
-					'profesor instytutu'  => 15,
-					'institute professor' => 15,
-					'profesor'            => 10,
-					'professor'           => 10,
-					'adiunkt'             => 20,
-					'asystent'            => 30,
-					'st. specjalist'      => 35,
-					'st specjalist'       => 35,
-					'starszy specjalist'  => 35,
-					'senior specialist'   => 35,
-					'specjalist'          => 40,
-					'technolog'           => 50,
-					'doktorant'           => 60,
+					'profesor instytutu' => 15,
+					'profesor'           => 10,
+					'adiunkt'            => 20,
+					'asystent'           => 30,
+					'st. specjalist'     => 35,
+					'st specjalist'      => 35,
+					'starszy specjalist' => 35,
+					'specjalist'         => 40,
+					'technolog'          => 50,
+					'doktorant'          => 60,
 				);
 
 				foreach ( $map as $needle => $weight ) {
@@ -71,13 +81,16 @@ if ( ! empty( $members ) ) {
 				return $weight_a <=> $weight_b;
 			}
 
+			$sort_person_a = $get_sort_person_id( (int) $a );
+			$sort_person_b = $get_sort_person_id( (int) $b );
+
 			$name_a = function_exists( 'inlife_get_person_display_name' )
-				? inlife_get_person_display_name( (int) $a )
-				: get_the_title( (int) $a );
+				? inlife_get_person_display_name( $sort_person_a )
+				: get_the_title( $sort_person_a );
 
 			$name_b = function_exists( 'inlife_get_person_display_name' )
-				? inlife_get_person_display_name( (int) $b )
-				: get_the_title( (int) $b );
+				? inlife_get_person_display_name( $sort_person_b )
+				: get_the_title( $sort_person_b );
 
 			return strcasecmp( $name_a, $name_b );
 		}
