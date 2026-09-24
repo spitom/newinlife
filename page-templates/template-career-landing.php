@@ -72,11 +72,17 @@ $hero_actions = (string) ob_get_clean();
 		?>
 	</section>
 
-	<section class="page-section page-section--career-values" aria-labelledby="career-values-heading">
+	<section class="page-section page-section--career-why-inlife" aria-labelledby="career-why-inlife-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/career/career', 'values' ); ?>
+			<?php get_template_part( 'template-parts/career/career', 'why-inlife' ); ?>
 		</div>
 	</section>
+
+	<!-- <section class="page-section page-section--career-location-promo" aria-labelledby="career-location-heading">
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<?php get_template_part( 'template-parts/career/career', 'location-promo' ); ?>
+		</div>
+	</section> -->
 
 	<section class="page-section page-section--career-job-offers" aria-labelledby="career-job-offers-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
@@ -87,6 +93,18 @@ $hero_actions = (string) ob_get_clean();
 	<section class="page-section page-section--career-doctoral-school" aria-labelledby="career-doctoral-school-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">
 			<?php get_template_part( 'template-parts/career/career', 'doctoral-school' ); ?>
+		</div>
+	</section>
+
+	<section class="page-section page-section--career-values" aria-labelledby="career-values-heading">
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<?php get_template_part( 'template-parts/career/career', 'values' ); ?>
+		</div>
+	</section>
+
+	<section class="page-section page-section--career-diversity" aria-labelledby="career-diversity-heading">
+		<div class="<?php echo esc_attr( $container ); ?>">
+			<?php get_template_part( 'template-parts/career/career', 'diversity' ); ?>
 		</div>
 	</section>
 
@@ -101,18 +119,6 @@ $hero_actions = (string) ob_get_clean();
 			<?php get_template_part( 'template-parts/career/career', 'trainings' ); ?>
 		</div>
 	</section> -->
-
-	<section class="page-section page-section--career-diversity" aria-labelledby="career-diversity-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/career/career', 'diversity' ); ?>
-		</div>
-	</section>
-
-	<section class="page-section page-section--career-location-promo" aria-labelledby="career-location-heading">
-		<div class="<?php echo esc_attr( $container ); ?>">
-			<?php get_template_part( 'template-parts/career/career', 'location-promo' ); ?>
-		</div>
-	</section>
 
 	<!-- <section class="page-section page-section--career-onboarding" aria-labelledby="career-onboarding-heading">
 		<div class="<?php echo esc_attr( $container ); ?>">

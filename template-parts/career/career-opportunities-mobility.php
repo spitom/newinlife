@@ -106,9 +106,9 @@ get_template_part(
 						</h3>
 
 						<?php if ( ! empty( $item['text'] ) ) : ?>
-							<p class="career-mobility-link__text">
-								<?php echo esc_html( $item['text'] ); ?>
-							</p>
+							<div class="career-mobility-link__text">
+								<?php echo wp_kses_post( wpautop( $item['text'] ) ); ?>
+							</div>
 						<?php endif; ?>
 
 						<span class="career-mobility-link__icon" aria-hidden="true">→</span>

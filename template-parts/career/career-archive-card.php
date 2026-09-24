@@ -10,7 +10,8 @@ defined( 'ABSPATH' ) || exit;
 $args = wp_parse_args(
 	$args ?? array(),
 	array(
-		'heading_level' => 2,
+		'heading_level'  => 2,
+		'readmore_label' => inlife_t( 'Przejdź do oferty' ),
 	)
 );
 
@@ -99,7 +100,7 @@ $show_deadline = ! empty( $type_behavior['show_deadline'] );
 
 		<span class="c-readmore career-archive-card__readmore">
 			<span class="c-readmore__label">
-				<?php echo esc_html( inlife_t( 'Przejdź do oferty' ) ); ?>
+				<?php echo esc_html( $args['readmore_label'] ); ?>
 			</span>
 			<span class="c-readmore__icon" aria-hidden="true">→</span>
 		</span>
