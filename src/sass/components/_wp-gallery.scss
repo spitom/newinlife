@@ -1,0 +1,42 @@
+/* =========================================================
+   WORDPRESS GALLERY
+========================================================= */
+
+.entry-content .wp-block-gallery {
+    margin-block-start: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.wp-block-gallery.has-nested-images>.wp-block-image {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.wp-block-gallery.has-nested-images>.wp-block-image img {
+    transition: transform 180ms ease;
+}
+
+.wp-block-gallery.has-nested-images>.wp-block-image.wp-lightbox-container img {
+    cursor: zoom-in;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .wp-block-gallery.has-nested-images>.wp-block-image:hover img {
+        transform: scale(1.015);
+    }
+}
+
+@media (max-width: 599px) {
+    .wp-block-gallery.has-nested-images.is-layout-flex>figure.wp-block-image:not(#individual-image) {
+        flex-grow: 0;
+    }
+}
+
+.wp-lightbox-overlay .scrim {
+    filter: brightness(0);
+    opacity: 0.94;
+}
+
+.wp-lightbox-overlay .wp-lightbox-close-button svg,
+.wp-lightbox-overlay .wp-lightbox-navigation-button svg {
+    fill: #fff;
+}
