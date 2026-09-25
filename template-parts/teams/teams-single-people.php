@@ -84,15 +84,19 @@ if ( ! empty( $members ) ) {
 			$sort_person_a = $get_sort_person_id( (int) $a );
 			$sort_person_b = $get_sort_person_id( (int) $b );
 
-			$name_a = function_exists( 'inlife_get_person_display_name' )
-				? inlife_get_person_display_name( $sort_person_a )
-				: get_the_title( $sort_person_a );
+			$name_a = remove_accents(
+				mb_strtolower(
+					wp_strip_all_tags( get_the_title( $sort_person_a ) )
+				)
+			);
 
-			$name_b = function_exists( 'inlife_get_person_display_name' )
-				? inlife_get_person_display_name( $sort_person_b )
-				: get_the_title( $sort_person_b );
+			$name_b = remove_accents(
+				mb_strtolower(
+					wp_strip_all_tags( get_the_title( $sort_person_b ) )
+				)
+			);
 
-			return strcasecmp( $name_a, $name_b );
+			return strcmp( $name_a, $name_b );
 		}
 	);
 }
