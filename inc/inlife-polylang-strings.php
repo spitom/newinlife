@@ -1696,6 +1696,12 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 			'Sekcje Stacji Badawczej w Popielnie',
 			$group
 		);
+
+		pll_register_string(
+			'popielno_news_title',
+			'Najnowsze informacje ze Stacji',
+			$group
+		);
 	}
 
 	add_action( 'init', 'inlife_register_polylang_strings' );

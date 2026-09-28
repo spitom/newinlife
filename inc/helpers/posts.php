@@ -268,11 +268,29 @@ if ( ! function_exists( 'inlife_get_research_station_category' ) ) {
 	 * @return WP_Term|null
 	 */
 	function inlife_get_research_station_category(): ?WP_Term {
-		$category = get_term_by(
-			'slug',
-			'stacja-badawcza',
-			'category'
+		$polish_categories = get_terms(
+			array(
+				'taxonomy'   => 'category',
+				'hide_empty' => false,
+				'lang'       => 'pl',
+			)
 		);
+
+		if ( is_wp_error( $polish_categories ) || empty( $polish_categories ) ) {
+			return null;
+		}
+
+		$category = null;
+
+		foreach ( $polish_categories as $polish_category ) {
+			if (
+				$polish_category instanceof WP_Term &&
+				'stacja-badawcza' === $polish_category->slug
+			) {
+				$category = $polish_category;
+				break;
+			}
+		}
 
 		if ( ! $category instanceof WP_Term ) {
 			return null;
