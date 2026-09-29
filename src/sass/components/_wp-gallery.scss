@@ -19,15 +19,13 @@
     cursor: zoom-in;
 }
 
+.wp-block-gallery.has-nested-images.is-layout-flex>figure.wp-block-image:not(#individual-image) {
+    flex-grow: 0;
+}
+
 @media (hover: hover) and (pointer: fine) {
     .wp-block-gallery.has-nested-images>.wp-block-image:hover img {
         transform: scale(1.015);
-    }
-}
-
-@media (max-width: 599px) {
-    .wp-block-gallery.has-nested-images.is-layout-flex>figure.wp-block-image:not(#individual-image) {
-        flex-grow: 0;
     }
 }
 
