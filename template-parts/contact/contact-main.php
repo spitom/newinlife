@@ -77,9 +77,21 @@ if ( is_array( $emails_raw ) ) {
 
 $lat = inlife_get_acf_field( 'contact_latitude', $post_id, '' );
 $lng = inlife_get_acf_field( 'contact_longitude', $post_id, '' );
+
+$directions_url = '';
+
+if ( $lat && $lng ) {
+	$directions_url = add_query_arg(
+		[
+			'api'         => '1',
+			'destination' => $lat . ',' . $lng,
+		],
+		'https://www.google.com/maps/dir/'
+	);
+}
 ?>
 
-<div class="contact-main">
+<div class="contact-main" id="lokalizacja">
 	<div class="contact-main__content">
 		<div class="section-heading section-heading--left">
 			<h2 id="contact-main-heading" class="section-title">
@@ -187,6 +199,18 @@ $lng = inlife_get_acf_field( 'contact_longitude', $post_id, '' );
 		<?php else : ?>
 			<div class="contact-map contact-map--placeholder">
 				<p><?php echo esc_html( inlife_t( 'Mapa zostanie uzupełniona po dodaniu współrzędnych.' ) ); ?></p>
+			</div>
+		<?php endif; ?>
+
+		<?php if ( $directions_url ) : ?>
+			<div class="mt-3">
+				<a
+					class="btn btn-outline-primary"
+					href="<?php echo esc_url( $directions_url ); ?>"
+				>
+					<i class="bi bi-signpost-split me-2" aria-hidden="true"></i>
+					<?php echo esc_html( inlife_t( 'Wyznacz trasę' ) ); ?>
+				</a>
 			</div>
 		<?php endif; ?>
 	</div>

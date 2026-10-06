@@ -1402,6 +1402,12 @@ if ( ! function_exists( 'inlife_register_polylang_strings' ) ) {
 		);
 
 		pll_register_string(
+			'contact_directions',
+			'Wyznacz trasę',
+			$group
+		);
+
+		pll_register_string(
 			'contact_formal_heading',
 			'Dane instytucjonalne',
 			$group

@@ -140,6 +140,10 @@
     background: #f5f8fc;
     border: 1px solid rgba(41, 52, 88, 0.08);
     box-shadow: 0 24px 60px rgba(41, 52, 88, 0.08);
+
+    @media (max-width: 991px) {
+        height: auto;
+    }
 }
 
 .contact-map--placeholder {
