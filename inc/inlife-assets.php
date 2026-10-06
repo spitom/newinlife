@@ -52,6 +52,18 @@ function inlife_enqueue_theme_script( string $handle, string $relative_path, arr
 	);
 }
 
+/**
+ * Enqueue global typography helpers.
+ */
+function inlife_enqueue_typography_assets(): void {
+	inlife_enqueue_theme_script(
+		'inlife-orphans',
+		'/js/inlife-orphans.js'
+	);
+}
+
+add_action( 'wp_enqueue_scripts', 'inlife_enqueue_typography_assets', 30 );
+
 add_action( 'wp_enqueue_scripts', 'inlife_enqueue_bootstrap_icons', 20 );
 /**
  * Enqueue Bootstrap Icons.
