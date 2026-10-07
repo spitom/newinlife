@@ -31,6 +31,24 @@ if ( $interval <= 0 ) {
 			$video  = $slide['slide_video'] ?? null;
 			$poster = $slide['slide_video_poster'] ?? null;
 
+			$image_position_mobile = $slide['slide_image_position_mobile'] ?? 'default';
+
+			$image_position_mobile_map = [
+				'default'       => '58% center',
+				'left_top'      => 'left top',
+				'center_top'    => 'center top',
+				'right_top'     => 'right top',
+				'left_center'   => 'left center',
+				'center_center' => 'center center',
+				'right_center'  => 'right center',
+				'left_bottom'   => 'left bottom',
+				'center_bottom' => 'center bottom',
+				'right_bottom'  => 'right bottom',
+			];
+
+			$image_position_mobile_css = $image_position_mobile_map[ $image_position_mobile ]
+				?? $image_position_mobile_map['default'];
+
 			$title = $slide['slide_title'] ?? '';
 			$text  = $slide['slide_text'] ?? '';
 			$link  = $slide['slide_link'] ?? null;
@@ -90,6 +108,7 @@ if ( $interval <= 0 ) {
 								'class'   => 'hero-slide__image',
 								'loading' => 0 === $index ? 'eager' : 'lazy',
 								'alt'     => '',
+								'style'   => '--hero-image-position-mobile: ' . $image_position_mobile_css . ';',
 							]
 						);
 						?>

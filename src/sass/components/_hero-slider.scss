@@ -252,7 +252,11 @@
         }
     }
 
-    .hero-slide__image,
+    .hero-slide__image {
+        transform: none;
+        object-position: var(--hero-image-position-mobile, 58% center);
+    }
+
     .hero-slide__video {
         transform: none;
         object-position: 58% center;

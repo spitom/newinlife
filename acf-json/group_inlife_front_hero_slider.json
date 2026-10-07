@@ -88,6 +88,54 @@
                     "parent_repeater": "field_front_hero_slides"
                 },
                 {
+                    "key": "field_6ac4cc4018d55",
+                    "label": "Pozycja obrazu — mobile",
+                    "name": "slide_image_position_mobile",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Określa kadrowanie obrazu na urządzeniach mobilnych.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_slide_media_type",
+                                "operator": "==",
+                                "value": "image"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "default": "Domyślna",
+                        "left_top": "Lewy górny",
+                        "center_top": "Środek górny",
+                        "right_top": "Prawy górny",
+                        "left_center": "Lewy środek",
+                        "center_center": "Środek",
+                        "right_center": "Prawy środek",
+                        "left_bottom": "Lewy dolny",
+                        "center_bottom": "Środek dolny",
+                        "right_bottom": "Prawy dolny"
+                    },
+                    "default_value": "default",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "translations": "copy_once",
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "pll_default_value": "default",
+                    "parent_repeater": "field_front_hero_slides"
+                },
+                {
                     "key": "field_slide_video",
                     "label": "Wideo",
                     "name": "slide_video",
@@ -335,5 +383,6 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1780479216
+    "pll_display_field_instructions": 1,
+    "modified": 1791282399
 }
