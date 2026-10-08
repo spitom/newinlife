@@ -48,57 +48,27 @@ if ( ! function_exists( 'inlife_get_upcoming_events' ) ) {
 				'post_status'    => 'publish',
 				'posts_per_page' => $limit,
 				'no_found_rows'  => true,
-                'orderby' => [
-                    'event_start_date_clause' => 'ASC',
-                ],
-				'meta_query'     => [
-					'relation' => 'AND',
+
+				'meta_query' => [
+					'relation' => 'OR',
 
 					'event_start_date_clause' => [
-                        'key'     => 'event_start_date',
-                        'compare' => 'EXISTS',
-                        'type'    => 'NUMERIC',
-                    ],
-
-					[
-						'relation' => 'OR',
-
-						[
-							'key'     => 'event_end_date',
-							'value'   => $today,
-							'compare' => '>=',
-							'type'    => 'NUMERIC',
-						],
-
-						[
-							'relation' => 'AND',
-							[
-								'key'     => 'event_end_date',
-								'value'   => '',
-								'compare' => '=',
-							],
-							[
-								'key'     => 'event_start_date',
-								'value'   => $today,
-								'compare' => '>=',
-								'type'    => 'NUMERIC',
-							],
-						],
-
-						[
-							'relation' => 'AND',
-							[
-								'key'     => 'event_end_date',
-								'compare' => 'NOT EXISTS',
-							],
-							[
-								'key'     => 'event_start_date',
-								'value'   => $today,
-								'compare' => '>=',
-								'type'    => 'NUMERIC',
-							],
-						],
+						'key'     => 'event_start_date',
+						'value'   => $today,
+						'compare' => '>=',
+						'type'    => 'NUMERIC',
 					],
+
+					'event_end_date_clause' => [
+						'key'     => 'event_end_date',
+						'value'   => $today,
+						'compare' => '>=',
+						'type'    => 'NUMERIC',
+					],
+				],
+
+				'orderby' => [
+					'event_start_date_clause' => 'ASC',
 				],
 			]
 		);
