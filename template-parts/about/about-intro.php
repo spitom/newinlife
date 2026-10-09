@@ -23,6 +23,12 @@ $mission = inlife_get_acf_field(
 
 $image = inlife_get_acf_field( 'about_intro_image', $post_id, 0 );
 
+$strategy_link = inlife_get_acf_field(
+	'about_strategy_link',
+	$post_id,
+	null
+);
+
 $image_id = 0;
 
 if ( is_array( $image ) && ! empty( $image['ID'] ) ) {
@@ -65,6 +71,7 @@ if ( empty( $stats ) ) {
 		],
 	];
 }
+$stats_count = min( count( $stats ), 4 );
 ?>
 
 <div class="about-intro">
@@ -83,6 +90,22 @@ if ( empty( $stats ) ) {
 			<p class="about-intro__text">
 				<?php echo esc_html( $mission ); ?>
 			</p>
+
+			<?php if ( is_array( $strategy_link ) && ! empty( $strategy_link['url'] ) ) : ?>
+				<a
+					class="c-readmore c-readmore--light"
+					href="<?php echo esc_url( $strategy_link['url'] ); ?>"
+				>
+					<?php
+					echo esc_html(
+						! empty( $strategy_link['title'] )
+							? $strategy_link['title']
+							: inlife_t( 'Poznaj Strategię' )
+					);
+					?>
+					<span class="c-readmore__icon" aria-hidden="true">→</span>
+				</a>
+			<?php endif; ?>
 		</div>
 
 		<div class="about-intro__media">
@@ -109,7 +132,11 @@ if ( empty( $stats ) ) {
 	</div>
 
 	<?php if ( ! empty( $stats ) ) : ?>
-		<div class="about-intro__stats" aria-label="<?php echo esc_attr( inlife_t( 'Najważniejsze informacje o Instytucie' ) ); ?>">
+		<div
+			class="about-intro__stats"
+			style="--about-stats-count: <?php echo esc_attr( $stats_count ); ?>;"
+			aria-label="<?php echo esc_attr( inlife_t( 'Najważniejsze informacje o Instytucie' ) ); ?>"
+		>
 			<?php foreach ( $stats as $stat ) : ?>
 				<div class="about-stat">
 					<?php if ( ! empty( $stat['value'] ) ) : ?>
